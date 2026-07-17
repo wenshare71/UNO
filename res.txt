@@ -1,0 +1,48 @@
+环境 OK。下一步按顺序是三件事：**锁依赖版本 → 下模型权重 → 下训练数据**。后两个都是大下载，建议今天在 tmux 里挂上过夜。
+
+**第 0 步（1 分钟，先做）：把 transformers/diffusers 降回 UNO 测试过的版本**
+
+自检里装到的是 transformers 5.14.1 / diffusers 0.39.0（pyproject 只写了 `>=`，pip 拉了最新），比上游 requirements.txt 钉死的版本新了一整个大版本，transformers 5.x 的破坏性改动大概率让 T5/CLIP 加载直接炸。在远程：
+
+```bash
+source .venv-uno/bin/activate
+pip install transformers==4.43.3 diffusers==0.30.1   # 走内网源，秒装
+```
+
+**第 1 步：下载模型权重（~35 GB，海外代理 + hf_transfer，约 2~4 小时）**
+
+我查了 `uno/flux/util.py`，UNO 需要四个仓库：`black-forest-labs/FLUX.1-dev`（主模型+VAE，~24 GB，**gated 仓库**）、`xlabs-ai/xflux_text_encoders`（T5，~9 GB）、`openai/clip-vit-large-patch14`、`bytedance-research/UNO`（官方 LoRA，用来先跑通推理验证环境）。
+
+```bash
+# FLUX.1-dev 是 gated：先去 https://huggingface.co/black-forest-labs/FLUX.1-dev 点同意协议，
+# 然后 huggingface-cli login 贴你的 token
+export http_proxy=http://oversea-squid1.jp.txyun:11080
+export https_proxy=http://oversea-squid1.jp.txyun:11080
+export HF_HUB_ENABLE_HF_TRANSFER=1
+
+tmux new -s dl_models
+huggingface-cli download black-forest-labs/FLUX.1-dev
+huggingface-cli download xlabs-ai/xflux_text_encoders
+huggingface-cli download openai/clip-vit-large-patch14
+huggingface-cli download bytedance-research/UNO
+```
+
+**第 2 步：下载 UNO-1M 标签 + 前 5 个分片（~110 GB，同一 tmux 或另开）**
+
+```bash
+huggingface-cli download bytedance-research/UNO-1M --repo-type dataset \
+  --include "uno_1m_total_labels.json" --local-dir ./datasets/UNO-1M
+huggingface-cli download bytedance-research/UNO-1M --repo-type dataset \
+  --include "images/split1.tar.gz" "images/split2.tar.gz" "images/split3.tar.gz" \
+            "images/split4.tar.gz" "images/split5.tar.gz" \
+  --local-dir ./datasets/UNO-1M
+```
+
+**第 3 步（权重到位后）：跑一次官方推理冒烟测试**，确认整条链路无问题：
+
+```bash
+python inference.py --prompt "a dog on the beach" \
+  --image_paths assets/examples 里随便挑一张 --width 704 --height 704
+```
+
+下载挂上之后就到正题了——把你 OminiControl 上的**隔离注意力 + KV-Cache LoRA** 方案移植到 UNO 训练管道（改 `attention()` 加 mask、denoise 循环加 ref KV 缓存、train.py 配 8×4090 的 LoRA 配置）。这部分不依赖下载完成，我现在就可以开始改代码。要我动手吗？
