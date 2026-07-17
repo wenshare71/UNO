@@ -17,7 +17,8 @@ echo "[1/5] 仓库目录: $(pwd)"
 
 # ---- 找一个 >=3.10 的 Python（UNO 要求 >=3.10,<=3.12；3.8 会因旧 setuptools 报 license 配置错）----
 find_python() {
-    for cand in python3.11 python3.12 python3.10 python3; do
+    # UNO_BASE_PYTHON 显式指定母本解释器时优先使用（如 /root/omini-venv/bin/python3.12）
+    for cand in ${UNO_BASE_PYTHON:-} python3.11 python3.12 python3.10 python3; do
         if command -v "$cand" >/dev/null 2>&1; then
             local p
             p="$(command -v "$cand")"
@@ -39,8 +40,8 @@ if command -v conda >/dev/null 2>&1; then
     # shellcheck disable=SC1091
     source "$(conda info --base)/etc/profile.d/conda.sh"
     conda activate "${ENV_NAME}"
-elif [ -x ".venv-${ENV_NAME}/bin/python" ] && \
-     ".venv-${ENV_NAME}/bin/python" -c 'import sys; sys.exit(0 if sys.version_info >= (3,10) else 1)' 2>/dev/null; then
+elif [ -f ".venv-${ENV_NAME}/pyvenv.cfg" ] && [ -x ".venv-${ENV_NAME}/bin/python" ] && \
+     ".venv-${ENV_NAME}/bin/python" -c 'import sys; sys.exit(0 if sys.version_info >= (3,10) and sys.prefix != sys.base_prefix else 1)' 2>/dev/null; then
     # 已有可用 venv：直接复用（幂等，重跑不会毁掉已装好的 torch）
     echo "[2/5] 复用已有虚拟环境 .venv-${ENV_NAME}"
     source ".venv-${ENV_NAME}/bin/activate"
