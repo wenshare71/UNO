@@ -1,50 +1,16 @@
-$ bash UNO/scripts/setup_env.sh
-[1/5] 仓库目录: /home/wuwenxuan03/UNO
-[2/5] 未找到 conda，使用 /root/omini-venv/bin/python3.12 创建 .venv-uno
-Python 3.12.13
-[3/5] 安装 PyTorch 2.4.0 + cu124（源: https://mirror.nju.edu.cn/pytorch/whl/cu124）
-Looking in indexes: https://pypi.corp.kuaishou.com/kuaishou/prod/+simple/
-Requirement already satisfied: pip in ./.venv-uno/lib/python3.12/site-packages (25.0.1)
-Collecting pip
-  Downloading https://pypi.corp.kuaishou.com/kuaishou/prod/pip/26.1.2/pip-26.1.2-py3-none-any.whl (1.8 MB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 78.1 MB/s eta 0:00:00
-Installing collected packages: pip
-  Attempting uninstall: pip
-    Found existing installation: pip 25.0.1
-    Uninstalling pip-25.0.1:
-      Successfully uninstalled pip-25.0.1
-Successfully installed pip-26.1.2
-Looking in indexes: https://mirror.nju.edu.cn/pytorch/whl/cu124
-Collecting torch==2.4.0
-  Downloading torch-2.4.0%2Bcu124-cp312-cp312-linux_x86_64.whl (797.2 MB)
-     ━╸━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 34.6/797.2 MB 449.7 kB/s eta 0:28:16
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 797.2/797.2 MB 1.2 MB/s  0:15:11
-Collecting torchvision==0.19.0
-  Downloading torchvision-0.19.0%2Bcu124-cp312-cp312-linux_x86_64.whl (7.1 MB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.1/7.1 MB 1.7 MB/s  0:00:04
-Collecting filelock (from torch==2.4.0)
-  Downloading filelock-3.29.0-py3-none-any.whl.metadata (2.0 kB)
-Collecting typing-extensions>=4.8.0 (from torch==2.4.0)
-  Downloading typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
-Collecting sympy (from torch==2.4.0)
-  Downloading sympy-1.14.0-py3-none-any.whl.metadata (12 kB)
-Collecting networkx (from torch==2.4.0)
-  Downloading networkx-3.6.1-py3-none-any.whl.metadata (6.8 kB)
-Collecting jinja2 (from torch==2.4.0)
-  Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
-Collecting fsspec (from torch==2.4.0)
-  Downloading fsspec-2026.4.0-py3-none-any.whl.metadata (10 kB)
-Collecting setuptools (from torch==2.4.0)
-  Downloading setuptools-78.1.0-py3-none-any.whl.metadata (6.6 kB)
-Collecting nvidia-cuda-nvrtc-cu12==12.4.99 (from torch==2.4.0)
-  Downloading nvidia_cuda_nvrtc_cu12-12.4.99-py3-none-manylinux2014_x86_64.whl (24.7 MB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 24.7/24.7 MB 991.6 kB/s  0:00:24
-Collecting nvidia-cuda-runtime-cu12==12.4.99 (from torch==2.4.0)
-  Downloading nvidia_cuda_runtime_cu12-12.4.99-py3-none-manylinux2014_x86_64.whl (883 kB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 883.4/883.4 kB 1.1 MB/s  0:00:00
-Collecting nvidia-cuda-cupti-cu12==12.4.99 (from torch==2.4.0)
-  Downloading nvidia_cuda_cupti_cu12-12.4.99-py3-none-manylinux2014_x86_64.whl (13.8 MB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 13.8/13.8 MB 1.9 MB/s  0:00:07
-Collecting nvidia-cudnn-cu12==9.1.0.70 (from torch==2.4.0)
-  Downloading nvidia_cudnn_cu12-9.1.0.70-py3-none-manylinux2014_x86_64.whl (664.8 MB)
-     ━━╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 34.9/664.8 MB 725.7 kB/s eta 0:14:28
+$ bash scripts/speedtest_mirrors.sh
+== PyTorch 轮子源测速（各拉 32MB，约几十秒/源）==
+源                                MB/s       HTTP
+官方 download.pytorch.org        0.98        206
+南京大学 NJU                   0.69        206
+上海交大 SJTU                  0.92        206
+阿里云 Aliyun                   4.18        206
+
+== 快手内网源是否有 cu124 轮子（有则内网源最优）==
+❌ 内网源 simple 索引里没找到 torch cu124 轮子（或索引页无法访问）
+
+== HuggingFace 端点测速（拉 UNO-1M 标签文件前 32MB）==
+官方 huggingface.co              1.33        206
+国内镜像 hf-mirror.com         0.85        206
+
+完成。把整段输出发回即可。HTTP 应为 206/200；000 表示连不上。
