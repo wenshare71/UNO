@@ -19,8 +19,12 @@ echo "[1/5] 仓库目录: $(pwd)"
 find_python() {
     for cand in python3.11 python3.12 python3.10 python3; do
         if command -v "$cand" >/dev/null 2>&1; then
-            if "$cand" -c 'import sys; sys.exit(0 if (3,10) <= sys.version_info[:2] <= (3,12) else 1)'; then
-                command -v "$cand"
+            local p
+            p="$(command -v "$cand")"
+            # 不能选目标 venv 自己的解释器（重建时会把它删掉）
+            case "$p" in *"/.venv-${ENV_NAME}/"*) continue ;; esac
+            if "$p" -c 'import sys; sys.exit(0 if (3,10) <= sys.version_info[:2] <= (3,12) else 1)'; then
+                echo "$p"
                 return 0
             fi
         fi
@@ -35,6 +39,11 @@ if command -v conda >/dev/null 2>&1; then
     # shellcheck disable=SC1091
     source "$(conda info --base)/etc/profile.d/conda.sh"
     conda activate "${ENV_NAME}"
+elif [ -x ".venv-${ENV_NAME}/bin/python" ] && \
+     ".venv-${ENV_NAME}/bin/python" -c 'import sys; sys.exit(0 if sys.version_info >= (3,10) else 1)' 2>/dev/null; then
+    # 已有可用 venv：直接复用（幂等，重跑不会毁掉已装好的 torch）
+    echo "[2/5] 复用已有虚拟环境 .venv-${ENV_NAME}"
+    source ".venv-${ENV_NAME}/bin/activate"
 elif PY_BIN="$(find_python)"; then
     echo "[2/5] 未找到 conda，使用 ${PY_BIN} 创建 .venv-${ENV_NAME}"
     rm -rf ".venv-${ENV_NAME}"
