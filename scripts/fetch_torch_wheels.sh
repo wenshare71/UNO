@@ -8,6 +8,11 @@ cd "$(dirname "$0")/.."
 mkdir -p wheels
 JOBS=16   # 并行连接数
 
+# 2026-07 矩阵测速结论：国内镜像走内网代理最快（阿里云 5.97 MB/s vs 海外代理 1.09），
+# 官方 download.pytorch.org 两条代理均不通。可用 PROXY=... 覆盖。
+PROXY="${PROXY:-http://10.68.24.160:11080}"
+export http_proxy="$PROXY" https_proxy="$PROXY"
+
 # 名字(本地文件名)|URL路径(编码后)|sha256
 WHEELS=(
   "torch-2.4.0+cu124-cp312-cp312-linux_x86_64.whl|torch-2.4.0%2Bcu124-cp312-cp312-linux_x86_64.whl|f6c94ca3a403e79fd25d4bc2ea7325de7c6682a372c5d525b65b06367b1cc618"
@@ -15,11 +20,10 @@ WHEELS=(
 )
 
 # 各镜像的目录前缀（文件在这些目录下同名、字节一致）
+# 只保留内网代理下实测最快的两个：阿里云 5.97 MB/s、上交 3.10 MB/s（南大 1.14 慢、官方不通，已剔除）
 MIRRORS=(
   "https://mirrors.aliyun.com/pytorch-wheels/cu124/"
-  "https://mirror.nju.edu.cn/pytorch/whl/cu124/"
   "https://mirror.sjtu.edu.cn/pytorch-wheels/cu124/"
-  "https://download.pytorch.org/whl/cu124/"
 )
 
 sha_check() {  # sha_check <file> <expected>
@@ -64,8 +68,9 @@ fetch_one() {  # fetch_one <本地名> <URL文件名> <sha256>
         local end=$((start + chunk - 1))
         [ "$end" -ge "$size" ] && end=$((size - 1))
         [ "$start" -gt "$end" ] && break
-        # 分片轮流分配给不同镜像，绕开单镜像单连接限速
-        local mirror="${MIRRORS[$((i % ${#MIRRORS[@]}))]}"
+        # 分片按 3:1 分给阿里云/上交（与两者实测速度比例相称）
+        local mirror="${MIRRORS[0]}"
+        [ $((i % 4)) -eq 3 ] && mirror="${MIRRORS[1]}"
         ( curl -sL --retry 5 --retry-delay 2 -r "${start}-${end}" \
                -o "$tmpdir/part_$(printf '%02d' "$i")" "${mirror}${urlname}" ) &
         pids+=($!)
