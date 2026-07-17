@@ -6,6 +6,11 @@ set -euo pipefail
 ENV_NAME="${1:-uno}"
 PYTHON_VERSION="3.11"   # pyproject 要求 >=3.10, <=3.12
 
+# ---- 镜像配置（均可用环境变量覆盖；普通 pip 包走机器默认源，不在此覆盖）----
+# PyTorch 轮子：南京大学镜像（已验证有 torch-2.4.0+cu124 全套轮子）
+# 备选: https://mirror.sjtu.edu.cn/pytorch-wheels/cu124   官方: https://download.pytorch.org/whl/cu124
+TORCH_INDEX="${TORCH_INDEX:-https://mirror.nju.edu.cn/pytorch/whl/cu124}"
+
 cd "$(dirname "$0")/.."
 echo "[1/5] 仓库目录: $(pwd)"
 
@@ -38,10 +43,14 @@ else
     cat >&2 <<'EOF'
 ❌ 没有找到 conda，也没有找到 Python 3.10~3.12（系统 python3 版本太旧，UNO 无法运行）。
 
-请先装一个 Miniconda（不需要 root，装到用户目录）：
-  wget -q https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /tmp/miniconda.sh
+请先装一个 Miniconda（不需要 root，装到用户目录；用清华 TUNA 镜像下载）：
+  wget -q https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /tmp/miniconda.sh
   bash /tmp/miniconda.sh -b -p "$HOME/miniconda3"
   source "$HOME/miniconda3/etc/profile.d/conda.sh"
+
+（可选）conda 包源也换成 TUNA，建环境更快：
+  conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+  conda config --set show_channel_urls yes
 
 然后重新执行本脚本即可（脚本会自动检测到 conda）。
 EOF
@@ -51,9 +60,12 @@ python -V
 python -c 'import sys; assert sys.version_info >= (3,10), "Python 版本仍低于 3.10，环境激活异常"'
 
 # ---- PyTorch（cu124，对应 4090）----
-echo "[3/5] 安装 PyTorch 2.4.0 + cu124"
+echo "[3/5] 安装 PyTorch 2.4.0 + cu124（源: ${TORCH_INDEX}）"
 pip install --upgrade pip
-pip install torch==2.4.0 torchvision==0.19.0 --index-url https://download.pytorch.org/whl/cu124
+if ! pip install torch==2.4.0 torchvision==0.19.0 --index-url "${TORCH_INDEX}"; then
+    echo "⚠️ 镜像 ${TORCH_INDEX} 安装失败，回退官方源 download.pytorch.org"
+    pip install torch==2.4.0 torchvision==0.19.0 --index-url https://download.pytorch.org/whl/cu124
+fi
 
 # ---- UNO 本体 + 训练依赖（accelerate/deepspeed）----
 echo "[4/5] pip install -e '.[train]'"
