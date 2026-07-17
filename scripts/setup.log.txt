@@ -1,110 +1,50 @@
-[4/5] pip install -e '.[train]'
+$ bash UNO/scripts/setup_env.sh
+[1/5] 仓库目录: /home/wuwenxuan03/UNO
+[2/5] 未找到 conda，使用 /root/omini-venv/bin/python3.12 创建 .venv-uno
+Python 3.12.13
+[3/5] 安装 PyTorch 2.4.0 + cu124（源: https://mirror.nju.edu.cn/pytorch/whl/cu124）
 Looking in indexes: https://pypi.corp.kuaishou.com/kuaishou/prod/+simple/
-Obtaining file:///home/wuwenxuan03/UNO
-  Installing build dependencies ... done
-  Checking if build backend supports build_editable ... done
-  Getting requirements to build editable ... error
-  error: subprocess-exited-with-error
-  
-  × Getting requirements to build editable did not run successfully.
-  │ exit code: 1
-  ╰─> [89 lines of output]
-      configuration error: `project.license` must be valid exactly by one definition (2 matches found):
-      
-          - keys:
-              'file': {type: string}
-            required: ['file']
-          - keys:
-              'text': {type: string}
-            required: ['text']
-      
-      DESCRIPTION:
-          `Project license <https://peps.python.org/pep-0621/#license>`_.
-      
-      GIVEN VALUE:
-          "Apache-2.0"
-      
-      OFFENDING RULE: 'oneOf'
-      
-      DEFINITION:
-          {
-              "oneOf": [
-                  {
-                      "properties": {
-                          "file": {
-                              "type": "string",
-                              "$$description": [
-                                  "Relative path to the file (UTF-8) which contains the license for the",
-                                  "project."
-                              ]
-                          }
-                      },
-                      "required": [
-                          "file"
-                      ]
-                  },
-                  {
-                      "properties": {
-                          "text": {
-                              "type": "string",
-                              "$$description": [
-                                  "The license of the project whose meaning is that of the",
-                                  "`License field from the core metadata",
-                                  "<https://packaging.python.org/specifications/core-metadata/#license>`_."
-                              ]
-                          }
-                      },
-                      "required": [
-                          "text"
-                      ]
-                  }
-              ]
-          }
-      Traceback (most recent call last):
-        File "/home/wuwenxuan03/UNO/.venv-uno/lib/python3.8/site-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py", line 389, in <module>
-          main()
-        File "/home/wuwenxuan03/UNO/.venv-uno/lib/python3.8/site-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py", line 373, in main
-          json_out["return_val"] = hook(**hook_input["kwargs"])
-        File "/home/wuwenxuan03/UNO/.venv-uno/lib/python3.8/site-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py", line 157, in get_requires_for_build_editable
-          return hook(config_settings)
-        File "/tmp/pip-build-env-53svya7t/overlay/lib/python3.8/site-packages/setuptools/build_meta.py", line 482, in get_requires_for_build_editable
-          return self.get_requires_for_build_wheel(config_settings)
-        File "/tmp/pip-build-env-53svya7t/overlay/lib/python3.8/site-packages/setuptools/build_meta.py", line 333, in get_requires_for_build_wheel
-          return self._get_build_requires(config_settings, requirements=[])
-        File "/tmp/pip-build-env-53svya7t/overlay/lib/python3.8/site-packages/setuptools/build_meta.py", line 303, in _get_build_requires
-          self.run_setup()
-        File "/tmp/pip-build-env-53svya7t/overlay/lib/python3.8/site-packages/setuptools/build_meta.py", line 319, in run_setup
-          exec(code, locals())
-        File "<string>", line 1, in <module>
-        File "/tmp/pip-build-env-53svya7t/overlay/lib/python3.8/site-packages/setuptools/__init__.py", line 117, in setup
-          return distutils.core.setup(**attrs)
-        File "/tmp/pip-build-env-53svya7t/overlay/lib/python3.8/site-packages/setuptools/_distutils/core.py", line 157, in setup
-          dist.parse_config_files()
-        File "/tmp/pip-build-env-53svya7t/overlay/lib/python3.8/site-packages/setuptools/dist.py", line 655, in parse_config_files
-          pyprojecttoml.apply_configuration(self, filename, ignore_option_errors)
-        File "/tmp/pip-build-env-53svya7t/overlay/lib/python3.8/site-packages/setuptools/config/pyprojecttoml.py", line 71, in apply_configuration
-          config = read_configuration(filepath, True, ignore_option_errors, dist)
-        File "/tmp/pip-build-env-53svya7t/overlay/lib/python3.8/site-packages/setuptools/config/pyprojecttoml.py", line 139, in read_configuration
-          validate(subset, filepath)
-        File "/tmp/pip-build-env-53svya7t/overlay/lib/python3.8/site-packages/setuptools/config/pyprojecttoml.py", line 60, in validate
-          raise ValueError(f"{error}\n{summary}") from None
-      ValueError: invalid pyproject.toml config: `project.license`.
-      configuration error: `project.license` must be valid exactly by one definition (2 matches found):
-      
-          - keys:
-              'file': {type: string}
-            required: ['file']
-          - keys:
-              'text': {type: string}
-            required: ['text']
-      
-      [end of output]
-  
-  note: This error originates from a subprocess, and is likely not a problem with pip.
-error: subprocess-exited-with-error
-
-× Getting requirements to build editable did not run successfully.
-│ exit code: 1
-╰─> See above for output.
-
-note: This error originates from a subprocess, and is likely not a problem with pip.
+Requirement already satisfied: pip in ./.venv-uno/lib/python3.12/site-packages (25.0.1)
+Collecting pip
+  Downloading https://pypi.corp.kuaishou.com/kuaishou/prod/pip/26.1.2/pip-26.1.2-py3-none-any.whl (1.8 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 78.1 MB/s eta 0:00:00
+Installing collected packages: pip
+  Attempting uninstall: pip
+    Found existing installation: pip 25.0.1
+    Uninstalling pip-25.0.1:
+      Successfully uninstalled pip-25.0.1
+Successfully installed pip-26.1.2
+Looking in indexes: https://mirror.nju.edu.cn/pytorch/whl/cu124
+Collecting torch==2.4.0
+  Downloading torch-2.4.0%2Bcu124-cp312-cp312-linux_x86_64.whl (797.2 MB)
+     ━╸━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 34.6/797.2 MB 449.7 kB/s eta 0:28:16
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 797.2/797.2 MB 1.2 MB/s  0:15:11
+Collecting torchvision==0.19.0
+  Downloading torchvision-0.19.0%2Bcu124-cp312-cp312-linux_x86_64.whl (7.1 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.1/7.1 MB 1.7 MB/s  0:00:04
+Collecting filelock (from torch==2.4.0)
+  Downloading filelock-3.29.0-py3-none-any.whl.metadata (2.0 kB)
+Collecting typing-extensions>=4.8.0 (from torch==2.4.0)
+  Downloading typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting sympy (from torch==2.4.0)
+  Downloading sympy-1.14.0-py3-none-any.whl.metadata (12 kB)
+Collecting networkx (from torch==2.4.0)
+  Downloading networkx-3.6.1-py3-none-any.whl.metadata (6.8 kB)
+Collecting jinja2 (from torch==2.4.0)
+  Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+Collecting fsspec (from torch==2.4.0)
+  Downloading fsspec-2026.4.0-py3-none-any.whl.metadata (10 kB)
+Collecting setuptools (from torch==2.4.0)
+  Downloading setuptools-78.1.0-py3-none-any.whl.metadata (6.6 kB)
+Collecting nvidia-cuda-nvrtc-cu12==12.4.99 (from torch==2.4.0)
+  Downloading nvidia_cuda_nvrtc_cu12-12.4.99-py3-none-manylinux2014_x86_64.whl (24.7 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 24.7/24.7 MB 991.6 kB/s  0:00:24
+Collecting nvidia-cuda-runtime-cu12==12.4.99 (from torch==2.4.0)
+  Downloading nvidia_cuda_runtime_cu12-12.4.99-py3-none-manylinux2014_x86_64.whl (883 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 883.4/883.4 kB 1.1 MB/s  0:00:00
+Collecting nvidia-cuda-cupti-cu12==12.4.99 (from torch==2.4.0)
+  Downloading nvidia_cuda_cupti_cu12-12.4.99-py3-none-manylinux2014_x86_64.whl (13.8 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 13.8/13.8 MB 1.9 MB/s  0:00:07
+Collecting nvidia-cudnn-cu12==9.1.0.70 (from torch==2.4.0)
+  Downloading nvidia_cudnn_cu12-9.1.0.70-py3-none-manylinux2014_x86_64.whl (664.8 MB)
+     ━━╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 34.9/664.8 MB 725.7 kB/s eta 0:14:28
