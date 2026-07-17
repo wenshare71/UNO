@@ -1,11 +1,31 @@
-$ bash scripts/speedtest_mirrors.sh
-== 镜像 x 代理 矩阵测速（每格 16MB，HTTP 应为 206/200，000=连不上）==
-源\代理           海外代理     内网代理           直连
-阿里云              1.09(206)       5.97(206)       0.00(000)
-南京大学           0.46(206)       1.14(206)       0.00(000)
-上海交大           0.87(206)       3.10(206)       0.00(000)
-官方pytorch.org       0.00(000       0.00(000)       0.00(000)
-HF官方               0.33(206)       0.00(000)       0.00(000)
-hf-mirror              0.39(206)       0.00(000)       0.00(000)
+(omini-venv) 
+# root @ aiplatform-bjy-ge47-391 in /home/wuwenxuan03/UNO on git:main o omini-venv [14:36:14] 
+$ bash scripts/setup_env.sh                
+[1/5] 仓库目录: /home/wuwenxuan03/UNO
+[2/5] 未找到 conda，使用 /root/omini-venv/bin/python3.12 创建 .venv-uno
+Python 3.12.13
+[3/5] 安装 PyTorch 2.4.0 + cu124
+...
+Installing collected packages: mpmath, typing-extensions, sympy, setuptools, pillow, nvidia-nvtx-cu12, nvidia-nvjitlink-cu12, nvidia-nccl-cu12, nvidia-curand-cu12, nvidia-cufft-cu12, nvidia-cuda-runtime-cu12, nvidia-cuda-nvrtc-cu12, nvidia-cuda-cupti-cu12, nvidia-cublas-cu12, numpy, networkx, MarkupSafe, fsspec, filelock, triton, nvidia-cusparse-cu12, nvidia-cudnn-cu12, jinja2, nvidia-cusolver-cu12, torch, torchvision
+Successfully installed MarkupSafe-3.0.3 filelock-3.29.7 fsspec-2026.6.0 jinja2-3.1.6 mpmath-1.3.0 networkx-3.6.1 numpy-2.5.1 nvidia-cublas-cu12-12.4.2.65 nvidia-cuda-cupti-cu12-12.4.99 nvidia-cuda-nvrtc-cu12-12.4.99 nvidia-cuda-runtime-cu12-12.4.99 nvidia-cudnn-cu12-9.1.0.70 nvidia-cufft-cu12-11.2.0.44 nvidia-curand-cu12-10.3.5.119 nvidia-cusolver-cu12-11.6.0.99 nvidia-cusparse-cu12-12.3.0.142 nvidia-nccl-cu12-2.20.5 nvidia-nvjitlink-cu12-12.4.99 nvidia-nvtx-cu12-12.4.99 pillow-12.3.0 setuptools-83.0.0 sympy-1.14.0 torch-2.4.0+cu124 torchvision-0.19.0+cu124 triton-3.0.0 typing-extensions-4.16.0
+[4/5] pip install -e '.[train]'
+Looking in indexes: https://pypi.corp.kuaishou.com/kuaishou/prod/+simple/
+Obtaining file:///home/wuwenxuan03/UNO
+  Installing build dependencies ... done
+  Checking if build backend supports build_editable ... done
+  Getting requirements to build editable ... done
+  Preparing editable metadata (pyproject.toml) ... done
+INFO: pip is looking at multiple versions of uno to determine which version is compatible with other requirements. This could take a while.
+ERROR: Package 'uno' requires a different Python: 3.12.13 not in '<=3.12,>=3.10'
+(omini-venv) 
 
-完成。把整段输出发回。速度单位 MB/s，括号内为 HTTP 状态码。
+(omini-venv) 
+# root @ aiplatform-bjy-ge47-391 in /home/wuwenxuan03/UNO on git:main o omini-venv [15:01:02] C:1
+$ source .venv-uno/bin/activate              
+((.venv-uno) ) 
+# root @ aiplatform-bjy-ge47-391 in /home/wuwenxuan03/UNO on git:main o .venv-uno [15:01:13] 
+$ bash scripts/setup_env.sh    
+[1/5] 仓库目录: /home/wuwenxuan03/UNO
+[2/5] 未找到 conda，使用 /home/wuwenxuan03/UNO/.venv-uno/bin/python3.12 创建 .venv-uno
+^C
+((.venv-uno) ) 
