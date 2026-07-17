@@ -7,9 +7,9 @@ ENV_NAME="${1:-uno}"
 PYTHON_VERSION="3.11"   # pyproject 要求 >=3.10, <=3.12
 
 # ---- 镜像配置（均可用环境变量覆盖；普通 pip 包走机器默认源，不在此覆盖）----
-# PyTorch 轮子：南京大学镜像（已验证有 torch-2.4.0+cu124 全套轮子）
-# 备选: https://mirror.sjtu.edu.cn/pytorch-wheels/cu124   官方: https://download.pytorch.org/whl/cu124
-TORCH_INDEX="${TORCH_INDEX:-https://mirror.nju.edu.cn/pytorch/whl/cu124}"
+# PyTorch 轮子源（find-links 模式）：阿里云，2026-07 实测 4.18 MB/s，是其它源的 4 倍。
+# 只有 torch/torchvision 本体从这里下；nvidia-* 等依赖走机器默认 pip 源（快手内网 78 MB/s）。
+TORCH_FINDLINKS="${TORCH_FINDLINKS:-https://mirrors.aliyun.com/pytorch-wheels/cu124/}"
 
 cd "$(dirname "$0")/.."
 echo "[1/5] 仓库目录: $(pwd)"
@@ -60,10 +60,11 @@ python -V
 python -c 'import sys; assert sys.version_info >= (3,10), "Python 版本仍低于 3.10，环境激活异常"'
 
 # ---- PyTorch（cu124，对应 4090）----
-echo "[3/5] 安装 PyTorch 2.4.0 + cu124（源: ${TORCH_INDEX}）"
+# 版本号带 +cu124 强制 pip 从 find-links 里选 cu124 轮子，而不是默认源里的普通版
+echo "[3/5] 安装 PyTorch 2.4.0 + cu124（torch 本体源: ${TORCH_FINDLINKS}，依赖走默认源）"
 pip install --upgrade pip
-if ! pip install torch==2.4.0 torchvision==0.19.0 --index-url "${TORCH_INDEX}"; then
-    echo "⚠️ 镜像 ${TORCH_INDEX} 安装失败，回退官方源 download.pytorch.org"
+if ! pip install "torch==2.4.0+cu124" "torchvision==0.19.0+cu124" -f "${TORCH_FINDLINKS}"; then
+    echo "⚠️ ${TORCH_FINDLINKS} 安装失败，回退官方源 download.pytorch.org"
     pip install torch==2.4.0 torchvision==0.19.0 --index-url https://download.pytorch.org/whl/cu124
 fi
 
@@ -92,8 +93,7 @@ cat <<'EOF'
 ✅ 环境安装完成。后续常用命令：
   # 下载数据时提速（写进 ~/.bashrc 更方便）
   export HF_HUB_ENABLE_HF_TRANSFER=1
-  # 国内机器可加镜像
-  export HF_ENDPOINT=https://hf-mirror.com
+  # 注意: 本机实测 HF 官方端点(1.33 MB/s)比 hf-mirror(0.85 MB/s)快，不要设 HF_ENDPOINT
 
   # 先下标签 + 5 个分片试跑
   huggingface-cli download bytedance-research/UNO-1M --repo-type dataset \
