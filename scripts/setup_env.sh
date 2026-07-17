@@ -9,20 +9,46 @@ PYTHON_VERSION="3.11"   # pyproject 要求 >=3.10, <=3.12
 cd "$(dirname "$0")/.."
 echo "[1/5] 仓库目录: $(pwd)"
 
-# ---- 创建虚拟环境：优先 conda，否则退回 venv ----
+# ---- 找一个 >=3.10 的 Python（UNO 要求 >=3.10,<=3.12；3.8 会因旧 setuptools 报 license 配置错）----
+find_python() {
+    for cand in python3.11 python3.12 python3.10 python3; do
+        if command -v "$cand" >/dev/null 2>&1; then
+            if "$cand" -c 'import sys; sys.exit(0 if (3,10) <= sys.version_info[:2] <= (3,12) else 1)'; then
+                command -v "$cand"
+                return 0
+            fi
+        fi
+    done
+    return 1
+}
+
+# ---- 创建虚拟环境：优先 conda；无 conda 则要求系统有 3.10~3.12 的 python ----
 if command -v conda >/dev/null 2>&1; then
     echo "[2/5] 使用 conda 创建环境 ${ENV_NAME} (python ${PYTHON_VERSION})"
     conda create -y -n "${ENV_NAME}" "python=${PYTHON_VERSION}"
     # shellcheck disable=SC1091
     source "$(conda info --base)/etc/profile.d/conda.sh"
     conda activate "${ENV_NAME}"
-else
-    echo "[2/5] 未找到 conda，使用 python venv 创建 .venv-${ENV_NAME}"
-    PY_BIN="$(command -v python${PYTHON_VERSION} || command -v python3.10 || command -v python3)"
+elif PY_BIN="$(find_python)"; then
+    echo "[2/5] 未找到 conda，使用 ${PY_BIN} 创建 .venv-${ENV_NAME}"
+    rm -rf ".venv-${ENV_NAME}"
     "${PY_BIN}" -m venv ".venv-${ENV_NAME}"
     source ".venv-${ENV_NAME}/bin/activate"
+else
+    cat >&2 <<'EOF'
+❌ 没有找到 conda，也没有找到 Python 3.10~3.12（系统 python3 版本太旧，UNO 无法运行）。
+
+请先装一个 Miniconda（不需要 root，装到用户目录）：
+  wget -q https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /tmp/miniconda.sh
+  bash /tmp/miniconda.sh -b -p "$HOME/miniconda3"
+  source "$HOME/miniconda3/etc/profile.d/conda.sh"
+
+然后重新执行本脚本即可（脚本会自动检测到 conda）。
+EOF
+    exit 1
 fi
 python -V
+python -c 'import sys; assert sys.version_info >= (3,10), "Python 版本仍低于 3.10，环境激活异常"'
 
 # ---- PyTorch（cu124，对应 4090）----
 echo "[3/5] 安装 PyTorch 2.4.0 + cu124"
