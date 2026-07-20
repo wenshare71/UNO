@@ -485,9 +485,10 @@ def main(
             # log
             images_log, images_ref_log = [], []
             for batch_idx in range(min(bs, 8)):
-                images_log.append(wandb.Image((img[batch_idx:batch_idx+1] * 0.5 + 0.5).float(), caption=prompts[batch_idx]))
+                # wandb.Image 要 3D (C,H,W)，切片 [batch_idx:batch_idx+1] 会保留 batch 维变成 4D 导致 permute 报错
+                images_log.append(wandb.Image((img[batch_idx] * 0.5 + 0.5).float(), caption=prompts[batch_idx]))
                 for ref_idx in range(len(ref_imgs)):
-                    images_ref_log.append(wandb.Image((ref_imgs[ref_idx][batch_idx:batch_idx+1] * 0.5 + 0.5).float(), caption=f"ref_{ref_idx}"))
+                    images_ref_log.append(wandb.Image((ref_imgs[ref_idx][batch_idx] * 0.5 + 0.5).float(), caption=f"ref_{ref_idx}"))
             accelerator.log({"images_tgt": images_log, "images_ref": images_ref_log}, step=global_step)
 
             # validate
