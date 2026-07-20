@@ -60,6 +60,10 @@ class InferenceArgs:
     lora_rank: int = 512
     data_resolution: int = 512
     pe: Literal['d', 'h', 'w', 'o'] = 'd'
+    # 隔离注意力（ref 只自注意 + t=0 调制）；需配合用 ref_isolation 训出的 LoRA
+    ref_isolation: bool = False
+    # ref KV-Cache：第 0 步缓存 ref K/V，后续步复用（隐含 ref_isolation=True）
+    kv_cache: bool = False
 
 def main(args: InferenceArgs):
     accelerator = Accelerator()
@@ -105,6 +109,8 @@ def main(args: InferenceArgs):
             seed=args.seed + j,
             ref_imgs=ref_imgs,
             pe=args.pe,
+            ref_isolation=args.ref_isolation,
+            kv_cache=args.kv_cache,
         )
         if args.concat_refs:
             image_gen = horizontal_concat([image_gen, *ref_imgs])

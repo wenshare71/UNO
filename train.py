@@ -17,6 +17,12 @@ import gc
 import itertools
 import logging
 import os
+
+# RTX 4000 系列不支持 P2P/IB，accelerate>=0.27 连单卡都会在 Accelerator() 构造时抛
+# NotImplementedError（冒烟测试踩坑 #5.1），必须在 import accelerate 之前钉死。
+os.environ.setdefault("NCCL_P2P_DISABLE", "1")
+os.environ.setdefault("NCCL_IB_DISABLE", "1")
+
 import random
 import wandb
 from copy import deepcopy
@@ -58,7 +64,9 @@ def inference(
     model: "Flux", t5: "HFEmbedder", clip: "HFEmbedder", ae: "AutoEncoder",
     accelerator: Accelerator,
     seed: int = 0,
-    pe: Literal["d", "h", "w", "o"] = "d"
+    pe: Literal["d", "h", "w", "o"] = "d",
+    ref_isolation: bool = False,
+    kv_cache: bool = False,
 ) -> Image.Image:
     ref_imgs = batch["ref_imgs"]
     prompt = batch["txt"]
@@ -92,6 +100,8 @@ def inference(
             **inp_cond,
             timesteps=timesteps,
             guidance=4,
+            ref_isolation=ref_isolation,
+            kv_cache=kv_cache,
         )
 
         x = unpack(x.float(), height, width)
@@ -175,6 +185,9 @@ class TrainArgs:
         metadata={"help": "Indices of double blocks to apply LoRA. None means all single blocks."}
     )
     pe: Literal["d", "h", "w", "o"] = "d"
+    # 隔离注意力：ref 段只自注意（不看 txt/主图/其它 ref）且用 t=0 调制。
+    # 用它训出的 LoRA 才能在推理时开 kv_cache 无损复用 ref K/V。
+    ref_isolation: bool = False
     gradient_checkpoint: bool = True
     ema: bool = False
     ema_interval: int = 1
@@ -396,7 +409,8 @@ def main(
                 txt_ids=inp['txt_ids'].to(weight_dtype),
                 y=inp['vec'].to(weight_dtype),
                 timesteps=t.to(weight_dtype),
-                guidance=guidance_vec.to(weight_dtype)
+                guidance=guidance_vec.to(weight_dtype),
+                ref_isolation=args.ref_isolation,
             )
 
             loss = F.mse_loss(model_pred.float(), (x_0 - x_1).float(), reduction="mean")
@@ -469,7 +483,8 @@ def main(
             dit.eval()
             torch.set_grad_enabled(False)
             for i, batch in enumerate(eval_dataloader):
-                result = inference(batch, dit, t5, clip, vae, accelerator, seed=0)
+                result = inference(batch, dit, t5, clip, vae, accelerator, seed=0,
+                                   ref_isolation=args.ref_isolation, kv_cache=args.ref_isolation)
                 accelerator.log({f"eval_gen_{i}": wandb.Image(result, caption=batch["txt"][-1])}, step=global_step)
 
 
@@ -477,7 +492,8 @@ def main(
                 original_state_dict = dit.state_dict()
                 dit.load_state_dict(dit_ema_dict, strict=False)
                 for batch in eval_dataloader:
-                    result = inference(batch, dit, t5, clip, vae, accelerator, seed=0)
+                    result = inference(batch, dit, t5, clip, vae, accelerator, seed=0,
+                                       ref_isolation=args.ref_isolation, kv_cache=args.ref_isolation)
                     accelerator.log({f"eval_ema_gen_{i}": wandb.Image(result, caption=batch["txt"][-1])}, step=global_step)
                 dit.load_state_dict(original_state_dict, strict=False)
             

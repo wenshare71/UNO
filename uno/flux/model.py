@@ -19,6 +19,7 @@ import torch
 from torch import Tensor, nn
 
 from .modules.layers import DoubleStreamBlock, EmbedND, LastLayer, MLPEmbedder, SingleStreamBlock, timestep_embedding
+from .ref_attention import RefContext, RefKVCache, build_isolated_attn_mask
 
 
 @dataclass
@@ -89,6 +90,12 @@ class Flux(nn.Module):
         self.final_layer = LastLayer(self.hidden_size, 1, self.out_channels)
         self.gradient_checkpointing = False
 
+        # KV-Cache 需要每个 block 一个稳定的存取键（不影响 state_dict）
+        for i, block in enumerate(self.double_blocks):
+            block.cache_key = f"double_{i}"
+        for i, block in enumerate(self.single_blocks):
+            block.cache_key = f"single_{i}"
+
     def _set_gradient_checkpointing(self, module, value=False):
         if hasattr(module, "gradient_checkpointing"):
             module.gradient_checkpointing = value
@@ -155,8 +162,10 @@ class Flux(nn.Module):
         timesteps: Tensor,
         y: Tensor,
         guidance: Tensor | None = None,
-        ref_img: Tensor | None = None, 
-        ref_img_ids: Tensor | None = None, 
+        ref_img: Tensor | None = None,
+        ref_img_ids: Tensor | None = None,
+        ref_isolation: bool = False,
+        ref_kv: RefKVCache | None = None,
     ) -> Tensor:
         if img.ndim != 3 or txt.ndim != 3:
             raise ValueError("Input img and txt tensors must have 3 dimensions.")
@@ -175,32 +184,60 @@ class Flux(nn.Module):
 
         # concat ref_img/img
         img_end = img.shape[1]
+        ref_lens: list[int] = []
         if ref_img is not None:
             if isinstance(ref_img, tuple) or isinstance(ref_img, list):
+                ref_lens = [r.shape[1] for r in ref_img]
                 img = torch.cat([img, self.img_in(torch.cat(ref_img, dim=1))], dim=1)
                 img_ids = [ids] + [ref_ids for ref_ids in ref_img_ids]
                 ids = torch.cat(img_ids, dim=1)
             else:
-                img = torch.cat((img, self.img_in(ref_img)), dim=1)  
+                ref_lens = [ref_img.shape[1]]
+                img = torch.cat((img, self.img_in(ref_img)), dim=1)
                 ids = torch.cat((ids, ref_img_ids), dim=1)
         pe = self.pe_embedder(ids)
-        
+
+        # 隔离注意力 / KV-Cache 上下文（默认关闭，baseline 路径不受影响）
+        ref_ctx = None
+        if ref_isolation or ref_kv is not None:
+            # ref 段用固定 t=0（guidance=1）的调制向量，与去噪步解耦——这是
+            # ref K/V 能跨步缓存复用的前提，训练与推理必须一致。
+            vec_ref = self.time_in(timestep_embedding(torch.zeros_like(timesteps), 256))
+            if self.params.guidance_embed:
+                vec_ref = vec_ref + self.guidance_in(timestep_embedding(torch.ones_like(timesteps), 256))
+            vec_ref = vec_ref + self.vector_in(y)
+
+            attn_mask = None
+            if ref_lens:
+                attn_mask = build_isolated_attn_mask(
+                    txt.shape[1], img_end, ref_lens, device=img.device
+                )
+            ref_ctx = RefContext(
+                ref_len=sum(ref_lens),
+                vec_ref=vec_ref,
+                attn_mask=attn_mask,
+                kv=ref_kv,
+                ref_lens=ref_lens,
+            )
+
         for index_block, block in enumerate(self.double_blocks):
             if self.training and self.gradient_checkpointing:
                 img, txt = torch.utils.checkpoint.checkpoint(
                     block,
-                    img=img, 
-                    txt=txt, 
-                    vec=vec, 
-                    pe=pe, 
+                    img=img,
+                    txt=txt,
+                    vec=vec,
+                    pe=pe,
+                    ref_ctx=ref_ctx,
                     use_reentrant=False,
                 )
             else:
                 img, txt = block(
-                    img=img, 
-                    txt=txt, 
-                    vec=vec, 
-                    pe=pe
+                    img=img,
+                    txt=txt,
+                    vec=vec,
+                    pe=pe,
+                    ref_ctx=ref_ctx,
                 )
 
         img = torch.cat((txt, img), 1)
@@ -209,10 +246,11 @@ class Flux(nn.Module):
                 img = torch.utils.checkpoint.checkpoint(
                     block,
                     img, vec=vec, pe=pe,
+                    ref_ctx=ref_ctx,
                     use_reentrant=False
                 )
             else:
-                img = block(img, vec=vec, pe=pe)
+                img = block(img, vec=vec, pe=pe, ref_ctx=ref_ctx)
         img = img[:, txt.shape[1] :, ...]
         # index img
         img = img[:, :img_end, ...]

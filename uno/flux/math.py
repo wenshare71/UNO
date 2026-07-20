@@ -18,10 +18,34 @@ from einops import rearrange
 from torch import Tensor
 
 
-def attention(q: Tensor, k: Tensor, v: Tensor, pe: Tensor) -> Tensor:
+def attention(
+    q: Tensor,
+    k: Tensor,
+    v: Tensor,
+    pe: Tensor,
+    attn_mask: Tensor | None = None,
+    ref_kv=None,
+    cache_key: str | None = None,
+    ref_len: int = 0,
+) -> Tensor:
+    """FLUX 注意力，支持隔离掩码与 ref KV-Cache。
+
+    默认参数下与原实现逐字节一致。ref_kv 为 RefKVCache 时：
+      - write 模式：把序列末尾 ref_len 个 token 的 rope 后 K/V 存入缓存；
+      - read 模式：当前序列不含 ref token，把缓存 K/V 拼到末尾供 txt/img 查询。
+    缓存的 K 已带 ref 自己的位置编码，read 步的 pe 只覆盖 [txt, img]，两者正交。
+    """
     q, k = apply_rope(q, k, pe)
 
-    x = torch.nn.functional.scaled_dot_product_attention(q, k, v)
+    if ref_kv is not None:
+        if ref_kv.mode == "write" and ref_len > 0:
+            ref_kv.write(cache_key, k[:, :, -ref_len:], v[:, :, -ref_len:])
+        elif ref_kv.mode == "read":
+            cached_k, cached_v = ref_kv.read(cache_key)
+            k = torch.cat((k, cached_k), dim=2)
+            v = torch.cat((v, cached_v), dim=2)
+
+    x = torch.nn.functional.scaled_dot_product_attention(q, k, v, attn_mask=attn_mask)
     x = rearrange(x, "B H L D -> B L (H D)")
 
     return x

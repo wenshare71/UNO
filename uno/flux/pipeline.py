@@ -251,6 +251,8 @@ class UNOPipeline:
         seed: int,
         ref_imgs: list[Image.Image] | None = None,
         pe: Literal['d', 'h', 'w', 'o'] = 'd',
+        ref_isolation: bool = False,
+        kv_cache: bool = False,
     ):
         x = get_noise(
             1, height, width, device=self.device,
@@ -289,6 +291,8 @@ class UNOPipeline:
             **inp_cond,
             timesteps=timesteps,
             guidance=guidance,
+            ref_isolation=ref_isolation,
+            kv_cache=kv_cache,
         )
 
         if self.offload:

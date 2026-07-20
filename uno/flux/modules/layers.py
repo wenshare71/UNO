@@ -23,6 +23,37 @@ from torch import Tensor, nn
 from ..math import attention, rope
 import torch.nn.functional as F
 
+
+def _ref_attn_kwargs(block, ref_ctx) -> dict:
+    """把 RefContext 翻译成 attention() 的掩码/缓存参数；无隔离时为空 dict，保持原路径。"""
+    if ref_ctx is None:
+        return {}
+    return dict(
+        attn_mask=ref_ctx.attn_mask,
+        ref_kv=ref_ctx.kv,
+        cache_key=getattr(block, "cache_key", None),
+        ref_len=ref_ctx.ref_len,
+    )
+
+
+def _split_modulate(x_norm: Tensor, mod_main, mod_ref, ref_len: int) -> Tensor:
+    """对 [main, ref] 拼接序列分段做 scale/shift 调制。
+
+    ref 段用 t=0 的调制向量，保证 ref 的每层特征与去噪步无关（KV-Cache 的前提）。
+    """
+    if ref_len == 0 or mod_ref is None:
+        return (1 + mod_main.scale) * x_norm + mod_main.shift
+    main = (1 + mod_main.scale) * x_norm[:, :-ref_len] + mod_main.shift
+    ref = (1 + mod_ref.scale) * x_norm[:, -ref_len:] + mod_ref.shift
+    return torch.cat((main, ref), dim=1)
+
+
+def _split_gate(h: Tensor, gate_main: Tensor, gate_ref: Tensor | None, ref_len: int) -> Tensor:
+    """对 [main, ref] 拼接序列分段乘门控。"""
+    if ref_len == 0 or gate_ref is None:
+        return gate_main * h
+    return torch.cat((gate_main * h[:, :-ref_len], gate_ref * h[:, -ref_len:]), dim=1)
+
 class EmbedND(nn.Module):
     def __init__(self, dim: int, theta: int, axes_dim: list[int]):
         super().__init__()
@@ -194,13 +225,20 @@ class DoubleStreamBlockLoraProcessor(nn.Module):
         self.proj_lora2 = LoRALinearLayer(dim, dim, rank, network_alpha)
         self.lora_weight = lora_weight
 
-    def forward(self, attn, img, txt, vec, pe, **attention_kwargs):
+    def forward(self, attn, img, txt, vec, pe, ref_ctx=None, **attention_kwargs):
         img_mod1, img_mod2 = attn.img_mod(vec)
         txt_mod1, txt_mod2 = attn.txt_mod(vec)
 
+        # img 流布局为 [主图, ref...]；隔离模式下 ref 段用 t=0 的调制参数
+        ref_len = ref_ctx.ref_len if ref_ctx is not None else 0
+        if ref_len > 0:
+            ref_mod1, ref_mod2 = attn.img_mod(ref_ctx.vec_ref)
+        else:
+            ref_mod1 = ref_mod2 = None
+
         # prepare image for attention
         img_modulated = attn.img_norm1(img)
-        img_modulated = (1 + img_mod1.scale) * img_modulated + img_mod1.shift
+        img_modulated = _split_modulate(img_modulated, img_mod1, ref_mod1, ref_len)
         img_qkv = attn.img_attn.qkv(img_modulated) + self.qkv_lora1(img_modulated) * self.lora_weight
         img_q, img_k, img_v = rearrange(img_qkv, "B L (K H D) -> K B H L D", K=3, H=attn.num_heads)
         img_q, img_k = attn.img_attn.norm(img_q, img_k, img_v)
@@ -217,12 +255,17 @@ class DoubleStreamBlockLoraProcessor(nn.Module):
         k = torch.cat((txt_k, img_k), dim=2)
         v = torch.cat((txt_v, img_v), dim=2)
 
-        attn1 = attention(q, k, v, pe=pe)
+        attn1 = attention(q, k, v, pe=pe, **_ref_attn_kwargs(attn, ref_ctx))
         txt_attn, img_attn = attn1[:, : txt.shape[1]], attn1[:, txt.shape[1] :]
 
         # calculate the img bloks
-        img = img + img_mod1.gate * (attn.img_attn.proj(img_attn) + self.proj_lora1(img_attn) * self.lora_weight)
-        img = img + img_mod2.gate * attn.img_mlp((1 + img_mod2.scale) * attn.img_norm2(img) + img_mod2.shift)
+        img = img + _split_gate(
+            attn.img_attn.proj(img_attn) + self.proj_lora1(img_attn) * self.lora_weight,
+            img_mod1.gate, ref_mod1.gate if ref_mod1 else None, ref_len,
+        )
+        mlp_in = _split_modulate(attn.img_norm2(img), img_mod2, ref_mod2, ref_len)
+        img = img + _split_gate(attn.img_mlp(mlp_in), img_mod2.gate,
+                                ref_mod2.gate if ref_mod2 else None, ref_len)
 
         # calculate the txt bloks
         txt = txt + txt_mod1.gate * (attn.txt_attn.proj(txt_attn) + self.proj_lora2(txt_attn) * self.lora_weight)
@@ -230,13 +273,20 @@ class DoubleStreamBlockLoraProcessor(nn.Module):
         return img, txt
 
 class DoubleStreamBlockProcessor:
-    def __call__(self, attn, img, txt, vec, pe, **attention_kwargs):
+    def __call__(self, attn, img, txt, vec, pe, ref_ctx=None, **attention_kwargs):
         img_mod1, img_mod2 = attn.img_mod(vec)
         txt_mod1, txt_mod2 = attn.txt_mod(vec)
 
+        # img 流布局为 [主图, ref...]；隔离模式下 ref 段用 t=0 的调制参数
+        ref_len = ref_ctx.ref_len if ref_ctx is not None else 0
+        if ref_len > 0:
+            ref_mod1, ref_mod2 = attn.img_mod(ref_ctx.vec_ref)
+        else:
+            ref_mod1 = ref_mod2 = None
+
         # prepare image for attention
         img_modulated = attn.img_norm1(img)
-        img_modulated = (1 + img_mod1.scale) * img_modulated + img_mod1.shift
+        img_modulated = _split_modulate(img_modulated, img_mod1, ref_mod1, ref_len)
         img_qkv = attn.img_attn.qkv(img_modulated)
         img_q, img_k, img_v = rearrange(img_qkv, "B L (K H D) -> K B H L D", K=3, H=attn.num_heads, D=attn.head_dim)
         img_q, img_k = attn.img_attn.norm(img_q, img_k, img_v)
@@ -253,12 +303,15 @@ class DoubleStreamBlockProcessor:
         k = torch.cat((txt_k, img_k), dim=2)
         v = torch.cat((txt_v, img_v), dim=2)
 
-        attn1 = attention(q, k, v, pe=pe)
+        attn1 = attention(q, k, v, pe=pe, **_ref_attn_kwargs(attn, ref_ctx))
         txt_attn, img_attn = attn1[:, : txt.shape[1]], attn1[:, txt.shape[1] :]
 
         # calculate the img bloks
-        img = img + img_mod1.gate * attn.img_attn.proj(img_attn)
-        img = img + img_mod2.gate * attn.img_mlp((1 + img_mod2.scale) * attn.img_norm2(img) + img_mod2.shift)
+        img = img + _split_gate(attn.img_attn.proj(img_attn), img_mod1.gate,
+                                ref_mod1.gate if ref_mod1 else None, ref_len)
+        mlp_in = _split_modulate(attn.img_norm2(img), img_mod2, ref_mod2, ref_len)
+        img = img + _split_gate(attn.img_mlp(mlp_in), img_mod2.gate,
+                                ref_mod2.gate if ref_mod2 else None, ref_len)
 
         # calculate the txt bloks
         txt = txt + txt_mod1.gate * attn.txt_attn.proj(txt_attn)
@@ -311,11 +364,13 @@ class DoubleStreamBlock(nn.Module):
         pe: Tensor,
         image_proj: Tensor = None,
         ip_scale: float =1.0,
+        ref_ctx=None,
     ) -> tuple[Tensor, Tensor]:
-        if image_proj is None:
-            return self.processor(self, img, txt, vec, pe)
-        else:
+        if image_proj is not None:
             return self.processor(self, img, txt, vec, pe, image_proj, ip_scale)
+        if ref_ctx is not None:
+            return self.processor(self, img, txt, vec, pe, ref_ctx=ref_ctx)
+        return self.processor(self, img, txt, vec, pe)
 
 
 class SingleStreamBlockLoraProcessor(nn.Module):
@@ -325,10 +380,13 @@ class SingleStreamBlockLoraProcessor(nn.Module):
         self.proj_lora = LoRALinearLayer(15360, dim, rank, network_alpha)
         self.lora_weight = lora_weight
 
-    def forward(self, attn: nn.Module, x: Tensor, vec: Tensor, pe: Tensor) -> Tensor:
+    def forward(self, attn: nn.Module, x: Tensor, vec: Tensor, pe: Tensor, ref_ctx=None) -> Tensor:
 
         mod, _ = attn.modulation(vec)
-        x_mod = (1 + mod.scale) * attn.pre_norm(x) + mod.shift
+        # x 布局为 [txt, 主图, ref...]；隔离模式下 ref 段用 t=0 的调制参数
+        ref_len = ref_ctx.ref_len if ref_ctx is not None else 0
+        ref_mod = attn.modulation(ref_ctx.vec_ref)[0] if ref_len > 0 else None
+        x_mod = _split_modulate(attn.pre_norm(x), mod, ref_mod, ref_len)
         qkv, mlp = torch.split(attn.linear1(x_mod), [3 * attn.hidden_size, attn.mlp_hidden_dim], dim=-1)
         qkv = qkv + self.qkv_lora(x_mod) * self.lora_weight
 
@@ -336,31 +394,34 @@ class SingleStreamBlockLoraProcessor(nn.Module):
         q, k = attn.norm(q, k, v)
 
         # compute attention
-        attn_1 = attention(q, k, v, pe=pe)
+        attn_1 = attention(q, k, v, pe=pe, **_ref_attn_kwargs(attn, ref_ctx))
 
         # compute activation in mlp stream, cat again and run second linear layer
         output = attn.linear2(torch.cat((attn_1, attn.mlp_act(mlp)), 2))
         output = output + self.proj_lora(torch.cat((attn_1, attn.mlp_act(mlp)), 2)) * self.lora_weight
-        output = x + mod.gate * output
+        output = x + _split_gate(output, mod.gate, ref_mod.gate if ref_mod else None, ref_len)
         return output
 
 
 class SingleStreamBlockProcessor:
-    def __call__(self, attn: nn.Module, x: Tensor, vec: Tensor, pe: Tensor, **attention_kwargs) -> Tensor:
+    def __call__(self, attn: nn.Module, x: Tensor, vec: Tensor, pe: Tensor, ref_ctx=None, **attention_kwargs) -> Tensor:
 
         mod, _ = attn.modulation(vec)
-        x_mod = (1 + mod.scale) * attn.pre_norm(x) + mod.shift
+        # x 布局为 [txt, 主图, ref...]；隔离模式下 ref 段用 t=0 的调制参数
+        ref_len = ref_ctx.ref_len if ref_ctx is not None else 0
+        ref_mod = attn.modulation(ref_ctx.vec_ref)[0] if ref_len > 0 else None
+        x_mod = _split_modulate(attn.pre_norm(x), mod, ref_mod, ref_len)
         qkv, mlp = torch.split(attn.linear1(x_mod), [3 * attn.hidden_size, attn.mlp_hidden_dim], dim=-1)
 
         q, k, v = rearrange(qkv, "B L (K H D) -> K B H L D", K=3, H=attn.num_heads)
         q, k = attn.norm(q, k, v)
 
         # compute attention
-        attn_1 = attention(q, k, v, pe=pe)
+        attn_1 = attention(q, k, v, pe=pe, **_ref_attn_kwargs(attn, ref_ctx))
 
         # compute activation in mlp stream, cat again and run second linear layer
         output = attn.linear2(torch.cat((attn_1, attn.mlp_act(mlp)), 2))
-        output = x + mod.gate * output
+        output = x + _split_gate(output, mod.gate, ref_mod.gate if ref_mod else None, ref_len)
         return output
 
 class SingleStreamBlock(nn.Module):
@@ -413,11 +474,13 @@ class SingleStreamBlock(nn.Module):
         pe: Tensor,
         image_proj: Tensor | None = None,
         ip_scale: float = 1.0,
+        ref_ctx=None,
     ) -> Tensor:
-        if image_proj is None:
-            return self.processor(self, x, vec, pe)
-        else:
+        if image_proj is not None:
             return self.processor(self, x, vec, pe, image_proj, ip_scale)
+        if ref_ctx is not None:
+            return self.processor(self, x, vec, pe, ref_ctx=ref_ctx)
+        return self.processor(self, x, vec, pe)
 
 
 

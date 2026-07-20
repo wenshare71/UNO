@@ -23,6 +23,7 @@ from tqdm import tqdm
 
 from .model import Flux
 from .modules.conditioner import HFEmbedder
+from .ref_attention import RefKVCache
 
 
 def get_noise(
@@ -220,24 +221,40 @@ def denoise(
     guidance: float = 4.0,
     ref_img: Tensor=None,
     ref_img_ids: Tensor=None,
+    ref_isolation: bool = False,
+    kv_cache: bool = False,
 ):
+    # KV-Cache 数学上只在隔离注意力下无损（ref 特征不依赖 t 和主图），
+    # 且要求 LoRA 是用 ref_isolation=True 训出来的；官方 dit_lora 不满足。
+    if kv_cache:
+        ref_isolation = True
+    ref_kv = RefKVCache() if kv_cache else None
+
     i = 0
     guidance_vec = torch.full((img.shape[0],), guidance, device=img.device, dtype=img.dtype)
     for t_curr, t_prev in tqdm(zip(timesteps[:-1], timesteps[1:]), total=len(timesteps) - 1):
         t_vec = torch.full((img.shape[0],), t_curr, dtype=img.dtype, device=img.device)
+        if ref_kv is not None:
+            # 第 0 步带 ref 前向并写缓存；之后序列里不再有 ref token，只读缓存
+            ref_kv.mode = "write" if i == 0 else "read"
+        use_ref = (ref_kv is None) or ref_kv.mode == "write"
         pred = model(
             img=img,
             img_ids=img_ids,
-            ref_img=ref_img,
-            ref_img_ids=ref_img_ids,
+            ref_img=ref_img if use_ref else None,
+            ref_img_ids=ref_img_ids if use_ref else None,
             txt=txt,
             txt_ids=txt_ids,
             y=vec,
             timesteps=t_vec,
-            guidance=guidance_vec
+            guidance=guidance_vec,
+            ref_isolation=ref_isolation,
+            ref_kv=ref_kv,
         )
         img = img + (t_prev - t_curr) * pred
         i += 1
+    if ref_kv is not None:
+        ref_kv.clear()
     return img
 
 
