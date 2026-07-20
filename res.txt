@@ -1,48 +1,61 @@
-环境 OK。下一步按顺序是三件事：**锁依赖版本 → 下模型权重 → 下训练数据**。后两个都是大下载，建议今天在 tmux 里挂上过夜。
+## 训练脚本就绪检查结果
 
-**第 0 步（1 分钟，先做）：把 transformers/diffusers 降回 UNO 测试过的版本**
+### ✅ 已就绪
 
-自检里装到的是 transformers 5.14.1 / diffusers 0.39.0（pyproject 只写了 `>=`，pip 拉了最新），比上游 requirements.txt 钉死的版本新了一整个大版本，transformers 5.x 的破坏性改动大概率让 T5/CLIP 加载直接炸。在远程：
+| 项                                                                                                                                                                                                                                                                      | 状态                                                   |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------ |
+| `accelerate launch --num_processes 8`                                                                                                                                                                                                                                   | ✅ accelerate 1.1.1 已装                               |
+| `train.py` 支持所有 11 个 CLI 参数（`--ref_isolation`, `--lora_rank`, `--gradient_checkpoint`, `--batch_size`, `--gradient_accumulation_steps`, `--resolution`, `--learning_rate`, `--max_train_steps`, `--checkpointing_steps`, `--train_data_json`, `--project_dir`） | ✅                                                     |
+| DeepSpeed 配置                                                                                                                                                                                                                                                          | ✅ `config/deepspeed/zero{2,3}_config.json` 都在       |
+| NCCL 环境变量                                                                                                                                                                                                                                                           | ✅ 脚本里 export + `train.py` 里 `setdefault` 双重保险 |
+| 模型权重（FLUX/T5/CLIP/UNO LoRA）                                                                                                                                                                                                                                       | ✅                                                     |
+| 数据集 tar.gz 解压                                                                                                                                                                                                                                                      | ✅ split1-5 共 100K 图                                 |
 
-```bash
-source .venv-uno/bin/activate
-pip install transformers==4.43.3 diffusers==0.30.1   # 走内网源，秒装
+### ❌ 阻塞 / 缺失
+
+| #     | 问题                                                                                                                                               | 影响                                     | 解决方式                                                                      |
+| ----- | -------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------- | ----------------------------------------------------------------------------- |
+| **1** | **`datasets/UNO-1M/uno_1m_total_labels_convert.json` 不存在**（脚本和 `train.py` 默认都指它），本地只有 `uno_1m_total_labels.json`，**键名不匹配** | **硬阻塞**：dataloader 加载直接 KeyError | 需要把原 JSON 转成 dataloader 期望的 schema（见下）                           |
+| **2** | **`wandb` 未安装**（`No module named 'wandb'`），但 `train.py:239` 写了 `log_with="wandb"` + `init_trackers`                                       | **硬阻塞**：训练启动会 ImportError       | 设 `WANDB_MODE=disabled` 关掉（无需装 wandb）                                 |
+| **3** | 没有 `~/.cache/huggingface/accelerate/default_config.yaml`                                                                                         | 软告警                                   | 不致命，`accelerate launch` 不用 config 也能跑，只是默认 multi_gpu 设置不精调 |
+
+### 关键 schema 不匹配（阻塞 #1 的具体细节）
+
+`FluxPairedDatasetV2.__getitem__`（`uno/dataset/uno.py:76`）期望每条样本有：
+
+```json
+{"image_path": "...",   // 或 "image_paths": [...]
+ "prompt":     "...",
+ "image_tgt_path": "..."}
 ```
 
-**第 1 步：下载模型权重（~35 GB，海外代理 + hf_transfer，约 2~4 小时）**
+但 `uno_1m_total_labels.json` 实际是：
 
-我查了 `uno/flux/util.py`，UNO 需要四个仓库：`black-forest-labs/FLUX.1-dev`（主模型+VAE，~24 GB，**gated 仓库**）、`xlabs-ai/xflux_text_encoders`（T5，~9 GB）、`openai/clip-vit-large-patch14`、`bytedance-research/UNO`（官方 LoRA，用来先跑通推理验证环境）。
-
-```bash
-# FLUX.1-dev 是 gated：先去 https://huggingface.co/black-forest-labs/FLUX.1-dev 点同意协议，
-# 然后 huggingface-cli login 贴你的 token
-export http_proxy=http://oversea-squid1.jp.txyun:11080
-export https_proxy=http://oversea-squid1.jp.txyun:11080
-export HF_HUB_ENABLE_HF_TRANSFER=1
-
-tmux new -s dl_models
-huggingface-cli download black-forest-labs/FLUX.1-dev
-huggingface-cli download xlabs-ai/xflux_text_encoders
-huggingface-cli download openai/clip-vit-large-patch14
-huggingface-cli download bytedance-research/UNO
+```json
+{"img_path1":     "split1/...png",
+ "img_path2":     "split1/...png",
+ "caption":       {"img_path1": "...", "img_path2": "...", "judgment": "...", "subject": [...]},
+ "vlm_filter_cot": {...}}
 ```
 
-**第 2 步：下载 UNO-1M 标签 + 前 5 个分片（~110 GB，同一 tmux 或另开）**
+也就是说原 JSON **每个样本有 2 张图（视角不同但 subject 相同）** + 共享 caption。需要做一次转换：
+- `image_paths = [img_path1]`（ref）— 或者两个都当 ref 喂
+- `image_tgt_path = img_path2`（target）
+- `prompt = caption.img_path1` 或 `caption.img_path2`（两者等价）
 
-```bash
-huggingface-cli download bytedance-research/UNO-1M --repo-type dataset \
-  --include "uno_1m_total_labels.json" --local-dir ./datasets/UNO-1M
-huggingface-cli download bytedance-research/UNO-1M --repo-type dataset \
-  --include "images/split1.tar.gz" "images/split2.tar.gz" "images/split3.tar.gz" \
-            "images/split4.tar.gz" "images/split5.tar.gz" \
-  --local-dir ./datasets/UNO-1M
-```
+### 建议处理顺序
 
-**第 3 步（权重到位后）：跑一次官方推理冒烟测试**，确认整条链路无问题：
+**必须先做**（否则跑不起来）：
+1. 生成 `uno_1m_total_labels_convert.json`（一次性数据预处理，不算改代码）
+2. 设 `WANDB_MODE=disabled` 环境变量（或 `pip install wandb`）
 
-```bash
-python inference.py --prompt "a dog on the beach" \
-  --image_paths assets/examples 里随便挑一张 --width 704 --height 704
-```
+**建议同时做**：
+3. `accelerate config --compute_environment=...` 做一次交互式配置（不致命，但 8 卡 deepspeed multi-node 设置值得调）
 
-下载挂上之后就到正题了——把你 OminiControl 上的**隔离注意力 + KV-Cache LoRA** 方案移植到 UNO 训练管道（改 `attention()` 加 mask、denoise 循环加 ref KV 缓存、train.py 配 8×4090 的 LoRA 配置）。这部分不依赖下载完成，我现在就可以开始改代码。要我动手吗？
+### 我现在能做的（你点头我就做）
+
+- **(A)** 写一个一次性脚本 `scripts/convert_uno_labels.py`，把 `uno_1m_total_labels.json` → `uno_1m_total_labels_convert.json`（保留全部 1,011,093 条，键名映射 + 从 `caption.img_path1` 取 prompt）。约 5-10 分钟生成一个 ~810 MB 的新 JSON。
+- **(B)** 把 `WANDB_MODE=disabled` 写进 `train_ref_isolation.sh`（这只是改环境变量，不算代码逻辑改动）。
+- **(C)** 跑一次 `accelerate config`（交互式，会问一堆问题，可能不适合自动化）。
+
+要不要我做 A+B？然后再启动训练？
