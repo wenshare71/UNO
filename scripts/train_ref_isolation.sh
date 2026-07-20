@@ -8,6 +8,18 @@ cd "$(dirname "$0")/.."
 export NCCL_P2P_DISABLE=1
 export NCCL_IB_DISABLE=1
 export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+# train.py 顶层 import wandb，包必须已安装（pip install wandb）；disabled 表示不上报
+export WANDB_MODE="${WANDB_MODE:-disabled}"
+
+# 启动前自检：wandb 可导入 + 转换后的标签存在
+python - <<'EOF'
+import importlib.util, os, sys
+if importlib.util.find_spec("wandb") is None:
+    sys.exit("❌ wandb 未安装（train.py 顶层 import wandb，WANDB_MODE=disabled 挡不住 ImportError）\n   先执行: pip install wandb")
+labels = "datasets/UNO-1M/uno_1m_total_labels_convert.json"
+if not os.path.exists(labels):
+    sys.exit(f"❌ {labels} 不存在\n   先执行: python scripts/convert_uno_labels.py")
+EOF
 
 accelerate launch --num_processes 8 --mixed_precision bf16 train.py \
     --ref_isolation True \
