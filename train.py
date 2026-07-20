@@ -28,6 +28,7 @@ import wandb
 from copy import deepcopy
 from typing import TYPE_CHECKING, Literal
 
+import deepspeed
 import torch
 import torch.nn.functional as F
 import transformers
@@ -350,7 +351,12 @@ def main(
     dataloader = infinite_dataloader(dataloader)  # as infinite fetch data loader
     ## parallel
     accelerator.state.select_deepspeed_plugin("dit")
-    dit, optimizer, lr_scheduler = accelerator.prepare(dit, optimizer, lr_scheduler) 
+    # 没经过 zero.Init 的模型, DeepSpeed 引擎初始化会先把完整模型 module.to(device) 再切分,
+    # bf16 FLUX(+LoRA) ~25.8GB > 4090 的 23.65GB, 搬运途中即 OOM。
+    # 这里对已构建的模型做 post-hoc 切分(每卡只留 1/8 分片 ~3.2GB), 引擎检测到 ds 参数后跳过整体搬运。
+    # 注意必须显式 dtype=bf16, 否则 Init 默认按 fp16 处理。
+    deepspeed.zero.Init(module=dit, dtype=torch.bfloat16, enabled=True)
+    dit, optimizer, lr_scheduler = accelerator.prepare(dit, optimizer, lr_scheduler)
     accelerator.state.select_deepspeed_plugin("t5")
     t5 = accelerator.prepare(t5)  # type: torch.nn.Module
     accelerator.state.select_deepspeed_plugin("clip")
