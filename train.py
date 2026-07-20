@@ -226,7 +226,8 @@ def main(
 ):
     ## accelerator
     deepspeed_plugins = {
-        "dit": DeepSpeedPlugin(hf_ds_config='config/deepspeed/zero2_config.json'),
+        # 4090(24GB) 放不下完整 bf16 FLUX，DiT 必须用 ZeRO-3 参数切分（不 offload，权重留在 8 卡显存里）
+        "dit": DeepSpeedPlugin(hf_ds_config='config/deepspeed/zero3_dit_config.json'),
         "t5": DeepSpeedPlugin(hf_ds_config='config/deepspeed/zero3_config.json'),
         "clip": DeepSpeedPlugin(hf_ds_config='config/deepspeed/zero3_config.json')
     }
@@ -280,6 +281,8 @@ def main(
     dit.gradient_checkpointing = args.gradient_checkpoint
 
     ## ema
+    # DiT 走 ZeRO-3 参数切分后，EMA 的 dit.state_dict() lerp 拿到的是空分片，结果错误
+    assert not args.ema, "ema 与 DiT 的 ZeRO-3 参数切分不兼容（state_dict 为空分片），如需 EMA 先改用逐参数 GatheredParameters 实现"
     dit_ema_dict = {
         f"module.{k}": deepcopy(v).requires_grad_(False) for k, v in dit.named_parameters() if v.requires_grad
     } if args.ema else None
@@ -448,11 +451,13 @@ def main(
             # save
             accelerator.wait_for_everyone()
             unwrapped_model = accelerator.unwrap_model(dit)
-            unwrapped_model_state = unwrapped_model.state_dict()
             requires_grad_key = [k for k, v in unwrapped_model.named_parameters() if v.requires_grad]
-            unwrapped_model_state = {k: unwrapped_model_state[k] for k in requires_grad_key}
+            # ZeRO-3 下参数被切分，直接 state_dict() 会拿到空张量；
+            # get_state_dict 走 _zero3_consolidated_16bit_state_dict 聚合（集合通信，所有 rank 都要调用）
+            unwrapped_model_state = accelerator.get_state_dict(dit)
 
             if accelerator.is_main_process:
+                unwrapped_model_state = {k: unwrapped_model_state[k] for k in requires_grad_key}
                 accelerator.save(
                     unwrapped_model_state,
                     os.path.join(save_path, 'dit_lora.safetensors'),
