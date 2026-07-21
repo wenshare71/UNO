@@ -39,7 +39,9 @@ def attention(
 
     if ref_kv is not None:
         if ref_kv.mode == "write" and ref_len > 0:
-            ref_kv.write(cache_key, k[:, :, -ref_len:], v[:, :, -ref_len:])
+            # 必须 clone：切片是 view，会连带把整个 k/v（含 txt+img 段）钉在显存里活满
+            # 整轮去噪。57 个 block 累积下来白占 1.5 GB+，而真正要缓存的只有末尾 ref 段。
+            ref_kv.write(cache_key, k[:, :, -ref_len:].clone(), v[:, :, -ref_len:].clone())
         elif ref_kv.mode == "read":
             cached_k, cached_v = ref_kv.read(cache_key)
             k = torch.cat((k, cached_k), dim=2)
