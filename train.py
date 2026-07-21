@@ -481,7 +481,13 @@ def main(
                     os.path.join(save_path, 'dit_lora_ema.safetensors'),
                     safe_serialization=True
                 )
-            
+
+            # 非主进程没有写盘任务，之前会直接冲到下面的 eval_dataloader；
+            # 如果 eval 那边先炸（如上次 dreambooth submodule 缺失），
+            # torch-elastic 会把主进程也一起 SIGTERM，写到一半的 ckpt 文件报废。
+            # 这里等主进程把 lora/optimizer/ema 全部落盘后再放行。
+            accelerator.wait_for_everyone()
+
             # log
             images_log, images_ref_log = [], []
             for batch_idx in range(min(bs, 8)):

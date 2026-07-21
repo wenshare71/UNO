@@ -10,8 +10,14 @@ export NCCL_IB_DISABLE=1
 export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 # train.py 顶层 import wandb，包必须已安装（pip install wandb）；disabled 表示不上报
 export WANDB_MODE="${WANDB_MODE:-disabled}"
+# 默认续训最新 checkpoint；不想续训则 RESUME_FROM_CHECKPOINT= bash scripts/... （置空）
+# 注意: 不能靠 "$@" 传 --resume_from_checkpoint None 覆盖——HfArgumentParser 拿到的是
+# 字符串 "None" 不是 Python None，会走 resume_from_checkpoint() 里的 else 分支去
+# load_file("None") 直接崩溃；必须整个不传这个 flag 才会用 train.py 里的默认值 None。
+export RESUME_FROM_CHECKPOINT="${RESUME_FROM_CHECKPOINT-latest}"
 
 # 启动前自检：wandb 可导入 + 转换后的标签存在 + eval 用的 dreambooth submodule 已初始化
+# + 如果要续训，最新 checkpoint 的 dit_lora.safetensors 必须能正常加载
 python - <<'EOF'
 import importlib.util, os, sys
 if importlib.util.find_spec("wandb") is None:
@@ -24,7 +30,35 @@ if not os.path.exists(labels):
 dreambooth = "datasets/dreambooth/dataset"
 if not os.path.isdir(dreambooth) or not os.listdir(dreambooth):
     sys.exit(f"❌ {dreambooth} 为空（dreambench submodule 未初始化，训练到第一次 checkpoint 才会炸）\n   先执行: git submodule update --init datasets/dreambooth")
+
+# 保存(dit_lora.safetensors/optimizer.bin 落盘)和 eval 之间原来没有同步屏障，
+# 如果上次是 eval 先炸把主进程写到一半的进程也 SIGTERM 掉，checkpoint 文件可能是残档；
+# --resume_from_checkpoint latest 会不加分辨地加载它，得在启动前验证，别把训练带进错误状态。
+if os.environ.get("RESUME_FROM_CHECKPOINT") == "latest":
+    project_dir = "log/ref_isolation"
+    if os.path.isdir(project_dir):
+        ckpts = [d for d in os.listdir(project_dir) if d.startswith("checkpoint")]
+        ckpts = sorted(ckpts, key=lambda x: int(x.split("-")[1]))
+        if ckpts:
+            latest_dir = os.path.join(project_dir, ckpts[-1])
+            lora_path = os.path.join(latest_dir, "dit_lora.safetensors")
+            try:
+                from safetensors.torch import load_file
+                state = load_file(lora_path)
+                if len(state) == 0:
+                    raise ValueError("state_dict 是空的")
+            except Exception as e:
+                sys.exit(
+                    f"❌ {lora_path} 加载失败（{e}）\n"
+                    f"   大概率是上次训练被杀时写到一半的残档，不能用来续训。\n"
+                    f"   先执行: rm -rf {latest_dir}  （会从上一个更早的 checkpoint 续训，都没有就从头训）"
+                )
 EOF
+
+resume_args=()
+if [[ -n "$RESUME_FROM_CHECKPOINT" ]]; then
+    resume_args=(--resume_from_checkpoint "$RESUME_FROM_CHECKPOINT")
+fi
 
 accelerate launch --num_processes 8 --mixed_precision bf16 train.py \
     --ref_isolation True \
@@ -38,5 +72,5 @@ accelerate launch --num_processes 8 --mixed_precision bf16 train.py \
     --checkpointing_steps 1000 \
     --train_data_json datasets/UNO-1M/uno_1m_total_labels_convert.json \
     --project_dir log/ref_isolation \
-    --resume_from_checkpoint latest \
+    ${resume_args[@]+"${resume_args[@]}"} \
     "$@"
