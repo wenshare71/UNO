@@ -188,3 +188,9 @@ datasets/UNO-1M/
 .venv-uno/*
 !scripts/train.log
 !train.log
+!/output/
+/output/*
+!/output/smoke_ref_isolation/
+/output/smoke_ref_isolation/*
+!output/smoke_ref_isolation/ALL_COMPARISON.png
+!output/smoke_ref_isolation/results.json

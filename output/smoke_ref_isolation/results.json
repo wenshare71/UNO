@@ -1,0 +1,310 @@
+{
+  "config": {
+    "lora_path": "log/ref_isolation/checkpoint-2000/dit_lora.safetensors",
+    "variants": [
+      "official_full",
+      "ours_full",
+      "ours_kv"
+    ],
+    "num_dreambench": 4,
+    "num_steps": 25,
+    "seed": 3407,
+    "width": 512,
+    "height": 512,
+    "guidance": 4.0,
+    "lora_rank": 512,
+    "ref_size": -1,
+    "save_path": "output/smoke_ref_isolation",
+    "model_type": "flux-dev-fp8",
+    "offload": true,
+    "dry_run": false
+  },
+  "timing": {
+    "official_full": {
+      "per_case": [
+        {
+          "case": "figurine_in_ball",
+          "n_refs": 2,
+          "denoise_s": 9.272599577903748,
+          "e2e_s": 19.191658459603786
+        },
+        {
+          "case": "logo_on_cup",
+          "n_refs": 2,
+          "denoise_s": 10.003383964300156,
+          "e2e_s": 20.131863951683044
+        },
+        {
+          "case": "clock_and_cup",
+          "n_refs": 2,
+          "denoise_s": 10.013303555548191,
+          "e2e_s": 19.309425935149193
+        },
+        {
+          "case": "figurine_and_clock_street",
+          "n_refs": 2,
+          "denoise_s": 9.593904055655003,
+          "e2e_s": 18.968601018190384
+        },
+        {
+          "case": "dress_bag_flowers",
+          "n_refs": 3,
+          "denoise_s": 11.833178661763668,
+          "e2e_s": 21.838145904242992
+        },
+        {
+          "case": "single_clock_beach",
+          "n_refs": 1,
+          "denoise_s": 10.88268069922924,
+          "e2e_s": 21.374893449246883
+        },
+        {
+          "case": "db_backpack_dog_bear_plushie",
+          "n_refs": 2,
+          "denoise_s": 10.060046002268791,
+          "e2e_s": 20.040463611483574
+        },
+        {
+          "case": "db_berry_bowl_can",
+          "n_refs": 2,
+          "denoise_s": 10.060816183686256,
+          "e2e_s": 20.4310285076499
+        },
+        {
+          "case": "db_candle_clock",
+          "n_refs": 2,
+          "denoise_s": 10.060595162212849,
+          "e2e_s": 20.028017915785313
+        },
+        {
+          "case": "db_colorful_sneaker_duck_toy",
+          "n_refs": 2,
+          "denoise_s": 10.055995553731918,
+          "e2e_s": 20.349119320511818
+        }
+      ],
+      "denoise_mean_s": 10.183650341629981,
+      "denoise_median_s": 10.058020778000355,
+      "e2e_mean_s": 20.166321807354688,
+      "peak_mem_gb": 13.458999156951904
+    },
+    "ours_full": {
+      "per_case": [
+        {
+          "case": "figurine_in_ball",
+          "n_refs": 2,
+          "denoise_s": 9.285632826387882,
+          "e2e_s": 20.218068428337574
+        },
+        {
+          "case": "logo_on_cup",
+          "n_refs": 2,
+          "denoise_s": 10.00869482755661,
+          "e2e_s": 20.18052440881729
+        },
+        {
+          "case": "clock_and_cup",
+          "n_refs": 2,
+          "denoise_s": 10.02179279178381,
+          "e2e_s": 20.2990954965353
+        },
+        {
+          "case": "figurine_and_clock_street",
+          "n_refs": 2,
+          "denoise_s": 9.581923097372055,
+          "e2e_s": 20.009174518287182
+        },
+        {
+          "case": "dress_bag_flowers",
+          "n_refs": 3,
+          "denoise_s": 11.822138883173466,
+          "e2e_s": 21.779225446283817
+        },
+        {
+          "case": "single_clock_beach",
+          "n_refs": 1,
+          "denoise_s": 10.872814908623695,
+          "e2e_s": 21.39390929788351
+        },
+        {
+          "case": "db_backpack_dog_bear_plushie",
+          "n_refs": 2,
+          "denoise_s": 10.060402005910873,
+          "e2e_s": 20.083231396973133
+        },
+        {
+          "case": "db_berry_bowl_can",
+          "n_refs": 2,
+          "denoise_s": 10.055506467819214,
+          "e2e_s": 20.435438856482506
+        },
+        {
+          "case": "db_candle_clock",
+          "n_refs": 2,
+          "denoise_s": 10.059969380497932,
+          "e2e_s": 20.020686723291874
+        },
+        {
+          "case": "db_colorful_sneaker_duck_toy",
+          "n_refs": 2,
+          "denoise_s": 10.059923365712166,
+          "e2e_s": 20.435682609677315
+        }
+      ],
+      "denoise_mean_s": 10.18287985548377,
+      "denoise_median_s": 10.05771491676569,
+      "e2e_mean_s": 20.48550371825695,
+      "peak_mem_gb": 13.458999156951904
+    },
+    "ours_kv": {
+      "per_case": [
+        {
+          "case": "figurine_in_ball",
+          "n_refs": 2,
+          "denoise_s": 7.054398961365223,
+          "e2e_s": 17.130834348499775
+        },
+        {
+          "case": "logo_on_cup",
+          "n_refs": 2,
+          "denoise_s": 7.1398109793663025,
+          "e2e_s": 17.413502149283886
+        },
+        {
+          "case": "clock_and_cup",
+          "n_refs": 2,
+          "denoise_s": 7.167138636112213,
+          "e2e_s": 19.069141060113907
+        },
+        {
+          "case": "figurine_and_clock_street",
+          "n_refs": 2,
+          "denoise_s": 7.0981335416436195,
+          "e2e_s": 24.324963808059692
+        },
+        {
+          "case": "dress_bag_flowers",
+          "n_refs": 3,
+          "denoise_s": 7.367678806185722,
+          "e2e_s": 21.13143267482519
+        },
+        {
+          "case": "single_clock_beach",
+          "n_refs": 1,
+          "denoise_s": 7.26658895611763,
+          "e2e_s": 18.93625459820032
+        },
+        {
+          "case": "db_backpack_dog_bear_plushie",
+          "n_refs": 2,
+          "denoise_s": 7.124759830534458,
+          "e2e_s": 17.746650531888008
+        },
+        {
+          "case": "db_berry_bowl_can",
+          "n_refs": 2,
+          "denoise_s": 7.135537080466747,
+          "e2e_s": 18.14704641699791
+        },
+        {
+          "case": "db_candle_clock",
+          "n_refs": 2,
+          "denoise_s": 7.151550769805908,
+          "e2e_s": 19.48742836713791
+        },
+        {
+          "case": "db_colorful_sneaker_duck_toy",
+          "n_refs": 2,
+          "denoise_s": 7.128376342356205,
+          "e2e_s": 20.154052056372166
+        }
+      ],
+      "denoise_mean_s": 7.163397390395403,
+      "denoise_median_s": 7.137674029916525,
+      "e2e_mean_s": 19.354130601137875,
+      "peak_mem_gb": 19.320913314819336
+    }
+  },
+  "cases": [
+    {
+      "name": "figurine_in_ball",
+      "prompt": "The figurine is in the crystal ball",
+      "image_paths": [
+        "assets/examples/3two2one/ref1.png",
+        "assets/examples/3two2one/ref2.png"
+      ]
+    },
+    {
+      "name": "logo_on_cup",
+      "prompt": "The logo is printed on the cup",
+      "image_paths": [
+        "assets/examples/4two2one/ref1.png",
+        "assets/examples/4two2one/ref2.png"
+      ]
+    },
+    {
+      "name": "clock_and_cup",
+      "prompt": "a clock and a cup on a wooden table, product photo, soft daylight",
+      "image_paths": [
+        "assets/clock.png",
+        "assets/cup.png"
+      ]
+    },
+    {
+      "name": "figurine_and_clock_street",
+      "prompt": "The figurine stands next to the clock on a cobblestone street in Paris",
+      "image_paths": [
+        "assets/figurine.png",
+        "assets/clock.png"
+      ]
+    },
+    {
+      "name": "dress_bag_flowers",
+      "prompt": "A woman wears the dress and holds a bag, in the flowers.",
+      "image_paths": [
+        "assets/examples/5many2one/ref1.png",
+        "assets/examples/5many2one/ref2.png",
+        "assets/examples/5many2one/ref3.png"
+      ]
+    },
+    {
+      "name": "single_clock_beach",
+      "prompt": "A clock on the beach is under a red sun umbrella",
+      "image_paths": [
+        "assets/examples/1one2one/ref1.jpg"
+      ]
+    },
+    {
+      "name": "db_backpack_dog_bear_plushie",
+      "prompt": "a backpack and a stuffed animal in the jungle",
+      "image_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/02.jpg",
+        "datasets/dreambooth/dataset/bear_plushie/03.jpg"
+      ]
+    },
+    {
+      "name": "db_berry_bowl_can",
+      "prompt": "a bowl and a can in the jungle",
+      "image_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/02.jpg",
+        "datasets/dreambooth/dataset/can/01.jpg"
+      ]
+    },
+    {
+      "name": "db_candle_clock",
+      "prompt": "a candle and a clock in the jungle",
+      "image_paths": [
+        "datasets/dreambooth/dataset/candle/02.jpg",
+        "datasets/dreambooth/dataset/clock/03.jpg"
+      ]
+    },
+    {
+      "name": "db_colorful_sneaker_duck_toy",
+      "prompt": "a sneaker and a toy in the jungle",
+      "image_paths": [
+        "datasets/dreambooth/dataset/colorful_sneaker/01.jpg",
+        "datasets/dreambooth/dataset/duck_toy/01.jpg"
+      ]
+    }
+  ]
+}
