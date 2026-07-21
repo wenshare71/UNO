@@ -1,0 +1,42 @@
+((.venv-uno) ) 
+# root @ aiplatform-bjy-ge47-391 in /home/wuwenxuan03/UNO on git:main x .venv-uno [17:15:31] C:1
+$ python scripts/bench_kv_cache.py 
+Loading checkpoint shards: 100%|██████████████████████████████| 2/2 [00:00<00:00, 11.24it/s]
+Init AE
+Init model
+Loading lora
+Loading main checkpoint
+Traceback (most recent call last):
+  File "/home/wuwenxuan03/UNO/scripts/bench_kv_cache.py", line 116, in <module>
+    main()
+  File "/home/wuwenxuan03/UNO/scripts/bench_kv_cache.py", line 75, in main
+    run(False, False, args.seed)
+  File "/home/wuwenxuan03/UNO/scripts/bench_kv_cache.py", line 67, in run
+    return pipeline(
+           ^^^^^^^^^
+  File "/home/wuwenxuan03/UNO/uno/flux/pipeline.py", line 199, in __call__
+    return self.forward(
+           ^^^^^^^^^^^^^
+  File "/home/wuwenxuan03/UNO/.venv-uno/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuwenxuan03/UNO/uno/flux/pipeline.py", line 287, in forward
+    self.model = self.model.to(self.device)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuwenxuan03/UNO/.venv-uno/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1174, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuwenxuan03/UNO/.venv-uno/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/home/wuwenxuan03/UNO/.venv-uno/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  File "/home/wuwenxuan03/UNO/.venv-uno/lib/python3.12/site-packages/torch/nn/modules/module.py", line 780, in _apply
+    module._apply(fn)
+  [Previous line repeated 1 more time]
+  File "/home/wuwenxuan03/UNO/.venv-uno/lib/python3.12/site-packages/torch/nn/modules/module.py", line 805, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/home/wuwenxuan03/UNO/.venv-uno/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1160, in convert
+    return t.to(
+           ^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 54.00 MiB. GPU 0 has a total capacity of 23.65 GiB of which 44.06 MiB is free. Process 71035 has 23.60 GiB memory in use. Of the allocated memory 23.00 GiB is allocated by PyTorch, and 145.46 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)

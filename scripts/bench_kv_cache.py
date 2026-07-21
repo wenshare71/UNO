@@ -11,7 +11,13 @@
 import argparse
 import json
 import os
+import sys
 import time
+
+# 让脚本不管从哪个目录运行都能找到 uno 包（uno/ 缺 __init__.py，走 namespace fallback）
+_REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if _REPO_ROOT not in sys.path:
+    sys.path.insert(0, _REPO_ROOT)
 
 import numpy as np
 import torch
