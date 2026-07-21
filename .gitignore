@@ -187,3 +187,4 @@ datasets/UNO-1M/
 
 .venv-uno/*
 !scripts/train.log
+!train.log
