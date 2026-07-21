@@ -11,7 +11,7 @@ export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 # train.py 顶层 import wandb，包必须已安装（pip install wandb）；disabled 表示不上报
 export WANDB_MODE="${WANDB_MODE:-disabled}"
 
-# 启动前自检：wandb 可导入 + 转换后的标签存在
+# 启动前自检：wandb 可导入 + 转换后的标签存在 + eval 用的 dreambooth submodule 已初始化
 python - <<'EOF'
 import importlib.util, os, sys
 if importlib.util.find_spec("wandb") is None:
@@ -19,6 +19,11 @@ if importlib.util.find_spec("wandb") is None:
 labels = "datasets/UNO-1M/uno_1m_total_labels_convert.json"
 if not os.path.exists(labels):
     sys.exit(f"❌ {labels} 不存在\n   先执行: python scripts/convert_uno_labels.py")
+# eval_data_json 默认指向 datasets/dreambench_toy.json，图片在 datasets/dreambooth/ 这个 git submodule 里；
+# 没 init 的话 checkpointing_steps 之前训练正常，一到 eval_dataloader 就 FileNotFoundError（README.md 99-102 行提过）
+dreambooth = "datasets/dreambooth/dataset"
+if not os.path.isdir(dreambooth) or not os.listdir(dreambooth):
+    sys.exit(f"❌ {dreambooth} 为空（dreambench submodule 未初始化，训练到第一次 checkpoint 才会炸）\n   先执行: git submodule update --init datasets/dreambooth")
 EOF
 
 accelerate launch --num_processes 8 --mixed_precision bf16 train.py \
@@ -33,4 +38,5 @@ accelerate launch --num_processes 8 --mixed_precision bf16 train.py \
     --checkpointing_steps 1000 \
     --train_data_json datasets/UNO-1M/uno_1m_total_labels_convert.json \
     --project_dir log/ref_isolation \
+    --resume_from_checkpoint latest \
     "$@"
