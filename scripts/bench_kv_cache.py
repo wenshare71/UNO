@@ -53,6 +53,16 @@ def main():
     args = parser.parse_args()
 
     device = torch.device("cuda")
+    if args.model_type == "flux-dev":
+        # FLUX.1-dev DiT 是 12B 参数（hidden_size=3072, depth=19+38），bf16 权重本身就要
+        # ~22.4 GiB，即使 --offload 把 T5/CLIP/AE 全挪回 CPU，单张 24GB 卡也几乎装不下——
+        # 在这里提前拦，别等 T5/CLIP 都加载编码完了才在 model.to(device) 那步 OOM 浪费时间。
+        total_gb = torch.cuda.get_device_properties(device).total_memory / 1024**3
+        if total_gb < 24.5:
+            raise SystemExit(
+                f"❌ GPU 总显存 {total_gb:.1f} GiB，装不下 bf16 FLUX-dev DiT(~22.4 GiB)+ CUDA 上下文\n"
+                f"   请改用: python scripts/bench_kv_cache.py --model_type flux-dev-fp8"
+            )
     pipeline = UNOPipeline(args.model_type, device, offload=args.offload,
                            only_lora=True, lora_rank=args.lora_rank)
     if args.lora_path:
