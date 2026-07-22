@@ -194,3 +194,7 @@ datasets/UNO-1M/
 /output/smoke_ref_isolation/*
 !output/smoke_ref_isolation/ALL_COMPARISON.png
 !output/smoke_ref_isolation/results.json
+!/output/smoke_ref512/
+/output/smoke_ref512/*
+!/output/smoke_ref512/ALL_COMPARISON.png
+!/output/smoke_ref512/results.json
