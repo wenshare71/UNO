@@ -33,8 +33,12 @@ os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "expandable_segments:True")
 _REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 if _REPO_ROOT not in sys.path:
     sys.path.insert(0, _REPO_ROOT)
+# board.py 与本脚本同目录:拼图逻辑(标题自动换行)与 rebuild_comparison.py 共用
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image
+
+import board
 
 # name: (用我们的 LoRA?, ref_isolation, kv_cache) —— 语义同 smoke_ref_isolation.py
 VARIANTS = {
@@ -80,50 +84,6 @@ def discover_tasks(data_dir: str) -> list[dict]:
             tasks.append({"name": task_name, "dir": root, "number": number,
                           "prompt": prompt, "image_paths": refs})
     return sorted(tasks, key=lambda t: t["name"])
-
-
-# ---------------------------------------------------------------- 拼图(复制自 smoke)
-
-def _font(size: int):
-    try:
-        return ImageFont.load_default(size=size)  # Pillow >= 10.1
-    except TypeError:
-        return ImageFont.load_default()
-
-
-def _labeled(img: Image.Image, text: str, cell: int) -> Image.Image:
-    bar = 24
-    canvas = Image.new("RGB", (cell, cell + bar), (255, 255, 255))
-    w, h = img.size
-    scale = min(cell / w, cell / h)
-    resized = img.resize((max(1, int(w * scale)), max(1, int(h * scale))), Image.LANCZOS)
-    canvas.paste(resized, ((cell - resized.width) // 2, bar + (cell - resized.height) // 2))
-    ImageDraw.Draw(canvas).text((4, 5), text[:38], fill=(0, 0, 0), font=_font(14))
-    return canvas
-
-
-def make_comparison(task: dict, refs: list[Image.Image], results: dict,
-                    times: dict | None = None, cell: int = 256) -> Image.Image:
-    """一行:[ref1..refN | 红线 | 各变体],变体标签带该例 denoise 耗时。"""
-    tiles = [_labeled(r, f"ref{i + 1}", cell) for i, r in enumerate(refs)]
-    for name, img in results.items():
-        t = (times or {}).get(name)
-        tiles.append(_labeled(img, f"{name}  {t:.1f}s" if t else name, cell))
-    gap, sep_at = 8, len(refs)
-    row = Image.new("RGB", (len(tiles) * cell + gap, cell + 24 + 20), (255, 255, 255))
-    x = 0
-    for i, t in enumerate(tiles):
-        if i == sep_at:
-            x += gap
-        row.paste(t, (x, 20))
-        x += cell
-    draw = ImageDraw.Draw(row)
-    prompt_preview = task["prompt"].replace("\n", " ")[:70]
-    draw.text((4, 3), f'{task["name"]}  |  "{prompt_preview}"', fill=(0, 0, 0), font=_font(14))
-    if sep_at:
-        lx = sep_at * cell + gap // 2
-        draw.line([(lx, 20), (lx, row.height)], fill=(200, 0, 0), width=2)
-    return row
 
 
 # ---------------------------------------------------------------- LoRA 切换(复制自 smoke)
@@ -308,17 +268,12 @@ def main():
     rows = []
     for task in tasks:
         refs = [Image.open(pth) for pth in task["image_paths"]]
-        row = make_comparison(task, refs, all_results[task["name"]], task_times[task["name"]])
+        row = board.build_row(task["name"], task["prompt"], refs,
+                              all_results[task["name"]], task_times[task["name"]])
         row.save(os.path.join(args.save_path, f'compare__{task["name"]}.png'))
         rows.append(row)
-    width = max(r.width for r in rows)
-    board = Image.new("RGB", (width, sum(r.height for r in rows)), (255, 255, 255))
-    y = 0
-    for r in rows:
-        board.paste(r, (0, y))
-        y += r.height
     board_path = os.path.join(args.save_path, "ALL_COMPARISON.png")
-    board.save(board_path)
+    board.stack_board(rows).save(board_path)
 
     print("\n" + "=" * 68)
     print(f"{'变体':<16}{'denoise均值':>12}{'denoise中位':>12}{'e2e均值':>10}{'vs baseline':>14}")
