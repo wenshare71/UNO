@@ -202,3 +202,4 @@ datasets/UNO-1M/
 /output/smoke_ref320_ckpt7000/*
 !/output/smoke_ref320_ckpt7000/ALL_COMPARISON.png
 !/output/smoke_ref320_ckpt7000/results.json
+!/output/multibanana_eval/

@@ -1,0 +1,358 @@
+{
+  "config": {
+    "data_dir": "data/multibanana",
+    "lora_path": "log/ref_isolation/checkpoint-7000/dit_lora.safetensors",
+    "variants": [
+      "official_full",
+      "ours_kv"
+    ],
+    "ref_size": 512,
+    "max_refs": 4,
+    "num_steps": 25,
+    "seed": 3407,
+    "width": 512,
+    "height": 512,
+    "guidance": 4.0,
+    "lora_rank": 512,
+    "model_type": "flux-dev-fp8",
+    "offload": true,
+    "write_generated": true,
+    "save_path": "output/multibanana_eval",
+    "dry_run": false
+  },
+  "timing": {
+    "official_full": {
+      "per_task": [
+        {
+          "task": "3_back_006",
+          "n_refs": 3,
+          "denoise_s": 18.94975136220455,
+          "e2e_s": 30.89984466135502
+        },
+        {
+          "task": "3_back_014",
+          "n_refs": 3,
+          "denoise_s": 19.620174668729305,
+          "e2e_s": 30.028532028198242
+        },
+        {
+          "task": "3_back_023",
+          "n_refs": 3,
+          "denoise_s": 18.96992063522339,
+          "e2e_s": 30.334756731987
+        },
+        {
+          "task": "3_back_024",
+          "n_refs": 3,
+          "denoise_s": 17.554716855287552,
+          "e2e_s": 28.348724082112312
+        },
+        {
+          "task": "3_back_027",
+          "n_refs": 3,
+          "denoise_s": 20.451253063976765,
+          "e2e_s": 33.030169263482094
+        },
+        {
+          "task": "3_global_004",
+          "n_refs": 3,
+          "denoise_s": 15.606550432741642,
+          "e2e_s": 28.505095086991787
+        },
+        {
+          "task": "3_global_014",
+          "n_refs": 3,
+          "denoise_s": 20.382543213665485,
+          "e2e_s": 32.6854412779212
+        },
+        {
+          "task": "3_global_022",
+          "n_refs": 3,
+          "denoise_s": 18.980462670326233,
+          "e2e_s": 31.048504792153835
+        },
+        {
+          "task": "3_global_025",
+          "n_refs": 3,
+          "denoise_s": 18.460301995277405,
+          "e2e_s": 29.41297145932913
+        },
+        {
+          "task": "3_global_028",
+          "n_refs": 3,
+          "denoise_s": 18.56491134315729,
+          "e2e_s": 30.831399224698544
+        },
+        {
+          "task": "3_local_003",
+          "n_refs": 3,
+          "denoise_s": 20.460114628076553,
+          "e2e_s": 32.21367462724447
+        },
+        {
+          "task": "3_local_007",
+          "n_refs": 3,
+          "denoise_s": 20.457770444452763,
+          "e2e_s": 31.449780076742172
+        },
+        {
+          "task": "3_local_010",
+          "n_refs": 3,
+          "denoise_s": 20.46760193258524,
+          "e2e_s": 32.810843259096146
+        },
+        {
+          "task": "3_local_011",
+          "n_refs": 3,
+          "denoise_s": 20.463852904736996,
+          "e2e_s": 32.74996753782034
+        },
+        {
+          "task": "3_local_013",
+          "n_refs": 3,
+          "denoise_s": 20.46806449443102,
+          "e2e_s": 31.373992189764977
+        }
+      ],
+      "denoise_mean_s": 19.32386604299148,
+      "denoise_median_s": 19.620174668729305,
+      "e2e_mean_s": 31.048246419926485,
+      "peak_mem_gb": 13.767082214355469
+    },
+    "ours_kv": {
+      "per_task": [
+        {
+          "task": "3_back_006",
+          "n_refs": 3,
+          "denoise_s": 8.272009797394276,
+          "e2e_s": 22.030949972569942
+        },
+        {
+          "task": "3_back_014",
+          "n_refs": 3,
+          "denoise_s": 8.328857503831387,
+          "e2e_s": 19.41386491060257
+        },
+        {
+          "task": "3_back_023",
+          "n_refs": 3,
+          "denoise_s": 8.270628161728382,
+          "e2e_s": 19.090995006263256
+        },
+        {
+          "task": "3_back_024",
+          "n_refs": 3,
+          "denoise_s": 8.117048032581806,
+          "e2e_s": 19.205312944948673
+        },
+        {
+          "task": "3_back_027",
+          "n_refs": 3,
+          "denoise_s": 8.455800831317902,
+          "e2e_s": 19.299475893378258
+        },
+        {
+          "task": "3_global_004",
+          "n_refs": 3,
+          "denoise_s": 7.856000632047653,
+          "e2e_s": 18.93702483922243
+        },
+        {
+          "task": "3_global_014",
+          "n_refs": 3,
+          "denoise_s": 8.447941318154335,
+          "e2e_s": 19.119490660727024
+        },
+        {
+          "task": "3_global_022",
+          "n_refs": 3,
+          "denoise_s": 8.271572940051556,
+          "e2e_s": 19.339778408408165
+        },
+        {
+          "task": "3_global_025",
+          "n_refs": 3,
+          "denoise_s": 8.212477788329124,
+          "e2e_s": 18.88610825687647
+        },
+        {
+          "task": "3_global_028",
+          "n_refs": 3,
+          "denoise_s": 8.21750558167696,
+          "e2e_s": 19.203027307987213
+        },
+        {
+          "task": "3_local_003",
+          "n_refs": 3,
+          "denoise_s": 8.448726132512093,
+          "e2e_s": 22.011775486171246
+        },
+        {
+          "task": "3_local_007",
+          "n_refs": 3,
+          "denoise_s": 8.440129168331623,
+          "e2e_s": 25.047562398016453
+        },
+        {
+          "task": "3_local_010",
+          "n_refs": 3,
+          "denoise_s": 8.44829846918583,
+          "e2e_s": 21.286377169191837
+        },
+        {
+          "task": "3_local_011",
+          "n_refs": 3,
+          "denoise_s": 8.447552911937237,
+          "e2e_s": 21.28713119775057
+        },
+        {
+          "task": "3_local_013",
+          "n_refs": 3,
+          "denoise_s": 8.443034328520298,
+          "e2e_s": 21.90389872342348
+        }
+      ],
+      "denoise_mean_s": 8.311838906506697,
+      "denoise_median_s": 8.328857503831387,
+      "e2e_mean_s": 20.404184878369172,
+      "peak_mem_gb": 17.794448852539062
+    }
+  },
+  "tasks": [
+    {
+      "name": "3_back_006",
+      "prompt": "The man from image 1 and the man from image 2 are standing in front of a colorful, watercolor landscape. The background of the image is the same as in image 3.",
+      "image_paths": [
+        "data/multibanana/3_back/006_0.jpg",
+        "data/multibanana/3_back/006_1.jpg",
+        "data/multibanana/3_back/006_2.jpg"
+      ]
+    },
+    {
+      "name": "3_back_014",
+      "prompt": "The man from image 1 and the woman from image 2 are standing in a sunlit forest. The background of the image is the same as in image 3.",
+      "image_paths": [
+        "data/multibanana/3_back/014_0.jpg",
+        "data/multibanana/3_back/014_1.jpg",
+        "data/multibanana/3_back/014_2.jpg"
+      ]
+    },
+    {
+      "name": "3_back_023",
+      "prompt": "The woman from image 1 and the man from image 2 are standing in front of a small house with a red roof. The background of the image is the same as in image 3.",
+      "image_paths": [
+        "data/multibanana/3_back/023_0.jpg",
+        "data/multibanana/3_back/023_1.jpg",
+        "data/multibanana/3_back/023_2.jpg"
+      ]
+    },
+    {
+      "name": "3_back_024",
+      "prompt": "The monk from image 1 and the woman with the motorcycle from image 2 are combined and placed in front of the Taj Mahal background from image 3.",
+      "image_paths": [
+        "data/multibanana/3_back/024_0.jpg",
+        "data/multibanana/3_back/024_1.jpg",
+        "data/multibanana/3_back/024_2.jpg"
+      ]
+    },
+    {
+      "name": "3_back_027",
+      "prompt": "The man from image 1 and the woman from image 2 are standing in front of a dramatic sunset. The background of the image is the same as in image 3.",
+      "image_paths": [
+        "data/multibanana/3_back/027_0.jpg",
+        "data/multibanana/3_back/027_1.jpg",
+        "data/multibanana/3_back/027_2.jpg"
+      ]
+    },
+    {
+      "name": "3_global_004",
+      "prompt": "The woman from image 1 and the woman from image 2 are standing in a haunted forest. The style of the image is the same as in image 3.",
+      "image_paths": [
+        "data/multibanana/3_global/004_0.jpg",
+        "data/multibanana/3_global/004_1.jpg",
+        "data/multibanana/3_global/004_2.jpg"
+      ]
+    },
+    {
+      "name": "3_global_014",
+      "prompt": "The woman from image 1 and the woman from image 2 are posing together in a lavish ballroom. The style of the image is the same as in image 3.",
+      "image_paths": [
+        "data/multibanana/3_global/014_0.jpg",
+        "data/multibanana/3_global/014_1.jpg",
+        "data/multibanana/3_global/014_2.jpg"
+      ]
+    },
+    {
+      "name": "3_global_022",
+      "prompt": "The chef from image 1 and the man reading from image 2 are standing on a sidewalk with a dog. The style of the image is the same as in image 3.",
+      "image_paths": [
+        "data/multibanana/3_global/022_0.jpg",
+        "data/multibanana/3_global/022_1.jpg",
+        "data/multibanana/3_global/022_2.jpg"
+      ]
+    },
+    {
+      "name": "3_global_025",
+      "prompt": "The woman from image 1 and the woman from image 2 are standing on the bank of a canal in front of buildings. The style of the image is the same as in image 3.",
+      "image_paths": [
+        "data/multibanana/3_global/025_0.jpg",
+        "data/multibanana/3_global/025_1.jpg",
+        "data/multibanana/3_global/025_2.jpg"
+      ]
+    },
+    {
+      "name": "3_global_028",
+      "prompt": "The woman from image 1 and the elf from image 2 are in a greenhouse. The style of the image is the same as in image 3.",
+      "image_paths": [
+        "data/multibanana/3_global/028_0.jpg",
+        "data/multibanana/3_global/028_1.jpg",
+        "data/multibanana/3_global/028_2.jpg"
+      ]
+    },
+    {
+      "name": "3_local_003",
+      "prompt": "The man in image 3 is wearing the red jacket from image 3, with the scarf pattern from image 1, and is posed looking at the aurora borealis from image 3, while a cat from image 2 is sitting on a hay bale from image 2 in the foreground.",
+      "image_paths": [
+        "data/multibanana/3_local/003_0.jpg",
+        "data/multibanana/3_local/003_1.jpg",
+        "data/multibanana/3_local/003_2.jpg"
+      ]
+    },
+    {
+      "name": "3_local_007",
+      "prompt": "The man in image 1 is in the pose of the lizard in image 2, with the lizard's scales, and is holding the lantern from image 3. The background is a snowy village at night.",
+      "image_paths": [
+        "data/multibanana/3_local/007_0.jpg",
+        "data/multibanana/3_local/007_1.jpg",
+        "data/multibanana/3_local/007_2.jpg"
+      ]
+    },
+    {
+      "name": "3_local_010",
+      "prompt": "The ukulele from image 1 is placed on the sand in image 3, with a tiger from image 2 standing behind it.",
+      "image_paths": [
+        "data/multibanana/3_local/010_0.jpg",
+        "data/multibanana/3_local/010_1.jpg",
+        "data/multibanana/3_local/010_2.jpg"
+      ]
+    },
+    {
+      "name": "3_local_011",
+      "prompt": "The knight's armor from image 1, with the metallic texture and red color of image 3's couch, should be worn by the girl from image 2, who is seated on the couch from image 3, looking out at the stormy sea and lighthouse from image 3.",
+      "image_paths": [
+        "data/multibanana/3_local/011_0.jpg",
+        "data/multibanana/3_local/011_1.jpg",
+        "data/multibanana/3_local/011_2.jpg"
+      ]
+    },
+    {
+      "name": "3_local_013",
+      "prompt": "The man from image 1 is wearing the overalls from image 2, with the hat from image 3. The background is a terraced field.",
+      "image_paths": [
+        "data/multibanana/3_local/013_0.jpg",
+        "data/multibanana/3_local/013_1.jpg",
+        "data/multibanana/3_local/013_2.jpg"
+      ]
+    }
+  ]
+}
