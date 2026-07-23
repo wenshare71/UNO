@@ -37,24 +37,26 @@ for pkg in ("torch", "deepspeed", "transformers"):
         continue
 
     hrefs = re.findall(r'href="([^"]+)"', html)
-    # 只看能装在这台机器上的：cp310 + linux x86_64（或 py3-none-any）
+    # 平台标签不能按 "linux_x86_64" 匹配：torch 的轮子叫 manylinux1_x86_64 /
+    # manylinux_2_28_x86_64，linux 和 _x86_64 之间隔着版本号，子串对不上。
+    # 只认 "x86_64" 即可（i686/aarch64/win/macos 都不含它）。
     ok = [h for h in hrefs
           if ("cp310" in h or "py3-none-any" in h)
-          and ("linux_x86_64" in h or "py3-none-any" in h)]
-    print(f"  cp310/linux 候选轮子: {len(ok)} 个（总链接 {len(hrefs)}）")
-    if pkg == "torch":
-        v240 = [h for h in ok if "torch-2.4.0" in h]
-        print(f"  其中 torch-2.4.0: {len(v240)} 个")
-        for h in v240[:6]:
-            print("    ", h.split("#")[0].split("/")[-1])
-        if not v240:
-            print("    ⚠️ 内网源没有 torch 2.4.0 的 cp310 轮子——最近几个版本:")
-            for h in ok[-6:]:
-                print("    ", h.split("#")[0].split("/")[-1])
+          and ("x86_64" in h or "py3-none-any" in h)]
+    print(f"  cp310/x86_64 候选轮子: {len(ok)} 个（总链接 {len(hrefs)}）")
 
-    # 拿最后一个候选测吞吐（通常是最新版，体积有代表性）
+    names = [h.split("#")[0].split("/")[-1] for h in ok]
+    vers = sorted({n.split("-")[1] for n in names if n.startswith(pkg + "-")})
+    print(f"  可用版本(尾 12): {vers[-12:]}")
+    if pkg == "torch":
+        print(f"  有 2.4.0 吗: {'✅' if '2.4.0' in vers else '❌ 需要改钉版本'}")
+        for n in [n for n in names if n.startswith("torch-2.4.0")][:4]:
+            print("    ", n)
+
+    # 挑一个体积有代表性的测吞吐：torch 用 2.4.0 的真轮子，其余用最新版
     if ok:
-        target = urllib.parse.urljoin(url, ok[-1].split("#")[0])
+        pref = [h for h in ok if f"{pkg}-2.4.0" in h] if pkg == "torch" else []
+        target = urllib.parse.urljoin(url, (pref or ok)[-1].split("#")[0])
         try:
             t0, got = time.time(), 0
             with fetch(target, timeout=20) as r:
@@ -71,6 +73,27 @@ for pkg in ("torch", "deepspeed", "transformers"):
                 print(f"  测速 {name}: ❌ 未取到数据")
         except Exception as e:
             print(f"  测速失败: {type(e).__name__}: {str(e)[:80]}")
+PY
+
+sec "1b. pip 自举直链（apt 装不了 python3.10-venv 时走这条）"
+# pip 的 wheel 本身就是可执行 zipapp：python pip-XX.whl/pip install ...
+# 所以只要能 wget 到它，就能在 --without-pip 的 venv 里把 pip 装起来，
+# 全程走内网直连，不碰 apt、不碰日本代理。
+python3 - <<'PY' 2>&1
+import re, urllib.request, urllib.parse
+INDEX = "https://pypi.corp.kuaishou.com/kuaishou/prod/+simple/"
+for pkg, want in (("pip", "24."), ("setuptools", "7"), ("wheel", "0.4")):
+    try:
+        url = urllib.parse.urljoin(INDEX, f"{pkg}/")
+        req = urllib.request.Request(url, headers={"User-Agent": "pip/24.0"})
+        html = urllib.request.urlopen(req, timeout=20).read().decode("utf-8", "ignore")
+        cands = [h.split("#")[0] for h in re.findall(r'href="([^"]+)"', html)
+                 if h.split("#")[0].endswith("-py3-none-any.whl")]
+        pick = [c for c in cands if f"/{pkg}-{want}" in c or c.split("/")[-1].startswith(f"{pkg}-{want}")]
+        chosen = (pick or cands)[-1]
+        print(f"  {pkg:<11} {urllib.parse.urljoin(url, chosen)}")
+    except Exception as e:
+        print(f"  {pkg:<11} ❌ {type(e).__name__}: {str(e)[:70]}")
 PY
 
 sec "2. apt 能否装上 python3.10-venv（venv 缺 ensurepip 的正规解法）"
