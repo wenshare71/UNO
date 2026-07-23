@@ -156,9 +156,69 @@ echo "--- dreambooth（submodule 状态是 - 但文件已拷入，不要再 git 
 echo "  subject 目录数: $(ls -d datasets/dreambooth/dataset/*/ 2>/dev/null | wc -l | tr -d ' ')"
 echo "  抽查图片数    : $(find datasets/dreambooth/dataset -name '*.jpg' -o -name '*.png' 2>/dev/null | wc -l | tr -d ' ')"
 echo "--- HF 缓存（若旧机器权重已拷入会显示在这里）---"
+echo "  HF_HOME=${HF_HOME:-<未设置，默认 ~/.cache/huggingface>}"
 for d in "$HOME/.cache/huggingface/hub" /root/.cache/huggingface/hub "${HF_HOME:-}/hub"; do
     [ -d "$d" ] && { echo "  $d:"; du -sh "$d"/models--* 2>/dev/null | head -10; }
 done
+
+sec "5b. 权重全盘定位（拷到非默认路径时，上面那节会假装什么都没有）"
+# 只按目录名找，不遍历文件内容，避免在 P 级 ceph 上跑飞。
+# maxdepth 6 足够覆盖 <root>/.cache/huggingface/hub/models--org--name。
+for root in "$HOME" /code /root /tmp; do
+    [ -d "$root" ] || continue
+    echo "--- 扫描 $root ---"
+    timeout 120 find "$root" -maxdepth 6 -type d \
+        \( -name 'models--*' -o -iname '*FLUX.1-dev*' -o -iname 'xflux_text_encoders' \) \
+        -not -path '*/.git/*' 2>/dev/null | head -20
+done
+echo "--- 散装权重文件（没走 HF 缓存、直接拷 safetensors 的情况）---"
+for root in "$HOME" /code; do
+    [ -d "$root" ] || continue
+    timeout 120 find "$root" -maxdepth 5 -type f -size +1G \
+        \( -name '*.safetensors' -o -name '*.sft' -o -name '*.ckpt' \) \
+        -not -path '*/log/*' 2>/dev/null | head -20
+done
+
+sec "5c. UNO-1M 自洽性：labels 里引用的图片是否真的在盘上"
+# 只有 6.1G 图片而 labels 是全量的话，dataloader 会在随机取到缺失样本时才崩，
+# 训练跑几百步之后炸最难查——所以现在先抽 200 条对一遍。
+python3 - <<'PY' 2>&1
+import json, os, glob, random
+cands = sorted(glob.glob("datasets/UNO-1M/*.json"))
+if not cands:
+    print("  ❌ datasets/UNO-1M 下没有任何 json —— labels 还没拷过来")
+    raise SystemExit
+for p in cands:
+    print(f"  发现 {p}  ({os.path.getsize(p)/1e6:.0f} MB)")
+# 优先检查转换后的（训练真正吃的那份）
+pick = next((p for p in cands if "convert" in p), cands[0])
+print(f"  抽查: {pick}")
+try:
+    with open(pick) as f:
+        data = json.load(f)
+except Exception as e:
+    print(f"  ❌ 读不动: {type(e).__name__}: {e}")
+    raise SystemExit
+print(f"  条目总数: {len(data)}")
+root = os.path.dirname(pick)
+random.seed(0)
+sample = random.sample(data, min(200, len(data)))
+miss_tgt = miss_ref = 0
+for it in sample:
+    t = it.get("image_tgt_path")
+    if t and not os.path.exists(os.path.join(root, t)):
+        miss_tgt += 1
+    for r in it.get("image_paths", []) or ([it["image_path"]] if "image_path" in it else []):
+        if not os.path.exists(os.path.join(root, r)):
+            miss_ref += 1
+            break
+n = len(sample)
+print(f"  抽样 {n} 条: 目标图缺失 {miss_tgt} ({miss_tgt/n:.0%})，参考图缺失 {miss_ref} ({miss_ref/n:.0%})")
+if miss_tgt or miss_ref:
+    print("  ⚠️  labels 是全量但图片只拷了一部分 —— 训练前必须按实际存在的图片重新过滤 labels")
+else:
+    print("  ✅ 抽样全部命中")
+PY
 
 sec "6. 探测完成"
 echo "把 /tmp/probe_net.txt 完整贴回即可。"
