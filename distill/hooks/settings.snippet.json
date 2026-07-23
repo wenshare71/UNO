@@ -1,0 +1,39 @@
+{
+  "_comment": "合并进远程机器的 UNO/.claude/settings.local.json。路径写绝对路径或用 $CLAUDE_PROJECT_DIR。",
+  "permissions": {
+    "deny": [
+      "Bash(git push --force:*)",
+      "Bash(git push -f:*)",
+      "Bash(git push upstream:*)",
+      "Bash(git add -f:*)",
+      "Bash(git reset --hard:*)",
+      "Bash(git rebase:*)",
+      "Bash(kill:*)",
+      "Bash(pkill:*)",
+      "Bash(nvidia-smi -r:*)",
+      "Bash(nvidia-smi --gpu-reset:*)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/distill/hooks/guard_slow_bash.py\""
+          }
+        ]
+      },
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/distill/hooks/guard_silence.py\""
+          }
+        ]
+      }
+    ]
+  }
+}
