@@ -23,7 +23,7 @@ cat distill/hooks/settings.snippet.json   # 按需合并进 .claude/settings.loc
 
 | 层 | 机制 | 管什么 | 特点 |
 |---|---|---|---|
-| 1 | `permissions.deny` | 绝对禁止的命令(force push、kill 别人的进程、`git add -f`) | 零代码,拒绝彻底,但只能按前缀匹配 |
+| 1 | `permissions.deny` | **写/改 `.py` `.sh`(手册 §2.0:代码由 Opus 写)**、force push、kill 别人的进程、`git add -f` | 零代码,拒绝彻底,但只按模式匹配 |
 | 2 | `PreToolUse` hook | 前台长命令、静音下载、沉默过久 | 能看到完整参数并给出**为什么被拒**,agent 会照着改 |
 | 3 | `UNO/CLAUDE.md` | 铁律摘要 + 指向手册 | 常驻上下文,影响判断而非阻断动作 |
 
@@ -45,6 +45,13 @@ cat distill/hooks/settings.snippet.json   # 按需合并进 .claude/settings.loc
 2. **拒绝时必须给出可执行的改法。** 只说"不许这样"会让 agent 去猜、去绕
    (比如把 `wget` 换个写法躲开正则),那比原来的问题更糟。
    每条 deny 理由都要写清楚:违反了哪条、为什么这条存在、具体改成什么。
+
+## 关于「不许写代码」这条的边界
+
+`Edit(**/*.py)` / `Write(**/*.py)` 挡的是工具层。**它挡不住 `cat > x.py <<EOF` 这种
+绕道**,也没打算挡——按上面的原则 2,这是纠正习惯的机制,不是沙箱。
+真正的约束在手册 §2.0(R0),deny 规则只是让"顺手改一行"这个动作有明确的摩擦感,
+提醒 agent 它正在越界。远程 agent 是合作者不是对手,不需要按对抗模型设计。
 
 ## 调阈值
 

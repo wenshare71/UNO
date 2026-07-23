@@ -28,10 +28,14 @@
 6. **方案**:复刻 stage-2——官方 full-attention UNO 当 teacher,在 dreambooth 训练
    subject 上合成多主体数据,混入续训。
 
-**协作约束**:远程只走 git(origin=wenshare71 fork 唯一推送目标,upstream 只读);
-大批图片/数据留远程,只 commit 元数据、统计与抽样拼图。
-**本地无法 ssh 到 H800**,实验由该机器上的 MiniMax-M3 agent 执行——它的行动边界
-(什么自己修、什么必须上报)和诊断包格式见 **`distill/REMOTE_AGENT_HANDBOOK.md`**,
+**协作约束**:**本地无法 ssh 到 H800**,且**该机器 push 不出去**(代理放行 GET、
+吃掉 POST),所以通道是单向的:本地 push 到 origin → H800 `git pull`;
+反向只能由 H800 上的 agent **打印文本、经用户转达**。大批图片/数据留在远程,
+只交付统计、数字与文字描述(图我看不到)。
+
+**分工(固定)**:**代码全部由本地(Opus)编写**,H800 上的 MiniMax-M3 agent
+**只负责运行脚本、观察现象、回传信息**,不写也不改 `.py`/`.sh`。
+它的完整行动边界、诊断包格式与 hooks 安装见 **`distill/REMOTE_AGENT_HANDBOOK.md`**,
 执行前必读。
 
 **运行环境** [已验证,来自 `docs/H800_REBUILD.md` 实测]:8×H800(143 GB/卡,sm_90),
