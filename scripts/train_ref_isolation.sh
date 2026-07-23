@@ -4,9 +4,12 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-# RTX 4000 系列必须禁 P2P/IB（train.py 里也有兜底 setdefault）
-export NCCL_P2P_DISABLE=1
-export NCCL_IB_DISABLE=1
+# RTX 4000 系列必须禁 P2P/IB（train.py 里也有兜底 setdefault），故默认为 1。
+# 但 H800/A100 这类有 NVLink+IB 的机器禁掉等于自废武功（实测 NV18 全互联约
+# 478 GB/s，退回 PCIe 会拖慢 all-gather），所以允许外部 export 覆盖：
+#   NCCL_P2P_DISABLE=0 NCCL_IB_DISABLE=0 bash scripts/train_ref_isolation.sh
+export NCCL_P2P_DISABLE="${NCCL_P2P_DISABLE:-1}"
+export NCCL_IB_DISABLE="${NCCL_IB_DISABLE:-1}"
 export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 # train.py 顶层 import wandb，包必须已安装（pip install wandb）；disabled 表示不上报
 export WANDB_MODE="${WANDB_MODE:-disabled}"
