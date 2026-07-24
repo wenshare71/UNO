@@ -213,3 +213,5 @@ distill/shards/
 log/ref_distill/
 !scripts/h800_setup.log
 !/datasets/distill_multiref/images
+!/datasets/distill_multiref/images_textonly
+!/datasets/distill_multiref/board_floorline.png
