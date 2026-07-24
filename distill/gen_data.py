@@ -93,6 +93,36 @@ def load_classes(data_dir: str) -> dict[str, str]:
     return classes
 
 
+# DreamBooth 官方 prompts_and_classes.txt 的 object 场景后缀(前 20 条),逐字写死作金标准。
+# 为什么写死:dreambooth 数据在各机器上是**独立同步**的,源文件可能带 typo——2026-07-24
+# 实测某台 H800 上第 17 条 "...sidewalk in a crowded street" 少了空格变成 "...ina crowded",
+# teacher 收到坏 prompt(T5 把 "ina" tokenize 成怪 subword),8000 张跑完也看不出来。
+# 提取结果必须逐条匹配,否则 sys.exit:宁可启动炸,也不要静默生成一批和别处不一致的
+# 蒸馏数据——这和 held-out 泄漏是同一类风险(事后从结果里根本看不出来)。
+_GOLDEN_SCENE_SUFFIXES = [
+    "in the jungle",
+    "in the snow",
+    "on the beach",
+    "on a cobblestone street",
+    "on top of pink fabric",
+    "on top of a wooden floor",
+    "with a city in the background",
+    "with a mountain in the background",
+    "with a blue house in the background",
+    "on top of a purple rug in a forest",
+    "with a wheat field in the background",
+    "with a tree and autumn leaves in the background",
+    "with the Eiffel Tower in the background",
+    "floating on top of water",
+    "floating in an ocean of milk",
+    "on top of green grass with sunflowers around it",
+    "on top of a mirror",
+    "on top of the sidewalk in a crowded street",
+    "on top of a dirt road",
+    "on top of a white rug",
+]
+
+
 def load_scene_templates(data_dir: str) -> tuple[list[str], list[str]]:
     """抽出**场景**模板的后缀,丢掉单主体属性/换装模板(评审 B3)。
 
@@ -126,6 +156,15 @@ def load_scene_templates(data_dir: str) -> tuple[list[str], list[str]]:
     object_scene = object_all[:20]
     if len(object_scene) != 20:
         raise SystemExit(f"❌ object 场景模板应有 20 条,实际 {len(object_scene)}")
+    # 逐条比对金标准:任何一处不一致(typo、同步偏差)都在启动暴露,而不是喂给 teacher。
+    diff = [(i, g, o) for i, (g, o) in enumerate(zip(_GOLDEN_SCENE_SUFFIXES, object_scene)) if g != o]
+    if diff:
+        lines = "\n".join(f"    第 {i} 条: 期望 {g!r}\n            实得 {o!r}" for i, g, o in diff)
+        raise SystemExit(
+            f"❌ {path} 提取出的场景后缀与金标准不符({len(diff)} 条差异):\n{lines}\n"
+            "   源文件被改过或同步出偏差。修正源文件对应行(如补回缺失的空格),"
+            "或核对 _GOLDEN_SCENE_SUFFIXES。"
+        )
     return shared, object_scene
 
 
