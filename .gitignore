@@ -207,8 +207,9 @@ datasets/UNO-1M/
 # 连同 DINO 打分中间结果一起，都不该进 git——远程机器靠 git pull 同步代码，
 # 一次 `git add -A` 就会把它们推到 fork 上。清单 json 体积小但依赖本地图片，
 # 单独存在也无意义，一并忽略。
-datasets/distill_multiref/
+/datasets/distill_multiref/*
 distill/*.json
 distill/shards/
 log/ref_distill/
 !scripts/h800_setup.log
+!/datasets/distill_multiref/images
