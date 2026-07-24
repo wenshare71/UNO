@@ -185,6 +185,12 @@ class Flux(nn.Module):
         # concat ref_img/img
         img_end = img.shape[1]
         ref_lens: list[int] = []
+        # 空 ref 序列 → 归一化成 None(text-only 地板线实验:不给任何 ref,等价纯 flux-dev
+        # 文生图)。若空 tuple/list 落进下面会命中 torch.cat(空序列) 而 RuntimeError;这里显式
+        # 判空退化为"无 ref"分支,数值上与 ref_img=None 完全一致。非空路径下面逐字不变,
+        # teacher/student 真实数据的数值不受任何影响。
+        if isinstance(ref_img, (tuple, list)) and len(ref_img) == 0:
+            ref_img = None
         if ref_img is not None:
             if isinstance(ref_img, tuple) or isinstance(ref_img, list):
                 ref_lens = [r.shape[1] for r in ref_img]

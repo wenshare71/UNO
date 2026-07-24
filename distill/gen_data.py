@@ -443,6 +443,12 @@ def main():
     p.add_argument("--dry_run", action="store_true",
                    help="不加载模型、不写任何文件,只枚举任务并打印统计表")
     p.add_argument("--merge", action="store_true", help="合并各 shard 的 manifest")
+    # 文本先验地板线(诊断,非蒸馏数据):同样的 prompt+seed,但**不给 ref 图**,等价纯
+    # flux-dev 文生图。产出写到 images_textonly/ 与 manifest_textonly_*,绝不碰真正的
+    # teacher 图/manifest;do_merge 的正则只匹配 manifest_shard*,textonly 不会被并进去。
+    # 用途见 distill/floor_line.py:证明 teacher 的身份保真确实来自 ref 而非文本蒙对。
+    p.add_argument("--text_only", action="store_true",
+                   help="不给 ref 的纯文生图地板线(诊断用),写到 images_textonly/")
     args = p.parse_args()
 
     if args.merge:
@@ -480,20 +486,29 @@ def main():
     if args.limit:
         mine = mine[:args.limit]
 
-    img_dir = os.path.join(args.out_dir, "images")
+    # text-only 地板线:同 prompt/seed、无 ref,写到独立子目录与独立 manifest 前缀,
+    # 与真正的 teacher 产出物理隔离(既不覆盖图、也不会被 do_merge 并进 manifest_raw)。
+    subdir = "images_textonly" if args.text_only else "images"
+    name_prefix = "textonly_" if args.text_only else ""
+    if args.text_only:
+        for t in mine:
+            t["image_tgt_path"] = f"{subdir}/{t['idx']:06d}.jpg"
+
+    img_dir = os.path.join(args.out_dir, subdir)
     os.makedirs(img_dir, exist_ok=True)
     done_before = sum(1 for t in mine
                       if already_done(os.path.join(args.out_dir, t["image_tgt_path"])))
 
     # 启动自检摘要:让"任务数不对"这种致命错误在第一秒暴露,而不是等跑完
     tag = f"shard {args.shard_idx}/{args.num_shards}"
-    print(f"[{datetime.now():%H:%M:%S}] === M1 gen_data 启动 ===", flush=True)
+    mode = "text-only 地板线(纯文生图,无 ref)" if args.text_only else "teacher(full attention + ref)"
+    print(f"[{datetime.now():%H:%M:%S}] === M1 gen_data 启动 | {mode} ===", flush=True)
     print(f"  {tag} | 全局任务 {len(tasks)} → 本 shard {len(mine)} 条 "
           f"(断点续跑已完成 {done_before},待跑 {len(mine) - done_before})", flush=True)
-    print(f"  teacher: {args.model_type} offload={args.offload} ref_size={args.ref_size} "
+    print(f"  {args.model_type} offload={args.offload} ref_size={args.ref_size} "
           f"steps={args.num_steps} guidance={args.guidance} {args.width}x{args.height}", flush=True)
     print(f"  输出: {img_dir} | manifest: "
-          f"{args.out_dir}/manifest_shard{args.shard_idx}.json", flush=True)
+          f"{args.out_dir}/manifest_{name_prefix}shard{args.shard_idx}.json", flush=True)
 
     # ---------- 加载 teacher ----------
     # teacher = 官方 UNO dit_lora + full attention。UNOPipeline(only_lora=True) 挂上的
@@ -527,13 +542,16 @@ def main():
             continue
         try:
             refs = []
-            for rel in task["image_paths"]:
-                # image_paths 是相对 manifest 所在目录的(FluxPairedDatasetV2 的约定:
-                # image_root = os.path.dirname(json_file)),这里要还原成真实路径。
-                # normpath 是必须的:路径里的 `..` 在中间目录尚未创建时会让 os.path.exists
-                # 假阴性,归一化之后才是稳的
-                src = os.path.normpath(os.path.join(args.out_dir, rel))
-                refs.append(preprocess_ref(Image.open(src).convert("RGB"), args.ref_size))
+            if not args.text_only:
+                for rel in task["image_paths"]:
+                    # image_paths 是相对 manifest 所在目录的(FluxPairedDatasetV2 的约定:
+                    # image_root = os.path.dirname(json_file)),这里要还原成真实路径。
+                    # normpath 是必须的:路径里的 `..` 在中间目录尚未创建时会让 os.path.exists
+                    # 假阴性,归一化之后才是稳的
+                    src = os.path.normpath(os.path.join(args.out_dir, rel))
+                    refs.append(preprocess_ref(Image.open(src).convert("RGB"), args.ref_size))
+            # text-only 时 refs=[]:model.forward 把空 ref 归一化成 None → 纯 flux-dev 文生图。
+            # prompt/seed/steps/guidance/尺寸全部与 teacher 那次一致,唯一变量就是"有没有 ref"。
             img = pipeline(
                 prompt=task["prompt"], width=args.width, height=args.height,
                 guidance=args.guidance, num_steps=args.num_steps, seed=task["seed"],
@@ -570,15 +588,16 @@ def main():
                   f"ETA {left * rate / 60:.0f}m | skip {n_skip} | fail {len(fails)}", flush=True)
             t_last_log = now
             # 边跑边落盘:2–3 小时无人值守,被 kill 时不能把整个 manifest 丢掉
-            write_manifest(args.out_dir, args.shard_idx, manifest, fails)
+            write_manifest(args.out_dir, args.shard_idx, manifest, fails, name_prefix)
 
-    write_manifest(args.out_dir, args.shard_idx, manifest, fails)
+    write_manifest(args.out_dir, args.shard_idx, manifest, fails, name_prefix)
     elapsed = time.perf_counter() - t_start
     print(f"[{datetime.now():%H:%M:%S}] === {tag} 完成 ===", flush=True)
     print(f"  生成 {n_done} | 跳过 {n_skip} | 失败 {len(fails)} | "
           f"耗时 {elapsed / 60:.1f}m | 平均 {elapsed / max(n_done, 1):.2f} s/img", flush=True)
     if fails:
-        print(f"  失败明细见 {args.out_dir}/failures_shard{args.shard_idx}.json", flush=True)
+        print(f"  失败明细见 {args.out_dir}/failures_{name_prefix}shard{args.shard_idx}.json",
+              flush=True)
 
 
 def to_record(task: dict) -> dict:
@@ -598,9 +617,10 @@ def to_record(task: dict) -> dict:
     }
 
 
-def write_manifest(out_dir: str, shard_idx: int, manifest: list, fails: list) -> None:
-    for name, payload in ((f"manifest_shard{shard_idx}.json", manifest),
-                          (f"failures_shard{shard_idx}.json", fails)):
+def write_manifest(out_dir: str, shard_idx: int, manifest: list, fails: list,
+                   name_prefix: str = "") -> None:
+    for name, payload in ((f"manifest_{name_prefix}shard{shard_idx}.json", manifest),
+                          (f"failures_{name_prefix}shard{shard_idx}.json", fails)):
         if not payload and name.startswith("failures"):
             continue
         tmp = os.path.join(out_dir, name + ".tmp")
