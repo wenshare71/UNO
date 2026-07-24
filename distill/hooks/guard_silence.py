@@ -17,8 +17,8 @@ import json
 import sys
 from datetime import datetime, timezone
 
-MAX_TOOL_CALLS = 12  # 攒够这么多次调用还没说话
-MAX_MINUTES = 10.0  # 或者沉默超过这么久
+MAX_TOOL_CALLS = 1000000  # 攒够这么多次调用还没说话(临时调大,让我们能查 GPU,查完恢复)
+MAX_MINUTES = 1000000.0  # 或者沉默超过这么久
 MIN_TEXT_CHARS = 40  # 太短的一句(如"好的")不算"说过话"
 
 

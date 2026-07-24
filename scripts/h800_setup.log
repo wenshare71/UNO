@@ -305,3 +305,66 @@ Successfully installed huggingface-hub-1.24.0 tokenizers-0.22.2 transformers-5.1
 
 ⚠️ scripts/train_ref_isolation.sh 第 8-9 行硬编码了 NCCL_P2P_DISABLE=1 / NCCL_IB_DISABLE=1
    （那是 4090 的补丁），在这台机器上跑训练前必须改掉。详见 docs/H800_REBUILD.md。
+
+(.venv-uno) wuwenxuan@aiplatform-wlf3-ge90-26:~/UNO$ pip install transformers==4.43.3 tokenizers==0.19.1 huggingface_hub==0.36.2 diffusers==0.30.1
+Looking in indexes: https://pypi.corp.kuaishou.com/kuaishou/prod/+simple/
+Collecting transformers==4.43.3
+  Downloading https://pypi.corp.kuaishou.com/kuaishou/prod/transformers/4.43.3/transformers-4.43.3-py3-none-any.whl (9.4 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.4/9.4 MB 66.2 MB/s eta 0:00:00
+Collecting tokenizers==0.19.1
+  Downloading https://pypi.corp.kuaishou.com/kuaishou/prod/tokenizers/0.19.1/tokenizers-0.19.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.6 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.6/3.6 MB 116.3 MB/s eta 0:00:00
+Collecting huggingface_hub==0.36.2
+  Downloading https://pypi.corp.kuaishou.com/kuaishou/prod/huggingface-hub/0.36.2/huggingface_hub-0.36.2-py3-none-any.whl (566 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 566.4/566.4 kB 414.0 MB/s eta 0:00:00
+Requirement already satisfied: diffusers==0.30.1 in ./.venv-uno/lib/python3.10/site-packages (0.30.1)
+Requirement already satisfied: filelock in ./.venv-uno/lib/python3.10/site-packages (from transformers==4.43.3) (3.32.0)
+Requirement already satisfied: numpy>=1.17 in ./.venv-uno/lib/python3.10/site-packages (from transformers==4.43.3) (2.2.6)
+Requirement already satisfied: packaging>=20.0 in ./.venv-uno/lib/python3.10/site-packages (from transformers==4.43.3) (26.2)
+Requirement already satisfied: pyyaml>=5.1 in ./.venv-uno/lib/python3.10/site-packages (from transformers==4.43.3) (6.0.3)
+Requirement already satisfied: regex!=2019.12.17 in ./.venv-uno/lib/python3.10/site-packages (from transformers==4.43.3) (2026.7.19)
+Requirement already satisfied: requests in ./.venv-uno/lib/python3.10/site-packages (from transformers==4.43.3) (2.34.2)
+Requirement already satisfied: safetensors>=0.4.1 in ./.venv-uno/lib/python3.10/site-packages (from transformers==4.43.3) (0.8.0)
+Requirement already satisfied: tqdm>=4.27 in ./.venv-uno/lib/python3.10/site-packages (from transformers==4.43.3) (4.69.0)
+Requirement already satisfied: fsspec>=2023.5.0 in ./.venv-uno/lib/python3.10/site-packages (from huggingface_hub==0.36.2) (2026.6.0)
+Requirement already satisfied: hf-xet<2.0.0,>=1.1.3 in ./.venv-uno/lib/python3.10/site-packages (from huggingface_hub==0.36.2) (1.5.2)
+Requirement already satisfied: typing-extensions>=3.7.4.3 in ./.venv-uno/lib/python3.10/site-packages (from huggingface_hub==0.36.2) (4.16.0)
+Requirement already satisfied: importlib-metadata in ./.venv-uno/lib/python3.10/site-packages (from diffusers==0.30.1) (9.0.0)
+Requirement already satisfied: Pillow in ./.venv-uno/lib/python3.10/site-packages (from diffusers==0.30.1) (12.3.0)
+Requirement already satisfied: zipp>=3.20 in ./.venv-uno/lib/python3.10/site-packages (from importlib-metadata->diffusers==0.30.1) (4.1.0)
+Requirement already satisfied: charset_normalizer<4,>=2 in ./.venv-uno/lib/python3.10/site-packages (from requests->transformers==4.43.3) (3.4.9)
+Requirement already satisfied: idna<4,>=2.5 in ./.venv-uno/lib/python3.10/site-packages (from requests->transformers==4.43.3) (3.18)
+Requirement already satisfied: urllib3<3,>=1.26 in ./.venv-uno/lib/python3.10/site-packages (from requests->transformers==4.43.3) (2.7.0)
+Requirement already satisfied: certifi>=2023.5.7 in ./.venv-uno/lib/python3.10/site-packages (from requests->transformers==4.43.3) (2026.6.17)
+Installing collected packages: huggingface_hub, tokenizers, transformers
+  Attempting uninstall: huggingface_hub
+    Found existing installation: huggingface_hub 1.24.0
+    Uninstalling huggingface_hub-1.24.0:
+      Successfully uninstalled huggingface_hub-1.24.0
+  Attempting uninstall: tokenizers
+    Found existing installation: tokenizers 0.22.2
+    Uninstalling tokenizers-0.22.2:
+      Successfully uninstalled tokenizers-0.22.2
+  Attempting uninstall: transformers
+    Found existing installation: transformers 5.14.1
+    Uninstalling transformers-5.14.1:
+      Successfully uninstalled transformers-5.14.1
+ERROR: pip's dependency resolver does not currently take into account allthe packages that are installed. This behaviour is the source of the following dependency conflicts.
+gradio 6.20.0 requires huggingface-hub<2.0,>=1.2.0, but you have huggingface-hub 0.36.2 which is incompatible.
+Successfully installed huggingface_hub-0.36.2 tokenizers-0.19.1 transformers-4.43.3
+
+[notice] A new release of pip is available: 24.3.1 -> 26.1.2
+[notice] To update, run: pip install --upgrade pip
+(.venv-uno) wuwenxuan@aiplatform-wlf3-ge90-26:~/UNO$ export HF_HOME=/code/uno/hf_cache HF_HUB_OFFLINE=1
+python -c "
+from uno.flux.util import load_t5, load_clip
+t5, clip = load_t5('cuda', max_length=512), load_clip('cuda')
+print('t5   dtype', next(t5.parameters()).dtype)
+print('clip dtype', next(clip.parameters()).dtype)
+e = t5(['a cat and a teapot in the jungle'])
+print('t5 out', tuple(e.shape), e.dtype, float(e.float().abs().mean()))
+"
+Loading checkpoint shards: 100%|███████████| 2/2 [00:00<00:00, 14.14it/s]
+t5   dtype torch.bfloat16
+clip dtype torch.bfloat16
+t5 out (1, 512, 4096) torch.bfloat16 0.06641239672899246
