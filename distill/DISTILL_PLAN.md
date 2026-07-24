@@ -195,6 +195,36 @@ python -c "import torch; m=torch.hub.load('facebookresearch/dino:main','dino_vit
 - 预期通过率 60–80% [假设]。明显更低时先看拼图找系统性原因(某类模板差?3-ref 差?),
   不要盲目降阈值。
 
+### 4.1 度量修订 v2(2026-07-24):整图 DINO 证伪,改为「定位 + 双侧裁剪」
+
+**上面各条里"整图 vs 整图算余弦"的口径已废弃**;backbone(dino_vits16)、复制不 import、
+min-over-refs 聚合、calibrate→人工定阈→threshold 的流程全部**保持不变**。
+
+证伪证据([已验证],16 张 smoke + text-only 地板线配对):
+- teacher 与 text-only(同 prompt/seed、不喂 ref)整图分数分布几乎重叠:中位差 +0.028,
+  6/16 反转(泛型物体比忠实复刻分还高),0/16 越过地板线;而 teacher 在读图有肉眼铁证
+  (000000 枣红背包连徽章、白标都复刻对了)——指标与视觉矛盾时,死的是指标;
+- 排序与人眼判读接近相反:视觉满分的 005500/006500 垫底,融合失败的 005000 排 14/16;
+- 根因:整图 CLS 特征测的是全局场景构图,多主体 + 丰富背景把主体信号稀释光
+  (绝对值 0.13–0.36,远低于单主体 DreamBench 的 0.6–0.8);**ref 侧同样被污染**
+  (backpack 的 ref 是"人背着包",人和天空占画面主导)。官方 eval 的整图口径是几百样本
+  × 全部视角求 mean 的 benchmark 级聚合,能让系统差异浮出噪声;逐样本判定不能沿用。
+
+v2 度量(presence + identity,实现见 `filter_data.py` 头注释):
+- **presence**:GroundingDino-tiny(`IDEA-Research/grounding-dino-tiny`,transformers
+  4.43.3 自带该架构,权重 ~0.7GB 需一次性预取)用类别词在生成图上开放词表检测;
+  无框 → 该主体判掉,sim=0.0;
+- **identity**:候选框 crop(12% padding)vs 该主体**全部参考视角**的主体 crop
+  (ref 侧同样检测裁剪去污染),DINO 余弦取 max over (框 × 视角);
+- 样本分仍为 min over subjects;`meta.det` 记录框数/置信度/胜出框(board 上叠红框核对),
+  `meta.metric = "v2-grounded-crop"` 版本标记让旧缓存自动失效;
+- `floor_line.py` 同步切 v2(与 filter_data 共用同一 ctx 打分,严格可比);
+- 已知盲区:同类双主体共用类别词的框归属、主体融合"两边中等分"——标定时人工盯;
+- v2 验收标准(在 16 张已人工判读的 smoke 上):003000/006000 的被掉主体无框记 0 垫底;
+  005500/006500/007000 不得落入下四分位;004500/005000 应落入下四分位;
+  地板线复验中 teacher 与 text-only 分布显著分开(中位差 ≥0.15 量级)。
+  **不达标 → 度量继续回炉,不带着测不准的尺子跑全量。**
+
 ---
 
 ## 5. M3:混合训练
