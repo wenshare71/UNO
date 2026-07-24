@@ -1,0 +1,1 @@
+$ CUDA_VISIBLE_DEVICES=0 python distill/gen_data.py --num_shards 500 --shard_idx 0

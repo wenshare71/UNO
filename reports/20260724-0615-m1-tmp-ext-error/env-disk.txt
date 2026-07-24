@@ -1,0 +1,3 @@
+Filesystem                                               Size  Used Avail Use% Mounted on
+10.80.201.108,10.84.154.28,10.84.170.20:/kaimm-distill/  3.0P  2.4P  651T  79% /kaimm-distill
+overlay                                                  3.5T  706G  2.9T  20% /

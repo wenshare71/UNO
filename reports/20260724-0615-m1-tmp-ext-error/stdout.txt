@@ -1,0 +1,125 @@
+[relay-connect] Handshake OK at version=0.1.0+46db28a33c24
+handle: term_3b43b012-2835-4105-8593-71ed4004b003
+status: running
+cursor: 151
+oldest cursor: 0
+latest cursor: 151
+
+n distill/gen_data.py --num_shards 500 --CUDA_VISIBLE_DEVICES=0 python distill/gen_data.py --num_shards 500 --shard_idx 0
+0.venv-uno) wuwenxuan@aiplatform-wlf3-ge90-26:~/UNO$ CUDA_VISIBLE_DEVICES=0 python distill/gen_data.py --num_shards 500 --shard_idx 0
+[13:49:57] === M1 gen_data 启动 ===
+  shard 0/500 | 全局任务 8000 → 本 shard 16 条 (断点续跑已完成 0,待跑 16)
+  teacher: flux-dev offload=False ref_size=512 steps=25 guidance=4.0 512x512
+  输出: datasets/distill_multiref/images | manifest: datasets/distill_multiref/manifest_shard0.json
+tokenizer_config.json: 100%|████| 905/905 [00:00<00:00, 7.58MB/s]
+vocab.json: 961kB [00:00, 3.03MB/s]
+merges.txt: 525kB [00:00, 4.12MB/s]
+special_tokens_map.json: 100%|██| 389/389 [00:00<00:00, 4.11MB/s]
+tokenizer.json: 2.22MB [00:00, 6.00MB/s]
+config.json: 4.52kB [00:00, 28.3MB/s]
+model.safetensors: 100%|████| 1.71G/1.71G [01:00<00:00, 28.3MB/s]
+tokenizer_config.json: 20.6kB [00:00, 364kB/s]
+spiece.model: 100%|████████████| 792k/792k [00:01<00:00, 518kB/s]
+added_tokens.json: 2.59kB [00:00, 18.7MB/s]
+special_tokens_map.json: 2.54kB [00:00, 18.2MB/s]
+config.json: 100%|██████████████| 782/782 [00:00<00:00, 8.06MB/s]
+model.safetensors.index.json: 19.9kB [00:00, 358kB/s]
+model-00001-of-00002.safetensors: 100%|█| 4.99G/4.99G [02:17<00:0
+model-00002-of-00002.safetensors: 100%|█| 4.53G/4.53G [02:01<00:0
+Downloading shards: 100%|█████████| 2/2 [04:20<00:00, 130.04s/it]
+Loading checkpoint shards: 100%|███| 2/2 [00:00<00:00,  9.10it/s]
+Traceback (most recent call last):
+  File "/kaimm-distill/wuwenxuan/UNO/.venv-uno/lib/python3.10/site-packages/huggingface_hub/utils/_http.py", line 403, in hf_raise_for_status
+    response.raise_for_status()
+  File "/kaimm-distill/wuwenxuan/UNO/.venv-uno/lib/python3.10/site-packages/requests/models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 401 Client Error: Unauthorized for url: https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/ae.safetensors
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/kaimm-distill/wuwenxuan/UNO/distill/gen_data.py", line 605, in <module>
+    main()
+  File "/kaimm-distill/wuwenxuan/UNO/distill/gen_data.py", line 504, in main
+    pipeline = UNOPipeline(args.model_type, torch.device("cuda"), offload=args.offload,
+  File "/kaimm-distill/wuwenxuan/UNO/uno/flux/pipeline.py", line 115, in __init__
+    self.ae = load_ae(model_type, device="cpu" if offload else self.device)
+  File "/kaimm-distill/wuwenxuan/UNO/uno/flux/util.py", line 400, in load_ae
+    ckpt_path = hf_hub_download(configs[name].repo_id_ae, configs[name].repo_ae)
+  File "/kaimm-distill/wuwenxuan/UNO/.venv-uno/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/kaimm-distill/wuwenxuan/UNO/.venv-uno/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 1014, in hf_hub_download
+    return _hf_hub_download_to_cache_dir(
+  File "/kaimm-distill/wuwenxuan/UNO/.venv-uno/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 1121, in _hf_hub_download_to_cache_dir
+    _raise_on_head_call_error(head_call_error, force_download, local_files_only)
+  File "/kaimm-distill/wuwenxuan/UNO/.venv-uno/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 1662, in _raise_on_head_call_error
+    raise head_call_error
+  File "/kaimm-distill/wuwenxuan/UNO/.venv-uno/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 1550, in _get_metadata_or_catch_error
+    metadata = get_hf_file_metadata(
+  File "/kaimm-distill/wuwenxuan/UNO/.venv-uno/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/kaimm-distill/wuwenxuan/UNO/.venv-uno/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 1467, in get_hf_file_metadata
+    r = _request_wrapper(
+  File "/kaimm-distill/wuwenxuan/UNO/.venv-uno/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 283, in _request_wrapper
+    response = _request_wrapper(
+  File "/kaimm-distill/wuwenxuan/UNO/.venv-uno/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 307, in _request_wrapper
+    hf_raise_for_status(response)
+  File "/kaimm-distill/wuwenxuan/UNO/.venv-uno/lib/python3.10/site-packages/huggingface_hub/utils/_http.py", line 420, in hf_raise_for_status
+    raise _format(GatedRepoError, message, response) from e
+huggingface_hub.errors.GatedRepoError: 401 Client Error. (Request ID: Root=1-6a62fe5e-565a059a06d1557d2d3a1481;e6e0209c-73b9-4312-b563-e2066515d00c)
+
+Cannot access gated repo for url https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/ae.safetensors.
+Access to model black-forest-labs/FLUX.1-dev is restricted. You must have access to it and be authenticated to access it. Please log in.
+ython distill/gen_data.py --num_shards 500 --shard_idx 0A_VISIBLE_DEVICES=0 py
+[14:09:28] === M1 gen_data 启动 ===
+  shard 0/500 | 全局任务 8000 → 本 shard 16 条 (断点续跑已完成 0,待跑 16)
+  teacher: flux-dev offload=False ref_size=512 steps=25 guidance=4.0 512x512
+  输出: datasets/distill_multiref/images | manifest: datasets/distill_multiref/manifest_shard0.json
+Loading checkpoint shards: 100%|██████████████| 2/2 [00:00<00:00, 10.48it/s]
+ae.safetensors: 100%|████████████████████| 335M/335M [00:58<00:00, 5.71MB/s]
+Init AE
+Init model
+flux1-dev.safetensors: 100%|███████████| 23.8G/23.8G [10:04<00:00, 39.4MB/s]
+dit_lora.safetensors: 100%|████████████| 1.91G/1.91G [00:48<00:00, 39.8MB/s]
+Loading lora
+Loading main checkpoint
+[14:21:49] teacher 就绪,耗时 738.9s
+100%|███████████████████████████████████████| 25/25 [00:05<00:00,  4.99it/s]
+[14:21:55] ❌ idx=0 backpack+cat — ValueError: unknown file extension: .tmp
+100%|███████████████████████████████████████| 25/25 [00:04<00:00,  5.03it/s]
+[14:22:00] ❌ idx=500 backpack+robot_toy — ValueError: unknown file extension: .tmp
+100%|███████████████████████████████████████| 25/25 [00:04<00:00,  5.02it/s]
+[14:22:05] ❌ idx=1000 cat+rc_car — ValueError: unknown file extension: .tmp
+100%|███████████████████████████████████████| 25/25 [00:04<00:00,  5.01it/s]
+[14:22:10] ❌ idx=1500 cat2+red_cartoon — ValueError: unknown file extension: .tmp
+100%|███████████████████████████████████████| 25/25 [00:04<00:00,  5.02it/s]
+[14:22:16] ❌ idx=2000 dog2+poop_emoji — ValueError: unknown file extension: .tmp
+100%|███████████████████████████████████████| 25/25 [00:04<00:00,  5.02it/s]
+[14:22:21] ❌ idx=2500 dog5+monster_toy — ValueError: unknown file extension: .tmp
+[14:22:21] shard 0/500 | 6/16 (37.5%) | 31.96 s/img | ETA 5m | skip 0 | fail 6
+100%|███████████████████████████████████████| 25/25 [00:04<00:00,  5.00it/s]
+[14:22:26] ❌ idx=3000 dog6+teapot — ValueError: unknown file extension: .tmp
+100%|███████████████████████████████████████| 25/25 [00:05<00:00,  4.99it/s]
+[14:22:31] ❌ idx=3500 dog8+robot_toy — ValueError: unknown file extension: .tmp
+100%|███████████████████████████████████████| 25/25 [00:04<00:00,  5.01it/s]
+[14:22:37] ❌ idx=4000 pink_sunglasses+red_cartoon — ValueError: unknown file extension: .tmp
+100%|███████████████████████████████████████| 25/25 [00:04<00:00,  5.02it/s]
+[14:22:42] ❌ idx=4500 rc_car+shiny_sneaker — ValueError: unknown file extension: .tmp
+100%|███████████████████████████████████████| 25/25 [00:04<00:00,  5.02it/s]
+[14:22:47] ❌ idx=5000 robot_toy+wolf_plushie — ValueError: unknown file extension: .tmp
+100%|███████████████████████████████████████| 25/25 [00:06<00:00,  3.84it/s]
+[14:22:54] ❌ idx=5500 backpack+dog5+wolf_plushie — ValueError: unknown file extension: .tmp
+[14:22:54] shard 0/500 | 12/16 (75.0%) | 65.11 s/img | ETA 4m | skip 0 | fail 12
+100%|███████████████████████████████████████| 25/25 [00:06<00:00,  3.84it/s]
+[14:23:01] ❌ idx=6000 cat+dog3+poop_emoji — ValueError: unknown file extension: .tmp
+100%|███████████████████████████████████████| 25/25 [00:06<00:00,  3.84it/s]
+[14:23:08] ❌ idx=6500 cat2+red_cartoon+vase — ValueError: unknown file extension: .tmp
+100%|███████████████████████████████████████| 25/25 [00:06<00:00,  3.84it/s]
+[14:23:15] ❌ idx=7000 dog6+rc_car+shiny_sneaker — ValueError: unknown file extension: .tmp
+100%|███████████████████████████████████████| 25/25 [00:06<00:00,  3.84it/s]
+[14:23:21] ❌ idx=7500 pink_sunglasses+rc_car+vase — ValueError: unknown file extension: .tmp
+[14:23:21] shard 0/500 | 16/16 (100.0%) | 92.49 s/img | ETA 0m | skip 0 | fail 16
+[14:23:21] === shard 0/500 完成 ===
+  生成 0 | 跳过 0 | 失败 16 | 耗时 1.5m | 平均 92.50 s/img
+  失败明细见 datasets/distill_multiref/failures_shard0.json
+(.venv-uno) wuwenxuan@aiplatform-wlf3-ge90-26:~/UNO$
