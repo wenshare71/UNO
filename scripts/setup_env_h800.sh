@@ -117,8 +117,8 @@ fi
 
 # --------------------------------------------------- 4. 先钉死版本，再装 UNO 本体
 step 4/7 "钉死 transformers / diffusers / accelerate"
-# 顺序很重要：先装精确版本，后面 `-e .[train]` 的 >= 约束已被满足，pip 不会再升级。
-# 反过来先装本体的话会拿到 transformers 5.x + diffusers 0.39，UNO 跑不起来。
+# 注意：这一步**兜不住**，`-e .[train]` 还会把 transformers 顶回 5.x，所以 step 6 后面
+# 有一次复钉。原因见 step 6.5 的注释。这里先装是为了让 step 5/6 的解析少走弯路。
 pip install transformers==4.43.3 diffusers==0.30.1 accelerate==1.1.1
 
 step 5/7 "安装 deepspeed 0.14.4"
@@ -133,6 +133,25 @@ fi
 
 step 6/7 "安装 UNO 本体"
 pip install -e ".[train]"
+
+# ------------------------------------------------------- 6.5 复钉（不可省）
+# 原先以为 step 4 先钉死、后面 `>=4.43.3` 已满足 pip 就不会再动它——实测是错的。
+# `pyproject.toml:32-34` 的 `huggingface-hub` 和 `gradio>=5.22.0` 都**没有上界**，
+# pip 给无上界的依赖取最新版，而 hf-hub 1.x 与 transformers 4.43.3 要求的
+# `huggingface-hub<1.0` 冲突。冲突时 pip 回溯约束最松的那个——transformers 写的是
+# `>=`，可以往上走，于是被顶到 5.14.1（h800_setup.log:211-261 实录）。
+# 旧机器是同一现象（setup.log.txt:48-54），当时也是靠"装完再降"解决的。
+#
+# 为什么必须降回去：`docs/smoke_test_report.md:28` 验证 D-1 teacher 配置时用的就是
+# 4.43.3。transformers 5.x 是大版本，`load_t5/load_clip` 传的 `torch_dtype=` 在 5.x
+# 已改名 `dtype=`——轻则报错，重则被当未知 kwarg 吞掉、T5 静默跑成 fp32。teacher
+# 数值一变，8000 张蒸馏数据就不是冒烟测过的那个 teacher 生成的了。
+#
+# 副作用：gradio 会报 incompatible。可以接受，gradio 只服务 app.py 的 demo，
+# 推理（inference.py / distill/gen_data.py）和训练（train.py）都不 import 它。
+step 6.5 "复钉 transformers / diffusers（-e . 会把它们顶上去）"
+pip install transformers==4.43.3 tokenizers==0.19.1 \
+            huggingface_hub==0.36.2 diffusers==0.30.1
 
 # -------------------------------------------- 7.（可选）权重搬到本地 NVMe
 if [ "${COPY_TO_LOCAL:-0}" = "1" ]; then
@@ -161,8 +180,15 @@ if torch.cuda.is_available():
     p = torch.cuda.get_device_properties(0)
     print(f"  gpu          : {n} x {p.name}  sm_{p.major}{p.minor}  {p.total_memory/2**30:.0f} GiB")
     assert (p.major, p.minor) >= (9, 0), "算力低于 sm_90，与本脚本假设不符"
-print(f"  transformers : {transformers.__version__}" + ("  ✅" if transformers.__version__ == "4.43.3" else "  ⚠️ 期望 4.43.3"))
-print(f"  diffusers    : {diffusers.__version__}" + ("  ✅" if diffusers.__version__ == "0.30.1" else "  ⚠️ 期望 0.30.1"))
+# 这两个版本是**硬门禁**，不是提示。teacher 的数值一致性挂在上面，
+# 之前只打 ⚠️ 不拦，结果 transformers 被顶到 5.14.1 跑完整个 setup 都没人发现。
+bad = []
+for mod, want in ((transformers, "4.43.3"), (diffusers, "0.30.1")):
+    got = mod.__version__
+    ok = got == want
+    print(f"  {mod.__name__:<13}: {got}" + ("  ✅" if ok else f"  ❌ 必须是 {want}"))
+    if not ok:
+        bad.append(f"{mod.__name__} {got} != {want}")
 print(f"  accelerate   : {accelerate.__version__}")
 try:
     import deepspeed; print(f"  deepspeed    : {deepspeed.__version__}")
@@ -173,6 +199,13 @@ hub = os.path.join(os.environ["HF_HOME"], "hub")
 repos = sorted(d for d in os.listdir(hub) if d.startswith("models--")) if os.path.isdir(hub) else []
 print(f"  HF_HOME      : {os.environ['HF_HOME']}  ({len(repos)} 个模型仓库)")
 for r in repos: print(f"                 {r}")
+if bad:
+    raise SystemExit(
+        "\n❌ 版本门禁未通过：" + "；".join(bad) +
+        "\n   手动修：pip install transformers==4.43.3 tokenizers==0.19.1 "
+        "huggingface_hub==0.36.2 diffusers==0.30.1"
+        "\n   （gradio 会报 incompatible，可忽略——它只服务 app.py）"
+    )
 PY
 
 cat <<EOF

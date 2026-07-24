@@ -85,10 +85,19 @@ COPY_TO_LOCAL=1 bash scripts/setup_env_h800.sh
    pip 的 wheel 本身是可执行 zipapp，`python pip-24.3.1.whl/pip install pip-24.3.1.whl` 即可自举，
    全程走内网直连，不碰 apt、不碰代理。
 4. **装 PyTorch 2.4.0** —— 内网源的 `torch-2.4.0-cp310-cp310-manylinux1_x86_64.whl`，241.91 MB/s。
-5. **先钉死 transformers==4.43.3 / diffusers==0.30.1** —— 顺序关键。
-   `pyproject.toml` 写的是开区间 `transformers>=4.43.3` / `diffusers>=0.30.1`，
-   先装 `-e ".[train]"` 会拉到 5.x / 0.39（冒烟测试踩过）。先装精确版本，
-   后续 `>=` 约束已满足，pip 不会再升级。
+5. **钉死 transformers==4.43.3 / diffusers==0.30.1，而且要钉两次**（step 4 + step 6.5）。
+   ~~先装精确版本，后续 `>=` 约束已满足，pip 不会再升级。~~ **这条原先的说法是错的**，
+   2026-07-24 在 ge90-26 上实测被推翻（`scripts/h800_setup.log:211-261`）：
+   `pyproject.toml:32-34` 的 `huggingface-hub` 和 `gradio>=5.22.0` **都没有上界**，
+   pip 对无上界依赖取最新版 → hf-hub 1.24.0，与 transformers 4.43.3 要求的
+   `huggingface-hub<1.0` 冲突。冲突时 pip 回溯约束最松的那个，而 transformers 写的是
+   `>=4.43.3`（可以往上走），于是被顶到 5.14.1。所以 `-e ".[train]"` **之后**必须再降一次。
+   旧机器（4090）是同一现象，见 `scripts/setup.log.txt:48-54`。
+   降版本时 gradio 会报 incompatible —— 可接受，它只服务 `app.py` 的 demo，
+   `inference.py` / `distill/gen_data.py` / `train.py` 都不 import 它。
+   为什么不能凑合用 5.x：`docs/smoke_test_report.md:28` 验证 D-1 teacher 用的就是 4.43.3；
+   5.x 里 `from_pretrained` 的 `torch_dtype=` 已改名 `dtype=`，而 `uno/flux/util.py:384-390`
+   仍在传 `torch_dtype` —— 轻则报错，重则被当未知 kwarg 吞掉、T5 静默跑成 fp32。
 6. **装 deepspeed 0.14.4** —— PyPI 上只有 sdist，`setup.py` 会 `import torch`，
    pip 默认的构建隔离会在干净环境里重新下载一份 torch，故用 `--no-build-isolation`。
 7. **权重搬到 `/code/uno/hf_cache`** —— 加载 FLUX 54 GB：ceph 约 6.8 分钟，本地 NVMe 约 16 秒。
