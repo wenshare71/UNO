@@ -31,6 +31,7 @@ import random
 import re
 import sys
 import time
+import traceback
 from collections import Counter
 from datetime import datetime
 from itertools import combinations, product
@@ -542,12 +543,19 @@ def main():
             # 先写临时文件再 rename:rename 在同一文件系统上是原子的,
             # 这样被 kill 时不会留下半张图(虽然 already_done 也能兜住,但少一次重跑)
             tmp = tgt + ".tmp"
-            img.save(tmp, quality=args.jpeg_quality)
+            # 必须显式给 format:临时名以 .tmp 结尾,PIL 会拿这个后缀去推断输出格式,
+            # 而 .tmp 不在格式表里 → 抛 ValueError: unknown file extension: .tmp,每张图必炸。
+            # 所以按最终目标 tgt 的扩展名(.jpg → JPEG)决定格式,别让它看 tmp。
+            fmt = Image.registered_extensions()[os.path.splitext(tgt)[1].lower()]
+            img.save(tmp, format=fmt, quality=args.jpeg_quality)
             os.replace(tmp, tgt)
             manifest.append(to_record(task))
             n_done += 1
         except Exception as exc:  # noqa: BLE001 — 一个坏样本不许杀掉整个 shard
-            fails.append({"idx": task["idx"], "error": f"{type(exc).__name__}: {exc}"})
+            # tb 落进 failures json(不刷屏 stdout):8000 张无人值守跑时真出坏样本,
+            # 一行错误信息定位不到抛出帧,存完整栈帧才不用重跑一遍去复现。
+            fails.append({"idx": task["idx"], "error": f"{type(exc).__name__}: {exc}",
+                          "tb": traceback.format_exc()})
             # 失败当场打印,不攒到最后:攒起来的后果是跑了两小时才发现前十分钟就全在失败
             print(f"[{datetime.now():%H:%M:%S}] ❌ idx={task['idx']} "
                   f"{'+'.join(task['subjects'])} — {type(exc).__name__}: {exc}", flush=True)
