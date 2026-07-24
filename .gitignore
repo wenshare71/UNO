@@ -211,3 +211,4 @@ datasets/distill_multiref/
 distill/*.json
 distill/shards/
 log/ref_distill/
+!scripts/h800_setup.log

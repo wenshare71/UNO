@@ -28,7 +28,10 @@ cd "$REPO"
 VENV="${VENV:-$REPO/.venv-uno}"
 INTERNAL_HOST="pypi.corp.kuaishou.com"
 INTERNAL_INDEX="${INTERNAL_INDEX:-https://${INTERNAL_HOST}/kuaishou/prod/+simple/}"
-PIP_WHL_URL="${PIP_WHL_URL:-https://${INTERNAL_HOST}/kuaishou/prod/pip/24.3.1/pip-24.3.1-py3-none-any.whl}"
+PIP_VERSION="${PIP_VERSION:-24.3.1}"
+# 内网镜像已改用内容寻址（+f/<hash>/...），写死 prod/pip/<ver>/ 这种路径会 404，
+# 故留空默认、运行时从 simple 索引现解析；仍允许用 PIP_WHL_URL 手动覆盖。
+PIP_WHL_URL="${PIP_WHL_URL:-}"
 CEPH_HF_CACHE="${CEPH_HF_CACHE:-/kaimm-distill/wuwenxuan/hf_cache}"
 LOCAL_ROOT="${LOCAL_ROOT:-/code/uno}"
 
@@ -71,10 +74,25 @@ else
     # --without-pip 跳过 ensurepip 这一步；这正是这台机器 venv 失败的唯一原因
     python3 -m venv --without-pip "$VENV"
     echo "  venv 已建（无 pip），从内网源自举 pip"
-    # pip 的 wheel 本身是可执行 zipapp：把 whl 当目录传给 python 即可运行里面的 pip
-    wget -q -O /tmp/_pip.whl "$PIP_WHL_URL"
-    "$VENV/bin/python" /tmp/_pip.whl/pip install --no-index /tmp/_pip.whl
-    rm -f /tmp/_pip.whl
+    # pip 的 wheel 本身是可执行 zipapp：把 whl 当目录传给 python 即可运行里面的 pip。
+    # 地址优先用 PIP_WHL_URL；否则从 simple 索引现解析（镜像用内容寻址，不能写死路径）。
+    whl_url="$PIP_WHL_URL"
+    if [ -z "$whl_url" ]; then
+        href=$(wget -qO- "${INTERNAL_INDEX%/}/pip/" \
+            | grep -oE "href=\"[^\"]*pip-${PIP_VERSION//./\\.}-py3-none-any\.whl" \
+            | head -1 | sed -E 's/^href="//')
+        [ -n "$href" ] || { echo "❌ 内网 simple 索引里找不到 pip-${PIP_VERSION}（换 PIP_VERSION 或设 PIP_WHL_URL）"; exit 1; }
+        # href 形如 ../../../../root/pypi/+f/xxx/pip-...whl，逐级 ../ 恰好回到镜像根
+        whl_url="https://${INTERNAL_HOST}/$(echo "$href" | sed -E 's#^(\.\./)+##')"
+    fi
+    echo "  pip whl      : $whl_url"
+    # 必须用合规 wheel 文件名落盘：pip 24.3+ 会按 PEP 427 校验，_pip.whl 会被拒
+    whl_path="/tmp/$(basename "${whl_url%%#*}")"
+    wget -q -O "$whl_path" "$whl_url" \
+        || { echo "❌ 下载 pip whl 失败：$whl_url"; exit 1; }
+    [ -s "$whl_path" ] || { echo "❌ pip whl 下到 0 字节（源地址可能已失效）：$whl_url"; exit 1; }
+    "$VENV/bin/python" "$whl_path/pip" install --no-index "$whl_path"
+    rm -f "$whl_path"
     echo "  $("$VENV/bin/pip" --version)"
 fi
 
