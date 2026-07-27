@@ -67,8 +67,10 @@ ANIMAL_CLASSES = {"cat", "dog"}
 # 自然分布是 70%,压到 50% 会把仅有的 49 个非动物组合复用得太狠。
 TARGETS = {
     # (n_refs, has_animal): 目标条数
-    (2, True): 3180, (2, False): 2120,   # 合计 5300
-    (3, True): 1620, (3, False): 1080,   # 合计 2700
+    # 2026-07-27 调整:3-ref 占比 34% → 50%(用户决策,提高多参考泛化权重);
+    # 各组内动物占比仍按 D-2 保持 60/40。
+    (2, True): 2400, (2, False): 1600,   # 合计 4000
+    (3, True): 2400, (3, False): 1600,   # 合计 4000
 }
 DATA_DIR = "datasets/dreambooth/dataset"
 OUT_DIR = "datasets/distill_multiref"
