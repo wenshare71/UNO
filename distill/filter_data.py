@@ -55,6 +55,10 @@ G.from_pretrained('IDEA-Research/grounding-dino-tiny'); print('grounder ok')"
     # 2) 定好阈值后过滤,产出 manifest_filtered.json + 通过率
     python distill/filter_data.py --threshold 0.45
 
+    # 3)(2026-07-29 新增)人工标注直出:9000 条已全量人工标注,
+    #    自动阈值过滤被人工判定取代(见 DISTILL_PLAN §4 末段的实际修订)
+    python distill/filter_data.py --from_annotations datasets/distill_multiref/annotations.json
+
 分数写进 manifest_scored.json(meta.dino_sims / meta.min_ref_sim / meta.det),并带
 meta.metric 版本标记——旧的 v1 整图分数缓存会因标记不符自动作废重打,无需 --force_rescore。
 """
@@ -302,7 +306,7 @@ def score_records(records, out_dir, ctx):
 def _strata(records):
     """(标签, 子集) 列表:总体 + 按 n_refs + 按 has_animal,便于发现系统性偏差。"""
     out = [("全体", records)]
-    for n in (2, 3):
+    for n in (1, 2, 3):
         out.append((f"{n}-ref", [r for r in records if r["meta"]["n_refs"] == n]))
     out.append(("含动物", [r for r in records if r["meta"]["has_animal"]]))
     out.append(("纯物体", [r for r in records if not r["meta"]["has_animal"]]))
@@ -382,6 +386,43 @@ def make_board(records, out_dir, n, save_path):
 
 # ══════════════════════════════════════════════════════════ 过滤
 
+def apply_annotations(records, ann_path, out_dir):
+    """人工标注直出过滤:annotations.json 里 choice==pass 的样本保留。
+
+    2026-07-29 实际修订:9000 条数据已用 distill/viewer 全量人工标注(pass/fail),
+    人工判定取代自动阈值成为 M2 的过滤依据(v2 自动度量保留给 M4 评测指标用)。
+    标注键 = 样本 idx(即 images/{idx:06d}.jpg 的编号,与 meta.seed - base_seed 一致);
+    为防 viewer 的 idx 与 manifest 行序漂移,按 image_tgt_path 反查 idx,不依赖行号。
+    """
+    with open(ann_path, "rt", encoding="utf-8") as f:
+        payload = json.load(f)
+    anns = payload.get("annotations", payload)  # 兼容裸 dict 与 {"annotations": {...}}
+    passed_idx = {int(k) for k, v in anns.items() if v.get("choice") == "pass"}
+    if not passed_idx:
+        raise SystemExit(f"❌ {ann_path} 里没有任何 pass 标注——文件路径给错了?")
+
+    kept, n_fail, n_missing = [], 0, 0
+    for r in records:
+        # images/000123.jpg → 123;viewer 的标注键就是这套编号
+        stem = os.path.splitext(os.path.basename(r["image_tgt_path"]))[0]
+        idx = int(stem)
+        if idx in passed_idx:
+            kept.append(r)
+        elif str(idx) in anns:
+            n_fail += 1
+        else:
+            n_missing += 1
+    report = []
+    for label, sub in _strata(records):
+        if not sub:
+            continue
+        n_pass = sum(
+            1 for r in sub
+            if int(os.path.splitext(os.path.basename(r["image_tgt_path"]))[0]) in passed_idx)
+        report.append((label, n_pass, len(sub)))
+    return kept, report, n_fail, n_missing
+
+
 def apply_threshold(records, thr):
     """保留 min_ref_sim >= thr 的样本;返回 (kept, passrate_by_stratum)。"""
     kept = [r for r in records if r["meta"]["min_ref_sim"] >= thr]
@@ -437,6 +478,8 @@ def main():
                    help="出分位数表 + 拼图(不给 --threshold 时的默认行为)")
     p.add_argument("--threshold", type=float, default=None,
                    help="保留 min_ref_sim >= 阈值的样本,产出 manifest_filtered.json")
+    p.add_argument("--from_annotations", default=None, metavar="ANNOTATIONS_JSON",
+                   help="人工标注直出:保留标注为 pass 的样本,跳过 GPU 打分")
     p.add_argument("--board_n", type=int, default=40)
     p.add_argument("--board_out", default=None)
     p.add_argument("--filtered_out", default=None)
@@ -447,6 +490,23 @@ def main():
     p.add_argument("--force_rescore", action="store_true",
                    help="即使 scored 缓存已存在且口径一致也重新打分")
     args = p.parse_args()
+
+    # ---------- 人工标注直出(无需 GPU,优先级最高)----------
+    if args.from_annotations:
+        raw = load_manifest(args.manifest)
+        kept, report, n_fail, n_missing = apply_annotations(raw, args.from_annotations, args.out_dir)
+        filtered_out = args.filtered_out or os.path.join(args.out_dir, "manifest_filtered.json")
+        write_json(filtered_out, _clean(kept))
+        print("\n" + "=" * 72)
+        print(f"人工标注({args.from_annotations})过滤:pass 率")
+        for label, n_pass, n_tot in report:
+            print(f"  {label:<8} {n_pass:>5}/{n_tot:<5} ({n_pass / n_tot:.1%})")
+        print("=" * 72)
+        print(f"丢弃:标注 fail {n_fail} 条,无标注 {n_missing} 条")
+        if n_missing:
+            print(f"⚠️ {n_missing} 条样本无任何标注——viewer 标注是否已全量保存?")
+        print(f"→ {filtered_out}({len(kept)} 条)", flush=True)
+        return
 
     # ---------- 拿到带分数的记录:优先复用缓存,否则跑 GPU 打分 ----------
     records = None

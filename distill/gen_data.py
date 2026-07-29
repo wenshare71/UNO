@@ -69,6 +69,9 @@ TARGETS = {
     # (n_refs, has_animal): 目标条数
     # 2026-07-27 调整:3-ref 占比 34% → 50%(用户决策,提高多参考泛化权重);
     # 各组内动物占比仍按 D-2 保持 60/40。
+    # 2026-07-28 追加 1-ref:动物 470 为不重复视角下的理论上限,
+    # 物体 530,合计 1000 条追加到现有 8000 条之后。
+    (1, True): 470, (1, False): 530,     # 合计 1000
     (2, True): 2400, (2, False): 1600,   # 合计 4000
     (3, True): 2400, (3, False): 1600,   # 合计 4000
 }
@@ -235,16 +238,90 @@ def _stable_seed(*parts) -> int:
     return int.from_bytes(hashlib.md5(key).digest()[:8], "big")
 
 
+def _distribute_with_capacity(target: int, slots: list, capacity_fn, base_seed: int,
+                              n_refs: int, has_animal: bool) -> list[tuple]:
+    """按视角容量分层取样,返回 (slot..., view_index) 列表。
+
+    每个 slot 先分 ``base = target // len(slots)`` 个视角,但不超过其容量;
+    剩余样本从仍有剩余容量的 slot 中随机选取。用于 1-ref 时保证同一
+    (subject, template) 内视角不重复,同时不会因某个 subject 视角少而
+    触发容量不足的 SystemExit。
+    """
+    if not slots:
+        raise SystemExit(f"❌ ({n_refs}-ref, animal={has_animal}) 没有可用槽位")
+    base = target // len(slots)
+    picked: list[tuple] = []
+    used = {slot: 0 for slot in slots}
+    for slot in slots:
+        cap = capacity_fn(slot)
+        n = min(base, cap)
+        for v in range(n):
+            picked.append((*slot, v))
+        used[slot] = n
+
+    remain = target - len(picked)
+    if remain > 0:
+        rng = random.Random(_stable_seed("remainder", n_refs, has_animal, base_seed))
+        extra = []
+        for slot in slots:
+            cap = capacity_fn(slot)
+            extra.extend([slot] * (cap - used[slot]))
+        rng.shuffle(extra)
+        for slot in extra[:remain]:
+            picked.append((*slot, used[slot]))
+            used[slot] += 1
+
+    if len(picked) != target:
+        raise SystemExit(
+            f"❌ ({n_refs}-ref, animal={has_animal}) 目标 {target} 条,"
+            f"实际只分配到 {len(picked)} 条,视角容量不足"
+        )
+    return picked
+
+
+def build_1ref_tasks(classes, shared_tpl, object_tpl, subject_images, base_seed: int) -> list[dict]:
+    """枚举 1-ref 任务。动物组受视角容量限制,使用 _distribute_with_capacity。"""
+    tasks = []
+    animal_subjects = [s for s in TRAIN if classes[s] in ANIMAL_CLASSES]
+    object_subjects = [s for s in TRAIN if classes[s] not in ANIMAL_CLASSES]
+
+    for has_animal in (True, False):
+        subj_list = animal_subjects if has_animal else object_subjects
+        tpl = shared_tpl if has_animal else object_tpl
+        target = TARGETS[(1, has_animal)]
+        slots = [(s, t) for s in subj_list for t in range(len(tpl))]
+
+        picked = _distribute_with_capacity(
+            target, slots,
+            capacity_fn=lambda slot: len(subject_images[slot[0]]),
+            base_seed=base_seed, n_refs=1, has_animal=has_animal,
+        )
+
+        for subject, tpl_id, view_idx in picked:
+            tasks.append({
+                "subjects": [subject],
+                "view_idx": [view_idx],
+                "template_id": tpl_id,
+                "template": tpl[tpl_id],
+                "n_refs": 1,
+                "has_animal": has_animal,
+            })
+    return tasks
+
+
 def build_tasks(classes, shared_tpl, object_tpl, subject_images, base_seed: int) -> list[dict]:
-    """枚举全部 8000 条任务。纯函数、完全确定性:同样的输入永远得到同样的列表。
+    """枚举全部 9000 条任务(2-ref/3-ref 保持原有 8000 条,1-ref 追加 1000 条)。
 
     唯一性策略(DISTILL_PLAN.md §3):
       槽位 = (组合, 模板)。目标条数 > 槽位数时允许**同一槽位出现多条**,
       唯一性下沉到 (组合, 模板, 视角元组) 三元组——每条样本仍然全局唯一。
       每个 subject 有 4–6 张视角图,所以 2-ref 组合至少 16 种视角元组,
       而单槽位复用最多 3 次,取不重复的视角元组绰绰有余。
+
+    1-ref 单独枚举并追加到列表尾部,避免破坏已有 8000 条的 idx/seed/路径。
     """
-    tasks = []
+    # ---------- 2-ref / 3-ref:保持原逻辑,输出顺序与旧版本逐字节一致 ----------
+    tasks_23 = []
     for n_refs in (2, 3):
         # 合法组合:同 class 的不能凑一组("a dog and a dog"没有意义,也无法区分)
         valid = [c for c in combinations(TRAIN, n_refs)
@@ -282,7 +359,7 @@ def build_tasks(classes, shared_tpl, object_tpl, subject_images, base_seed: int)
                         f"❌ {combo} 需要 {need} 个不重复视角元组,但只有 {len(views)} 个")
                 rng = random.Random(_stable_seed("view", combo, tpl_id, base_seed))
                 chosen = rng.sample(views, need)[rep]
-                tasks.append({
+                tasks_23.append({
                     "subjects": list(combo),
                     "view_idx": list(chosen),
                     "template_id": tpl_id,
@@ -291,10 +368,9 @@ def build_tasks(classes, shared_tpl, object_tpl, subject_images, base_seed: int)
                     "has_animal": has_animal,
                 })
 
-    # 排序 + 编号:必须在分片之前定死,否则 8 个 shard 对 idx 的理解会不一致,
-    # 输出文件名和 seed 全乱。按内容排序而不是按生成顺序,保证与枚举实现解耦。
-    tasks.sort(key=lambda t: (t["n_refs"], t["subjects"], t["template_id"], t["view_idx"]))
-    for i, t in enumerate(tasks):
+    # 排序 + 编号:2/3-ref 内部必须在分片之前定死
+    tasks_23.sort(key=lambda t: (t["n_refs"], t["subjects"], t["template_id"], t["view_idx"]))
+    for i, t in enumerate(tasks_23):
         t["idx"] = i
         t["seed"] = base_seed + i
         t["prompt"] = make_prompt([classes[s] for s in t["subjects"]], t["template"])
@@ -303,7 +379,21 @@ def build_tasks(classes, shared_tpl, object_tpl, subject_images, base_seed: int)
             for s, v in zip(t["subjects"], t["view_idx"])
         ]
         t["image_tgt_path"] = f"images/{i:06d}.jpg"
-    return tasks
+
+    # ---------- 1-ref:追加到尾部,新 idx 8000..8999 ----------
+    tasks_1 = build_1ref_tasks(classes, shared_tpl, object_tpl, subject_images, base_seed)
+    offset = len(tasks_23)
+    for i, t in enumerate(tasks_1, start=offset):
+        t["idx"] = i
+        t["seed"] = base_seed + i
+        t["prompt"] = make_prompt([classes[s] for s in t["subjects"]], t["template"])
+        t["image_paths"] = [
+            f"../dreambooth/dataset/{s}/{subject_images[s][v]}"
+            for s, v in zip(t["subjects"], t["view_idx"])
+        ]
+        t["image_tgt_path"] = f"images/{i:06d}.jpg"
+
+    return tasks_23 + tasks_1
 
 
 def make_prompt(class_tokens: list[str], suffix: str) -> str:
@@ -331,7 +421,7 @@ def print_stats(tasks: list[dict], classes: dict[str, str]) -> None:
         print(f"  {n}-ref:{len(sub):>5}  含动物 {animal:>5} ({animal / len(sub):.1%})  "
               f"纯物体 {len(sub) - animal:>5}")
     total_animal = sum(t["has_animal"] for t in tasks)
-    print(f"  全体含动物比例:{total_animal / len(tasks):.1%}(目标 60%)")
+    print(f"  全体含动物比例:{total_animal / len(tasks):.1%}(目标约 60%)")
 
     print("-" * 72)
     print("槽位复用((组合,模板) 被用了几次):")
