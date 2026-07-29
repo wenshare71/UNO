@@ -302,6 +302,66 @@ v2 自动度量代码不废弃,保留给 M4 评测指标(§6 验收标准的 min
   batch_size 1 / grad_accum 2):**本实验唯一变量是数据**;
 - `--checkpointing_steps 1000`,新目录 `log/ref_distill` 不覆盖原实验。
 
+### 5.1 执行进度(2026-07-29)
+
+**脚本与数据已落地并验证**:
+
+- `distill/build_train_json.py` + `scripts/train_distill.sh` 已写好并实测;
+- `datasets/distill_multiref/train_mixed.json` 已生成(29,777 条, 11.84 MB)。
+
+**数据构成修正**(发现原计划 §5 把蒸馏 1-ref 当"多 ref"计权重的错误,已改):
+
+| 分类 | 唯一样本 | 流中条数 | 占比 |
+|---|---|---|---|
+| UNO-1M 单 ref(score≥4.0, split1-5 磁盘可得) | 16,966 | 16,966 | 56.9% |
+| 蒸馏 1-ref(in-domain 桥接, 不 oversample) | 900 | 900 | 3.0% |
+| **单 ref 小计** | **17,866** | **17,866** | **60.0%** |
+| 蒸馏 2-ref(oversample 5.3×) | 2,041 | 10,720 | 36.0% |
+| 蒸馏 3-ref(oversample 8.6×) | 138 | 1,191 | 4.0% |
+| **真·多 ref 小计** | **2,179** | **11,911** | **40.0%** |
+| **总计** | | **29,777** | |
+
+关键决策(2026-07-29):**蒸馏 1-ref 归入单 ref 池**(任务类型相同,都只有 1 张 ref,
+不教"多主体不丢"),只作 dreambooth 主体域的 in-domain 桥接;真·多 ref = 2-ref + 3-ref,
+mix 从 `60:30:10`(2r:1r:3r)改为 `90:10`(2r:3r)。修正后**真·多 ref 实占 40.0%**
+(修正前表面 40% 但实际仅 28%)。
+
+**磁盘可得性约束** [已验证]:UNO-1M 标签 101 万条引用 102 个 split,但磁盘只解压了
+split1-5(5 万对),score≥4.0 池实际 16,966 条(非计划假设的 404,259)。混比 40% 不变,
+实验核心结论不受影响——续训自 20000 步,单 ref 已学好,4000 步只补多 ref。
+
+**checkpoint 权限** [已验证]:`log/ref_isolation/checkpoint-20000` 是 root:root 600
+(rsync 残留),已 `sudo chown -R wuwenxuan:wuwenxuan log/ref_isolation` 改属主,
+加载验证 304 个 LoRA 张量(rank 512, down/up weights)正常。
+
+**100 步标定** [已验证 2026-07-29 17:00]:
+
+| 指标 | 实测 |
+|---|---|
+| 100 步总耗时 | 10 min 07 s(含 ~7 min 加载 + ~3 min 训练) |
+| 稳态速度 | 5.64 s/it |
+| loss 范围 | 0.295–0.753(单 ref ~0.3, 多 ref ~0.5–0.7, 混合波动符合预期) |
+| GPU 显存 | 25–28 GB/卡(H800 143 GB, 余 115 GB, 无 OOM 风险) |
+| GPU 利用率 | 8 卡 100% |
+| checkpoint 保存 | `checkpoint-100/{dit_lora.safetensors 3.6GB, optimizer.bin 1.4GB}` ✅ |
+| NCCL | P2P/IB 开启, NVLink 通信正常 |
+
+**正式训练已启动** [2026-07-29 17:04]:
+
+- tmux 会话 `m3`,`bash scripts/train_distill.sh`,日志 `log/ref_distill/train.log`;
+- 监控会话 `monitor`(claude code, 30 min 周期);
+- 预计 4000 步耗时 ~6.3 h(5.25 s/it 实测, 比标定略快),约 21:25 完成;
+- 产出 `log/ref_distill/checkpoint-{1000,2000,3000,4000}`。
+
+**4000 步训练覆盖估算**(有效 batch = 8卡×1×2 = 16, 4000 步消耗 64,000 样本):
+
+| 类型 | 唯一样本 | 每条被看次数 |
+|---|---|---|
+| UNO-1M 单 ref | 16,966 | ~2.1(防遗忘足够) |
+| 蒸馏 1-ref | 900 | ~2.1(轻度桥接) |
+| 蒸馏 2-ref | 2,041 | ~11.3(学进去足够) |
+| 蒸馏 3-ref | 138 | ~18.5(略多但降权保留) |
+
 ---
 
 ## 6. M4:评测
@@ -349,6 +409,9 @@ seed**(单 seed 肉眼判读信号弱,已有教训);指标 = 复用 M2 的 dino_
 | M3 | 4000 步,8 卡 | 数小时量级,以标定为准 | [假设] |
 | M4 | 60 任务 × 3 seed × 2 变体 = 360 张/次,跑 2 个 ckpt | 每次 1–1.5 h + 打分分钟级 | [假设] |
 
+**M3 实测** [已验证 2026-07-29]:100 步标定 10 min(含加载),稳态 5.64 s/it;正式 4000 步
+实测 5.25 s/it(NVLink 通信效率高于标定),预计 ~6.3 h 完成数据。
+
 并行轨道:M1/M2 在 H800 上进行的同时,旧 4090 机器把 ref_isolation 从 13000 训到
 20000 步;两条线在 M3 汇合。
 
@@ -365,6 +428,7 @@ seed**(单 seed 肉眼判读信号弱,已有教训);指标 = 复用 M2 的 dino_
    + 通过率。通过率 <50% 时按 §4 排查,不盲目放行。
 3. **M3**:混合 json → 100 步标定 → 4000 步训练,每 1000 步 checkpoint。
    产出:`log/ref_distill/checkpoint-{1000..4000}`。
+   **[进度 2026-07-29] 脚本+数据+标定已通过,正式训练 17:04 启动,预计 21:25 完成。**
 4. **M4**:ckpt-2000 与 ckpt-4000 各评一次(蒸馏前 ckpt-20000 同批评),产出
    results.json + 拼图 + min_ref_sim 对比表;若 2000→4000 仍在涨,酌情追加步数。
    **人工确认点③:对照 §6 验收标准判定实验成败。**
@@ -394,11 +458,16 @@ distill/
   REMOTE_AGENT_HANDBOOK.md # 远程 H800 上 MiniMax-M3 的行动边界与诊断包格式(执行前必读)
   gen_data.py              # M1:teacher 生成(新写 sharding、断点续跑、held-out 断言、逐样本容错)
   filter_data.py           # M2:dino_vits16 + min-over-refs 打分、calibrate、阈值过滤
-  build_train_json.py      # M3 前置:UNO-1M(score>=4.0)重转换 + 蒸馏数据 oversample 混合
+  build_train_json.py      # M3 前置:UNO-1M(score>=4.0)重转换 + 蒸馏数据 oversample 混合  [已落地 2026-07-29]
   build_eval_json.py       # M4 前置:held-out 60 条评测集(确定性选取)
   eval_multiref.py         # M4:3 seed + min_ref_sim + 拼图
 scripts/
-  train_distill.sh         # M3:训练脚本(注意 heredoc 与 accelerate 两处路径都要改)
+  train_distill.sh         # M3:训练脚本(注意 heredoc 与 accelerate 两处路径都要改)  [已落地 2026-07-29]
+datasets/distill_multiref/
+  train_mixed.json         # M3 混合训练集(29,777 条, 真·多ref 40%)  [已生成 2026-07-29]
+log/ref_distill/
+  train.log                # M3 正式训练日志  [运行中 2026-07-29]
+  checkpoint-{1000..4000}/ # M3 训练产物(预计 21:25 全部产出)
 ```
 
 所有脚本:中文 docstring(仿 multibanana_eval 风格)、`--dry_run`、失败打日志不静默。
