@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UNO Distill 人工质检面板</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="image-modal" id="image-modal" aria-hidden="true">
+  <div class="image-modal-tools" aria-label="Image zoom controls">
+    <button type="button" id="image-modal-zoom-out" aria-label="Zoom out">-</button>
+    <button type="button" id="image-modal-zoom-reset" aria-label="Reset zoom">100%</button>
+    <button type="button" id="image-modal-zoom-in" aria-label="Zoom in">+</button>
+  </div>
+  <button type="button" class="image-modal-close" id="image-modal-close" aria-label="Close image preview">&times;</button>
+  <button type="button" class="image-modal-nav image-modal-prev" id="image-modal-prev" aria-label="Previous image">&lsaquo;</button>
+  <img id="image-modal-img" alt="" draggable="false">
+  <button type="button" class="image-modal-nav image-modal-next" id="image-modal-next" aria-label="Next image">&rsaquo;</button>
+</div>
+
+<header>
+  <h1>UNO Distill 人工质检面板</h1>
+  <div class="meta" id="header-meta">加载中…</div>
+  <div class="anno-toolbar">
+    <span id="anno-progress">已标注 0 / 0</span>
+    <span id="anno-status"></span>
+    <label class="anno-toggle"><input type="checkbox" id="anno-only-todo"> 只看未标注</label>
+    <button type="button" id="anno-save">立即保存</button>
+    <button type="button" id="anno-jump-todo">跳到未标注</button>
+    <button type="button" id="anno-download">下载 JSON</button>
+    <label class="anno-toggle" style="border:1px solid #d8dee4;border-radius:6px;padding:5px 10px;">导入 JSON<input type="file" id="anno-import" accept="application/json" style="display:none"></label>
+    <button type="button" id="anno-clear">清空全部标注</button>
+  </div>
+</header>
+
+<main id="rows-container"></main>
+
+<script src="/static/viewer.js?v=4"></script>
+<script src="/static/anno.js?v=4"></script>
+</body>
+</html>
