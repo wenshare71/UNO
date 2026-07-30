@@ -1,0 +1,19 @@
+# 讨论元数据
+topic: "推理时参考图-主图注意力演化可视化"
+created: 2026-07-29
+current_round: 4
+status: deferred  # 等训练结束后启动
+
+max_stale_rounds: 3
+
+decisions:
+  - id: D1
+    title: "注意力演化可视化：总体方向确认（诊断+展示双用途，标准+kv_cache 双路径）"
+    status: confirmed
+    confirmed_at: 2
+    doc_path: "decisions/D01-attention-visualization-direction.md"
+  - id: D2
+    title: "第一轮诊断实验配置：三件套 × held-out DreamBooth × 5-8 样本"
+    status: confirmed
+    confirmed_at: 3
+    doc_path: "decisions/D02-first-round-experiment-config.md"
