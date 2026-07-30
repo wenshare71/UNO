@@ -217,6 +217,13 @@ datasets/UNO-1M/
 !/output/multibanana_eval_distill/results_add.json
 !/output/multibanana_eval_distill/add_*__*.png
 
+# M4 全量评测产物(2026-07-30,M4_EVAL_SPEC §5.2):进 results.json + JPEG 拼图;
+# 711 张全分辨率 PNG(~250 MB)留在 H800 供 viewer 人工判读,不进 git。
+!/output/eval_multiref/
+/output/eval_multiref/*
+!/output/eval_multiref/results.json
+!/output/eval_multiref/boards/
+
 # 蒸馏产物：M1 会在 8 卡上生成约 8000 张 target 图（数百 MB），
 # 连同 DINO 打分中间结果一起，都不该进 git——远程机器靠 git pull 同步代码，
 # 一次 `git add -A` 就会把它们推到 fork 上。清单 json 体积小但依赖本地图片，
