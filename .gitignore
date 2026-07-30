@@ -224,6 +224,18 @@ datasets/UNO-1M/
 !/output/eval_multiref/results.json
 !/output/eval_multiref/boards/
 
+# 注意力诊断产物(2026-07-30,D03):**全部进 git**,总量约 26 MB。
+# npz 是曲线/热力图数据(约 10.7 MB),本地 plot_attn.py 靠它出图,不进 git 就没法出报告;
+# PNG 是 32 张生成图,--verify_identical 要拿它与 eval_multiref 的同名图逐像素比;
+# report.html / summary.json 是本地生成的产物,一并留档。
+!/output/attn_diag/
+/output/attn_diag/*
+!/output/attn_diag/*.npz
+!/output/attn_diag/*__*.png
+!/output/attn_diag/results.json
+!/output/attn_diag/summary.json
+!/output/attn_diag/report.html
+
 # 蒸馏产物：M1 会在 8 卡上生成约 8000 张 target 图（数百 MB），
 # 连同 DINO 打分中间结果一起，都不该进 git——远程机器靠 git pull 同步代码，
 # 一次 `git add -A` 就会把它们推到 fork 上。清单 json 体积小但依赖本地图片，

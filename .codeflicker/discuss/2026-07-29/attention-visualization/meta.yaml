@@ -1,0 +1,25 @@
+# 讨论元数据
+topic: "推理时参考图-主图注意力演化可视化"
+created: 2026-07-29
+current_round: 5
+status: active  # R5 解冻:暂缓条件"训练结束"已满足,代码已落地待上机
+
+max_stale_rounds: 3
+
+decisions:
+  - id: D1
+    title: "注意力演化可视化：总体方向确认（诊断+展示双用途，标准+kv_cache 双路径）"
+    status: confirmed
+    confirmed_at: 2
+    doc_path: "decisions/D01-attention-visualization-direction.md"
+  - id: D2
+    title: "第一轮诊断实验配置：三件套 × held-out DreamBooth × 5-8 样本"
+    status: superseded_in_part  # 对比矩阵被 D3 改为四件套;样本来源与规模仍有效
+    confirmed_at: 3
+    superseded_by: D3
+    doc_path: "decisions/D02-first-round-experiment-config.md"
+  - id: D3
+    title: "解冻与实现落地：对 D01/D02 的四处修正（per-ref 边界／序列长度／第四变体／主体复制）"
+    status: confirmed
+    confirmed_at: 5
+    doc_path: "decisions/D03-implementation-corrections.md"
