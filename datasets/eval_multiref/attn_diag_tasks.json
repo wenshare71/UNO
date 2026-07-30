@@ -1,0 +1,310 @@
+{
+  "spec": "attn-diag-v1",
+  "source": "datasets/eval_multiref/eval_set.json",
+  "note": "注意力诊断样本;task_id/prompt/seed 与 eval_set.json 逐字一致,故产出图与 M4 Stage B 同一张。",
+  "variants": [
+    "official_full",
+    "ours_kv_pre",
+    "ours_kv_post4000",
+    "ours_iso_nocache"
+  ],
+  "picks": {
+    "S1": [
+      0,
+      11,
+      22,
+      33
+    ],
+    "S2": [
+      0,
+      1
+    ],
+    "S4": [
+      0,
+      1
+    ]
+  },
+  "n_tasks": 8,
+  "tasks": [
+    {
+      "task_id": "S1_000_s0",
+      "stratum": "S1",
+      "prompt": "a backpack and a stuffed animal in the jungle",
+      "image_paths": [
+        "../dreambooth/dataset/backpack_dog/00.jpg",
+        "../dreambooth/dataset/bear_plushie/01.jpg"
+      ],
+      "seed": 3500000,
+      "meta": {
+        "subjects": [
+          "backpack_dog",
+          "bear_plushie"
+        ],
+        "classes": [
+          "backpack",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 0,
+        "template": "in the jungle",
+        "views": [
+          "00.jpg",
+          "01.jpg"
+        ],
+        "seed_slot": 0
+      },
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_iso_nocache"
+      ]
+    },
+    {
+      "task_id": "S1_011_s0",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a candle with a tree and autumn leaves in the background",
+      "image_paths": [
+        "../dreambooth/dataset/bear_plushie/00.jpg",
+        "../dreambooth/dataset/candle/01.jpg"
+      ],
+      "seed": 3500110,
+      "meta": {
+        "subjects": [
+          "bear_plushie",
+          "candle"
+        ],
+        "classes": [
+          "stuffed animal",
+          "candle"
+        ],
+        "n_refs": 2,
+        "template_id": 11,
+        "template": "with a tree and autumn leaves in the background",
+        "views": [
+          "00.jpg",
+          "01.jpg"
+        ],
+        "seed_slot": 0
+      },
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_iso_nocache"
+      ]
+    },
+    {
+      "task_id": "S1_022_s0",
+      "stratum": "S1",
+      "prompt": "a bowl and a stuffed animal on the beach",
+      "image_paths": [
+        "../dreambooth/dataset/berry_bowl/00.jpg",
+        "../dreambooth/dataset/grey_sloth_plushie/01.jpg"
+      ],
+      "seed": 3500220,
+      "meta": {
+        "subjects": [
+          "berry_bowl",
+          "grey_sloth_plushie"
+        ],
+        "classes": [
+          "bowl",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 2,
+        "template": "on the beach",
+        "views": [
+          "00.jpg",
+          "01.jpg"
+        ],
+        "seed_slot": 0
+      },
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_iso_nocache"
+      ]
+    },
+    {
+      "task_id": "S1_033_s0",
+      "stratum": "S1",
+      "prompt": "a candle and a stuffed animal floating on top of water",
+      "image_paths": [
+        "../dreambooth/dataset/candle/00.jpg",
+        "../dreambooth/dataset/grey_sloth_plushie/01.jpg"
+      ],
+      "seed": 3500330,
+      "meta": {
+        "subjects": [
+          "candle",
+          "grey_sloth_plushie"
+        ],
+        "classes": [
+          "candle",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 13,
+        "template": "floating on top of water",
+        "views": [
+          "00.jpg",
+          "01.jpg"
+        ],
+        "seed_slot": 0
+      },
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_iso_nocache"
+      ]
+    },
+    {
+      "task_id": "S2_000_s0",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal in the jungle",
+      "image_paths": [
+        "../dreambooth/dataset/bear_plushie/00.jpg",
+        "../dreambooth/dataset/grey_sloth_plushie/01.jpg"
+      ],
+      "seed": 3600000,
+      "meta": {
+        "subjects": [
+          "bear_plushie",
+          "grey_sloth_plushie"
+        ],
+        "classes": [
+          "stuffed animal",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 0,
+        "template": "in the jungle",
+        "views": [
+          "00.jpg",
+          "01.jpg"
+        ],
+        "seed_slot": 0
+      },
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_iso_nocache"
+      ]
+    },
+    {
+      "task_id": "S2_001_s0",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal in the snow",
+      "image_paths": [
+        "../dreambooth/dataset/bear_plushie/00.jpg",
+        "../dreambooth/dataset/grey_sloth_plushie/01.jpg"
+      ],
+      "seed": 3600010,
+      "meta": {
+        "subjects": [
+          "bear_plushie",
+          "grey_sloth_plushie"
+        ],
+        "classes": [
+          "stuffed animal",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 1,
+        "template": "in the snow",
+        "views": [
+          "00.jpg",
+          "01.jpg"
+        ],
+        "seed_slot": 0
+      },
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_iso_nocache"
+      ]
+    },
+    {
+      "task_id": "S4_000_s0",
+      "stratum": "S4",
+      "prompt": "a backpack, a stuffed animal and a bowl in the jungle",
+      "image_paths": [
+        "../dreambooth/dataset/backpack_dog/00.jpg",
+        "../dreambooth/dataset/bear_plushie/01.jpg",
+        "../dreambooth/dataset/berry_bowl/02.jpg"
+      ],
+      "seed": 3800000,
+      "meta": {
+        "subjects": [
+          "backpack_dog",
+          "bear_plushie",
+          "berry_bowl"
+        ],
+        "classes": [
+          "backpack",
+          "stuffed animal",
+          "bowl"
+        ],
+        "n_refs": 3,
+        "template_id": 0,
+        "template": "in the jungle",
+        "views": [
+          "00.jpg",
+          "01.jpg",
+          "02.jpg"
+        ],
+        "seed_slot": 0
+      },
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_iso_nocache"
+      ]
+    },
+    {
+      "task_id": "S4_001_s0",
+      "stratum": "S4",
+      "prompt": "a can, a candle and a clock in the snow",
+      "image_paths": [
+        "../dreambooth/dataset/can/00.jpg",
+        "../dreambooth/dataset/candle/01.jpg",
+        "../dreambooth/dataset/clock/02.jpg"
+      ],
+      "seed": 3800010,
+      "meta": {
+        "subjects": [
+          "can",
+          "candle",
+          "clock"
+        ],
+        "classes": [
+          "can",
+          "candle",
+          "clock"
+        ],
+        "n_refs": 3,
+        "template_id": 1,
+        "template": "in the snow",
+        "views": [
+          "00.jpg",
+          "01.jpg",
+          "02.jpg"
+        ],
+        "seed_slot": 0
+      },
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_iso_nocache"
+      ]
+    }
+  ]
+}
