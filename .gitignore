@@ -204,16 +204,18 @@ datasets/UNO-1M/
 !/output/smoke_ref320_ckpt7000/results.json
 !/output/multibanana_eval/
 
-# M4 冒烟评测产物(2026-07-30):只进对比总览图 + results.json,
-# 单张 case*__*.png / row_*.png 留本地,不进 git(和单张对比图重复)。
+# M4 冒烟评测产物(2026-07-30):进对比总览图 + results.json + 单张原始生成图,
+# 只排除 row_*.png(单行拼图,与总览图重复)。
 !/output/smoke_eval/
 /output/smoke_eval/*
 !/output/smoke_eval/smoke_compare.png
 !/output/smoke_eval/results.json
+!/output/smoke_eval/case*__*.png
 !/output/multibanana_eval_distill/
 /output/multibanana_eval_distill/*
 !/output/multibanana_eval_distill/compare_add.png
 !/output/multibanana_eval_distill/results_add.json
+!/output/multibanana_eval_distill/add_*__*.png
 
 # 蒸馏产物：M1 会在 8 卡上生成约 8000 张 target 图（数百 MB），
 # 连同 DINO 打分中间结果一起，都不该进 git——远程机器靠 git pull 同步代码，
