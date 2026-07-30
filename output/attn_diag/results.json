@@ -1,0 +1,568 @@
+{
+  "spec": "attn-diag-v1",
+  "config": {
+    "tasks_json": "datasets/eval_multiref/attn_diag_tasks.json",
+    "pre_lora": "log/ref_isolation/checkpoint-20000/dit_lora.safetensors",
+    "post4000_lora": "log/ref_distill/checkpoint-4000/dit_lora.safetensors",
+    "nocache_bank": "pre",
+    "save_path": "output/attn_diag",
+    "spatial_blocks": "4,18,37,52",
+    "spatial_steps": "0,6,12,18,24",
+    "head_chunk": 4,
+    "model_type": "flux-dev",
+    "offload": false,
+    "width": 512,
+    "height": 512,
+    "ref_size": 512,
+    "num_steps": 25,
+    "guidance": 4.0,
+    "lora_rank": 512,
+    "dry_run": false,
+    "verify_identical": false
+  },
+  "records": [
+    {
+      "task_id": "S1_000_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "record_s": 8.236811145208776,
+      "ref_lens": [
+        1024,
+        1024
+      ],
+      "seq_len": 3584,
+      "q_len_by_step_head": [
+        3584,
+        3584,
+        3584
+      ]
+    },
+    {
+      "task_id": "S1_011_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "record_s": 8.089045161381364,
+      "ref_lens": [
+        1024,
+        1024
+      ],
+      "seq_len": 3584,
+      "q_len_by_step_head": [
+        3584,
+        3584,
+        3584
+      ]
+    },
+    {
+      "task_id": "S1_022_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "record_s": 8.09238433279097,
+      "ref_lens": [
+        1024,
+        1024
+      ],
+      "seq_len": 3584,
+      "q_len_by_step_head": [
+        3584,
+        3584,
+        3584
+      ]
+    },
+    {
+      "task_id": "S1_033_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "record_s": 8.091622970066965,
+      "ref_lens": [
+        1024,
+        1024
+      ],
+      "seq_len": 3584,
+      "q_len_by_step_head": [
+        3584,
+        3584,
+        3584
+      ]
+    },
+    {
+      "task_id": "S2_000_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "record_s": 8.092903929762542,
+      "ref_lens": [
+        1024,
+        1024
+      ],
+      "seq_len": 3584,
+      "q_len_by_step_head": [
+        3584,
+        3584,
+        3584
+      ]
+    },
+    {
+      "task_id": "S2_001_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "record_s": 8.091186226345599,
+      "ref_lens": [
+        1024,
+        1024
+      ],
+      "seq_len": 3584,
+      "q_len_by_step_head": [
+        3584,
+        3584,
+        3584
+      ]
+    },
+    {
+      "task_id": "S4_000_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "record_s": 10.349314945749938,
+      "ref_lens": [
+        1024,
+        1024,
+        1024
+      ],
+      "seq_len": 4608,
+      "q_len_by_step_head": [
+        4608,
+        4608,
+        4608
+      ]
+    },
+    {
+      "task_id": "S4_001_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "record_s": 10.363607376813889,
+      "ref_lens": [
+        1024,
+        1024,
+        1024
+      ],
+      "seq_len": 4608,
+      "q_len_by_step_head": [
+        4608,
+        4608,
+        4608
+      ]
+    },
+    {
+      "task_id": "S1_000_s0",
+      "variant": "ours_iso_nocache",
+      "status": "ok",
+      "record_s": 9.557195148430765,
+      "ref_lens": [
+        1024,
+        1024
+      ],
+      "seq_len": 3584,
+      "q_len_by_step_head": [
+        3584,
+        3584,
+        3584
+      ]
+    },
+    {
+      "task_id": "S1_011_s0",
+      "variant": "ours_iso_nocache",
+      "status": "ok",
+      "record_s": 9.572821086272597,
+      "ref_lens": [
+        1024,
+        1024
+      ],
+      "seq_len": 3584,
+      "q_len_by_step_head": [
+        3584,
+        3584,
+        3584
+      ]
+    },
+    {
+      "task_id": "S1_022_s0",
+      "variant": "ours_iso_nocache",
+      "status": "ok",
+      "record_s": 9.553348017856479,
+      "ref_lens": [
+        1024,
+        1024
+      ],
+      "seq_len": 3584,
+      "q_len_by_step_head": [
+        3584,
+        3584,
+        3584
+      ]
+    },
+    {
+      "task_id": "S1_033_s0",
+      "variant": "ours_iso_nocache",
+      "status": "ok",
+      "record_s": 9.549032128416002,
+      "ref_lens": [
+        1024,
+        1024
+      ],
+      "seq_len": 3584,
+      "q_len_by_step_head": [
+        3584,
+        3584,
+        3584
+      ]
+    },
+    {
+      "task_id": "S2_000_s0",
+      "variant": "ours_iso_nocache",
+      "status": "ok",
+      "record_s": 9.574699463322759,
+      "ref_lens": [
+        1024,
+        1024
+      ],
+      "seq_len": 3584,
+      "q_len_by_step_head": [
+        3584,
+        3584,
+        3584
+      ]
+    },
+    {
+      "task_id": "S2_001_s0",
+      "variant": "ours_iso_nocache",
+      "status": "ok",
+      "record_s": 9.556924442760646,
+      "ref_lens": [
+        1024,
+        1024
+      ],
+      "seq_len": 3584,
+      "q_len_by_step_head": [
+        3584,
+        3584,
+        3584
+      ]
+    },
+    {
+      "task_id": "S4_000_s0",
+      "variant": "ours_iso_nocache",
+      "status": "ok",
+      "record_s": 12.627451998181641,
+      "ref_lens": [
+        1024,
+        1024,
+        1024
+      ],
+      "seq_len": 4608,
+      "q_len_by_step_head": [
+        4608,
+        4608,
+        4608
+      ]
+    },
+    {
+      "task_id": "S4_001_s0",
+      "variant": "ours_iso_nocache",
+      "status": "ok",
+      "record_s": 12.656129261478782,
+      "ref_lens": [
+        1024,
+        1024,
+        1024
+      ],
+      "seq_len": 4608,
+      "q_len_by_step_head": [
+        4608,
+        4608,
+        4608
+      ]
+    },
+    {
+      "task_id": "S1_000_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "record_s": 5.762272858060896,
+      "ref_lens": [
+        1024,
+        1024
+      ],
+      "seq_len": 3584,
+      "q_len_by_step_head": [
+        3584,
+        1536,
+        1536
+      ]
+    },
+    {
+      "task_id": "S1_011_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "record_s": 5.762740235775709,
+      "ref_lens": [
+        1024,
+        1024
+      ],
+      "seq_len": 3584,
+      "q_len_by_step_head": [
+        3584,
+        1536,
+        1536
+      ]
+    },
+    {
+      "task_id": "S1_022_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "record_s": 5.7596300058066845,
+      "ref_lens": [
+        1024,
+        1024
+      ],
+      "seq_len": 3584,
+      "q_len_by_step_head": [
+        3584,
+        1536,
+        1536
+      ]
+    },
+    {
+      "task_id": "S1_033_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "record_s": 5.754433650523424,
+      "ref_lens": [
+        1024,
+        1024
+      ],
+      "seq_len": 3584,
+      "q_len_by_step_head": [
+        3584,
+        1536,
+        1536
+      ]
+    },
+    {
+      "task_id": "S2_000_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "record_s": 5.786122168414295,
+      "ref_lens": [
+        1024,
+        1024
+      ],
+      "seq_len": 3584,
+      "q_len_by_step_head": [
+        3584,
+        1536,
+        1536
+      ]
+    },
+    {
+      "task_id": "S2_001_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "record_s": 5.754149683751166,
+      "ref_lens": [
+        1024,
+        1024
+      ],
+      "seq_len": 3584,
+      "q_len_by_step_head": [
+        3584,
+        1536,
+        1536
+      ]
+    },
+    {
+      "task_id": "S4_000_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "record_s": 6.674111749976873,
+      "ref_lens": [
+        1024,
+        1024,
+        1024
+      ],
+      "seq_len": 4608,
+      "q_len_by_step_head": [
+        4608,
+        1536,
+        1536
+      ]
+    },
+    {
+      "task_id": "S4_001_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "record_s": 6.672607026062906,
+      "ref_lens": [
+        1024,
+        1024,
+        1024
+      ],
+      "seq_len": 4608,
+      "q_len_by_step_head": [
+        4608,
+        1536,
+        1536
+      ]
+    },
+    {
+      "task_id": "S1_000_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "record_s": 5.757861094549298,
+      "ref_lens": [
+        1024,
+        1024
+      ],
+      "seq_len": 3584,
+      "q_len_by_step_head": [
+        3584,
+        1536,
+        1536
+      ]
+    },
+    {
+      "task_id": "S1_011_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "record_s": 5.765626095235348,
+      "ref_lens": [
+        1024,
+        1024
+      ],
+      "seq_len": 3584,
+      "q_len_by_step_head": [
+        3584,
+        1536,
+        1536
+      ]
+    },
+    {
+      "task_id": "S1_022_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "record_s": 5.75953319016844,
+      "ref_lens": [
+        1024,
+        1024
+      ],
+      "seq_len": 3584,
+      "q_len_by_step_head": [
+        3584,
+        1536,
+        1536
+      ]
+    },
+    {
+      "task_id": "S1_033_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "record_s": 5.791034469380975,
+      "ref_lens": [
+        1024,
+        1024
+      ],
+      "seq_len": 3584,
+      "q_len_by_step_head": [
+        3584,
+        1536,
+        1536
+      ]
+    },
+    {
+      "task_id": "S2_000_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "record_s": 5.79098622687161,
+      "ref_lens": [
+        1024,
+        1024
+      ],
+      "seq_len": 3584,
+      "q_len_by_step_head": [
+        3584,
+        1536,
+        1536
+      ]
+    },
+    {
+      "task_id": "S2_001_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "record_s": 5.755153633654118,
+      "ref_lens": [
+        1024,
+        1024
+      ],
+      "seq_len": 3584,
+      "q_len_by_step_head": [
+        3584,
+        1536,
+        1536
+      ]
+    },
+    {
+      "task_id": "S4_000_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "record_s": 6.675075515173376,
+      "ref_lens": [
+        1024,
+        1024,
+        1024
+      ],
+      "seq_len": 4608,
+      "q_len_by_step_head": [
+        4608,
+        1536,
+        1536
+      ]
+    },
+    {
+      "task_id": "S4_001_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "record_s": 6.745342610403895,
+      "ref_lens": [
+        1024,
+        1024,
+        1024
+      ],
+      "seq_len": 4608,
+      "q_len_by_step_head": [
+        4608,
+        1536,
+        1536
+      ]
+    }
+  ],
+  "fails": [],
+  "timing": {
+    "official_full": {
+      "mean_s": 8.675859511015005,
+      "n": 8,
+      "peak_mem_gb": 36.24385404586792
+    },
+    "ours_iso_nocache": {
+      "mean_s": 10.330950193339959,
+      "n": 8,
+      "peak_mem_gb": 36.24385404586792
+    },
+    "ours_kv_pre": {
+      "mean_s": 5.990758422296494,
+      "n": 8,
+      "peak_mem_gb": 37.92182540893555
+    },
+    "ours_kv_post4000": {
+      "mean_s": 6.005076604429632,
+      "n": 8,
+      "peak_mem_gb": 37.92182540893555
+    }
+  }
+}

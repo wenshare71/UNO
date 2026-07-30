@@ -1,0 +1,602 @@
+[
+  {
+    "task_id": "S1_000_s0",
+    "variant": "official_full",
+    "subjects": [
+      "backpack_dog",
+      "bear_plushie"
+    ],
+    "late_block_ref_share_early_steps": [
+      0.039158035069704056,
+      0.03927687928080559
+    ],
+    "late_block_ref_share_late_steps": [
+      0.03379112109541893,
+      0.04979867860674858
+    ],
+    "imbalance_early_steps": 0.9969741941499001,
+    "imbalance_late_steps": 0.6785545729488422
+  },
+  {
+    "task_id": "S1_000_s0",
+    "variant": "ours_iso_nocache",
+    "subjects": [
+      "backpack_dog",
+      "bear_plushie"
+    ],
+    "late_block_ref_share_early_steps": [
+      0.08625750988721848,
+      0.06859302520751953
+    ],
+    "late_block_ref_share_late_steps": [
+      0.05706997960805893,
+      0.04296199604868889
+    ],
+    "imbalance_early_steps": 0.7952122116347293,
+    "imbalance_late_steps": 0.7527950131354553
+  },
+  {
+    "task_id": "S1_000_s0",
+    "variant": "ours_kv_post4000",
+    "subjects": [
+      "backpack_dog",
+      "bear_plushie"
+    ],
+    "late_block_ref_share_early_steps": [
+      0.06902572512626648,
+      0.05645957216620445
+    ],
+    "late_block_ref_share_late_steps": [
+      0.04487685114145279,
+      0.03641919419169426
+    ],
+    "imbalance_early_steps": 0.8179497145872039,
+    "imbalance_late_steps": 0.8115363102660698
+  },
+  {
+    "task_id": "S1_000_s0",
+    "variant": "ours_kv_pre",
+    "subjects": [
+      "backpack_dog",
+      "bear_plushie"
+    ],
+    "late_block_ref_share_early_steps": [
+      0.0863301083445549,
+      0.06871282309293747
+    ],
+    "late_block_ref_share_late_steps": [
+      0.05669710412621498,
+      0.04281345382332802
+    ],
+    "imbalance_early_steps": 0.7959311578608878,
+    "imbalance_late_steps": 0.7551259360269937
+  },
+  {
+    "task_id": "S1_011_s0",
+    "variant": "official_full",
+    "subjects": [
+      "bear_plushie",
+      "candle"
+    ],
+    "late_block_ref_share_early_steps": [
+      0.03956763818860054,
+      0.04536047577857971
+    ],
+    "late_block_ref_share_late_steps": [
+      0.03221539407968521,
+      0.048747602850198746
+    ],
+    "imbalance_early_steps": 0.8722932797650529,
+    "imbalance_late_steps": 0.6608610925686548
+  },
+  {
+    "task_id": "S1_011_s0",
+    "variant": "ours_iso_nocache",
+    "subjects": [
+      "bear_plushie",
+      "candle"
+    ],
+    "late_block_ref_share_early_steps": [
+      0.07397759705781937,
+      0.06794945895671844
+    ],
+    "late_block_ref_share_late_steps": [
+      0.04697065427899361,
+      0.044604599475860596
+    ],
+    "imbalance_early_steps": 0.918514005038722,
+    "imbalance_late_steps": 0.9496269566721542
+  },
+  {
+    "task_id": "S1_011_s0",
+    "variant": "ours_kv_post4000",
+    "subjects": [
+      "bear_plushie",
+      "candle"
+    ],
+    "late_block_ref_share_early_steps": [
+      0.05803069844841957,
+      0.05804191902279854
+    ],
+    "late_block_ref_share_late_steps": [
+      0.03692684695124626,
+      0.038308415561914444
+    ],
+    "imbalance_early_steps": 0.9998066815403784,
+    "imbalance_late_steps": 0.9639356368462884
+  },
+  {
+    "task_id": "S1_011_s0",
+    "variant": "ours_kv_pre",
+    "subjects": [
+      "bear_plushie",
+      "candle"
+    ],
+    "late_block_ref_share_early_steps": [
+      0.07350042462348938,
+      0.06776607036590576
+    ],
+    "late_block_ref_share_late_steps": [
+      0.046506062150001526,
+      0.04451557993888855
+    ],
+    "imbalance_early_steps": 0.9219820254514417,
+    "imbalance_late_steps": 0.9571995107929621
+  },
+  {
+    "task_id": "S1_022_s0",
+    "variant": "official_full",
+    "subjects": [
+      "berry_bowl",
+      "grey_sloth_plushie"
+    ],
+    "late_block_ref_share_early_steps": [
+      0.030598213896155357,
+      0.04819237440824509
+    ],
+    "late_block_ref_share_late_steps": [
+      0.02786138467490673,
+      0.06058400496840477
+    ],
+    "imbalance_early_steps": 0.6349181643749929,
+    "imbalance_late_steps": 0.4598802058305117
+  },
+  {
+    "task_id": "S1_022_s0",
+    "variant": "ours_iso_nocache",
+    "subjects": [
+      "berry_bowl",
+      "grey_sloth_plushie"
+    ],
+    "late_block_ref_share_early_steps": [
+      0.07960715889930725,
+      0.07752173393964767
+    ],
+    "late_block_ref_share_late_steps": [
+      0.05052850395441055,
+      0.05090734362602234
+    ],
+    "imbalance_early_steps": 0.9738035499759843,
+    "imbalance_late_steps": 0.9925582510375156
+  },
+  {
+    "task_id": "S1_022_s0",
+    "variant": "ours_kv_post4000",
+    "subjects": [
+      "berry_bowl",
+      "grey_sloth_plushie"
+    ],
+    "late_block_ref_share_early_steps": [
+      0.06857450306415558,
+      0.06199323385953903
+    ],
+    "late_block_ref_share_late_steps": [
+      0.04568202793598175,
+      0.0376700721681118
+    ],
+    "imbalance_early_steps": 0.9040274604912649,
+    "imbalance_late_steps": 0.8246147088938826
+  },
+  {
+    "task_id": "S1_022_s0",
+    "variant": "ours_kv_pre",
+    "subjects": [
+      "berry_bowl",
+      "grey_sloth_plushie"
+    ],
+    "late_block_ref_share_early_steps": [
+      0.07951667159795761,
+      0.07756675779819489
+    ],
+    "late_block_ref_share_late_steps": [
+      0.05017446354031563,
+      0.05090499296784401
+    ],
+    "imbalance_early_steps": 0.9754779248102632,
+    "imbalance_late_steps": 0.985649159641573
+  },
+  {
+    "task_id": "S1_033_s0",
+    "variant": "official_full",
+    "subjects": [
+      "candle",
+      "grey_sloth_plushie"
+    ],
+    "late_block_ref_share_early_steps": [
+      0.03262798860669136,
+      0.04835452884435654
+    ],
+    "late_block_ref_share_late_steps": [
+      0.03781130537390709,
+      0.060088150203228
+    ],
+    "imbalance_early_steps": 0.6747659296136307,
+    "imbalance_late_steps": 0.629263927180701
+  },
+  {
+    "task_id": "S1_033_s0",
+    "variant": "ours_iso_nocache",
+    "subjects": [
+      "candle",
+      "grey_sloth_plushie"
+    ],
+    "late_block_ref_share_early_steps": [
+      0.06837648898363113,
+      0.07412745803594589
+    ],
+    "late_block_ref_share_late_steps": [
+      0.039562612771987915,
+      0.04659942537546158
+    ],
+    "imbalance_early_steps": 0.9224178299824338,
+    "imbalance_late_steps": 0.8489935756336789
+  },
+  {
+    "task_id": "S1_033_s0",
+    "variant": "ours_kv_post4000",
+    "subjects": [
+      "candle",
+      "grey_sloth_plushie"
+    ],
+    "late_block_ref_share_early_steps": [
+      0.05505039915442467,
+      0.07143985480070114
+    ],
+    "late_block_ref_share_late_steps": [
+      0.035314206033945084,
+      0.04440499469637871
+    ],
+    "imbalance_early_steps": 0.7705838611794656,
+    "imbalance_late_steps": 0.7952755377048837
+  },
+  {
+    "task_id": "S1_033_s0",
+    "variant": "ours_kv_pre",
+    "subjects": [
+      "candle",
+      "grey_sloth_plushie"
+    ],
+    "late_block_ref_share_early_steps": [
+      0.06831353902816772,
+      0.0739302784204483
+    ],
+    "late_block_ref_share_late_steps": [
+      0.03936479613184929,
+      0.046296194195747375
+    ],
+    "imbalance_early_steps": 0.924026535375159,
+    "imbalance_late_steps": 0.8502814716347724
+  },
+  {
+    "task_id": "S2_000_s0",
+    "variant": "official_full",
+    "subjects": [
+      "bear_plushie",
+      "grey_sloth_plushie"
+    ],
+    "late_block_ref_share_early_steps": [
+      0.04547412320971489,
+      0.05215035006403923
+    ],
+    "late_block_ref_share_late_steps": [
+      0.03407925367355347,
+      0.04890851303935051
+    ],
+    "imbalance_early_steps": 0.8719811689446741,
+    "imbalance_late_steps": 0.6967959472849684
+  },
+  {
+    "task_id": "S2_000_s0",
+    "variant": "ours_iso_nocache",
+    "subjects": [
+      "bear_plushie",
+      "grey_sloth_plushie"
+    ],
+    "late_block_ref_share_early_steps": [
+      0.07866820693016052,
+      0.07329166680574417
+    ],
+    "late_block_ref_share_late_steps": [
+      0.05131782218813896,
+      0.051166027784347534
+    ],
+    "imbalance_early_steps": 0.931655489120408,
+    "imbalance_late_steps": 0.9970420723772158
+  },
+  {
+    "task_id": "S2_000_s0",
+    "variant": "ours_kv_post4000",
+    "subjects": [
+      "bear_plushie",
+      "grey_sloth_plushie"
+    ],
+    "late_block_ref_share_early_steps": [
+      0.061587829142808914,
+      0.06256431341171265
+    ],
+    "late_block_ref_share_late_steps": [
+      0.038786303251981735,
+      0.037801504135131836
+    ],
+    "imbalance_early_steps": 0.9843923122359252,
+    "imbalance_late_steps": 0.974609616429491
+  },
+  {
+    "task_id": "S2_000_s0",
+    "variant": "ours_kv_pre",
+    "subjects": [
+      "bear_plushie",
+      "grey_sloth_plushie"
+    ],
+    "late_block_ref_share_early_steps": [
+      0.07882126420736313,
+      0.07349488884210587
+    ],
+    "late_block_ref_share_late_steps": [
+      0.051439832895994186,
+      0.05124976858496666
+    ],
+    "imbalance_early_steps": 0.9324246392287667,
+    "imbalance_late_steps": 0.9963051141435117
+  },
+  {
+    "task_id": "S2_001_s0",
+    "variant": "official_full",
+    "subjects": [
+      "bear_plushie",
+      "grey_sloth_plushie"
+    ],
+    "late_block_ref_share_early_steps": [
+      0.045277636498212814,
+      0.05228147655725479
+    ],
+    "late_block_ref_share_late_steps": [
+      0.03757808730006218,
+      0.04874664545059204
+    ],
+    "imbalance_early_steps": 0.8660359171116391,
+    "imbalance_late_steps": 0.770885605618751
+  },
+  {
+    "task_id": "S2_001_s0",
+    "variant": "ours_iso_nocache",
+    "subjects": [
+      "bear_plushie",
+      "grey_sloth_plushie"
+    ],
+    "late_block_ref_share_early_steps": [
+      0.08173539489507675,
+      0.07908505201339722
+    ],
+    "late_block_ref_share_late_steps": [
+      0.049637652933597565,
+      0.05014459043741226
+    ],
+    "imbalance_early_steps": 0.9675741105174599,
+    "imbalance_late_steps": 0.9898904847084666
+  },
+  {
+    "task_id": "S2_001_s0",
+    "variant": "ours_kv_post4000",
+    "subjects": [
+      "bear_plushie",
+      "grey_sloth_plushie"
+    ],
+    "late_block_ref_share_early_steps": [
+      0.06264658272266388,
+      0.0665474385023117
+    ],
+    "late_block_ref_share_late_steps": [
+      0.03939497843384743,
+      0.03890922665596008
+    ],
+    "imbalance_early_steps": 0.9413823301476537,
+    "imbalance_late_steps": 0.9876697031652645
+  },
+  {
+    "task_id": "S2_001_s0",
+    "variant": "ours_kv_pre",
+    "subjects": [
+      "bear_plushie",
+      "grey_sloth_plushie"
+    ],
+    "late_block_ref_share_early_steps": [
+      0.08161111921072006,
+      0.07930872589349747
+    ],
+    "late_block_ref_share_late_steps": [
+      0.0496792197227478,
+      0.05045630410313606
+    ],
+    "imbalance_early_steps": 0.9717882398931718,
+    "imbalance_late_steps": 0.9845988644194025
+  },
+  {
+    "task_id": "S4_000_s0",
+    "variant": "official_full",
+    "subjects": [
+      "backpack_dog",
+      "bear_plushie",
+      "berry_bowl"
+    ],
+    "late_block_ref_share_early_steps": [
+      0.04833236336708069,
+      0.040228221565485,
+      0.027425430715084076
+    ],
+    "late_block_ref_share_late_steps": [
+      0.05106915533542633,
+      0.0529303178191185,
+      0.03529343754053116
+    ],
+    "imbalance_early_steps": 0.5674340918690439,
+    "imbalance_late_steps": 0.6667905842005567
+  },
+  {
+    "task_id": "S4_000_s0",
+    "variant": "ours_iso_nocache",
+    "subjects": [
+      "backpack_dog",
+      "bear_plushie",
+      "berry_bowl"
+    ],
+    "late_block_ref_share_early_steps": [
+      0.0755447968840599,
+      0.05874805524945259,
+      0.059318963438272476
+    ],
+    "late_block_ref_share_late_steps": [
+      0.05285883694887161,
+      0.03895609453320503,
+      0.0427248440682888
+    ],
+    "imbalance_early_steps": 0.777658524115359,
+    "imbalance_late_steps": 0.7369835732648793
+  },
+  {
+    "task_id": "S4_000_s0",
+    "variant": "ours_kv_post4000",
+    "subjects": [
+      "backpack_dog",
+      "bear_plushie",
+      "berry_bowl"
+    ],
+    "late_block_ref_share_early_steps": [
+      0.0640825554728508,
+      0.05220451578497887,
+      0.049338094890117645
+    ],
+    "late_block_ref_share_late_steps": [
+      0.03904600813984871,
+      0.031641989946365356,
+      0.031086573377251625
+    ],
+    "imbalance_early_steps": 0.7699145972888084,
+    "imbalance_late_steps": 0.796152407332159
+  },
+  {
+    "task_id": "S4_000_s0",
+    "variant": "ours_kv_pre",
+    "subjects": [
+      "backpack_dog",
+      "bear_plushie",
+      "berry_bowl"
+    ],
+    "late_block_ref_share_early_steps": [
+      0.07559579610824585,
+      0.058682315051555634,
+      0.059257425367832184
+    ],
+    "late_block_ref_share_late_steps": [
+      0.052883561700582504,
+      0.03885689005255699,
+      0.04261384531855583
+    ],
+    "imbalance_early_steps": 0.7762642643187229,
+    "imbalance_late_steps": 0.7347631060206935
+  },
+  {
+    "task_id": "S4_001_s0",
+    "variant": "official_full",
+    "subjects": [
+      "can",
+      "candle",
+      "clock"
+    ],
+    "late_block_ref_share_early_steps": [
+      0.05046987161040306,
+      0.03766047582030296,
+      0.0304125864058733
+    ],
+    "late_block_ref_share_late_steps": [
+      0.0428694449365139,
+      0.049389760941267014,
+      0.0400836355984211
+    ],
+    "imbalance_early_steps": 0.6025889394100327,
+    "imbalance_late_steps": 0.8115778419354467
+  },
+  {
+    "task_id": "S4_001_s0",
+    "variant": "ours_iso_nocache",
+    "subjects": [
+      "can",
+      "candle",
+      "clock"
+    ],
+    "late_block_ref_share_early_steps": [
+      0.09360482543706894,
+      0.06051504611968994,
+      0.0680653303861618
+    ],
+    "late_block_ref_share_late_steps": [
+      0.062131691724061966,
+      0.04115699604153633,
+      0.04748651385307312
+    ],
+    "imbalance_early_steps": 0.6464949412290134,
+    "imbalance_late_steps": 0.6624155064748914
+  },
+  {
+    "task_id": "S4_001_s0",
+    "variant": "ours_kv_post4000",
+    "subjects": [
+      "can",
+      "candle",
+      "clock"
+    ],
+    "late_block_ref_share_early_steps": [
+      0.06770533323287964,
+      0.05016260966658592,
+      0.05786052346229553
+    ],
+    "late_block_ref_share_late_steps": [
+      0.04514753445982933,
+      0.032913293689489365,
+      0.03920095041394234
+    ],
+    "imbalance_early_steps": 0.7408959866432727,
+    "imbalance_late_steps": 0.7290164143686394
+  },
+  {
+    "task_id": "S4_001_s0",
+    "variant": "ours_kv_pre",
+    "subjects": [
+      "can",
+      "candle",
+      "clock"
+    ],
+    "late_block_ref_share_early_steps": [
+      0.09357471019029617,
+      0.0604366809129715,
+      0.06811440736055374
+    ],
+    "late_block_ref_share_late_steps": [
+      0.06174091994762421,
+      0.04093159735202789,
+      0.0473146066069603
+    ],
+    "imbalance_early_steps": 0.6458655419831465,
+    "imbalance_late_steps": 0.6629573609649939
+  }
+]
