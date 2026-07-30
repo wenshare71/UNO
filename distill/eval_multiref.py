@@ -81,8 +81,8 @@ def out_path(save_path: str, task_id: str, variant: str) -> str:
     return os.path.join(save_path, f"{task_id}__{variant}.png")
 
 
-def already_done(path: str) -> bool:
-    """输出图存在**且能完整解码**才算跳过(规格 §4.4-1)。
+def decodable(path: str) -> bool:
+    """图存在**且能完整解码**。**纯谓词,不动文件。**
 
     `Image.open` 是惰性的、只读文件头,截断到一半的图照样通过;只有 `.load()`
     才抛 `OSError: image file is truncated`。shard 被杀时写到一半的图正是这个场景。
@@ -94,8 +94,22 @@ def already_done(path: str) -> bool:
             im.load()
         return True
     except Exception:
-        os.remove(path)  # 坏图直接删,免得下次又被 exists 认成"已完成"
         return False
+
+
+def already_done(path: str) -> bool:
+    """本脚本自己的输出图是否已完成(规格 §4.4-1);坏图就地删除以便下轮重生成。
+
+    WHY 与 `decodable` 分家:删除是破坏性的,**只允许作用于本脚本能重新生成的产物**。
+    锚点自检读的是 `output/smoke_eval/` 里已提交的基线,--merge 拼图读的是全部既有产物;
+    校验/报告路径若带删除副作用,一次解码失败就会把参照物本身抹掉,自检再也没法复跑。
+    所以:**破坏性清理只出现在"删掉之后紧接着就会重新生成"的地方。**
+    """
+    if decodable(path):
+        return True
+    if os.path.exists(path):
+        os.remove(path)  # 坏图直接删,免得下次又被 exists 认成"已完成"
+    return False
 
 
 def swap_lora(model, state_dict: dict, tag: str) -> None:
@@ -358,7 +372,8 @@ def build_boards(args, tasks, json_dir, records):
                 results, tt = {}, {}
                 for vname in t["variants"]:
                     pth = out_path(args.save_path, t["task_id"], vname)
-                    if already_done(pth):
+                    # 同样用 decodable:--merge 是报告路径,不该改动产物集合
+                    if decodable(pth):
                         results[vname] = Image.open(pth).convert("RGB")
                         dt = times.get((t["task_id"], vname))
                         if dt is not None:
@@ -394,8 +409,12 @@ def check_anchor(args, tasks):
         for vname, smoke_tag in ANCHOR_MAP.items():
             new_p = out_path(args.save_path, t["task_id"], vname)
             old_p = os.path.join("output/smoke_eval", f"case{i:02d}__{smoke_tag}.png")
-            if not (already_done(new_p) and already_done(old_p)):
-                print(f"case{i:<3}{vname:<18}  缺文件:{new_p if not already_done(new_p) else old_p}")
+            # 用 decodable 而非 already_done:自检是只读校验,绝不能删掉 output/smoke_eval/
+            # 里已提交的基线——那是本次比对的参照物。
+            new_ok, old_ok = decodable(new_p), decodable(old_p)
+            if not (new_ok and old_ok):
+                print(f"case{i:<3}{vname:<18}  缺文件或无法解码:"
+                      f"{new_p if not new_ok else old_p}")
                 worst += 1
                 continue
             a = np.asarray(Image.open(new_p).convert("RGB"), dtype=np.int16)
