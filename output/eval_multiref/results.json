@@ -1,0 +1,5001 @@
+{
+  "spec": "M4-eval-v1",
+  "n_shards": 8,
+  "n_records": 711,
+  "n_fails": 0,
+  "timing": {
+    "official_full": {
+      "mean_s": 4.858660172880319,
+      "median_s": 5.111022907309234,
+      "n": 227,
+      "peak_mem_gb": 36.24385404586792,
+      "speedup_vs_teacher": 1.0
+    },
+    "ours_kv_pre": {
+      "mean_s": 2.879319814247149,
+      "median_s": 2.89716808963567,
+      "n": 227,
+      "peak_mem_gb": 37.86909103393555,
+      "speedup_vs_teacher": 1.6874333128397914
+    },
+    "ours_kv_post4000": {
+      "mean_s": 2.8818118475082164,
+      "median_s": 2.900116921402514,
+      "n": 227,
+      "peak_mem_gb": 37.86909103393555,
+      "speedup_vs_teacher": 1.6859741128073307
+    },
+    "ours_kv_post2000": {
+      "mean_s": 2.9330097685878473,
+      "median_s": 2.916236074641347,
+      "n": 15,
+      "peak_mem_gb": 37.04558181762695,
+      "speedup_vs_teacher": 1.6565441496022062
+    }
+  },
+  "records": [
+    {
+      "task_id": "S0_000_s0",
+      "variant": "official_full",
+      "status": "skipped",
+      "path": "output/eval_multiref/S0_000_s0__official_full.png"
+    },
+    {
+      "task_id": "S1_001_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.113326631486416,
+      "path": "output/eval_multiref/S1_001_s0__official_full.png"
+    },
+    {
+      "task_id": "S1_003_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.127236436121166,
+      "path": "output/eval_multiref/S1_003_s2__official_full.png"
+    },
+    {
+      "task_id": "S1_006_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.124884000979364,
+      "path": "output/eval_multiref/S1_006_s1__official_full.png"
+    },
+    {
+      "task_id": "S1_009_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.133658722043037,
+      "path": "output/eval_multiref/S1_009_s0__official_full.png"
+    },
+    {
+      "task_id": "S1_011_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.129460223019123,
+      "path": "output/eval_multiref/S1_011_s2__official_full.png"
+    },
+    {
+      "task_id": "S1_014_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.130428151227534,
+      "path": "output/eval_multiref/S1_014_s1__official_full.png"
+    },
+    {
+      "task_id": "S1_017_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.130889991298318,
+      "path": "output/eval_multiref/S1_017_s0__official_full.png"
+    },
+    {
+      "task_id": "S1_019_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.135285623371601,
+      "path": "output/eval_multiref/S1_019_s2__official_full.png"
+    },
+    {
+      "task_id": "S1_022_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.138388347811997,
+      "path": "output/eval_multiref/S1_022_s1__official_full.png"
+    },
+    {
+      "task_id": "S1_025_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.140778472647071,
+      "path": "output/eval_multiref/S1_025_s0__official_full.png"
+    },
+    {
+      "task_id": "S1_027_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.14272438082844,
+      "path": "output/eval_multiref/S1_027_s2__official_full.png"
+    },
+    {
+      "task_id": "S1_030_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.13965602312237,
+      "path": "output/eval_multiref/S1_030_s1__official_full.png"
+    },
+    {
+      "task_id": "S1_033_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.140989194624126,
+      "path": "output/eval_multiref/S1_033_s0__official_full.png"
+    },
+    {
+      "task_id": "S1_035_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.143150742165744,
+      "path": "output/eval_multiref/S1_035_s2__official_full.png"
+    },
+    {
+      "task_id": "S1_038_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.139665408059955,
+      "path": "output/eval_multiref/S1_038_s1__official_full.png"
+    },
+    {
+      "task_id": "S1_041_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.149126213043928,
+      "path": "output/eval_multiref/S1_041_s0__official_full.png"
+    },
+    {
+      "task_id": "S1_043_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.149718320928514,
+      "path": "output/eval_multiref/S1_043_s2__official_full.png"
+    },
+    {
+      "task_id": "S2_002_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.238441664725542,
+      "path": "output/eval_multiref/S2_002_s1__official_full.png"
+    },
+    {
+      "task_id": "S3_000_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6199600007385015,
+      "path": "output/eval_multiref/S3_000_s0__official_full.png"
+    },
+    {
+      "task_id": "S3_004_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.633519575931132,
+      "path": "output/eval_multiref/S3_004_s0__official_full.png"
+    },
+    {
+      "task_id": "S3_008_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.610380884259939,
+      "path": "output/eval_multiref/S3_008_s0__official_full.png"
+    },
+    {
+      "task_id": "S3_012_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6017960999161005,
+      "path": "output/eval_multiref/S3_012_s0__official_full.png"
+    },
+    {
+      "task_id": "S3_016_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.609223592095077,
+      "path": "output/eval_multiref/S3_016_s0__official_full.png"
+    },
+    {
+      "task_id": "S3_020_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6088619977235794,
+      "path": "output/eval_multiref/S3_020_s0__official_full.png"
+    },
+    {
+      "task_id": "S3_024_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6093152463436127,
+      "path": "output/eval_multiref/S3_024_s0__official_full.png"
+    },
+    {
+      "task_id": "S3_028_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6095067225396633,
+      "path": "output/eval_multiref/S3_028_s0__official_full.png"
+    },
+    {
+      "task_id": "S4_002_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 6.698881975375116,
+      "path": "output/eval_multiref/S4_002_s0__official_full.png"
+    },
+    {
+      "task_id": "S4_006_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 6.673886159434915,
+      "path": "output/eval_multiref/S4_006_s0__official_full.png"
+    },
+    {
+      "task_id": "S0_000_s0",
+      "variant": "ours_kv_pre",
+      "status": "skipped",
+      "path": "output/eval_multiref/S0_000_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_001_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.9029944678768516,
+      "path": "output/eval_multiref/S1_001_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_003_s2",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.8951427191495895,
+      "path": "output/eval_multiref/S1_003_s2__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_006_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.893564259633422,
+      "path": "output/eval_multiref/S1_006_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_009_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.8997059129178524,
+      "path": "output/eval_multiref/S1_009_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_011_s2",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.9232576321810484,
+      "path": "output/eval_multiref/S1_011_s2__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_014_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 3.000776868313551,
+      "path": "output/eval_multiref/S1_014_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_017_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.9350603064522147,
+      "path": "output/eval_multiref/S1_017_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_019_s2",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 3.148477460257709,
+      "path": "output/eval_multiref/S1_019_s2__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_022_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.920637357980013,
+      "path": "output/eval_multiref/S1_022_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_025_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.9166388362646103,
+      "path": "output/eval_multiref/S1_025_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_027_s2",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.9041151301935315,
+      "path": "output/eval_multiref/S1_027_s2__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_030_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.8998360335826874,
+      "path": "output/eval_multiref/S1_030_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_033_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.9019447760656476,
+      "path": "output/eval_multiref/S1_033_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_035_s2",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.9012634474784136,
+      "path": "output/eval_multiref/S1_035_s2__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_038_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.917917549610138,
+      "path": "output/eval_multiref/S1_038_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_041_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.9045421797782183,
+      "path": "output/eval_multiref/S1_041_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_043_s2",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.9314109748229384,
+      "path": "output/eval_multiref/S1_043_s2__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S2_002_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.899876398034394,
+      "path": "output/eval_multiref/S2_002_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_000_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.6919961776584387,
+      "path": "output/eval_multiref/S3_000_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_004_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.6829440593719482,
+      "path": "output/eval_multiref/S3_004_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_008_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.6602321406826377,
+      "path": "output/eval_multiref/S3_008_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_012_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.6753287306055427,
+      "path": "output/eval_multiref/S3_012_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_016_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.655244119465351,
+      "path": "output/eval_multiref/S3_016_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_020_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.655926588922739,
+      "path": "output/eval_multiref/S3_020_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_024_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.6557596484199166,
+      "path": "output/eval_multiref/S3_024_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_028_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.6555982371792197,
+      "path": "output/eval_multiref/S3_028_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S4_002_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 3.1547042801976204,
+      "path": "output/eval_multiref/S4_002_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S4_006_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 3.1560926577076316,
+      "path": "output/eval_multiref/S4_006_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S0_000_s0",
+      "variant": "ours_kv_post4000",
+      "status": "skipped",
+      "path": "output/eval_multiref/S0_000_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_001_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.8959779934957623,
+      "path": "output/eval_multiref/S1_001_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_003_s2",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.9224915578961372,
+      "path": "output/eval_multiref/S1_003_s2__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_006_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.915877554565668,
+      "path": "output/eval_multiref/S1_006_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_009_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.8937828643247485,
+      "path": "output/eval_multiref/S1_009_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_011_s2",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.9022298669442534,
+      "path": "output/eval_multiref/S1_011_s2__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_014_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 3.0118387769907713,
+      "path": "output/eval_multiref/S1_014_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_017_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.9896289091557264,
+      "path": "output/eval_multiref/S1_017_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_019_s2",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.9094392471015453,
+      "path": "output/eval_multiref/S1_019_s2__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_022_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 3.0176363959908485,
+      "path": "output/eval_multiref/S1_022_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_025_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.993474409915507,
+      "path": "output/eval_multiref/S1_025_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_027_s2",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.9035765789449215,
+      "path": "output/eval_multiref/S1_027_s2__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_030_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.900116921402514,
+      "path": "output/eval_multiref/S1_030_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_033_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.9332632226869464,
+      "path": "output/eval_multiref/S1_033_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_035_s2",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.9157268973067403,
+      "path": "output/eval_multiref/S1_035_s2__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_038_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.9060693718492985,
+      "path": "output/eval_multiref/S1_038_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_041_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.909210527315736,
+      "path": "output/eval_multiref/S1_041_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_043_s2",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 3.0124546783044934,
+      "path": "output/eval_multiref/S1_043_s2__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S2_002_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.9225364504382014,
+      "path": "output/eval_multiref/S2_002_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_000_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.690704010426998,
+      "path": "output/eval_multiref/S3_000_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_004_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.662420315667987,
+      "path": "output/eval_multiref/S3_004_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_008_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.6869598999619484,
+      "path": "output/eval_multiref/S3_008_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_012_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.654824750497937,
+      "path": "output/eval_multiref/S3_012_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_016_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.654987709596753,
+      "path": "output/eval_multiref/S3_016_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_020_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.656521648168564,
+      "path": "output/eval_multiref/S3_020_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_024_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.6603378457948565,
+      "path": "output/eval_multiref/S3_024_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_028_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.6561193335801363,
+      "path": "output/eval_multiref/S3_028_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S4_002_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 3.1714599896222353,
+      "path": "output/eval_multiref/S4_002_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S4_006_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 3.162319648079574,
+      "path": "output/eval_multiref/S4_006_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S2_002_s1",
+      "variant": "ours_kv_post2000",
+      "status": "ok",
+      "denoise_s": 2.90060066152364,
+      "path": "output/eval_multiref/S2_002_s1__ours_kv_post2000.png"
+    },
+    {
+      "task_id": "S0_001_s0",
+      "variant": "official_full",
+      "status": "skipped",
+      "path": "output/eval_multiref/S0_001_s0__official_full.png"
+    },
+    {
+      "task_id": "S1_001_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.129240659996867,
+      "path": "output/eval_multiref/S1_001_s1__official_full.png"
+    },
+    {
+      "task_id": "S1_004_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1322280913591385,
+      "path": "output/eval_multiref/S1_004_s0__official_full.png"
+    },
+    {
+      "task_id": "S1_006_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.144272772595286,
+      "path": "output/eval_multiref/S1_006_s2__official_full.png"
+    },
+    {
+      "task_id": "S1_009_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.152930838055909,
+      "path": "output/eval_multiref/S1_009_s1__official_full.png"
+    },
+    {
+      "task_id": "S1_012_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.139657142572105,
+      "path": "output/eval_multiref/S1_012_s0__official_full.png"
+    },
+    {
+      "task_id": "S1_014_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.146452430635691,
+      "path": "output/eval_multiref/S1_014_s2__official_full.png"
+    },
+    {
+      "task_id": "S1_017_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.149996963329613,
+      "path": "output/eval_multiref/S1_017_s1__official_full.png"
+    },
+    {
+      "task_id": "S1_020_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.146287578158081,
+      "path": "output/eval_multiref/S1_020_s0__official_full.png"
+    },
+    {
+      "task_id": "S1_022_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.157661939039826,
+      "path": "output/eval_multiref/S1_022_s2__official_full.png"
+    },
+    {
+      "task_id": "S1_025_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.162111791782081,
+      "path": "output/eval_multiref/S1_025_s1__official_full.png"
+    },
+    {
+      "task_id": "S1_028_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.160614489577711,
+      "path": "output/eval_multiref/S1_028_s0__official_full.png"
+    },
+    {
+      "task_id": "S1_030_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.157511942088604,
+      "path": "output/eval_multiref/S1_030_s2__official_full.png"
+    },
+    {
+      "task_id": "S1_033_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.163899180479348,
+      "path": "output/eval_multiref/S1_033_s1__official_full.png"
+    },
+    {
+      "task_id": "S1_036_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.156418521888554,
+      "path": "output/eval_multiref/S1_036_s0__official_full.png"
+    },
+    {
+      "task_id": "S1_038_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1648710537701845,
+      "path": "output/eval_multiref/S1_038_s2__official_full.png"
+    },
+    {
+      "task_id": "S1_041_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.162618782371283,
+      "path": "output/eval_multiref/S1_041_s1__official_full.png"
+    },
+    {
+      "task_id": "S2_000_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.165848532691598,
+      "path": "output/eval_multiref/S2_000_s0__official_full.png"
+    },
+    {
+      "task_id": "S2_002_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.162678423337638,
+      "path": "output/eval_multiref/S2_002_s2__official_full.png"
+    },
+    {
+      "task_id": "S3_000_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6437535854056478,
+      "path": "output/eval_multiref/S3_000_s1__official_full.png"
+    },
+    {
+      "task_id": "S3_004_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6428833287209272,
+      "path": "output/eval_multiref/S3_004_s1__official_full.png"
+    },
+    {
+      "task_id": "S3_008_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6439857482910156,
+      "path": "output/eval_multiref/S3_008_s1__official_full.png"
+    },
+    {
+      "task_id": "S3_012_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.633071324788034,
+      "path": "output/eval_multiref/S3_012_s1__official_full.png"
+    },
+    {
+      "task_id": "S3_016_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.650865995325148,
+      "path": "output/eval_multiref/S3_016_s1__official_full.png"
+    },
+    {
+      "task_id": "S3_020_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6351653756573796,
+      "path": "output/eval_multiref/S3_020_s1__official_full.png"
+    },
+    {
+      "task_id": "S3_024_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.648500556126237,
+      "path": "output/eval_multiref/S3_024_s1__official_full.png"
+    },
+    {
+      "task_id": "S3_028_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.646059107966721,
+      "path": "output/eval_multiref/S3_028_s1__official_full.png"
+    },
+    {
+      "task_id": "S4_002_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 6.7194618079811335,
+      "path": "output/eval_multiref/S4_002_s1__official_full.png"
+    },
+    {
+      "task_id": "S4_006_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 6.72124242130667,
+      "path": "output/eval_multiref/S4_006_s1__official_full.png"
+    },
+    {
+      "task_id": "S0_001_s0",
+      "variant": "ours_kv_pre",
+      "status": "skipped",
+      "path": "output/eval_multiref/S0_001_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_001_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.89979656226933,
+      "path": "output/eval_multiref/S1_001_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_004_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 3.135978971607983,
+      "path": "output/eval_multiref/S1_004_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_006_s2",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 3.1079323943704367,
+      "path": "output/eval_multiref/S1_006_s2__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_009_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.8915394730865955,
+      "path": "output/eval_multiref/S1_009_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_012_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.9357093619182706,
+      "path": "output/eval_multiref/S1_012_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_014_s2",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.8935106322169304,
+      "path": "output/eval_multiref/S1_014_s2__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_017_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.9072001120075583,
+      "path": "output/eval_multiref/S1_017_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_020_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.8916078926995397,
+      "path": "output/eval_multiref/S1_020_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_022_s2",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.889741139486432,
+      "path": "output/eval_multiref/S1_022_s2__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_025_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 3.007966760545969,
+      "path": "output/eval_multiref/S1_025_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_028_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.9149175882339478,
+      "path": "output/eval_multiref/S1_028_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_030_s2",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.8917082753032446,
+      "path": "output/eval_multiref/S1_030_s2__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_033_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.892414318397641,
+      "path": "output/eval_multiref/S1_033_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_036_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.8914969423785806,
+      "path": "output/eval_multiref/S1_036_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_038_s2",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.8932582698762417,
+      "path": "output/eval_multiref/S1_038_s2__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_041_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.912412944249809,
+      "path": "output/eval_multiref/S1_041_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S2_000_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.893600322306156,
+      "path": "output/eval_multiref/S2_000_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S2_002_s2",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.894612074829638,
+      "path": "output/eval_multiref/S2_002_s2__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_000_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.664266237989068,
+      "path": "output/eval_multiref/S3_000_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_004_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.6522896317765117,
+      "path": "output/eval_multiref/S3_004_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_008_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.653059208765626,
+      "path": "output/eval_multiref/S3_008_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_012_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.6523675406351686,
+      "path": "output/eval_multiref/S3_012_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_016_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.6620429856702685,
+      "path": "output/eval_multiref/S3_016_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_020_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.7414906276389956,
+      "path": "output/eval_multiref/S3_020_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_024_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.6579271722584963,
+      "path": "output/eval_multiref/S3_024_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_028_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.6520978286862373,
+      "path": "output/eval_multiref/S3_028_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S4_002_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 3.149073025211692,
+      "path": "output/eval_multiref/S4_002_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S4_006_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 3.1532427929341793,
+      "path": "output/eval_multiref/S4_006_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S0_001_s0",
+      "variant": "ours_kv_post4000",
+      "status": "skipped",
+      "path": "output/eval_multiref/S0_001_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_001_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.902705761604011,
+      "path": "output/eval_multiref/S1_001_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_004_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.8922161366790533,
+      "path": "output/eval_multiref/S1_004_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_006_s2",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.8958049658685923,
+      "path": "output/eval_multiref/S1_006_s2__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_009_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.9209669129922986,
+      "path": "output/eval_multiref/S1_009_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_012_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 3.11660691536963,
+      "path": "output/eval_multiref/S1_012_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_014_s2",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 4.337755500338972,
+      "path": "output/eval_multiref/S1_014_s2__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_017_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.892175581306219,
+      "path": "output/eval_multiref/S1_017_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_020_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.8934451127424836,
+      "path": "output/eval_multiref/S1_020_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_022_s2",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.8977430146187544,
+      "path": "output/eval_multiref/S1_022_s2__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_025_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.9061345756053925,
+      "path": "output/eval_multiref/S1_025_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_028_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.8971737660467625,
+      "path": "output/eval_multiref/S1_028_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_030_s2",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.9255708875134587,
+      "path": "output/eval_multiref/S1_030_s2__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_033_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.8965513864532113,
+      "path": "output/eval_multiref/S1_033_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_036_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.891953877173364,
+      "path": "output/eval_multiref/S1_036_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_038_s2",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.891926041804254,
+      "path": "output/eval_multiref/S1_038_s2__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_041_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.8917890284210443,
+      "path": "output/eval_multiref/S1_041_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S2_000_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.893031219020486,
+      "path": "output/eval_multiref/S2_000_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S2_002_s2",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.9077102411538363,
+      "path": "output/eval_multiref/S2_002_s2__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_000_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.679463534615934,
+      "path": "output/eval_multiref/S3_000_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_004_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.661868317052722,
+      "path": "output/eval_multiref/S3_004_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_008_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.6479475367814302,
+      "path": "output/eval_multiref/S3_008_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_012_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.64905989728868,
+      "path": "output/eval_multiref/S3_012_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_016_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.658228624612093,
+      "path": "output/eval_multiref/S3_016_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_020_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.702467798255384,
+      "path": "output/eval_multiref/S3_020_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_024_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.649174751713872,
+      "path": "output/eval_multiref/S3_024_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_028_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.6481768656522036,
+      "path": "output/eval_multiref/S3_028_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S4_002_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 3.158770705573261,
+      "path": "output/eval_multiref/S4_002_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S4_006_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 3.185774462297559,
+      "path": "output/eval_multiref/S4_006_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S2_000_s0",
+      "variant": "ours_kv_post2000",
+      "status": "ok",
+      "denoise_s": 3.0098856985569,
+      "path": "output/eval_multiref/S2_000_s0__ours_kv_post2000.png"
+    },
+    {
+      "task_id": "S2_002_s2",
+      "variant": "ours_kv_post2000",
+      "status": "ok",
+      "denoise_s": 2.916236074641347,
+      "path": "output/eval_multiref/S2_002_s2__ours_kv_post2000.png"
+    },
+    {
+      "task_id": "S0_002_s0",
+      "variant": "official_full",
+      "status": "skipped",
+      "path": "output/eval_multiref/S0_002_s0__official_full.png"
+    },
+    {
+      "task_id": "S1_001_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.107722345739603,
+      "path": "output/eval_multiref/S1_001_s2__official_full.png"
+    },
+    {
+      "task_id": "S1_004_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.116148068569601,
+      "path": "output/eval_multiref/S1_004_s1__official_full.png"
+    },
+    {
+      "task_id": "S1_007_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.115054754540324,
+      "path": "output/eval_multiref/S1_007_s0__official_full.png"
+    },
+    {
+      "task_id": "S1_009_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.122212269343436,
+      "path": "output/eval_multiref/S1_009_s2__official_full.png"
+    },
+    {
+      "task_id": "S1_012_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.122658944688737,
+      "path": "output/eval_multiref/S1_012_s1__official_full.png"
+    },
+    {
+      "task_id": "S1_015_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.125040306709707,
+      "path": "output/eval_multiref/S1_015_s0__official_full.png"
+    },
+    {
+      "task_id": "S1_017_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.13050970621407,
+      "path": "output/eval_multiref/S1_017_s2__official_full.png"
+    },
+    {
+      "task_id": "S1_020_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.126091826707125,
+      "path": "output/eval_multiref/S1_020_s1__official_full.png"
+    },
+    {
+      "task_id": "S1_023_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.131192855536938,
+      "path": "output/eval_multiref/S1_023_s0__official_full.png"
+    },
+    {
+      "task_id": "S1_025_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1319558676332235,
+      "path": "output/eval_multiref/S1_025_s2__official_full.png"
+    },
+    {
+      "task_id": "S1_028_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.125041926279664,
+      "path": "output/eval_multiref/S1_028_s1__official_full.png"
+    },
+    {
+      "task_id": "S1_031_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.120857921428978,
+      "path": "output/eval_multiref/S1_031_s0__official_full.png"
+    },
+    {
+      "task_id": "S1_033_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.116724352352321,
+      "path": "output/eval_multiref/S1_033_s2__official_full.png"
+    },
+    {
+      "task_id": "S1_036_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.12369470577687,
+      "path": "output/eval_multiref/S1_036_s1__official_full.png"
+    },
+    {
+      "task_id": "S1_039_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.121854460798204,
+      "path": "output/eval_multiref/S1_039_s0__official_full.png"
+    },
+    {
+      "task_id": "S1_041_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.122390829958022,
+      "path": "output/eval_multiref/S1_041_s2__official_full.png"
+    },
+    {
+      "task_id": "S2_000_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.127038400620222,
+      "path": "output/eval_multiref/S2_000_s1__official_full.png"
+    },
+    {
+      "task_id": "S2_003_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.131416410207748,
+      "path": "output/eval_multiref/S2_003_s0__official_full.png"
+    },
+    {
+      "task_id": "S3_001_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.616422620601952,
+      "path": "output/eval_multiref/S3_001_s0__official_full.png"
+    },
+    {
+      "task_id": "S3_005_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6162262577563524,
+      "path": "output/eval_multiref/S3_005_s0__official_full.png"
+    },
+    {
+      "task_id": "S3_009_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.597710375674069,
+      "path": "output/eval_multiref/S3_009_s0__official_full.png"
+    },
+    {
+      "task_id": "S3_013_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6145530259236693,
+      "path": "output/eval_multiref/S3_013_s0__official_full.png"
+    },
+    {
+      "task_id": "S3_017_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.62240235414356,
+      "path": "output/eval_multiref/S3_017_s0__official_full.png"
+    },
+    {
+      "task_id": "S3_021_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.603977889753878,
+      "path": "output/eval_multiref/S3_021_s0__official_full.png"
+    },
+    {
+      "task_id": "S3_025_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6064783092588186,
+      "path": "output/eval_multiref/S3_025_s0__official_full.png"
+    },
+    {
+      "task_id": "S3_029_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6001827251166105,
+      "path": "output/eval_multiref/S3_029_s0__official_full.png"
+    },
+    {
+      "task_id": "S4_003_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 6.639662371017039,
+      "path": "output/eval_multiref/S4_003_s0__official_full.png"
+    },
+    {
+      "task_id": "S4_007_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 6.6409408850595355,
+      "path": "output/eval_multiref/S4_007_s0__official_full.png"
+    },
+    {
+      "task_id": "S0_002_s0",
+      "variant": "ours_kv_pre",
+      "status": "skipped",
+      "path": "output/eval_multiref/S0_002_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_001_s2",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.924491827376187,
+      "path": "output/eval_multiref/S1_001_s2__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_004_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.915156957693398,
+      "path": "output/eval_multiref/S1_004_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_007_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.9089176263660192,
+      "path": "output/eval_multiref/S1_007_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_009_s2",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.9836860885843635,
+      "path": "output/eval_multiref/S1_009_s2__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_012_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.9205061672255397,
+      "path": "output/eval_multiref/S1_012_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_015_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.9042193675413728,
+      "path": "output/eval_multiref/S1_015_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_017_s2",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.904693036340177,
+      "path": "output/eval_multiref/S1_017_s2__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_020_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.9197659641504288,
+      "path": "output/eval_multiref/S1_020_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_023_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.904954159632325,
+      "path": "output/eval_multiref/S1_023_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_025_s2",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.943163227289915,
+      "path": "output/eval_multiref/S1_025_s2__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_028_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.9044507117941976,
+      "path": "output/eval_multiref/S1_028_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_031_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.9028370827436447,
+      "path": "output/eval_multiref/S1_031_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_033_s2",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.939284927211702,
+      "path": "output/eval_multiref/S1_033_s2__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_036_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 3.0153451822698116,
+      "path": "output/eval_multiref/S1_036_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_039_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.902402011677623,
+      "path": "output/eval_multiref/S1_039_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_041_s2",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.919031742028892,
+      "path": "output/eval_multiref/S1_041_s2__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S2_000_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.901918605901301,
+      "path": "output/eval_multiref/S2_000_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S2_003_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.93263066932559,
+      "path": "output/eval_multiref/S2_003_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_001_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.780038468539715,
+      "path": "output/eval_multiref/S3_001_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_005_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.721494064666331,
+      "path": "output/eval_multiref/S3_005_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_009_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.829438409768045,
+      "path": "output/eval_multiref/S3_009_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_013_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.7212586384266615,
+      "path": "output/eval_multiref/S3_013_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_017_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.6673435606062412,
+      "path": "output/eval_multiref/S3_017_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_021_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.6641516871750355,
+      "path": "output/eval_multiref/S3_021_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_025_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.678939003497362,
+      "path": "output/eval_multiref/S3_025_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_029_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.768559386022389,
+      "path": "output/eval_multiref/S3_029_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S4_003_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 3.1595221189782023,
+      "path": "output/eval_multiref/S4_003_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S4_007_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 3.1666108556091785,
+      "path": "output/eval_multiref/S4_007_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S0_002_s0",
+      "variant": "ours_kv_post4000",
+      "status": "skipped",
+      "path": "output/eval_multiref/S0_002_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_001_s2",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.908022235147655,
+      "path": "output/eval_multiref/S1_001_s2__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_004_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.942043541930616,
+      "path": "output/eval_multiref/S1_004_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_007_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.9029569532722235,
+      "path": "output/eval_multiref/S1_007_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_009_s2",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.9029770083725452,
+      "path": "output/eval_multiref/S1_009_s2__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_012_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.9129650620743632,
+      "path": "output/eval_multiref/S1_012_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_015_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.9206010280176997,
+      "path": "output/eval_multiref/S1_015_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_017_s2",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.9052147027105093,
+      "path": "output/eval_multiref/S1_017_s2__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_020_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.9026332003995776,
+      "path": "output/eval_multiref/S1_020_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_023_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.906017947010696,
+      "path": "output/eval_multiref/S1_023_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_025_s2",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.9105537803843617,
+      "path": "output/eval_multiref/S1_025_s2__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_028_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.9048832589760423,
+      "path": "output/eval_multiref/S1_028_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_031_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.905928373336792,
+      "path": "output/eval_multiref/S1_031_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_033_s2",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.9176731603220105,
+      "path": "output/eval_multiref/S1_033_s2__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_036_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 3.0731044355779886,
+      "path": "output/eval_multiref/S1_036_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_039_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.9063786072656512,
+      "path": "output/eval_multiref/S1_039_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_041_s2",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.9050101237371564,
+      "path": "output/eval_multiref/S1_041_s2__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S2_000_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.9046135060489178,
+      "path": "output/eval_multiref/S2_000_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S2_003_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.916169579140842,
+      "path": "output/eval_multiref/S2_003_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_001_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.70731998141855,
+      "path": "output/eval_multiref/S3_001_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_005_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.7407943699508905,
+      "path": "output/eval_multiref/S3_005_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_009_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.6582867931574583,
+      "path": "output/eval_multiref/S3_009_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_013_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.6691920375451446,
+      "path": "output/eval_multiref/S3_013_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_017_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.725046186707914,
+      "path": "output/eval_multiref/S3_017_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_021_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.6679600067436695,
+      "path": "output/eval_multiref/S3_021_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_025_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.674103337340057,
+      "path": "output/eval_multiref/S3_025_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_029_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.677419736981392,
+      "path": "output/eval_multiref/S3_029_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S4_003_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 3.158498498611152,
+      "path": "output/eval_multiref/S4_003_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S4_007_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 3.1595242554321885,
+      "path": "output/eval_multiref/S4_007_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S2_000_s1",
+      "variant": "ours_kv_post2000",
+      "status": "ok",
+      "denoise_s": 2.967281493358314,
+      "path": "output/eval_multiref/S2_000_s1__ours_kv_post2000.png"
+    },
+    {
+      "task_id": "S2_003_s0",
+      "variant": "ours_kv_post2000",
+      "status": "ok",
+      "denoise_s": 2.9061421491205692,
+      "path": "output/eval_multiref/S2_003_s0__ours_kv_post2000.png"
+    },
+    {
+      "task_id": "S0_003_s0",
+      "variant": "official_full",
+      "status": "skipped",
+      "path": "output/eval_multiref/S0_003_s0__official_full.png"
+    },
+    {
+      "task_id": "S1_002_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.095089964568615,
+      "path": "output/eval_multiref/S1_002_s0__official_full.png"
+    },
+    {
+      "task_id": "S1_004_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.078181748278439,
+      "path": "output/eval_multiref/S1_004_s2__official_full.png"
+    },
+    {
+      "task_id": "S1_007_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.080165581777692,
+      "path": "output/eval_multiref/S1_007_s1__official_full.png"
+    },
+    {
+      "task_id": "S1_010_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.086834638379514,
+      "path": "output/eval_multiref/S1_010_s0__official_full.png"
+    },
+    {
+      "task_id": "S1_012_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.086858339607716,
+      "path": "output/eval_multiref/S1_012_s2__official_full.png"
+    },
+    {
+      "task_id": "S1_015_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.0977042289450765,
+      "path": "output/eval_multiref/S1_015_s1__official_full.png"
+    },
+    {
+      "task_id": "S1_018_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.107864296995103,
+      "path": "output/eval_multiref/S1_018_s0__official_full.png"
+    },
+    {
+      "task_id": "S1_020_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1147927809506655,
+      "path": "output/eval_multiref/S1_020_s2__official_full.png"
+    },
+    {
+      "task_id": "S1_023_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.107422146946192,
+      "path": "output/eval_multiref/S1_023_s1__official_full.png"
+    },
+    {
+      "task_id": "S1_026_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.10713145788759,
+      "path": "output/eval_multiref/S1_026_s0__official_full.png"
+    },
+    {
+      "task_id": "S1_028_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.111022907309234,
+      "path": "output/eval_multiref/S1_028_s2__official_full.png"
+    },
+    {
+      "task_id": "S1_031_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.2146891839802265,
+      "path": "output/eval_multiref/S1_031_s1__official_full.png"
+    },
+    {
+      "task_id": "S1_034_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.121935363858938,
+      "path": "output/eval_multiref/S1_034_s0__official_full.png"
+    },
+    {
+      "task_id": "S1_036_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.125952755101025,
+      "path": "output/eval_multiref/S1_036_s2__official_full.png"
+    },
+    {
+      "task_id": "S1_039_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.126012021675706,
+      "path": "output/eval_multiref/S1_039_s1__official_full.png"
+    },
+    {
+      "task_id": "S1_042_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1230309987440705,
+      "path": "output/eval_multiref/S1_042_s0__official_full.png"
+    },
+    {
+      "task_id": "S2_000_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.120624956674874,
+      "path": "output/eval_multiref/S2_000_s2__official_full.png"
+    },
+    {
+      "task_id": "S2_003_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.112904077395797,
+      "path": "output/eval_multiref/S2_003_s1__official_full.png"
+    },
+    {
+      "task_id": "S3_001_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6044596675783396,
+      "path": "output/eval_multiref/S3_001_s1__official_full.png"
+    },
+    {
+      "task_id": "S3_005_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.601281987503171,
+      "path": "output/eval_multiref/S3_005_s1__official_full.png"
+    },
+    {
+      "task_id": "S3_009_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.597524058073759,
+      "path": "output/eval_multiref/S3_009_s1__official_full.png"
+    },
+    {
+      "task_id": "S3_013_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.5987079087644815,
+      "path": "output/eval_multiref/S3_013_s1__official_full.png"
+    },
+    {
+      "task_id": "S3_017_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.5980122731998563,
+      "path": "output/eval_multiref/S3_017_s1__official_full.png"
+    },
+    {
+      "task_id": "S3_021_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.5994199868291616,
+      "path": "output/eval_multiref/S3_021_s1__official_full.png"
+    },
+    {
+      "task_id": "S3_025_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6086854124441743,
+      "path": "output/eval_multiref/S3_025_s1__official_full.png"
+    },
+    {
+      "task_id": "S3_029_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6131392838433385,
+      "path": "output/eval_multiref/S3_029_s1__official_full.png"
+    },
+    {
+      "task_id": "S4_003_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 6.729668480344117,
+      "path": "output/eval_multiref/S4_003_s1__official_full.png"
+    },
+    {
+      "task_id": "S4_007_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 6.631890152581036,
+      "path": "output/eval_multiref/S4_007_s1__official_full.png"
+    },
+    {
+      "task_id": "S0_003_s0",
+      "variant": "ours_kv_pre",
+      "status": "skipped",
+      "path": "output/eval_multiref/S0_003_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_002_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.994510317221284,
+      "path": "output/eval_multiref/S1_002_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_004_s2",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.9461388420313597,
+      "path": "output/eval_multiref/S1_004_s2__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_007_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 3.1587983211502433,
+      "path": "output/eval_multiref/S1_007_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_010_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.8908588867634535,
+      "path": "output/eval_multiref/S1_010_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_012_s2",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.8902243860065937,
+      "path": "output/eval_multiref/S1_012_s2__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_015_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.8949612444266677,
+      "path": "output/eval_multiref/S1_015_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_018_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.89083016756922,
+      "path": "output/eval_multiref/S1_018_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_020_s2",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.8905199198052287,
+      "path": "output/eval_multiref/S1_020_s2__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_023_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.8921705028042197,
+      "path": "output/eval_multiref/S1_023_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_026_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.9222482070326805,
+      "path": "output/eval_multiref/S1_026_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_028_s2",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.9102184660732746,
+      "path": "output/eval_multiref/S1_028_s2__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_031_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.9110405268147588,
+      "path": "output/eval_multiref/S1_031_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_034_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.891523675993085,
+      "path": "output/eval_multiref/S1_034_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_036_s2",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.8919092947617173,
+      "path": "output/eval_multiref/S1_036_s2__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_039_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.8928514793515205,
+      "path": "output/eval_multiref/S1_039_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_042_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.8948758328333497,
+      "path": "output/eval_multiref/S1_042_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S2_000_s2",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.8934613298624754,
+      "path": "output/eval_multiref/S2_000_s2__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S2_003_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.89716808963567,
+      "path": "output/eval_multiref/S2_003_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_001_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.673512659035623,
+      "path": "output/eval_multiref/S3_001_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_005_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.650834770873189,
+      "path": "output/eval_multiref/S3_005_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_009_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.703460965305567,
+      "path": "output/eval_multiref/S3_009_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_013_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.656253973953426,
+      "path": "output/eval_multiref/S3_013_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_017_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.6512676682323217,
+      "path": "output/eval_multiref/S3_017_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_021_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.6813676292076707,
+      "path": "output/eval_multiref/S3_021_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_025_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.650537312962115,
+      "path": "output/eval_multiref/S3_025_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_029_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.65172444563359,
+      "path": "output/eval_multiref/S3_029_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S4_003_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 3.149905907921493,
+      "path": "output/eval_multiref/S4_003_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S4_007_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 3.1490271845832467,
+      "path": "output/eval_multiref/S4_007_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S0_003_s0",
+      "variant": "ours_kv_post4000",
+      "status": "skipped",
+      "path": "output/eval_multiref/S0_003_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_002_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.911819089204073,
+      "path": "output/eval_multiref/S1_002_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_004_s2",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.997443053871393,
+      "path": "output/eval_multiref/S1_004_s2__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_007_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.904351064004004,
+      "path": "output/eval_multiref/S1_007_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_010_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 3.008853425271809,
+      "path": "output/eval_multiref/S1_010_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_012_s2",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 3.1233158418908715,
+      "path": "output/eval_multiref/S1_012_s2__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_015_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.95922938734293,
+      "path": "output/eval_multiref/S1_015_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_018_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.892379581928253,
+      "path": "output/eval_multiref/S1_018_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_020_s2",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.8926913226023316,
+      "path": "output/eval_multiref/S1_020_s2__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_023_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.8931545428931713,
+      "path": "output/eval_multiref/S1_023_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_026_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.8927231142297387,
+      "path": "output/eval_multiref/S1_026_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_028_s2",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.907014509662986,
+      "path": "output/eval_multiref/S1_028_s2__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_031_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.8912722999230027,
+      "path": "output/eval_multiref/S1_031_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_034_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.8935057939961553,
+      "path": "output/eval_multiref/S1_034_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_036_s2",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.891721180640161,
+      "path": "output/eval_multiref/S1_036_s2__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_039_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.8931052554398775,
+      "path": "output/eval_multiref/S1_039_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_042_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.904241622425616,
+      "path": "output/eval_multiref/S1_042_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S2_000_s2",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.892395466566086,
+      "path": "output/eval_multiref/S2_000_s2__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S2_003_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.8925584238022566,
+      "path": "output/eval_multiref/S2_003_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_001_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.650726634077728,
+      "path": "output/eval_multiref/S3_001_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_005_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.649299632757902,
+      "path": "output/eval_multiref/S3_005_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_009_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.650930487550795,
+      "path": "output/eval_multiref/S3_009_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_013_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.6666596503928304,
+      "path": "output/eval_multiref/S3_013_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_017_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.673995611257851,
+      "path": "output/eval_multiref/S3_017_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_021_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.6497349813580513,
+      "path": "output/eval_multiref/S3_021_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_025_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.6466718055307865,
+      "path": "output/eval_multiref/S3_025_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_029_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.647339303046465,
+      "path": "output/eval_multiref/S3_029_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S4_003_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 3.1434335820376873,
+      "path": "output/eval_multiref/S4_003_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S4_007_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 3.220653124153614,
+      "path": "output/eval_multiref/S4_007_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S2_000_s2",
+      "variant": "ours_kv_post2000",
+      "status": "ok",
+      "denoise_s": 2.899713298305869,
+      "path": "output/eval_multiref/S2_000_s2__ours_kv_post2000.png"
+    },
+    {
+      "task_id": "S2_003_s1",
+      "variant": "ours_kv_post2000",
+      "status": "ok",
+      "denoise_s": 2.9872058164328337,
+      "path": "output/eval_multiref/S2_003_s1__ours_kv_post2000.png"
+    },
+    {
+      "task_id": "S0_004_s0",
+      "variant": "official_full",
+      "status": "skipped",
+      "path": "output/eval_multiref/S0_004_s0__official_full.png"
+    },
+    {
+      "task_id": "S1_002_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.098188526928425,
+      "path": "output/eval_multiref/S1_002_s1__official_full.png"
+    },
+    {
+      "task_id": "S1_005_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.106810580007732,
+      "path": "output/eval_multiref/S1_005_s0__official_full.png"
+    },
+    {
+      "task_id": "S1_007_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.102046584710479,
+      "path": "output/eval_multiref/S1_007_s2__official_full.png"
+    },
+    {
+      "task_id": "S1_010_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.108851821161807,
+      "path": "output/eval_multiref/S1_010_s1__official_full.png"
+    },
+    {
+      "task_id": "S1_013_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.108971159905195,
+      "path": "output/eval_multiref/S1_013_s0__official_full.png"
+    },
+    {
+      "task_id": "S1_015_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.116257451474667,
+      "path": "output/eval_multiref/S1_015_s2__official_full.png"
+    },
+    {
+      "task_id": "S1_018_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.123117266222835,
+      "path": "output/eval_multiref/S1_018_s1__official_full.png"
+    },
+    {
+      "task_id": "S1_021_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.117348329164088,
+      "path": "output/eval_multiref/S1_021_s0__official_full.png"
+    },
+    {
+      "task_id": "S1_023_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1201139045879245,
+      "path": "output/eval_multiref/S1_023_s2__official_full.png"
+    },
+    {
+      "task_id": "S1_026_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.115245444700122,
+      "path": "output/eval_multiref/S1_026_s1__official_full.png"
+    },
+    {
+      "task_id": "S1_029_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1230360846966505,
+      "path": "output/eval_multiref/S1_029_s0__official_full.png"
+    },
+    {
+      "task_id": "S1_031_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1288304599002,
+      "path": "output/eval_multiref/S1_031_s2__official_full.png"
+    },
+    {
+      "task_id": "S1_034_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.130689214915037,
+      "path": "output/eval_multiref/S1_034_s1__official_full.png"
+    },
+    {
+      "task_id": "S1_037_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.129754395224154,
+      "path": "output/eval_multiref/S1_037_s0__official_full.png"
+    },
+    {
+      "task_id": "S1_039_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.129564733244479,
+      "path": "output/eval_multiref/S1_039_s2__official_full.png"
+    },
+    {
+      "task_id": "S1_042_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.126558906398714,
+      "path": "output/eval_multiref/S1_042_s1__official_full.png"
+    },
+    {
+      "task_id": "S2_001_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.103961706161499,
+      "path": "output/eval_multiref/S2_001_s0__official_full.png"
+    },
+    {
+      "task_id": "S2_003_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.123477733694017,
+      "path": "output/eval_multiref/S2_003_s2__official_full.png"
+    },
+    {
+      "task_id": "S3_002_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.5999117670580745,
+      "path": "output/eval_multiref/S3_002_s0__official_full.png"
+    },
+    {
+      "task_id": "S3_006_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.600094954483211,
+      "path": "output/eval_multiref/S3_006_s0__official_full.png"
+    },
+    {
+      "task_id": "S3_010_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.5979442298412323,
+      "path": "output/eval_multiref/S3_010_s0__official_full.png"
+    },
+    {
+      "task_id": "S3_014_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6624670112505555,
+      "path": "output/eval_multiref/S3_014_s0__official_full.png"
+    },
+    {
+      "task_id": "S3_018_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.596844603307545,
+      "path": "output/eval_multiref/S3_018_s0__official_full.png"
+    },
+    {
+      "task_id": "S3_022_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.597204575315118,
+      "path": "output/eval_multiref/S3_022_s0__official_full.png"
+    },
+    {
+      "task_id": "S3_026_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.59379977080971,
+      "path": "output/eval_multiref/S3_026_s0__official_full.png"
+    },
+    {
+      "task_id": "S4_000_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 6.670444813556969,
+      "path": "output/eval_multiref/S4_000_s0__official_full.png"
+    },
+    {
+      "task_id": "S4_004_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 6.677510179579258,
+      "path": "output/eval_multiref/S4_004_s0__official_full.png"
+    },
+    {
+      "task_id": "S4_008_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 6.661761339753866,
+      "path": "output/eval_multiref/S4_008_s0__official_full.png"
+    },
+    {
+      "task_id": "S0_004_s0",
+      "variant": "ours_kv_pre",
+      "status": "skipped",
+      "path": "output/eval_multiref/S0_004_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_002_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.9427168341353536,
+      "path": "output/eval_multiref/S1_002_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_005_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 3.170181722380221,
+      "path": "output/eval_multiref/S1_005_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_007_s2",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.9091259371489286,
+      "path": "output/eval_multiref/S1_007_s2__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_010_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.9168191254138947,
+      "path": "output/eval_multiref/S1_010_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_013_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.89368390198797,
+      "path": "output/eval_multiref/S1_013_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_015_s2",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.891787862405181,
+      "path": "output/eval_multiref/S1_015_s2__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_018_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.8915516333654523,
+      "path": "output/eval_multiref/S1_018_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_021_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.8946529738605022,
+      "path": "output/eval_multiref/S1_021_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_023_s2",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.8945935061201453,
+      "path": "output/eval_multiref/S1_023_s2__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_026_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.8948860885575414,
+      "path": "output/eval_multiref/S1_026_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_029_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.8915330544114113,
+      "path": "output/eval_multiref/S1_029_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_031_s2",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.898881950415671,
+      "path": "output/eval_multiref/S1_031_s2__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_034_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.897230620495975,
+      "path": "output/eval_multiref/S1_034_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_037_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.9041280895471573,
+      "path": "output/eval_multiref/S1_037_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_039_s2",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.89345464669168,
+      "path": "output/eval_multiref/S1_039_s2__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_042_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.8929901579394937,
+      "path": "output/eval_multiref/S1_042_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S2_001_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.8977395789697766,
+      "path": "output/eval_multiref/S2_001_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S2_003_s2",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.891290604136884,
+      "path": "output/eval_multiref/S2_003_s2__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_002_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.714247938245535,
+      "path": "output/eval_multiref/S3_002_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_006_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.6597411474213004,
+      "path": "output/eval_multiref/S3_006_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_010_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.646561522036791,
+      "path": "output/eval_multiref/S3_010_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_014_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.653254265896976,
+      "path": "output/eval_multiref/S3_014_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_018_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.7036421224474907,
+      "path": "output/eval_multiref/S3_018_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_022_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.6458536256104708,
+      "path": "output/eval_multiref/S3_022_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_026_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.6486768908798695,
+      "path": "output/eval_multiref/S3_026_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S4_000_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 3.16362227499485,
+      "path": "output/eval_multiref/S4_000_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S4_004_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 3.157187351025641,
+      "path": "output/eval_multiref/S4_004_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S4_008_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 3.2096810592338443,
+      "path": "output/eval_multiref/S4_008_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S0_004_s0",
+      "variant": "ours_kv_post4000",
+      "status": "skipped",
+      "path": "output/eval_multiref/S0_004_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_002_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.8918673833832145,
+      "path": "output/eval_multiref/S1_002_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_005_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.8977597262710333,
+      "path": "output/eval_multiref/S1_005_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_007_s2",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.9349173959344625,
+      "path": "output/eval_multiref/S1_007_s2__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_010_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 3.067320069298148,
+      "path": "output/eval_multiref/S1_010_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_013_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.890148937702179,
+      "path": "output/eval_multiref/S1_013_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_015_s2",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.8913221322000027,
+      "path": "output/eval_multiref/S1_015_s2__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_018_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.889885696582496,
+      "path": "output/eval_multiref/S1_018_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_021_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.918333244509995,
+      "path": "output/eval_multiref/S1_021_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_023_s2",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.899583197198808,
+      "path": "output/eval_multiref/S1_023_s2__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_026_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.8968336591497064,
+      "path": "output/eval_multiref/S1_026_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_029_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.894354274496436,
+      "path": "output/eval_multiref/S1_029_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_031_s2",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.8917552661150694,
+      "path": "output/eval_multiref/S1_031_s2__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_034_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.8904478745535016,
+      "path": "output/eval_multiref/S1_034_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_037_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.890683716163039,
+      "path": "output/eval_multiref/S1_037_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_039_s2",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.9144675191491842,
+      "path": "output/eval_multiref/S1_039_s2__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_042_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.9034907650202513,
+      "path": "output/eval_multiref/S1_042_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S2_001_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.8908822014927864,
+      "path": "output/eval_multiref/S2_001_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S2_003_s2",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.893172835931182,
+      "path": "output/eval_multiref/S2_003_s2__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_002_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.651900567114353,
+      "path": "output/eval_multiref/S3_002_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_006_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.6504922872409225,
+      "path": "output/eval_multiref/S3_006_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_010_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.650671150535345,
+      "path": "output/eval_multiref/S3_010_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_014_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.6495213136076927,
+      "path": "output/eval_multiref/S3_014_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_018_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.683424139395356,
+      "path": "output/eval_multiref/S3_018_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_022_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.6533636385574937,
+      "path": "output/eval_multiref/S3_022_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_026_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.6506697218865156,
+      "path": "output/eval_multiref/S3_026_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S4_000_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 3.1463857498019934,
+      "path": "output/eval_multiref/S4_000_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S4_004_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 3.160471271723509,
+      "path": "output/eval_multiref/S4_004_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S4_008_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 3.213856602087617,
+      "path": "output/eval_multiref/S4_008_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S2_001_s0",
+      "variant": "ours_kv_post2000",
+      "status": "ok",
+      "denoise_s": 2.8912266874685884,
+      "path": "output/eval_multiref/S2_001_s0__ours_kv_post2000.png"
+    },
+    {
+      "task_id": "S2_003_s2",
+      "variant": "ours_kv_post2000",
+      "status": "ok",
+      "denoise_s": 2.916489716619253,
+      "path": "output/eval_multiref/S2_003_s2__ours_kv_post2000.png"
+    },
+    {
+      "task_id": "S1_000_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.054229559376836,
+      "path": "output/eval_multiref/S1_000_s0__official_full.png"
+    },
+    {
+      "task_id": "S1_002_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.060954139567912,
+      "path": "output/eval_multiref/S1_002_s2__official_full.png"
+    },
+    {
+      "task_id": "S1_005_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.0575546296313405,
+      "path": "output/eval_multiref/S1_005_s1__official_full.png"
+    },
+    {
+      "task_id": "S1_008_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.06725381873548,
+      "path": "output/eval_multiref/S1_008_s0__official_full.png"
+    },
+    {
+      "task_id": "S1_010_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.058253674767911,
+      "path": "output/eval_multiref/S1_010_s2__official_full.png"
+    },
+    {
+      "task_id": "S1_013_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.055781899951398,
+      "path": "output/eval_multiref/S1_013_s1__official_full.png"
+    },
+    {
+      "task_id": "S1_016_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.071657232940197,
+      "path": "output/eval_multiref/S1_016_s0__official_full.png"
+    },
+    {
+      "task_id": "S1_018_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.067210832610726,
+      "path": "output/eval_multiref/S1_018_s2__official_full.png"
+    },
+    {
+      "task_id": "S1_021_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.077765818685293,
+      "path": "output/eval_multiref/S1_021_s1__official_full.png"
+    },
+    {
+      "task_id": "S1_024_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.077897846698761,
+      "path": "output/eval_multiref/S1_024_s0__official_full.png"
+    },
+    {
+      "task_id": "S1_026_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.086931191384792,
+      "path": "output/eval_multiref/S1_026_s2__official_full.png"
+    },
+    {
+      "task_id": "S1_029_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.087045536376536,
+      "path": "output/eval_multiref/S1_029_s1__official_full.png"
+    },
+    {
+      "task_id": "S1_032_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.089502199552953,
+      "path": "output/eval_multiref/S1_032_s0__official_full.png"
+    },
+    {
+      "task_id": "S1_034_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.0894971545785666,
+      "path": "output/eval_multiref/S1_034_s2__official_full.png"
+    },
+    {
+      "task_id": "S1_037_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.093836735934019,
+      "path": "output/eval_multiref/S1_037_s1__official_full.png"
+    },
+    {
+      "task_id": "S1_040_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.10655890032649,
+      "path": "output/eval_multiref/S1_040_s0__official_full.png"
+    },
+    {
+      "task_id": "S1_042_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.109778203070164,
+      "path": "output/eval_multiref/S1_042_s2__official_full.png"
+    },
+    {
+      "task_id": "S2_001_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1387175265699625,
+      "path": "output/eval_multiref/S2_001_s1__official_full.png"
+    },
+    {
+      "task_id": "S2_004_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.0862773116678,
+      "path": "output/eval_multiref/S2_004_s0__official_full.png"
+    },
+    {
+      "task_id": "S3_002_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.580910968594253,
+      "path": "output/eval_multiref/S3_002_s1__official_full.png"
+    },
+    {
+      "task_id": "S3_006_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.5774591946974397,
+      "path": "output/eval_multiref/S3_006_s1__official_full.png"
+    },
+    {
+      "task_id": "S3_010_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.578278218396008,
+      "path": "output/eval_multiref/S3_010_s1__official_full.png"
+    },
+    {
+      "task_id": "S3_014_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.5793511336669326,
+      "path": "output/eval_multiref/S3_014_s1__official_full.png"
+    },
+    {
+      "task_id": "S3_018_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.5764011228457093,
+      "path": "output/eval_multiref/S3_018_s1__official_full.png"
+    },
+    {
+      "task_id": "S3_022_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.5821954738348722,
+      "path": "output/eval_multiref/S3_022_s1__official_full.png"
+    },
+    {
+      "task_id": "S3_026_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.581864144653082,
+      "path": "output/eval_multiref/S3_026_s1__official_full.png"
+    },
+    {
+      "task_id": "S4_000_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 6.604224213398993,
+      "path": "output/eval_multiref/S4_000_s1__official_full.png"
+    },
+    {
+      "task_id": "S4_004_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 6.613371877931058,
+      "path": "output/eval_multiref/S4_004_s1__official_full.png"
+    },
+    {
+      "task_id": "S4_008_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 6.870339084416628,
+      "path": "output/eval_multiref/S4_008_s1__official_full.png"
+    },
+    {
+      "task_id": "S1_000_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.89886084664613,
+      "path": "output/eval_multiref/S1_000_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_002_s2",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.8936316687613726,
+      "path": "output/eval_multiref/S1_002_s2__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_005_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.9001975236460567,
+      "path": "output/eval_multiref/S1_005_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_008_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.9198864232748747,
+      "path": "output/eval_multiref/S1_008_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_010_s2",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.8922935854643583,
+      "path": "output/eval_multiref/S1_010_s2__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_013_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.903991491533816,
+      "path": "output/eval_multiref/S1_013_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_016_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.897737913765013,
+      "path": "output/eval_multiref/S1_016_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_018_s2",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.8940685531124473,
+      "path": "output/eval_multiref/S1_018_s2__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_021_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.905238934792578,
+      "path": "output/eval_multiref/S1_021_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_024_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.891700064763427,
+      "path": "output/eval_multiref/S1_024_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_026_s2",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.893833509646356,
+      "path": "output/eval_multiref/S1_026_s2__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_029_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.8934901608154178,
+      "path": "output/eval_multiref/S1_029_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_032_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.8945265784859657,
+      "path": "output/eval_multiref/S1_032_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_034_s2",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.919809103012085,
+      "path": "output/eval_multiref/S1_034_s2__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_037_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.893872359767556,
+      "path": "output/eval_multiref/S1_037_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_040_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.8941845297813416,
+      "path": "output/eval_multiref/S1_040_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_042_s2",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.893963330425322,
+      "path": "output/eval_multiref/S1_042_s2__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S2_001_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.892622643150389,
+      "path": "output/eval_multiref/S2_001_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S2_004_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.895543065853417,
+      "path": "output/eval_multiref/S2_004_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_002_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.65764348115772,
+      "path": "output/eval_multiref/S3_002_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_006_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.719675175845623,
+      "path": "output/eval_multiref/S3_006_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_010_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.728950995951891,
+      "path": "output/eval_multiref/S3_010_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_014_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.648869360797107,
+      "path": "output/eval_multiref/S3_014_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_018_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.6505696326494217,
+      "path": "output/eval_multiref/S3_018_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_022_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.6492448691278696,
+      "path": "output/eval_multiref/S3_022_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_026_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.7222174229100347,
+      "path": "output/eval_multiref/S3_026_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S4_000_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 3.3162519726902246,
+      "path": "output/eval_multiref/S4_000_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S4_004_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 3.159659195691347,
+      "path": "output/eval_multiref/S4_004_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S4_008_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 3.150002588517964,
+      "path": "output/eval_multiref/S4_008_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_000_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.991311574354768,
+      "path": "output/eval_multiref/S1_000_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_002_s2",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.90959604550153,
+      "path": "output/eval_multiref/S1_002_s2__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_005_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.9028866915032268,
+      "path": "output/eval_multiref/S1_005_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_008_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.9419688200578094,
+      "path": "output/eval_multiref/S1_008_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_010_s2",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.9042083071544766,
+      "path": "output/eval_multiref/S1_010_s2__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_013_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.913240162655711,
+      "path": "output/eval_multiref/S1_013_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_016_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.8898693127557635,
+      "path": "output/eval_multiref/S1_016_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_018_s2",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.892974461428821,
+      "path": "output/eval_multiref/S1_018_s2__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_021_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.897162347100675,
+      "path": "output/eval_multiref/S1_021_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_024_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.8919324837625027,
+      "path": "output/eval_multiref/S1_024_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_026_s2",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.8926879493519664,
+      "path": "output/eval_multiref/S1_026_s2__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_029_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.8933924604207277,
+      "path": "output/eval_multiref/S1_029_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_032_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.9140554647892714,
+      "path": "output/eval_multiref/S1_032_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_034_s2",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.8960401602089405,
+      "path": "output/eval_multiref/S1_034_s2__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_037_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.894796264357865,
+      "path": "output/eval_multiref/S1_037_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_040_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.892845724709332,
+      "path": "output/eval_multiref/S1_040_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_042_s2",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.9335021432489157,
+      "path": "output/eval_multiref/S1_042_s2__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S2_001_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.8979989662766457,
+      "path": "output/eval_multiref/S2_001_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S2_004_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 3.00108465179801,
+      "path": "output/eval_multiref/S2_004_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_002_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.6553231263533235,
+      "path": "output/eval_multiref/S3_002_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_006_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.656833770684898,
+      "path": "output/eval_multiref/S3_006_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_010_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.6561293192207813,
+      "path": "output/eval_multiref/S3_010_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_014_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.6567783607169986,
+      "path": "output/eval_multiref/S3_014_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_018_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.681796917691827,
+      "path": "output/eval_multiref/S3_018_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_022_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.7190333856269717,
+      "path": "output/eval_multiref/S3_022_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_026_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.650388013571501,
+      "path": "output/eval_multiref/S3_026_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S4_000_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 3.148352854885161,
+      "path": "output/eval_multiref/S4_000_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S4_004_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 3.151456216350198,
+      "path": "output/eval_multiref/S4_004_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S4_008_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 3.1627621380612254,
+      "path": "output/eval_multiref/S4_008_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S2_001_s1",
+      "variant": "ours_kv_post2000",
+      "status": "ok",
+      "denoise_s": 2.9825429935008287,
+      "path": "output/eval_multiref/S2_001_s1__ours_kv_post2000.png"
+    },
+    {
+      "task_id": "S2_004_s0",
+      "variant": "ours_kv_post2000",
+      "status": "ok",
+      "denoise_s": 2.894576714374125,
+      "path": "output/eval_multiref/S2_004_s0__ours_kv_post2000.png"
+    },
+    {
+      "task_id": "S1_000_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.065487956628203,
+      "path": "output/eval_multiref/S1_000_s1__official_full.png"
+    },
+    {
+      "task_id": "S1_003_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.067846059799194,
+      "path": "output/eval_multiref/S1_003_s0__official_full.png"
+    },
+    {
+      "task_id": "S1_005_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.069255694746971,
+      "path": "output/eval_multiref/S1_005_s2__official_full.png"
+    },
+    {
+      "task_id": "S1_008_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.074071218259633,
+      "path": "output/eval_multiref/S1_008_s1__official_full.png"
+    },
+    {
+      "task_id": "S1_011_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.077572925016284,
+      "path": "output/eval_multiref/S1_011_s0__official_full.png"
+    },
+    {
+      "task_id": "S1_013_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.080874502658844,
+      "path": "output/eval_multiref/S1_013_s2__official_full.png"
+    },
+    {
+      "task_id": "S1_016_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.081509144976735,
+      "path": "output/eval_multiref/S1_016_s1__official_full.png"
+    },
+    {
+      "task_id": "S1_019_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.083035578019917,
+      "path": "output/eval_multiref/S1_019_s0__official_full.png"
+    },
+    {
+      "task_id": "S1_021_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.084736241959035,
+      "path": "output/eval_multiref/S1_021_s2__official_full.png"
+    },
+    {
+      "task_id": "S1_024_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.072982030920684,
+      "path": "output/eval_multiref/S1_024_s1__official_full.png"
+    },
+    {
+      "task_id": "S1_027_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.067966917529702,
+      "path": "output/eval_multiref/S1_027_s0__official_full.png"
+    },
+    {
+      "task_id": "S1_029_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.085369503125548,
+      "path": "output/eval_multiref/S1_029_s2__official_full.png"
+    },
+    {
+      "task_id": "S1_032_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.092671748250723,
+      "path": "output/eval_multiref/S1_032_s1__official_full.png"
+    },
+    {
+      "task_id": "S1_035_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.086685090325773,
+      "path": "output/eval_multiref/S1_035_s0__official_full.png"
+    },
+    {
+      "task_id": "S1_037_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.086089074611664,
+      "path": "output/eval_multiref/S1_037_s2__official_full.png"
+    },
+    {
+      "task_id": "S1_040_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.097355052828789,
+      "path": "output/eval_multiref/S1_040_s1__official_full.png"
+    },
+    {
+      "task_id": "S1_043_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.09417443908751,
+      "path": "output/eval_multiref/S1_043_s0__official_full.png"
+    },
+    {
+      "task_id": "S2_001_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.087701670825481,
+      "path": "output/eval_multiref/S2_001_s2__official_full.png"
+    },
+    {
+      "task_id": "S2_004_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.068410298787057,
+      "path": "output/eval_multiref/S2_004_s1__official_full.png"
+    },
+    {
+      "task_id": "S3_003_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.5845112735405564,
+      "path": "output/eval_multiref/S3_003_s0__official_full.png"
+    },
+    {
+      "task_id": "S3_007_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.58312145806849,
+      "path": "output/eval_multiref/S3_007_s0__official_full.png"
+    },
+    {
+      "task_id": "S3_011_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.585285550914705,
+      "path": "output/eval_multiref/S3_011_s0__official_full.png"
+    },
+    {
+      "task_id": "S3_015_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.5855304431170225,
+      "path": "output/eval_multiref/S3_015_s0__official_full.png"
+    },
+    {
+      "task_id": "S3_019_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.5832553636282682,
+      "path": "output/eval_multiref/S3_019_s0__official_full.png"
+    },
+    {
+      "task_id": "S3_023_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.5845387261360884,
+      "path": "output/eval_multiref/S3_023_s0__official_full.png"
+    },
+    {
+      "task_id": "S3_027_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.596068488433957,
+      "path": "output/eval_multiref/S3_027_s0__official_full.png"
+    },
+    {
+      "task_id": "S4_001_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 6.613615011796355,
+      "path": "output/eval_multiref/S4_001_s0__official_full.png"
+    },
+    {
+      "task_id": "S4_005_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 6.621313820593059,
+      "path": "output/eval_multiref/S4_005_s0__official_full.png"
+    },
+    {
+      "task_id": "S4_009_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 6.769580409862101,
+      "path": "output/eval_multiref/S4_009_s0__official_full.png"
+    },
+    {
+      "task_id": "S1_000_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 3.0189728792756796,
+      "path": "output/eval_multiref/S1_000_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_003_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.9109370848163962,
+      "path": "output/eval_multiref/S1_003_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_005_s2",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.9125697035342455,
+      "path": "output/eval_multiref/S1_005_s2__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_008_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.8958164239302278,
+      "path": "output/eval_multiref/S1_008_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_011_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.8942205039784312,
+      "path": "output/eval_multiref/S1_011_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_013_s2",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.929310920648277,
+      "path": "output/eval_multiref/S1_013_s2__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_016_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.89810177590698,
+      "path": "output/eval_multiref/S1_016_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_019_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.919628736563027,
+      "path": "output/eval_multiref/S1_019_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_021_s2",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.9256232511252165,
+      "path": "output/eval_multiref/S1_021_s2__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_024_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.9088236493989825,
+      "path": "output/eval_multiref/S1_024_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_027_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.892810508608818,
+      "path": "output/eval_multiref/S1_027_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_029_s2",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.8940148409456015,
+      "path": "output/eval_multiref/S1_029_s2__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_032_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.921923534013331,
+      "path": "output/eval_multiref/S1_032_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_035_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.8936195224523544,
+      "path": "output/eval_multiref/S1_035_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_037_s2",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.8939609238877892,
+      "path": "output/eval_multiref/S1_037_s2__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_040_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.900427316315472,
+      "path": "output/eval_multiref/S1_040_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_043_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.8954365821555257,
+      "path": "output/eval_multiref/S1_043_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S2_001_s2",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.9012554604560137,
+      "path": "output/eval_multiref/S2_001_s2__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S2_004_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.894142298027873,
+      "path": "output/eval_multiref/S2_004_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_003_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.6548557626083493,
+      "path": "output/eval_multiref/S3_003_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_007_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.74505818169564,
+      "path": "output/eval_multiref/S3_007_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_011_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.675882050767541,
+      "path": "output/eval_multiref/S3_011_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_015_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.6570322271436453,
+      "path": "output/eval_multiref/S3_015_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_019_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.650043719448149,
+      "path": "output/eval_multiref/S3_019_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_023_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.683900256641209,
+      "path": "output/eval_multiref/S3_023_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_027_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.721858149394393,
+      "path": "output/eval_multiref/S3_027_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S4_001_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 3.1767075741663575,
+      "path": "output/eval_multiref/S4_001_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S4_005_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 3.1489054821431637,
+      "path": "output/eval_multiref/S4_005_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S4_009_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 3.1606111470609903,
+      "path": "output/eval_multiref/S4_009_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_000_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.9167667869478464,
+      "path": "output/eval_multiref/S1_000_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_003_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.8914721505716443,
+      "path": "output/eval_multiref/S1_003_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_005_s2",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.9320162404328585,
+      "path": "output/eval_multiref/S1_005_s2__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_008_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.8959860606119037,
+      "path": "output/eval_multiref/S1_008_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_011_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.914282822981477,
+      "path": "output/eval_multiref/S1_011_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_013_s2",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.9703151620924473,
+      "path": "output/eval_multiref/S1_013_s2__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_016_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.927745553664863,
+      "path": "output/eval_multiref/S1_016_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_019_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.8942555487155914,
+      "path": "output/eval_multiref/S1_019_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_021_s2",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.9012716095894575,
+      "path": "output/eval_multiref/S1_021_s2__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_024_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.9043319886550307,
+      "path": "output/eval_multiref/S1_024_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_027_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.936635674908757,
+      "path": "output/eval_multiref/S1_027_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_029_s2",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.8935768166556954,
+      "path": "output/eval_multiref/S1_029_s2__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_032_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.925398916937411,
+      "path": "output/eval_multiref/S1_032_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_035_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.891900106333196,
+      "path": "output/eval_multiref/S1_035_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_037_s2",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.8945544380694628,
+      "path": "output/eval_multiref/S1_037_s2__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_040_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.908097419887781,
+      "path": "output/eval_multiref/S1_040_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_043_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.89027301594615,
+      "path": "output/eval_multiref/S1_043_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S2_001_s2",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.91197719424963,
+      "path": "output/eval_multiref/S2_001_s2__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S2_004_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.948506450280547,
+      "path": "output/eval_multiref/S2_004_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_003_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.6570143392309546,
+      "path": "output/eval_multiref/S3_003_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_007_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.6550422199070454,
+      "path": "output/eval_multiref/S3_007_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_011_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.652288679033518,
+      "path": "output/eval_multiref/S3_011_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_015_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.6603959649801254,
+      "path": "output/eval_multiref/S3_015_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_019_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.753853313624859,
+      "path": "output/eval_multiref/S3_019_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_023_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.7190853329375386,
+      "path": "output/eval_multiref/S3_023_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_027_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.7011668542400002,
+      "path": "output/eval_multiref/S3_027_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S4_001_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 3.1493814922869205,
+      "path": "output/eval_multiref/S4_001_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S4_005_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 3.1601542001590133,
+      "path": "output/eval_multiref/S4_005_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S4_009_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 3.1598687078803778,
+      "path": "output/eval_multiref/S4_009_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S2_001_s2",
+      "variant": "ours_kv_post2000",
+      "status": "ok",
+      "denoise_s": 2.8950997898355126,
+      "path": "output/eval_multiref/S2_001_s2__ours_kv_post2000.png"
+    },
+    {
+      "task_id": "S2_004_s1",
+      "variant": "ours_kv_post2000",
+      "status": "ok",
+      "denoise_s": 2.917480317875743,
+      "path": "output/eval_multiref/S2_004_s1__ours_kv_post2000.png"
+    },
+    {
+      "task_id": "S1_000_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1179400980472565,
+      "path": "output/eval_multiref/S1_000_s2__official_full.png"
+    },
+    {
+      "task_id": "S1_003_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.118887863121927,
+      "path": "output/eval_multiref/S1_003_s1__official_full.png"
+    },
+    {
+      "task_id": "S1_006_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.112427398562431,
+      "path": "output/eval_multiref/S1_006_s0__official_full.png"
+    },
+    {
+      "task_id": "S1_008_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.138037539087236,
+      "path": "output/eval_multiref/S1_008_s2__official_full.png"
+    },
+    {
+      "task_id": "S1_011_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.139565659686923,
+      "path": "output/eval_multiref/S1_011_s1__official_full.png"
+    },
+    {
+      "task_id": "S1_014_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.122892767190933,
+      "path": "output/eval_multiref/S1_014_s0__official_full.png"
+    },
+    {
+      "task_id": "S1_016_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.131656181067228,
+      "path": "output/eval_multiref/S1_016_s2__official_full.png"
+    },
+    {
+      "task_id": "S1_019_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.140802131034434,
+      "path": "output/eval_multiref/S1_019_s1__official_full.png"
+    },
+    {
+      "task_id": "S1_022_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.146212064661086,
+      "path": "output/eval_multiref/S1_022_s0__official_full.png"
+    },
+    {
+      "task_id": "S1_024_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.154910445213318,
+      "path": "output/eval_multiref/S1_024_s2__official_full.png"
+    },
+    {
+      "task_id": "S1_027_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.148309371434152,
+      "path": "output/eval_multiref/S1_027_s1__official_full.png"
+    },
+    {
+      "task_id": "S1_030_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1513117188587785,
+      "path": "output/eval_multiref/S1_030_s0__official_full.png"
+    },
+    {
+      "task_id": "S1_032_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.162589515559375,
+      "path": "output/eval_multiref/S1_032_s2__official_full.png"
+    },
+    {
+      "task_id": "S1_035_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.164574973285198,
+      "path": "output/eval_multiref/S1_035_s1__official_full.png"
+    },
+    {
+      "task_id": "S1_038_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.167666821740568,
+      "path": "output/eval_multiref/S1_038_s0__official_full.png"
+    },
+    {
+      "task_id": "S1_040_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.16339600738138,
+      "path": "output/eval_multiref/S1_040_s2__official_full.png"
+    },
+    {
+      "task_id": "S1_043_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.159233523532748,
+      "path": "output/eval_multiref/S1_043_s1__official_full.png"
+    },
+    {
+      "task_id": "S2_002_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.158502692356706,
+      "path": "output/eval_multiref/S2_002_s0__official_full.png"
+    },
+    {
+      "task_id": "S2_004_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.161447225138545,
+      "path": "output/eval_multiref/S2_004_s2__official_full.png"
+    },
+    {
+      "task_id": "S3_003_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.629927477799356,
+      "path": "output/eval_multiref/S3_003_s1__official_full.png"
+    },
+    {
+      "task_id": "S3_007_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.634514879435301,
+      "path": "output/eval_multiref/S3_007_s1__official_full.png"
+    },
+    {
+      "task_id": "S3_011_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.631025943905115,
+      "path": "output/eval_multiref/S3_011_s1__official_full.png"
+    },
+    {
+      "task_id": "S3_015_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6324810879305005,
+      "path": "output/eval_multiref/S3_015_s1__official_full.png"
+    },
+    {
+      "task_id": "S3_019_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6353336246684194,
+      "path": "output/eval_multiref/S3_019_s1__official_full.png"
+    },
+    {
+      "task_id": "S3_023_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.640581757761538,
+      "path": "output/eval_multiref/S3_023_s1__official_full.png"
+    },
+    {
+      "task_id": "S3_027_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.641247635707259,
+      "path": "output/eval_multiref/S3_027_s1__official_full.png"
+    },
+    {
+      "task_id": "S4_001_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 6.857179815880954,
+      "path": "output/eval_multiref/S4_001_s1__official_full.png"
+    },
+    {
+      "task_id": "S4_005_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 6.715517052449286,
+      "path": "output/eval_multiref/S4_005_s1__official_full.png"
+    },
+    {
+      "task_id": "S4_009_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 6.714562469162047,
+      "path": "output/eval_multiref/S4_009_s1__official_full.png"
+    },
+    {
+      "task_id": "S1_000_s2",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 3.1403464432805777,
+      "path": "output/eval_multiref/S1_000_s2__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_003_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 3.0353107284754515,
+      "path": "output/eval_multiref/S1_003_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_006_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.936677945777774,
+      "path": "output/eval_multiref/S1_006_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_008_s2",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.906375290825963,
+      "path": "output/eval_multiref/S1_008_s2__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_011_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.920374983921647,
+      "path": "output/eval_multiref/S1_011_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_014_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.9056735606864095,
+      "path": "output/eval_multiref/S1_014_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_016_s2",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.905639315955341,
+      "path": "output/eval_multiref/S1_016_s2__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_019_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.9153974382206798,
+      "path": "output/eval_multiref/S1_019_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_022_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.9114171396940947,
+      "path": "output/eval_multiref/S1_022_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_024_s2",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.908471629023552,
+      "path": "output/eval_multiref/S1_024_s2__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_027_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 3.005145804025233,
+      "path": "output/eval_multiref/S1_027_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_030_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.9399558948352933,
+      "path": "output/eval_multiref/S1_030_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_032_s2",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.9083726117387414,
+      "path": "output/eval_multiref/S1_032_s2__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_035_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.9097449900582433,
+      "path": "output/eval_multiref/S1_035_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_038_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.9033562149852514,
+      "path": "output/eval_multiref/S1_038_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_040_s2",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.9113667607307434,
+      "path": "output/eval_multiref/S1_040_s2__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_043_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.9186651799827814,
+      "path": "output/eval_multiref/S1_043_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S2_002_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.908979748375714,
+      "path": "output/eval_multiref/S2_002_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S2_004_s2",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.9055786849930882,
+      "path": "output/eval_multiref/S2_004_s2__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_003_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.6601886162534356,
+      "path": "output/eval_multiref/S3_003_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_007_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.6816382529214025,
+      "path": "output/eval_multiref/S3_007_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_011_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.759322845377028,
+      "path": "output/eval_multiref/S3_011_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_015_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.7021762244403362,
+      "path": "output/eval_multiref/S3_015_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_019_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.6634419774636626,
+      "path": "output/eval_multiref/S3_019_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_023_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.6701625483110547,
+      "path": "output/eval_multiref/S3_023_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S3_027_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.673556192778051,
+      "path": "output/eval_multiref/S3_027_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S4_001_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 3.2258239733055234,
+      "path": "output/eval_multiref/S4_001_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S4_005_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 3.1939323833212256,
+      "path": "output/eval_multiref/S4_005_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S4_009_s1",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 3.158536924980581,
+      "path": "output/eval_multiref/S4_009_s1__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S1_000_s2",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.9449432026594877,
+      "path": "output/eval_multiref/S1_000_s2__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_003_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 3.166958164423704,
+      "path": "output/eval_multiref/S1_003_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_006_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.904852317646146,
+      "path": "output/eval_multiref/S1_006_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_008_s2",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.9432237204164267,
+      "path": "output/eval_multiref/S1_008_s2__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_011_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.9097731867805123,
+      "path": "output/eval_multiref/S1_011_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_014_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.9081405084580183,
+      "path": "output/eval_multiref/S1_014_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_016_s2",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.9281119098886847,
+      "path": "output/eval_multiref/S1_016_s2__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_019_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.9158147387206554,
+      "path": "output/eval_multiref/S1_019_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_022_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.90989039093256,
+      "path": "output/eval_multiref/S1_022_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_024_s2",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.9093892415985465,
+      "path": "output/eval_multiref/S1_024_s2__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_027_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.910656818188727,
+      "path": "output/eval_multiref/S1_027_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_030_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.905780783854425,
+      "path": "output/eval_multiref/S1_030_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_032_s2",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.90614462364465,
+      "path": "output/eval_multiref/S1_032_s2__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_035_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.910782566294074,
+      "path": "output/eval_multiref/S1_035_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_038_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.9260630197823048,
+      "path": "output/eval_multiref/S1_038_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_040_s2",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.9027964984998107,
+      "path": "output/eval_multiref/S1_040_s2__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S1_043_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.910778595134616,
+      "path": "output/eval_multiref/S1_043_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S2_002_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.9063368448987603,
+      "path": "output/eval_multiref/S2_002_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S2_004_s2",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.915468296967447,
+      "path": "output/eval_multiref/S2_004_s2__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_003_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.689948075450957,
+      "path": "output/eval_multiref/S3_003_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_007_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.746429638005793,
+      "path": "output/eval_multiref/S3_007_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_011_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.66548122651875,
+      "path": "output/eval_multiref/S3_011_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_015_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.66223562695086,
+      "path": "output/eval_multiref/S3_015_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_019_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.66169554926455,
+      "path": "output/eval_multiref/S3_019_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_023_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.667003127746284,
+      "path": "output/eval_multiref/S3_023_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S3_027_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.745488961227238,
+      "path": "output/eval_multiref/S3_027_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S4_001_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 3.166017376817763,
+      "path": "output/eval_multiref/S4_001_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S4_005_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 3.1746127251535654,
+      "path": "output/eval_multiref/S4_005_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S4_009_s1",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 3.1591738648712635,
+      "path": "output/eval_multiref/S4_009_s1__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S2_002_s0",
+      "variant": "ours_kv_post2000",
+      "status": "ok",
+      "denoise_s": 2.91359518840909,
+      "path": "output/eval_multiref/S2_002_s0__ours_kv_post2000.png"
+    },
+    {
+      "task_id": "S2_004_s2",
+      "variant": "ours_kv_post2000",
+      "status": "ok",
+      "denoise_s": 2.9970699287950993,
+      "path": "output/eval_multiref/S2_004_s2__ours_kv_post2000.png"
+    }
+  ],
+  "fails": []
+}
