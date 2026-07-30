@@ -22,15 +22,20 @@
      若不丢 → 缓存有嫌疑,那 M1–M4 的结论都要重新审视。
 `--nocache_bank post4000` 可切到修复后的 ckpt(那样只回答问题 1)。
 
-## 用法
+## 用法(全在 H800 上)
 
+  python distill/test_attn_record.py                 # 上机预检,几秒;先跑这个
   python distill/run_attn_diag.py --dry_run          # 不碰 GPU,打计划
-  python distill/run_attn_diag.py                    # 单卡跑全部 32 次(约 15 min)
+  python distill/run_attn_diag.py                    # 单卡跑全部 32 次(约 11 min)
   python distill/run_attn_diag.py --verify_identical # 纯 CPU:与 M4 产物逐像素比
 
 `--verify_identical` 是不变量 1 的实证:录制不参与前向,所以本脚本产出的图应当与
 `output/eval_multiref/` 里 M4 Stage B 的同名图**逐比特相同**(max diff = 0)。
 Stage B 还没跑就跳过,不算失败。
+
+**必须在 H800 上跑,不能在本地跑**:Stage B 的 711 张 PNG 按 .gitignore 留在 H800
+不进 git,本地只有 results.json 和拼图。在本地跑只会得到"没有可比对的图对",
+那是参照物不在,不是通过。
 """
 import argparse
 import json
