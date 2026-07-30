@@ -346,12 +346,16 @@ split1-5(5 万对),score≥4.0 池实际 16,966 条(非计划假设的 404,259)�
 | checkpoint 保存 | `checkpoint-100/{dit_lora.safetensors 3.6GB, optimizer.bin 1.4GB}` ✅ |
 | NCCL | P2P/IB 开启, NVLink 通信正常 |
 
-**正式训练已启动** [2026-07-29 17:04]:
+**正式训练已完成** [已验证 2026-07-29 23:21]:
 
 - tmux 会话 `m3`,`bash scripts/train_distill.sh`,日志 `log/ref_distill/train.log`;
-- 监控会话 `monitor`(claude code, 30 min 周期);
-- 预计 4000 步耗时 ~6.3 h(5.25 s/it 实测, 比标定略快),约 21:25 完成;
-- 产出 `log/ref_distill/checkpoint-{1000,2000,3000,4000}`。
+- 监控会话 `monitor`(claude code, 每小时 :18 触发),训练完成后自动收尾并删除 cron;
+- **4000 步总耗时 6h 14min(5.43 s/it 实测, 比标定 5.64 略快),23:21 完成**;
+- 产出 `log/ref_distill/checkpoint-{1000,2000,3000,4000}` 全部落盘
+  (每个含 `dit_lora.safetensors` 3.8GB + `optimizer.bin` 1.4GB);
+- 全程零异常(无 `anomaly_*.md`),最终 step_loss=0.192,loss 区间 0.18–0.57;
+- 保活收尾 `bench_kv_cache.py` 自动跑完:iso vs kv 像素差 max=58 mean=0.4681
+  (✅ 等价,蒸馏不动架构已验证),加速比 full→kv 1.30x,peak 显存 34.5 GB/卡。
 
 **4000 步训练覆盖估算**(有效 batch = 8卡×1×2 = 16, 4000 步消耗 64,000 样本):
 
@@ -361,6 +365,48 @@ split1-5(5 万对),score≥4.0 池实际 16,966 条(非计划假设的 404,259)�
 | 蒸馏 1-ref | 900 | ~2.1(轻度桥接) |
 | 蒸馏 2-ref | 2,041 | ~11.3(学进去足够) |
 | 蒸馏 3-ref | 138 | ~18.5(略多但降权保留) |
+
+### 5.2 M4 冒烟评测(2026-07-30)
+
+M3 训练完成后,先跑两轮冒烟评测肉眼确认蒸馏方向,再决定是否进全量 M4。两个脚本
+(`distill/smoke_eval.py`、`distill/eval_multibanana.py`)复用 `multibanana_eval/board.py`
+拼图,单卡 bf16 不 offload,每任务 3 变体并排对比:
+
+- `official_full`:官方 UNO + 全注意力(teacher 金标准)
+- `ours_kv_pre`:ckpt-20000(蒸馏前)+ 隔离注意力 + KV cache
+- `ours_kv_post`:ckpt-4000(蒸馏后)+ 隔离注意力 + KV cache
+
+**轮①:dreambench held-out 2-ref**(`smoke_eval.py`,5 个 held-out 2-ref 组合各 1 prompt)
+— 产出 `output/smoke_eval/smoke_compare.png`:
+
+| 变体 | denoise 均值 | peak 显存 | vs teacher |
+|---|---|---|---|
+| official_full | 5.13 s | 36.2 GB | 1.00x |
+| ours_kv_pre | 2.90 s | 37.0 GB | 1.77x |
+| ours_kv_post | 2.90 s | 37.0 GB | 1.77x |
+
+肉眼初判(待 §4.1 v2 度量定量确认):5 个 case 上 `ours_kv_post` 均比 `ours_kv_pre`
+更接近 `official_full`——两个主体都保留住,而 pre 疑似丢一。**这是 in-distribution
+信号**(蒸馏数据就是 dreambench 句式),支持"蒸馏让 student 学会不丢主体"。
+
+**轮②:multibanana `add` 子集**(`eval_multibanana.py`,8 个主体合成任务)
+— 产出 `output/multibanana_eval_distill/compare_add.png`:
+
+| 变体 | denoise 均值 | peak 显存 | vs teacher |
+|---|---|---|---|
+| official_full | 4.94 s | 36.2 GB | 1.00x |
+| ours_kv_pre | 2.88 s | 37.0 GB | 1.72x |
+| ours_kv_post | 2.88 s | 37.0 GB | 1.72x |
+
+肉眼初判:`add` 是 OOD 任务(Image 1 是场景图不是 ref,结构与训练不同),pre/post
+**几乎无差别**——都靠隔离注意力的通用泛化撑着,蒸馏没教这个任务模式。这反而是个
+**稳健性信号**:蒸馏针对性地改善了"多主体入场"目标能力,没泛化到无关任务上做
+奇怪的事(没把 `add` 打坏,也没在 `add` 上虚涨)。
+
+**共同结论**:蒸馏没把架构/速度打坏(KV cache 1.72–1.77x 不变,显存 37 GB 不变),
+in-distribution 有正信号,OOD 无负信号。**下一步**:跑 §4.1 v2 度量(GroundingDino
+presence + DINO 裁剪)给 39 张图(15 + 24)自动打分,把肉眼判断落地为数字,再决定
+是否进全量 M4。
 
 ---
 
@@ -428,9 +474,11 @@ seed**(单 seed 肉眼判读信号弱,已有教训);指标 = 复用 M2 的 dino_
    + 通过率。通过率 <50% 时按 §4 排查,不盲目放行。
 3. **M3**:混合 json → 100 步标定 → 4000 步训练,每 1000 步 checkpoint。
    产出:`log/ref_distill/checkpoint-{1000..4000}`。
-   **[进度 2026-07-29] 脚本+数据+标定已通过,正式训练 17:04 启动,预计 21:25 完成。**
+   **[进度 2026-07-29 23:21] ✅ 已完成。4000 步 6h14min,零异常,4 个 checkpoint 全落盘。**
 4. **M4**:ckpt-2000 与 ckpt-4000 各评一次(蒸馏前 ckpt-20000 同批评),产出
    results.json + 拼图 + min_ref_sim 对比表;若 2000→4000 仍在涨,酌情追加步数。
+   **[进度 2026-07-30] 冒烟评测(轮①dreambench 2-ref + 轮②multibanana add)已跑完,
+   肉眼信号正向(in-dist 有改善、OOD 无回退);待 v2 度量定量确认后进全量。**
    **人工确认点③:对照 §6 验收标准判定实验成败。**
 
 每个里程碑结束把统计/拼图/结论 commit 回 fork(图片大文件不 commit)。
@@ -459,15 +507,25 @@ distill/
   gen_data.py              # M1:teacher 生成(新写 sharding、断点续跑、held-out 断言、逐样本容错)
   filter_data.py           # M2:dino_vits16 + min-over-refs 打分、calibrate、阈值过滤
   build_train_json.py      # M3 前置:UNO-1M(score>=4.0)重转换 + 蒸馏数据 oversample 混合  [已落地 2026-07-29]
-  build_eval_json.py       # M4 前置:held-out 60 条评测集(确定性选取)
-  eval_multiref.py         # M4:3 seed + min_ref_sim + 拼图
+  build_eval_json.py       # M4 前置:held-out 60 条评测集(确定性选取)  [待写]
+  eval_multiref.py         # M4:3 seed + min_ref_sim + 拼图  [待写]
+  smoke_eval.py            # M4 冒烟:dreambench held-out 2-ref 三方对比  [已落地 2026-07-30]
+  eval_multibanana.py      # M4 冒烟:multibanana 子集三方对比(默认 add)  [已落地 2026-07-30]
 scripts/
   train_distill.sh         # M3:训练脚本(注意 heredoc 与 accelerate 两处路径都要改)  [已落地 2026-07-29]
 datasets/distill_multiref/
   train_mixed.json         # M3 混合训练集(29,777 条, 真·多ref 40%)  [已生成 2026-07-29]
 log/ref_distill/
-  train.log                # M3 正式训练日志  [运行中 2026-07-29]
-  checkpoint-{1000..4000}/ # M3 训练产物(预计 21:25 全部产出)
+  train.log                # M3 正式训练日志  [已完成 2026-07-29 23:21]
+  checkpoint-{1000..4000}/ # M3 训练产物  [全部落盘 2026-07-29]
+output/smoke_eval/
+  smoke_compare.png        # M4 冒烟①总览:dreambench 2-ref 5 case × 3 变体  [已产出 2026-07-30]
+  results.json             # 冒烟①配置 + 计时 + 案例清单
+output/multibanana_eval_distill/
+  compare_add.png          # M4 冒烟②总览:multibanana add 8 task × 3 变体  [已产出 2026-07-30]
+  results_add.json         # 冒烟②配置 + 计时 + 任务清单
+multibanana_eval/
+  download_multibanana_single_two.py  # 多子集下载器(single + 11 个 2-ref 子集)  [已落地 2026-07-30]
 ```
 
 所有脚本:中文 docstring(仿 multibanana_eval 风格)、`--dry_run`、失败打日志不静默。

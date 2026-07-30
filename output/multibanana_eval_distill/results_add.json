@@ -1,0 +1,104 @@
+{
+  "config": {
+    "subset": "add",
+    "data_root": "data/multibanana",
+    "task_nums": null,
+    "n_tasks": 8,
+    "pre_lora": "log/ref_isolation/checkpoint-20000/dit_lora.safetensors",
+    "post_lora": "log/ref_distill/checkpoint-4000/dit_lora.safetensors",
+    "num_steps": 25,
+    "guidance": 4.0,
+    "seed": 3407,
+    "width": 512,
+    "height": 512,
+    "ref_size": 512,
+    "model_type": "flux-dev",
+    "offload": false,
+    "lora_rank": 512,
+    "save_path": "output/multibanana_eval_distill",
+    "dry_run": false
+  },
+  "timing": {
+    "official_full": {
+      "mean_s": 4.941475214669481,
+      "median_s": 5.130061154253781,
+      "peak_mem_gb": 36.24359846115112
+    },
+    "ours_kv_pre": {
+      "mean_s": 2.8780505628092214,
+      "median_s": 2.9109094734303653,
+      "peak_mem_gb": 37.04558181762695
+    },
+    "ours_kv_post": {
+      "mean_s": 2.8828335627913475,
+      "median_s": 2.9116951427422464,
+      "peak_mem_gb": 37.04558181762695
+    }
+  },
+  "tasks": [
+    {
+      "name": "add_004",
+      "prompt": "Add the woman from Image 2 in Image 1",
+      "image_paths": [
+        "data/multibanana/add/004_0.jpg",
+        "data/multibanana/add/004_1.jpg"
+      ]
+    },
+    {
+      "name": "add_009",
+      "prompt": "Add the cat from Image 2 on the floor in front of the couch in Image 1.",
+      "image_paths": [
+        "data/multibanana/add/009_0.jpg",
+        "data/multibanana/add/009_1.jpg"
+      ]
+    },
+    {
+      "name": "add_024",
+      "prompt": "Add the cheetah from Image 2 on the sand in Image 1",
+      "image_paths": [
+        "data/multibanana/add/024_0.jpg",
+        "data/multibanana/add/024_1.jpg"
+      ]
+    },
+    {
+      "name": "add_064",
+      "prompt": "Add Supergirl from Image 2 in Image 1",
+      "image_paths": [
+        "data/multibanana/add/064_0.jpg",
+        "data/multibanana/add/064_1.jpg"
+      ]
+    },
+    {
+      "name": "add_072",
+      "prompt": "Add the dog from Image 2 on the beach next to the woman in Image 1.",
+      "image_paths": [
+        "data/multibanana/add/072_0.jpg",
+        "data/multibanana/add/072_1.jpg"
+      ]
+    },
+    {
+      "name": "add_092",
+      "prompt": "Add the canoe from Image 2 on the path in Image 1.",
+      "image_paths": [
+        "data/multibanana/add/092_0.jpg",
+        "data/multibanana/add/092_1.jpg"
+      ]
+    },
+    {
+      "name": "add_128",
+      "prompt": "Add the tiger from Image 2 on the grassy embankment in Image 1.",
+      "image_paths": [
+        "data/multibanana/add/128_0.jpg",
+        "data/multibanana/add/128_1.jpg"
+      ]
+    },
+    {
+      "name": "add_143",
+      "prompt": "Add the red teapot from Image 2 on the ground in Image 1.",
+      "image_paths": [
+        "data/multibanana/add/143_0.jpg",
+        "data/multibanana/add/143_1.jpg"
+      ]
+    }
+  ]
+}

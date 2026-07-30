@@ -1,0 +1,73 @@
+{
+  "config": {
+    "pre_lora": "log/ref_isolation/checkpoint-20000/dit_lora.safetensors",
+    "post_lora": "log/ref_distill/checkpoint-4000/dit_lora.safetensors",
+    "data_json": "datasets/dreambench_multiip.json",
+    "n_cases": 5,
+    "num_steps": 25,
+    "guidance": 4.0,
+    "seed": 3407,
+    "width": 512,
+    "height": 512,
+    "ref_size": 512,
+    "model_type": "flux-dev",
+    "offload": false,
+    "lora_rank": 512,
+    "save_path": "output/smoke_eval",
+    "dry_run": false
+  },
+  "timing": {
+    "official_full": {
+      "mean_s": 5.134608123265207,
+      "median_s": 5.135363413020968,
+      "peak_mem_gb": 36.24359846115112
+    },
+    "ours_kv_pre": {
+      "mean_s": 2.9006235342472793,
+      "median_s": 2.899284184910357,
+      "peak_mem_gb": 37.04558181762695
+    },
+    "ours_kv_post": {
+      "mean_s": 2.901283673197031,
+      "median_s": 2.9017794635146856,
+      "peak_mem_gb": 37.04558181762695
+    }
+  },
+  "cases": [
+    {
+      "prompt": "a backpack and a stuffed animal in the jungle",
+      "image_paths": [
+        "./dreambooth/dataset/backpack_dog/02.jpg",
+        "./dreambooth/dataset/bear_plushie/03.jpg"
+      ]
+    },
+    {
+      "prompt": "a bowl and a can on the beach",
+      "image_paths": [
+        "./dreambooth/dataset/berry_bowl/02.jpg",
+        "./dreambooth/dataset/can/01.jpg"
+      ]
+    },
+    {
+      "prompt": "a candle and a clock in the snow",
+      "image_paths": [
+        "./dreambooth/dataset/candle/02.jpg",
+        "./dreambooth/dataset/clock/03.jpg"
+      ]
+    },
+    {
+      "prompt": "a sneaker and a toy in the jungle",
+      "image_paths": [
+        "./dreambooth/dataset/colorful_sneaker/01.jpg",
+        "./dreambooth/dataset/duck_toy/01.jpg"
+      ]
+    },
+    {
+      "prompt": "a boot and a stuffed animal on the beach",
+      "image_paths": [
+        "./dreambooth/dataset/fancy_boot/02.jpg",
+        "./dreambooth/dataset/grey_sloth_plushie/04.jpg"
+      ]
+    }
+  ]
+}
