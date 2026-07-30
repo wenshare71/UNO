@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>M4 盲评 A/B</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+  <div class="title">M4 盲评 <span class="sub">A vs B(不知道谁是 teacher / student)</span></div>
+  <div class="progress-wrap">
+    <div class="progress-bar"><div id="progress-fill"></div></div>
+    <div id="progress-text">0 / 0</div>
+  </div>
+  <div class="nav">
+    <button id="btn-prev">← 上一条</button>
+    <button id="btn-next">下一条 →</button>
+    <button id="btn-jump">跳到第一条未评</button>
+    <button id="btn-reveal" class="danger">揭盲看结果</button>
+  </div>
+</header>
+
+<main>
+  <div id="task-info">
+    <span id="task-label">-</span>
+    <span id="task-prompt"></span>
+  </div>
+  <div id="refs"></div>
+  <div id="cands">
+    <div class="cand" id="cand-a">
+      <div class="cand-label">A</div>
+      <img id="img-a" alt="A">
+    </div>
+    <div class="cand" id="cand-b">
+      <div class="cand-label">B</div>
+      <img id="img-b" alt="B">
+    </div>
+  </div>
+  <div id="actions">
+    <button class="choice" data-choice="A">A 更好 <kbd>1</kbd>/<kbd>←</kbd></button>
+    <button class="choice" data-choice="tie">一样好 <kbd>2</kbd>/<kbd>↓</kbd></button>
+    <button class="choice" data-choice="B">B 更好 <kbd>3</kbd>/<kbd>→</kbd></button>
+  </div>
+  <div id="status"></div>
+</main>
+
+<div id="modal" class="hidden">
+  <div id="modal-body">
+    <h2>揭盲结果</h2>
+    <div id="modal-content"></div>
+    <button id="modal-close">关闭</button>
+  </div>
+</div>
+
+<script src="/static/blind.js"></script>
+</body>
+</html>
