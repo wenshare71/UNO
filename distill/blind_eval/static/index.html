@@ -17,6 +17,14 @@
     <button id="btn-next">下一条 →</button>
     <button id="btn-jump">跳到第一条未评</button>
     <button id="btn-reveal" class="danger">揭盲看结果</button>
+    <button id="btn-review" class="review-off">回顾模式:关</button>
+    <select id="filter" class="hidden">
+      <option value="all">全部</option>
+      <option value="teacher">仅 teacher 胜</option>
+      <option value="student">仅 student 胜</option>
+      <option value="tie">仅平局</option>
+      <option value="unmarked">仅未评</option>
+    </select>
   </div>
 </header>
 
@@ -25,14 +33,15 @@
     <span id="task-label">-</span>
     <span id="task-prompt"></span>
   </div>
+  <div id="verdict" class="hidden"></div>
   <div id="refs"></div>
   <div id="cands">
     <div class="cand" id="cand-a">
-      <div class="cand-label">A</div>
+      <div class="cand-label">A<span id="badge-a" class="badge hidden"></span></div>
       <img id="img-a" alt="A">
     </div>
     <div class="cand" id="cand-b">
-      <div class="cand-label">B</div>
+      <div class="cand-label">B<span id="badge-b" class="badge hidden"></span></div>
       <img id="img-b" alt="B">
     </div>
   </div>

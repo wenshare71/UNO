@@ -57,3 +57,22 @@ main { max-width: 1200px; margin: 16px auto; padding: 0 16px; }
                                  text-align: center; }
 #modal-close { margin-top: 16px; padding: 8px 22px; border: 1px solid #d0d3d9;
                background: #fff; border-radius: 6px; cursor: pointer; }
+
+/* ---- 回顾模式(v2) ---- */
+.review-off { border-color: #b0b4bb !important; color: #666; }
+.review-on  { border-color: #2c7a3f !important; color: #2c7a3f; font-weight: 700; }
+#filter { padding: 6px 10px; border: 1px solid #d0d3d9; border-radius: 6px;
+          font-size: 13px; background: #fff; }
+#filter.hidden, .badge.hidden, #verdict.hidden, #modal.hidden { display: none; }
+
+.cand-label { display: flex; align-items: center; justify-content: center; gap: 10px; }
+.badge { font-size: 12px; font-weight: 700; padding: 2px 10px; border-radius: 10px; }
+.badge-teacher { background: #eceef1; color: #666; border: 1px solid #c8ccd2; }
+.badge-student { background: #e3f0e7; color: #2c7a3f; border: 1px solid #2c7a3f; }
+
+#verdict { margin: 0 0 10px; padding: 8px 14px; border-radius: 8px;
+           font-weight: 700; display: inline-block; }
+.verdict-teacher { background: #fdf0ec; color: #b3542e; border: 1px solid #e0a88f; }
+.verdict-student { background: #e3f0e7; color: #2c7a3f; border: 1px solid #9cc7a9; }
+.verdict-tie     { background: #eef3fa; color: #4a90d9; border: 1px solid #b3cdec; }
+.verdict-none    { background: #eceef1; color: #888; border: 1px solid #d0d3d9; }

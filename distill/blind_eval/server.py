@@ -256,6 +256,35 @@ def create_app(eval_json: Path, save_dir: Path, marks_path: Path,
         } for i in range(len(tasks)) if str(i) in marks]
         return out
 
+    @app.get("/api/review")
+    async def get_review() -> dict:
+        """揭盲后的逐条回看:身份映射 + 用户标注 + 判定结果。
+
+        盲评阶段前端不会调用本接口(/api/tasks 刻意不含任何身份信息);
+        调用即视为揭盲。图片仍走 /api/img 的不透明 key,身份揭示只发生在前端展示层。
+        """
+        marks = store.load()
+        rows = []
+        for i, t in enumerate(tasks):
+            m = marks.get(str(i))
+            choice = m["choice"] if m else None
+            if choice == "tie":
+                winner = "tie"
+            elif choice in ("A", "B"):
+                winner = slot_variant(t["task_id"], choice)
+            else:
+                winner = None
+            rows.append({
+                "idx": i,
+                "task_id": t["task_id"],
+                "stratum": t["stratum"],
+                "prompt": t["prompt"],
+                "choice": choice,
+                "student_on": "A" if student_on_left(t["task_id"]) else "B",
+                "winner": winner,
+            })
+        return {"teacher": TEACHER, "student": STUDENT, "rows": rows}
+
     app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
 
     @app.middleware("http")
