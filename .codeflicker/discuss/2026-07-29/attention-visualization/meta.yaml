@@ -1,8 +1,8 @@
 # 讨论元数据
 topic: "推理时参考图-主图注意力演化可视化"
 created: 2026-07-29
-current_round: 5
-status: active  # R5 解冻:暂缓条件"训练结束"已满足,代码已落地待上机
+current_round: 6
+status: active  # R6:首轮跑完,份额指标被证伪;curve 拆 head 后待二次上机
 
 max_stale_rounds: 3
 
@@ -23,3 +23,9 @@ decisions:
     status: confirmed
     confirmed_at: 5
     doc_path: "decisions/D03-implementation-corrections.md"
+  - id: D4
+    title: "首轮负结果：份额失衡比测不出主体丢失；curve 拆到 head 维度重跑"
+    status: confirmed  # 代码已落地并本地验证,结论待二次上机数据
+    confirmed_at: 6
+    supersedes_metric_of: D2  # D02 的"失衡比即主体冷落代理"被首轮数据证伪
+    doc_path: "decisions/D04-per-head-recording.md"

@@ -6,11 +6,12 @@ scaled_dot_product_attention 的 scale 约定、softmax 数值行为、apply_rop
 
     python distill/test_attn_record.py && python distill/run_attn_diag.py
 
-要证明的是四件事,每一件都不是"读代码看着对",而是跑出来对:
-  1. 段归约算得对        —— 与独立写的 float64 参考实现比
-  2. 掩码确实不影响 img 行 —— 用真 build_isolated_attn_mask 实测,不是引注释
-  3. wrapper 不改前向     —— patch 后输出与原函数逐比特相同
-  4. 断言真的会炸        —— 布局错、调用次数错、嵌套,全部必须抛
+要证明的是五件事,每一件都不是"读代码看着对",而是跑出来对:
+  1. 段归约算得对          —— 与独立写的 float64 参考实现比,**逐 head** 比对(D04)
+  2. 掩码确实不影响 img 行  —— 用真 build_isolated_attn_mask 实测,不是引注释
+  3. wrapper 不改前向       —— patch 后输出与原函数逐比特相同
+  4. 断言真的会炸          —— 布局错、调用次数错、嵌套,全部必须抛
+  5. head 维度真的没被摊平 —— 不同 head 的份额必须有差异,否则拆分白拆了
 """
 import os
 import sys
@@ -32,7 +33,9 @@ torch.manual_seed(0)
 TXT, IMG_H, IMG_W = 6, 2, 2
 IMG = IMG_H * IMG_W
 REF_LENS = (3, 2)
-H, D = 3, 8
+# WHY H 必须是 24:observe() 在 D04 之后硬断言 n_heads == N_HEADS(curve 的 head 维度
+# 是按这个常量开的数组)。用 3 个头的"小一点更快"版本会直接被那条断言挡下来。
+H, D = AR.N_HEADS, 8
 SEQ_REF = TXT + IMG + sum(REF_LENS)   # 15
 SEQ_NO = TXT + IMG                    # 10
 
@@ -58,7 +61,14 @@ def mk_pe(L):
 
 
 def reference(q, k, pe, ref_kv=None, cache_key=None):
-    """独立参考实现:float64 全量 softmax,再切段。故意不复用 AR 的任何代码。"""
+    """独立参考实现:float64 全量 softmax,再切段。故意不复用 AR 的任何代码。
+
+    返回 **完全不归约** 的 `(H, IMG, n_seg)`——head 和 img 位置都留着,
+    由调用方自己按被测对象选归约方式:
+      - 比 `curve`(D04 起按 head 分辨)→ `.mean(dim=1)`,只压掉 img 位置
+      - 比 `spatial`(仍是 head 平均)→ `.mean(dim=0)`,只压掉 head
+    参考实现自己不做选择,免得把被测代码的归约假设抄进来。
+    """
     qr, kr = apply_rope(q, k, pe)
     if ref_kv is not None and ref_kv.mode == "read":
         kr = torch.cat((kr, ref_kv.read(cache_key)[0]), dim=2)
@@ -66,7 +76,7 @@ def reference(q, k, pe, ref_kv=None, cache_key=None):
     scores = torch.matmul(qi, kr.double().transpose(-1, -2)) * (D ** -0.5)
     probs = torch.softmax(scores, dim=-1)
     segs = [probs[0, :, :, s:e].sum(dim=-1) for _, s, e in LAYOUT.segments()]
-    return torch.stack(segs, dim=-1).mean(dim=0)  # (IMG, n_seg)
+    return torch.stack(segs, dim=-1)  # (H, IMG, n_seg)
 
 
 def run_blocks(rec, mode, n_steps=1, mask=None, cache=None):
@@ -112,18 +122,33 @@ rec = AR.AttnRecorder(LAYOUT, num_steps=2, spatial_blocks=(0, 5), spatial_steps=
 with AR.recording(rec):
     refs = run_blocks(rec, "full", n_steps=2)
 check("调用计数 = 2×57", rec.n_calls == 2 * AR.N_BLOCKS, f"{rec.n_calls}")
-err = max(float((torch.tensor(rec.curve[s, b]).double() - refs[s * AR.N_BLOCKS + b].mean(0))
-                .abs().max())
+check("curve 形状 (step, block, head, seg)",
+      rec.curve.shape == (2, AR.N_BLOCKS, H, len(LAYOUT.segments())), str(rec.curve.shape))
+# 逐 head 比对(D04):参考值只压掉 img 位置,head 维度留着与 curve 对齐。
+# 若 observe() 里 head 维度被写错位(比如整块广播成同一个值),这里立刻炸。
+err = max(float((torch.tensor(rec.curve[s, b]).double()
+                 - refs[s * AR.N_BLOCKS + b].mean(dim=1)).abs().max())
           for s in range(2) for b in range(AR.N_BLOCKS))
-check("曲线 vs float64 参考实现", err < 2e-6, f"max abs err {err:.2e}")
+check("曲线 vs float64 参考实现(逐 head)", err < 2e-6, f"max abs err {err:.2e}")
 check("各段份额之和 = 1", abs(float(rec.curve.sum(axis=-1).min()) - 1.0) < 1e-5
       and abs(float(rec.curve.sum(axis=-1).max()) - 1.0) < 1e-5,
       f"[{rec.curve.sum(axis=-1).min():.6f}, {rec.curve.sum(axis=-1).max():.6f}]")
 sp_err = max(float((torch.tensor(rec.spatial[(s, b)]).double()
-                    - refs[s * AR.N_BLOCKS + b].reshape(IMG_H, IMG_W, -1)).abs().max())
+                    - refs[s * AR.N_BLOCKS + b].mean(dim=0).reshape(IMG_H, IMG_W, -1))
+                   .abs().max())
              for s in (0, 1) for b in (0, 5))
-check("热力图 vs 参考实现", sp_err < 2e-6, f"max abs err {sp_err:.2e}")
+check("热力图 vs 参考实现(仍是 head 平均)", sp_err < 2e-6, f"max abs err {sp_err:.2e}")
 check("热力图只存了指定 (step,block)", set(rec.spatial) == {(0, 0), (0, 5), (1, 0), (1, 5)})
+
+# 要证明的第 5 件事:head 维度是真的分开了,不是 24 份同一个数。
+# 归约代码写错(例如 per_head[h0:h1, si] = seg_prob.mean())不会报错、形状也对,
+# 只会悄悄退化回 D04 之前的全 head 平均——那就白改了。
+head_std = rec.curve.std(axis=2)                     # (step, block, seg)
+check("head 维度没被摊平(份额随 head 变化)", float(head_std.max()) > 1e-3,
+      f"head 间标准差 max {float(head_std.max()):.4f}")
+check("每个 (step,block) 都有 head 间差异",
+      float(head_std.max(axis=-1).min()) > 1e-4,
+      f"最小的那个 block 也有 {float(head_std.max(axis=-1).min()):.4f}")
 
 # ------------------------------------------------------------------ 3 掩码不影响 img 行
 print("\n[3] 隔离掩码对 img 行无效 —— ours_iso_nocache 形态(不变量 2 的实证)")
@@ -142,7 +167,7 @@ check("img 行:带掩码 softmax == 不带掩码 softmax",
 rec = AR.AttnRecorder(LAYOUT, num_steps=1)
 with AR.recording(rec):
     refs = run_blocks(rec, "full", n_steps=1, mask=mask)
-err = max(float((torch.tensor(rec.curve[0, b]).double() - refs[b].mean(0)).abs().max())
+err = max(float((torch.tensor(rec.curve[0, b]).double() - refs[b].mean(dim=1)).abs().max())
           for b in range(AR.N_BLOCKS))
 check("有掩码时曲线仍与无掩码参考一致", err < 2e-6, f"max abs err {err:.2e}")
 
@@ -154,14 +179,14 @@ with AR.recording(rec):
     refs_w = run_blocks(rec, "full", n_steps=1, mask=mask, cache=cache)
 check("write 后缓存了 57 个 block", len(cache.storage) == AR.N_BLOCKS, f"{len(cache.storage)}")
 check("缓存的 ref 段长度 = 5", cache.storage["double_0"][0].shape[2] == sum(REF_LENS))
-err = max(float((torch.tensor(rec.curve[0, b]).double() - refs_w[b].mean(0)).abs().max())
+err = max(float((torch.tensor(rec.curve[0, b]).double() - refs_w[b].mean(dim=1)).abs().max())
           for b in range(AR.N_BLOCKS))
 check("write 步曲线正确", err < 2e-6, f"max abs err {err:.2e}")
 
 rec = AR.AttnRecorder(LAYOUT, num_steps=1)
 with AR.recording(rec):
     refs_r = run_blocks(rec, "read", n_steps=1, cache=cache)
-err = max(float((torch.tensor(rec.curve[0, b]).double() - refs_r[b].mean(0)).abs().max())
+err = max(float((torch.tensor(rec.curve[0, b]).double() - refs_r[b].mean(dim=1)).abs().max())
           for b in range(AR.N_BLOCKS))
 check("read 步曲线正确(q 无 ref、k 拼回缓存)", err < 2e-6, f"max abs err {err:.2e}")
 check("read 步 q 长度记录为 seq_no_ref", rec.q_len_by_step == [SEQ_NO], str(rec.q_len_by_step))
@@ -226,6 +251,16 @@ def wrong_block_order():
         AR._layers.attention(q_, k_, v_, pe_, cache_key="double_5")  # 计数说 0
 
 
+def wrong_n_heads():
+    """D04:curve 的 head 维度是按 N_HEADS=24 开的定长数组。若某天模型换了头数,
+    宁可当场抛,也不要写出一半是 0 的曲线。"""
+    r = AR.AttnRecorder(LAYOUT, num_steps=1)
+    with AR.recording(r):
+        q_ = torch.randn(1, H - 1, SEQ_REF, D)
+        k_, v_ = torch.randn_like(q_), torch.randn_like(q_)
+        AR._layers.attention(q_, k_, v_, mk_pe(SEQ_REF), cache_key="double_0")
+
+
 def nested():
     r1, r2 = AR.AttnRecorder(LAYOUT, 1), AR.AttnRecorder(LAYOUT, 1)
     with AR.recording(r1), AR.recording(r2):
@@ -236,6 +271,7 @@ expect("ref_lens 写错 → 抛(key 长度对不上)", bad_layout)
 expect("调用次数超出申报步数 → 抛", too_many)
 expect("调用次数不足(finalize)→ 抛", too_few)
 expect("block 顺序与 cache_key 不符 → 抛", wrong_block_order)
+expect("head 数不是 24 → 抛(D04)", wrong_n_heads)
 expect("嵌套录制 → 抛", nested)
 expect("空 ref_lens → 抛",
        lambda: AR.Layout(txt_len=1, img_len=1, ref_lens=(), img_h=1, img_w=1), ValueError)
@@ -244,14 +280,16 @@ check("异常后全局状态已清理", AR._ACTIVE is None)
 # ------------------------------------------------------------------ 7 head_chunk 无关性
 print("\n[7] head_chunk 不影响结果")
 vals = []
-for hc in (1, 2, 3, 5):
+# 5 和 7 不整除 24,最后一块是残块——D04 之后 per_head 是按 [h0:h1] 切片赋值的,
+# 残块的写入偏移错位不会报错,只会把某几个 head 的份额写到别的 head 上。
+for hc in (1, 5, 7, 24):
     torch.manual_seed(7)
     r = AR.AttnRecorder(LAYOUT, num_steps=1, head_chunk=hc)
     with AR.recording(r):
         run_blocks(r, "full", n_steps=1)
     vals.append(r.curve.copy())
 spread = max(float(abs(v - vals[0]).max()) for v in vals[1:])
-check("head_chunk 1/2/3/5 结果一致", spread < 1e-6, f"max spread {spread:.2e}")
+check("head_chunk 1/5/7/24 结果一致(含残块)", spread < 1e-6, f"max spread {spread:.2e}")
 
 # ------------------------------------------------------------------ 8 inference_mode
 print("\n[8] torch.inference_mode 下可用")

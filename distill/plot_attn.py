@@ -10,17 +10,33 @@
 
   1. 总览表:每样本 × 每变体的 late-block ref 份额,以及失衡比 min/max
      —— 失衡比是"第二主体是否被冷落"的一个标量代理
-  2. 每样本一节:
+  2. per-head 分辨(D04 新增):同样的 late-block 份额,但**不对 24 个头取平均**
+     —— 回答"是不是只有少数几个头在做身份绑定,平均把它们摊薄了"
+  3. 每样本一节:
      a. 四变体出图并排(肉眼判丢失/复制)
      b. 曲线网格:行 = block 组(early/mid/late),列 = ref 段,每格 4 条变体线
         —— 回答"什么时候、在哪一层掉下去"
-     c. 热力图:指定 block × step,每 ref 一张主图区域图
+     c. per-head 条带:24 格 × 4 变体,看单样本上哪些头突出
+     d. 热力图:指定 block × step,每 ref 一张主图区域图
         —— 区分**丢失**(ref2 份额低 + 单一热区)与**复制**(ref2 份额低 + 两处热区都热在 ref1)
+
+## 为什么加 per-head(D04)
+
+首轮 8 样本跑完后,全 head 平均的份额**测不出主体有没有真的出现**:S1_022 里
+`ours_kv_pre` 肉眼确认丢了 grey_sloth_plushie,份额却比渲染正确的 `ours_kv_post4000`
+还高;S1_000 里 pre 整张图崩坏,失衡比照样报"均衡"。所以录制侧把 curve 拆到了
+head 维度,这边负责把它读出来看。**这是在验证一个假设,不是已经成立的结论。**
+
+npz 兼容:D04 之前录的 curve 是 3 维 `(step, block, seg)`,之后是 4 维
+`(step, block, head, seg)`。`load_runs` 统一成两份——`curve`(永远是 head 平均,
+老报告的所有视图靠它,数值与 D04 之前逐位一致)和 `curve_head`(4 维时才有,
+老 npz 上为 None,per-head 各节自动跳过并注明)。
 
 ## 解读红线(沿用 D01,报告里会原样印出来)
 
 注意力份额高 ≠ 身份信息被转移。身份保真可能主要由 K/V **内容**承载,
 份额只是"看了多久",不是"看到了什么"。所以这些图是诊断线索,不是因果证据。
+**per-head 拆开也不改变这条**:某个头份额高,只说明它在看,不说明它看懂了。
 
 用法:
   python distill/plot_attn.py                      # → output/attn_diag/report.html
@@ -71,7 +87,27 @@ def imbalance(shares):
     """min(ref) / max(ref):1.0 = 各 ref 同等被关注,→0 = 某个 ref 基本没被看。"""
     refs = [v for n, v in shares.items() if n.startswith("ref")]
     return (min(refs) / max(refs)) if refs and max(refs) > 0 else 0.0
-COLORS = {"official_full": "#2f7ed8", "ours_kv_pre": "#d94e4e",
+
+
+def head_shares(curve_head, win, b0=LATE_B0, b1=LATE_B1):
+    """(head, seg) —— 与 seg_shares 同样的窗口,但 head 维度留着不平均(D04)。"""
+    return curve_head[win, b0:b1].mean(axis=(0, 1))
+
+
+def head_imbalance(hs, seg_names):
+    """(head,) —— 每个 head 各自算一次 min(ref)/max(ref)。
+
+    注意这**不等于**对 head 平均后再算失衡比:min/max 是非线性的,
+    先平均会把"A 头只看 ref1、B 头只看 ref2"这种互补分工洗成"两个头都很均衡"。
+    D04 想看的正是这种被洗掉的结构。
+    """
+    idx = [i for i, n in enumerate(seg_names) if n.startswith("ref")]
+    r = np.asarray(hs, dtype=np.float64)[:, idx]
+    mx = r.max(axis=1)
+    return np.where(mx > 0, r.min(axis=1) / np.maximum(mx, 1e-12), 0.0)
+
+
+COLORS ={"official_full": "#2f7ed8", "ours_kv_pre": "#d94e4e",
           "ours_iso_nocache": "#e0a030", "ours_kv_post4000": "#3aa655"}
 LABELS = {"official_full": "teacher (full attn)",
           "ours_kv_pre": "pre · ckpt-20000",
@@ -88,11 +124,27 @@ def _s(v):
     return out[0] if len(out) == 1 else out
 
 
+def split_curve(raw):
+    """npz 里的 curve → (head 平均的 3 维, 按 head 分辨的 4 维或 None)。
+
+    D04 之前录的是 3 维,之后是 4 维。老 npz 拿不出 head 维度,但 head 平均那份视图
+    两种格式都有——所以老数据照样能出完整的旧报告,只是 per-head 各节会缺席。
+    """
+    a = np.asarray(raw)
+    if a.ndim == 4:
+        return a.mean(axis=2), a
+    if a.ndim == 3:
+        return a, None
+    raise ValueError(f"curve 维数 {a.ndim} 既不是 3(head 平均)也不是 4(按 head),"
+                     f"shape={a.shape}")
+
+
 def load_runs(save_path):
     runs = []
     for p in sorted(glob.glob(os.path.join(save_path, "*.npz"))):
         z = np.load(p, allow_pickle=False)
         stem = p[:-4]
+        curve, curve_head = split_curve(z["curve"])
         runs.append({
             "npz": p,
             "png": stem + ".png" if os.path.exists(stem + ".png") else None,
@@ -101,7 +153,8 @@ def load_runs(save_path):
             "prompt": _s(z["meta_prompt"]),
             "subjects": [_s(x) for x in np.atleast_1d(z["meta_subjects"])],
             "seed": int(_s(z["meta_seed"])),
-            "curve": z["curve"],
+            "curve": curve,
+            "curve_head": curve_head,
             "seg_names": [_s(x) for x in np.atleast_1d(z["seg_names"])],
             "spatial": {(int(k[0]), int(k[1])): z[f"spatial_{int(k[0]):03d}_{int(k[1]):03d}"]
                         for k in z["spatial_keys"]},
@@ -145,19 +198,36 @@ def svg_panel(series, title, ylab, w=250, h=150, pad=32):
     return "".join(out)
 
 
-def heat_uri(arr, vmax, scale=6):
-    """(h,w) → 内联 PNG。蓝→黄→红,vmin 固定 0(份额本来就非负)。"""
-    x = np.clip(np.asarray(arr, dtype=np.float64) / max(vmax, 1e-9), 0, 1)
-    # 三段线性插值,够读图用,不引 colormap 依赖
+def _rgb(x01):
+    """[0,1] → RGB。三段线性插值,够读图用,不引 colormap 依赖。"""
     stops = np.array([[12, 24, 90], [40, 120, 200], [245, 220, 90], [200, 40, 30]],
                      dtype=np.float64)
     pos = np.linspace(0, 1, len(stops))
-    rgb = np.stack([np.interp(x, pos, stops[:, c]) for c in range(3)], axis=-1)
+    return np.stack([np.interp(x01, pos, stops[:, c]) for c in range(3)], axis=-1)
+
+
+def _png_uri(rgb):
     im = Image.fromarray(rgb.astype(np.uint8), mode="RGB")
-    im = im.resize((im.width * scale, im.height * scale), Image.NEAREST)
     buf = io.BytesIO()
     im.save(buf, format="PNG")
     return "data:image/png;base64," + base64.b64encode(buf.getvalue()).decode()
+
+
+def heat_uri(arr, vmax, scale=6):
+    """(h,w) → 内联 PNG。蓝→黄→红,vmin 固定 0(份额本来就非负)。"""
+    x = np.clip(np.asarray(arr, dtype=np.float64) / max(vmax, 1e-9), 0, 1)
+    rgb = _rgb(x)
+    return _png_uri(np.repeat(np.repeat(rgb, scale, axis=0), scale, axis=1))
+
+
+def strip_uri(vec, vmax, cw=13, ch=20):
+    """(n,) → 一条 n 格横向色带 PNG,per-head 用。色标与热力图共用同一套。
+
+    vmax 由调用方跨变体统一给,否则每条自己归一化后"哪条更亮"就没意义了。
+    """
+    x = np.clip(np.asarray(vec, dtype=np.float64) / max(vmax, 1e-9), 0, 1)
+    rgb = _rgb(x.reshape(1, -1))
+    return _png_uri(np.repeat(np.repeat(rgb, ch, axis=0), cw, axis=1))
 
 
 def img_uri(path, box=232):
@@ -197,6 +267,11 @@ border-radius:4px}
 .gr{stroke:var(--line);stroke-width:1}
 .ax{font-size:8px;fill:var(--mut)}.tt{font-size:9px;fill:var(--fg);font-weight:600}
 .row{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start}
+.strip{align-items:center;gap:10px;margin:3px 0}
+.strip img{border:1px solid var(--line);border-radius:3px;image-rendering:pixelated;
+max-width:100%}
+.sl{width:150px;font-size:12px;text-align:right;color:var(--mut);flex:none}
+.sn{font-size:11px;color:var(--mut)}
 .leg{display:flex;flex-wrap:wrap;gap:14px;margin:8px 0 14px;font-size:12px}
 .leg i{display:inline-block;width:16px;height:3px;vertical-align:middle;margin-right:5px}
 figure{margin:0;text-align:center}
@@ -206,6 +281,99 @@ code{background:var(--card);padding:1px 5px;border-radius:3px;font-size:12px}
 """
 
 
+def per_head_overview(by_task, tasks):
+    """D04 全局节:24 个头各自的 late-block ref 份额,跨样本平均。
+
+    要回答的是一个**是非题**:全 head 平均之所以测不出主体丢没丢,是不是因为
+    只有少数几个头在做身份绑定、它们的信号被另外二十来个头摊薄了?
+    如果是——那些头上 pre 与 post4000 应当分得开,而平均值分不开。
+    如果不是——24 个头看起来都差不多,那这条路走到头,该去查 K/V 内容而不是份额。
+    """
+    usable = [r for t in tasks for r in by_task[t].values() if r["curve_head"] is not None]
+    if not usable:
+        return ['<h2>per-head 分辨</h2>',
+                '<p class="sub">当前 npz 是 D04 之前录的(curve 只有 3 维,head 已被平均掉),'
+                '本节无数据。重跑 <code>run_attn_diag.py</code> 后即可。</p>']
+
+    n_head = usable[0]["curve_head"].shape[2]
+    # 每变体累计 (head,) 两条:ref 份额均值、per-head 失衡比
+    acc = {v: {"share": [], "imb": []} for v in VARIANT_ORDER}
+    for tid in tasks:
+        for v in VARIANT_ORDER:
+            r = by_task[tid].get(v)
+            if r is None or r["curve_head"] is None:
+                continue
+            _, w_late = step_windows(r["curve_head"].shape[0])
+            hs = head_shares(r["curve_head"], w_late)          # (head, seg)
+            ridx = [i for i, n in enumerate(r["seg_names"]) if n.startswith("ref")]
+            acc[v]["share"].append(np.asarray(hs, dtype=np.float64)[:, ridx].mean(axis=1))
+            acc[v]["imb"].append(head_imbalance(hs, r["seg_names"]))
+    got = {v: {k: np.mean(np.stack(a), axis=0) for k, a in d.items() if a}
+           for v, d in acc.items() if d["share"]}
+
+    P = ["<h2>per-head 分辨:少数几个头在做身份绑定吗?</h2>"]
+    P.append('<p class="sub">窗口与总览表一致(late block flat 38-56 × timestep 后 1/3),'
+             '唯一区别是 <b>不对 24 个头取平均</b>,并在 %d 个样本上取均值。<br>'
+             '「ref 份额」= 该 head 对所有 ref 段的平均份额;'
+             '「失衡比」= 该 head <b>自己</b>的 min(ref)/max(ref)——'
+             '先平均再算失衡比会把"A 头只看 ref1、B 头只看 ref2"洗成"都很均衡"。</p>'
+             % len(tasks))
+
+    # 条带:一眼看份额是否集中在少数头上
+    vmax = max(float(d["share"].max()) for d in got.values())
+    P.append("<h3>ref 份额 · 每格一个 head(0→23,左起)· 跨变体共用色标</h3>")
+    for v in VARIANT_ORDER:
+        if v not in got:
+            continue
+        s = got[v]["share"]
+        P.append(f"<div class='row strip'><div class='sl'>{html.escape(LABELS[v])}</div>"
+                 f"<img src='{strip_uri(s, vmax)}' alt='{v} per-head share'>"
+                 f"<div class='sn'>max head {int(np.argmax(s))} · "
+                 f"{s.max():.4f} / 最低 {s.min():.4f} · 比值 {s.max() / max(s.min(), 1e-9):.1f}×"
+                 f"</div></div>")
+
+    base = "ours_kv_pre", "ours_kv_post4000"
+    have_delta = all(b in got for b in base)
+    P.append("<h3>逐 head 明细</h3>")
+    if have_delta:
+        P.append('<p class="sub">按 <b>Δ失衡比 = post4000 − pre</b> 的绝对值降序。'
+                 '若真有"身份头",它们应当排在最上面,而且 Δ 明显大于末行的全 head 平均值。</p>')
+    cols = [v for v in VARIANT_ORDER if v in got]
+    th = ("<tr><th>head</th>"
+          + "".join(f"<th>{html.escape(LABELS[v])}<br>ref份额</th>" for v in cols)
+          + "".join(f"<th>{html.escape(LABELS[v])}<br>失衡比</th>" for v in cols)
+          + ("<th>Δ失衡比<br>post−pre</th>" if have_delta else "") + "</tr>")
+    order = (np.argsort(-np.abs(got[base[1]]["imb"] - got[base[0]]["imb"]))
+             if have_delta else np.arange(n_head))
+    body = []
+    for h in order:
+        d = (got[base[1]]["imb"][h] - got[base[0]]["imb"][h]) if have_delta else None
+        body.append(
+            f"<tr><td>{int(h)}</td>"
+            + "".join(f"<td>{got[v]['share'][h]:.4f}</td>" for v in cols)
+            + "".join(f"<td>{got[v]['imb'][h]:.3f}</td>" for v in cols)
+            + (f"<td style='color:{'#3aa655' if d > 0 else '#d94e4e'}'>{d:+.3f}</td>"
+               if have_delta else "") + "</tr>")
+    # 末行:D04 之前报告看到的那个数,放这里做参照——per-head 的散布相对它有多大
+    avg = ("<tr style='font-weight:700'><td>全 head 平均</td>"
+           + "".join(f"<td>{got[v]['share'].mean():.4f}</td>" for v in cols)
+           + "".join(f"<td>{got[v]['imb'].mean():.3f}</td>" for v in cols)
+           + (f"<td>{got[base[1]]['imb'].mean() - got[base[0]]['imb'].mean():+.3f}</td>"
+              if have_delta else "") + "</tr>")
+    P.append(f'<div class="scroll"><table>{th}{"".join(body)}{avg}</table></div>')
+
+    if have_delta:
+        dl = np.abs(got[base[1]]["imb"] - got[base[0]]["imb"])
+        P.append('<div class="note"><b>怎么读这张表</b>:最大的单头 Δ失衡比是 '
+                 f'<b>{dl.max():+.3f}</b>(head {int(np.argmax(dl))}),全 head 平均后是 '
+                 f'<b>{got[base[1]]["imb"].mean() - got[base[0]]["imb"].mean():+.3f}</b>。'
+                 '若前者远大于后者,说明确实存在被平均摊薄的少数头,值得单独追;'
+                 '若两者量级相当,那 pre/post 的差别就不在注意力份额这一层,'
+                 '再往下拆 head 也不会有新东西——该转去查 K/V 内容。'
+                 '<b>无论哪种,份额高仍然不等于身份被转移</b>(见页首红线)。</div>')
+    return P
+
+
 def build_html(runs, heat_block, heat_step):
     by_task = {}
     for r in runs:
@@ -213,8 +381,10 @@ def build_html(runs, heat_block, heat_step):
     tasks = sorted(by_task)
 
     P = [f"<style>{CSS}</style>", "<h1>ref → 主图 注意力演化诊断</h1>"]
-    P.append(f'<p class="sub">{len(tasks)} 个样本 · '
-             f'{len(runs)} 次录制 · 上游 D01/D02 + D03 修正</p>')
+    n_ph = sum(1 for r in runs if r["curve_head"] is not None)
+    P.append(f'<p class="sub">{len(tasks)} 个样本 · {len(runs)} 次录制 · '
+             f'上游 D01/D02 + D03 修正 + D04 per-head · '
+             f'{n_ph}/{len(runs)} 次带 head 维度</p>')
     P.append('<div class="note"><b>解读红线</b>(D01):注意力份额高 <b>≠</b> 身份信息被转移。'
              '身份保真可能主要由 K/V <b>内容</b>承载,份额只反映"看了多久",不反映"看到了什么"。'
              '以下所有图是<b>诊断线索,不是因果证据</b>;措辞请限于"注意力层面观察到…"。</div>')
@@ -267,6 +437,8 @@ def build_html(runs, heat_block, heat_step):
                 f"<td class='l' style='color:{col}'>{shape}</td></tr>")
     P.append(f'<div class="scroll"><table>{head}{"".join(rows)}</table></div>')
 
+    P.extend(per_head_overview(by_task, tasks))
+
     # ---------------- 每样本 ----------------
     for tid in tasks:
         got = by_task[tid]
@@ -300,6 +472,33 @@ def build_html(runs, heat_block, heat_step):
                                    r["curve"][:, g0:g1, si].mean(axis=1)))
                 P.append(svg_panel(series, f"{gname} → {seg}", "share"))
             P.append("</div>")
+
+        if any(r["curve_head"] is not None for r in got.values()):
+            P.append("<h3>per-head · late block × 后 1/3 step,每格一个 head(0→23)</h3>")
+            P.append('<p class="sub">同一 ref 段内 4 条共用色标。'
+                     '若某个变体"丢了主体"是注意力层面的事,它那条在对应 ref 上应当整体偏暗;'
+                     '若只是个别头暗,那丢失就不在份额这一层。</p>')
+            for j in range(n_ref):
+                seg = f"ref{j + 1}"
+                vecs = []
+                for v in VARIANT_ORDER:
+                    r = got.get(v)
+                    if r is None or r["curve_head"] is None or seg not in r["seg_names"]:
+                        continue
+                    _, w_late = step_windows(r["curve_head"].shape[0])
+                    hs = head_shares(r["curve_head"], w_late)
+                    vecs.append((v, np.asarray(hs)[:, r["seg_names"].index(seg)]))
+                if not vecs:
+                    continue
+                vmax = max(float(x.max()) for _, x in vecs)
+                P.append(f"<div class='row strip'><div class='sl'>{seg} · "
+                         f"max {vmax:.4f}</div></div>")
+                for v, x in vecs:
+                    P.append(f"<div class='row strip'><div class='sl'>"
+                             f"{html.escape(LABELS[v])}</div>"
+                             f"<img src='{strip_uri(x, vmax)}' alt='{seg} {v}'>"
+                             f"<div class='sn'>head {int(np.argmax(x))} 最高 "
+                             f"{x.max():.4f}</div></div>")
 
         key = (heat_step, heat_block)
         if any(key in r["spatial"] for r in got.values()):
@@ -372,7 +571,7 @@ def main():
         w_early, w_late = step_windows(r["curve"].shape[0])
         sh_e = seg_shares(r["curve"], r["seg_names"], w_early)
         sh_l = seg_shares(r["curve"], r["seg_names"], w_late)
-        summary.append({
+        row = {
             "task_id": r["task_id"], "variant": r["variant"], "subjects": r["subjects"],
             "late_block_ref_share_early_steps":
                 [sh_e[n] for n in r["seg_names"] if n.startswith("ref")],
@@ -380,7 +579,16 @@ def main():
                 [sh_l[n] for n in r["seg_names"] if n.startswith("ref")],
             "imbalance_early_steps": imbalance(sh_e),
             "imbalance_late_steps": imbalance(sh_l),
-        })
+        }
+        if r["curve_head"] is not None:
+            hs = head_shares(r["curve_head"], w_late)
+            ridx = [i for i, n in enumerate(r["seg_names"]) if n.startswith("ref")]
+            # 逐 head 落进 json,方便不开报告就直接做后续统计
+            row["per_head_ref_share_late_steps"] = (
+                np.asarray(hs, dtype=np.float64)[:, ridx].round(6).tolist())
+            row["per_head_imbalance_late_steps"] = (
+                head_imbalance(hs, r["seg_names"]).round(6).tolist())
+        summary.append(row)
     sp = os.path.join(args.save_path, "summary.json")
     with open(sp, "w", encoding="utf-8") as f:
         json.dump(summary, f, ensure_ascii=False, indent=2)

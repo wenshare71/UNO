@@ -66,6 +66,10 @@ VARIANTS = [
 # M4 Stage B 的产物目录,--verify_identical 拿它做参照
 M4_DIR = "output/eval_multiref"
 
+# --dry_run 估存储用。与 attn_record 的同名常量重复,是为了让 dry_run 不必 import torch;
+# run() 里 AR 到手后会硬校验两边一致(常量漂了只会让估算悄悄失真)。
+N_BLOCKS, N_HEADS = 57, 24
+
 
 def out_stem(save_path: str, task_id: str, variant: str) -> str:
     return os.path.join(save_path, f"{task_id}__{variant}")
@@ -87,11 +91,28 @@ def decodable(path: str) -> bool:
         return False
 
 
+def curve_ndim(path: str) -> int:
+    """npz 里 curve 的维数;读不出来算 0。3 = D04 之前(head 已平均),4 = 带 head 维度。"""
+    try:
+        with np.load(path) as z:
+            return int(z["curve"].ndim)
+    except Exception:  # noqa: BLE001 — 坏文件与旧格式一样都得重跑
+        return 0
+
+
 def done(stem: str) -> bool:
-    """图与 npz 都在才算完成;缺一个就重跑(坏图删掉,紧接着会重新生成)。"""
+    """图与 npz 都在、且 npz 是当前格式才算完成;否则删掉重跑。
+
+    WHY 要查 curve 维数:D04 把曲线拆到了 head 维度。旧 npz 躺在目录里会被当成
+    "已完成"跳过,跑完得到 3 维 4 维混着的一批,而 plot_attn 两种格式都吃——
+    报告照样出得来,只是一部分样本没有 head 维度,**且没有任何提示**。
+    """
     png, npz = stem + ".png", stem + ".npz"
     if decodable(png) and os.path.exists(npz):
-        return True
+        nd = curve_ndim(npz)
+        if nd == 4:
+            return True
+        print(f"  ↻ {os.path.basename(stem)}:npz 是旧格式(curve {nd} 维),重跑", flush=True)
     for p in (png, npz):
         if os.path.exists(p):
             os.remove(p)
@@ -134,6 +155,11 @@ def run(args, tasks, json_dir):
     from uno.flux.pipeline import UNOPipeline, preprocess_ref
 
     import attn_record as AR
+
+    if (AR.N_BLOCKS, AR.N_HEADS) != (N_BLOCKS, N_HEADS):
+        raise SystemExit(
+            f"❌ 本文件的 (N_BLOCKS, N_HEADS)=({N_BLOCKS}, {N_HEADS}) 与 attn_record 的 "
+            f"({AR.N_BLOCKS}, {AR.N_HEADS}) 不一致——--dry_run 的存储估算会失真,先对齐。")
 
     ckpts = {"pre": args.pre_lora, "post4000": args.post4000_lora}
     for tag, lp in ckpts.items():
@@ -348,14 +374,20 @@ def print_plan(args, tasks):
         print(f"  {vname:<18} bank={bank:<10} iso={int(iso)} kv={int(kv)}  "
               f"{n:>3} 次 ≈ {est / 60:.1f} min")
     print(f"  纯推理合计 ≈ {total / 60:.1f} min(+ 模型加载 ~7 min)")
-    n_seg = {2: 4, 3: 5}
     sb = len(args.spatial_blocks.split(","))
     ss = len(args.spatial_steps.split(","))
-    per = args.num_steps * 57 * 4 * 4 + sb * ss * (args.height // 16) * (args.width // 16) * 4 * 4
-    print(f"  每次录制的 npz ≈ {per / 1024:.0f} KB(压缩前),"
-          f"全轮 ≈ {per * len(tasks) * len(variants) / 1024**2:.1f} MB")
-    print(f"  (n_seg 2-ref={n_seg[2]} / 3-ref={n_seg[3]};曲线 {args.num_steps}×57×n_seg,"
-          f"热力图 {sb}×{ss}×{args.height // 16}×{args.width // 16}×n_seg)")
+    gh, gw = args.height // 16, args.width // 16
+    # n_seg = txt + img + 每张 ref 一段,所以 2-ref 是 4、3-ref 是 5;逐任务实算,不取代表值
+    sizes, tot = [], 0
+    for t in tasks:
+        n_seg = 2 + len(t["image_paths"])
+        per = 4 * n_seg * (args.num_steps * N_BLOCKS * N_HEADS + sb * ss * gh * gw)
+        sizes.append(per)
+        tot += per * sum(1 for v in variants if v[0] in t["variants"])
+    print(f"  每次录制的 npz {min(sizes) / 1024:.0f}–{max(sizes) / 1024:.0f} KB(压缩前),"
+          f"全轮 ≈ {tot / 1024**2:.1f} MB")
+    print(f"  (曲线 {args.num_steps}×{N_BLOCKS}×{N_HEADS}head×n_seg —— D04 起带 head 维度,"
+          f"是之前的 {N_HEADS}×;热力图 {sb}×{ss}×{gh}×{gw}×n_seg,仍是 head 平均)")
     from collections import Counter
     print(f"  分层:{dict(sorted(Counter(t['stratum'] for t in tasks).items()))}")
 

@@ -224,8 +224,10 @@ datasets/UNO-1M/
 !/output/eval_multiref/results.json
 !/output/eval_multiref/boards/
 
-# 注意力诊断产物(2026-07-30,D03):**全部进 git**,总量约 26 MB。
-# npz 是曲线/热力图数据(约 10.7 MB),本地 plot_attn.py 靠它出图,不进 git 就没法出报告;
+# 注意力诊断产物(2026-07-30,D03;2026-07-31 D04 更新):**全部进 git**。
+# npz 是曲线/热力图数据,本地 plot_attn.py 靠它出图,不进 git 就没法出报告;
+# D04 把曲线拆到 head 维度后单个 npz 从 342 KB 涨到 854–1068 KB(压缩前),
+# 32 次合计约 28 MB,连同 32 张 PNG 全目录约 40 MB;
 # PNG 是 32 张生成图,--verify_identical 要拿它与 eval_multiref 的同名图逐像素比;
 # report.html / summary.json 是本地生成的产物,一并留档。
 !/output/attn_diag/

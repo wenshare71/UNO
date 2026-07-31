@@ -48,6 +48,20 @@ D01 按 L≈2300 估(那对应 ref_size=320);本项目全线 ref_size=512 且 T5
 (pipeline.py:114),实际 L = 512 + 1024 + 1024·N,即 2-ref 3584 / 3-ref 4608。
 全头一次算的话 fp32 概率矩阵 2-ref 就要 352 MB。所以按 head 分块累加,
 `head_chunk=4` 时瞬态 ≈ 2×59 MB。
+
+## D04:curve 改为按 head 分辨(不再对 24 头取平均)
+
+首轮 8 样本×4 变体跑完后发现:全 head 平均的 late-block 份额**测不出主体是否真的
+出现**——S1_022 里 `ours_kv_pre` 完全丢了 grey_sloth_plushie(肉眼确认),但它的份额
+比正确渲染的 `ours_kv_post4000` 还高;S1_000 里 `ours_kv_pre` 整个生成崩坏,份额同样
+"均衡"。24 个头一起平均,可能把某几个真正做身份绑定的头的信号冲淡了。
+
+所以 `curve` 从 `(step, block, seg)` 改为 `(step, block, head, seg)`——每个 head 的
+份额单独存,不在 head 维度归约,归约留给下游分析自己选怎么切。`spatial` 维持 head 平均
+不变(热力图按 head 拆开是 24× 的存储,先看 curve 层面有没有值得深挖的头再决定)。
+
+两种约简共用同一次 softmax:per-head curve 对 img 位置取均值,spatial 对 head 求和后
+再统一除以 n_heads,同一批 `probs` 张量算两次归约,不重复算注意力分数。
 """
 from __future__ import annotations
 
@@ -64,6 +78,7 @@ from uno.flux.math import attention as _orig_attention
 N_DOUBLE = 19
 N_SINGLE = 38
 N_BLOCKS = N_DOUBLE + N_SINGLE  # 57;flat index 0..18 = double_i,19..56 = single_(i-19)
+N_HEADS = 24  # util.py:128/161/194,double/single 全部 block 统一 24 头
 
 _ACTIVE: "AttnRecorder | None" = None
 _INSTALLED = False
@@ -130,14 +145,16 @@ class Layout:
 class AttnRecorder:
     """累计 img query 对各段的注意力质量。
 
-    两级存储(D03 修正 ②):
-      - `curve`:每 (step, block, seg) 一个标量(img token 上取均值)
-        → num_steps × 57 × n_seg,25 步 2-ref 时约 17 KB
-      - `spatial`:只在指定 (step, block) 上留 img 网格
+    存储(D03 修正 ② + D04 按 head 拆分):
+      - `curve`:每 (step, block, head, seg) 一个标量(只对 img token 取均值,
+        **不对 head 取均值**)→ num_steps × 57 × 24 × n_seg,25 步 2-ref 时约 547 KB
+      - `spatial`:只在指定 (step, block) 上留 img 网格,head 仍取均值
         → n_step_sel × n_blk_sel × img_h × img_w × n_seg,默认约 245 KB
 
     D01 设想的"全 57 块 × 全步 × 全分辨率"是 17 MB/样本/变体 → 全轮 400 MB,进不了 git;
-    而曲线只需要标量、热力图只需要几层,分开存就都放得下。
+    D04 之前 curve 也对 head 取了均值(约 17 KB),但这掩盖了"是否有少数头专门做身份
+    绑定"这个问题——24 个头一起平均,单个头的强信号会被摊薄到 1/24。curve 拆开 head
+    后每样本每变体约 547 KB,全轮(8 样本×4 变体)约 17.5 MB,仍然进得了 git。
     """
 
     def __init__(self, layout: Layout, num_steps: int,
@@ -151,7 +168,7 @@ class AttnRecorder:
         self.head_chunk = head_chunk
 
         n_seg = len(layout.segments())
-        self.curve = np.zeros((num_steps, N_BLOCKS, n_seg), dtype=np.float32)
+        self.curve = np.zeros((num_steps, N_BLOCKS, N_HEADS, n_seg), dtype=np.float32)
         self.spatial: dict[tuple[int, int], np.ndarray] = {}
         self.n_calls = 0
         self.n_heads: int | None = None
@@ -200,29 +217,41 @@ class AttnRecorder:
             self.q_len_by_step.append(int(q.shape[2]))
 
         n_heads = q.shape[1]
+        if n_heads != N_HEADS:
+            raise RuntimeError(f"head 数 {n_heads} != 预期的 {N_HEADS}(util.py 硬编码值),"
+                               f"curve 的 head 维度分配错了")
         self.n_heads = n_heads
         segs = L.segments()
         # img query 行:两种模式下都在 [txt_len, txt_len + img_len)
         q_img = q[:, :, L.txt_len:L.seq_no_ref, :]
         scale = q.shape[-1] ** -0.5
+        want_spatial = blk in self.spatial_blocks and step in self.spatial_steps
 
-        acc = torch.zeros(L.img_len, len(segs), dtype=torch.float32, device=q.device)
+        # per_head:(head, seg) —— 对 img 位置取均值,head 维度**保留**(D04)。
+        # spatial_acc:(img_len, seg) —— head 维度求和(稍后除以 n_heads),img 位置**保留**。
+        # 两者是同一批 probs 的两种不同归约,只算一次 softmax。
+        per_head = torch.zeros(n_heads, len(segs), dtype=torch.float32, device=q.device)
+        spatial_acc = (torch.zeros(L.img_len, len(segs), dtype=torch.float32, device=q.device)
+                      if want_spatial else None)
         for h0 in range(0, n_heads, self.head_chunk):
             h1 = min(h0 + self.head_chunk, n_heads)
             # fp32 做 softmax:bf16 在 3584 长度上求和会有可见的累积误差,
             # 而这里算的是要拿去比大小的份额,不是前向数值。
             scores = torch.matmul(q_img[:, h0:h1].float(),
                                   k[:, h0:h1].float().transpose(-1, -2)) * scale
-            probs = torch.softmax(scores, dim=-1)
+            probs = torch.softmax(scores, dim=-1)  # (1, hc, img_len, L)
             for si, (_, s, e) in enumerate(segs):
-                acc[:, si] += probs[0, :, :, s:e].sum(dim=-1).sum(dim=0)
+                seg_prob = probs[0, :, :, s:e].sum(dim=-1)  # (hc, img_len)
+                per_head[h0:h1, si] = seg_prob.mean(dim=1)
+                if want_spatial:
+                    spatial_acc[:, si] += seg_prob.sum(dim=0)
             del scores, probs
-        acc /= n_heads
 
-        self.curve[step, blk] = acc.mean(dim=0).float().cpu().numpy()
-        if blk in self.spatial_blocks and step in self.spatial_steps:
+        self.curve[step, blk] = per_head.float().cpu().numpy()
+        if want_spatial:
+            spatial_acc /= n_heads
             self.spatial[(step, blk)] = (
-                acc.reshape(L.img_h, L.img_w, len(segs)).float().cpu().numpy())
+                spatial_acc.reshape(L.img_h, L.img_w, len(segs)).float().cpu().numpy())
 
     # -------------------------------------------------------------- 收尾
 
