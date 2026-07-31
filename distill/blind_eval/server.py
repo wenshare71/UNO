@@ -306,26 +306,34 @@ def main() -> int:
     ap.add_argument("--eval_json", type=Path, default=DEFAULT_EVAL_JSON)
     ap.add_argument("--save_dir", type=Path, default=DEFAULT_SAVE_DIR)
     ap.add_argument("--marks", type=Path, default=None,
-                    help="标注落盘路径,默认 <save_dir>/blind_annotations.json")
+                    help="标注落盘路径,默认 <save_dir>/blind_rond{N}.json(N=--rond)")
+    ap.add_argument("--rond", type=int, default=1,
+                    help="轮次号。1=既有 227 条标注;2+ 新一轮,blind_seed=m4-blind-vN,"
+                         "跨轮 A/B 位置不同。默认 1")
     ap.add_argument("--strata", type=str, default=",".join(DEFAULT_STRATA),
-                    help="逗号分隔,默认 S1,S2,S3,S4(227 条)")
+                    help="逗号分隔,默认 S1,S2,S3,S4")
     ap.add_argument("--host", type=str, default="0.0.0.0")
     ap.add_argument("--port", type=int, default=8765)
     args = ap.parse_args()
+    if args.rond < 1:
+        raise SystemExit(f"❌ --rond 必须 ≥1,收到 {args.rond}")
+    if args.marks is None:
+        args.marks = args.save_dir / f"blind_rond{args.rond}.json"
 
     eval_json = args.eval_json.resolve()
     save_dir = args.save_dir.resolve()
     if not eval_json.exists():
         print(f"[ERROR] eval json 不存在: {eval_json}", file=sys.stderr)
         return 1
-    marks_path = (args.marks or save_dir / "blind_annotations.json").resolve()
+    marks_path = args.marks.resolve()
     strata = tuple(s.strip() for s in args.strata.split(",") if s.strip())
 
-    app = create_app(eval_json, save_dir, marks_path, strata)
+    app = create_app(eval_json, save_dir, marks_path, strata, rond=args.rond)
     n = len([t for t in json.loads(eval_json.read_text(encoding="utf-8"))["tasks"]
              if t["stratum"] in strata])
     print(f"[INFO] 评测集  : {eval_json}")
     print(f"[INFO] 任务数  : {n} 条({','.join(strata)})")
+    print(f"[INFO] 轮次    : Rond{args.rond}(blind_seed={blind_seed_for(args.rond)})")
     print(f"[INFO] 标注落盘: {marks_path}")
     print(f"[INFO] URL     : http://{args.host}:{args.port}")
     uvicorn.run(app, host=args.host, port=args.port, log_level="warning")

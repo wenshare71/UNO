@@ -25,7 +25,7 @@
       "task_id": "S1_000_s0",
       "variant": "official_full",
       "status": "ok",
-      "record_s": 8.236811145208776,
+      "record_s": 8.1837617456913,
       "ref_lens": [
         1024,
         1024
@@ -41,7 +41,7 @@
       "task_id": "S1_011_s0",
       "variant": "official_full",
       "status": "ok",
-      "record_s": 8.089045161381364,
+      "record_s": 8.032608930021524,
       "ref_lens": [
         1024,
         1024
@@ -57,7 +57,7 @@
       "task_id": "S1_022_s0",
       "variant": "official_full",
       "status": "ok",
-      "record_s": 8.09238433279097,
+      "record_s": 8.022442609071732,
       "ref_lens": [
         1024,
         1024
@@ -73,7 +73,7 @@
       "task_id": "S1_033_s0",
       "variant": "official_full",
       "status": "ok",
-      "record_s": 8.091622970066965,
+      "record_s": 8.025724735110998,
       "ref_lens": [
         1024,
         1024
@@ -89,7 +89,7 @@
       "task_id": "S2_000_s0",
       "variant": "official_full",
       "status": "ok",
-      "record_s": 8.092903929762542,
+      "record_s": 8.032535906881094,
       "ref_lens": [
         1024,
         1024
@@ -105,7 +105,7 @@
       "task_id": "S2_001_s0",
       "variant": "official_full",
       "status": "ok",
-      "record_s": 8.091186226345599,
+      "record_s": 8.029003370553255,
       "ref_lens": [
         1024,
         1024
@@ -121,7 +121,7 @@
       "task_id": "S4_000_s0",
       "variant": "official_full",
       "status": "ok",
-      "record_s": 10.349314945749938,
+      "record_s": 10.290871061384678,
       "ref_lens": [
         1024,
         1024,
@@ -138,137 +138,7 @@
       "task_id": "S4_001_s0",
       "variant": "official_full",
       "status": "ok",
-      "record_s": 10.363607376813889,
-      "ref_lens": [
-        1024,
-        1024,
-        1024
-      ],
-      "seq_len": 4608,
-      "q_len_by_step_head": [
-        4608,
-        4608,
-        4608
-      ]
-    },
-    {
-      "task_id": "S1_000_s0",
-      "variant": "ours_iso_nocache",
-      "status": "ok",
-      "record_s": 9.557195148430765,
-      "ref_lens": [
-        1024,
-        1024
-      ],
-      "seq_len": 3584,
-      "q_len_by_step_head": [
-        3584,
-        3584,
-        3584
-      ]
-    },
-    {
-      "task_id": "S1_011_s0",
-      "variant": "ours_iso_nocache",
-      "status": "ok",
-      "record_s": 9.572821086272597,
-      "ref_lens": [
-        1024,
-        1024
-      ],
-      "seq_len": 3584,
-      "q_len_by_step_head": [
-        3584,
-        3584,
-        3584
-      ]
-    },
-    {
-      "task_id": "S1_022_s0",
-      "variant": "ours_iso_nocache",
-      "status": "ok",
-      "record_s": 9.553348017856479,
-      "ref_lens": [
-        1024,
-        1024
-      ],
-      "seq_len": 3584,
-      "q_len_by_step_head": [
-        3584,
-        3584,
-        3584
-      ]
-    },
-    {
-      "task_id": "S1_033_s0",
-      "variant": "ours_iso_nocache",
-      "status": "ok",
-      "record_s": 9.549032128416002,
-      "ref_lens": [
-        1024,
-        1024
-      ],
-      "seq_len": 3584,
-      "q_len_by_step_head": [
-        3584,
-        3584,
-        3584
-      ]
-    },
-    {
-      "task_id": "S2_000_s0",
-      "variant": "ours_iso_nocache",
-      "status": "ok",
-      "record_s": 9.574699463322759,
-      "ref_lens": [
-        1024,
-        1024
-      ],
-      "seq_len": 3584,
-      "q_len_by_step_head": [
-        3584,
-        3584,
-        3584
-      ]
-    },
-    {
-      "task_id": "S2_001_s0",
-      "variant": "ours_iso_nocache",
-      "status": "ok",
-      "record_s": 9.556924442760646,
-      "ref_lens": [
-        1024,
-        1024
-      ],
-      "seq_len": 3584,
-      "q_len_by_step_head": [
-        3584,
-        3584,
-        3584
-      ]
-    },
-    {
-      "task_id": "S4_000_s0",
-      "variant": "ours_iso_nocache",
-      "status": "ok",
-      "record_s": 12.627451998181641,
-      "ref_lens": [
-        1024,
-        1024,
-        1024
-      ],
-      "seq_len": 4608,
-      "q_len_by_step_head": [
-        4608,
-        4608,
-        4608
-      ]
-    },
-    {
-      "task_id": "S4_001_s0",
-      "variant": "ours_iso_nocache",
-      "status": "ok",
-      "record_s": 12.656129261478782,
+      "record_s": 10.28907710313797,
       "ref_lens": [
         1024,
         1024,
@@ -283,9 +153,139 @@
     },
     {
       "task_id": "S1_000_s0",
+      "variant": "ours_iso_nocache",
+      "status": "ok",
+      "record_s": 9.50359071046114,
+      "ref_lens": [
+        1024,
+        1024
+      ],
+      "seq_len": 3584,
+      "q_len_by_step_head": [
+        3584,
+        3584,
+        3584
+      ]
+    },
+    {
+      "task_id": "S1_011_s0",
+      "variant": "ours_iso_nocache",
+      "status": "ok",
+      "record_s": 9.474518224596977,
+      "ref_lens": [
+        1024,
+        1024
+      ],
+      "seq_len": 3584,
+      "q_len_by_step_head": [
+        3584,
+        3584,
+        3584
+      ]
+    },
+    {
+      "task_id": "S1_022_s0",
+      "variant": "ours_iso_nocache",
+      "status": "ok",
+      "record_s": 9.470840442925692,
+      "ref_lens": [
+        1024,
+        1024
+      ],
+      "seq_len": 3584,
+      "q_len_by_step_head": [
+        3584,
+        3584,
+        3584
+      ]
+    },
+    {
+      "task_id": "S1_033_s0",
+      "variant": "ours_iso_nocache",
+      "status": "ok",
+      "record_s": 9.488920900970697,
+      "ref_lens": [
+        1024,
+        1024
+      ],
+      "seq_len": 3584,
+      "q_len_by_step_head": [
+        3584,
+        3584,
+        3584
+      ]
+    },
+    {
+      "task_id": "S2_000_s0",
+      "variant": "ours_iso_nocache",
+      "status": "ok",
+      "record_s": 9.48008793219924,
+      "ref_lens": [
+        1024,
+        1024
+      ],
+      "seq_len": 3584,
+      "q_len_by_step_head": [
+        3584,
+        3584,
+        3584
+      ]
+    },
+    {
+      "task_id": "S2_001_s0",
+      "variant": "ours_iso_nocache",
+      "status": "ok",
+      "record_s": 9.46995535120368,
+      "ref_lens": [
+        1024,
+        1024
+      ],
+      "seq_len": 3584,
+      "q_len_by_step_head": [
+        3584,
+        3584,
+        3584
+      ]
+    },
+    {
+      "task_id": "S4_000_s0",
+      "variant": "ours_iso_nocache",
+      "status": "ok",
+      "record_s": 12.571827623993158,
+      "ref_lens": [
+        1024,
+        1024,
+        1024
+      ],
+      "seq_len": 4608,
+      "q_len_by_step_head": [
+        4608,
+        4608,
+        4608
+      ]
+    },
+    {
+      "task_id": "S4_001_s0",
+      "variant": "ours_iso_nocache",
+      "status": "ok",
+      "record_s": 12.534886356443167,
+      "ref_lens": [
+        1024,
+        1024,
+        1024
+      ],
+      "seq_len": 4608,
+      "q_len_by_step_head": [
+        4608,
+        4608,
+        4608
+      ]
+    },
+    {
+      "task_id": "S1_000_s0",
       "variant": "ours_kv_pre",
       "status": "ok",
-      "record_s": 5.762272858060896,
+      "record_s": 5.661872319877148,
       "ref_lens": [
         1024,
         1024
@@ -301,7 +301,7 @@
       "task_id": "S1_011_s0",
       "variant": "ours_kv_pre",
       "status": "ok",
-      "record_s": 5.762740235775709,
+      "record_s": 5.656960766762495,
       "ref_lens": [
         1024,
         1024
@@ -317,7 +317,7 @@
       "task_id": "S1_022_s0",
       "variant": "ours_kv_pre",
       "status": "ok",
-      "record_s": 5.7596300058066845,
+      "record_s": 5.68323152884841,
       "ref_lens": [
         1024,
         1024
@@ -333,7 +333,7 @@
       "task_id": "S1_033_s0",
       "variant": "ours_kv_pre",
       "status": "ok",
-      "record_s": 5.754433650523424,
+      "record_s": 5.6528174467384815,
       "ref_lens": [
         1024,
         1024
@@ -349,7 +349,7 @@
       "task_id": "S2_000_s0",
       "variant": "ours_kv_pre",
       "status": "ok",
-      "record_s": 5.786122168414295,
+      "record_s": 5.652943413704634,
       "ref_lens": [
         1024,
         1024
@@ -365,7 +365,7 @@
       "task_id": "S2_001_s0",
       "variant": "ours_kv_pre",
       "status": "ok",
-      "record_s": 5.754149683751166,
+      "record_s": 5.655404530465603,
       "ref_lens": [
         1024,
         1024
@@ -381,7 +381,7 @@
       "task_id": "S4_000_s0",
       "variant": "ours_kv_pre",
       "status": "ok",
-      "record_s": 6.674111749976873,
+      "record_s": 6.5696354657411575,
       "ref_lens": [
         1024,
         1024,
@@ -398,7 +398,7 @@
       "task_id": "S4_001_s0",
       "variant": "ours_kv_pre",
       "status": "ok",
-      "record_s": 6.672607026062906,
+      "record_s": 6.6000704653561115,
       "ref_lens": [
         1024,
         1024,
@@ -415,7 +415,7 @@
       "task_id": "S1_000_s0",
       "variant": "ours_kv_post4000",
       "status": "ok",
-      "record_s": 5.757861094549298,
+      "record_s": 5.656194385141134,
       "ref_lens": [
         1024,
         1024
@@ -431,7 +431,7 @@
       "task_id": "S1_011_s0",
       "variant": "ours_kv_post4000",
       "status": "ok",
-      "record_s": 5.765626095235348,
+      "record_s": 5.66495331376791,
       "ref_lens": [
         1024,
         1024
@@ -447,7 +447,7 @@
       "task_id": "S1_022_s0",
       "variant": "ours_kv_post4000",
       "status": "ok",
-      "record_s": 5.75953319016844,
+      "record_s": 5.700942829251289,
       "ref_lens": [
         1024,
         1024
@@ -463,7 +463,7 @@
       "task_id": "S1_033_s0",
       "variant": "ours_kv_post4000",
       "status": "ok",
-      "record_s": 5.791034469380975,
+      "record_s": 5.664092801511288,
       "ref_lens": [
         1024,
         1024
@@ -479,7 +479,7 @@
       "task_id": "S2_000_s0",
       "variant": "ours_kv_post4000",
       "status": "ok",
-      "record_s": 5.79098622687161,
+      "record_s": 5.664234973490238,
       "ref_lens": [
         1024,
         1024
@@ -495,7 +495,7 @@
       "task_id": "S2_001_s0",
       "variant": "ours_kv_post4000",
       "status": "ok",
-      "record_s": 5.755153633654118,
+      "record_s": 5.659969501197338,
       "ref_lens": [
         1024,
         1024
@@ -511,7 +511,7 @@
       "task_id": "S4_000_s0",
       "variant": "ours_kv_post4000",
       "status": "ok",
-      "record_s": 6.675075515173376,
+      "record_s": 6.590329118072987,
       "ref_lens": [
         1024,
         1024,
@@ -528,7 +528,7 @@
       "task_id": "S4_001_s0",
       "variant": "ours_kv_post4000",
       "status": "ok",
-      "record_s": 6.745342610403895,
+      "record_s": 6.609401982277632,
       "ref_lens": [
         1024,
         1024,
@@ -545,22 +545,22 @@
   "fails": [],
   "timing": {
     "official_full": {
-      "mean_s": 8.675859511015005,
+      "mean_s": 8.613253182731569,
       "n": 8,
       "peak_mem_gb": 36.24385404586792
     },
     "ours_iso_nocache": {
-      "mean_s": 10.330950193339959,
+      "mean_s": 10.249328442849219,
       "n": 8,
       "peak_mem_gb": 36.24385404586792
     },
     "ours_kv_pre": {
-      "mean_s": 5.990758422296494,
+      "mean_s": 5.891616992186755,
       "n": 8,
       "peak_mem_gb": 37.92182540893555
     },
     "ours_kv_post4000": {
-      "mean_s": 6.005076604429632,
+      "mean_s": 5.901264863088727,
       "n": 8,
       "peak_mem_gb": 37.92182540893555
     }

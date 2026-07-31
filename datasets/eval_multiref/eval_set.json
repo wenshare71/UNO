@@ -1,8 +1,8 @@
 {
   "meta": {
     "spec": "M4-eval-v1",
-    "n_tasks": 232,
-    "n_images": 711
+    "n_tasks": 277,
+    "n_images": 891
   },
   "tasks": [
     {
@@ -5029,6 +5029,1536 @@
         "n_refs": 2,
         "template_id": 4,
         "template": "on top of pink fabric",
+        "views": [
+          "02.jpg",
+          "03.jpg"
+        ],
+        "seed_slot": 2
+      }
+    },
+    {
+      "task_id": "S2_005_s0",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal on top of a wooden floor",
+      "image_paths": [
+        "../dreambooth/dataset/bear_plushie/00.jpg",
+        "../dreambooth/dataset/grey_sloth_plushie/01.jpg"
+      ],
+      "seed": 3600050,
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_kv_post2000"
+      ],
+      "meta": {
+        "subjects": [
+          "bear_plushie",
+          "grey_sloth_plushie"
+        ],
+        "classes": [
+          "stuffed animal",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 5,
+        "template": "on top of a wooden floor",
+        "views": [
+          "00.jpg",
+          "01.jpg"
+        ],
+        "seed_slot": 0
+      }
+    },
+    {
+      "task_id": "S2_005_s1",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal on top of a wooden floor",
+      "image_paths": [
+        "../dreambooth/dataset/bear_plushie/01.jpg",
+        "../dreambooth/dataset/grey_sloth_plushie/02.jpg"
+      ],
+      "seed": 3600051,
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_kv_post2000"
+      ],
+      "meta": {
+        "subjects": [
+          "bear_plushie",
+          "grey_sloth_plushie"
+        ],
+        "classes": [
+          "stuffed animal",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 5,
+        "template": "on top of a wooden floor",
+        "views": [
+          "01.jpg",
+          "02.jpg"
+        ],
+        "seed_slot": 1
+      }
+    },
+    {
+      "task_id": "S2_005_s2",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal on top of a wooden floor",
+      "image_paths": [
+        "../dreambooth/dataset/bear_plushie/02.jpg",
+        "../dreambooth/dataset/grey_sloth_plushie/03.jpg"
+      ],
+      "seed": 3600052,
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_kv_post2000"
+      ],
+      "meta": {
+        "subjects": [
+          "bear_plushie",
+          "grey_sloth_plushie"
+        ],
+        "classes": [
+          "stuffed animal",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 5,
+        "template": "on top of a wooden floor",
+        "views": [
+          "02.jpg",
+          "03.jpg"
+        ],
+        "seed_slot": 2
+      }
+    },
+    {
+      "task_id": "S2_006_s0",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal with a city in the background",
+      "image_paths": [
+        "../dreambooth/dataset/bear_plushie/00.jpg",
+        "../dreambooth/dataset/grey_sloth_plushie/01.jpg"
+      ],
+      "seed": 3600060,
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_kv_post2000"
+      ],
+      "meta": {
+        "subjects": [
+          "bear_plushie",
+          "grey_sloth_plushie"
+        ],
+        "classes": [
+          "stuffed animal",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 6,
+        "template": "with a city in the background",
+        "views": [
+          "00.jpg",
+          "01.jpg"
+        ],
+        "seed_slot": 0
+      }
+    },
+    {
+      "task_id": "S2_006_s1",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal with a city in the background",
+      "image_paths": [
+        "../dreambooth/dataset/bear_plushie/01.jpg",
+        "../dreambooth/dataset/grey_sloth_plushie/02.jpg"
+      ],
+      "seed": 3600061,
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_kv_post2000"
+      ],
+      "meta": {
+        "subjects": [
+          "bear_plushie",
+          "grey_sloth_plushie"
+        ],
+        "classes": [
+          "stuffed animal",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 6,
+        "template": "with a city in the background",
+        "views": [
+          "01.jpg",
+          "02.jpg"
+        ],
+        "seed_slot": 1
+      }
+    },
+    {
+      "task_id": "S2_006_s2",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal with a city in the background",
+      "image_paths": [
+        "../dreambooth/dataset/bear_plushie/02.jpg",
+        "../dreambooth/dataset/grey_sloth_plushie/03.jpg"
+      ],
+      "seed": 3600062,
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_kv_post2000"
+      ],
+      "meta": {
+        "subjects": [
+          "bear_plushie",
+          "grey_sloth_plushie"
+        ],
+        "classes": [
+          "stuffed animal",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 6,
+        "template": "with a city in the background",
+        "views": [
+          "02.jpg",
+          "03.jpg"
+        ],
+        "seed_slot": 2
+      }
+    },
+    {
+      "task_id": "S2_007_s0",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal with a mountain in the background",
+      "image_paths": [
+        "../dreambooth/dataset/bear_plushie/00.jpg",
+        "../dreambooth/dataset/grey_sloth_plushie/01.jpg"
+      ],
+      "seed": 3600070,
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_kv_post2000"
+      ],
+      "meta": {
+        "subjects": [
+          "bear_plushie",
+          "grey_sloth_plushie"
+        ],
+        "classes": [
+          "stuffed animal",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 7,
+        "template": "with a mountain in the background",
+        "views": [
+          "00.jpg",
+          "01.jpg"
+        ],
+        "seed_slot": 0
+      }
+    },
+    {
+      "task_id": "S2_007_s1",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal with a mountain in the background",
+      "image_paths": [
+        "../dreambooth/dataset/bear_plushie/01.jpg",
+        "../dreambooth/dataset/grey_sloth_plushie/02.jpg"
+      ],
+      "seed": 3600071,
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_kv_post2000"
+      ],
+      "meta": {
+        "subjects": [
+          "bear_plushie",
+          "grey_sloth_plushie"
+        ],
+        "classes": [
+          "stuffed animal",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 7,
+        "template": "with a mountain in the background",
+        "views": [
+          "01.jpg",
+          "02.jpg"
+        ],
+        "seed_slot": 1
+      }
+    },
+    {
+      "task_id": "S2_007_s2",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal with a mountain in the background",
+      "image_paths": [
+        "../dreambooth/dataset/bear_plushie/02.jpg",
+        "../dreambooth/dataset/grey_sloth_plushie/03.jpg"
+      ],
+      "seed": 3600072,
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_kv_post2000"
+      ],
+      "meta": {
+        "subjects": [
+          "bear_plushie",
+          "grey_sloth_plushie"
+        ],
+        "classes": [
+          "stuffed animal",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 7,
+        "template": "with a mountain in the background",
+        "views": [
+          "02.jpg",
+          "03.jpg"
+        ],
+        "seed_slot": 2
+      }
+    },
+    {
+      "task_id": "S2_008_s0",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal with a blue house in the background",
+      "image_paths": [
+        "../dreambooth/dataset/bear_plushie/00.jpg",
+        "../dreambooth/dataset/grey_sloth_plushie/01.jpg"
+      ],
+      "seed": 3600080,
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_kv_post2000"
+      ],
+      "meta": {
+        "subjects": [
+          "bear_plushie",
+          "grey_sloth_plushie"
+        ],
+        "classes": [
+          "stuffed animal",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 8,
+        "template": "with a blue house in the background",
+        "views": [
+          "00.jpg",
+          "01.jpg"
+        ],
+        "seed_slot": 0
+      }
+    },
+    {
+      "task_id": "S2_008_s1",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal with a blue house in the background",
+      "image_paths": [
+        "../dreambooth/dataset/bear_plushie/01.jpg",
+        "../dreambooth/dataset/grey_sloth_plushie/02.jpg"
+      ],
+      "seed": 3600081,
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_kv_post2000"
+      ],
+      "meta": {
+        "subjects": [
+          "bear_plushie",
+          "grey_sloth_plushie"
+        ],
+        "classes": [
+          "stuffed animal",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 8,
+        "template": "with a blue house in the background",
+        "views": [
+          "01.jpg",
+          "02.jpg"
+        ],
+        "seed_slot": 1
+      }
+    },
+    {
+      "task_id": "S2_008_s2",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal with a blue house in the background",
+      "image_paths": [
+        "../dreambooth/dataset/bear_plushie/02.jpg",
+        "../dreambooth/dataset/grey_sloth_plushie/03.jpg"
+      ],
+      "seed": 3600082,
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_kv_post2000"
+      ],
+      "meta": {
+        "subjects": [
+          "bear_plushie",
+          "grey_sloth_plushie"
+        ],
+        "classes": [
+          "stuffed animal",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 8,
+        "template": "with a blue house in the background",
+        "views": [
+          "02.jpg",
+          "03.jpg"
+        ],
+        "seed_slot": 2
+      }
+    },
+    {
+      "task_id": "S2_009_s0",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal on top of a purple rug in a forest",
+      "image_paths": [
+        "../dreambooth/dataset/bear_plushie/00.jpg",
+        "../dreambooth/dataset/grey_sloth_plushie/01.jpg"
+      ],
+      "seed": 3600090,
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_kv_post2000"
+      ],
+      "meta": {
+        "subjects": [
+          "bear_plushie",
+          "grey_sloth_plushie"
+        ],
+        "classes": [
+          "stuffed animal",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 9,
+        "template": "on top of a purple rug in a forest",
+        "views": [
+          "00.jpg",
+          "01.jpg"
+        ],
+        "seed_slot": 0
+      }
+    },
+    {
+      "task_id": "S2_009_s1",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal on top of a purple rug in a forest",
+      "image_paths": [
+        "../dreambooth/dataset/bear_plushie/01.jpg",
+        "../dreambooth/dataset/grey_sloth_plushie/02.jpg"
+      ],
+      "seed": 3600091,
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_kv_post2000"
+      ],
+      "meta": {
+        "subjects": [
+          "bear_plushie",
+          "grey_sloth_plushie"
+        ],
+        "classes": [
+          "stuffed animal",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 9,
+        "template": "on top of a purple rug in a forest",
+        "views": [
+          "01.jpg",
+          "02.jpg"
+        ],
+        "seed_slot": 1
+      }
+    },
+    {
+      "task_id": "S2_009_s2",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal on top of a purple rug in a forest",
+      "image_paths": [
+        "../dreambooth/dataset/bear_plushie/02.jpg",
+        "../dreambooth/dataset/grey_sloth_plushie/03.jpg"
+      ],
+      "seed": 3600092,
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_kv_post2000"
+      ],
+      "meta": {
+        "subjects": [
+          "bear_plushie",
+          "grey_sloth_plushie"
+        ],
+        "classes": [
+          "stuffed animal",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 9,
+        "template": "on top of a purple rug in a forest",
+        "views": [
+          "02.jpg",
+          "03.jpg"
+        ],
+        "seed_slot": 2
+      }
+    },
+    {
+      "task_id": "S2_010_s0",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal with a wheat field in the background",
+      "image_paths": [
+        "../dreambooth/dataset/bear_plushie/00.jpg",
+        "../dreambooth/dataset/grey_sloth_plushie/01.jpg"
+      ],
+      "seed": 3600100,
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_kv_post2000"
+      ],
+      "meta": {
+        "subjects": [
+          "bear_plushie",
+          "grey_sloth_plushie"
+        ],
+        "classes": [
+          "stuffed animal",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 10,
+        "template": "with a wheat field in the background",
+        "views": [
+          "00.jpg",
+          "01.jpg"
+        ],
+        "seed_slot": 0
+      }
+    },
+    {
+      "task_id": "S2_010_s1",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal with a wheat field in the background",
+      "image_paths": [
+        "../dreambooth/dataset/bear_plushie/01.jpg",
+        "../dreambooth/dataset/grey_sloth_plushie/02.jpg"
+      ],
+      "seed": 3600101,
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_kv_post2000"
+      ],
+      "meta": {
+        "subjects": [
+          "bear_plushie",
+          "grey_sloth_plushie"
+        ],
+        "classes": [
+          "stuffed animal",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 10,
+        "template": "with a wheat field in the background",
+        "views": [
+          "01.jpg",
+          "02.jpg"
+        ],
+        "seed_slot": 1
+      }
+    },
+    {
+      "task_id": "S2_010_s2",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal with a wheat field in the background",
+      "image_paths": [
+        "../dreambooth/dataset/bear_plushie/02.jpg",
+        "../dreambooth/dataset/grey_sloth_plushie/03.jpg"
+      ],
+      "seed": 3600102,
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_kv_post2000"
+      ],
+      "meta": {
+        "subjects": [
+          "bear_plushie",
+          "grey_sloth_plushie"
+        ],
+        "classes": [
+          "stuffed animal",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 10,
+        "template": "with a wheat field in the background",
+        "views": [
+          "02.jpg",
+          "03.jpg"
+        ],
+        "seed_slot": 2
+      }
+    },
+    {
+      "task_id": "S2_011_s0",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal with a tree and autumn leaves in the background",
+      "image_paths": [
+        "../dreambooth/dataset/bear_plushie/00.jpg",
+        "../dreambooth/dataset/grey_sloth_plushie/01.jpg"
+      ],
+      "seed": 3600110,
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_kv_post2000"
+      ],
+      "meta": {
+        "subjects": [
+          "bear_plushie",
+          "grey_sloth_plushie"
+        ],
+        "classes": [
+          "stuffed animal",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 11,
+        "template": "with a tree and autumn leaves in the background",
+        "views": [
+          "00.jpg",
+          "01.jpg"
+        ],
+        "seed_slot": 0
+      }
+    },
+    {
+      "task_id": "S2_011_s1",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal with a tree and autumn leaves in the background",
+      "image_paths": [
+        "../dreambooth/dataset/bear_plushie/01.jpg",
+        "../dreambooth/dataset/grey_sloth_plushie/02.jpg"
+      ],
+      "seed": 3600111,
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_kv_post2000"
+      ],
+      "meta": {
+        "subjects": [
+          "bear_plushie",
+          "grey_sloth_plushie"
+        ],
+        "classes": [
+          "stuffed animal",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 11,
+        "template": "with a tree and autumn leaves in the background",
+        "views": [
+          "01.jpg",
+          "02.jpg"
+        ],
+        "seed_slot": 1
+      }
+    },
+    {
+      "task_id": "S2_011_s2",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal with a tree and autumn leaves in the background",
+      "image_paths": [
+        "../dreambooth/dataset/bear_plushie/02.jpg",
+        "../dreambooth/dataset/grey_sloth_plushie/03.jpg"
+      ],
+      "seed": 3600112,
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_kv_post2000"
+      ],
+      "meta": {
+        "subjects": [
+          "bear_plushie",
+          "grey_sloth_plushie"
+        ],
+        "classes": [
+          "stuffed animal",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 11,
+        "template": "with a tree and autumn leaves in the background",
+        "views": [
+          "02.jpg",
+          "03.jpg"
+        ],
+        "seed_slot": 2
+      }
+    },
+    {
+      "task_id": "S2_012_s0",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal with the Eiffel Tower in the background",
+      "image_paths": [
+        "../dreambooth/dataset/bear_plushie/00.jpg",
+        "../dreambooth/dataset/grey_sloth_plushie/01.jpg"
+      ],
+      "seed": 3600120,
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_kv_post2000"
+      ],
+      "meta": {
+        "subjects": [
+          "bear_plushie",
+          "grey_sloth_plushie"
+        ],
+        "classes": [
+          "stuffed animal",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 12,
+        "template": "with the Eiffel Tower in the background",
+        "views": [
+          "00.jpg",
+          "01.jpg"
+        ],
+        "seed_slot": 0
+      }
+    },
+    {
+      "task_id": "S2_012_s1",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal with the Eiffel Tower in the background",
+      "image_paths": [
+        "../dreambooth/dataset/bear_plushie/01.jpg",
+        "../dreambooth/dataset/grey_sloth_plushie/02.jpg"
+      ],
+      "seed": 3600121,
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_kv_post2000"
+      ],
+      "meta": {
+        "subjects": [
+          "bear_plushie",
+          "grey_sloth_plushie"
+        ],
+        "classes": [
+          "stuffed animal",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 12,
+        "template": "with the Eiffel Tower in the background",
+        "views": [
+          "01.jpg",
+          "02.jpg"
+        ],
+        "seed_slot": 1
+      }
+    },
+    {
+      "task_id": "S2_012_s2",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal with the Eiffel Tower in the background",
+      "image_paths": [
+        "../dreambooth/dataset/bear_plushie/02.jpg",
+        "../dreambooth/dataset/grey_sloth_plushie/03.jpg"
+      ],
+      "seed": 3600122,
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_kv_post2000"
+      ],
+      "meta": {
+        "subjects": [
+          "bear_plushie",
+          "grey_sloth_plushie"
+        ],
+        "classes": [
+          "stuffed animal",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 12,
+        "template": "with the Eiffel Tower in the background",
+        "views": [
+          "02.jpg",
+          "03.jpg"
+        ],
+        "seed_slot": 2
+      }
+    },
+    {
+      "task_id": "S2_013_s0",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal floating on top of water",
+      "image_paths": [
+        "../dreambooth/dataset/bear_plushie/00.jpg",
+        "../dreambooth/dataset/grey_sloth_plushie/01.jpg"
+      ],
+      "seed": 3600130,
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_kv_post2000"
+      ],
+      "meta": {
+        "subjects": [
+          "bear_plushie",
+          "grey_sloth_plushie"
+        ],
+        "classes": [
+          "stuffed animal",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 13,
+        "template": "floating on top of water",
+        "views": [
+          "00.jpg",
+          "01.jpg"
+        ],
+        "seed_slot": 0
+      }
+    },
+    {
+      "task_id": "S2_013_s1",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal floating on top of water",
+      "image_paths": [
+        "../dreambooth/dataset/bear_plushie/01.jpg",
+        "../dreambooth/dataset/grey_sloth_plushie/02.jpg"
+      ],
+      "seed": 3600131,
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_kv_post2000"
+      ],
+      "meta": {
+        "subjects": [
+          "bear_plushie",
+          "grey_sloth_plushie"
+        ],
+        "classes": [
+          "stuffed animal",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 13,
+        "template": "floating on top of water",
+        "views": [
+          "01.jpg",
+          "02.jpg"
+        ],
+        "seed_slot": 1
+      }
+    },
+    {
+      "task_id": "S2_013_s2",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal floating on top of water",
+      "image_paths": [
+        "../dreambooth/dataset/bear_plushie/02.jpg",
+        "../dreambooth/dataset/grey_sloth_plushie/03.jpg"
+      ],
+      "seed": 3600132,
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_kv_post2000"
+      ],
+      "meta": {
+        "subjects": [
+          "bear_plushie",
+          "grey_sloth_plushie"
+        ],
+        "classes": [
+          "stuffed animal",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 13,
+        "template": "floating on top of water",
+        "views": [
+          "02.jpg",
+          "03.jpg"
+        ],
+        "seed_slot": 2
+      }
+    },
+    {
+      "task_id": "S2_014_s0",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal floating in an ocean of milk",
+      "image_paths": [
+        "../dreambooth/dataset/bear_plushie/00.jpg",
+        "../dreambooth/dataset/grey_sloth_plushie/01.jpg"
+      ],
+      "seed": 3600140,
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_kv_post2000"
+      ],
+      "meta": {
+        "subjects": [
+          "bear_plushie",
+          "grey_sloth_plushie"
+        ],
+        "classes": [
+          "stuffed animal",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 14,
+        "template": "floating in an ocean of milk",
+        "views": [
+          "00.jpg",
+          "01.jpg"
+        ],
+        "seed_slot": 0
+      }
+    },
+    {
+      "task_id": "S2_014_s1",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal floating in an ocean of milk",
+      "image_paths": [
+        "../dreambooth/dataset/bear_plushie/01.jpg",
+        "../dreambooth/dataset/grey_sloth_plushie/02.jpg"
+      ],
+      "seed": 3600141,
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_kv_post2000"
+      ],
+      "meta": {
+        "subjects": [
+          "bear_plushie",
+          "grey_sloth_plushie"
+        ],
+        "classes": [
+          "stuffed animal",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 14,
+        "template": "floating in an ocean of milk",
+        "views": [
+          "01.jpg",
+          "02.jpg"
+        ],
+        "seed_slot": 1
+      }
+    },
+    {
+      "task_id": "S2_014_s2",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal floating in an ocean of milk",
+      "image_paths": [
+        "../dreambooth/dataset/bear_plushie/02.jpg",
+        "../dreambooth/dataset/grey_sloth_plushie/03.jpg"
+      ],
+      "seed": 3600142,
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_kv_post2000"
+      ],
+      "meta": {
+        "subjects": [
+          "bear_plushie",
+          "grey_sloth_plushie"
+        ],
+        "classes": [
+          "stuffed animal",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 14,
+        "template": "floating in an ocean of milk",
+        "views": [
+          "02.jpg",
+          "03.jpg"
+        ],
+        "seed_slot": 2
+      }
+    },
+    {
+      "task_id": "S2_015_s0",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal on top of green grass with sunflowers around it",
+      "image_paths": [
+        "../dreambooth/dataset/bear_plushie/00.jpg",
+        "../dreambooth/dataset/grey_sloth_plushie/01.jpg"
+      ],
+      "seed": 3600150,
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_kv_post2000"
+      ],
+      "meta": {
+        "subjects": [
+          "bear_plushie",
+          "grey_sloth_plushie"
+        ],
+        "classes": [
+          "stuffed animal",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 15,
+        "template": "on top of green grass with sunflowers around it",
+        "views": [
+          "00.jpg",
+          "01.jpg"
+        ],
+        "seed_slot": 0
+      }
+    },
+    {
+      "task_id": "S2_015_s1",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal on top of green grass with sunflowers around it",
+      "image_paths": [
+        "../dreambooth/dataset/bear_plushie/01.jpg",
+        "../dreambooth/dataset/grey_sloth_plushie/02.jpg"
+      ],
+      "seed": 3600151,
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_kv_post2000"
+      ],
+      "meta": {
+        "subjects": [
+          "bear_plushie",
+          "grey_sloth_plushie"
+        ],
+        "classes": [
+          "stuffed animal",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 15,
+        "template": "on top of green grass with sunflowers around it",
+        "views": [
+          "01.jpg",
+          "02.jpg"
+        ],
+        "seed_slot": 1
+      }
+    },
+    {
+      "task_id": "S2_015_s2",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal on top of green grass with sunflowers around it",
+      "image_paths": [
+        "../dreambooth/dataset/bear_plushie/02.jpg",
+        "../dreambooth/dataset/grey_sloth_plushie/03.jpg"
+      ],
+      "seed": 3600152,
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_kv_post2000"
+      ],
+      "meta": {
+        "subjects": [
+          "bear_plushie",
+          "grey_sloth_plushie"
+        ],
+        "classes": [
+          "stuffed animal",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 15,
+        "template": "on top of green grass with sunflowers around it",
+        "views": [
+          "02.jpg",
+          "03.jpg"
+        ],
+        "seed_slot": 2
+      }
+    },
+    {
+      "task_id": "S2_016_s0",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal on top of a mirror",
+      "image_paths": [
+        "../dreambooth/dataset/bear_plushie/00.jpg",
+        "../dreambooth/dataset/grey_sloth_plushie/01.jpg"
+      ],
+      "seed": 3600160,
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_kv_post2000"
+      ],
+      "meta": {
+        "subjects": [
+          "bear_plushie",
+          "grey_sloth_plushie"
+        ],
+        "classes": [
+          "stuffed animal",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 16,
+        "template": "on top of a mirror",
+        "views": [
+          "00.jpg",
+          "01.jpg"
+        ],
+        "seed_slot": 0
+      }
+    },
+    {
+      "task_id": "S2_016_s1",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal on top of a mirror",
+      "image_paths": [
+        "../dreambooth/dataset/bear_plushie/01.jpg",
+        "../dreambooth/dataset/grey_sloth_plushie/02.jpg"
+      ],
+      "seed": 3600161,
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_kv_post2000"
+      ],
+      "meta": {
+        "subjects": [
+          "bear_plushie",
+          "grey_sloth_plushie"
+        ],
+        "classes": [
+          "stuffed animal",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 16,
+        "template": "on top of a mirror",
+        "views": [
+          "01.jpg",
+          "02.jpg"
+        ],
+        "seed_slot": 1
+      }
+    },
+    {
+      "task_id": "S2_016_s2",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal on top of a mirror",
+      "image_paths": [
+        "../dreambooth/dataset/bear_plushie/02.jpg",
+        "../dreambooth/dataset/grey_sloth_plushie/03.jpg"
+      ],
+      "seed": 3600162,
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_kv_post2000"
+      ],
+      "meta": {
+        "subjects": [
+          "bear_plushie",
+          "grey_sloth_plushie"
+        ],
+        "classes": [
+          "stuffed animal",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 16,
+        "template": "on top of a mirror",
+        "views": [
+          "02.jpg",
+          "03.jpg"
+        ],
+        "seed_slot": 2
+      }
+    },
+    {
+      "task_id": "S2_017_s0",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal on top of the sidewalk in a crowded street",
+      "image_paths": [
+        "../dreambooth/dataset/bear_plushie/00.jpg",
+        "../dreambooth/dataset/grey_sloth_plushie/01.jpg"
+      ],
+      "seed": 3600170,
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_kv_post2000"
+      ],
+      "meta": {
+        "subjects": [
+          "bear_plushie",
+          "grey_sloth_plushie"
+        ],
+        "classes": [
+          "stuffed animal",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 17,
+        "template": "on top of the sidewalk in a crowded street",
+        "views": [
+          "00.jpg",
+          "01.jpg"
+        ],
+        "seed_slot": 0
+      }
+    },
+    {
+      "task_id": "S2_017_s1",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal on top of the sidewalk in a crowded street",
+      "image_paths": [
+        "../dreambooth/dataset/bear_plushie/01.jpg",
+        "../dreambooth/dataset/grey_sloth_plushie/02.jpg"
+      ],
+      "seed": 3600171,
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_kv_post2000"
+      ],
+      "meta": {
+        "subjects": [
+          "bear_plushie",
+          "grey_sloth_plushie"
+        ],
+        "classes": [
+          "stuffed animal",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 17,
+        "template": "on top of the sidewalk in a crowded street",
+        "views": [
+          "01.jpg",
+          "02.jpg"
+        ],
+        "seed_slot": 1
+      }
+    },
+    {
+      "task_id": "S2_017_s2",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal on top of the sidewalk in a crowded street",
+      "image_paths": [
+        "../dreambooth/dataset/bear_plushie/02.jpg",
+        "../dreambooth/dataset/grey_sloth_plushie/03.jpg"
+      ],
+      "seed": 3600172,
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_kv_post2000"
+      ],
+      "meta": {
+        "subjects": [
+          "bear_plushie",
+          "grey_sloth_plushie"
+        ],
+        "classes": [
+          "stuffed animal",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 17,
+        "template": "on top of the sidewalk in a crowded street",
+        "views": [
+          "02.jpg",
+          "03.jpg"
+        ],
+        "seed_slot": 2
+      }
+    },
+    {
+      "task_id": "S2_018_s0",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal on top of a dirt road",
+      "image_paths": [
+        "../dreambooth/dataset/bear_plushie/00.jpg",
+        "../dreambooth/dataset/grey_sloth_plushie/01.jpg"
+      ],
+      "seed": 3600180,
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_kv_post2000"
+      ],
+      "meta": {
+        "subjects": [
+          "bear_plushie",
+          "grey_sloth_plushie"
+        ],
+        "classes": [
+          "stuffed animal",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 18,
+        "template": "on top of a dirt road",
+        "views": [
+          "00.jpg",
+          "01.jpg"
+        ],
+        "seed_slot": 0
+      }
+    },
+    {
+      "task_id": "S2_018_s1",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal on top of a dirt road",
+      "image_paths": [
+        "../dreambooth/dataset/bear_plushie/01.jpg",
+        "../dreambooth/dataset/grey_sloth_plushie/02.jpg"
+      ],
+      "seed": 3600181,
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_kv_post2000"
+      ],
+      "meta": {
+        "subjects": [
+          "bear_plushie",
+          "grey_sloth_plushie"
+        ],
+        "classes": [
+          "stuffed animal",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 18,
+        "template": "on top of a dirt road",
+        "views": [
+          "01.jpg",
+          "02.jpg"
+        ],
+        "seed_slot": 1
+      }
+    },
+    {
+      "task_id": "S2_018_s2",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal on top of a dirt road",
+      "image_paths": [
+        "../dreambooth/dataset/bear_plushie/02.jpg",
+        "../dreambooth/dataset/grey_sloth_plushie/03.jpg"
+      ],
+      "seed": 3600182,
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_kv_post2000"
+      ],
+      "meta": {
+        "subjects": [
+          "bear_plushie",
+          "grey_sloth_plushie"
+        ],
+        "classes": [
+          "stuffed animal",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 18,
+        "template": "on top of a dirt road",
+        "views": [
+          "02.jpg",
+          "03.jpg"
+        ],
+        "seed_slot": 2
+      }
+    },
+    {
+      "task_id": "S2_019_s0",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal on top of a white rug",
+      "image_paths": [
+        "../dreambooth/dataset/bear_plushie/00.jpg",
+        "../dreambooth/dataset/grey_sloth_plushie/01.jpg"
+      ],
+      "seed": 3600190,
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_kv_post2000"
+      ],
+      "meta": {
+        "subjects": [
+          "bear_plushie",
+          "grey_sloth_plushie"
+        ],
+        "classes": [
+          "stuffed animal",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 19,
+        "template": "on top of a white rug",
+        "views": [
+          "00.jpg",
+          "01.jpg"
+        ],
+        "seed_slot": 0
+      }
+    },
+    {
+      "task_id": "S2_019_s1",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal on top of a white rug",
+      "image_paths": [
+        "../dreambooth/dataset/bear_plushie/01.jpg",
+        "../dreambooth/dataset/grey_sloth_plushie/02.jpg"
+      ],
+      "seed": 3600191,
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_kv_post2000"
+      ],
+      "meta": {
+        "subjects": [
+          "bear_plushie",
+          "grey_sloth_plushie"
+        ],
+        "classes": [
+          "stuffed animal",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 19,
+        "template": "on top of a white rug",
+        "views": [
+          "01.jpg",
+          "02.jpg"
+        ],
+        "seed_slot": 1
+      }
+    },
+    {
+      "task_id": "S2_019_s2",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal on top of a white rug",
+      "image_paths": [
+        "../dreambooth/dataset/bear_plushie/02.jpg",
+        "../dreambooth/dataset/grey_sloth_plushie/03.jpg"
+      ],
+      "seed": 3600192,
+      "variants": [
+        "official_full",
+        "ours_kv_pre",
+        "ours_kv_post4000",
+        "ours_kv_post2000"
+      ],
+      "meta": {
+        "subjects": [
+          "bear_plushie",
+          "grey_sloth_plushie"
+        ],
+        "classes": [
+          "stuffed animal",
+          "stuffed animal"
+        ],
+        "n_refs": 2,
+        "template_id": 19,
+        "template": "on top of a white rug",
         "views": [
           "02.jpg",
           "03.jpg"

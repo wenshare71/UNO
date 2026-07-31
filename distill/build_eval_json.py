@@ -74,10 +74,10 @@ M1_SEED_RANGE = (3_407_000, 3_415_999)  # M1 gen_data 用过,必须不重叠
 # 规格 §3.2 表格(验收对照)
 EXPECTED = {
     # 层: (任务数, 图数)
-    "S0": (5, 15), "S1": (132, 396), "S2": (15, 60), "S3": (60, 180), "S4": (20, 60),
+    "S0": (5, 15), "S1": (132, 396), "S2": (60, 240), "S3": (60, 180), "S4": (20, 60),
 }
-EXPECTED_TOTAL_TASKS = 232
-EXPECTED_TOTAL_IMAGES = 711
+EXPECTED_TOTAL_TASKS = 277
+EXPECTED_TOTAL_IMAGES = 891
 
 
 # ------------------------------------------------------------------ 五层枚举
@@ -149,12 +149,16 @@ def build_s1(classes, object_tpl, views):
 
 
 def build_s2(classes, object_tpl, views):
-    """S2 复制探针:唯一同 class 对 × object 模板 0..4 × 3 seed,变体含 post2000。"""
+    """S2 复制探针:唯一同 class 对 × object 模板 0..19 × 3 seed,变体含 post2000。
+
+    v3(2026-07-30):模板从 5 条扩到 20 条(object 全量场景),S2 15→60。
+    既有 15 条的 task_id/seed/视角是 range(5) 子集,被 range(20) 完全覆盖,逐字不变。
+    """
     a, b = "bear_plushie", "grey_sloth_plushie"   # 两者 class 都是 "stuffed animal"
     if classes[a] != classes[b]:
         raise SystemExit(f"❌ S2 前提被破坏:{a}({classes[a]}) 与 {b}({classes[b]}) 不再同类")
     tasks = []
-    for t in range(5):
+    for t in range(20):
         template = object_tpl[t]
         for s in (0, 1, 2):
             seed = 3_600_000 + t * 10 + s

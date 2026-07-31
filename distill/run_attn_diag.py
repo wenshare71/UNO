@@ -37,6 +37,8 @@ Stage B 还没跑就跳过,不算失败。
 不进 git,本地只有 results.json 和拼图。在本地跑只会得到"没有可比对的图对",
 那是参照物不在,不是通过。
 """
+from __future__ import annotations
+
 import argparse
 import json
 import os
@@ -47,6 +49,11 @@ import traceback
 from datetime import datetime
 
 os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "expandable_segments:True")
+# 与 keepalive_infer.py 同款保险:权重全在共享缓存,禁联网探测。
+# 缺了这两行且 shell 没 export 时,hf_hub_download 会走日本代理 hang 死在"启动"。
+# setdefault 不覆盖用户已 export 的值(例如 H800 本地 NVMe 上的 HF_HOME)。
+os.environ.setdefault("HF_HOME", "/kaimm-distill/wuwenxuan/hf_cache")
+os.environ.setdefault("HF_HUB_OFFLINE", "1")
 
 _REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 if _REPO_ROOT not in sys.path:
