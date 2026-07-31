@@ -1,0 +1,1860 @@
+{
+  "n_total": 227,
+  "n_annotated": 227,
+  "complete": true,
+  "overall": {
+    "T": 82,
+    "S": 50,
+    "B": 95,
+    "n": 227,
+    "score": 0.8192090395480226
+  },
+  "by_stratum": {
+    "S1": {
+      "T": 55,
+      "S": 32,
+      "B": 45,
+      "n": 132,
+      "score": 0.77
+    },
+    "S2": {
+      "T": 3,
+      "S": 6,
+      "B": 6,
+      "n": 15,
+      "score": 1.3333333333333333
+    },
+    "S3": {
+      "T": 20,
+      "S": 11,
+      "B": 29,
+      "n": 60,
+      "score": 0.8163265306122449
+    },
+    "S4": {
+      "T": 4,
+      "S": 1,
+      "B": 15,
+      "n": 20,
+      "score": 0.8421052631578947
+    }
+  },
+  "detail": [
+    {
+      "idx": 0,
+      "task_id": "S1_000_s0",
+      "stratum": "S1",
+      "choice": "A",
+      "winner": "official_full",
+      "student_on": "B"
+    },
+    {
+      "idx": 1,
+      "task_id": "S1_000_s1",
+      "stratum": "S1",
+      "choice": "B",
+      "winner": "official_full",
+      "student_on": "A"
+    },
+    {
+      "idx": 2,
+      "task_id": "S1_000_s2",
+      "stratum": "S1",
+      "choice": "A",
+      "winner": "official_full",
+      "student_on": "B"
+    },
+    {
+      "idx": 3,
+      "task_id": "S1_001_s0",
+      "stratum": "S1",
+      "choice": "B",
+      "winner": "ours_kv_post4000",
+      "student_on": "B"
+    },
+    {
+      "idx": 4,
+      "task_id": "S1_001_s1",
+      "stratum": "S1",
+      "choice": "A",
+      "winner": "official_full",
+      "student_on": "B"
+    },
+    {
+      "idx": 5,
+      "task_id": "S1_001_s2",
+      "stratum": "S1",
+      "choice": "B",
+      "winner": "official_full",
+      "student_on": "A"
+    },
+    {
+      "idx": 6,
+      "task_id": "S1_002_s0",
+      "stratum": "S1",
+      "choice": "B",
+      "winner": "ours_kv_post4000",
+      "student_on": "B"
+    },
+    {
+      "idx": 7,
+      "task_id": "S1_002_s1",
+      "stratum": "S1",
+      "choice": "B",
+      "winner": "official_full",
+      "student_on": "A"
+    },
+    {
+      "idx": 8,
+      "task_id": "S1_002_s2",
+      "stratum": "S1",
+      "choice": "A",
+      "winner": "ours_kv_post4000",
+      "student_on": "A"
+    },
+    {
+      "idx": 9,
+      "task_id": "S1_003_s0",
+      "stratum": "S1",
+      "choice": "A",
+      "winner": "ours_kv_post4000",
+      "student_on": "A"
+    },
+    {
+      "idx": 10,
+      "task_id": "S1_003_s1",
+      "stratum": "S1",
+      "choice": "B",
+      "winner": "official_full",
+      "student_on": "A"
+    },
+    {
+      "idx": 11,
+      "task_id": "S1_003_s2",
+      "stratum": "S1",
+      "choice": "A",
+      "winner": "official_full",
+      "student_on": "B"
+    },
+    {
+      "idx": 12,
+      "task_id": "S1_004_s0",
+      "stratum": "S1",
+      "choice": "B",
+      "winner": "ours_kv_post4000",
+      "student_on": "B"
+    },
+    {
+      "idx": 13,
+      "task_id": "S1_004_s1",
+      "stratum": "S1",
+      "choice": "A",
+      "winner": "official_full",
+      "student_on": "B"
+    },
+    {
+      "idx": 14,
+      "task_id": "S1_004_s2",
+      "stratum": "S1",
+      "choice": "B",
+      "winner": "official_full",
+      "student_on": "A"
+    },
+    {
+      "idx": 15,
+      "task_id": "S1_005_s0",
+      "stratum": "S1",
+      "choice": "B",
+      "winner": "official_full",
+      "student_on": "A"
+    },
+    {
+      "idx": 16,
+      "task_id": "S1_005_s1",
+      "stratum": "S1",
+      "choice": "A",
+      "winner": "official_full",
+      "student_on": "B"
+    },
+    {
+      "idx": 17,
+      "task_id": "S1_005_s2",
+      "stratum": "S1",
+      "choice": "B",
+      "winner": "ours_kv_post4000",
+      "student_on": "B"
+    },
+    {
+      "idx": 18,
+      "task_id": "S1_006_s0",
+      "stratum": "S1",
+      "choice": "A",
+      "winner": "official_full",
+      "student_on": "B"
+    },
+    {
+      "idx": 19,
+      "task_id": "S1_006_s1",
+      "stratum": "S1",
+      "choice": "A",
+      "winner": "ours_kv_post4000",
+      "student_on": "A"
+    },
+    {
+      "idx": 20,
+      "task_id": "S1_006_s2",
+      "stratum": "S1",
+      "choice": "B",
+      "winner": "ours_kv_post4000",
+      "student_on": "B"
+    },
+    {
+      "idx": 21,
+      "task_id": "S1_007_s0",
+      "stratum": "S1",
+      "choice": "B",
+      "winner": "official_full",
+      "student_on": "A"
+    },
+    {
+      "idx": 22,
+      "task_id": "S1_007_s1",
+      "stratum": "S1",
+      "choice": "B",
+      "winner": "official_full",
+      "student_on": "A"
+    },
+    {
+      "idx": 23,
+      "task_id": "S1_007_s2",
+      "stratum": "S1",
+      "choice": "A",
+      "winner": "official_full",
+      "student_on": "B"
+    },
+    {
+      "idx": 24,
+      "task_id": "S1_008_s0",
+      "stratum": "S1",
+      "choice": "A",
+      "winner": "ours_kv_post4000",
+      "student_on": "A"
+    },
+    {
+      "idx": 25,
+      "task_id": "S1_008_s1",
+      "stratum": "S1",
+      "choice": "A",
+      "winner": "official_full",
+      "student_on": "B"
+    },
+    {
+      "idx": 26,
+      "task_id": "S1_008_s2",
+      "stratum": "S1",
+      "choice": "A",
+      "winner": "official_full",
+      "student_on": "B"
+    },
+    {
+      "idx": 27,
+      "task_id": "S1_009_s0",
+      "stratum": "S1",
+      "choice": "A",
+      "winner": "ours_kv_post4000",
+      "student_on": "A"
+    },
+    {
+      "idx": 28,
+      "task_id": "S1_009_s1",
+      "stratum": "S1",
+      "choice": "B",
+      "winner": "official_full",
+      "student_on": "A"
+    },
+    {
+      "idx": 29,
+      "task_id": "S1_009_s2",
+      "stratum": "S1",
+      "choice": "B",
+      "winner": "official_full",
+      "student_on": "A"
+    },
+    {
+      "idx": 30,
+      "task_id": "S1_010_s0",
+      "stratum": "S1",
+      "choice": "B",
+      "winner": "official_full",
+      "student_on": "A"
+    },
+    {
+      "idx": 31,
+      "task_id": "S1_010_s1",
+      "stratum": "S1",
+      "choice": "A",
+      "winner": "official_full",
+      "student_on": "B"
+    },
+    {
+      "idx": 32,
+      "task_id": "S1_010_s2",
+      "stratum": "S1",
+      "choice": "B",
+      "winner": "official_full",
+      "student_on": "A"
+    },
+    {
+      "idx": 33,
+      "task_id": "S1_011_s0",
+      "stratum": "S1",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "B"
+    },
+    {
+      "idx": 34,
+      "task_id": "S1_011_s1",
+      "stratum": "S1",
+      "choice": "A",
+      "winner": "official_full",
+      "student_on": "B"
+    },
+    {
+      "idx": 35,
+      "task_id": "S1_011_s2",
+      "stratum": "S1",
+      "choice": "A",
+      "winner": "official_full",
+      "student_on": "B"
+    },
+    {
+      "idx": 36,
+      "task_id": "S1_012_s0",
+      "stratum": "S1",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "B"
+    },
+    {
+      "idx": 37,
+      "task_id": "S1_012_s1",
+      "stratum": "S1",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "B"
+    },
+    {
+      "idx": 38,
+      "task_id": "S1_012_s2",
+      "stratum": "S1",
+      "choice": "B",
+      "winner": "official_full",
+      "student_on": "A"
+    },
+    {
+      "idx": 39,
+      "task_id": "S1_013_s0",
+      "stratum": "S1",
+      "choice": "B",
+      "winner": "ours_kv_post4000",
+      "student_on": "B"
+    },
+    {
+      "idx": 40,
+      "task_id": "S1_013_s1",
+      "stratum": "S1",
+      "choice": "A",
+      "winner": "ours_kv_post4000",
+      "student_on": "A"
+    },
+    {
+      "idx": 41,
+      "task_id": "S1_013_s2",
+      "stratum": "S1",
+      "choice": "B",
+      "winner": "ours_kv_post4000",
+      "student_on": "B"
+    },
+    {
+      "idx": 42,
+      "task_id": "S1_014_s0",
+      "stratum": "S1",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "A"
+    },
+    {
+      "idx": 43,
+      "task_id": "S1_014_s1",
+      "stratum": "S1",
+      "choice": "A",
+      "winner": "official_full",
+      "student_on": "B"
+    },
+    {
+      "idx": 44,
+      "task_id": "S1_014_s2",
+      "stratum": "S1",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "A"
+    },
+    {
+      "idx": 45,
+      "task_id": "S1_015_s0",
+      "stratum": "S1",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "B"
+    },
+    {
+      "idx": 46,
+      "task_id": "S1_015_s1",
+      "stratum": "S1",
+      "choice": "A",
+      "winner": "official_full",
+      "student_on": "B"
+    },
+    {
+      "idx": 47,
+      "task_id": "S1_015_s2",
+      "stratum": "S1",
+      "choice": "A",
+      "winner": "ours_kv_post4000",
+      "student_on": "A"
+    },
+    {
+      "idx": 48,
+      "task_id": "S1_016_s0",
+      "stratum": "S1",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "B"
+    },
+    {
+      "idx": 49,
+      "task_id": "S1_016_s1",
+      "stratum": "S1",
+      "choice": "B",
+      "winner": "official_full",
+      "student_on": "A"
+    },
+    {
+      "idx": 50,
+      "task_id": "S1_016_s2",
+      "stratum": "S1",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "A"
+    },
+    {
+      "idx": 51,
+      "task_id": "S1_017_s0",
+      "stratum": "S1",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "B"
+    },
+    {
+      "idx": 52,
+      "task_id": "S1_017_s1",
+      "stratum": "S1",
+      "choice": "B",
+      "winner": "ours_kv_post4000",
+      "student_on": "B"
+    },
+    {
+      "idx": 53,
+      "task_id": "S1_017_s2",
+      "stratum": "S1",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "A"
+    },
+    {
+      "idx": 54,
+      "task_id": "S1_018_s0",
+      "stratum": "S1",
+      "choice": "A",
+      "winner": "ours_kv_post4000",
+      "student_on": "A"
+    },
+    {
+      "idx": 55,
+      "task_id": "S1_018_s1",
+      "stratum": "S1",
+      "choice": "A",
+      "winner": "official_full",
+      "student_on": "B"
+    },
+    {
+      "idx": 56,
+      "task_id": "S1_018_s2",
+      "stratum": "S1",
+      "choice": "B",
+      "winner": "ours_kv_post4000",
+      "student_on": "B"
+    },
+    {
+      "idx": 57,
+      "task_id": "S1_019_s0",
+      "stratum": "S1",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "A"
+    },
+    {
+      "idx": 58,
+      "task_id": "S1_019_s1",
+      "stratum": "S1",
+      "choice": "B",
+      "winner": "official_full",
+      "student_on": "A"
+    },
+    {
+      "idx": 59,
+      "task_id": "S1_019_s2",
+      "stratum": "S1",
+      "choice": "A",
+      "winner": "ours_kv_post4000",
+      "student_on": "A"
+    },
+    {
+      "idx": 60,
+      "task_id": "S1_020_s0",
+      "stratum": "S1",
+      "choice": "A",
+      "winner": "ours_kv_post4000",
+      "student_on": "A"
+    },
+    {
+      "idx": 61,
+      "task_id": "S1_020_s1",
+      "stratum": "S1",
+      "choice": "A",
+      "winner": "official_full",
+      "student_on": "B"
+    },
+    {
+      "idx": 62,
+      "task_id": "S1_020_s2",
+      "stratum": "S1",
+      "choice": "A",
+      "winner": "ours_kv_post4000",
+      "student_on": "A"
+    },
+    {
+      "idx": 63,
+      "task_id": "S1_021_s0",
+      "stratum": "S1",
+      "choice": "B",
+      "winner": "official_full",
+      "student_on": "A"
+    },
+    {
+      "idx": 64,
+      "task_id": "S1_021_s1",
+      "stratum": "S1",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "B"
+    },
+    {
+      "idx": 65,
+      "task_id": "S1_021_s2",
+      "stratum": "S1",
+      "choice": "A",
+      "winner": "ours_kv_post4000",
+      "student_on": "A"
+    },
+    {
+      "idx": 66,
+      "task_id": "S1_022_s0",
+      "stratum": "S1",
+      "choice": "B",
+      "winner": "official_full",
+      "student_on": "A"
+    },
+    {
+      "idx": 67,
+      "task_id": "S1_022_s1",
+      "stratum": "S1",
+      "choice": "A",
+      "winner": "official_full",
+      "student_on": "B"
+    },
+    {
+      "idx": 68,
+      "task_id": "S1_022_s2",
+      "stratum": "S1",
+      "choice": "A",
+      "winner": "official_full",
+      "student_on": "B"
+    },
+    {
+      "idx": 69,
+      "task_id": "S1_023_s0",
+      "stratum": "S1",
+      "choice": "B",
+      "winner": "ours_kv_post4000",
+      "student_on": "B"
+    },
+    {
+      "idx": 70,
+      "task_id": "S1_023_s1",
+      "stratum": "S1",
+      "choice": "B",
+      "winner": "official_full",
+      "student_on": "A"
+    },
+    {
+      "idx": 71,
+      "task_id": "S1_023_s2",
+      "stratum": "S1",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "A"
+    },
+    {
+      "idx": 72,
+      "task_id": "S1_024_s0",
+      "stratum": "S1",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "A"
+    },
+    {
+      "idx": 73,
+      "task_id": "S1_024_s1",
+      "stratum": "S1",
+      "choice": "B",
+      "winner": "ours_kv_post4000",
+      "student_on": "B"
+    },
+    {
+      "idx": 74,
+      "task_id": "S1_024_s2",
+      "stratum": "S1",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "B"
+    },
+    {
+      "idx": 75,
+      "task_id": "S1_025_s0",
+      "stratum": "S1",
+      "choice": "B",
+      "winner": "official_full",
+      "student_on": "A"
+    },
+    {
+      "idx": 76,
+      "task_id": "S1_025_s1",
+      "stratum": "S1",
+      "choice": "A",
+      "winner": "official_full",
+      "student_on": "B"
+    },
+    {
+      "idx": 77,
+      "task_id": "S1_025_s2",
+      "stratum": "S1",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "A"
+    },
+    {
+      "idx": 78,
+      "task_id": "S1_026_s0",
+      "stratum": "S1",
+      "choice": "A",
+      "winner": "ours_kv_post4000",
+      "student_on": "A"
+    },
+    {
+      "idx": 79,
+      "task_id": "S1_026_s1",
+      "stratum": "S1",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "A"
+    },
+    {
+      "idx": 80,
+      "task_id": "S1_026_s2",
+      "stratum": "S1",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "B"
+    },
+    {
+      "idx": 81,
+      "task_id": "S1_027_s0",
+      "stratum": "S1",
+      "choice": "A",
+      "winner": "official_full",
+      "student_on": "B"
+    },
+    {
+      "idx": 82,
+      "task_id": "S1_027_s1",
+      "stratum": "S1",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "B"
+    },
+    {
+      "idx": 83,
+      "task_id": "S1_027_s2",
+      "stratum": "S1",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "A"
+    },
+    {
+      "idx": 84,
+      "task_id": "S1_028_s0",
+      "stratum": "S1",
+      "choice": "B",
+      "winner": "official_full",
+      "student_on": "A"
+    },
+    {
+      "idx": 85,
+      "task_id": "S1_028_s1",
+      "stratum": "S1",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "A"
+    },
+    {
+      "idx": 86,
+      "task_id": "S1_028_s2",
+      "stratum": "S1",
+      "choice": "B",
+      "winner": "ours_kv_post4000",
+      "student_on": "B"
+    },
+    {
+      "idx": 87,
+      "task_id": "S1_029_s0",
+      "stratum": "S1",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "B"
+    },
+    {
+      "idx": 88,
+      "task_id": "S1_029_s1",
+      "stratum": "S1",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "B"
+    },
+    {
+      "idx": 89,
+      "task_id": "S1_029_s2",
+      "stratum": "S1",
+      "choice": "A",
+      "winner": "ours_kv_post4000",
+      "student_on": "A"
+    },
+    {
+      "idx": 90,
+      "task_id": "S1_030_s0",
+      "stratum": "S1",
+      "choice": "A",
+      "winner": "official_full",
+      "student_on": "B"
+    },
+    {
+      "idx": 91,
+      "task_id": "S1_030_s1",
+      "stratum": "S1",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "A"
+    },
+    {
+      "idx": 92,
+      "task_id": "S1_030_s2",
+      "stratum": "S1",
+      "choice": "A",
+      "winner": "ours_kv_post4000",
+      "student_on": "A"
+    },
+    {
+      "idx": 93,
+      "task_id": "S1_031_s0",
+      "stratum": "S1",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "B"
+    },
+    {
+      "idx": 94,
+      "task_id": "S1_031_s1",
+      "stratum": "S1",
+      "choice": "B",
+      "winner": "official_full",
+      "student_on": "A"
+    },
+    {
+      "idx": 95,
+      "task_id": "S1_031_s2",
+      "stratum": "S1",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "A"
+    },
+    {
+      "idx": 96,
+      "task_id": "S1_032_s0",
+      "stratum": "S1",
+      "choice": "B",
+      "winner": "official_full",
+      "student_on": "A"
+    },
+    {
+      "idx": 97,
+      "task_id": "S1_032_s1",
+      "stratum": "S1",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "A"
+    },
+    {
+      "idx": 98,
+      "task_id": "S1_032_s2",
+      "stratum": "S1",
+      "choice": "A",
+      "winner": "official_full",
+      "student_on": "B"
+    },
+    {
+      "idx": 99,
+      "task_id": "S1_033_s0",
+      "stratum": "S1",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "A"
+    },
+    {
+      "idx": 100,
+      "task_id": "S1_033_s1",
+      "stratum": "S1",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "B"
+    },
+    {
+      "idx": 101,
+      "task_id": "S1_033_s2",
+      "stratum": "S1",
+      "choice": "A",
+      "winner": "official_full",
+      "student_on": "B"
+    },
+    {
+      "idx": 102,
+      "task_id": "S1_034_s0",
+      "stratum": "S1",
+      "choice": "A",
+      "winner": "ours_kv_post4000",
+      "student_on": "A"
+    },
+    {
+      "idx": 103,
+      "task_id": "S1_034_s1",
+      "stratum": "S1",
+      "choice": "B",
+      "winner": "official_full",
+      "student_on": "A"
+    },
+    {
+      "idx": 104,
+      "task_id": "S1_034_s2",
+      "stratum": "S1",
+      "choice": "A",
+      "winner": "official_full",
+      "student_on": "B"
+    },
+    {
+      "idx": 105,
+      "task_id": "S1_035_s0",
+      "stratum": "S1",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "B"
+    },
+    {
+      "idx": 106,
+      "task_id": "S1_035_s1",
+      "stratum": "S1",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "A"
+    },
+    {
+      "idx": 107,
+      "task_id": "S1_035_s2",
+      "stratum": "S1",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "A"
+    },
+    {
+      "idx": 108,
+      "task_id": "S1_036_s0",
+      "stratum": "S1",
+      "choice": "A",
+      "winner": "official_full",
+      "student_on": "B"
+    },
+    {
+      "idx": 109,
+      "task_id": "S1_036_s1",
+      "stratum": "S1",
+      "choice": "A",
+      "winner": "ours_kv_post4000",
+      "student_on": "A"
+    },
+    {
+      "idx": 110,
+      "task_id": "S1_036_s2",
+      "stratum": "S1",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "B"
+    },
+    {
+      "idx": 111,
+      "task_id": "S1_037_s0",
+      "stratum": "S1",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "B"
+    },
+    {
+      "idx": 112,
+      "task_id": "S1_037_s1",
+      "stratum": "S1",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "B"
+    },
+    {
+      "idx": 113,
+      "task_id": "S1_037_s2",
+      "stratum": "S1",
+      "choice": "A",
+      "winner": "ours_kv_post4000",
+      "student_on": "A"
+    },
+    {
+      "idx": 114,
+      "task_id": "S1_038_s0",
+      "stratum": "S1",
+      "choice": "A",
+      "winner": "ours_kv_post4000",
+      "student_on": "A"
+    },
+    {
+      "idx": 115,
+      "task_id": "S1_038_s1",
+      "stratum": "S1",
+      "choice": "A",
+      "winner": "ours_kv_post4000",
+      "student_on": "A"
+    },
+    {
+      "idx": 116,
+      "task_id": "S1_038_s2",
+      "stratum": "S1",
+      "choice": "B",
+      "winner": "official_full",
+      "student_on": "A"
+    },
+    {
+      "idx": 117,
+      "task_id": "S1_039_s0",
+      "stratum": "S1",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "B"
+    },
+    {
+      "idx": 118,
+      "task_id": "S1_039_s1",
+      "stratum": "S1",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "A"
+    },
+    {
+      "idx": 119,
+      "task_id": "S1_039_s2",
+      "stratum": "S1",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "A"
+    },
+    {
+      "idx": 120,
+      "task_id": "S1_040_s0",
+      "stratum": "S1",
+      "choice": "B",
+      "winner": "official_full",
+      "student_on": "A"
+    },
+    {
+      "idx": 121,
+      "task_id": "S1_040_s1",
+      "stratum": "S1",
+      "choice": "B",
+      "winner": "official_full",
+      "student_on": "A"
+    },
+    {
+      "idx": 122,
+      "task_id": "S1_040_s2",
+      "stratum": "S1",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "B"
+    },
+    {
+      "idx": 123,
+      "task_id": "S1_041_s0",
+      "stratum": "S1",
+      "choice": "B",
+      "winner": "official_full",
+      "student_on": "A"
+    },
+    {
+      "idx": 124,
+      "task_id": "S1_041_s1",
+      "stratum": "S1",
+      "choice": "B",
+      "winner": "official_full",
+      "student_on": "A"
+    },
+    {
+      "idx": 125,
+      "task_id": "S1_041_s2",
+      "stratum": "S1",
+      "choice": "A",
+      "winner": "official_full",
+      "student_on": "B"
+    },
+    {
+      "idx": 126,
+      "task_id": "S1_042_s0",
+      "stratum": "S1",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "B"
+    },
+    {
+      "idx": 127,
+      "task_id": "S1_042_s1",
+      "stratum": "S1",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "A"
+    },
+    {
+      "idx": 128,
+      "task_id": "S1_042_s2",
+      "stratum": "S1",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "A"
+    },
+    {
+      "idx": 129,
+      "task_id": "S1_043_s0",
+      "stratum": "S1",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "B"
+    },
+    {
+      "idx": 130,
+      "task_id": "S1_043_s1",
+      "stratum": "S1",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "A"
+    },
+    {
+      "idx": 131,
+      "task_id": "S1_043_s2",
+      "stratum": "S1",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "A"
+    },
+    {
+      "idx": 132,
+      "task_id": "S2_000_s0",
+      "stratum": "S2",
+      "choice": "B",
+      "winner": "ours_kv_post4000",
+      "student_on": "B"
+    },
+    {
+      "idx": 133,
+      "task_id": "S2_000_s1",
+      "stratum": "S2",
+      "choice": "B",
+      "winner": "ours_kv_post4000",
+      "student_on": "B"
+    },
+    {
+      "idx": 134,
+      "task_id": "S2_000_s2",
+      "stratum": "S2",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "A"
+    },
+    {
+      "idx": 135,
+      "task_id": "S2_001_s0",
+      "stratum": "S2",
+      "choice": "A",
+      "winner": "ours_kv_post4000",
+      "student_on": "A"
+    },
+    {
+      "idx": 136,
+      "task_id": "S2_001_s1",
+      "stratum": "S2",
+      "choice": "A",
+      "winner": "ours_kv_post4000",
+      "student_on": "A"
+    },
+    {
+      "idx": 137,
+      "task_id": "S2_001_s2",
+      "stratum": "S2",
+      "choice": "A",
+      "winner": "ours_kv_post4000",
+      "student_on": "A"
+    },
+    {
+      "idx": 138,
+      "task_id": "S2_002_s0",
+      "stratum": "S2",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "B"
+    },
+    {
+      "idx": 139,
+      "task_id": "S2_002_s1",
+      "stratum": "S2",
+      "choice": "B",
+      "winner": "official_full",
+      "student_on": "A"
+    },
+    {
+      "idx": 140,
+      "task_id": "S2_002_s2",
+      "stratum": "S2",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "A"
+    },
+    {
+      "idx": 141,
+      "task_id": "S2_003_s0",
+      "stratum": "S2",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "A"
+    },
+    {
+      "idx": 142,
+      "task_id": "S2_003_s1",
+      "stratum": "S2",
+      "choice": "B",
+      "winner": "official_full",
+      "student_on": "A"
+    },
+    {
+      "idx": 143,
+      "task_id": "S2_003_s2",
+      "stratum": "S2",
+      "choice": "B",
+      "winner": "official_full",
+      "student_on": "A"
+    },
+    {
+      "idx": 144,
+      "task_id": "S2_004_s0",
+      "stratum": "S2",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "B"
+    },
+    {
+      "idx": 145,
+      "task_id": "S2_004_s1",
+      "stratum": "S2",
+      "choice": "B",
+      "winner": "ours_kv_post4000",
+      "student_on": "B"
+    },
+    {
+      "idx": 146,
+      "task_id": "S2_004_s2",
+      "stratum": "S2",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "B"
+    },
+    {
+      "idx": 147,
+      "task_id": "S3_000_s0",
+      "stratum": "S3",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "A"
+    },
+    {
+      "idx": 148,
+      "task_id": "S3_000_s1",
+      "stratum": "S3",
+      "choice": "B",
+      "winner": "official_full",
+      "student_on": "A"
+    },
+    {
+      "idx": 149,
+      "task_id": "S3_001_s0",
+      "stratum": "S3",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "B"
+    },
+    {
+      "idx": 150,
+      "task_id": "S3_001_s1",
+      "stratum": "S3",
+      "choice": "B",
+      "winner": "official_full",
+      "student_on": "A"
+    },
+    {
+      "idx": 151,
+      "task_id": "S3_002_s0",
+      "stratum": "S3",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "B"
+    },
+    {
+      "idx": 152,
+      "task_id": "S3_002_s1",
+      "stratum": "S3",
+      "choice": "A",
+      "winner": "official_full",
+      "student_on": "B"
+    },
+    {
+      "idx": 153,
+      "task_id": "S3_003_s0",
+      "stratum": "S3",
+      "choice": "B",
+      "winner": "official_full",
+      "student_on": "A"
+    },
+    {
+      "idx": 154,
+      "task_id": "S3_003_s1",
+      "stratum": "S3",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "B"
+    },
+    {
+      "idx": 155,
+      "task_id": "S3_004_s0",
+      "stratum": "S3",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "B"
+    },
+    {
+      "idx": 156,
+      "task_id": "S3_004_s1",
+      "stratum": "S3",
+      "choice": "B",
+      "winner": "official_full",
+      "student_on": "A"
+    },
+    {
+      "idx": 157,
+      "task_id": "S3_005_s0",
+      "stratum": "S3",
+      "choice": "A",
+      "winner": "official_full",
+      "student_on": "B"
+    },
+    {
+      "idx": 158,
+      "task_id": "S3_005_s1",
+      "stratum": "S3",
+      "choice": "A",
+      "winner": "official_full",
+      "student_on": "B"
+    },
+    {
+      "idx": 159,
+      "task_id": "S3_006_s0",
+      "stratum": "S3",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "A"
+    },
+    {
+      "idx": 160,
+      "task_id": "S3_006_s1",
+      "stratum": "S3",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "B"
+    },
+    {
+      "idx": 161,
+      "task_id": "S3_007_s0",
+      "stratum": "S3",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "A"
+    },
+    {
+      "idx": 162,
+      "task_id": "S3_007_s1",
+      "stratum": "S3",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "B"
+    },
+    {
+      "idx": 163,
+      "task_id": "S3_008_s0",
+      "stratum": "S3",
+      "choice": "B",
+      "winner": "ours_kv_post4000",
+      "student_on": "B"
+    },
+    {
+      "idx": 164,
+      "task_id": "S3_008_s1",
+      "stratum": "S3",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "A"
+    },
+    {
+      "idx": 165,
+      "task_id": "S3_009_s0",
+      "stratum": "S3",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "B"
+    },
+    {
+      "idx": 166,
+      "task_id": "S3_009_s1",
+      "stratum": "S3",
+      "choice": "B",
+      "winner": "ours_kv_post4000",
+      "student_on": "B"
+    },
+    {
+      "idx": 167,
+      "task_id": "S3_010_s0",
+      "stratum": "S3",
+      "choice": "A",
+      "winner": "official_full",
+      "student_on": "B"
+    },
+    {
+      "idx": 168,
+      "task_id": "S3_010_s1",
+      "stratum": "S3",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "B"
+    },
+    {
+      "idx": 169,
+      "task_id": "S3_011_s0",
+      "stratum": "S3",
+      "choice": "B",
+      "winner": "official_full",
+      "student_on": "A"
+    },
+    {
+      "idx": 170,
+      "task_id": "S3_011_s1",
+      "stratum": "S3",
+      "choice": "B",
+      "winner": "official_full",
+      "student_on": "A"
+    },
+    {
+      "idx": 171,
+      "task_id": "S3_012_s0",
+      "stratum": "S3",
+      "choice": "B",
+      "winner": "official_full",
+      "student_on": "A"
+    },
+    {
+      "idx": 172,
+      "task_id": "S3_012_s1",
+      "stratum": "S3",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "B"
+    },
+    {
+      "idx": 173,
+      "task_id": "S3_013_s0",
+      "stratum": "S3",
+      "choice": "B",
+      "winner": "official_full",
+      "student_on": "A"
+    },
+    {
+      "idx": 174,
+      "task_id": "S3_013_s1",
+      "stratum": "S3",
+      "choice": "B",
+      "winner": "ours_kv_post4000",
+      "student_on": "B"
+    },
+    {
+      "idx": 175,
+      "task_id": "S3_014_s0",
+      "stratum": "S3",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "A"
+    },
+    {
+      "idx": 176,
+      "task_id": "S3_014_s1",
+      "stratum": "S3",
+      "choice": "A",
+      "winner": "official_full",
+      "student_on": "B"
+    },
+    {
+      "idx": 177,
+      "task_id": "S3_015_s0",
+      "stratum": "S3",
+      "choice": "A",
+      "winner": "ours_kv_post4000",
+      "student_on": "A"
+    },
+    {
+      "idx": 178,
+      "task_id": "S3_015_s1",
+      "stratum": "S3",
+      "choice": "B",
+      "winner": "ours_kv_post4000",
+      "student_on": "B"
+    },
+    {
+      "idx": 179,
+      "task_id": "S3_016_s0",
+      "stratum": "S3",
+      "choice": "A",
+      "winner": "ours_kv_post4000",
+      "student_on": "A"
+    },
+    {
+      "idx": 180,
+      "task_id": "S3_016_s1",
+      "stratum": "S3",
+      "choice": "A",
+      "winner": "official_full",
+      "student_on": "B"
+    },
+    {
+      "idx": 181,
+      "task_id": "S3_017_s0",
+      "stratum": "S3",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "B"
+    },
+    {
+      "idx": 182,
+      "task_id": "S3_017_s1",
+      "stratum": "S3",
+      "choice": "B",
+      "winner": "official_full",
+      "student_on": "A"
+    },
+    {
+      "idx": 183,
+      "task_id": "S3_018_s0",
+      "stratum": "S3",
+      "choice": "A",
+      "winner": "ours_kv_post4000",
+      "student_on": "A"
+    },
+    {
+      "idx": 184,
+      "task_id": "S3_018_s1",
+      "stratum": "S3",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "B"
+    },
+    {
+      "idx": 185,
+      "task_id": "S3_019_s0",
+      "stratum": "S3",
+      "choice": "A",
+      "winner": "official_full",
+      "student_on": "B"
+    },
+    {
+      "idx": 186,
+      "task_id": "S3_019_s1",
+      "stratum": "S3",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "B"
+    },
+    {
+      "idx": 187,
+      "task_id": "S3_020_s0",
+      "stratum": "S3",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "A"
+    },
+    {
+      "idx": 188,
+      "task_id": "S3_020_s1",
+      "stratum": "S3",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "A"
+    },
+    {
+      "idx": 189,
+      "task_id": "S3_021_s0",
+      "stratum": "S3",
+      "choice": "B",
+      "winner": "ours_kv_post4000",
+      "student_on": "B"
+    },
+    {
+      "idx": 190,
+      "task_id": "S3_021_s1",
+      "stratum": "S3",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "A"
+    },
+    {
+      "idx": 191,
+      "task_id": "S3_022_s0",
+      "stratum": "S3",
+      "choice": "B",
+      "winner": "ours_kv_post4000",
+      "student_on": "B"
+    },
+    {
+      "idx": 192,
+      "task_id": "S3_022_s1",
+      "stratum": "S3",
+      "choice": "A",
+      "winner": "official_full",
+      "student_on": "B"
+    },
+    {
+      "idx": 193,
+      "task_id": "S3_023_s0",
+      "stratum": "S3",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "B"
+    },
+    {
+      "idx": 194,
+      "task_id": "S3_023_s1",
+      "stratum": "S3",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "B"
+    },
+    {
+      "idx": 195,
+      "task_id": "S3_024_s0",
+      "stratum": "S3",
+      "choice": "A",
+      "winner": "ours_kv_post4000",
+      "student_on": "A"
+    },
+    {
+      "idx": 196,
+      "task_id": "S3_024_s1",
+      "stratum": "S3",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "B"
+    },
+    {
+      "idx": 197,
+      "task_id": "S3_025_s0",
+      "stratum": "S3",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "A"
+    },
+    {
+      "idx": 198,
+      "task_id": "S3_025_s1",
+      "stratum": "S3",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "B"
+    },
+    {
+      "idx": 199,
+      "task_id": "S3_026_s0",
+      "stratum": "S3",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "A"
+    },
+    {
+      "idx": 200,
+      "task_id": "S3_026_s1",
+      "stratum": "S3",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "A"
+    },
+    {
+      "idx": 201,
+      "task_id": "S3_027_s0",
+      "stratum": "S3",
+      "choice": "B",
+      "winner": "official_full",
+      "student_on": "A"
+    },
+    {
+      "idx": 202,
+      "task_id": "S3_027_s1",
+      "stratum": "S3",
+      "choice": "A",
+      "winner": "official_full",
+      "student_on": "B"
+    },
+    {
+      "idx": 203,
+      "task_id": "S3_028_s0",
+      "stratum": "S3",
+      "choice": "B",
+      "winner": "official_full",
+      "student_on": "A"
+    },
+    {
+      "idx": 204,
+      "task_id": "S3_028_s1",
+      "stratum": "S3",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "A"
+    },
+    {
+      "idx": 205,
+      "task_id": "S3_029_s0",
+      "stratum": "S3",
+      "choice": "B",
+      "winner": "ours_kv_post4000",
+      "student_on": "B"
+    },
+    {
+      "idx": 206,
+      "task_id": "S3_029_s1",
+      "stratum": "S3",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "A"
+    },
+    {
+      "idx": 207,
+      "task_id": "S4_000_s0",
+      "stratum": "S4",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "A"
+    },
+    {
+      "idx": 208,
+      "task_id": "S4_000_s1",
+      "stratum": "S4",
+      "choice": "A",
+      "winner": "official_full",
+      "student_on": "B"
+    },
+    {
+      "idx": 209,
+      "task_id": "S4_001_s0",
+      "stratum": "S4",
+      "choice": "A",
+      "winner": "official_full",
+      "student_on": "B"
+    },
+    {
+      "idx": 210,
+      "task_id": "S4_001_s1",
+      "stratum": "S4",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "B"
+    },
+    {
+      "idx": 211,
+      "task_id": "S4_002_s0",
+      "stratum": "S4",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "A"
+    },
+    {
+      "idx": 212,
+      "task_id": "S4_002_s1",
+      "stratum": "S4",
+      "choice": "B",
+      "winner": "official_full",
+      "student_on": "A"
+    },
+    {
+      "idx": 213,
+      "task_id": "S4_003_s0",
+      "stratum": "S4",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "B"
+    },
+    {
+      "idx": 214,
+      "task_id": "S4_003_s1",
+      "stratum": "S4",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "A"
+    },
+    {
+      "idx": 215,
+      "task_id": "S4_004_s0",
+      "stratum": "S4",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "B"
+    },
+    {
+      "idx": 216,
+      "task_id": "S4_004_s1",
+      "stratum": "S4",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "B"
+    },
+    {
+      "idx": 217,
+      "task_id": "S4_005_s0",
+      "stratum": "S4",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "A"
+    },
+    {
+      "idx": 218,
+      "task_id": "S4_005_s1",
+      "stratum": "S4",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "B"
+    },
+    {
+      "idx": 219,
+      "task_id": "S4_006_s0",
+      "stratum": "S4",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "A"
+    },
+    {
+      "idx": 220,
+      "task_id": "S4_006_s1",
+      "stratum": "S4",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "A"
+    },
+    {
+      "idx": 221,
+      "task_id": "S4_007_s0",
+      "stratum": "S4",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "B"
+    },
+    {
+      "idx": 222,
+      "task_id": "S4_007_s1",
+      "stratum": "S4",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "A"
+    },
+    {
+      "idx": 223,
+      "task_id": "S4_008_s0",
+      "stratum": "S4",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "B"
+    },
+    {
+      "idx": 224,
+      "task_id": "S4_008_s1",
+      "stratum": "S4",
+      "choice": "A",
+      "winner": "official_full",
+      "student_on": "B"
+    },
+    {
+      "idx": 225,
+      "task_id": "S4_009_s0",
+      "stratum": "S4",
+      "choice": "B",
+      "winner": "ours_kv_post4000",
+      "student_on": "B"
+    },
+    {
+      "idx": 226,
+      "task_id": "S4_009_s1",
+      "stratum": "S4",
+      "choice": "tie",
+      "winner": "tie",
+      "student_on": "A"
+    }
+  ]
+}

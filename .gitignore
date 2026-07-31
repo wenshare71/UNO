@@ -223,6 +223,10 @@ datasets/UNO-1M/
 /output/eval_multiref/*
 !/output/eval_multiref/results.json
 !/output/eval_multiref/boards/
+# 人工盲评产物(2026-07-30):227 条标注 + 揭盲统计进 git,供报告引用与复算;
+# PNG 候选图仍留在 H800 不进 git(与上方 M4 PNG 同理)。
+!/output/eval_multiref/blind_rond1.json
+!/output/eval_multiref/blind_stats.json
 
 # 注意力诊断产物(2026-07-30,D03;2026-07-31 D04 更新):**全部进 git**。
 # npz 是曲线/热力图数据,本地 plot_attn.py 靠它出图,不进 git 就没法出报告;
