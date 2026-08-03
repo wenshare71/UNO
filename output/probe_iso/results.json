@@ -1,0 +1,2713 @@
+{
+  "spec": "M5-probe-iso-v1",
+  "n_shards": 1,
+  "n_records": 384,
+  "n_fails": 0,
+  "timing": {
+    "official_full": {
+      "mean_s": 4.737425103919425,
+      "median_s": 5.154719343408942,
+      "n": 192,
+      "peak_mem_gb": 36.24359846115112,
+      "speedup_vs_teacher": 1.0
+    },
+    "official_iso": {
+      "mean_s": 2.833509175320311,
+      "median_s": 2.906870959326625,
+      "n": 192,
+      "peak_mem_gb": 37.04558181762695,
+      "speedup_vs_teacher": 1.671928626588579
+    }
+  },
+  "records": [
+    {
+      "task_id": "PI_S1_000_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.156875569373369,
+      "path": "output/probe_iso/PI_S1_000_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_000_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.155920710414648,
+      "path": "output/probe_iso/PI_S1_000_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_000_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.161068644374609,
+      "path": "output/probe_iso/PI_S1_000_s2__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_001_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.162631388753653,
+      "path": "output/probe_iso/PI_S1_001_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_001_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.139965213835239,
+      "path": "output/probe_iso/PI_S1_001_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_001_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.150160890072584,
+      "path": "output/probe_iso/PI_S1_001_s2__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_002_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.145864810794592,
+      "path": "output/probe_iso/PI_S1_002_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_002_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.153813105076551,
+      "path": "output/probe_iso/PI_S1_002_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_002_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.15180591493845,
+      "path": "output/probe_iso/PI_S1_002_s2__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_003_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.154549565166235,
+      "path": "output/probe_iso/PI_S1_003_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_003_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.157276958227158,
+      "path": "output/probe_iso/PI_S1_003_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_003_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.152276199311018,
+      "path": "output/probe_iso/PI_S1_003_s2__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_004_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.161189291626215,
+      "path": "output/probe_iso/PI_S1_004_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_004_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.157119356095791,
+      "path": "output/probe_iso/PI_S1_004_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_004_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.157725904136896,
+      "path": "output/probe_iso/PI_S1_004_s2__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_005_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.15400381013751,
+      "path": "output/probe_iso/PI_S1_005_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_005_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.154606182128191,
+      "path": "output/probe_iso/PI_S1_005_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_005_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1568890027701855,
+      "path": "output/probe_iso/PI_S1_005_s2__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_006_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.157383322715759,
+      "path": "output/probe_iso/PI_S1_006_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_006_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.157587219029665,
+      "path": "output/probe_iso/PI_S1_006_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_006_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.156276259571314,
+      "path": "output/probe_iso/PI_S1_006_s2__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_007_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.154973808676004,
+      "path": "output/probe_iso/PI_S1_007_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_007_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1578538827598095,
+      "path": "output/probe_iso/PI_S1_007_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_007_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.154162425547838,
+      "path": "output/probe_iso/PI_S1_007_s2__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_008_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.16269950196147,
+      "path": "output/probe_iso/PI_S1_008_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_008_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.157259568572044,
+      "path": "output/probe_iso/PI_S1_008_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_008_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.162369269877672,
+      "path": "output/probe_iso/PI_S1_008_s2__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_009_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.168156910687685,
+      "path": "output/probe_iso/PI_S1_009_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_009_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.15842092782259,
+      "path": "output/probe_iso/PI_S1_009_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_009_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.155439600348473,
+      "path": "output/probe_iso/PI_S1_009_s2__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_010_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.158286526799202,
+      "path": "output/probe_iso/PI_S1_010_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_010_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.157741844654083,
+      "path": "output/probe_iso/PI_S1_010_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_010_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.154751483350992,
+      "path": "output/probe_iso/PI_S1_010_s2__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_011_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.155111908912659,
+      "path": "output/probe_iso/PI_S1_011_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_011_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.160281136631966,
+      "path": "output/probe_iso/PI_S1_011_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_011_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.154799520969391,
+      "path": "output/probe_iso/PI_S1_011_s2__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_012_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1628993302583694,
+      "path": "output/probe_iso/PI_S1_012_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_012_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.15944492071867,
+      "path": "output/probe_iso/PI_S1_012_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_012_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.156028710305691,
+      "path": "output/probe_iso/PI_S1_012_s2__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_013_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.158593125641346,
+      "path": "output/probe_iso/PI_S1_013_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_013_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.163939531892538,
+      "path": "output/probe_iso/PI_S1_013_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_013_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.154753368347883,
+      "path": "output/probe_iso/PI_S1_013_s2__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_014_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1582749001681805,
+      "path": "output/probe_iso/PI_S1_014_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_014_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.150608856230974,
+      "path": "output/probe_iso/PI_S1_014_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_014_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.161953527480364,
+      "path": "output/probe_iso/PI_S1_014_s2__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_015_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.157037794589996,
+      "path": "output/probe_iso/PI_S1_015_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_015_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.153447072952986,
+      "path": "output/probe_iso/PI_S1_015_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_015_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.157533213496208,
+      "path": "output/probe_iso/PI_S1_015_s2__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_016_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.150118201971054,
+      "path": "output/probe_iso/PI_S1_016_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_016_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.156315628439188,
+      "path": "output/probe_iso/PI_S1_016_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_016_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1519326865673065,
+      "path": "output/probe_iso/PI_S1_016_s2__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_017_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.157033804804087,
+      "path": "output/probe_iso/PI_S1_017_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_017_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.154112637042999,
+      "path": "output/probe_iso/PI_S1_017_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_017_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.156908787786961,
+      "path": "output/probe_iso/PI_S1_017_s2__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_018_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.163942884653807,
+      "path": "output/probe_iso/PI_S1_018_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_018_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1577614694833755,
+      "path": "output/probe_iso/PI_S1_018_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_018_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.151738926768303,
+      "path": "output/probe_iso/PI_S1_018_s2__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_019_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.155591856688261,
+      "path": "output/probe_iso/PI_S1_019_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_019_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.16001208499074,
+      "path": "output/probe_iso/PI_S1_019_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_019_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.154834795743227,
+      "path": "output/probe_iso/PI_S1_019_s2__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_020_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.157999537885189,
+      "path": "output/probe_iso/PI_S1_020_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_020_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.155650053173304,
+      "path": "output/probe_iso/PI_S1_020_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_020_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1555730774998665,
+      "path": "output/probe_iso/PI_S1_020_s2__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_021_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.159823954105377,
+      "path": "output/probe_iso/PI_S1_021_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_021_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.152861725538969,
+      "path": "output/probe_iso/PI_S1_021_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_021_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.157533708959818,
+      "path": "output/probe_iso/PI_S1_021_s2__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_022_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.154494926333427,
+      "path": "output/probe_iso/PI_S1_022_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_022_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.154294051229954,
+      "path": "output/probe_iso/PI_S1_022_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_022_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.158735726028681,
+      "path": "output/probe_iso/PI_S1_022_s2__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_023_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.162328410893679,
+      "path": "output/probe_iso/PI_S1_023_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_023_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.155054803937674,
+      "path": "output/probe_iso/PI_S1_023_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_023_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.159053813666105,
+      "path": "output/probe_iso/PI_S1_023_s2__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_024_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.155921313911676,
+      "path": "output/probe_iso/PI_S1_024_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_024_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.15622054412961,
+      "path": "output/probe_iso/PI_S1_024_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_024_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.166934002190828,
+      "path": "output/probe_iso/PI_S1_024_s2__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_025_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.157360851764679,
+      "path": "output/probe_iso/PI_S1_025_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_025_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.156415194272995,
+      "path": "output/probe_iso/PI_S1_025_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_025_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.154687203466892,
+      "path": "output/probe_iso/PI_S1_025_s2__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_026_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.154088370501995,
+      "path": "output/probe_iso/PI_S1_026_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_026_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.15567771345377,
+      "path": "output/probe_iso/PI_S1_026_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_026_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.155155997723341,
+      "path": "output/probe_iso/PI_S1_026_s2__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_027_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.159239612519741,
+      "path": "output/probe_iso/PI_S1_027_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_027_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1536152549088,
+      "path": "output/probe_iso/PI_S1_027_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_027_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.159372378140688,
+      "path": "output/probe_iso/PI_S1_027_s2__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_028_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1574761383235455,
+      "path": "output/probe_iso/PI_S1_028_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_028_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.158751167356968,
+      "path": "output/probe_iso/PI_S1_028_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_028_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1590153984725475,
+      "path": "output/probe_iso/PI_S1_028_s2__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_029_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.153998553752899,
+      "path": "output/probe_iso/PI_S1_029_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_029_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.157017707824707,
+      "path": "output/probe_iso/PI_S1_029_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_029_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.15602844581008,
+      "path": "output/probe_iso/PI_S1_029_s2__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_030_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.153699550777674,
+      "path": "output/probe_iso/PI_S1_030_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_030_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.16088230162859,
+      "path": "output/probe_iso/PI_S1_030_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_030_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.15463250502944,
+      "path": "output/probe_iso/PI_S1_030_s2__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_031_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.156528647989035,
+      "path": "output/probe_iso/PI_S1_031_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_031_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.160081215202808,
+      "path": "output/probe_iso/PI_S1_031_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_031_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.158066760748625,
+      "path": "output/probe_iso/PI_S1_031_s2__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_032_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.159157957881689,
+      "path": "output/probe_iso/PI_S1_032_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_032_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.165390070527792,
+      "path": "output/probe_iso/PI_S1_032_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_032_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.153776194900274,
+      "path": "output/probe_iso/PI_S1_032_s2__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_033_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.156525205820799,
+      "path": "output/probe_iso/PI_S1_033_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_033_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.155930940061808,
+      "path": "output/probe_iso/PI_S1_033_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_033_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.152320813387632,
+      "path": "output/probe_iso/PI_S1_033_s2__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_034_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.154866836965084,
+      "path": "output/probe_iso/PI_S1_034_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_034_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.155586462467909,
+      "path": "output/probe_iso/PI_S1_034_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_034_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.152857828885317,
+      "path": "output/probe_iso/PI_S1_034_s2__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_035_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.159038543701172,
+      "path": "output/probe_iso/PI_S1_035_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_035_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.148818202316761,
+      "path": "output/probe_iso/PI_S1_035_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_035_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.148600704967976,
+      "path": "output/probe_iso/PI_S1_035_s2__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_036_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.155021253973246,
+      "path": "output/probe_iso/PI_S1_036_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_036_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.159201443195343,
+      "path": "output/probe_iso/PI_S1_036_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_036_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.157811999320984,
+      "path": "output/probe_iso/PI_S1_036_s2__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_037_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.150787685066462,
+      "path": "output/probe_iso/PI_S1_037_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_037_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.156216252595186,
+      "path": "output/probe_iso/PI_S1_037_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_037_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1613912507891655,
+      "path": "output/probe_iso/PI_S1_037_s2__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_038_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.157887037843466,
+      "path": "output/probe_iso/PI_S1_038_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_038_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.149160072207451,
+      "path": "output/probe_iso/PI_S1_038_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_038_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1559417471289635,
+      "path": "output/probe_iso/PI_S1_038_s2__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_039_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1569976434111595,
+      "path": "output/probe_iso/PI_S1_039_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_039_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1516483798623085,
+      "path": "output/probe_iso/PI_S1_039_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_039_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.152669947594404,
+      "path": "output/probe_iso/PI_S1_039_s2__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_040_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.152534544467926,
+      "path": "output/probe_iso/PI_S1_040_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_040_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.15120804682374,
+      "path": "output/probe_iso/PI_S1_040_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_040_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.157833628356457,
+      "path": "output/probe_iso/PI_S1_040_s2__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_041_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.155972182750702,
+      "path": "output/probe_iso/PI_S1_041_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_041_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1629405207931995,
+      "path": "output/probe_iso/PI_S1_041_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_041_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.156126279383898,
+      "path": "output/probe_iso/PI_S1_041_s2__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_042_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1531020775437355,
+      "path": "output/probe_iso/PI_S1_042_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_042_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.160614717751741,
+      "path": "output/probe_iso/PI_S1_042_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_042_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.15415121242404,
+      "path": "output/probe_iso/PI_S1_042_s2__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_043_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1595694199204445,
+      "path": "output/probe_iso/PI_S1_043_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_043_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.15698840841651,
+      "path": "output/probe_iso/PI_S1_043_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_043_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.162382528185844,
+      "path": "output/probe_iso/PI_S1_043_s2__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_000_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 8.362278897315264,
+      "path": "output/probe_iso/PI_S3_000_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_000_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6173632703721523,
+      "path": "output/probe_iso/PI_S3_000_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_001_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.625905703753233,
+      "path": "output/probe_iso/PI_S3_001_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_001_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6225941590964794,
+      "path": "output/probe_iso/PI_S3_001_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_002_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6207372546195984,
+      "path": "output/probe_iso/PI_S3_002_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_002_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.619694847613573,
+      "path": "output/probe_iso/PI_S3_002_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_003_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6215803287923336,
+      "path": "output/probe_iso/PI_S3_003_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_003_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.619034070521593,
+      "path": "output/probe_iso/PI_S3_003_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_004_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6192991100251675,
+      "path": "output/probe_iso/PI_S3_004_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_004_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 10.532501269131899,
+      "path": "output/probe_iso/PI_S3_004_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_005_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.619639240205288,
+      "path": "output/probe_iso/PI_S3_005_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_005_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6213658303022385,
+      "path": "output/probe_iso/PI_S3_005_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_006_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6257839016616344,
+      "path": "output/probe_iso/PI_S3_006_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_006_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6239952817559242,
+      "path": "output/probe_iso/PI_S3_006_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_007_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.619007010012865,
+      "path": "output/probe_iso/PI_S3_007_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_007_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.619261246174574,
+      "path": "output/probe_iso/PI_S3_007_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_008_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6164592429995537,
+      "path": "output/probe_iso/PI_S3_008_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_008_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6170140728354454,
+      "path": "output/probe_iso/PI_S3_008_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_009_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6204947903752327,
+      "path": "output/probe_iso/PI_S3_009_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_009_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6188625916838646,
+      "path": "output/probe_iso/PI_S3_009_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_010_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.619119741022587,
+      "path": "output/probe_iso/PI_S3_010_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_010_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6175933741033077,
+      "path": "output/probe_iso/PI_S3_010_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_011_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6231672652065754,
+      "path": "output/probe_iso/PI_S3_011_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_011_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.62019257619977,
+      "path": "output/probe_iso/PI_S3_011_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_012_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6220289021730423,
+      "path": "output/probe_iso/PI_S3_012_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_012_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6186946779489517,
+      "path": "output/probe_iso/PI_S3_012_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_013_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6190891340374947,
+      "path": "output/probe_iso/PI_S3_013_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_013_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.620235275477171,
+      "path": "output/probe_iso/PI_S3_013_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_014_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6195720620453358,
+      "path": "output/probe_iso/PI_S3_014_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_014_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6194286197423935,
+      "path": "output/probe_iso/PI_S3_014_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_015_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6215536072850227,
+      "path": "output/probe_iso/PI_S3_015_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_015_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.624774932861328,
+      "path": "output/probe_iso/PI_S3_015_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_016_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6211088225245476,
+      "path": "output/probe_iso/PI_S3_016_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_016_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.622876077890396,
+      "path": "output/probe_iso/PI_S3_016_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_017_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6226756423711777,
+      "path": "output/probe_iso/PI_S3_017_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_017_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6192327365279198,
+      "path": "output/probe_iso/PI_S3_017_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_018_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.618586715310812,
+      "path": "output/probe_iso/PI_S3_018_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_018_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.619910344481468,
+      "path": "output/probe_iso/PI_S3_018_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_019_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6211198791861534,
+      "path": "output/probe_iso/PI_S3_019_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_019_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.620115127414465,
+      "path": "output/probe_iso/PI_S3_019_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_020_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6200733073055744,
+      "path": "output/probe_iso/PI_S3_020_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_020_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6249829530715942,
+      "path": "output/probe_iso/PI_S3_020_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_021_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.618853338062763,
+      "path": "output/probe_iso/PI_S3_021_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_021_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6207084618508816,
+      "path": "output/probe_iso/PI_S3_021_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_022_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.621608816087246,
+      "path": "output/probe_iso/PI_S3_022_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_022_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6231049709022045,
+      "path": "output/probe_iso/PI_S3_022_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_023_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.623498048633337,
+      "path": "output/probe_iso/PI_S3_023_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_023_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6278346814215183,
+      "path": "output/probe_iso/PI_S3_023_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_024_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.621550180017948,
+      "path": "output/probe_iso/PI_S3_024_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_024_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6205869391560555,
+      "path": "output/probe_iso/PI_S3_024_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_025_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6201151460409164,
+      "path": "output/probe_iso/PI_S3_025_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_025_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.626093178987503,
+      "path": "output/probe_iso/PI_S3_025_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_026_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6239446736872196,
+      "path": "output/probe_iso/PI_S3_026_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_026_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6250977367162704,
+      "path": "output/probe_iso/PI_S3_026_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_027_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6216393187642097,
+      "path": "output/probe_iso/PI_S3_027_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_027_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6240126490592957,
+      "path": "output/probe_iso/PI_S3_027_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_028_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6229457519948483,
+      "path": "output/probe_iso/PI_S3_028_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_028_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6207944601774216,
+      "path": "output/probe_iso/PI_S3_028_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_029_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.624031223356724,
+      "path": "output/probe_iso/PI_S3_029_s0__official_full.png"
+    },
+    {
+      "task_id": "PI_S3_029_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6227820701897144,
+      "path": "output/probe_iso/PI_S3_029_s1__official_full.png"
+    },
+    {
+      "task_id": "PI_S1_000_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.902539975941181,
+      "path": "output/probe_iso/PI_S1_000_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_000_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9088819809257984,
+      "path": "output/probe_iso/PI_S1_000_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_000_s2",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.908648408949375,
+      "path": "output/probe_iso/PI_S1_000_s2__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_001_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9093584902584553,
+      "path": "output/probe_iso/PI_S1_001_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_001_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.908093139529228,
+      "path": "output/probe_iso/PI_S1_001_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_001_s2",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9077993370592594,
+      "path": "output/probe_iso/PI_S1_001_s2__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_002_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9073846749961376,
+      "path": "output/probe_iso/PI_S1_002_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_002_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.906919665634632,
+      "path": "output/probe_iso/PI_S1_002_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_002_s2",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9074880108237267,
+      "path": "output/probe_iso/PI_S1_002_s2__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_003_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.907554619014263,
+      "path": "output/probe_iso/PI_S1_003_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_003_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.906771220266819,
+      "path": "output/probe_iso/PI_S1_003_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_003_s2",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.906255815178156,
+      "path": "output/probe_iso/PI_S1_003_s2__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_004_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9069881550967693,
+      "path": "output/probe_iso/PI_S1_004_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_004_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9092033691704273,
+      "path": "output/probe_iso/PI_S1_004_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_004_s2",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9083996042609215,
+      "path": "output/probe_iso/PI_S1_004_s2__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_005_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9077609181404114,
+      "path": "output/probe_iso/PI_S1_005_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_005_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9076365269720554,
+      "path": "output/probe_iso/PI_S1_005_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_005_s2",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.909294530749321,
+      "path": "output/probe_iso/PI_S1_005_s2__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_006_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9070464372634888,
+      "path": "output/probe_iso/PI_S1_006_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_006_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.907541163265705,
+      "path": "output/probe_iso/PI_S1_006_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_006_s2",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9072949960827827,
+      "path": "output/probe_iso/PI_S1_006_s2__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_007_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.906024571508169,
+      "path": "output/probe_iso/PI_S1_007_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_007_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9067298658192158,
+      "path": "output/probe_iso/PI_S1_007_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_007_s2",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.90671868249774,
+      "path": "output/probe_iso/PI_S1_007_s2__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_008_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.906648810952902,
+      "path": "output/probe_iso/PI_S1_008_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_008_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9069157987833023,
+      "path": "output/probe_iso/PI_S1_008_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_008_s2",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9074243009090424,
+      "path": "output/probe_iso/PI_S1_008_s2__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_009_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9078748114407063,
+      "path": "output/probe_iso/PI_S1_009_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_009_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.908383920788765,
+      "path": "output/probe_iso/PI_S1_009_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_009_s2",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.906706742942333,
+      "path": "output/probe_iso/PI_S1_009_s2__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_010_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9063789173960686,
+      "path": "output/probe_iso/PI_S1_010_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_010_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9053212217986584,
+      "path": "output/probe_iso/PI_S1_010_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_010_s2",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.907082423567772,
+      "path": "output/probe_iso/PI_S1_010_s2__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_011_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.906788781285286,
+      "path": "output/probe_iso/PI_S1_011_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_011_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9081659764051437,
+      "path": "output/probe_iso/PI_S1_011_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_011_s2",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.906083330512047,
+      "path": "output/probe_iso/PI_S1_011_s2__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_012_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9061738960444927,
+      "path": "output/probe_iso/PI_S1_012_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_012_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9062652215361595,
+      "path": "output/probe_iso/PI_S1_012_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_012_s2",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9079637452960014,
+      "path": "output/probe_iso/PI_S1_012_s2__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_013_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.907969545572996,
+      "path": "output/probe_iso/PI_S1_013_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_013_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.906774301081896,
+      "path": "output/probe_iso/PI_S1_013_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_013_s2",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9071697928011417,
+      "path": "output/probe_iso/PI_S1_013_s2__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_014_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9070106707513332,
+      "path": "output/probe_iso/PI_S1_014_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_014_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.906915232539177,
+      "path": "output/probe_iso/PI_S1_014_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_014_s2",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9073673114180565,
+      "path": "output/probe_iso/PI_S1_014_s2__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_015_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.905801795423031,
+      "path": "output/probe_iso/PI_S1_015_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_015_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9065992422401905,
+      "path": "output/probe_iso/PI_S1_015_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_015_s2",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9074756242334843,
+      "path": "output/probe_iso/PI_S1_015_s2__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_016_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.906601097434759,
+      "path": "output/probe_iso/PI_S1_016_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_016_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9077848829329014,
+      "path": "output/probe_iso/PI_S1_016_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_016_s2",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.900474462658167,
+      "path": "output/probe_iso/PI_S1_016_s2__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_017_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9081075564026833,
+      "path": "output/probe_iso/PI_S1_017_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_017_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.900995220988989,
+      "path": "output/probe_iso/PI_S1_017_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_017_s2",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9087093770504,
+      "path": "output/probe_iso/PI_S1_017_s2__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_018_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.907165512442589,
+      "path": "output/probe_iso/PI_S1_018_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_018_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.907874021679163,
+      "path": "output/probe_iso/PI_S1_018_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_018_s2",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9085848815739155,
+      "path": "output/probe_iso/PI_S1_018_s2__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_019_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9082442298531532,
+      "path": "output/probe_iso/PI_S1_019_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_019_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.907710313796997,
+      "path": "output/probe_iso/PI_S1_019_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_019_s2",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9075136967003345,
+      "path": "output/probe_iso/PI_S1_019_s2__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_020_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.907020639628172,
+      "path": "output/probe_iso/PI_S1_020_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_020_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9082486517727375,
+      "path": "output/probe_iso/PI_S1_020_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_020_s2",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.908072479069233,
+      "path": "output/probe_iso/PI_S1_020_s2__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_021_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.908758796751499,
+      "path": "output/probe_iso/PI_S1_021_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_021_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.907560918480158,
+      "path": "output/probe_iso/PI_S1_021_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_021_s2",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.906859740614891,
+      "path": "output/probe_iso/PI_S1_021_s2__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_022_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9067883267998695,
+      "path": "output/probe_iso/PI_S1_022_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_022_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.908545907586813,
+      "path": "output/probe_iso/PI_S1_022_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_022_s2",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.907279048115015,
+      "path": "output/probe_iso/PI_S1_022_s2__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_023_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9081153720617294,
+      "path": "output/probe_iso/PI_S1_023_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_023_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.908719677478075,
+      "path": "output/probe_iso/PI_S1_023_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_023_s2",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9070470333099365,
+      "path": "output/probe_iso/PI_S1_023_s2__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_024_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.907965950667858,
+      "path": "output/probe_iso/PI_S1_024_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_024_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9076868407428265,
+      "path": "output/probe_iso/PI_S1_024_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_024_s2",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.907799106091261,
+      "path": "output/probe_iso/PI_S1_024_s2__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_025_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9080991111695766,
+      "path": "output/probe_iso/PI_S1_025_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_025_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.911604218184948,
+      "path": "output/probe_iso/PI_S1_025_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_025_s2",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9068305119872093,
+      "path": "output/probe_iso/PI_S1_025_s2__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_026_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9065748564898968,
+      "path": "output/probe_iso/PI_S1_026_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_026_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9072895124554634,
+      "path": "output/probe_iso/PI_S1_026_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_026_s2",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.906704019755125,
+      "path": "output/probe_iso/PI_S1_026_s2__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_027_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.911605980247259,
+      "path": "output/probe_iso/PI_S1_027_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_027_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9078868329524994,
+      "path": "output/probe_iso/PI_S1_027_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_027_s2",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9075298756361008,
+      "path": "output/probe_iso/PI_S1_027_s2__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_028_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.900491163134575,
+      "path": "output/probe_iso/PI_S1_028_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_028_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.907377600669861,
+      "path": "output/probe_iso/PI_S1_028_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_028_s2",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.907609149813652,
+      "path": "output/probe_iso/PI_S1_028_s2__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_029_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9071158096194267,
+      "path": "output/probe_iso/PI_S1_029_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_029_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.909811597317457,
+      "path": "output/probe_iso/PI_S1_029_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_029_s2",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9082072600722313,
+      "path": "output/probe_iso/PI_S1_029_s2__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_030_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.908802606165409,
+      "path": "output/probe_iso/PI_S1_030_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_030_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9090966656804085,
+      "path": "output/probe_iso/PI_S1_030_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_030_s2",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9080770388245583,
+      "path": "output/probe_iso/PI_S1_030_s2__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_031_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9083090908825397,
+      "path": "output/probe_iso/PI_S1_031_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_031_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.907607674598694,
+      "path": "output/probe_iso/PI_S1_031_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_031_s2",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.906706366688013,
+      "path": "output/probe_iso/PI_S1_031_s2__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_032_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9079291820526123,
+      "path": "output/probe_iso/PI_S1_032_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_032_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.908003479242325,
+      "path": "output/probe_iso/PI_S1_032_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_032_s2",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9005676954984665,
+      "path": "output/probe_iso/PI_S1_032_s2__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_033_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9080027267336845,
+      "path": "output/probe_iso/PI_S1_033_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_033_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9068821780383587,
+      "path": "output/probe_iso/PI_S1_033_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_033_s2",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.906816191971302,
+      "path": "output/probe_iso/PI_S1_033_s2__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_034_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9099904783070087,
+      "path": "output/probe_iso/PI_S1_034_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_034_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9069641456007957,
+      "path": "output/probe_iso/PI_S1_034_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_034_s2",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.907591763883829,
+      "path": "output/probe_iso/PI_S1_034_s2__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_035_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.908448439091444,
+      "path": "output/probe_iso/PI_S1_035_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_035_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.907424669712782,
+      "path": "output/probe_iso/PI_S1_035_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_035_s2",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9067141860723495,
+      "path": "output/probe_iso/PI_S1_035_s2__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_036_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9080082774162292,
+      "path": "output/probe_iso/PI_S1_036_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_036_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.905787665396929,
+      "path": "output/probe_iso/PI_S1_036_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_036_s2",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.907820012420416,
+      "path": "output/probe_iso/PI_S1_036_s2__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_037_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9100584723055363,
+      "path": "output/probe_iso/PI_S1_037_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_037_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9074861593544483,
+      "path": "output/probe_iso/PI_S1_037_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_037_s2",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9071110524237156,
+      "path": "output/probe_iso/PI_S1_037_s2__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_038_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9062445499002934,
+      "path": "output/probe_iso/PI_S1_038_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_038_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9074234515428543,
+      "path": "output/probe_iso/PI_S1_038_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_038_s2",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9077806659042835,
+      "path": "output/probe_iso/PI_S1_038_s2__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_039_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.909341122955084,
+      "path": "output/probe_iso/PI_S1_039_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_039_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9074376113712788,
+      "path": "output/probe_iso/PI_S1_039_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_039_s2",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9072436168789864,
+      "path": "output/probe_iso/PI_S1_039_s2__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_040_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9071985594928265,
+      "path": "output/probe_iso/PI_S1_040_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_040_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9070366509258747,
+      "path": "output/probe_iso/PI_S1_040_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_040_s2",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9061274006962776,
+      "path": "output/probe_iso/PI_S1_040_s2__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_041_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.90822247043252,
+      "path": "output/probe_iso/PI_S1_041_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_041_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9069253355264664,
+      "path": "output/probe_iso/PI_S1_041_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_041_s2",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.905959587544203,
+      "path": "output/probe_iso/PI_S1_041_s2__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_042_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.906575735658407,
+      "path": "output/probe_iso/PI_S1_042_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_042_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9066069163382053,
+      "path": "output/probe_iso/PI_S1_042_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_042_s2",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.908064156770706,
+      "path": "output/probe_iso/PI_S1_042_s2__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_043_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.907677512615919,
+      "path": "output/probe_iso/PI_S1_043_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_043_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.907105751335621,
+      "path": "output/probe_iso/PI_S1_043_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S1_043_s2",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.9070196449756622,
+      "path": "output/probe_iso/PI_S1_043_s2__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_000_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.671039268374443,
+      "path": "output/probe_iso/PI_S3_000_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_000_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.6702218540012836,
+      "path": "output/probe_iso/PI_S3_000_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_001_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.6707092337310314,
+      "path": "output/probe_iso/PI_S3_001_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_001_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.6731455586850643,
+      "path": "output/probe_iso/PI_S3_001_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_002_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.675038628280163,
+      "path": "output/probe_iso/PI_S3_002_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_002_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.672366064041853,
+      "path": "output/probe_iso/PI_S3_002_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_003_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.673162117600441,
+      "path": "output/probe_iso/PI_S3_003_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_003_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.673018950968981,
+      "path": "output/probe_iso/PI_S3_003_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_004_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.6712971217930317,
+      "path": "output/probe_iso/PI_S3_004_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_004_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.6738499514758587,
+      "path": "output/probe_iso/PI_S3_004_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_005_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.674706906080246,
+      "path": "output/probe_iso/PI_S3_005_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_005_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.6721056513488293,
+      "path": "output/probe_iso/PI_S3_005_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_006_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.6671213805675507,
+      "path": "output/probe_iso/PI_S3_006_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_006_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.670124299824238,
+      "path": "output/probe_iso/PI_S3_006_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_007_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.673142649233341,
+      "path": "output/probe_iso/PI_S3_007_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_007_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.6681644320487976,
+      "path": "output/probe_iso/PI_S3_007_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_008_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.6672707982361317,
+      "path": "output/probe_iso/PI_S3_008_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_008_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.6693278178572655,
+      "path": "output/probe_iso/PI_S3_008_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_009_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.666444405913353,
+      "path": "output/probe_iso/PI_S3_009_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_009_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.669146191328764,
+      "path": "output/probe_iso/PI_S3_009_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_010_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.6667358987033367,
+      "path": "output/probe_iso/PI_S3_010_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_010_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.666759792715311,
+      "path": "output/probe_iso/PI_S3_010_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_011_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.668222900480032,
+      "path": "output/probe_iso/PI_S3_011_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_011_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.6695919819176197,
+      "path": "output/probe_iso/PI_S3_011_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_012_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.6710549630224705,
+      "path": "output/probe_iso/PI_S3_012_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_012_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.670388735830784,
+      "path": "output/probe_iso/PI_S3_012_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_013_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.669170118868351,
+      "path": "output/probe_iso/PI_S3_013_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_013_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.6747258566319942,
+      "path": "output/probe_iso/PI_S3_013_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_014_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.6730987280607224,
+      "path": "output/probe_iso/PI_S3_014_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_014_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.669415209442377,
+      "path": "output/probe_iso/PI_S3_014_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_015_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.672296490520239,
+      "path": "output/probe_iso/PI_S3_015_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_015_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.6705104261636734,
+      "path": "output/probe_iso/PI_S3_015_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_016_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.6722818687558174,
+      "path": "output/probe_iso/PI_S3_016_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_016_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.6693840511143208,
+      "path": "output/probe_iso/PI_S3_016_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_017_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.6695134341716766,
+      "path": "output/probe_iso/PI_S3_017_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_017_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.6684544421732426,
+      "path": "output/probe_iso/PI_S3_017_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_018_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.6711158119142056,
+      "path": "output/probe_iso/PI_S3_018_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_018_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.6723329685628414,
+      "path": "output/probe_iso/PI_S3_018_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_019_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.6772324107587337,
+      "path": "output/probe_iso/PI_S3_019_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_019_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.6726734563708305,
+      "path": "output/probe_iso/PI_S3_019_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_020_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.671222697943449,
+      "path": "output/probe_iso/PI_S3_020_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_020_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.671981878578663,
+      "path": "output/probe_iso/PI_S3_020_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_021_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.672328881919384,
+      "path": "output/probe_iso/PI_S3_021_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_021_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.6716620847582817,
+      "path": "output/probe_iso/PI_S3_021_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_022_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.674527797847986,
+      "path": "output/probe_iso/PI_S3_022_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_022_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.672559056431055,
+      "path": "output/probe_iso/PI_S3_022_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_023_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.670159727334976,
+      "path": "output/probe_iso/PI_S3_023_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_023_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.6690063811838627,
+      "path": "output/probe_iso/PI_S3_023_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_024_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.6698364466428757,
+      "path": "output/probe_iso/PI_S3_024_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_024_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.6694398559629917,
+      "path": "output/probe_iso/PI_S3_024_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_025_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.6719576492905617,
+      "path": "output/probe_iso/PI_S3_025_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_025_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.670083671808243,
+      "path": "output/probe_iso/PI_S3_025_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_026_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.6645071990787983,
+      "path": "output/probe_iso/PI_S3_026_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_026_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.672752223908901,
+      "path": "output/probe_iso/PI_S3_026_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_027_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.6860146038234234,
+      "path": "output/probe_iso/PI_S3_027_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_027_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.6703947745263577,
+      "path": "output/probe_iso/PI_S3_027_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_028_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.675008360296488,
+      "path": "output/probe_iso/PI_S3_028_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_028_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.6691705137491226,
+      "path": "output/probe_iso/PI_S3_028_s1__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_029_s0",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.667167041450739,
+      "path": "output/probe_iso/PI_S3_029_s0__official_iso.png"
+    },
+    {
+      "task_id": "PI_S3_029_s1",
+      "variant": "official_iso",
+      "status": "ok",
+      "denoise_s": 2.6708542108535767,
+      "path": "output/probe_iso/PI_S3_029_s1__official_iso.png"
+    }
+  ],
+  "fails": []
+}
