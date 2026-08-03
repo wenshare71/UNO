@@ -190,6 +190,7 @@ datasets/UNO-1M/
 !train.log
 !/output/
 /output/*
+!/output/noise_floor/
 !/output/smoke_ref_isolation/
 /output/smoke_ref_isolation/*
 !output/smoke_ref_isolation/ALL_COMPARISON.png
@@ -258,3 +259,5 @@ log/ref_distill/
 
 # data/multibanana 全量数据(~2.5GB,远程 git pull 拉不动):用 download_multibanana_single_two.py 现拉
 /data/multibanana
+
+!output/noise_floor/results.json

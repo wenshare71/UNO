@@ -38,6 +38,10 @@ import time
 import traceback
 from datetime import datetime
 
+# 与 scripts/keepalive_infer.py:44-45 一致:H800 上直连 huggingface.co 不通、
+# 走日本代理会卡死,必须离线加载本地缓存(该坑已在 keepalive 踩过一次)。
+os.environ.setdefault("HF_HOME", "/kaimm-distill/wuwenxuan/hf_cache")
+os.environ.setdefault("HF_HUB_OFFLINE", "1")
 os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "expandable_segments:True")
 
 _REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

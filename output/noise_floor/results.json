@@ -1,0 +1,347 @@
+{
+  "spec": "M4-eval-v1",
+  "n_shards": 1,
+  "n_records": 45,
+  "n_fails": 0,
+  "timing": {
+    "official_full": {
+      "mean_s": 4.775791276778493,
+      "median_s": 5.145198326557875,
+      "n": 35,
+      "peak_mem_gb": 36.24359846115112,
+      "speedup_vs_teacher": 1.0
+    },
+    "ours_kv_pre": {
+      "mean_s": 2.907714310288429,
+      "median_s": 2.905901726335287,
+      "n": 5,
+      "peak_mem_gb": 37.04558181762695,
+      "speedup_vs_teacher": 1.642455470910676
+    },
+    "ours_kv_post4000": {
+      "mean_s": 2.911816888302565,
+      "median_s": 2.906085032969713,
+      "n": 5,
+      "peak_mem_gb": 37.04558181762695,
+      "speedup_vs_teacher": 1.6401413481609852
+    }
+  },
+  "records": [
+    {
+      "task_id": "NF_S1_016_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 7.345409035682678,
+      "path": "output/noise_floor/NF_S1_016_s1__official_full.png"
+    },
+    {
+      "task_id": "NF_S1_034_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.138379316776991,
+      "path": "output/noise_floor/NF_S1_034_s0__official_full.png"
+    },
+    {
+      "task_id": "NF_S1_002_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.148657690733671,
+      "path": "output/noise_floor/NF_S1_002_s2__official_full.png"
+    },
+    {
+      "task_id": "NF_S1_003_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.152767088264227,
+      "path": "output/noise_floor/NF_S1_003_s2__official_full.png"
+    },
+    {
+      "task_id": "NF_S1_033_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1371310241520405,
+      "path": "output/noise_floor/NF_S1_033_s1__official_full.png"
+    },
+    {
+      "task_id": "NF_S1_029_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.157058071345091,
+      "path": "output/noise_floor/NF_S1_029_s1__official_full.png"
+    },
+    {
+      "task_id": "NF_S1_031_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1561973094940186,
+      "path": "output/noise_floor/NF_S1_031_s0__official_full.png"
+    },
+    {
+      "task_id": "NF_S1_013_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.147495958954096,
+      "path": "output/noise_floor/NF_S1_013_s1__official_full.png"
+    },
+    {
+      "task_id": "NF_S1_015_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.138581708073616,
+      "path": "output/noise_floor/NF_S1_015_s0__official_full.png"
+    },
+    {
+      "task_id": "NF_S1_041_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.140038438141346,
+      "path": "output/noise_floor/NF_S1_041_s2__official_full.png"
+    },
+    {
+      "task_id": "NF_S1_007_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.136161506175995,
+      "path": "output/noise_floor/NF_S1_007_s1__official_full.png"
+    },
+    {
+      "task_id": "NF_S1_030_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.139157418161631,
+      "path": "output/noise_floor/NF_S1_030_s1__official_full.png"
+    },
+    {
+      "task_id": "NF_S1_037_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.165194950997829,
+      "path": "output/noise_floor/NF_S1_037_s1__official_full.png"
+    },
+    {
+      "task_id": "NF_S1_022_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.169729892164469,
+      "path": "output/noise_floor/NF_S1_022_s0__official_full.png"
+    },
+    {
+      "task_id": "NF_S1_017_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.171878837049007,
+      "path": "output/noise_floor/NF_S1_017_s1__official_full.png"
+    },
+    {
+      "task_id": "NF_S1_006_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.14461375027895,
+      "path": "output/noise_floor/NF_S1_006_s2__official_full.png"
+    },
+    {
+      "task_id": "NF_S1_008_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.177469320595264,
+      "path": "output/noise_floor/NF_S1_008_s1__official_full.png"
+    },
+    {
+      "task_id": "NF_S1_018_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1667847484350204,
+      "path": "output/noise_floor/NF_S1_018_s0__official_full.png"
+    },
+    {
+      "task_id": "NF_S1_032_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.147791046649218,
+      "path": "output/noise_floor/NF_S1_032_s2__official_full.png"
+    },
+    {
+      "task_id": "NF_S1_009_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.14980249106884,
+      "path": "output/noise_floor/NF_S1_009_s1__official_full.png"
+    },
+    {
+      "task_id": "NF_S3_002_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6215242743492126,
+      "path": "output/noise_floor/NF_S3_002_s1__official_full.png"
+    },
+    {
+      "task_id": "NF_S3_016_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6212837360799313,
+      "path": "output/noise_floor/NF_S3_016_s0__official_full.png"
+    },
+    {
+      "task_id": "NF_S3_010_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6150388307869434,
+      "path": "output/noise_floor/NF_S3_010_s0__official_full.png"
+    },
+    {
+      "task_id": "NF_S3_025_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.616239622235298,
+      "path": "output/noise_floor/NF_S3_025_s0__official_full.png"
+    },
+    {
+      "task_id": "NF_S3_022_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6203112192451954,
+      "path": "output/noise_floor/NF_S3_022_s1__official_full.png"
+    },
+    {
+      "task_id": "NF_S3_019_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6226598285138607,
+      "path": "output/noise_floor/NF_S3_019_s0__official_full.png"
+    },
+    {
+      "task_id": "NF_S3_003_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.61980751901865,
+      "path": "output/noise_floor/NF_S3_003_s0__official_full.png"
+    },
+    {
+      "task_id": "NF_S3_013_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6215925216674805,
+      "path": "output/noise_floor/NF_S3_013_s1__official_full.png"
+    },
+    {
+      "task_id": "NF_S3_007_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6137198843061924,
+      "path": "output/noise_floor/NF_S3_007_s1__official_full.png"
+    },
+    {
+      "task_id": "NF_S3_028_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6185938604176044,
+      "path": "output/noise_floor/NF_S3_028_s0__official_full.png"
+    },
+    {
+      "task_id": "S0_000_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.146110717207193,
+      "path": "output/noise_floor/S0_000_s0__official_full.png"
+    },
+    {
+      "task_id": "S0_001_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.145217549055815,
+      "path": "output/noise_floor/S0_001_s0__official_full.png"
+    },
+    {
+      "task_id": "S0_002_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.145198326557875,
+      "path": "output/noise_floor/S0_002_s0__official_full.png"
+    },
+    {
+      "task_id": "S0_003_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.146680247038603,
+      "path": "output/noise_floor/S0_003_s0__official_full.png"
+    },
+    {
+      "task_id": "S0_004_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.148416947573423,
+      "path": "output/noise_floor/S0_004_s0__official_full.png"
+    },
+    {
+      "task_id": "S0_000_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.905901726335287,
+      "path": "output/noise_floor/S0_000_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S0_001_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.912350408732891,
+      "path": "output/noise_floor/S0_001_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S0_002_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.9135691225528717,
+      "path": "output/noise_floor/S0_002_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S0_003_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.9033901803195477,
+      "path": "output/noise_floor/S0_003_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S0_004_s0",
+      "variant": "ours_kv_pre",
+      "status": "ok",
+      "denoise_s": 2.9033601135015488,
+      "path": "output/noise_floor/S0_004_s0__ours_kv_pre.png"
+    },
+    {
+      "task_id": "S0_000_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.906085032969713,
+      "path": "output/noise_floor/S0_000_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S0_001_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.9036499112844467,
+      "path": "output/noise_floor/S0_001_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S0_002_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.924146231263876,
+      "path": "output/noise_floor/S0_002_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S0_003_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.905422944575548,
+      "path": "output/noise_floor/S0_003_s0__ours_kv_post4000.png"
+    },
+    {
+      "task_id": "S0_004_s0",
+      "variant": "ours_kv_post4000",
+      "status": "ok",
+      "denoise_s": 2.919780321419239,
+      "path": "output/noise_floor/S0_004_s0__ours_kv_post4000.png"
+    }
+  ],
+  "fails": []
+}
