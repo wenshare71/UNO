@@ -14,6 +14,12 @@
   ② 标注按 `pair_id` 键控,与任何列表顺序解耦;
   ③ 统计口径搬到 `report.py`,服务器与离线复算共用同一份实现。
 
+  v2.1(2026-08-03,首次上机当场发现):图片 URL 加清单内容版本戳。
+  v1/v2 的参考图 URL 同为 `/api/img?k=ref:{idx}:{i}`,换批次后一字不变,
+  浏览器直接命中 M4 的缓存——M5 第 0 对(闹钟)显示出 M4 第 0 对的参考图(书包)。
+  候选图因槽位 A/B→L/R 改名而 URL 变了,反倒是对的,于是**只有参考图错**且毫无异常信号。
+  详见 `pairing.asset_tag`。
+
 盲法设计(**防泄漏是本工具的核心功能,不是附加项**):
   - 左右由 `md5(f"{pair_id}|{blind_seed}") % 2` 确定性决定,刷新/重启不变;
   - 前端只拿到不透明 key(`cand:{idx}:{L|R}` / `ref:{idx}:{i}`),
@@ -42,7 +48,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, Response
 from fastapi.staticfiles import StaticFiles
 import uvicorn
-from .pairing import CHOICES, SLOTS, slot_of, validate
+from .pairing import CHOICES, SLOTS, asset_tag, slot_of, validate
 from .report import full_report
 
 ROOT = Path(__file__).resolve().parent.parent.parent
@@ -93,9 +99,11 @@ class MarkStore:
 
 def create_app(pairs_path: Path, marks_path: Path, root: Path = ROOT,
                prev_marks_path: Path | None = None) -> FastAPI:
-    manifest = json.loads(pairs_path.read_text(encoding="utf-8"))
+    manifest_text = pairs_path.read_text(encoding="utf-8")
+    manifest = json.loads(manifest_text)
     pairs, blind_seed = validate(manifest, root)   # 不过就启动即炸,见 pairing.validate
     meta = manifest["meta"]
+    tag = asset_tag(manifest_text)                 # 图片 URL 版本戳,见 pairing.asset_tag
 
     prev_marks = None
     if prev_marks_path is not None:
@@ -118,7 +126,8 @@ def create_app(pairs_path: Path, marks_path: Path, root: Path = ROOT,
 
     @app.get("/api/health")
     async def health() -> dict:
-        return {"ok": True, "batch_id": meta.get("batch_id"), "n_pairs": len(pairs)}
+        return {"ok": True, "batch_id": meta.get("batch_id"), "n_pairs": len(pairs),
+                "asset_tag": tag}
 
     @app.get("/api/tasks")
     async def get_tasks() -> dict:
@@ -132,13 +141,21 @@ def create_app(pairs_path: Path, marks_path: Path, root: Path = ROOT,
                          "n_refs": len(p["ref_paths"]), "prompt": p["prompt"],
                          "annotated": m is not None,
                          "choice": m["choice"] if m else None})
-        return {"n_total": len(pairs), "n_annotated": len(marks),
+        return {"n_total": len(pairs), "n_annotated": len(marks), "asset_tag": tag,
                 "question": meta.get("question", "哪一张更好?"), "tasks": rows}
 
     @app.get("/api/img")
-    async def get_img(k: str = Query(..., description="不透明图片 key")) -> FileResponse:
+    async def get_img(k: str = Query(..., description="不透明图片 key"),
+                      v: str = Query(..., description="清单版本戳")) -> FileResponse:
         """key 两种形态:`cand:{idx}:{L|R}` / `ref:{idx}:{i}`。
-        语义标签只在服务端这一层解析,绝不进 URL。"""
+        语义标签只在服务端这一层解析,绝不进 URL。
+
+        `v` 不匹配一律 409 而不是"照旧返回":版本戳对不上意味着前端拿的是别批次的下标,
+        此时返回任何一张图都是错的图,而错的图**看不出来**(见 pairing.asset_tag)。
+        宁可当场红叉,也不要静默给一张来路不明的参考图。"""
+        if v != tag:
+            raise HTTPException(status_code=409,
+                                detail="asset_tag 过期,请刷新页面(可能是换了配对清单)")
         parts = k.split(":")
         if len(parts) != 3:
             raise HTTPException(status_code=400, detail="bad key")
@@ -167,7 +184,9 @@ def create_app(pairs_path: Path, marks_path: Path, root: Path = ROOT,
             raise HTTPException(status_code=404, detail="not allowed")
         if not target.is_file():
             raise HTTPException(status_code=404, detail="image not found")
-        return FileResponse(target)
+        # URL 已含内容版本戳,缓存语义写死,不再让浏览器按启发式规则自己猜。
+        # 缓存本身是要的:198 对来回翻页,每张候选图数百 KB,不缓存翻页会卡。
+        return FileResponse(target, headers={"Cache-Control": "private, max-age=86400"})
 
     @app.post("/api/mark")
     async def post_mark(payload: dict) -> dict:

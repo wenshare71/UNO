@@ -5,13 +5,14 @@
 槽位算错、清单漏检,产出的标注看上去完全正常,只有事后重算才可能发现。
 M4 已经这样栽过一次(T/S 错位,score 0.92→0.82,靠重算才捞回来)。
 
-要证明的六件事,每一件都是跑出来对,不是"读代码看着对":
+要证明的七件事,每一件都是跑出来对,不是"读代码看着对":
   1. 槽位跨进程稳定       —— 换 PYTHONHASHSEED 起子进程,结果必须逐条相同
   2. 槽位无系统偏向       —— 198 条上左右大致各半
   3. 重放确实独立         —— 重放对的槽位与原对无关(约一半翻面)
   4. 清单自检真的会炸     —— 重复 id / 缺字段 / 同标签 / 缺图 / 路径逃逸,全部必须被抓到
   5. 统计只读语义胜者     —— 把 choice 全改乱而 winner 不变,数字必须一个不变
   6. 迁移复算五行吻合     —— 新代码路径独立重现 §6.3 的表
+  7. 换批次则图片 URL 变  —— 否则浏览器拿上一批的缓存图充数(2026-08-03 实际发生过)
 
     python distill/blind_eval/test_blind.py
 
@@ -33,7 +34,7 @@ sys.path.insert(0, str(_REPO))
 from PIL import Image  # noqa: E402
 
 from distill.blind_eval.pairing import (  # noqa: E402
-    check_manifest, key0_on_left, slot_of,
+    asset_tag, check_manifest, key0_on_left, slot_of,
 )
 from distill.blind_eval.report import (  # noqa: E402
     full_report, replay_agreement, wilson,
@@ -128,6 +129,19 @@ else:
                key0_on_left(p["replay_of"], m4_seed) for p in rp)
     check("重放槽位与原对无关", len(rp) > 0 and 0.2 <= same / len(rp) <= 0.8,
           f"{same}/{len(rp)} 条槽位与 M4 时相同(应≈一半)")
+
+    # 回归:M5 首次上机时 `/api/img?k=ref:0:0` 与 M4 完全同名,浏览器把 M4 第 0 对的
+    # 参考图(书包)喂给了 M5 第 0 对(闹钟)。修法是 URL 带清单内容摘要——
+    # **两批清单的图片 URL 空间必须不相交**,这一条就是在断言那件事。
+    m4_text = M4P.read_text(encoding="utf-8")
+    m5_text = R2.read_text(encoding="utf-8")
+    check("换批次则图片 URL 版本戳必变",
+          asset_tag(m4_text) != asset_tag(m5_text),
+          f"m4={asset_tag(m4_text)} m5={asset_tag(m5_text)}")
+    check("同一份清单版本戳稳定", asset_tag(m5_text) == asset_tag(m5_text))
+    # 内容改一个字节就必须换戳:batch_id 不变但清单重新生成过,正是缓存再次骗人的场景
+    check("清单内容变则版本戳变",
+          asset_tag(m5_text) != asset_tag(m5_text.replace("m5r1::pvp", "m5r1::pvpX", 1)))
 
 
 # ------------------------------------------------------------------ 2. 清单自检
@@ -269,6 +283,20 @@ if _has_fastapi:
         check("标注按 pair_id 键控且解出正确胜者",
               list(saved) == [pid] and saved[pid]["winner"] == exp,
               f"{list(saved)} winner={saved.get(pid, {}).get('winner')}")
+
+        # 图片 URL 的版本戳:少了它或戳过期,必须拒绝而不是返回一张图。
+        # 返回图 = 静默给出别批次的参考图,这正是 M5 首次上机踩的坑。
+        tag = c.get("/api/tasks").json()["asset_tag"]
+        check("/api/tasks 下发版本戳", bool(tag), f"tag={tag!r}")
+        check("带正确版本戳能取到图",
+              c.get(f"/api/img?v={tag}&k=ref:0:0").status_code == 200)
+        check("版本戳过期被拒(409)",
+              c.get("/api/img?v=deadbeef&k=ref:0:0").status_code == 409)
+        check("缺版本戳被拒", c.get("/api/img?k=ref:0:0").status_code == 422)
+        r_img = c.get(f"/api/img?v={tag}&k=ref:0:0")
+        check("图片响应显式声明缓存策略",
+              "max-age" in r_img.headers.get("cache-control", ""),
+              r_img.headers.get("cache-control", "(无)"))
 
         check("非法 choice 被拒",
               c.post("/api/mark", json={"idx": 0, "choice": "A"}).status_code == 400)

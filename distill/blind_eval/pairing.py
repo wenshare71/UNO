@@ -32,6 +32,21 @@ def key0_on_left(pair_id: str, blind_seed: str) -> bool:
     return int(hashlib.md5(f"{pair_id}|{blind_seed}".encode()).hexdigest(), 16) % 2 == 0
 
 
+def asset_tag(manifest_text: str) -> str:
+    """图片 URL 的版本戳 = 清单原文摘要。
+
+    WHY 必须有:图片 URL 形如 `/api/img?k=ref:{idx}:{i}`,**只含下标不含内容**。
+    换一批清单后同一个下标指向完全不同的图,而 URL 一字未变——浏览器直接命中上一批的
+    缓存。M5 首次上机就撞上了:M4 与 M5 的 `ref:0:0` URL 完全相同,于是 M5 的第 0 对
+    (闹钟)显示出 M4 第 0 对的参考图(书包)。候选图因为槽位由 A/B 改名 L/R 而 URL 变了,
+    反而是对的——**只有参考图错**,画面上没有任何异常信号,人却在拿错的参考图做忠实度判断。
+
+    用清单原文的摘要而非 batch_id:batch_id 可以在内容改变时保持不变(重新生成同名批次),
+    那正是缓存会再次骗人的场景。内容变则戳变,是这里唯一靠得住的条件。
+    """
+    return hashlib.md5(manifest_text.encode("utf-8")).hexdigest()[:12]
+
+
 def slot_of(pair: dict, blind_seed: str, slot: str) -> tuple[str, str]:
     """slot "L"=左图 / "R"=右图 → (语义标签, 图路径)。**只存在于服务端。**"""
     if slot not in SLOTS:

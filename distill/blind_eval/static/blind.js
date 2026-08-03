@@ -16,6 +16,7 @@ let cur = 0;
 let reviewMode = false;
 let reviewMap = {};        // idx -> review row
 let filter = "all";        // all / key0 / key1 / tie / unmarked
+let assetTag = "";         // 清单版本戳,见 pairing.asset_tag
 
 const $ = (id) => document.getElementById(id);
 
@@ -25,13 +26,16 @@ async function api(path, opts) {
   return r.json();
 }
 
+/* 版本戳必须进 URL:图片 key 只含下标,换一批清单后同一下标指向不同的图而 URL 不变,
+ * 浏览器会命中上一批的缓存——M5 首次上机就这样把 M4 的参考图显示了出来。 */
 function imgUrl(kind, idx, sub) {
-  return `/api/img?k=${kind}:${idx}:${sub}`;
+  return `/api/img?v=${assetTag}&k=${kind}:${idx}:${sub}`;
 }
 
 async function loadTasks() {
   const data = await api("/api/tasks");
   tasks = data.tasks;
+  assetTag = data.asset_tag;
   if (data.question) $("task-question").textContent = data.question;
   updateProgress(data.n_annotated, data.n_total);
 }
@@ -98,15 +102,23 @@ function render() {
     }
   }
 
+  // 图没加载出来必须喊出来。参考图错了/缺了在画面上没有信号,而判断正是基于它。
+  const onImgError = (what) => () => {
+    $("status").textContent = `${what} 加载失败——请刷新页面;若仍失败,先别标注。`;
+  };
+
   const refs = $("refs");
   refs.innerHTML = "";
   for (let i = 0; i < t.n_refs; i++) {
     const img = document.createElement("img");
+    img.onerror = onImgError(`参考图 ${i + 1}`);
     img.src = imgUrl("ref", cur, i);
     img.alt = `ref${i + 1}`;
     refs.appendChild(img);
   }
 
+  $("img-a").onerror = onImgError("左图");
+  $("img-b").onerror = onImgError("右图");
   $("img-a").src = imgUrl("cand", cur, "L");
   $("img-b").src = imgUrl("cand", cur, "R");
 
