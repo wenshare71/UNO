@@ -1,0 +1,515 @@
+{
+  "meta": {
+    "n_marks": 66
+  },
+  "marks": {
+    "IC_0010": {
+      "answers": [
+        false,
+        true
+      ],
+      "dwell_ms": 24006,
+      "ts": "2026-08-03 16:40:07"
+    },
+    "IC_0007": {
+      "answers": [
+        false,
+        false
+      ],
+      "dwell_ms": 15727,
+      "ts": "2026-08-03 16:40:23"
+    },
+    "IC_0048": {
+      "answers": [
+        false
+      ],
+      "dwell_ms": 2025,
+      "ts": "2026-08-03 16:40:25"
+    },
+    "IC_0039": {
+      "answers": [
+        false,
+        false
+      ],
+      "dwell_ms": 2317,
+      "ts": "2026-08-03 16:40:27"
+    },
+    "IC_0028": {
+      "answers": [
+        true,
+        false
+      ],
+      "dwell_ms": 7496,
+      "ts": "2026-08-03 16:40:35"
+    },
+    "IC_0009": {
+      "answers": [
+        false,
+        false
+      ],
+      "dwell_ms": 3027,
+      "ts": "2026-08-03 16:40:38"
+    },
+    "IC_0056": {
+      "answers": [
+        true
+      ],
+      "dwell_ms": 1359,
+      "ts": "2026-08-03 16:40:39"
+    },
+    "IC_0042": {
+      "answers": [
+        true
+      ],
+      "dwell_ms": 1896,
+      "ts": "2026-08-03 16:40:41"
+    },
+    "IC_0057": {
+      "answers": [
+        false
+      ],
+      "dwell_ms": 3513,
+      "ts": "2026-08-03 16:40:45"
+    },
+    "IC_0013": {
+      "answers": [
+        false,
+        false
+      ],
+      "dwell_ms": 3188,
+      "ts": "2026-08-03 16:40:48"
+    },
+    "IC_0023": {
+      "answers": [
+        false,
+        false
+      ],
+      "dwell_ms": 2279,
+      "ts": "2026-08-03 16:40:51"
+    },
+    "IC_0059": {
+      "answers": [
+        false
+      ],
+      "dwell_ms": 3344,
+      "ts": "2026-08-03 16:40:54"
+    },
+    "IC_0054": {
+      "answers": [
+        true
+      ],
+      "dwell_ms": 1367,
+      "ts": "2026-08-03 16:40:56"
+    },
+    "IC_0045": {
+      "answers": [
+        false
+      ],
+      "dwell_ms": 1178,
+      "ts": "2026-08-03 16:40:57"
+    },
+    "IC_0055": {
+      "answers": [
+        false
+      ],
+      "dwell_ms": 1068,
+      "ts": "2026-08-03 16:40:58"
+    },
+    "IC_0034": {
+      "answers": [
+        true,
+        true
+      ],
+      "dwell_ms": 2817,
+      "ts": "2026-08-03 16:41:01"
+    },
+    "IC_0019": {
+      "answers": [
+        false,
+        false
+      ],
+      "dwell_ms": 3104,
+      "ts": "2026-08-03 16:41:04"
+    },
+    "IC_0014": {
+      "answers": [
+        true,
+        true
+      ],
+      "dwell_ms": 2304,
+      "ts": "2026-08-03 16:41:07"
+    },
+    "IC_0021": {
+      "answers": [
+        false,
+        false
+      ],
+      "dwell_ms": 2938,
+      "ts": "2026-08-03 16:41:10"
+    },
+    "IC_0029": {
+      "answers": [
+        false,
+        false
+      ],
+      "dwell_ms": 2421,
+      "ts": "2026-08-03 16:41:12"
+    },
+    "IC_0011": {
+      "answers": [
+        false,
+        false
+      ],
+      "dwell_ms": 2505,
+      "ts": "2026-08-03 16:41:15"
+    },
+    "IC_0020": {
+      "answers": [
+        true,
+        false
+      ],
+      "dwell_ms": 2336,
+      "ts": "2026-08-03 16:41:17"
+    },
+    "IC_0002": {
+      "answers": [
+        true,
+        true
+      ],
+      "dwell_ms": 1938,
+      "ts": "2026-08-03 16:41:19"
+    },
+    "IC_0049": {
+      "answers": [
+        false
+      ],
+      "dwell_ms": 1116,
+      "ts": "2026-08-03 16:41:20"
+    },
+    "IC_0001": {
+      "answers": [
+        false,
+        false
+      ],
+      "dwell_ms": 4941,
+      "ts": "2026-08-03 16:41:25"
+    },
+    "IC_0017": {
+      "answers": [
+        false,
+        false
+      ],
+      "dwell_ms": 2648,
+      "ts": "2026-08-03 16:41:28"
+    },
+    "IC_0047": {
+      "answers": [
+        false
+      ],
+      "dwell_ms": 1170,
+      "ts": "2026-08-03 16:41:29"
+    },
+    "IC_0022": {
+      "answers": [
+        true,
+        true
+      ],
+      "dwell_ms": 1918,
+      "ts": "2026-08-03 16:41:31"
+    },
+    "IC_0006": {
+      "answers": [
+        true,
+        true
+      ],
+      "dwell_ms": 1995,
+      "ts": "2026-08-03 16:41:33"
+    },
+    "IC_0044": {
+      "answers": [
+        true
+      ],
+      "dwell_ms": 1084,
+      "ts": "2026-08-03 16:41:34"
+    },
+    "IC_0041": {
+      "answers": [
+        false,
+        false
+      ],
+      "dwell_ms": 2078,
+      "ts": "2026-08-03 16:41:36"
+    },
+    "IC_0038": {
+      "answers": [
+        false,
+        true
+      ],
+      "dwell_ms": 3467,
+      "ts": "2026-08-03 16:41:40"
+    },
+    "IC_0015": {
+      "answers": [
+        false,
+        false
+      ],
+      "dwell_ms": 2231,
+      "ts": "2026-08-03 16:41:42"
+    },
+    "IC_0000": {
+      "answers": [
+        true,
+        false
+      ],
+      "dwell_ms": 2430,
+      "ts": "2026-08-03 16:41:45"
+    },
+    "IC_0026": {
+      "answers": [
+        true,
+        true
+      ],
+      "dwell_ms": 2312,
+      "ts": "2026-08-03 16:41:47"
+    },
+    "IC_0060": {
+      "answers": [
+        false
+      ],
+      "dwell_ms": 1429,
+      "ts": "2026-08-03 16:41:49"
+    },
+    "IC_0030": {
+      "answers": [
+        true,
+        true
+      ],
+      "dwell_ms": 1712,
+      "ts": "2026-08-03 16:41:50"
+    },
+    "IC_0061": {
+      "answers": [
+        false,
+        false
+      ],
+      "dwell_ms": 2092,
+      "ts": "2026-08-03 16:41:52"
+    },
+    "IC_0018": {
+      "answers": [
+        true,
+        true
+      ],
+      "dwell_ms": 2113,
+      "ts": "2026-08-03 16:41:55"
+    },
+    "IC_0032": {
+      "answers": [
+        true,
+        true
+      ],
+      "dwell_ms": 2943,
+      "ts": "2026-08-03 16:41:58"
+    },
+    "IC_0058": {
+      "answers": [
+        true
+      ],
+      "dwell_ms": 1226,
+      "ts": "2026-08-03 16:41:59"
+    },
+    "IC_0040": {
+      "answers": [
+        true,
+        true
+      ],
+      "dwell_ms": 2379,
+      "ts": "2026-08-03 16:42:01"
+    },
+    "IC_0033": {
+      "answers": [
+        false,
+        false
+      ],
+      "dwell_ms": 2322,
+      "ts": "2026-08-03 16:42:04"
+    },
+    "IC_0062": {
+      "answers": [
+        true,
+        true
+      ],
+      "dwell_ms": 2106,
+      "ts": "2026-08-03 16:42:06"
+    },
+    "IC_0035": {
+      "answers": [
+        false,
+        false
+      ],
+      "dwell_ms": 1959,
+      "ts": "2026-08-03 16:42:08"
+    },
+    "IC_0027": {
+      "answers": [
+        false,
+        false
+      ],
+      "dwell_ms": 2306,
+      "ts": "2026-08-03 16:42:11"
+    },
+    "IC_0024": {
+      "answers": [
+        true,
+        true
+      ],
+      "dwell_ms": 2023,
+      "ts": "2026-08-03 16:42:13"
+    },
+    "IC_0063": {
+      "answers": [
+        false,
+        false
+      ],
+      "dwell_ms": 1968,
+      "ts": "2026-08-03 16:42:15"
+    },
+    "IC_0037": {
+      "answers": [
+        false,
+        false
+      ],
+      "dwell_ms": 2670,
+      "ts": "2026-08-03 16:42:17"
+    },
+    "IC_0025": {
+      "answers": [
+        false,
+        false
+      ],
+      "dwell_ms": 2358,
+      "ts": "2026-08-03 16:42:20"
+    },
+    "IC_0005": {
+      "answers": [
+        false,
+        false
+      ],
+      "dwell_ms": 1867,
+      "ts": "2026-08-03 16:42:22"
+    },
+    "IC_0031": {
+      "answers": [
+        false,
+        false
+      ],
+      "dwell_ms": 2009,
+      "ts": "2026-08-03 16:42:24"
+    },
+    "IC_0064": {
+      "answers": [
+        false,
+        false
+      ],
+      "dwell_ms": 1961,
+      "ts": "2026-08-03 16:42:26"
+    },
+    "IC_0046": {
+      "answers": [
+        true
+      ],
+      "dwell_ms": 1273,
+      "ts": "2026-08-03 16:42:27"
+    },
+    "IC_0008": {
+      "answers": [
+        true,
+        true
+      ],
+      "dwell_ms": 2000,
+      "ts": "2026-08-03 16:42:29"
+    },
+    "IC_0051": {
+      "answers": [
+        false
+      ],
+      "dwell_ms": 1177,
+      "ts": "2026-08-03 16:42:31"
+    },
+    "IC_0053": {
+      "answers": [
+        false
+      ],
+      "dwell_ms": 1335,
+      "ts": "2026-08-03 16:42:32"
+    },
+    "IC_0016": {
+      "answers": [
+        true,
+        true
+      ],
+      "dwell_ms": 1991,
+      "ts": "2026-08-03 16:42:34"
+    },
+    "IC_0004": {
+      "answers": [
+        true,
+        true
+      ],
+      "dwell_ms": 1880,
+      "ts": "2026-08-03 16:42:36"
+    },
+    "IC_0012": {
+      "answers": [
+        true,
+        true
+      ],
+      "dwell_ms": 1805,
+      "ts": "2026-08-03 16:42:38"
+    },
+    "IC_0043": {
+      "answers": [
+        false
+      ],
+      "dwell_ms": 1088,
+      "ts": "2026-08-03 16:42:39"
+    },
+    "IC_0052": {
+      "answers": [
+        true
+      ],
+      "dwell_ms": 1346,
+      "ts": "2026-08-03 16:42:40"
+    },
+    "IC_0065": {
+      "answers": [
+        true
+      ],
+      "dwell_ms": 976,
+      "ts": "2026-08-03 16:42:41"
+    },
+    "IC_0036": {
+      "answers": [
+        true,
+        true
+      ],
+      "dwell_ms": 2393,
+      "ts": "2026-08-03 16:42:44"
+    },
+    "IC_0050": {
+      "answers": [
+        true
+      ],
+      "dwell_ms": 1171,
+      "ts": "2026-08-03 16:42:45"
+    },
+    "IC_0003": {
+      "answers": [
+        false,
+        false
+      ],
+      "dwell_ms": 1931,
+      "ts": "2026-08-03 16:42:47"
+    }
+  }
+}
