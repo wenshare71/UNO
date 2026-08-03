@@ -1,0 +1,1000 @@
+{
+  "meta": {
+    "batch_id": "m5r1",
+    "blind_seed": "m5-blind-v1",
+    "pairs": "output/eval_multiref/pairs_m5r1.json",
+    "n_marks": 198
+  },
+  "marks": {
+    "m5r1::pvp::S3_017_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:19:22"
+    },
+    "m5r1::rp::S1_003_s2": {
+      "choice": "R",
+      "winner": "official_full",
+      "ts": "2026-08-03 13:19:24"
+    },
+    "m5r1::pvp::S1_042_s0": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:19:27"
+    },
+    "m5r1::pvp::S1_025_s1": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:19:39"
+    },
+    "m5r1::pvp::S1_001_s1": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:19:42"
+    },
+    "m5r1::pvp::S1_002_s1": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:19:51"
+    },
+    "m5r1::pvp::S1_006_s0": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:19:56"
+    },
+    "m5r1::nf::S3_019_s0": {
+      "choice": "L",
+      "winner": "teacher_run_m4",
+      "ts": "2026-08-03 13:20:00"
+    },
+    "m5r1::pvp::S3_002_s0": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:20:03"
+    },
+    "m5r1::pvp::S1_019_s1": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:20:06"
+    },
+    "m5r1::rp::S1_038_s1": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:20:09"
+    },
+    "m5r1::nf::S3_022_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:20:12"
+    },
+    "m5r1::pvp::S1_032_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:20:20"
+    },
+    "m5r1::pvp::S1_017_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:20:27"
+    },
+    "m5r1::pvp::S3_023_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:20:29"
+    },
+    "m5r1::nf::S1_008_s1": {
+      "choice": "L",
+      "winner": "teacher_run_m5",
+      "ts": "2026-08-03 13:20:57"
+    },
+    "m5r1::pvp::S1_024_s1": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:21:00"
+    },
+    "m5r1::rp::S3_009_s0": {
+      "choice": "L",
+      "winner": "official_full",
+      "ts": "2026-08-03 13:22:11"
+    },
+    "m5r1::nf::S1_013_s1": {
+      "choice": "R",
+      "winner": "teacher_run_m5",
+      "ts": "2026-08-03 13:22:17"
+    },
+    "m5r1::pvp::S1_037_s0": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:22:21"
+    },
+    "m5r1::pvp::S1_021_s0": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:22:31"
+    },
+    "m5r1::pvp::S1_003_s0": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:22:45"
+    },
+    "m5r1::pvp::S3_003_s1": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:22:47"
+    },
+    "m5r1::pvp::S1_009_s0": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:22:50"
+    },
+    "m5r1::pvp::S3_016_s1": {
+      "choice": "L",
+      "winner": "ours_kv_pre",
+      "ts": "2026-08-03 13:23:10"
+    },
+    "m5r1::pvp::S3_010_s1": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:23:13"
+    },
+    "m5r1::rp::S1_030_s1": {
+      "choice": "L",
+      "winner": "official_full",
+      "ts": "2026-08-03 13:23:16"
+    },
+    "m5r1::pvp::S1_007_s1": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:23:19"
+    },
+    "m5r1::pvp::S1_007_s0": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:23:22"
+    },
+    "m5r1::pvp::S1_013_s1": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:23:24"
+    },
+    "m5r1::rp::S1_013_s2": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:23:29"
+    },
+    "m5r1::pvp::S1_028_s0": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:23:31"
+    },
+    "m5r1::rp::S3_000_s1": {
+      "choice": "L",
+      "winner": "official_full",
+      "ts": "2026-08-03 13:23:35"
+    },
+    "m5r1::pvp::S1_011_s0": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:23:38"
+    },
+    "m5r1::pvp::S1_018_s0": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:23:43"
+    },
+    "m5r1::pvp::S1_035_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:23:55"
+    },
+    "m5r1::pvp::S3_024_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:24:01"
+    },
+    "m5r1::pvp::S1_013_s0": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:24:04"
+    },
+    "m5r1::pvp::S3_006_s0": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:24:06"
+    },
+    "m5r1::nf::S3_028_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:24:12"
+    },
+    "m5r1::pvp::S3_004_s1": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:24:21"
+    },
+    "m5r1::rp::S1_000_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:24:32"
+    },
+    "m5r1::pvp::S1_029_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:24:36"
+    },
+    "m5r1::pvp::S1_041_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:24:50"
+    },
+    "m5r1::pvp::S3_012_s0": {
+      "choice": "R",
+      "winner": "ours_kv_pre",
+      "ts": "2026-08-03 13:24:50"
+    },
+    "m5r1::pvp::S3_022_s1": {
+      "choice": "R",
+      "winner": "ours_kv_pre",
+      "ts": "2026-08-03 13:25:07"
+    },
+    "m5r1::pvp::S3_006_s1": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:25:16"
+    },
+    "m5r1::rp::S1_027_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:25:19"
+    },
+    "m5r1::pvp::S3_027_s0": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:25:24"
+    },
+    "m5r1::pvp::S3_019_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:25:28"
+    },
+    "m5r1::rp::S1_012_s0": {
+      "choice": "L",
+      "winner": "official_full",
+      "ts": "2026-08-03 13:25:52"
+    },
+    "m5r1::nf::S1_006_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:25:56"
+    },
+    "m5r1::pvp::S1_043_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:26:01"
+    },
+    "m5r1::pvp::S3_028_s1": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:26:04"
+    },
+    "m5r1::pvp::S1_020_s0": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:26:06"
+    },
+    "m5r1::pvp::S1_031_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:26:14"
+    },
+    "m5r1::pvp::S3_014_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:26:21"
+    },
+    "m5r1::pvp::S1_017_s1": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:26:23"
+    },
+    "m5r1::nf::S3_002_s1": {
+      "choice": "L",
+      "winner": "teacher_run_m5",
+      "ts": "2026-08-03 13:26:27"
+    },
+    "m5r1::pvp::S1_014_s1": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:26:54"
+    },
+    "m5r1::pvp::S1_022_s0": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:26:58"
+    },
+    "m5r1::rp::S1_033_s1": {
+      "choice": "L",
+      "winner": "official_full",
+      "ts": "2026-08-03 13:27:04"
+    },
+    "m5r1::pvp::S3_018_s1": {
+      "choice": "R",
+      "winner": "ours_kv_pre",
+      "ts": "2026-08-03 13:27:08"
+    },
+    "m5r1::pvp::S1_018_s1": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:27:14"
+    },
+    "m5r1::pvp::S1_040_s0": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:27:18"
+    },
+    "m5r1::pvp::S1_010_s1": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:27:22"
+    },
+    "m5r1::pvp::S1_000_s0": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:27:24"
+    },
+    "m5r1::nf::S1_002_s2": {
+      "choice": "L",
+      "winner": "teacher_run_m5",
+      "ts": "2026-08-03 13:27:30"
+    },
+    "m5r1::pvp::S3_012_s1": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:27:37"
+    },
+    "m5r1::pvp::S3_000_s0": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:27:39"
+    },
+    "m5r1::nf::S1_029_s1": {
+      "choice": "R",
+      "winner": "teacher_run_m4",
+      "ts": "2026-08-03 13:27:45"
+    },
+    "m5r1::pvp::S1_014_s0": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:27:53"
+    },
+    "m5r1::pvp::S1_008_s0": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:27:57"
+    },
+    "m5r1::pvp::S1_026_s0": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:28:00"
+    },
+    "m5r1::pvp::S3_010_s0": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:28:02"
+    },
+    "m5r1::pvp::S1_024_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:28:05"
+    },
+    "m5r1::pvp::S3_025_s1": {
+      "choice": "R",
+      "winner": "ours_kv_pre",
+      "ts": "2026-08-03 13:28:13"
+    },
+    "m5r1::pvp::S1_031_s0": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:28:17"
+    },
+    "m5r1::pvp::S3_013_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:28:27"
+    },
+    "m5r1::pvp::S1_015_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:28:34"
+    },
+    "m5r1::pvp::S1_004_s0": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:28:38"
+    },
+    "m5r1::pvp::S3_005_s0": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:28:43"
+    },
+    "m5r1::pvp::S3_021_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:28:46"
+    },
+    "m5r1::pvp::S1_002_s0": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:28:50"
+    },
+    "m5r1::pvp::S3_008_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:28:55"
+    },
+    "m5r1::nf::S3_025_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:28:58"
+    },
+    "m5r1::pvp::S1_041_s0": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:29:03"
+    },
+    "m5r1::nf::S1_032_s2": {
+      "choice": "L",
+      "winner": "teacher_run_m4",
+      "ts": "2026-08-03 13:29:05"
+    },
+    "m5r1::nf::S3_010_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:29:07"
+    },
+    "m5r1::pvp::S1_025_s0": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:29:09"
+    },
+    "m5r1::pvp::S1_023_s1": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:29:14"
+    },
+    "m5r1::pvp::S3_014_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:29:18"
+    },
+    "m5r1::pvp::S1_034_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:29:26"
+    },
+    "m5r1::pvp::S1_034_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:29:29"
+    },
+    "m5r1::pvp::S1_033_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:29:33"
+    },
+    "m5r1::pvp::S1_012_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:29:42"
+    },
+    "m5r1::pvp::S1_005_s1": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:29:46"
+    },
+    "m5r1::pvp::S3_007_s1": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:29:49"
+    },
+    "m5r1::nf::S3_016_s0": {
+      "choice": "L",
+      "winner": "teacher_run_m4",
+      "ts": "2026-08-03 13:29:58"
+    },
+    "m5r1::pvp::S3_001_s1": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:30:13"
+    },
+    "m5r1::rp::S1_014_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:30:24"
+    },
+    "m5r1::pvp::S3_020_s1": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:30:28"
+    },
+    "m5r1::nf::S1_034_s0": {
+      "choice": "R",
+      "winner": "teacher_run_m5",
+      "ts": "2026-08-03 13:30:30"
+    },
+    "m5r1::nf::S1_007_s1": {
+      "choice": "L",
+      "winner": "teacher_run_m4",
+      "ts": "2026-08-03 13:30:32"
+    },
+    "m5r1::pvp::S1_043_s0": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:30:35"
+    },
+    "m5r1::pvp::S1_009_s1": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:30:38"
+    },
+    "m5r1::rp::S1_030_s0": {
+      "choice": "L",
+      "winner": "official_full",
+      "ts": "2026-08-03 13:30:40"
+    },
+    "m5r1::pvp::S1_021_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:30:45"
+    },
+    "m5r1::pvp::S1_030_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:30:48"
+    },
+    "m5r1::rp::S1_033_s2": {
+      "choice": "R",
+      "winner": "official_full",
+      "ts": "2026-08-03 13:30:54"
+    },
+    "m5r1::pvp::S3_005_s1": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:30:56"
+    },
+    "m5r1::pvp::S1_008_s1": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:31:00"
+    },
+    "m5r1::pvp::S3_000_s1": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:31:03"
+    },
+    "m5r1::pvp::S3_028_s0": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:31:06"
+    },
+    "m5r1::pvp::S1_039_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:31:10"
+    },
+    "m5r1::pvp::S1_030_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:31:14"
+    },
+    "m5r1::pvp::S1_000_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:31:18"
+    },
+    "m5r1::pvp::S3_013_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:31:21"
+    },
+    "m5r1::pvp::S1_005_s0": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:31:24"
+    },
+    "m5r1::pvp::S1_038_s0": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:31:26"
+    },
+    "m5r1::pvp::S1_015_s0": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:31:34"
+    },
+    "m5r1::nf::S1_030_s1": {
+      "choice": "L",
+      "winner": "teacher_run_m5",
+      "ts": "2026-08-03 13:31:44"
+    },
+    "m5r1::pvp::S1_028_s1": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:31:48"
+    },
+    "m5r1::nf::S1_009_s1": {
+      "choice": "R",
+      "winner": "teacher_run_m4",
+      "ts": "2026-08-03 13:31:54"
+    },
+    "m5r1::pvp::S1_035_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:32:00"
+    },
+    "m5r1::pvp::S1_016_s1": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:32:02"
+    },
+    "m5r1::pvp::S3_022_s0": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:32:05"
+    },
+    "m5r1::pvp::S1_042_s1": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:32:08"
+    },
+    "m5r1::pvp::S3_009_s0": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:32:15"
+    },
+    "m5r1::pvp::S1_016_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:32:25"
+    },
+    "m5r1::pvp::S1_006_s1": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:32:27"
+    },
+    "m5r1::pvp::S3_025_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:32:31"
+    },
+    "m5r1::pvp::S3_016_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:32:39"
+    },
+    "m5r1::nf::S1_037_s1": {
+      "choice": "L",
+      "winner": "teacher_run_m4",
+      "ts": "2026-08-03 13:32:42"
+    },
+    "m5r1::nf::S1_003_s2": {
+      "choice": "L",
+      "winner": "teacher_run_m4",
+      "ts": "2026-08-03 13:32:44"
+    },
+    "m5r1::pvp::S1_022_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:32:48"
+    },
+    "m5r1::nf::S1_022_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:33:02"
+    },
+    "m5r1::nf::S1_017_s1": {
+      "choice": "L",
+      "winner": "teacher_run_m5",
+      "ts": "2026-08-03 13:33:05"
+    },
+    "m5r1::nf::S1_018_s0": {
+      "choice": "R",
+      "winner": "teacher_run_m4",
+      "ts": "2026-08-03 13:33:12"
+    },
+    "m5r1::nf::S1_015_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:33:26"
+    },
+    "m5r1::nf::S1_031_s0": {
+      "choice": "R",
+      "winner": "teacher_run_m4",
+      "ts": "2026-08-03 13:33:37"
+    },
+    "m5r1::rp::S3_006_s1": {
+      "choice": "R",
+      "winner": "official_full",
+      "ts": "2026-08-03 13:33:52"
+    },
+    "m5r1::nf::S3_003_s0": {
+      "choice": "R",
+      "winner": "teacher_run_m4",
+      "ts": "2026-08-03 13:33:56"
+    },
+    "m5r1::pvp::S3_002_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:34:01"
+    },
+    "m5r1::pvp::S1_020_s1": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:34:05"
+    },
+    "m5r1::pvp::S3_019_s0": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:34:13"
+    },
+    "m5r1::pvp::S1_012_s1": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:34:16"
+    },
+    "m5r1::pvp::S1_036_s0": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:34:19"
+    },
+    "m5r1::pvp::S3_011_s1": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:34:24"
+    },
+    "m5r1::pvp::S1_004_s1": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:34:29"
+    },
+    "m5r1::pvp::S3_009_s1": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:34:34"
+    },
+    "m5r1::pvp::S1_032_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:34:42"
+    },
+    "m5r1::pvp::S3_011_s0": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:34:48"
+    },
+    "m5r1::pvp::S1_001_s0": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:34:55"
+    },
+    "m5r1::pvp::S3_029_s0": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:34:58"
+    },
+    "m5r1::pvp::S1_029_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:35:06"
+    },
+    "m5r1::pvp::S1_037_s1": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:35:10"
+    },
+    "m5r1::pvp::S1_039_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:35:16"
+    },
+    "m5r1::pvp::S3_001_s0": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:35:17"
+    },
+    "m5r1::pvp::S3_024_s0": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:35:20"
+    },
+    "m5r1::pvp::S3_004_s0": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:35:24"
+    },
+    "m5r1::pvp::S1_038_s1": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:35:26"
+    },
+    "m5r1::rp::S3_017_s1": {
+      "choice": "L",
+      "winner": "official_full",
+      "ts": "2026-08-03 13:35:35"
+    },
+    "m5r1::rp::S1_006_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:35:44"
+    },
+    "m5r1::pvp::S3_015_s0": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:35:52"
+    },
+    "m5r1::nf::S3_007_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:36:00"
+    },
+    "m5r1::pvp::S3_008_s1": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:36:02"
+    },
+    "m5r1::pvp::S3_020_s0": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:36:04"
+    },
+    "m5r1::rp::S1_009_s0": {
+      "choice": "L",
+      "winner": "official_full",
+      "ts": "2026-08-03 13:36:12"
+    },
+    "m5r1::pvp::S1_003_s1": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:36:15"
+    },
+    "m5r1::pvp::S1_027_s1": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:36:17"
+    },
+    "m5r1::nf::S1_033_s1": {
+      "choice": "R",
+      "winner": "teacher_run_m5",
+      "ts": "2026-08-03 13:36:19"
+    },
+    "m5r1::pvp::S3_026_s1": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:36:22"
+    },
+    "m5r1::pvp::S3_018_s0": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:36:24"
+    },
+    "m5r1::rp::S1_007_s1": {
+      "choice": "R",
+      "winner": "official_full",
+      "ts": "2026-08-03 13:36:33"
+    },
+    "m5r1::pvp::S1_026_s1": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:36:35"
+    },
+    "m5r1::pvp::S3_017_s0": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:36:43"
+    },
+    "m5r1::rp::S3_005_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:36:53"
+    },
+    "m5r1::pvp::S1_033_s0": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:36:59"
+    },
+    "m5r1::pvp::S3_023_s1": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:37:02"
+    },
+    "m5r1::pvp::S3_007_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:37:09"
+    },
+    "m5r1::nf::S3_013_s1": {
+      "choice": "R",
+      "winner": "teacher_run_m5",
+      "ts": "2026-08-03 13:37:12"
+    },
+    "m5r1::nf::S1_016_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:37:17"
+    },
+    "m5r1::pvp::S1_040_s1": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:37:25"
+    },
+    "m5r1::rp::S3_018_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:37:28"
+    },
+    "m5r1::pvp::S1_027_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:37:30"
+    },
+    "m5r1::pvp::S3_029_s1": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:37:35"
+    },
+    "m5r1::pvp::S1_010_s0": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:37:37"
+    },
+    "m5r1::pvp::S1_011_s1": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:37:40"
+    },
+    "m5r1::pvp::S1_036_s1": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:37:42"
+    },
+    "m5r1::pvp::S1_019_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:37:48"
+    },
+    "m5r1::nf::S1_041_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:37:54"
+    },
+    "m5r1::pvp::S3_027_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:37:58"
+    },
+    "m5r1::pvp::S1_023_s0": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:38:04"
+    },
+    "m5r1::pvp::S3_003_s0": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:38:08"
+    },
+    "m5r1::pvp::S3_021_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-03 13:38:13"
+    },
+    "m5r1::pvp::S3_015_s1": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:38:15"
+    },
+    "m5r1::pvp::S3_026_s0": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-08-03 13:38:17"
+    }
+  }
+}
