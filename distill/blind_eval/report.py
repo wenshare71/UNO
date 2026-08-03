@@ -177,9 +177,11 @@ def print_report(rep: dict) -> None:
         print(f"{name:<26}{t['n']:>5}{t['win_0']:>6}{t['win_1']:>6}{t['tie']:>5}"
               f"{_rate(t['tie_rate']):>8}{_rate(t['nontie_win_rate']):>11}  "
               f"{_ci(t['wilson95']):<18}{legacy:>8}")
-    ks = {t["key_0"]: t["key_1"] for t in rep["by_kind"].values() if t["key_0"]}
-    for k0, k1 in ks.items():
-        print(f"    win0={k0}   win1={k1}")
+    # 按 kind 逐行打,**不要**用 {key_0: key_1} 收敛——post_vs_pre 与 replay 的 key_0
+    # 都是 ours_kv_post4000,做成 dict 会互相覆盖,少打一行,而读者会以为那行也适用于另一类。
+    for name, t in rep["by_kind"].items():
+        if t["key_0"]:
+            print(f"    {name:<14} win0={t['key_0']}   win1={t['key_1']}")
 
     print(f"\n左右偏好(位置偏差检验){'':<4}{'L':>5}{'R':>5}{'tie':>5}"
           f"{'选左率':>8}  Wilson 95% CI")
