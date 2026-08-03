@@ -273,3 +273,8 @@ log/ref_distill/
 /output/probe_iso/*
 !/output/probe_iso/results.json
 !/output/probe_iso/boards/
+# 身份留存计数(SPEC §9):清单是**预登记的抽样本身**——种子、层配比、重放摆放
+# 全都冻在这个文件里,不进 git 就等于抽样方案只存在于某台机器的磁盘上。
+# 标注结果同 blind_annotations_*(那边也是进 git 的),它们是判读产物不是中间态。
+!/output/probe_iso/idcount_items.json
+!/output/probe_iso/idcount_marks.json

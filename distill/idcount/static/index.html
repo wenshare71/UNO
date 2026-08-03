@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>身份留存计数标注</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+  <div class="title-row">
+    <div class="title">身份留存计数 <span class="sub">单图是/否——这个参考主体的身份保住了吗?</span></div>
+    <div class="nav">
+      <button id="btn-prev">← 上一张</button>
+      <button id="btn-next">下一张 →</button>
+      <button id="btn-undo">撤销上一个答案 <kbd>Backspace</kbd></button>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-bar"><div id="progress-fill"></div></div>
+    <div id="progress-text">已标 0 / 0</div>
+  </div>
+
+  <!-- 判定口径必须常驻可见,不能折叠进弹窗——标注者需要随时对照。原文照抄,一字不改。 -->
+  <div id="criteria">
+    <p><b>是(身份保住)</b>:生成图里存在一个物体,能与该参考主体认定为<b>同一个具体个体</b>——其特有的花纹 / 配色 / 形状细节 / 文字或图标标识,<b>至少一项明确对应</b>。</p>
+    <p><b>否</b>:只有<b>类别</b>一致(都是背包 / 都是毛绒玩具 / 都是碗),或该主体压根没出现。</p>
+    <p class="rules">边界规则:
+      1. 只对上颜色、对不上任何结构或标识 → <b>否</b>
+      2. 主体出现但被严重遮挡 / 过小无法辨认 → <b>否</b>(不设第三档)
+      3. 同一主体在图中出现多次,任一实例对上 → <b>是</b>
+    </p>
+  </div>
+</header>
+
+<main>
+  <div id="item-info">
+    <span id="item-label">-</span>
+    <span id="item-prompt"></span>
+  </div>
+
+  <div id="board">
+    <div id="refs"></div>
+    <div id="gen">
+      <div class="gen-label">生成图</div>
+      <img id="gen-img" alt="生成图">
+    </div>
+  </div>
+
+  <div id="status"></div>
+</main>
+
+<script src="/static/idcount.js"></script>
+</body>
+</html>

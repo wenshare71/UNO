@@ -1,0 +1,1097 @@
+{
+  "meta": {
+    "spec": "M5-idcount-v1",
+    "seed": 20260803,
+    "n_tasks": 30,
+    "n_items": 66,
+    "n_replay": 6,
+    "n_tasks_by_stratum": {
+      "S1": 21,
+      "S3": 9
+    }
+  },
+  "items": [
+    {
+      "item_id": "IC_0010",
+      "task_id": "PI_S1_031_s2",
+      "variant": "official_full",
+      "stratum": "S1",
+      "prompt": "a candle and a toy with a tree and autumn leaves in the background",
+      "image_paths": [
+        "datasets/dreambooth/dataset/candle/02.jpg",
+        "datasets/dreambooth/dataset/duck_toy/03.jpg"
+      ],
+      "ref_names": [
+        "candle",
+        "duck_toy"
+      ],
+      "img_path": "output/probe_iso/PI_S1_031_s2__official_full.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0007",
+      "task_id": "PI_S1_005_s1",
+      "variant": "official_iso",
+      "stratum": "S1",
+      "prompt": "a backpack and a sneaker on top of a wooden floor",
+      "image_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/01.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/02.jpg"
+      ],
+      "ref_names": [
+        "backpack_dog",
+        "colorful_sneaker"
+      ],
+      "img_path": "output/probe_iso/PI_S1_005_s1__official_iso.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0048",
+      "task_id": "PI_S3_015_s1",
+      "variant": "official_full",
+      "stratum": "S3",
+      "prompt": "a clock on top of green grass with sunflowers around it",
+      "image_paths": [
+        "datasets/dreambooth/dataset/clock/01.jpg"
+      ],
+      "ref_names": [
+        "clock"
+      ],
+      "img_path": "output/probe_iso/PI_S3_015_s1__official_full.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0039",
+      "task_id": "PI_S1_036_s2",
+      "variant": "official_iso",
+      "stratum": "S1",
+      "prompt": "a clock and a boot on top of a mirror",
+      "image_paths": [
+        "datasets/dreambooth/dataset/clock/02.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/03.jpg"
+      ],
+      "ref_names": [
+        "clock",
+        "fancy_boot"
+      ],
+      "img_path": "output/probe_iso/PI_S1_036_s2__official_iso.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0028",
+      "task_id": "PI_S1_039_s2",
+      "variant": "official_full",
+      "stratum": "S1",
+      "prompt": "a sneaker and a boot on top of a white rug",
+      "image_paths": [
+        "datasets/dreambooth/dataset/colorful_sneaker/02.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/03.jpg"
+      ],
+      "ref_names": [
+        "colorful_sneaker",
+        "fancy_boot"
+      ],
+      "img_path": "output/probe_iso/PI_S1_039_s2__official_full.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0009",
+      "task_id": "PI_S1_025_s2",
+      "variant": "official_iso",
+      "stratum": "S1",
+      "prompt": "a can and a sneaker on top of a wooden floor",
+      "image_paths": [
+        "datasets/dreambooth/dataset/can/02.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/03.jpg"
+      ],
+      "ref_names": [
+        "can",
+        "colorful_sneaker"
+      ],
+      "img_path": "output/probe_iso/PI_S1_025_s2__official_iso.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0056",
+      "task_id": "PI_S3_018_s1",
+      "variant": "official_full",
+      "stratum": "S3",
+      "prompt": "a sneaker on top of a dirt road",
+      "image_paths": [
+        "datasets/dreambooth/dataset/colorful_sneaker/01.jpg"
+      ],
+      "ref_names": [
+        "colorful_sneaker"
+      ],
+      "img_path": "output/probe_iso/PI_S3_018_s1__official_full.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0042",
+      "task_id": "PI_S3_017_s0",
+      "variant": "official_full",
+      "stratum": "S3",
+      "prompt": "a clock on top of the sidewalk in a crowded street",
+      "image_paths": [
+        "datasets/dreambooth/dataset/clock/04.jpg"
+      ],
+      "ref_names": [
+        "clock"
+      ],
+      "img_path": "output/probe_iso/PI_S3_017_s0__official_full.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0057",
+      "task_id": "PI_S3_018_s1",
+      "variant": "official_iso",
+      "stratum": "S3",
+      "prompt": "a sneaker on top of a dirt road",
+      "image_paths": [
+        "datasets/dreambooth/dataset/colorful_sneaker/01.jpg"
+      ],
+      "ref_names": [
+        "colorful_sneaker"
+      ],
+      "img_path": "output/probe_iso/PI_S3_018_s1__official_iso.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0013",
+      "task_id": "PI_S1_028_s0",
+      "variant": "official_iso",
+      "stratum": "S1",
+      "prompt": "a can and a stuffed animal with a blue house in the background",
+      "image_paths": [
+        "datasets/dreambooth/dataset/can/00.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/01.jpg"
+      ],
+      "ref_names": [
+        "can",
+        "grey_sloth_plushie"
+      ],
+      "img_path": "output/probe_iso/PI_S1_028_s0__official_iso.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0023",
+      "task_id": "PI_S1_001_s1",
+      "variant": "official_iso",
+      "stratum": "S1",
+      "prompt": "a backpack and a bowl in the snow",
+      "image_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/01.jpg",
+        "datasets/dreambooth/dataset/berry_bowl/02.jpg"
+      ],
+      "ref_names": [
+        "backpack_dog",
+        "berry_bowl"
+      ],
+      "img_path": "output/probe_iso/PI_S1_001_s1__official_iso.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0059",
+      "task_id": "PI_S3_024_s1",
+      "variant": "official_iso",
+      "stratum": "S3",
+      "prompt": "a boot on top of pink fabric",
+      "image_paths": [
+        "datasets/dreambooth/dataset/fancy_boot/01.jpg"
+      ],
+      "ref_names": [
+        "fancy_boot"
+      ],
+      "img_path": "output/probe_iso/PI_S3_024_s1__official_iso.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0054",
+      "task_id": "PI_S3_022_s1",
+      "variant": "official_full",
+      "stratum": "S3",
+      "prompt": "a toy on the beach",
+      "image_paths": [
+        "datasets/dreambooth/dataset/duck_toy/03.jpg"
+      ],
+      "ref_names": [
+        "duck_toy"
+      ],
+      "img_path": "output/probe_iso/PI_S3_022_s1__official_full.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0045",
+      "task_id": "PI_S3_021_s1",
+      "variant": "official_iso",
+      "stratum": "S3",
+      "prompt": "a toy in the snow",
+      "image_paths": [
+        "datasets/dreambooth/dataset/duck_toy/01.jpg"
+      ],
+      "ref_names": [
+        "duck_toy"
+      ],
+      "img_path": "output/probe_iso/PI_S3_021_s1__official_iso.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0055",
+      "task_id": "PI_S3_022_s1",
+      "variant": "official_iso",
+      "stratum": "S3",
+      "prompt": "a toy on the beach",
+      "image_paths": [
+        "datasets/dreambooth/dataset/duck_toy/03.jpg"
+      ],
+      "ref_names": [
+        "duck_toy"
+      ],
+      "img_path": "output/probe_iso/PI_S3_022_s1__official_iso.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0034",
+      "task_id": "PI_S1_010_s1",
+      "variant": "official_full",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a can with a wheat field in the background",
+      "image_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/01.jpg",
+        "datasets/dreambooth/dataset/can/02.jpg"
+      ],
+      "ref_names": [
+        "bear_plushie",
+        "can"
+      ],
+      "img_path": "output/probe_iso/PI_S1_010_s1__official_full.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0019",
+      "task_id": "PI_S1_006_s0",
+      "variant": "official_iso",
+      "stratum": "S1",
+      "prompt": "a backpack and a toy with a city in the background",
+      "image_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/00.jpg",
+        "datasets/dreambooth/dataset/duck_toy/01.jpg"
+      ],
+      "ref_names": [
+        "backpack_dog",
+        "duck_toy"
+      ],
+      "img_path": "output/probe_iso/PI_S1_006_s0__official_iso.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0014",
+      "task_id": "PI_S1_023_s2",
+      "variant": "official_full",
+      "stratum": "S1",
+      "prompt": "a can and a candle on a cobblestone street",
+      "image_paths": [
+        "datasets/dreambooth/dataset/can/02.jpg",
+        "datasets/dreambooth/dataset/candle/03.jpg"
+      ],
+      "ref_names": [
+        "can",
+        "candle"
+      ],
+      "img_path": "output/probe_iso/PI_S1_023_s2__official_full.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0021",
+      "task_id": "PI_S1_017_s0",
+      "variant": "official_iso",
+      "stratum": "S1",
+      "prompt": "a bowl and a candle on top of the sidewalk in a crowded street",
+      "image_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/00.jpg",
+        "datasets/dreambooth/dataset/candle/01.jpg"
+      ],
+      "ref_names": [
+        "berry_bowl",
+        "candle"
+      ],
+      "img_path": "output/probe_iso/PI_S1_017_s0__official_iso.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0029",
+      "task_id": "PI_S1_039_s2",
+      "variant": "official_iso",
+      "stratum": "S1",
+      "prompt": "a sneaker and a boot on top of a white rug",
+      "image_paths": [
+        "datasets/dreambooth/dataset/colorful_sneaker/02.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/03.jpg"
+      ],
+      "ref_names": [
+        "colorful_sneaker",
+        "fancy_boot"
+      ],
+      "img_path": "output/probe_iso/PI_S1_039_s2__official_iso.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0011",
+      "task_id": "PI_S1_031_s2",
+      "variant": "official_iso",
+      "stratum": "S1",
+      "prompt": "a candle and a toy with a tree and autumn leaves in the background",
+      "image_paths": [
+        "datasets/dreambooth/dataset/candle/02.jpg",
+        "datasets/dreambooth/dataset/duck_toy/03.jpg"
+      ],
+      "ref_names": [
+        "candle",
+        "duck_toy"
+      ],
+      "img_path": "output/probe_iso/PI_S1_031_s2__official_iso.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0020",
+      "task_id": "PI_S1_017_s0",
+      "variant": "official_full",
+      "stratum": "S1",
+      "prompt": "a bowl and a candle on top of the sidewalk in a crowded street",
+      "image_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/00.jpg",
+        "datasets/dreambooth/dataset/candle/01.jpg"
+      ],
+      "ref_names": [
+        "berry_bowl",
+        "candle"
+      ],
+      "img_path": "output/probe_iso/PI_S1_017_s0__official_full.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0002",
+      "task_id": "PI_S1_020_s1",
+      "variant": "official_full",
+      "stratum": "S1",
+      "prompt": "a bowl and a toy in the jungle",
+      "image_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/01.jpg",
+        "datasets/dreambooth/dataset/duck_toy/02.jpg"
+      ],
+      "ref_names": [
+        "berry_bowl",
+        "duck_toy"
+      ],
+      "img_path": "output/probe_iso/PI_S1_020_s1__official_full.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0049",
+      "task_id": "PI_S3_015_s1",
+      "variant": "official_iso",
+      "stratum": "S3",
+      "prompt": "a clock on top of green grass with sunflowers around it",
+      "image_paths": [
+        "datasets/dreambooth/dataset/clock/01.jpg"
+      ],
+      "ref_names": [
+        "clock"
+      ],
+      "img_path": "output/probe_iso/PI_S3_015_s1__official_iso.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0001",
+      "task_id": "PI_S1_012_s0",
+      "variant": "official_iso",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a clock with the Eiffel Tower in the background",
+      "image_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/00.jpg",
+        "datasets/dreambooth/dataset/clock/01.jpg"
+      ],
+      "ref_names": [
+        "bear_plushie",
+        "clock"
+      ],
+      "img_path": "output/probe_iso/PI_S1_012_s0__official_iso.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0017",
+      "task_id": "PI_S1_015_s2",
+      "variant": "official_iso",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a boot on top of green grass with sunflowers around it",
+      "image_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/02.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/03.jpg"
+      ],
+      "ref_names": [
+        "bear_plushie",
+        "fancy_boot"
+      ],
+      "img_path": "output/probe_iso/PI_S1_015_s2__official_iso.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0047",
+      "task_id": "PI_S3_021_s0",
+      "variant": "official_iso",
+      "stratum": "S3",
+      "prompt": "a toy in the snow",
+      "image_paths": [
+        "datasets/dreambooth/dataset/duck_toy/00.jpg"
+      ],
+      "ref_names": [
+        "duck_toy"
+      ],
+      "img_path": "output/probe_iso/PI_S3_021_s0__official_iso.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0022",
+      "task_id": "PI_S1_001_s1",
+      "variant": "official_full",
+      "stratum": "S1",
+      "prompt": "a backpack and a bowl in the snow",
+      "image_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/01.jpg",
+        "datasets/dreambooth/dataset/berry_bowl/02.jpg"
+      ],
+      "ref_names": [
+        "backpack_dog",
+        "berry_bowl"
+      ],
+      "img_path": "output/probe_iso/PI_S1_001_s1__official_full.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0006",
+      "task_id": "PI_S1_005_s1",
+      "variant": "official_full",
+      "stratum": "S1",
+      "prompt": "a backpack and a sneaker on top of a wooden floor",
+      "image_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/01.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/02.jpg"
+      ],
+      "ref_names": [
+        "backpack_dog",
+        "colorful_sneaker"
+      ],
+      "img_path": "output/probe_iso/PI_S1_005_s1__official_full.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0044",
+      "task_id": "PI_S3_021_s1",
+      "variant": "official_full",
+      "stratum": "S3",
+      "prompt": "a toy in the snow",
+      "image_paths": [
+        "datasets/dreambooth/dataset/duck_toy/01.jpg"
+      ],
+      "ref_names": [
+        "duck_toy"
+      ],
+      "img_path": "output/probe_iso/PI_S3_021_s1__official_full.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0041",
+      "task_id": "PI_S1_033_s2",
+      "variant": "official_iso",
+      "stratum": "S1",
+      "prompt": "a candle and a stuffed animal floating on top of water",
+      "image_paths": [
+        "datasets/dreambooth/dataset/candle/02.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/03.jpg"
+      ],
+      "ref_names": [
+        "candle",
+        "grey_sloth_plushie"
+      ],
+      "img_path": "output/probe_iso/PI_S1_033_s2__official_iso.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0038",
+      "task_id": "PI_S1_036_s2",
+      "variant": "official_full",
+      "stratum": "S1",
+      "prompt": "a clock and a boot on top of a mirror",
+      "image_paths": [
+        "datasets/dreambooth/dataset/clock/02.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/03.jpg"
+      ],
+      "ref_names": [
+        "clock",
+        "fancy_boot"
+      ],
+      "img_path": "output/probe_iso/PI_S1_036_s2__official_full.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0015",
+      "task_id": "PI_S1_023_s2",
+      "variant": "official_iso",
+      "stratum": "S1",
+      "prompt": "a can and a candle on a cobblestone street",
+      "image_paths": [
+        "datasets/dreambooth/dataset/can/02.jpg",
+        "datasets/dreambooth/dataset/candle/03.jpg"
+      ],
+      "ref_names": [
+        "can",
+        "candle"
+      ],
+      "img_path": "output/probe_iso/PI_S1_023_s2__official_iso.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0000",
+      "task_id": "PI_S1_012_s0",
+      "variant": "official_full",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a clock with the Eiffel Tower in the background",
+      "image_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/00.jpg",
+        "datasets/dreambooth/dataset/clock/01.jpg"
+      ],
+      "ref_names": [
+        "bear_plushie",
+        "clock"
+      ],
+      "img_path": "output/probe_iso/PI_S1_012_s0__official_full.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0026",
+      "task_id": "PI_S1_036_s0",
+      "variant": "official_full",
+      "stratum": "S1",
+      "prompt": "a clock and a boot on top of a mirror",
+      "image_paths": [
+        "datasets/dreambooth/dataset/clock/00.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/01.jpg"
+      ],
+      "ref_names": [
+        "clock",
+        "fancy_boot"
+      ],
+      "img_path": "output/probe_iso/PI_S1_036_s0__official_full.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0060",
+      "task_id": "PI_S3_018_s1",
+      "variant": "official_iso",
+      "stratum": "S3",
+      "prompt": "a sneaker on top of a dirt road",
+      "image_paths": [
+        "datasets/dreambooth/dataset/colorful_sneaker/01.jpg"
+      ],
+      "ref_names": [
+        "colorful_sneaker"
+      ],
+      "img_path": "output/probe_iso/PI_S3_018_s1__official_iso.png",
+      "replay_of": "IC_0057"
+    },
+    {
+      "item_id": "IC_0030",
+      "task_id": "PI_S1_019_s2",
+      "variant": "official_full",
+      "stratum": "S1",
+      "prompt": "a bowl and a sneaker on top of a white rug",
+      "image_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/02.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/03.jpg"
+      ],
+      "ref_names": [
+        "berry_bowl",
+        "colorful_sneaker"
+      ],
+      "img_path": "output/probe_iso/PI_S1_019_s2__official_full.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0061",
+      "task_id": "PI_S1_001_s1",
+      "variant": "official_iso",
+      "stratum": "S1",
+      "prompt": "a backpack and a bowl in the snow",
+      "image_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/01.jpg",
+        "datasets/dreambooth/dataset/berry_bowl/02.jpg"
+      ],
+      "ref_names": [
+        "backpack_dog",
+        "berry_bowl"
+      ],
+      "img_path": "output/probe_iso/PI_S1_001_s1__official_iso.png",
+      "replay_of": "IC_0023"
+    },
+    {
+      "item_id": "IC_0018",
+      "task_id": "PI_S1_006_s0",
+      "variant": "official_full",
+      "stratum": "S1",
+      "prompt": "a backpack and a toy with a city in the background",
+      "image_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/00.jpg",
+        "datasets/dreambooth/dataset/duck_toy/01.jpg"
+      ],
+      "ref_names": [
+        "backpack_dog",
+        "duck_toy"
+      ],
+      "img_path": "output/probe_iso/PI_S1_006_s0__official_full.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0032",
+      "task_id": "PI_S1_005_s0",
+      "variant": "official_full",
+      "stratum": "S1",
+      "prompt": "a backpack and a sneaker on top of a wooden floor",
+      "image_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/00.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/01.jpg"
+      ],
+      "ref_names": [
+        "backpack_dog",
+        "colorful_sneaker"
+      ],
+      "img_path": "output/probe_iso/PI_S1_005_s0__official_full.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0058",
+      "task_id": "PI_S3_024_s1",
+      "variant": "official_full",
+      "stratum": "S3",
+      "prompt": "a boot on top of pink fabric",
+      "image_paths": [
+        "datasets/dreambooth/dataset/fancy_boot/01.jpg"
+      ],
+      "ref_names": [
+        "fancy_boot"
+      ],
+      "img_path": "output/probe_iso/PI_S3_024_s1__official_full.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0040",
+      "task_id": "PI_S1_033_s2",
+      "variant": "official_full",
+      "stratum": "S1",
+      "prompt": "a candle and a stuffed animal floating on top of water",
+      "image_paths": [
+        "datasets/dreambooth/dataset/candle/02.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/03.jpg"
+      ],
+      "ref_names": [
+        "candle",
+        "grey_sloth_plushie"
+      ],
+      "img_path": "output/probe_iso/PI_S1_033_s2__official_full.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0033",
+      "task_id": "PI_S1_005_s0",
+      "variant": "official_iso",
+      "stratum": "S1",
+      "prompt": "a backpack and a sneaker on top of a wooden floor",
+      "image_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/00.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/01.jpg"
+      ],
+      "ref_names": [
+        "backpack_dog",
+        "colorful_sneaker"
+      ],
+      "img_path": "output/probe_iso/PI_S1_005_s0__official_iso.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0062",
+      "task_id": "PI_S1_023_s2",
+      "variant": "official_full",
+      "stratum": "S1",
+      "prompt": "a can and a candle on a cobblestone street",
+      "image_paths": [
+        "datasets/dreambooth/dataset/can/02.jpg",
+        "datasets/dreambooth/dataset/candle/03.jpg"
+      ],
+      "ref_names": [
+        "can",
+        "candle"
+      ],
+      "img_path": "output/probe_iso/PI_S1_023_s2__official_full.png",
+      "replay_of": "IC_0014"
+    },
+    {
+      "item_id": "IC_0035",
+      "task_id": "PI_S1_010_s1",
+      "variant": "official_iso",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a can with a wheat field in the background",
+      "image_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/01.jpg",
+        "datasets/dreambooth/dataset/can/02.jpg"
+      ],
+      "ref_names": [
+        "bear_plushie",
+        "can"
+      ],
+      "img_path": "output/probe_iso/PI_S1_010_s1__official_iso.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0027",
+      "task_id": "PI_S1_036_s0",
+      "variant": "official_iso",
+      "stratum": "S1",
+      "prompt": "a clock and a boot on top of a mirror",
+      "image_paths": [
+        "datasets/dreambooth/dataset/clock/00.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/01.jpg"
+      ],
+      "ref_names": [
+        "clock",
+        "fancy_boot"
+      ],
+      "img_path": "output/probe_iso/PI_S1_036_s0__official_iso.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0024",
+      "task_id": "PI_S1_009_s0",
+      "variant": "official_full",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a bowl on top of a purple rug in a forest",
+      "image_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/00.jpg",
+        "datasets/dreambooth/dataset/berry_bowl/01.jpg"
+      ],
+      "ref_names": [
+        "bear_plushie",
+        "berry_bowl"
+      ],
+      "img_path": "output/probe_iso/PI_S1_009_s0__official_full.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0063",
+      "task_id": "PI_S1_039_s2",
+      "variant": "official_iso",
+      "stratum": "S1",
+      "prompt": "a sneaker and a boot on top of a white rug",
+      "image_paths": [
+        "datasets/dreambooth/dataset/colorful_sneaker/02.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/03.jpg"
+      ],
+      "ref_names": [
+        "colorful_sneaker",
+        "fancy_boot"
+      ],
+      "img_path": "output/probe_iso/PI_S1_039_s2__official_iso.png",
+      "replay_of": "IC_0029"
+    },
+    {
+      "item_id": "IC_0037",
+      "task_id": "PI_S1_003_s1",
+      "variant": "official_iso",
+      "stratum": "S1",
+      "prompt": "a backpack and a candle on a cobblestone street",
+      "image_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/01.jpg",
+        "datasets/dreambooth/dataset/candle/02.jpg"
+      ],
+      "ref_names": [
+        "backpack_dog",
+        "candle"
+      ],
+      "img_path": "output/probe_iso/PI_S1_003_s1__official_iso.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0025",
+      "task_id": "PI_S1_009_s0",
+      "variant": "official_iso",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a bowl on top of a purple rug in a forest",
+      "image_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/00.jpg",
+        "datasets/dreambooth/dataset/berry_bowl/01.jpg"
+      ],
+      "ref_names": [
+        "bear_plushie",
+        "berry_bowl"
+      ],
+      "img_path": "output/probe_iso/PI_S1_009_s0__official_iso.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0005",
+      "task_id": "PI_S1_030_s1",
+      "variant": "official_iso",
+      "stratum": "S1",
+      "prompt": "a candle and a sneaker with a wheat field in the background",
+      "image_paths": [
+        "datasets/dreambooth/dataset/candle/01.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/02.jpg"
+      ],
+      "ref_names": [
+        "candle",
+        "colorful_sneaker"
+      ],
+      "img_path": "output/probe_iso/PI_S1_030_s1__official_iso.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0031",
+      "task_id": "PI_S1_019_s2",
+      "variant": "official_iso",
+      "stratum": "S1",
+      "prompt": "a bowl and a sneaker on top of a white rug",
+      "image_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/02.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/03.jpg"
+      ],
+      "ref_names": [
+        "berry_bowl",
+        "colorful_sneaker"
+      ],
+      "img_path": "output/probe_iso/PI_S1_019_s2__official_iso.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0064",
+      "task_id": "PI_S1_006_s0",
+      "variant": "official_iso",
+      "stratum": "S1",
+      "prompt": "a backpack and a toy with a city in the background",
+      "image_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/00.jpg",
+        "datasets/dreambooth/dataset/duck_toy/01.jpg"
+      ],
+      "ref_names": [
+        "backpack_dog",
+        "duck_toy"
+      ],
+      "img_path": "output/probe_iso/PI_S1_006_s0__official_iso.png",
+      "replay_of": "IC_0019"
+    },
+    {
+      "item_id": "IC_0046",
+      "task_id": "PI_S3_021_s0",
+      "variant": "official_full",
+      "stratum": "S3",
+      "prompt": "a toy in the snow",
+      "image_paths": [
+        "datasets/dreambooth/dataset/duck_toy/00.jpg"
+      ],
+      "ref_names": [
+        "duck_toy"
+      ],
+      "img_path": "output/probe_iso/PI_S3_021_s0__official_full.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0008",
+      "task_id": "PI_S1_025_s2",
+      "variant": "official_full",
+      "stratum": "S1",
+      "prompt": "a can and a sneaker on top of a wooden floor",
+      "image_paths": [
+        "datasets/dreambooth/dataset/can/02.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/03.jpg"
+      ],
+      "ref_names": [
+        "can",
+        "colorful_sneaker"
+      ],
+      "img_path": "output/probe_iso/PI_S1_025_s2__official_full.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0051",
+      "task_id": "PI_S3_005_s0",
+      "variant": "official_iso",
+      "stratum": "S3",
+      "prompt": "a stuffed animal on top of a wooden floor",
+      "image_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/04.jpg"
+      ],
+      "ref_names": [
+        "bear_plushie"
+      ],
+      "img_path": "output/probe_iso/PI_S3_005_s0__official_iso.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0053",
+      "task_id": "PI_S3_016_s1",
+      "variant": "official_iso",
+      "stratum": "S3",
+      "prompt": "a clock on top of a mirror",
+      "image_paths": [
+        "datasets/dreambooth/dataset/clock/03.jpg"
+      ],
+      "ref_names": [
+        "clock"
+      ],
+      "img_path": "output/probe_iso/PI_S3_016_s1__official_iso.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0016",
+      "task_id": "PI_S1_015_s2",
+      "variant": "official_full",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a boot on top of green grass with sunflowers around it",
+      "image_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/02.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/03.jpg"
+      ],
+      "ref_names": [
+        "bear_plushie",
+        "fancy_boot"
+      ],
+      "img_path": "output/probe_iso/PI_S1_015_s2__official_full.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0004",
+      "task_id": "PI_S1_030_s1",
+      "variant": "official_full",
+      "stratum": "S1",
+      "prompt": "a candle and a sneaker with a wheat field in the background",
+      "image_paths": [
+        "datasets/dreambooth/dataset/candle/01.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/02.jpg"
+      ],
+      "ref_names": [
+        "candle",
+        "colorful_sneaker"
+      ],
+      "img_path": "output/probe_iso/PI_S1_030_s1__official_full.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0012",
+      "task_id": "PI_S1_028_s0",
+      "variant": "official_full",
+      "stratum": "S1",
+      "prompt": "a can and a stuffed animal with a blue house in the background",
+      "image_paths": [
+        "datasets/dreambooth/dataset/can/00.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/01.jpg"
+      ],
+      "ref_names": [
+        "can",
+        "grey_sloth_plushie"
+      ],
+      "img_path": "output/probe_iso/PI_S1_028_s0__official_full.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0043",
+      "task_id": "PI_S3_017_s0",
+      "variant": "official_iso",
+      "stratum": "S3",
+      "prompt": "a clock on top of the sidewalk in a crowded street",
+      "image_paths": [
+        "datasets/dreambooth/dataset/clock/04.jpg"
+      ],
+      "ref_names": [
+        "clock"
+      ],
+      "img_path": "output/probe_iso/PI_S3_017_s0__official_iso.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0052",
+      "task_id": "PI_S3_016_s1",
+      "variant": "official_full",
+      "stratum": "S3",
+      "prompt": "a clock on top of a mirror",
+      "image_paths": [
+        "datasets/dreambooth/dataset/clock/03.jpg"
+      ],
+      "ref_names": [
+        "clock"
+      ],
+      "img_path": "output/probe_iso/PI_S3_016_s1__official_full.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0065",
+      "task_id": "PI_S3_021_s1",
+      "variant": "official_full",
+      "stratum": "S3",
+      "prompt": "a toy in the snow",
+      "image_paths": [
+        "datasets/dreambooth/dataset/duck_toy/01.jpg"
+      ],
+      "ref_names": [
+        "duck_toy"
+      ],
+      "img_path": "output/probe_iso/PI_S3_021_s1__official_full.png",
+      "replay_of": "IC_0044"
+    },
+    {
+      "item_id": "IC_0036",
+      "task_id": "PI_S1_003_s1",
+      "variant": "official_full",
+      "stratum": "S1",
+      "prompt": "a backpack and a candle on a cobblestone street",
+      "image_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/01.jpg",
+        "datasets/dreambooth/dataset/candle/02.jpg"
+      ],
+      "ref_names": [
+        "backpack_dog",
+        "candle"
+      ],
+      "img_path": "output/probe_iso/PI_S1_003_s1__official_full.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0050",
+      "task_id": "PI_S3_005_s0",
+      "variant": "official_full",
+      "stratum": "S3",
+      "prompt": "a stuffed animal on top of a wooden floor",
+      "image_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/04.jpg"
+      ],
+      "ref_names": [
+        "bear_plushie"
+      ],
+      "img_path": "output/probe_iso/PI_S3_005_s0__official_full.png",
+      "replay_of": null
+    },
+    {
+      "item_id": "IC_0003",
+      "task_id": "PI_S1_020_s1",
+      "variant": "official_iso",
+      "stratum": "S1",
+      "prompt": "a bowl and a toy in the jungle",
+      "image_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/01.jpg",
+        "datasets/dreambooth/dataset/duck_toy/02.jpg"
+      ],
+      "ref_names": [
+        "berry_bowl",
+        "duck_toy"
+      ],
+      "img_path": "output/probe_iso/PI_S1_020_s1__official_iso.png",
+      "replay_of": null
+    }
+  ]
+}
