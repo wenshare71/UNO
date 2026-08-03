@@ -58,6 +58,12 @@ import board  # noqa: E402  (复用 multibanana_eval/board.py 的拼图)
 # 脚本不自己判断,照任务单执行。
 VARIANTS = [
     ("official_full",    False, False, False, "official"),
+    # official_iso [新增 2026-08-03,§11.4 P-probe]:官方 LoRA **不重训**、直接开隔离+KV。
+    # 回答"隔离本身值多少代价"——这个组合从没跑过,而 M4 的回退归因里它占一整项(混淆 ②)。
+    # 紧跟 official_full 是有意的:两者共用 "official" bank,相邻就不会触发 swap_lora。
+    # 注意元组第 2 位 use_ours 在生成循环里**从未被读取**(只有 bank / ref_iso / kv_cache
+    # 真正起作用),所以 False + ref_iso=True 这个"看着矛盾"的组合是合法且正确的。
+    ("official_iso",     False, True,  True,  "official"),
     ("ours_kv_pre",      True,  True,  True,  "pre"),
     ("ours_kv_post4000", True,  True,  True,  "post4000"),
     ("ours_kv_post2000", True,  True,  True,  "post2000"),
