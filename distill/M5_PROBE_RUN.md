@@ -1,7 +1,10 @@
 # M5 P-probe 执行单 — 隔离代价探针图生成
 
-> 对应 `DISTILL_PLAN.md` §11.4 P-probe。**档位:🟢 绿档**——不改任何既有代码,
-> 只是换一份任务单调用 `eval_multiref.py`。总耗时 ~32 min(其中 GPU denoise ~25 min,单卡)。
+> 对应 `DISTILL_PLAN.md` §11.4 P-probe。**档位:🟢 绿档**——H800 侧**不改任何代码**,
+> 只是 `git pull` 后换一份任务单调用 `eval_multiref.py`。
+> (`eval_multiref.py` 确实有改动:新增 `official_iso` 变体、`--dry_run` 成本表改为按
+> `kv_cache` 位推导。但那些改动**已在本地完成并推上来**,符合手册 R0——
+> 远程不许就地改既有 `.py`。)总耗时 ~32 min(GPU denoise ~25 min,单卡)。
 
 ## 这一步在干什么(先看懂再跑)
 
@@ -43,7 +46,7 @@ M4 的 `results.json` 连带重算成只剩本次这 192 条。这条教训是�
 
 H800 上**直连 huggingface.co 不通,走代理会卡死**——这个坑已经在
 `scripts/keepalive_infer.py` 踩过一次。加载权重必须走本地离线缓存,
-靠的是 `distill/eval_multiref.py` 文件顶部(约第 44-46 行)这两行:
+靠的是 `distill/eval_multiref.py` 文件顶部(**第 43-44 行**)这两行:
 
 ```python
 os.environ.setdefault("HF_HOME", "/kaimm-distill/wuwenxuan/hf_cache")
@@ -56,12 +59,23 @@ os.environ.setdefault("HF_HUB_OFFLINE", "1")
 就必须照抄这两行**,否则会在拉 huggingface.co 时直接卡死,没有报错、
 也没有超时,只能人工 kill。
 
+> **[已查,给臂 A/B 提前预警]** 全仓 16 个会加载权重的脚本里,只有
+> `eval_multiref.py` / `run_attn_diag.py` / `keepalive_infer.py` 这 3 个设了这两行。
+> **`train.py` 和两个训练 shell 脚本都没有**,而臂 A / 臂 B 正是训练任务(各 6 h)。
+> 建议**不要改 `train.py`**(往训练脚本里硬编码 H800 专有路径,换机器反而更糟),
+> 改在 shell 层 export 即可——`os.environ.setdefault` 会给已存在的环境变量让路,两者能叠:
+> ```bash
+> export HF_HOME=/kaimm-distill/wuwenxuan/hf_cache
+> export HF_HUB_OFFLINE=1
+> bash scripts/train_distill.sh ...
+> ```
+
 ## 步骤
 
 ### 1. 拉代码,生成并校验任务单
 
 ```bash
-cd ~/UNO && git pull
+cd /kaimm-distill/wuwenxuan/UNO && git pull
 python distill/build_probe_iso.py --verify
 ```
 

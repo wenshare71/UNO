@@ -338,7 +338,14 @@ def do_merge(args, tasks, json_dir):
     for vname, t in timing.items():
         t["speedup_vs_teacher"] = (base / t["mean_s"]) if base else None
 
-    merged = {"spec": "M4-eval-v1", "n_shards": len(shards),
+    # spec 跟着任务单走,不写死"M4-eval-v1"——P-probe 的产物若自称 M4,
+    # 半年后没人分得清 output/probe_iso/results.json 到底是哪批实验的。
+    try:
+        with open(args.eval_json, "rt", encoding="utf-8") as f:
+            spec = json.load(f).get("meta", {}).get("spec", "M4-eval-v1")
+    except (OSError, json.JSONDecodeError):
+        spec = "M4-eval-v1"
+    merged = {"spec": spec, "n_shards": len(shards),
               "n_records": len(all_records), "n_fails": len(all_fails),
               "timing": timing, "records": all_records, "fails": all_fails}
     out = os.path.join(args.save_path, "results.json")
@@ -447,19 +454,24 @@ def check_anchor(args, tasks):
 
 def print_plan(args, tasks):
     mine = tasks[args.shard_idx::args.num_shards]
-    # 冒烟实测成本(规格 §4.5):official_full ~5.1 s/张,ours_kv_* ~2.9 s/张
-    cost = {"official_full": 5.1, "ours_kv_pre": 2.9,
-            "ours_kv_post4000": 2.9, "ours_kv_post2000": 2.9}
+    # 冒烟实测成本(规格 §4.5):开 KV cache ~2.9 s/张,不开 ~5.1 s/张。
+    # **按 VARIANTS 的 kv_cache 位推导,不再维护一张平行的变体名表**——
+    # 原先是硬编码 4 个变体名的 dict,加 official_iso 时忘了同步,--dry_run 直接 KeyError。
+    # 单张耗时的真正驱动量就是 kv_cache 这一位,照它推导则新增变体天然被覆盖。
+    def cost_of(kv_cache: bool) -> float:
+        return 2.9 if kv_cache else 5.1
+
     print(f"\nshard {args.shard_idx}/{args.num_shards}:全局 {len(tasks)} 任务 → "
           f"本 shard {len(mine)} 任务")
     total_s = 0.0
-    for vname, *_ in VARIANTS:
+    for vname, _use_ours, _ref_iso, kv_cache, _bank in VARIANTS:
         n = sum(1 for t in mine if vname in t["variants"])
         if not n:
             continue
-        est = n * cost[vname]
+        c = cost_of(kv_cache)
+        est = n * c
         total_s += est
-        print(f"  {vname:<18}{n:>4} 张 × {cost[vname]:.1f}s ≈ {est / 60:.1f} min")
+        print(f"  {vname:<18}{n:>4} 张 × {c:.1f}s ≈ {est / 60:.1f} min")
     print(f"  纯 denoise 合计 ≈ {total_s / 60:.1f} min(+ 模型加载 ~7 min)")
     print("  若发现要跑几小时,说明哪里错了(LoRA 反复搬 / 没做变体外层循环)——停下上报。")
     from collections import Counter

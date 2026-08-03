@@ -266,3 +266,10 @@ log/ref_distill/
 /data/multibanana
 
 !output/noise_floor/results.json
+
+# M5 P-probe 产物(2026-08-03,§11.4):results.json + 拼图进 git,
+# 384 张全分辨率 PNG 留在 H800 供人工判读(与 eval_multiref 同理)。
+!/output/probe_iso/
+/output/probe_iso/*
+!/output/probe_iso/results.json
+!/output/probe_iso/boards/
