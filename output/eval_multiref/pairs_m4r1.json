@@ -1,0 +1,3380 @@
+{
+  "meta": {
+    "batch_id": "m4r1",
+    "blind_seed": "m4-blind-v1",
+    "question": "哪一张更好?(综合参考图忠实度与画面质量)",
+    "eval_set_version": "v1-232",
+    "source": "由 blind_rond1.json 迁移,仅供复算与重放取样,不用于新标注",
+    "n_pairs": 227,
+    "by_kind": {
+      "teacher_vs_student": 227
+    }
+  },
+  "pairs": [
+    {
+      "pair_id": "m4r1::tvs::S1_000_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a backpack and a stuffed animal in the jungle",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/00.jpg",
+        "datasets/dreambooth/dataset/bear_plushie/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_000_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_000_s0__official_full.png",
+      "src_task_id": "S1_000_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_000_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a backpack and a stuffed animal in the jungle",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/01.jpg",
+        "datasets/dreambooth/dataset/bear_plushie/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_000_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_000_s1__official_full.png",
+      "src_task_id": "S1_000_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_000_s2",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a backpack and a stuffed animal in the jungle",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/02.jpg",
+        "datasets/dreambooth/dataset/bear_plushie/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_000_s2__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_000_s2__official_full.png",
+      "src_task_id": "S1_000_s2"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_001_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a backpack and a bowl in the snow",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/00.jpg",
+        "datasets/dreambooth/dataset/berry_bowl/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_001_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_001_s0__official_full.png",
+      "src_task_id": "S1_001_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_001_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a backpack and a bowl in the snow",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/01.jpg",
+        "datasets/dreambooth/dataset/berry_bowl/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_001_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_001_s1__official_full.png",
+      "src_task_id": "S1_001_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_001_s2",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a backpack and a bowl in the snow",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/02.jpg",
+        "datasets/dreambooth/dataset/berry_bowl/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_001_s2__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_001_s2__official_full.png",
+      "src_task_id": "S1_001_s2"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_002_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a backpack and a can on the beach",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/00.jpg",
+        "datasets/dreambooth/dataset/can/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_002_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_002_s0__official_full.png",
+      "src_task_id": "S1_002_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_002_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a backpack and a can on the beach",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/01.jpg",
+        "datasets/dreambooth/dataset/can/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_002_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_002_s1__official_full.png",
+      "src_task_id": "S1_002_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_002_s2",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a backpack and a can on the beach",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/02.jpg",
+        "datasets/dreambooth/dataset/can/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_002_s2__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_002_s2__official_full.png",
+      "src_task_id": "S1_002_s2"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_003_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a backpack and a candle on a cobblestone street",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/00.jpg",
+        "datasets/dreambooth/dataset/candle/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_003_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_003_s0__official_full.png",
+      "src_task_id": "S1_003_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_003_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a backpack and a candle on a cobblestone street",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/01.jpg",
+        "datasets/dreambooth/dataset/candle/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_003_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_003_s1__official_full.png",
+      "src_task_id": "S1_003_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_003_s2",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a backpack and a candle on a cobblestone street",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/02.jpg",
+        "datasets/dreambooth/dataset/candle/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_003_s2__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_003_s2__official_full.png",
+      "src_task_id": "S1_003_s2"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_004_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a backpack and a clock on top of pink fabric",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/00.jpg",
+        "datasets/dreambooth/dataset/clock/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_004_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_004_s0__official_full.png",
+      "src_task_id": "S1_004_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_004_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a backpack and a clock on top of pink fabric",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/01.jpg",
+        "datasets/dreambooth/dataset/clock/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_004_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_004_s1__official_full.png",
+      "src_task_id": "S1_004_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_004_s2",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a backpack and a clock on top of pink fabric",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/02.jpg",
+        "datasets/dreambooth/dataset/clock/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_004_s2__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_004_s2__official_full.png",
+      "src_task_id": "S1_004_s2"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_005_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a backpack and a sneaker on top of a wooden floor",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/00.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_005_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_005_s0__official_full.png",
+      "src_task_id": "S1_005_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_005_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a backpack and a sneaker on top of a wooden floor",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/01.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_005_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_005_s1__official_full.png",
+      "src_task_id": "S1_005_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_005_s2",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a backpack and a sneaker on top of a wooden floor",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/02.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_005_s2__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_005_s2__official_full.png",
+      "src_task_id": "S1_005_s2"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_006_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a backpack and a toy with a city in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/00.jpg",
+        "datasets/dreambooth/dataset/duck_toy/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_006_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_006_s0__official_full.png",
+      "src_task_id": "S1_006_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_006_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a backpack and a toy with a city in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/01.jpg",
+        "datasets/dreambooth/dataset/duck_toy/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_006_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_006_s1__official_full.png",
+      "src_task_id": "S1_006_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_006_s2",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a backpack and a toy with a city in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/02.jpg",
+        "datasets/dreambooth/dataset/duck_toy/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_006_s2__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_006_s2__official_full.png",
+      "src_task_id": "S1_006_s2"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_007_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a backpack and a boot with a mountain in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/00.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_007_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_007_s0__official_full.png",
+      "src_task_id": "S1_007_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_007_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a backpack and a boot with a mountain in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/01.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_007_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_007_s1__official_full.png",
+      "src_task_id": "S1_007_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_007_s2",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a backpack and a boot with a mountain in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/02.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_007_s2__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_007_s2__official_full.png",
+      "src_task_id": "S1_007_s2"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_008_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a backpack and a stuffed animal with a blue house in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/00.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_008_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_008_s0__official_full.png",
+      "src_task_id": "S1_008_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_008_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a backpack and a stuffed animal with a blue house in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/01.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_008_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_008_s1__official_full.png",
+      "src_task_id": "S1_008_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_008_s2",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a backpack and a stuffed animal with a blue house in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/02.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_008_s2__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_008_s2__official_full.png",
+      "src_task_id": "S1_008_s2"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_009_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a bowl on top of a purple rug in a forest",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/00.jpg",
+        "datasets/dreambooth/dataset/berry_bowl/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_009_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_009_s0__official_full.png",
+      "src_task_id": "S1_009_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_009_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a bowl on top of a purple rug in a forest",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/01.jpg",
+        "datasets/dreambooth/dataset/berry_bowl/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_009_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_009_s1__official_full.png",
+      "src_task_id": "S1_009_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_009_s2",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a bowl on top of a purple rug in a forest",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/02.jpg",
+        "datasets/dreambooth/dataset/berry_bowl/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_009_s2__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_009_s2__official_full.png",
+      "src_task_id": "S1_009_s2"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_010_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a can with a wheat field in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/00.jpg",
+        "datasets/dreambooth/dataset/can/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_010_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_010_s0__official_full.png",
+      "src_task_id": "S1_010_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_010_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a can with a wheat field in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/01.jpg",
+        "datasets/dreambooth/dataset/can/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_010_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_010_s1__official_full.png",
+      "src_task_id": "S1_010_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_010_s2",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a can with a wheat field in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/02.jpg",
+        "datasets/dreambooth/dataset/can/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_010_s2__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_010_s2__official_full.png",
+      "src_task_id": "S1_010_s2"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_011_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a candle with a tree and autumn leaves in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/00.jpg",
+        "datasets/dreambooth/dataset/candle/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_011_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_011_s0__official_full.png",
+      "src_task_id": "S1_011_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_011_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a candle with a tree and autumn leaves in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/01.jpg",
+        "datasets/dreambooth/dataset/candle/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_011_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_011_s1__official_full.png",
+      "src_task_id": "S1_011_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_011_s2",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a candle with a tree and autumn leaves in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/02.jpg",
+        "datasets/dreambooth/dataset/candle/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_011_s2__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_011_s2__official_full.png",
+      "src_task_id": "S1_011_s2"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_012_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a clock with the Eiffel Tower in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/00.jpg",
+        "datasets/dreambooth/dataset/clock/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_012_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_012_s0__official_full.png",
+      "src_task_id": "S1_012_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_012_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a clock with the Eiffel Tower in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/01.jpg",
+        "datasets/dreambooth/dataset/clock/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_012_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_012_s1__official_full.png",
+      "src_task_id": "S1_012_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_012_s2",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a clock with the Eiffel Tower in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/02.jpg",
+        "datasets/dreambooth/dataset/clock/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_012_s2__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_012_s2__official_full.png",
+      "src_task_id": "S1_012_s2"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_013_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a sneaker floating on top of water",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/00.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_013_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_013_s0__official_full.png",
+      "src_task_id": "S1_013_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_013_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a sneaker floating on top of water",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/01.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_013_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_013_s1__official_full.png",
+      "src_task_id": "S1_013_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_013_s2",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a sneaker floating on top of water",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/02.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_013_s2__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_013_s2__official_full.png",
+      "src_task_id": "S1_013_s2"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_014_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a toy floating in an ocean of milk",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/00.jpg",
+        "datasets/dreambooth/dataset/duck_toy/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_014_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_014_s0__official_full.png",
+      "src_task_id": "S1_014_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_014_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a toy floating in an ocean of milk",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/01.jpg",
+        "datasets/dreambooth/dataset/duck_toy/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_014_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_014_s1__official_full.png",
+      "src_task_id": "S1_014_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_014_s2",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a toy floating in an ocean of milk",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/02.jpg",
+        "datasets/dreambooth/dataset/duck_toy/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_014_s2__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_014_s2__official_full.png",
+      "src_task_id": "S1_014_s2"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_015_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a boot on top of green grass with sunflowers around it",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/00.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_015_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_015_s0__official_full.png",
+      "src_task_id": "S1_015_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_015_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a boot on top of green grass with sunflowers around it",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/01.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_015_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_015_s1__official_full.png",
+      "src_task_id": "S1_015_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_015_s2",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a boot on top of green grass with sunflowers around it",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/02.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_015_s2__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_015_s2__official_full.png",
+      "src_task_id": "S1_015_s2"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_016_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a bowl and a can on top of a mirror",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/00.jpg",
+        "datasets/dreambooth/dataset/can/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_016_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_016_s0__official_full.png",
+      "src_task_id": "S1_016_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_016_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a bowl and a can on top of a mirror",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/01.jpg",
+        "datasets/dreambooth/dataset/can/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_016_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_016_s1__official_full.png",
+      "src_task_id": "S1_016_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_016_s2",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a bowl and a can on top of a mirror",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/02.jpg",
+        "datasets/dreambooth/dataset/can/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_016_s2__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_016_s2__official_full.png",
+      "src_task_id": "S1_016_s2"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_017_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a bowl and a candle on top of the sidewalk in a crowded street",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/00.jpg",
+        "datasets/dreambooth/dataset/candle/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_017_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_017_s0__official_full.png",
+      "src_task_id": "S1_017_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_017_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a bowl and a candle on top of the sidewalk in a crowded street",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/01.jpg",
+        "datasets/dreambooth/dataset/candle/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_017_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_017_s1__official_full.png",
+      "src_task_id": "S1_017_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_017_s2",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a bowl and a candle on top of the sidewalk in a crowded street",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/02.jpg",
+        "datasets/dreambooth/dataset/candle/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_017_s2__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_017_s2__official_full.png",
+      "src_task_id": "S1_017_s2"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_018_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a bowl and a clock on top of a dirt road",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/00.jpg",
+        "datasets/dreambooth/dataset/clock/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_018_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_018_s0__official_full.png",
+      "src_task_id": "S1_018_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_018_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a bowl and a clock on top of a dirt road",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/01.jpg",
+        "datasets/dreambooth/dataset/clock/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_018_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_018_s1__official_full.png",
+      "src_task_id": "S1_018_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_018_s2",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a bowl and a clock on top of a dirt road",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/02.jpg",
+        "datasets/dreambooth/dataset/clock/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_018_s2__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_018_s2__official_full.png",
+      "src_task_id": "S1_018_s2"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_019_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a bowl and a sneaker on top of a white rug",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/00.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_019_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_019_s0__official_full.png",
+      "src_task_id": "S1_019_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_019_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a bowl and a sneaker on top of a white rug",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/01.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_019_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_019_s1__official_full.png",
+      "src_task_id": "S1_019_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_019_s2",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a bowl and a sneaker on top of a white rug",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/02.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_019_s2__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_019_s2__official_full.png",
+      "src_task_id": "S1_019_s2"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_020_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a bowl and a toy in the jungle",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/00.jpg",
+        "datasets/dreambooth/dataset/duck_toy/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_020_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_020_s0__official_full.png",
+      "src_task_id": "S1_020_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_020_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a bowl and a toy in the jungle",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/01.jpg",
+        "datasets/dreambooth/dataset/duck_toy/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_020_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_020_s1__official_full.png",
+      "src_task_id": "S1_020_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_020_s2",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a bowl and a toy in the jungle",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/02.jpg",
+        "datasets/dreambooth/dataset/duck_toy/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_020_s2__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_020_s2__official_full.png",
+      "src_task_id": "S1_020_s2"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_021_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a bowl and a boot in the snow",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/00.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_021_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_021_s0__official_full.png",
+      "src_task_id": "S1_021_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_021_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a bowl and a boot in the snow",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/01.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_021_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_021_s1__official_full.png",
+      "src_task_id": "S1_021_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_021_s2",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a bowl and a boot in the snow",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/02.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_021_s2__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_021_s2__official_full.png",
+      "src_task_id": "S1_021_s2"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_022_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a bowl and a stuffed animal on the beach",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/00.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_022_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_022_s0__official_full.png",
+      "src_task_id": "S1_022_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_022_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a bowl and a stuffed animal on the beach",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/01.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_022_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_022_s1__official_full.png",
+      "src_task_id": "S1_022_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_022_s2",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a bowl and a stuffed animal on the beach",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/02.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_022_s2__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_022_s2__official_full.png",
+      "src_task_id": "S1_022_s2"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_023_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a can and a candle on a cobblestone street",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/00.jpg",
+        "datasets/dreambooth/dataset/candle/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_023_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_023_s0__official_full.png",
+      "src_task_id": "S1_023_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_023_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a can and a candle on a cobblestone street",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/01.jpg",
+        "datasets/dreambooth/dataset/candle/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_023_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_023_s1__official_full.png",
+      "src_task_id": "S1_023_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_023_s2",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a can and a candle on a cobblestone street",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/02.jpg",
+        "datasets/dreambooth/dataset/candle/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_023_s2__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_023_s2__official_full.png",
+      "src_task_id": "S1_023_s2"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_024_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a can and a clock on top of pink fabric",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/00.jpg",
+        "datasets/dreambooth/dataset/clock/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_024_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_024_s0__official_full.png",
+      "src_task_id": "S1_024_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_024_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a can and a clock on top of pink fabric",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/01.jpg",
+        "datasets/dreambooth/dataset/clock/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_024_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_024_s1__official_full.png",
+      "src_task_id": "S1_024_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_024_s2",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a can and a clock on top of pink fabric",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/02.jpg",
+        "datasets/dreambooth/dataset/clock/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_024_s2__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_024_s2__official_full.png",
+      "src_task_id": "S1_024_s2"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_025_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a can and a sneaker on top of a wooden floor",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/00.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_025_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_025_s0__official_full.png",
+      "src_task_id": "S1_025_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_025_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a can and a sneaker on top of a wooden floor",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/01.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_025_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_025_s1__official_full.png",
+      "src_task_id": "S1_025_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_025_s2",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a can and a sneaker on top of a wooden floor",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/02.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_025_s2__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_025_s2__official_full.png",
+      "src_task_id": "S1_025_s2"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_026_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a can and a toy with a city in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/00.jpg",
+        "datasets/dreambooth/dataset/duck_toy/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_026_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_026_s0__official_full.png",
+      "src_task_id": "S1_026_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_026_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a can and a toy with a city in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/01.jpg",
+        "datasets/dreambooth/dataset/duck_toy/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_026_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_026_s1__official_full.png",
+      "src_task_id": "S1_026_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_026_s2",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a can and a toy with a city in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/02.jpg",
+        "datasets/dreambooth/dataset/duck_toy/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_026_s2__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_026_s2__official_full.png",
+      "src_task_id": "S1_026_s2"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_027_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a can and a boot with a mountain in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/00.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_027_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_027_s0__official_full.png",
+      "src_task_id": "S1_027_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_027_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a can and a boot with a mountain in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/01.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_027_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_027_s1__official_full.png",
+      "src_task_id": "S1_027_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_027_s2",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a can and a boot with a mountain in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/02.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_027_s2__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_027_s2__official_full.png",
+      "src_task_id": "S1_027_s2"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_028_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a can and a stuffed animal with a blue house in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/00.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_028_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_028_s0__official_full.png",
+      "src_task_id": "S1_028_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_028_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a can and a stuffed animal with a blue house in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/01.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_028_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_028_s1__official_full.png",
+      "src_task_id": "S1_028_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_028_s2",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a can and a stuffed animal with a blue house in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/02.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_028_s2__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_028_s2__official_full.png",
+      "src_task_id": "S1_028_s2"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_029_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a candle and a clock on top of a purple rug in a forest",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/candle/00.jpg",
+        "datasets/dreambooth/dataset/clock/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_029_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_029_s0__official_full.png",
+      "src_task_id": "S1_029_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_029_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a candle and a clock on top of a purple rug in a forest",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/candle/01.jpg",
+        "datasets/dreambooth/dataset/clock/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_029_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_029_s1__official_full.png",
+      "src_task_id": "S1_029_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_029_s2",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a candle and a clock on top of a purple rug in a forest",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/candle/02.jpg",
+        "datasets/dreambooth/dataset/clock/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_029_s2__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_029_s2__official_full.png",
+      "src_task_id": "S1_029_s2"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_030_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a candle and a sneaker with a wheat field in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/candle/00.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_030_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_030_s0__official_full.png",
+      "src_task_id": "S1_030_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_030_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a candle and a sneaker with a wheat field in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/candle/01.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_030_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_030_s1__official_full.png",
+      "src_task_id": "S1_030_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_030_s2",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a candle and a sneaker with a wheat field in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/candle/02.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_030_s2__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_030_s2__official_full.png",
+      "src_task_id": "S1_030_s2"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_031_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a candle and a toy with a tree and autumn leaves in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/candle/00.jpg",
+        "datasets/dreambooth/dataset/duck_toy/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_031_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_031_s0__official_full.png",
+      "src_task_id": "S1_031_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_031_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a candle and a toy with a tree and autumn leaves in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/candle/01.jpg",
+        "datasets/dreambooth/dataset/duck_toy/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_031_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_031_s1__official_full.png",
+      "src_task_id": "S1_031_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_031_s2",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a candle and a toy with a tree and autumn leaves in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/candle/02.jpg",
+        "datasets/dreambooth/dataset/duck_toy/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_031_s2__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_031_s2__official_full.png",
+      "src_task_id": "S1_031_s2"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_032_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a candle and a boot with the Eiffel Tower in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/candle/00.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_032_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_032_s0__official_full.png",
+      "src_task_id": "S1_032_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_032_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a candle and a boot with the Eiffel Tower in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/candle/01.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_032_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_032_s1__official_full.png",
+      "src_task_id": "S1_032_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_032_s2",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a candle and a boot with the Eiffel Tower in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/candle/02.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_032_s2__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_032_s2__official_full.png",
+      "src_task_id": "S1_032_s2"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_033_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a candle and a stuffed animal floating on top of water",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/candle/00.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_033_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_033_s0__official_full.png",
+      "src_task_id": "S1_033_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_033_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a candle and a stuffed animal floating on top of water",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/candle/01.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_033_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_033_s1__official_full.png",
+      "src_task_id": "S1_033_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_033_s2",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a candle and a stuffed animal floating on top of water",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/candle/02.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_033_s2__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_033_s2__official_full.png",
+      "src_task_id": "S1_033_s2"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_034_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a clock and a sneaker floating in an ocean of milk",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/clock/00.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_034_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_034_s0__official_full.png",
+      "src_task_id": "S1_034_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_034_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a clock and a sneaker floating in an ocean of milk",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/clock/01.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_034_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_034_s1__official_full.png",
+      "src_task_id": "S1_034_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_034_s2",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a clock and a sneaker floating in an ocean of milk",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/clock/02.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_034_s2__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_034_s2__official_full.png",
+      "src_task_id": "S1_034_s2"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_035_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a clock and a toy on top of green grass with sunflowers around it",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/clock/00.jpg",
+        "datasets/dreambooth/dataset/duck_toy/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_035_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_035_s0__official_full.png",
+      "src_task_id": "S1_035_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_035_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a clock and a toy on top of green grass with sunflowers around it",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/clock/01.jpg",
+        "datasets/dreambooth/dataset/duck_toy/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_035_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_035_s1__official_full.png",
+      "src_task_id": "S1_035_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_035_s2",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a clock and a toy on top of green grass with sunflowers around it",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/clock/02.jpg",
+        "datasets/dreambooth/dataset/duck_toy/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_035_s2__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_035_s2__official_full.png",
+      "src_task_id": "S1_035_s2"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_036_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a clock and a boot on top of a mirror",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/clock/00.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_036_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_036_s0__official_full.png",
+      "src_task_id": "S1_036_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_036_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a clock and a boot on top of a mirror",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/clock/01.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_036_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_036_s1__official_full.png",
+      "src_task_id": "S1_036_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_036_s2",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a clock and a boot on top of a mirror",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/clock/02.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_036_s2__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_036_s2__official_full.png",
+      "src_task_id": "S1_036_s2"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_037_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a clock and a stuffed animal on top of the sidewalk in a crowded street",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/clock/00.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_037_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_037_s0__official_full.png",
+      "src_task_id": "S1_037_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_037_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a clock and a stuffed animal on top of the sidewalk in a crowded street",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/clock/01.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_037_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_037_s1__official_full.png",
+      "src_task_id": "S1_037_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_037_s2",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a clock and a stuffed animal on top of the sidewalk in a crowded street",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/clock/02.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_037_s2__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_037_s2__official_full.png",
+      "src_task_id": "S1_037_s2"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_038_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a sneaker and a toy on top of a dirt road",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/colorful_sneaker/00.jpg",
+        "datasets/dreambooth/dataset/duck_toy/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_038_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_038_s0__official_full.png",
+      "src_task_id": "S1_038_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_038_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a sneaker and a toy on top of a dirt road",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/colorful_sneaker/01.jpg",
+        "datasets/dreambooth/dataset/duck_toy/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_038_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_038_s1__official_full.png",
+      "src_task_id": "S1_038_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_038_s2",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a sneaker and a toy on top of a dirt road",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/colorful_sneaker/02.jpg",
+        "datasets/dreambooth/dataset/duck_toy/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_038_s2__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_038_s2__official_full.png",
+      "src_task_id": "S1_038_s2"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_039_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a sneaker and a boot on top of a white rug",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/colorful_sneaker/00.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_039_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_039_s0__official_full.png",
+      "src_task_id": "S1_039_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_039_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a sneaker and a boot on top of a white rug",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/colorful_sneaker/01.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_039_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_039_s1__official_full.png",
+      "src_task_id": "S1_039_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_039_s2",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a sneaker and a boot on top of a white rug",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/colorful_sneaker/02.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_039_s2__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_039_s2__official_full.png",
+      "src_task_id": "S1_039_s2"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_040_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a sneaker and a stuffed animal in the jungle",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/colorful_sneaker/00.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_040_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_040_s0__official_full.png",
+      "src_task_id": "S1_040_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_040_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a sneaker and a stuffed animal in the jungle",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/colorful_sneaker/01.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_040_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_040_s1__official_full.png",
+      "src_task_id": "S1_040_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_040_s2",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a sneaker and a stuffed animal in the jungle",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/colorful_sneaker/02.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_040_s2__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_040_s2__official_full.png",
+      "src_task_id": "S1_040_s2"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_041_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a toy and a boot in the snow",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/duck_toy/00.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_041_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_041_s0__official_full.png",
+      "src_task_id": "S1_041_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_041_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a toy and a boot in the snow",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/duck_toy/01.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_041_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_041_s1__official_full.png",
+      "src_task_id": "S1_041_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_041_s2",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a toy and a boot in the snow",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/duck_toy/02.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_041_s2__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_041_s2__official_full.png",
+      "src_task_id": "S1_041_s2"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_042_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a toy and a stuffed animal on the beach",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/duck_toy/00.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_042_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_042_s0__official_full.png",
+      "src_task_id": "S1_042_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_042_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a toy and a stuffed animal on the beach",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/duck_toy/01.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_042_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_042_s1__official_full.png",
+      "src_task_id": "S1_042_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_042_s2",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a toy and a stuffed animal on the beach",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/duck_toy/02.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_042_s2__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_042_s2__official_full.png",
+      "src_task_id": "S1_042_s2"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_043_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a boot and a stuffed animal on a cobblestone street",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/fancy_boot/00.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_043_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_043_s0__official_full.png",
+      "src_task_id": "S1_043_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_043_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a boot and a stuffed animal on a cobblestone street",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/fancy_boot/01.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_043_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_043_s1__official_full.png",
+      "src_task_id": "S1_043_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S1_043_s2",
+      "kind": "teacher_vs_student",
+      "stratum": "S1",
+      "prompt": "a boot and a stuffed animal on a cobblestone street",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/fancy_boot/02.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S1_043_s2__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S1_043_s2__official_full.png",
+      "src_task_id": "S1_043_s2"
+    },
+    {
+      "pair_id": "m4r1::tvs::S2_000_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal in the jungle",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/00.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S2_000_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S2_000_s0__official_full.png",
+      "src_task_id": "S2_000_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S2_000_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal in the jungle",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/01.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S2_000_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S2_000_s1__official_full.png",
+      "src_task_id": "S2_000_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S2_000_s2",
+      "kind": "teacher_vs_student",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal in the jungle",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/02.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S2_000_s2__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S2_000_s2__official_full.png",
+      "src_task_id": "S2_000_s2"
+    },
+    {
+      "pair_id": "m4r1::tvs::S2_001_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal in the snow",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/00.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S2_001_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S2_001_s0__official_full.png",
+      "src_task_id": "S2_001_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S2_001_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal in the snow",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/01.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S2_001_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S2_001_s1__official_full.png",
+      "src_task_id": "S2_001_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S2_001_s2",
+      "kind": "teacher_vs_student",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal in the snow",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/02.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S2_001_s2__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S2_001_s2__official_full.png",
+      "src_task_id": "S2_001_s2"
+    },
+    {
+      "pair_id": "m4r1::tvs::S2_002_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal on the beach",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/00.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S2_002_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S2_002_s0__official_full.png",
+      "src_task_id": "S2_002_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S2_002_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal on the beach",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/01.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S2_002_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S2_002_s1__official_full.png",
+      "src_task_id": "S2_002_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S2_002_s2",
+      "kind": "teacher_vs_student",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal on the beach",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/02.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S2_002_s2__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S2_002_s2__official_full.png",
+      "src_task_id": "S2_002_s2"
+    },
+    {
+      "pair_id": "m4r1::tvs::S2_003_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal on a cobblestone street",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/00.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S2_003_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S2_003_s0__official_full.png",
+      "src_task_id": "S2_003_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S2_003_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal on a cobblestone street",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/01.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S2_003_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S2_003_s1__official_full.png",
+      "src_task_id": "S2_003_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S2_003_s2",
+      "kind": "teacher_vs_student",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal on a cobblestone street",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/02.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S2_003_s2__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S2_003_s2__official_full.png",
+      "src_task_id": "S2_003_s2"
+    },
+    {
+      "pair_id": "m4r1::tvs::S2_004_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal on top of pink fabric",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/00.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S2_004_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S2_004_s0__official_full.png",
+      "src_task_id": "S2_004_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S2_004_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal on top of pink fabric",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/01.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S2_004_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S2_004_s1__official_full.png",
+      "src_task_id": "S2_004_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S2_004_s2",
+      "kind": "teacher_vs_student",
+      "stratum": "S2",
+      "prompt": "a stuffed animal and a stuffed animal on top of pink fabric",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/02.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S2_004_s2__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S2_004_s2__official_full.png",
+      "src_task_id": "S2_004_s2"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_000_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a backpack in the jungle",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/00.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_000_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_000_s0__official_full.png",
+      "src_task_id": "S3_000_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_000_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a backpack in the jungle",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_000_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_000_s1__official_full.png",
+      "src_task_id": "S3_000_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_001_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a backpack in the snow",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_001_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_001_s0__official_full.png",
+      "src_task_id": "S3_001_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_001_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a backpack in the snow",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_001_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_001_s1__official_full.png",
+      "src_task_id": "S3_001_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_002_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a backpack on the beach",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/04.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_002_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_002_s0__official_full.png",
+      "src_task_id": "S3_002_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_002_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a backpack on the beach",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/00.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_002_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_002_s1__official_full.png",
+      "src_task_id": "S3_002_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_003_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a stuffed animal on a cobblestone street",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/00.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_003_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_003_s0__official_full.png",
+      "src_task_id": "S3_003_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_003_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a stuffed animal on a cobblestone street",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_003_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_003_s1__official_full.png",
+      "src_task_id": "S3_003_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_004_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a stuffed animal on top of pink fabric",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_004_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_004_s0__official_full.png",
+      "src_task_id": "S3_004_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_004_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a stuffed animal on top of pink fabric",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_004_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_004_s1__official_full.png",
+      "src_task_id": "S3_004_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_005_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a stuffed animal on top of a wooden floor",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/04.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_005_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_005_s0__official_full.png",
+      "src_task_id": "S3_005_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_005_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a stuffed animal on top of a wooden floor",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/00.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_005_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_005_s1__official_full.png",
+      "src_task_id": "S3_005_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_006_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a bowl with a city in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/00.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_006_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_006_s0__official_full.png",
+      "src_task_id": "S3_006_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_006_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a bowl with a city in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_006_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_006_s1__official_full.png",
+      "src_task_id": "S3_006_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_007_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a bowl with a mountain in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_007_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_007_s0__official_full.png",
+      "src_task_id": "S3_007_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_007_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a bowl with a mountain in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_007_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_007_s1__official_full.png",
+      "src_task_id": "S3_007_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_008_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a bowl with a blue house in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/04.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_008_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_008_s0__official_full.png",
+      "src_task_id": "S3_008_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_008_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a bowl with a blue house in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/05.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_008_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_008_s1__official_full.png",
+      "src_task_id": "S3_008_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_009_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a can on top of a purple rug in a forest",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/00.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_009_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_009_s0__official_full.png",
+      "src_task_id": "S3_009_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_009_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a can on top of a purple rug in a forest",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_009_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_009_s1__official_full.png",
+      "src_task_id": "S3_009_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_010_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a can with a wheat field in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_010_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_010_s0__official_full.png",
+      "src_task_id": "S3_010_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_010_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a can with a wheat field in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_010_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_010_s1__official_full.png",
+      "src_task_id": "S3_010_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_011_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a can with a tree and autumn leaves in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/04.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_011_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_011_s0__official_full.png",
+      "src_task_id": "S3_011_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_011_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a can with a tree and autumn leaves in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/05.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_011_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_011_s1__official_full.png",
+      "src_task_id": "S3_011_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_012_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a candle with the Eiffel Tower in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/candle/00.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_012_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_012_s0__official_full.png",
+      "src_task_id": "S3_012_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_012_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a candle with the Eiffel Tower in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/candle/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_012_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_012_s1__official_full.png",
+      "src_task_id": "S3_012_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_013_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a candle floating on top of water",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/candle/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_013_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_013_s0__official_full.png",
+      "src_task_id": "S3_013_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_013_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a candle floating on top of water",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/candle/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_013_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_013_s1__official_full.png",
+      "src_task_id": "S3_013_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_014_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a candle floating in an ocean of milk",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/candle/04.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_014_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_014_s0__official_full.png",
+      "src_task_id": "S3_014_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_014_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a candle floating in an ocean of milk",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/candle/00.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_014_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_014_s1__official_full.png",
+      "src_task_id": "S3_014_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_015_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a clock on top of green grass with sunflowers around it",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/clock/00.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_015_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_015_s0__official_full.png",
+      "src_task_id": "S3_015_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_015_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a clock on top of green grass with sunflowers around it",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/clock/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_015_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_015_s1__official_full.png",
+      "src_task_id": "S3_015_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_016_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a clock on top of a mirror",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/clock/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_016_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_016_s0__official_full.png",
+      "src_task_id": "S3_016_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_016_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a clock on top of a mirror",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/clock/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_016_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_016_s1__official_full.png",
+      "src_task_id": "S3_016_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_017_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a clock on top of the sidewalk in a crowded street",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/clock/04.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_017_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_017_s0__official_full.png",
+      "src_task_id": "S3_017_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_017_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a clock on top of the sidewalk in a crowded street",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/clock/05.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_017_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_017_s1__official_full.png",
+      "src_task_id": "S3_017_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_018_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a sneaker on top of a dirt road",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/colorful_sneaker/00.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_018_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_018_s0__official_full.png",
+      "src_task_id": "S3_018_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_018_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a sneaker on top of a dirt road",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/colorful_sneaker/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_018_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_018_s1__official_full.png",
+      "src_task_id": "S3_018_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_019_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a sneaker on top of a white rug",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/colorful_sneaker/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_019_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_019_s0__official_full.png",
+      "src_task_id": "S3_019_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_019_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a sneaker on top of a white rug",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/colorful_sneaker/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_019_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_019_s1__official_full.png",
+      "src_task_id": "S3_019_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_020_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a sneaker in the jungle",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/colorful_sneaker/04.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_020_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_020_s0__official_full.png",
+      "src_task_id": "S3_020_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_020_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a sneaker in the jungle",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/colorful_sneaker/00.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_020_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_020_s1__official_full.png",
+      "src_task_id": "S3_020_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_021_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a toy in the snow",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/duck_toy/00.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_021_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_021_s0__official_full.png",
+      "src_task_id": "S3_021_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_021_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a toy in the snow",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/duck_toy/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_021_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_021_s1__official_full.png",
+      "src_task_id": "S3_021_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_022_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a toy on the beach",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/duck_toy/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_022_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_022_s0__official_full.png",
+      "src_task_id": "S3_022_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_022_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a toy on the beach",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/duck_toy/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_022_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_022_s1__official_full.png",
+      "src_task_id": "S3_022_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_023_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a toy on a cobblestone street",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/duck_toy/00.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_023_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_023_s0__official_full.png",
+      "src_task_id": "S3_023_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_023_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a toy on a cobblestone street",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/duck_toy/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_023_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_023_s1__official_full.png",
+      "src_task_id": "S3_023_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_024_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a boot on top of pink fabric",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/fancy_boot/00.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_024_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_024_s0__official_full.png",
+      "src_task_id": "S3_024_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_024_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a boot on top of pink fabric",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/fancy_boot/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_024_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_024_s1__official_full.png",
+      "src_task_id": "S3_024_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_025_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a boot on top of a wooden floor",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/fancy_boot/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_025_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_025_s0__official_full.png",
+      "src_task_id": "S3_025_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_025_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a boot on top of a wooden floor",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/fancy_boot/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_025_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_025_s1__official_full.png",
+      "src_task_id": "S3_025_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_026_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a boot with a city in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/fancy_boot/04.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_026_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_026_s0__official_full.png",
+      "src_task_id": "S3_026_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_026_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a boot with a city in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/fancy_boot/05.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_026_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_026_s1__official_full.png",
+      "src_task_id": "S3_026_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_027_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a stuffed animal with a mountain in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/grey_sloth_plushie/00.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_027_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_027_s0__official_full.png",
+      "src_task_id": "S3_027_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_027_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a stuffed animal with a mountain in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/grey_sloth_plushie/01.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_027_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_027_s1__official_full.png",
+      "src_task_id": "S3_027_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_028_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a stuffed animal with a blue house in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/grey_sloth_plushie/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_028_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_028_s0__official_full.png",
+      "src_task_id": "S3_028_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_028_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a stuffed animal with a blue house in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/grey_sloth_plushie/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_028_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_028_s1__official_full.png",
+      "src_task_id": "S3_028_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_029_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a stuffed animal on top of a purple rug in a forest",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/grey_sloth_plushie/04.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_029_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_029_s0__official_full.png",
+      "src_task_id": "S3_029_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S3_029_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S3",
+      "prompt": "a stuffed animal on top of a purple rug in a forest",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/grey_sloth_plushie/00.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S3_029_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S3_029_s1__official_full.png",
+      "src_task_id": "S3_029_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S4_000_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S4",
+      "prompt": "a backpack, a stuffed animal and a bowl in the jungle",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/00.jpg",
+        "datasets/dreambooth/dataset/bear_plushie/01.jpg",
+        "datasets/dreambooth/dataset/berry_bowl/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S4_000_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S4_000_s0__official_full.png",
+      "src_task_id": "S4_000_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S4_000_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S4",
+      "prompt": "a backpack, a stuffed animal and a bowl in the jungle",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/01.jpg",
+        "datasets/dreambooth/dataset/bear_plushie/02.jpg",
+        "datasets/dreambooth/dataset/berry_bowl/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S4_000_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S4_000_s1__official_full.png",
+      "src_task_id": "S4_000_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S4_001_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S4",
+      "prompt": "a can, a candle and a clock in the snow",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/00.jpg",
+        "datasets/dreambooth/dataset/candle/01.jpg",
+        "datasets/dreambooth/dataset/clock/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S4_001_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S4_001_s0__official_full.png",
+      "src_task_id": "S4_001_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S4_001_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S4",
+      "prompt": "a can, a candle and a clock in the snow",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/01.jpg",
+        "datasets/dreambooth/dataset/candle/02.jpg",
+        "datasets/dreambooth/dataset/clock/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S4_001_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S4_001_s1__official_full.png",
+      "src_task_id": "S4_001_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S4_002_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S4",
+      "prompt": "a sneaker, a toy and a boot on the beach",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/colorful_sneaker/00.jpg",
+        "datasets/dreambooth/dataset/duck_toy/01.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S4_002_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S4_002_s0__official_full.png",
+      "src_task_id": "S4_002_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S4_002_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S4",
+      "prompt": "a sneaker, a toy and a boot on the beach",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/colorful_sneaker/01.jpg",
+        "datasets/dreambooth/dataset/duck_toy/02.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S4_002_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S4_002_s1__official_full.png",
+      "src_task_id": "S4_002_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S4_003_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S4",
+      "prompt": "a backpack, a bowl and a stuffed animal on a cobblestone street",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/00.jpg",
+        "datasets/dreambooth/dataset/berry_bowl/01.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S4_003_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S4_003_s0__official_full.png",
+      "src_task_id": "S4_003_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S4_003_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S4",
+      "prompt": "a backpack, a bowl and a stuffed animal on a cobblestone street",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/01.jpg",
+        "datasets/dreambooth/dataset/berry_bowl/02.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S4_003_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S4_003_s1__official_full.png",
+      "src_task_id": "S4_003_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S4_004_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S4",
+      "prompt": "a stuffed animal, a can and a candle on top of pink fabric",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/00.jpg",
+        "datasets/dreambooth/dataset/can/01.jpg",
+        "datasets/dreambooth/dataset/candle/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S4_004_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S4_004_s0__official_full.png",
+      "src_task_id": "S4_004_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S4_004_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S4",
+      "prompt": "a stuffed animal, a can and a candle on top of pink fabric",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/01.jpg",
+        "datasets/dreambooth/dataset/can/02.jpg",
+        "datasets/dreambooth/dataset/candle/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S4_004_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S4_004_s1__official_full.png",
+      "src_task_id": "S4_004_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S4_005_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S4",
+      "prompt": "a clock, a sneaker and a toy on top of a wooden floor",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/clock/00.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/01.jpg",
+        "datasets/dreambooth/dataset/duck_toy/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S4_005_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S4_005_s0__official_full.png",
+      "src_task_id": "S4_005_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S4_005_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S4",
+      "prompt": "a clock, a sneaker and a toy on top of a wooden floor",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/clock/01.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/02.jpg",
+        "datasets/dreambooth/dataset/duck_toy/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S4_005_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S4_005_s1__official_full.png",
+      "src_task_id": "S4_005_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S4_006_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S4",
+      "prompt": "a backpack, a boot and a stuffed animal with a city in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/00.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/01.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S4_006_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S4_006_s0__official_full.png",
+      "src_task_id": "S4_006_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S4_006_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S4",
+      "prompt": "a backpack, a boot and a stuffed animal with a city in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/01.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/02.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S4_006_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S4_006_s1__official_full.png",
+      "src_task_id": "S4_006_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S4_007_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S4",
+      "prompt": "a stuffed animal, a bowl and a can with a mountain in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/00.jpg",
+        "datasets/dreambooth/dataset/berry_bowl/01.jpg",
+        "datasets/dreambooth/dataset/can/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S4_007_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S4_007_s0__official_full.png",
+      "src_task_id": "S4_007_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S4_007_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S4",
+      "prompt": "a stuffed animal, a bowl and a can with a mountain in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/01.jpg",
+        "datasets/dreambooth/dataset/berry_bowl/02.jpg",
+        "datasets/dreambooth/dataset/can/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S4_007_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S4_007_s1__official_full.png",
+      "src_task_id": "S4_007_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S4_008_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S4",
+      "prompt": "a candle, a clock and a sneaker with a blue house in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/candle/00.jpg",
+        "datasets/dreambooth/dataset/clock/01.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S4_008_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S4_008_s0__official_full.png",
+      "src_task_id": "S4_008_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S4_008_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S4",
+      "prompt": "a candle, a clock and a sneaker with a blue house in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/candle/01.jpg",
+        "datasets/dreambooth/dataset/clock/02.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S4_008_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S4_008_s1__official_full.png",
+      "src_task_id": "S4_008_s1"
+    },
+    {
+      "pair_id": "m4r1::tvs::S4_009_s0",
+      "kind": "teacher_vs_student",
+      "stratum": "S4",
+      "prompt": "a toy, a boot and a stuffed animal on top of a purple rug in a forest",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/duck_toy/00.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/01.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/02.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S4_009_s0__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S4_009_s0__official_full.png",
+      "src_task_id": "S4_009_s0"
+    },
+    {
+      "pair_id": "m4r1::tvs::S4_009_s1",
+      "kind": "teacher_vs_student",
+      "stratum": "S4",
+      "prompt": "a toy, a boot and a stuffed animal on top of a purple rug in a forest",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/duck_toy/01.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/02.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/03.jpg"
+      ],
+      "key_0": "ours_kv_post4000",
+      "img_0": "output/eval_multiref/S4_009_s1__ours_kv_post4000.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_multiref/S4_009_s1__official_full.png",
+      "src_task_id": "S4_009_s1"
+    }
+  ]
+}

@@ -1,16 +1,21 @@
-/* M4 盲评前端:一屏一条,左 A 右 B,三选一(A更好/一样好/B更好)。
- * v2:回顾模式——揭盲后逐条回看身份(teacher/student)、自己的标注与判定,可按结果过滤。
- * 盲法纪律:盲评阶段只调 /api/tasks(无身份信息);/api/review 只在用户显式开启
- * 回顾模式时才调用,调用即视为揭盲。 */
+/* 盲评前端:一屏一对,左/右三选一(左更好 / 一样好 / 右更好)。
+ *
+ * v2(§11 步骤 0):后端改成配对清单驱动,前端随之改三处——
+ *   ① 槽位从 A/B 改名 L/R(与后端 `CHOICES` 一致);
+ *   ② 揭盲结果按 kind 分组呈现,主指标是非平局胜率 + Wilson CI,不再是单一 score;
+ *   ③ 回顾模式显示两侧的语义标签(可能是 post/pre、teacher 的两次跑,等等),
+ *      不再假设"一边是 teacher 一边是 student"。
+ *
+ * 盲法纪律:盲评阶段只调 /api/tasks(其返回**不含** pair_id / kind / 语义标签);
+ * /api/review 只在用户显式开启回顾模式时才调用,调用即视为揭盲。 */
 "use strict";
 
 let tasks = [];
 let cur = 0;
 // ---- 回顾模式状态(只存内存,刷新即回到盲评模式) ----
 let reviewMode = false;
-let reviewMap = {};        // idx -> {task_id, stratum, choice, student_on, winner}
-let variantName = {};      // {teacher: "official_full", student: "ours_kv_post4000"}
-let filter = "all";        // all / teacher / student / tie / unmarked
+let reviewMap = {};        // idx -> review row
+let filter = "all";        // all / key0 / key1 / tie / unmarked
 
 const $ = (id) => document.getElementById(id);
 
@@ -27,6 +32,7 @@ function imgUrl(kind, idx, sub) {
 async function loadTasks() {
   const data = await api("/api/tasks");
   tasks = data.tasks;
+  if (data.question) $("task-question").textContent = data.question;
   updateProgress(data.n_annotated, data.n_total);
 }
 
@@ -36,13 +42,7 @@ function updateProgress(done, total) {
 }
 
 function choiceText(c) {
-  return { A: "A 更好", B: "B 更好", tie: "一样好" }[c] || c;
-}
-
-function shortName(v) {  // official_full → teacher,ours_kv_post4000 → student
-  if (v === variantName.teacher) return "teacher";
-  if (v === variantName.student) return "student";
-  return v;
+  return { L: "左更好", R: "右更好", tie: "一样好" }[c] || c;
 }
 
 // ---- 过滤器:返回当前过滤条件下的 idx 列表(盲评模式恒为全部) ----
@@ -53,8 +53,8 @@ function filteredIndices() {
     if (!r) return filter === "unmarked";
     if (filter === "unmarked") return r.choice === null;
     if (filter === "tie") return r.winner === "tie";
-    if (filter === "teacher") return r.winner === variantName.teacher;
-    if (filter === "student") return r.winner === variantName.student;
+    if (filter === "key0") return r.winner === r.focus_key;
+    if (filter === "key1") return r.winner === r.baseline_key;
     return true;
   }).map((t) => t.idx);
 }
@@ -66,7 +66,7 @@ function render() {
 
   $("task-label").textContent = `#${cur + 1} / ${tasks.length}  [${t.stratum}]` +
     (t.annotated ? `  已评:${choiceText(t.choice)}` : "  未评") +
-    (reviewMode && r ? `  (${r.task_id})` : "");
+    (reviewMode && r ? `  (${r.kind} · ${r.src_task_id})` : "");
   $("task-prompt").textContent = `"${t.prompt}"`;
 
   // ---- 判定行(仅回顾模式) ----
@@ -80,21 +80,19 @@ function render() {
       vd.textContent = `你的标注:${choiceText(r.choice)} → 平局`;
       vd.className = "verdict-tie";
     } else {
-      vd.textContent = `你的标注:${choiceText(r.choice)} → ${shortName(r.winner)} 胜`;
-      vd.className = r.winner === variantName.student ? "verdict-student" : "verdict-teacher";
+      vd.textContent = `你的标注:${choiceText(r.choice)} → ${r.winner} 胜`;
+      vd.className = r.winner === r.focus_key ? "verdict-student" : "verdict-teacher";
     }
   } else {
     vd.classList.add("hidden");
   }
 
-  // ---- 身份徽标(仅回顾模式) ----
-  for (const slot of ["a", "b"]) {
+  // ---- 身份徽标(仅回顾模式):直接显示语义标签 ----
+  for (const [slot, key] of [["a", "left_key"], ["b", "right_key"]]) {
     const badge = $(`badge-${slot}`);
     if (reviewMode && r) {
-      const slotUpper = slot.toUpperCase();
-      const identity = r.student_on === slotUpper ? "student" : "teacher";
-      badge.textContent = identity;
-      badge.className = `badge badge-${identity}`;
+      badge.textContent = r[key];
+      badge.className = `badge ${r[key] === r.focus_key ? "badge-student" : "badge-teacher"}`;
     } else {
       badge.className = "badge hidden";
     }
@@ -109,8 +107,8 @@ function render() {
     refs.appendChild(img);
   }
 
-  $("img-a").src = imgUrl("cand", cur, "A");
-  $("img-b").src = imgUrl("cand", cur, "B");
+  $("img-a").src = imgUrl("cand", cur, "L");
+  $("img-b").src = imgUrl("cand", cur, "R");
 
   document.querySelectorAll(".choice").forEach((b) => {
     b.classList.toggle("active", t.annotated && t.choice === b.dataset.choice);
@@ -129,8 +127,7 @@ function move(delta) {
   const pool = filteredIndices();
   if (!pool.length) { $("status").textContent = "当前过滤条件下没有条目。"; return; }
   const pos = pool.indexOf(cur);
-  const next = pos < 0 ? pool[0] : pool[(pos + delta + pool.length) % pool.length];
-  cur = next;
+  cur = pos < 0 ? pool[0] : pool[(pos + delta + pool.length) % pool.length];
   render();
 }
 
@@ -150,7 +147,7 @@ async function mark(choice) {
       const row = reviewMap[cur];
       row.choice = choice;
       row.winner = choice === "tie" ? "tie"
-        : (choice === row.student_on ? variantName.student : variantName.teacher);
+        : (choice === "L" ? row.left_key : row.right_key);
       render();  // 原地刷新判定行,不跳走
     } else {
       const nxt = nextUnmarked(cur);
@@ -166,6 +163,21 @@ async function mark(choice) {
   }
 }
 
+const pct = (x) => (x === null || x === undefined ? "—" : `${(100 * x).toFixed(1)}%`);
+const ci = (w) => (w ? `[${w[0].toFixed(3)}, ${w[1].toFixed(3)}]` : "—");
+const num = (x, d = 3) => (x === null || x === undefined ? "—" : x.toFixed(d));
+
+function statsTable(groups) {
+  let html = "<table><tr><th>分组</th><th>n</th><th>win0</th><th>win1</th><th>平局</th>" +
+    "<th>平局率</th><th>非平局胜率</th><th>Wilson 95% CI</th><th>旧口径</th></tr>";
+  for (const [name, t] of Object.entries(groups)) {
+    html += `<tr><td>${name}</td><td>${t.n}</td><td>${t.win_0}</td><td>${t.win_1}</td>` +
+      `<td>${t.tie}</td><td>${pct(t.tie_rate)}</td><td>${pct(t.nontie_win_rate)}</td>` +
+      `<td>${ci(t.wilson95)}</td><td>${num(t.legacy_score)}</td></tr>`;
+  }
+  return html + "</table>";
+}
+
 async function reveal() {
   const data = await api("/api/stats?reveal=0");
   const msg = data.complete
@@ -173,16 +185,36 @@ async function reveal() {
     : `只评了 ${data.n_annotated}/${data.n_total},数字不是最终结果。仍要揭盲?`;
   if (!confirm(msg)) return;
   const s = await api("/api/stats?reveal=1");
-  const fmt = (x) => (x.score === null ? "-" : x.score.toFixed(4));
-  let html = `<p>总体:n=${s.overall.n}  T(teacher 更好)=${s.overall.T}  ` +
-    `S(student 更好)=${s.overall.S}  B(一样好)=${s.overall.B}</p>` +
-    `<p class="score">分数 (S+B)/(T+B) = ${fmt(s.overall)}</p>` +
-    `<table><tr><th>层</th><th>n</th><th>T</th><th>S</th><th>B</th><th>分数</th></tr>`;
-  for (const [st, v] of Object.entries(s.by_stratum)) {
-    html += `<tr><td>${st}</td><td>${v.n}</td><td>${v.T}</td><td>${v.S}</td>` +
-      `<td>${v.B}</td><td>${fmt(v)}</td></tr>`;
+
+  let html = `<p>批次 <b>${s.batch_id}</b> — 已标 ${s.n_annotated}/${s.n_total}</p>`;
+  html += "<h3>按比较类型</h3>" + statsTable(s.by_kind);
+  html += "<p class='hint'>win0 = 被检验方,win1 = 基线:";
+  for (const [k, t] of Object.entries(s.by_kind)) {
+    if (t.key_0) html += ` <code>${k}: ${t.key_0} vs ${t.key_1}</code>`;
   }
-  html += "</table>";
+  html += "</p>";
+  html += "<h3>按类型 × 分层</h3>" + statsTable(s.by_kind_stratum);
+
+  html += "<h3>左右偏好</h3><table><tr><th>分组</th><th>L</th><th>R</th><th>平局</th>" +
+    "<th>选左率</th><th>Wilson 95% CI</th></tr>";
+  const pos = { ...s.position, 总体: s.position_overall };
+  for (const [name, p] of Object.entries(pos)) {
+    html += `<tr><td>${name}</td><td>${p.L}</td><td>${p.R}</td><td>${p.tie}</td>` +
+      `<td>${pct(p.left_rate)}</td><td>${ci(p.wilson95)}</td></tr>`;
+  }
+  html += "</table><p class='hint'>CI 含 0.5 = 无位置偏好;不含 = 其它数字都要扣掉这个偏差项。</p>";
+
+  if (s.replay) {
+    html += `<h3>重放自洽率</h3><p class="score">${s.replay.same} / ${s.replay.n} = ` +
+      `${pct(s.replay.agreement)}  ${ci(s.replay.wilson95)}</p>`;
+    if (s.replay.flips.length) {
+      html += "<table><tr><th>任务</th><th>M4 判定</th><th>本次</th></tr>";
+      for (const f of s.replay.flips) {
+        html += `<tr><td>${f.src_task_id}</td><td>${f.m4}</td><td>${f.now}</td></tr>`;
+      }
+      html += "</table>";
+    }
+  }
   if (!s.complete) html += `<p class="warn">注意:还有未评条目,以上为部分结果。</p>`;
   $("modal-content").innerHTML = html;
   $("modal").classList.remove("hidden");
@@ -200,10 +232,9 @@ async function toggleReview() {
     render();
     return;
   }
-  if (!confirm("回顾模式将显示每条的 teacher / student 身份与你的判定结果。\n" +
+  if (!confirm("回顾模式将显示每一对两侧各是什么、以及你的判定结果。\n" +
                "如果你还要继续盲评,请先评完再开启。确认开启?")) return;
   const data = await api("/api/review");
-  variantName = { teacher: data.teacher, student: data.student };
   reviewMap = {};
   for (const row of data.rows) reviewMap[row.idx] = row;
   reviewMode = true;
@@ -239,9 +270,9 @@ function bind() {
       return;
     }
     if (e.target.tagName === "SELECT") return;  // 下拉框占用方向键
-    if (e.key === "1") mark("A");
+    if (e.key === "1") mark("L");
     else if (e.key === "2" || e.key === "ArrowDown") mark("tie");
-    else if (e.key === "3") mark("B");
+    else if (e.key === "3") mark("R");
     else if (e.key === "ArrowLeft") move(-1);
     else if (e.key === "ArrowRight") move(1);
   });

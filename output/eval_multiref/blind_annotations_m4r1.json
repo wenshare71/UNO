@@ -1,0 +1,2280 @@
+{
+  "meta": {
+    "batch_id": "m4r1",
+    "blind_seed": "m4-blind-v1",
+    "migrated_from": "output/eval_multiref/blind_rond1.json",
+    "n_marks": 227
+  },
+  "marks": {
+    "m4r1::tvs::S1_000_s0": {
+      "choice": "L",
+      "winner": "official_full",
+      "ts": "2026-07-30 16:28:02",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_000_s1": {
+      "choice": "R",
+      "winner": "official_full",
+      "ts": "2026-07-30 15:35:40",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_000_s2": {
+      "choice": "L",
+      "winner": "official_full",
+      "ts": "2026-07-30 16:28:10",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_001_s0": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 15:35:44",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_001_s1": {
+      "choice": "L",
+      "winner": "official_full",
+      "ts": "2026-07-30 16:28:25",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_001_s2": {
+      "choice": "R",
+      "winner": "official_full",
+      "ts": "2026-07-30 15:35:47",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_002_s0": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 16:29:01",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_002_s1": {
+      "choice": "R",
+      "winner": "official_full",
+      "ts": "2026-07-30 16:28:39",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_002_s2": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 16:30:13",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_003_s0": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 15:35:53",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_003_s1": {
+      "choice": "R",
+      "winner": "official_full",
+      "ts": "2026-07-30 16:29:56",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_003_s2": {
+      "choice": "L",
+      "winner": "official_full",
+      "ts": "2026-07-30 16:30:26",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_004_s0": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 15:36:01",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_004_s1": {
+      "choice": "L",
+      "winner": "official_full",
+      "ts": "2026-07-30 15:36:06",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_004_s2": {
+      "choice": "R",
+      "winner": "official_full",
+      "ts": "2026-07-30 16:30:35",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_005_s0": {
+      "choice": "R",
+      "winner": "official_full",
+      "ts": "2026-07-30 16:31:12",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_005_s1": {
+      "choice": "L",
+      "winner": "official_full",
+      "ts": "2026-07-30 16:31:42",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_005_s2": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 16:31:33",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_006_s0": {
+      "choice": "L",
+      "winner": "official_full",
+      "ts": "2026-07-30 15:36:16",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_006_s1": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 15:36:20",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_006_s2": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 16:32:08",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_007_s0": {
+      "choice": "R",
+      "winner": "official_full",
+      "ts": "2026-07-30 16:32:17",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_007_s1": {
+      "choice": "R",
+      "winner": "official_full",
+      "ts": "2026-07-30 16:32:26",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_007_s2": {
+      "choice": "L",
+      "winner": "official_full",
+      "ts": "2026-07-30 15:38:41",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_008_s0": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 16:32:39",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_008_s1": {
+      "choice": "L",
+      "winner": "official_full",
+      "ts": "2026-07-30 15:38:48",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_008_s2": {
+      "choice": "L",
+      "winner": "official_full",
+      "ts": "2026-07-30 16:32:52",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_009_s0": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 16:35:27",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_009_s1": {
+      "choice": "R",
+      "winner": "official_full",
+      "ts": "2026-07-30 16:35:44",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_009_s2": {
+      "choice": "R",
+      "winner": "official_full",
+      "ts": "2026-07-30 15:39:04",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_010_s0": {
+      "choice": "R",
+      "winner": "official_full",
+      "ts": "2026-07-30 16:35:59",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_010_s1": {
+      "choice": "L",
+      "winner": "official_full",
+      "ts": "2026-07-30 16:36:07",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_010_s2": {
+      "choice": "R",
+      "winner": "official_full",
+      "ts": "2026-07-30 16:36:16",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_011_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:39:15",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_011_s1": {
+      "choice": "L",
+      "winner": "official_full",
+      "ts": "2026-07-30 16:36:31",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_011_s2": {
+      "choice": "L",
+      "winner": "official_full",
+      "ts": "2026-07-30 16:36:47",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_012_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:39:23",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_012_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:39:28",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_012_s2": {
+      "choice": "R",
+      "winner": "official_full",
+      "ts": "2026-07-30 16:37:19",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_013_s0": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 16:37:56",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_013_s1": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 16:38:03",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_013_s2": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 15:41:00",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_014_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:41:03",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_014_s1": {
+      "choice": "L",
+      "winner": "official_full",
+      "ts": "2026-07-30 16:40:20",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_014_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:41:09",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_015_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:41:12",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_015_s1": {
+      "choice": "L",
+      "winner": "official_full",
+      "ts": "2026-07-30 15:41:15",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_015_s2": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 16:40:55",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_016_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 16:41:11",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_016_s1": {
+      "choice": "R",
+      "winner": "official_full",
+      "ts": "2026-07-30 16:41:56",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_016_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 16:42:39",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_017_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:41:25",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_017_s1": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 16:43:07",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_017_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 16:43:16",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_018_s0": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 15:42:05",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_018_s1": {
+      "choice": "L",
+      "winner": "official_full",
+      "ts": "2026-07-30 16:43:58",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_018_s2": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 15:42:09",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_019_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:42:11",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_019_s1": {
+      "choice": "R",
+      "winner": "official_full",
+      "ts": "2026-07-30 16:44:14",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_019_s2": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 16:48:09",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_020_s0": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 16:48:16",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_020_s1": {
+      "choice": "L",
+      "winner": "official_full",
+      "ts": "2026-07-30 16:48:21",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_020_s2": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 15:42:20",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_021_s0": {
+      "choice": "R",
+      "winner": "official_full",
+      "ts": "2026-07-30 15:42:23",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_021_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 16:48:43",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_021_s2": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 16:48:52",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_022_s0": {
+      "choice": "R",
+      "winner": "official_full",
+      "ts": "2026-07-30 15:42:39",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_022_s1": {
+      "choice": "L",
+      "winner": "official_full",
+      "ts": "2026-07-30 15:42:43",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_022_s2": {
+      "choice": "L",
+      "winner": "official_full",
+      "ts": "2026-07-30 16:49:08",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_023_s0": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 15:42:50",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_023_s1": {
+      "choice": "R",
+      "winner": "official_full",
+      "ts": "2026-07-30 16:49:21",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_023_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:42:54",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_024_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:42:56",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_024_s1": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 16:49:42",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_024_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:43:01",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_025_s0": {
+      "choice": "R",
+      "winner": "official_full",
+      "ts": "2026-07-30 16:49:59",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_025_s1": {
+      "choice": "L",
+      "winner": "official_full",
+      "ts": "2026-07-30 16:50:03",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_025_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:43:07",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_026_s0": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 16:51:47",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_026_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:43:10",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_026_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:43:11",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_027_s0": {
+      "choice": "L",
+      "winner": "official_full",
+      "ts": "2026-07-30 15:43:13",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_027_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:43:14",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_027_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:43:15",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_028_s0": {
+      "choice": "R",
+      "winner": "official_full",
+      "ts": "2026-07-30 16:52:32",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_028_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:43:19",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_028_s2": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 16:53:18",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_029_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:43:24",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_029_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 16:53:40",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_029_s2": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 15:43:30",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_030_s0": {
+      "choice": "L",
+      "winner": "official_full",
+      "ts": "2026-07-30 16:54:36",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_030_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 16:54:49",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_030_s2": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 15:43:37",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_031_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:43:43",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_031_s1": {
+      "choice": "R",
+      "winner": "official_full",
+      "ts": "2026-07-30 15:43:45",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_031_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:43:47",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_032_s0": {
+      "choice": "R",
+      "winner": "official_full",
+      "ts": "2026-07-30 15:43:50",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_032_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:43:52",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_032_s2": {
+      "choice": "L",
+      "winner": "official_full",
+      "ts": "2026-07-30 15:43:55",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_033_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:43:58",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_033_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:44:03",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_033_s2": {
+      "choice": "L",
+      "winner": "official_full",
+      "ts": "2026-07-30 15:44:05",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_034_s0": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 15:44:08",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_034_s1": {
+      "choice": "R",
+      "winner": "official_full",
+      "ts": "2026-07-30 15:44:10",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_034_s2": {
+      "choice": "L",
+      "winner": "official_full",
+      "ts": "2026-07-30 16:56:41",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_035_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:44:15",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_035_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:44:20",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_035_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 17:04:27",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_036_s0": {
+      "choice": "L",
+      "winner": "official_full",
+      "ts": "2026-07-30 15:44:32",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_036_s1": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 17:04:36",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_036_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 17:05:02",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_037_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:44:40",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_037_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:44:45",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_037_s2": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 15:44:47",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_038_s0": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 17:05:21",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_038_s1": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 17:05:42",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_038_s2": {
+      "choice": "R",
+      "winner": "official_full",
+      "ts": "2026-07-30 17:06:06",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_039_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:44:55",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_039_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:44:58",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_039_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:45:02",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_040_s0": {
+      "choice": "R",
+      "winner": "official_full",
+      "ts": "2026-07-30 17:06:29",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_040_s1": {
+      "choice": "R",
+      "winner": "official_full",
+      "ts": "2026-07-30 15:45:08",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_040_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:45:16",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_041_s0": {
+      "choice": "R",
+      "winner": "official_full",
+      "ts": "2026-07-30 15:45:20",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_041_s1": {
+      "choice": "R",
+      "winner": "official_full",
+      "ts": "2026-07-30 15:45:22",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_041_s2": {
+      "choice": "L",
+      "winner": "official_full",
+      "ts": "2026-07-30 17:07:00",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_042_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 17:07:16",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_042_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:45:35",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_042_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:45:37",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_043_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:45:38",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_043_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:45:43",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S1_043_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:45:50",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S2_000_s0": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 17:07:58",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S2_000_s1": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 17:08:05",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S2_000_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:46:04",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S2_001_s0": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 15:46:06",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S2_001_s1": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 15:46:08",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S2_001_s2": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 15:46:10",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S2_002_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:46:13",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S2_002_s1": {
+      "choice": "R",
+      "winner": "official_full",
+      "ts": "2026-07-30 17:08:26",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S2_002_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:46:16",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S2_003_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:46:17",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S2_003_s1": {
+      "choice": "R",
+      "winner": "official_full",
+      "ts": "2026-07-30 17:09:20",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S2_003_s2": {
+      "choice": "R",
+      "winner": "official_full",
+      "ts": "2026-07-30 17:09:34",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S2_004_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:46:23",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S2_004_s1": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 17:10:57",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S2_004_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:46:32",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_000_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:46:35",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_000_s1": {
+      "choice": "R",
+      "winner": "official_full",
+      "ts": "2026-07-30 17:11:11",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_001_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:46:37",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_001_s1": {
+      "choice": "R",
+      "winner": "official_full",
+      "ts": "2026-07-30 17:11:21",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_002_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:46:38",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_002_s1": {
+      "choice": "L",
+      "winner": "official_full",
+      "ts": "2026-07-30 15:46:40",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_003_s0": {
+      "choice": "R",
+      "winner": "official_full",
+      "ts": "2026-07-30 17:11:54",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_003_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:46:42",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_004_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:46:43",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_004_s1": {
+      "choice": "R",
+      "winner": "official_full",
+      "ts": "2026-07-30 17:12:07",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_005_s0": {
+      "choice": "L",
+      "winner": "official_full",
+      "ts": "2026-07-30 17:12:13",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_005_s1": {
+      "choice": "L",
+      "winner": "official_full",
+      "ts": "2026-07-30 15:46:47",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_006_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:46:48",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_006_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:46:49",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_007_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:46:49",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_007_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:46:50",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_008_s0": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 17:12:35",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_008_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:46:52",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_009_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:46:53",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_009_s1": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 17:12:50",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_010_s0": {
+      "choice": "L",
+      "winner": "official_full",
+      "ts": "2026-07-30 17:13:05",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_010_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:46:56",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_011_s0": {
+      "choice": "R",
+      "winner": "official_full",
+      "ts": "2026-07-30 17:13:27",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_011_s1": {
+      "choice": "R",
+      "winner": "official_full",
+      "ts": "2026-07-30 15:47:03",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_012_s0": {
+      "choice": "R",
+      "winner": "official_full",
+      "ts": "2026-07-30 15:47:06",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_012_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:47:08",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_013_s0": {
+      "choice": "R",
+      "winner": "official_full",
+      "ts": "2026-07-30 17:13:55",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_013_s1": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 17:14:00",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_014_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:47:25",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_014_s1": {
+      "choice": "L",
+      "winner": "official_full",
+      "ts": "2026-07-30 17:14:12",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_015_s0": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 17:14:18",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_015_s1": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 15:47:32",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_016_s0": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 17:14:35",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_016_s1": {
+      "choice": "L",
+      "winner": "official_full",
+      "ts": "2026-07-30 17:14:48",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_017_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:47:35",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_017_s1": {
+      "choice": "R",
+      "winner": "official_full",
+      "ts": "2026-07-30 17:15:06",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_018_s0": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 17:15:14",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_018_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:47:38",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_019_s0": {
+      "choice": "L",
+      "winner": "official_full",
+      "ts": "2026-07-30 15:47:42",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_019_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:47:44",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_020_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:47:45",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_020_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:47:46",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_021_s0": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 17:15:44",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_021_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:47:48",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_022_s0": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 17:16:19",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_022_s1": {
+      "choice": "L",
+      "winner": "official_full",
+      "ts": "2026-07-30 17:16:28",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_023_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:47:51",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_023_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:47:52",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_024_s0": {
+      "choice": "L",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 17:16:46",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_024_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:47:54",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_025_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:47:55",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_025_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:47:55",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_026_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:47:56",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_026_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:47:57",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_027_s0": {
+      "choice": "R",
+      "winner": "official_full",
+      "ts": "2026-07-30 17:17:17",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_027_s1": {
+      "choice": "L",
+      "winner": "official_full",
+      "ts": "2026-07-30 17:17:24",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_028_s0": {
+      "choice": "R",
+      "winner": "official_full",
+      "ts": "2026-07-30 17:17:31",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_028_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:48:03",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_029_s0": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 17:17:49",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S3_029_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:48:04",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S4_000_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 17:18:16",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S4_000_s1": {
+      "choice": "L",
+      "winner": "official_full",
+      "ts": "2026-07-30 15:48:19",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S4_001_s0": {
+      "choice": "L",
+      "winner": "official_full",
+      "ts": "2026-07-30 15:48:22",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S4_001_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:48:26",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S4_002_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:48:28",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S4_002_s1": {
+      "choice": "R",
+      "winner": "official_full",
+      "ts": "2026-07-30 15:48:32",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S4_003_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:48:35",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S4_003_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:48:37",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S4_004_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:48:40",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S4_004_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:48:43",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S4_005_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:48:47",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S4_005_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:48:50",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S4_006_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:48:56",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S4_006_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:48:58",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S4_007_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:49:03",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S4_007_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:49:04",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S4_008_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:49:06",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S4_008_s1": {
+      "choice": "L",
+      "winner": "official_full",
+      "ts": "2026-07-30 15:49:10",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S4_009_s0": {
+      "choice": "R",
+      "winner": "ours_kv_post4000",
+      "ts": "2026-07-30 15:49:12",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    },
+    "m4r1::tvs::S4_009_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-07-30 15:49:14",
+      "migrated_from": {
+        "blind_seed": "m4-blind-v1",
+        "rond": 1,
+        "slot_rename": "A→L, B→R"
+      }
+    }
+  }
+}

@@ -228,6 +228,11 @@ datasets/UNO-1M/
 # PNG 候选图仍留在 H800 不进 git(与上方 M4 PNG 同理)。
 !/output/eval_multiref/blind_rond1.json
 !/output/eval_multiref/blind_stats.json
+# 盲评 v2(2026-08-03,§11 步骤 0):配对清单与标注**必须**进 git——
+# H800 靠 git pull 拿清单才起得来服务;标注要能被 report.py 离线复算与审计。
+# 候选 PNG 仍留在 H800。blind_annotations_backups/ 是目录,不被下面两条命中,继续忽略。
+!/output/eval_multiref/pairs_*.json
+!/output/eval_multiref/blind_annotations_*.json
 
 # 注意力诊断产物(2026-07-30,D03;2026-07-31 D04 更新):**全部进 git**。
 # npz 是曲线/热力图数据,本地 plot_attn.py 靠它出图,不进 git 就没法出报告;

@@ -2,12 +2,12 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>M4 盲评 A/B</title>
+<title>盲评 A/B</title>
 <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
 <header>
-  <div class="title">M4 盲评 <span class="sub">A vs B(不知道谁是 teacher / student)</span></div>
+  <div class="title">盲评 <span class="sub">左 vs 右(不知道两侧各是什么)</span></div>
   <div class="progress-wrap">
     <div class="progress-bar"><div id="progress-fill"></div></div>
     <div id="progress-text">0 / 0</div>
@@ -20,8 +20,8 @@
     <button id="btn-review" class="review-off">回顾模式:关</button>
     <select id="filter" class="hidden">
       <option value="all">全部</option>
-      <option value="teacher">仅 teacher 胜</option>
-      <option value="student">仅 student 胜</option>
+      <option value="key0">仅被检验方胜</option>
+      <option value="key1">仅基线胜</option>
       <option value="tie">仅平局</option>
       <option value="unmarked">仅未评</option>
     </select>
@@ -29,6 +29,7 @@
 </header>
 
 <main>
+  <div id="task-question"></div>
   <div id="task-info">
     <span id="task-label">-</span>
     <span id="task-prompt"></span>
@@ -37,18 +38,18 @@
   <div id="refs"></div>
   <div id="cands">
     <div class="cand" id="cand-a">
-      <div class="cand-label">A<span id="badge-a" class="badge hidden"></span></div>
-      <img id="img-a" alt="A">
+      <div class="cand-label">左<span id="badge-a" class="badge hidden"></span></div>
+      <img id="img-a" alt="左">
     </div>
     <div class="cand" id="cand-b">
-      <div class="cand-label">B<span id="badge-b" class="badge hidden"></span></div>
-      <img id="img-b" alt="B">
+      <div class="cand-label">右<span id="badge-b" class="badge hidden"></span></div>
+      <img id="img-b" alt="右">
     </div>
   </div>
   <div id="actions">
-    <button class="choice" data-choice="A">A 更好 <kbd>1</kbd>/<kbd>←</kbd></button>
+    <button class="choice" data-choice="L">左更好 <kbd>1</kbd></button>
     <button class="choice" data-choice="tie">一样好 <kbd>2</kbd>/<kbd>↓</kbd></button>
-    <button class="choice" data-choice="B">B 更好 <kbd>3</kbd>/<kbd>→</kbd></button>
+    <button class="choice" data-choice="R">右更好 <kbd>3</kbd></button>
   </div>
   <div id="status"></div>
 </main>
