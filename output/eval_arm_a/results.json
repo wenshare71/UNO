@@ -1,0 +1,2713 @@
+{
+  "spec": "M5-arm-a-v1",
+  "n_shards": 1,
+  "n_records": 384,
+  "n_fails": 0,
+  "timing": {
+    "official_full": {
+      "mean_s": 4.674718631703096,
+      "median_s": 5.131820620968938,
+      "n": 192,
+      "peak_mem_gb": 36.24359846115112,
+      "speedup_vs_teacher": 1.0
+    },
+    "arm_a_full": {
+      "mean_s": 4.678685510686289,
+      "median_s": 5.131855191662908,
+      "n": 192,
+      "peak_mem_gb": 36.24359846115112,
+      "speedup_vs_teacher": 0.9991521381434739
+    }
+  },
+  "records": [
+    {
+      "task_id": "AA_S1_000_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.126276634633541,
+      "path": "output/eval_arm_a/AA_S1_000_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_000_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.131103880703449,
+      "path": "output/eval_arm_a/AA_S1_000_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_000_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.136581148952246,
+      "path": "output/eval_arm_a/AA_S1_000_s2__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_001_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.134321264922619,
+      "path": "output/eval_arm_a/AA_S1_001_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_001_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.124375995248556,
+      "path": "output/eval_arm_a/AA_S1_001_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_001_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.135960850864649,
+      "path": "output/eval_arm_a/AA_S1_001_s2__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_002_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.147866766899824,
+      "path": "output/eval_arm_a/AA_S1_002_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_002_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.129607934504747,
+      "path": "output/eval_arm_a/AA_S1_002_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_002_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.127489186823368,
+      "path": "output/eval_arm_a/AA_S1_002_s2__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_003_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.131352469325066,
+      "path": "output/eval_arm_a/AA_S1_003_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_003_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.130458019673824,
+      "path": "output/eval_arm_a/AA_S1_003_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_003_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.131751444190741,
+      "path": "output/eval_arm_a/AA_S1_003_s2__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_004_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.134630914777517,
+      "path": "output/eval_arm_a/AA_S1_004_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_004_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.12737999483943,
+      "path": "output/eval_arm_a/AA_S1_004_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_004_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.140656601637602,
+      "path": "output/eval_arm_a/AA_S1_004_s2__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_005_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.132603403180838,
+      "path": "output/eval_arm_a/AA_S1_005_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_005_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.12709878385067,
+      "path": "output/eval_arm_a/AA_S1_005_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_005_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.13687889277935,
+      "path": "output/eval_arm_a/AA_S1_005_s2__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_006_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.133867986500263,
+      "path": "output/eval_arm_a/AA_S1_006_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_006_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.134438529610634,
+      "path": "output/eval_arm_a/AA_S1_006_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_006_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.139842856675386,
+      "path": "output/eval_arm_a/AA_S1_006_s2__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_007_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.139465756714344,
+      "path": "output/eval_arm_a/AA_S1_007_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_007_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.136205278337002,
+      "path": "output/eval_arm_a/AA_S1_007_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_007_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1300593838095665,
+      "path": "output/eval_arm_a/AA_S1_007_s2__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_008_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1345523707568645,
+      "path": "output/eval_arm_a/AA_S1_008_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_008_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.133168246597052,
+      "path": "output/eval_arm_a/AA_S1_008_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_008_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.135316491127014,
+      "path": "output/eval_arm_a/AA_S1_008_s2__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_009_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1279962211847305,
+      "path": "output/eval_arm_a/AA_S1_009_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_009_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.134878758341074,
+      "path": "output/eval_arm_a/AA_S1_009_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_009_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.138778101652861,
+      "path": "output/eval_arm_a/AA_S1_009_s2__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_010_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.13865577802062,
+      "path": "output/eval_arm_a/AA_S1_010_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_010_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.136878717690706,
+      "path": "output/eval_arm_a/AA_S1_010_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_010_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.136875107884407,
+      "path": "output/eval_arm_a/AA_S1_010_s2__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_011_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.137954421341419,
+      "path": "output/eval_arm_a/AA_S1_011_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_011_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.130873307585716,
+      "path": "output/eval_arm_a/AA_S1_011_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_011_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.131639175117016,
+      "path": "output/eval_arm_a/AA_S1_011_s2__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_012_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.134763177484274,
+      "path": "output/eval_arm_a/AA_S1_012_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_012_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.129495166242123,
+      "path": "output/eval_arm_a/AA_S1_012_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_012_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.132549233734608,
+      "path": "output/eval_arm_a/AA_S1_012_s2__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_013_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.134109873324633,
+      "path": "output/eval_arm_a/AA_S1_013_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_013_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.140901442617178,
+      "path": "output/eval_arm_a/AA_S1_013_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_013_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.138926420360804,
+      "path": "output/eval_arm_a/AA_S1_013_s2__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_014_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.132887277752161,
+      "path": "output/eval_arm_a/AA_S1_014_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_014_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.135203223675489,
+      "path": "output/eval_arm_a/AA_S1_014_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_014_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.138364806771278,
+      "path": "output/eval_arm_a/AA_S1_014_s2__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_015_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1366186290979385,
+      "path": "output/eval_arm_a/AA_S1_015_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_015_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.138039313256741,
+      "path": "output/eval_arm_a/AA_S1_015_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_015_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.13401023671031,
+      "path": "output/eval_arm_a/AA_S1_015_s2__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_016_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.141448687762022,
+      "path": "output/eval_arm_a/AA_S1_016_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_016_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.134042419493198,
+      "path": "output/eval_arm_a/AA_S1_016_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_016_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.137425187975168,
+      "path": "output/eval_arm_a/AA_S1_016_s2__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_017_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.131199609488249,
+      "path": "output/eval_arm_a/AA_S1_017_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_017_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.135841127485037,
+      "path": "output/eval_arm_a/AA_S1_017_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_017_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.130354981869459,
+      "path": "output/eval_arm_a/AA_S1_017_s2__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_018_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.135823242366314,
+      "path": "output/eval_arm_a/AA_S1_018_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_018_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1361378617584705,
+      "path": "output/eval_arm_a/AA_S1_018_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_018_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1369826048612595,
+      "path": "output/eval_arm_a/AA_S1_018_s2__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_019_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.13650356978178,
+      "path": "output/eval_arm_a/AA_S1_019_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_019_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.139043685048819,
+      "path": "output/eval_arm_a/AA_S1_019_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_019_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.134056456387043,
+      "path": "output/eval_arm_a/AA_S1_019_s2__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_020_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.131889797747135,
+      "path": "output/eval_arm_a/AA_S1_020_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_020_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1382040828466415,
+      "path": "output/eval_arm_a/AA_S1_020_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_020_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.135821774601936,
+      "path": "output/eval_arm_a/AA_S1_020_s2__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_021_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.135040573775768,
+      "path": "output/eval_arm_a/AA_S1_021_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_021_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1349371038377285,
+      "path": "output/eval_arm_a/AA_S1_021_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_021_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.131747759878635,
+      "path": "output/eval_arm_a/AA_S1_021_s2__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_022_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.134256575256586,
+      "path": "output/eval_arm_a/AA_S1_022_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_022_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.133810702711344,
+      "path": "output/eval_arm_a/AA_S1_022_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_022_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.135323576629162,
+      "path": "output/eval_arm_a/AA_S1_022_s2__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_023_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.134287904947996,
+      "path": "output/eval_arm_a/AA_S1_023_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_023_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.138422634452581,
+      "path": "output/eval_arm_a/AA_S1_023_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_023_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.136503767222166,
+      "path": "output/eval_arm_a/AA_S1_023_s2__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_024_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.134318187832832,
+      "path": "output/eval_arm_a/AA_S1_024_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_024_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.143404982984066,
+      "path": "output/eval_arm_a/AA_S1_024_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_024_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.133002504706383,
+      "path": "output/eval_arm_a/AA_S1_024_s2__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_025_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.128642074763775,
+      "path": "output/eval_arm_a/AA_S1_025_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_025_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1363202556967735,
+      "path": "output/eval_arm_a/AA_S1_025_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_025_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.139796659350395,
+      "path": "output/eval_arm_a/AA_S1_025_s2__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_026_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.140495676547289,
+      "path": "output/eval_arm_a/AA_S1_026_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_026_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1362442299723625,
+      "path": "output/eval_arm_a/AA_S1_026_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_026_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1367107927799225,
+      "path": "output/eval_arm_a/AA_S1_026_s2__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_027_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.139688156545162,
+      "path": "output/eval_arm_a/AA_S1_027_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_027_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.141034577041864,
+      "path": "output/eval_arm_a/AA_S1_027_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_027_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.143995560705662,
+      "path": "output/eval_arm_a/AA_S1_027_s2__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_028_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1332572884857655,
+      "path": "output/eval_arm_a/AA_S1_028_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_028_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.137891445308924,
+      "path": "output/eval_arm_a/AA_S1_028_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_028_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.132644020020962,
+      "path": "output/eval_arm_a/AA_S1_028_s2__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_029_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.136426147073507,
+      "path": "output/eval_arm_a/AA_S1_029_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_029_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.139505505561829,
+      "path": "output/eval_arm_a/AA_S1_029_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_029_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.136842388659716,
+      "path": "output/eval_arm_a/AA_S1_029_s2__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_030_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.131593696773052,
+      "path": "output/eval_arm_a/AA_S1_030_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_030_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.133346360176802,
+      "path": "output/eval_arm_a/AA_S1_030_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_030_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.139068886637688,
+      "path": "output/eval_arm_a/AA_S1_030_s2__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_031_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.134161178022623,
+      "path": "output/eval_arm_a/AA_S1_031_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_031_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 8.632222231477499,
+      "path": "output/eval_arm_a/AA_S1_031_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_031_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.137226514518261,
+      "path": "output/eval_arm_a/AA_S1_031_s2__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_032_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1494235172867775,
+      "path": "output/eval_arm_a/AA_S1_032_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_032_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1552633829414845,
+      "path": "output/eval_arm_a/AA_S1_032_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_032_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.125517886132002,
+      "path": "output/eval_arm_a/AA_S1_032_s2__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_033_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.131179302930832,
+      "path": "output/eval_arm_a/AA_S1_033_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_033_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1328993663191795,
+      "path": "output/eval_arm_a/AA_S1_033_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_033_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1343053840100765,
+      "path": "output/eval_arm_a/AA_S1_033_s2__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_034_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.138118844479322,
+      "path": "output/eval_arm_a/AA_S1_034_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_034_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.131441567093134,
+      "path": "output/eval_arm_a/AA_S1_034_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_034_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.134464155882597,
+      "path": "output/eval_arm_a/AA_S1_034_s2__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_035_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.124796725809574,
+      "path": "output/eval_arm_a/AA_S1_035_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_035_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.15003677457571,
+      "path": "output/eval_arm_a/AA_S1_035_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_035_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.158045493066311,
+      "path": "output/eval_arm_a/AA_S1_035_s2__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_036_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1288769617676735,
+      "path": "output/eval_arm_a/AA_S1_036_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_036_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.125390488654375,
+      "path": "output/eval_arm_a/AA_S1_036_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_036_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1297559924423695,
+      "path": "output/eval_arm_a/AA_S1_036_s2__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_037_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.13050153106451,
+      "path": "output/eval_arm_a/AA_S1_037_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_037_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1361752189695835,
+      "path": "output/eval_arm_a/AA_S1_037_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_037_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.145488880574703,
+      "path": "output/eval_arm_a/AA_S1_037_s2__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_038_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.149069901555777,
+      "path": "output/eval_arm_a/AA_S1_038_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_038_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.14273713901639,
+      "path": "output/eval_arm_a/AA_S1_038_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_038_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.12601637840271,
+      "path": "output/eval_arm_a/AA_S1_038_s2__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_039_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.15597428008914,
+      "path": "output/eval_arm_a/AA_S1_039_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_039_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.130596473813057,
+      "path": "output/eval_arm_a/AA_S1_039_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_039_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1298847161233425,
+      "path": "output/eval_arm_a/AA_S1_039_s2__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_040_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.126360353082418,
+      "path": "output/eval_arm_a/AA_S1_040_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_040_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.154030069708824,
+      "path": "output/eval_arm_a/AA_S1_040_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_040_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.157271407544613,
+      "path": "output/eval_arm_a/AA_S1_040_s2__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_041_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.125813949853182,
+      "path": "output/eval_arm_a/AA_S1_041_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_041_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.129365533590317,
+      "path": "output/eval_arm_a/AA_S1_041_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_041_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.132681060582399,
+      "path": "output/eval_arm_a/AA_S1_041_s2__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_042_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.131204508244991,
+      "path": "output/eval_arm_a/AA_S1_042_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_042_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.13109115511179,
+      "path": "output/eval_arm_a/AA_S1_042_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_042_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1325941905379295,
+      "path": "output/eval_arm_a/AA_S1_042_s2__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_043_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.137042984366417,
+      "path": "output/eval_arm_a/AA_S1_043_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_043_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.137365605682135,
+      "path": "output/eval_arm_a/AA_S1_043_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_043_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.137521248310804,
+      "path": "output/eval_arm_a/AA_S1_043_s2__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_000_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.600919082760811,
+      "path": "output/eval_arm_a/AA_S3_000_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_000_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.5993550829589367,
+      "path": "output/eval_arm_a/AA_S3_000_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_001_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.5963089019060135,
+      "path": "output/eval_arm_a/AA_S3_001_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_001_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.5994806699454784,
+      "path": "output/eval_arm_a/AA_S3_001_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_002_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.60046324133873,
+      "path": "output/eval_arm_a/AA_S3_002_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_002_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.602288916707039,
+      "path": "output/eval_arm_a/AA_S3_002_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_003_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6002369858324528,
+      "path": "output/eval_arm_a/AA_S3_003_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_003_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6011235043406487,
+      "path": "output/eval_arm_a/AA_S3_003_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_004_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.603664182126522,
+      "path": "output/eval_arm_a/AA_S3_004_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_004_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6028918474912643,
+      "path": "output/eval_arm_a/AA_S3_004_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_005_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.605755526572466,
+      "path": "output/eval_arm_a/AA_S3_005_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_005_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.598736811429262,
+      "path": "output/eval_arm_a/AA_S3_005_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_006_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6019948571920395,
+      "path": "output/eval_arm_a/AA_S3_006_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_006_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6008926779031754,
+      "path": "output/eval_arm_a/AA_S3_006_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_007_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.603228073567152,
+      "path": "output/eval_arm_a/AA_S3_007_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_007_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6008916087448597,
+      "path": "output/eval_arm_a/AA_S3_007_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_008_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6006972193717957,
+      "path": "output/eval_arm_a/AA_S3_008_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_008_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6008294709026814,
+      "path": "output/eval_arm_a/AA_S3_008_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_009_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6054211035370827,
+      "path": "output/eval_arm_a/AA_S3_009_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_009_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6002898402512074,
+      "path": "output/eval_arm_a/AA_S3_009_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_010_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.603050470352173,
+      "path": "output/eval_arm_a/AA_S3_010_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_010_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6032348312437534,
+      "path": "output/eval_arm_a/AA_S3_010_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_011_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.5988254472613335,
+      "path": "output/eval_arm_a/AA_S3_011_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_011_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6121648252010345,
+      "path": "output/eval_arm_a/AA_S3_011_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_012_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6147080287337303,
+      "path": "output/eval_arm_a/AA_S3_012_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_012_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6003102995455265,
+      "path": "output/eval_arm_a/AA_S3_012_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_013_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6139385886490345,
+      "path": "output/eval_arm_a/AA_S3_013_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_013_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.60333489254117,
+      "path": "output/eval_arm_a/AA_S3_013_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_014_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.5994510501623154,
+      "path": "output/eval_arm_a/AA_S3_014_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_014_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6002643145620823,
+      "path": "output/eval_arm_a/AA_S3_014_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_015_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.5984165966510773,
+      "path": "output/eval_arm_a/AA_S3_015_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_015_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.603597078472376,
+      "path": "output/eval_arm_a/AA_S3_015_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_016_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.604946117848158,
+      "path": "output/eval_arm_a/AA_S3_016_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_016_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.601657662540674,
+      "path": "output/eval_arm_a/AA_S3_016_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_017_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.605823017656803,
+      "path": "output/eval_arm_a/AA_S3_017_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_017_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.607404977083206,
+      "path": "output/eval_arm_a/AA_S3_017_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_018_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6016585119068623,
+      "path": "output/eval_arm_a/AA_S3_018_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_018_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.5992811918258667,
+      "path": "output/eval_arm_a/AA_S3_018_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_019_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6106498576700687,
+      "path": "output/eval_arm_a/AA_S3_019_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_019_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.603086728602648,
+      "path": "output/eval_arm_a/AA_S3_019_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_020_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.601004410535097,
+      "path": "output/eval_arm_a/AA_S3_020_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_020_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6015559881925583,
+      "path": "output/eval_arm_a/AA_S3_020_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_021_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.602250698953867,
+      "path": "output/eval_arm_a/AA_S3_021_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_021_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.610223550349474,
+      "path": "output/eval_arm_a/AA_S3_021_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_022_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.605403784662485,
+      "path": "output/eval_arm_a/AA_S3_022_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_022_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.600599344819784,
+      "path": "output/eval_arm_a/AA_S3_022_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_023_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6031421050429344,
+      "path": "output/eval_arm_a/AA_S3_023_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_023_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.603167999535799,
+      "path": "output/eval_arm_a/AA_S3_023_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_024_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.5979999974370003,
+      "path": "output/eval_arm_a/AA_S3_024_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_024_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6045437529683113,
+      "path": "output/eval_arm_a/AA_S3_024_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_025_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.60001140832901,
+      "path": "output/eval_arm_a/AA_S3_025_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_025_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.600080791860819,
+      "path": "output/eval_arm_a/AA_S3_025_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_026_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.600256361067295,
+      "path": "output/eval_arm_a/AA_S3_026_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_026_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.599315620958805,
+      "path": "output/eval_arm_a/AA_S3_026_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_027_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6011858209967613,
+      "path": "output/eval_arm_a/AA_S3_027_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_027_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.597340825945139,
+      "path": "output/eval_arm_a/AA_S3_027_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_028_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.601774610579014,
+      "path": "output/eval_arm_a/AA_S3_028_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_028_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.5987669192254543,
+      "path": "output/eval_arm_a/AA_S3_028_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_029_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.603702213615179,
+      "path": "output/eval_arm_a/AA_S3_029_s0__official_full.png"
+    },
+    {
+      "task_id": "AA_S3_029_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6034200713038445,
+      "path": "output/eval_arm_a/AA_S3_029_s1__official_full.png"
+    },
+    {
+      "task_id": "AA_S1_000_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.131796196103096,
+      "path": "output/eval_arm_a/AA_S1_000_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_000_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.132064525038004,
+      "path": "output/eval_arm_a/AA_S1_000_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_000_s2",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.136326614767313,
+      "path": "output/eval_arm_a/AA_S1_000_s2__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_001_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.148969031870365,
+      "path": "output/eval_arm_a/AA_S1_001_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_001_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.151136443018913,
+      "path": "output/eval_arm_a/AA_S1_001_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_001_s2",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.150350101292133,
+      "path": "output/eval_arm_a/AA_S1_001_s2__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_002_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.148009143769741,
+      "path": "output/eval_arm_a/AA_S1_002_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_002_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.151306428015232,
+      "path": "output/eval_arm_a/AA_S1_002_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_002_s2",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.134497780352831,
+      "path": "output/eval_arm_a/AA_S1_002_s2__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_003_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.157599821686745,
+      "path": "output/eval_arm_a/AA_S1_003_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_003_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.1539008021354675,
+      "path": "output/eval_arm_a/AA_S1_003_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_003_s2",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.13140594214201,
+      "path": "output/eval_arm_a/AA_S1_003_s2__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_004_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.1317006051540375,
+      "path": "output/eval_arm_a/AA_S1_004_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_004_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.131562784314156,
+      "path": "output/eval_arm_a/AA_S1_004_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_004_s2",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.1338010132312775,
+      "path": "output/eval_arm_a/AA_S1_004_s2__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_005_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.129619963467121,
+      "path": "output/eval_arm_a/AA_S1_005_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_005_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.136444706469774,
+      "path": "output/eval_arm_a/AA_S1_005_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_005_s2",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.127720978111029,
+      "path": "output/eval_arm_a/AA_S1_005_s2__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_006_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.133531246334314,
+      "path": "output/eval_arm_a/AA_S1_006_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_006_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.130306199193001,
+      "path": "output/eval_arm_a/AA_S1_006_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_006_s2",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.130112498998642,
+      "path": "output/eval_arm_a/AA_S1_006_s2__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_007_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.135644122958183,
+      "path": "output/eval_arm_a/AA_S1_007_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_007_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.138574790209532,
+      "path": "output/eval_arm_a/AA_S1_007_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_007_s2",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.133690640330315,
+      "path": "output/eval_arm_a/AA_S1_007_s2__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_008_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.133193887770176,
+      "path": "output/eval_arm_a/AA_S1_008_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_008_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.130450654774904,
+      "path": "output/eval_arm_a/AA_S1_008_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_008_s2",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.129595190286636,
+      "path": "output/eval_arm_a/AA_S1_008_s2__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_009_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.150387167930603,
+      "path": "output/eval_arm_a/AA_S1_009_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_009_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.1342030838131905,
+      "path": "output/eval_arm_a/AA_S1_009_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_009_s2",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.13098955526948,
+      "path": "output/eval_arm_a/AA_S1_009_s2__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_010_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.132120978087187,
+      "path": "output/eval_arm_a/AA_S1_010_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_010_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.130563508719206,
+      "path": "output/eval_arm_a/AA_S1_010_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_010_s2",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.13311105966568,
+      "path": "output/eval_arm_a/AA_S1_010_s2__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_011_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.139522727578878,
+      "path": "output/eval_arm_a/AA_S1_011_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_011_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.1320765390992165,
+      "path": "output/eval_arm_a/AA_S1_011_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_011_s2",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.134627923369408,
+      "path": "output/eval_arm_a/AA_S1_011_s2__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_012_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.131121251732111,
+      "path": "output/eval_arm_a/AA_S1_012_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_012_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.134048838168383,
+      "path": "output/eval_arm_a/AA_S1_012_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_012_s2",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.134609550237656,
+      "path": "output/eval_arm_a/AA_S1_012_s2__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_013_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.140272829681635,
+      "path": "output/eval_arm_a/AA_S1_013_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_013_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.1327383406460285,
+      "path": "output/eval_arm_a/AA_S1_013_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_013_s2",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.132829710841179,
+      "path": "output/eval_arm_a/AA_S1_013_s2__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_014_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.139212667942047,
+      "path": "output/eval_arm_a/AA_S1_014_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_014_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.135922804474831,
+      "path": "output/eval_arm_a/AA_S1_014_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_014_s2",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.129911240190268,
+      "path": "output/eval_arm_a/AA_S1_014_s2__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_015_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.133473496884108,
+      "path": "output/eval_arm_a/AA_S1_015_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_015_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.130004346370697,
+      "path": "output/eval_arm_a/AA_S1_015_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_015_s2",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.131907906383276,
+      "path": "output/eval_arm_a/AA_S1_015_s2__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_016_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.1397973746061325,
+      "path": "output/eval_arm_a/AA_S1_016_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_016_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.129076279699802,
+      "path": "output/eval_arm_a/AA_S1_016_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_016_s2",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.1340077444911,
+      "path": "output/eval_arm_a/AA_S1_016_s2__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_017_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.132436208426952,
+      "path": "output/eval_arm_a/AA_S1_017_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_017_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.131885826587677,
+      "path": "output/eval_arm_a/AA_S1_017_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_017_s2",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.136352449655533,
+      "path": "output/eval_arm_a/AA_S1_017_s2__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_018_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.128616042435169,
+      "path": "output/eval_arm_a/AA_S1_018_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_018_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.135346584022045,
+      "path": "output/eval_arm_a/AA_S1_018_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_018_s2",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.136000189930201,
+      "path": "output/eval_arm_a/AA_S1_018_s2__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_019_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.135016366839409,
+      "path": "output/eval_arm_a/AA_S1_019_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_019_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.133565921336412,
+      "path": "output/eval_arm_a/AA_S1_019_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_019_s2",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.136993587017059,
+      "path": "output/eval_arm_a/AA_S1_019_s2__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_020_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.134425386786461,
+      "path": "output/eval_arm_a/AA_S1_020_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_020_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.141316954046488,
+      "path": "output/eval_arm_a/AA_S1_020_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_020_s2",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.13322015479207,
+      "path": "output/eval_arm_a/AA_S1_020_s2__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_021_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.136036120355129,
+      "path": "output/eval_arm_a/AA_S1_021_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_021_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.13410160690546,
+      "path": "output/eval_arm_a/AA_S1_021_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_021_s2",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.132551822811365,
+      "path": "output/eval_arm_a/AA_S1_021_s2__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_022_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.1351706720888615,
+      "path": "output/eval_arm_a/AA_S1_022_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_022_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.130855970084667,
+      "path": "output/eval_arm_a/AA_S1_022_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_022_s2",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.134193263947964,
+      "path": "output/eval_arm_a/AA_S1_022_s2__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_023_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.133501090109348,
+      "path": "output/eval_arm_a/AA_S1_023_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_023_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.133686915040016,
+      "path": "output/eval_arm_a/AA_S1_023_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_023_s2",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.130448471754789,
+      "path": "output/eval_arm_a/AA_S1_023_s2__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_024_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.129552576690912,
+      "path": "output/eval_arm_a/AA_S1_024_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_024_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.136056285351515,
+      "path": "output/eval_arm_a/AA_S1_024_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_024_s2",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.13196350261569,
+      "path": "output/eval_arm_a/AA_S1_024_s2__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_025_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.169688161462545,
+      "path": "output/eval_arm_a/AA_S1_025_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_025_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.134686969220638,
+      "path": "output/eval_arm_a/AA_S1_025_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_025_s2",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.13159566745162,
+      "path": "output/eval_arm_a/AA_S1_025_s2__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_026_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.128841295838356,
+      "path": "output/eval_arm_a/AA_S1_026_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_026_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.134324591606855,
+      "path": "output/eval_arm_a/AA_S1_026_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_026_s2",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.135360289365053,
+      "path": "output/eval_arm_a/AA_S1_026_s2__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_027_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.1387839168310165,
+      "path": "output/eval_arm_a/AA_S1_027_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_027_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.1289218962192535,
+      "path": "output/eval_arm_a/AA_S1_027_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_027_s2",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.133163504302502,
+      "path": "output/eval_arm_a/AA_S1_027_s2__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_028_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.13289550691843,
+      "path": "output/eval_arm_a/AA_S1_028_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_028_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.135662470012903,
+      "path": "output/eval_arm_a/AA_S1_028_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_028_s2",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.132938228547573,
+      "path": "output/eval_arm_a/AA_S1_028_s2__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_029_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.1515440531075,
+      "path": "output/eval_arm_a/AA_S1_029_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_029_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.126134917140007,
+      "path": "output/eval_arm_a/AA_S1_029_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_029_s2",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.136719081550837,
+      "path": "output/eval_arm_a/AA_S1_029_s2__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_030_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.134674102067947,
+      "path": "output/eval_arm_a/AA_S1_030_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_030_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.134756576269865,
+      "path": "output/eval_arm_a/AA_S1_030_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_030_s2",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.122693300247192,
+      "path": "output/eval_arm_a/AA_S1_030_s2__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_031_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.133555095642805,
+      "path": "output/eval_arm_a/AA_S1_031_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_031_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.136922679841518,
+      "path": "output/eval_arm_a/AA_S1_031_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_031_s2",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.133054155856371,
+      "path": "output/eval_arm_a/AA_S1_031_s2__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_032_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.134029787033796,
+      "path": "output/eval_arm_a/AA_S1_032_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_032_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.132963053882122,
+      "path": "output/eval_arm_a/AA_S1_032_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_032_s2",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.130965411663055,
+      "path": "output/eval_arm_a/AA_S1_032_s2__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_033_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.1295804269611835,
+      "path": "output/eval_arm_a/AA_S1_033_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_033_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.134754568338394,
+      "path": "output/eval_arm_a/AA_S1_033_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_033_s2",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.13290910795331,
+      "path": "output/eval_arm_a/AA_S1_033_s2__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_034_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.131824556738138,
+      "path": "output/eval_arm_a/AA_S1_034_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_034_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.137959446758032,
+      "path": "output/eval_arm_a/AA_S1_034_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_034_s2",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.138577777892351,
+      "path": "output/eval_arm_a/AA_S1_034_s2__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_035_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.135866470634937,
+      "path": "output/eval_arm_a/AA_S1_035_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_035_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.135174822062254,
+      "path": "output/eval_arm_a/AA_S1_035_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_035_s2",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.1363520585000515,
+      "path": "output/eval_arm_a/AA_S1_035_s2__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_036_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.137541625648737,
+      "path": "output/eval_arm_a/AA_S1_036_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_036_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.13053884729743,
+      "path": "output/eval_arm_a/AA_S1_036_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_036_s2",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.133105307817459,
+      "path": "output/eval_arm_a/AA_S1_036_s2__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_037_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.1484180316329,
+      "path": "output/eval_arm_a/AA_S1_037_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_037_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.1299306489527225,
+      "path": "output/eval_arm_a/AA_S1_037_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_037_s2",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.131548497825861,
+      "path": "output/eval_arm_a/AA_S1_037_s2__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_038_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.140420690178871,
+      "path": "output/eval_arm_a/AA_S1_038_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_038_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.131228122860193,
+      "path": "output/eval_arm_a/AA_S1_038_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_038_s2",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.132174536585808,
+      "path": "output/eval_arm_a/AA_S1_038_s2__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_039_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.141960185021162,
+      "path": "output/eval_arm_a/AA_S1_039_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_039_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.131507493555546,
+      "path": "output/eval_arm_a/AA_S1_039_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_039_s2",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.133323200047016,
+      "path": "output/eval_arm_a/AA_S1_039_s2__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_040_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.132882907986641,
+      "path": "output/eval_arm_a/AA_S1_040_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_040_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.14060403034091,
+      "path": "output/eval_arm_a/AA_S1_040_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_040_s2",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.13411346450448,
+      "path": "output/eval_arm_a/AA_S1_040_s2__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_041_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.130466271191835,
+      "path": "output/eval_arm_a/AA_S1_041_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_041_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.1328238770365715,
+      "path": "output/eval_arm_a/AA_S1_041_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_041_s2",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.1315948106348515,
+      "path": "output/eval_arm_a/AA_S1_041_s2__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_042_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.130334470421076,
+      "path": "output/eval_arm_a/AA_S1_042_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_042_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.133267130702734,
+      "path": "output/eval_arm_a/AA_S1_042_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_042_s2",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.134849905967712,
+      "path": "output/eval_arm_a/AA_S1_042_s2__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_043_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.136361543089151,
+      "path": "output/eval_arm_a/AA_S1_043_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_043_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.130308296531439,
+      "path": "output/eval_arm_a/AA_S1_043_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S1_043_s2",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 5.132540795952082,
+      "path": "output/eval_arm_a/AA_S1_043_s2__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_000_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.60496586561203,
+      "path": "output/eval_arm_a/AA_S3_000_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_000_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.6184765100479126,
+      "path": "output/eval_arm_a/AA_S3_000_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_001_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.617669679224491,
+      "path": "output/eval_arm_a/AA_S3_001_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_001_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.601221699267626,
+      "path": "output/eval_arm_a/AA_S3_001_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_002_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.607625138014555,
+      "path": "output/eval_arm_a/AA_S3_002_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_002_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.608860705047846,
+      "path": "output/eval_arm_a/AA_S3_002_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_003_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.599590338766575,
+      "path": "output/eval_arm_a/AA_S3_003_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_003_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.60653318092227,
+      "path": "output/eval_arm_a/AA_S3_003_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_004_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.6002125665545464,
+      "path": "output/eval_arm_a/AA_S3_004_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_004_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.6025617718696594,
+      "path": "output/eval_arm_a/AA_S3_004_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_005_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.598360650241375,
+      "path": "output/eval_arm_a/AA_S3_005_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_005_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.5992280766367912,
+      "path": "output/eval_arm_a/AA_S3_005_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_006_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.602811027318239,
+      "path": "output/eval_arm_a/AA_S3_006_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_006_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.6200679391622543,
+      "path": "output/eval_arm_a/AA_S3_006_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_007_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.6009870655834675,
+      "path": "output/eval_arm_a/AA_S3_007_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_007_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.6005995757877827,
+      "path": "output/eval_arm_a/AA_S3_007_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_008_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.6014655381441116,
+      "path": "output/eval_arm_a/AA_S3_008_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_008_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.604767918586731,
+      "path": "output/eval_arm_a/AA_S3_008_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_009_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.604162383824587,
+      "path": "output/eval_arm_a/AA_S3_009_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_009_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.6056957989931107,
+      "path": "output/eval_arm_a/AA_S3_009_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_010_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.6029589287936687,
+      "path": "output/eval_arm_a/AA_S3_010_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_010_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.603274706751108,
+      "path": "output/eval_arm_a/AA_S3_010_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_011_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.614767860621214,
+      "path": "output/eval_arm_a/AA_S3_011_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_011_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.6167670227587223,
+      "path": "output/eval_arm_a/AA_S3_011_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_012_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.6039808690547943,
+      "path": "output/eval_arm_a/AA_S3_012_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_012_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.6060552150011063,
+      "path": "output/eval_arm_a/AA_S3_012_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_013_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.6111598052084446,
+      "path": "output/eval_arm_a/AA_S3_013_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_013_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.6028888002038,
+      "path": "output/eval_arm_a/AA_S3_013_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_014_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.6030792705714703,
+      "path": "output/eval_arm_a/AA_S3_014_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_014_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.602953378111124,
+      "path": "output/eval_arm_a/AA_S3_014_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_015_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.6027283892035484,
+      "path": "output/eval_arm_a/AA_S3_015_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_015_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.6041051745414734,
+      "path": "output/eval_arm_a/AA_S3_015_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_016_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.6201373152434826,
+      "path": "output/eval_arm_a/AA_S3_016_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_016_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.6012811698019505,
+      "path": "output/eval_arm_a/AA_S3_016_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_017_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.6057718731462955,
+      "path": "output/eval_arm_a/AA_S3_017_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_017_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.6068918108940125,
+      "path": "output/eval_arm_a/AA_S3_017_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_018_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.602474719285965,
+      "path": "output/eval_arm_a/AA_S3_018_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_018_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.601315800100565,
+      "path": "output/eval_arm_a/AA_S3_018_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_019_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.6024831272661686,
+      "path": "output/eval_arm_a/AA_S3_019_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_019_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.602210469543934,
+      "path": "output/eval_arm_a/AA_S3_019_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_020_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.6048258282244205,
+      "path": "output/eval_arm_a/AA_S3_020_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_020_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.6066430285573006,
+      "path": "output/eval_arm_a/AA_S3_020_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_021_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.601483639329672,
+      "path": "output/eval_arm_a/AA_S3_021_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_021_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.5985808111727238,
+      "path": "output/eval_arm_a/AA_S3_021_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_022_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.602884963154793,
+      "path": "output/eval_arm_a/AA_S3_022_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_022_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.601184692233801,
+      "path": "output/eval_arm_a/AA_S3_022_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_023_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.6067274548113346,
+      "path": "output/eval_arm_a/AA_S3_023_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_023_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.6015843898057938,
+      "path": "output/eval_arm_a/AA_S3_023_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_024_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.6097999438643456,
+      "path": "output/eval_arm_a/AA_S3_024_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_024_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.60229080542922,
+      "path": "output/eval_arm_a/AA_S3_024_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_025_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.611599672585726,
+      "path": "output/eval_arm_a/AA_S3_025_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_025_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.60006982088089,
+      "path": "output/eval_arm_a/AA_S3_025_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_026_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 7.787751372903585,
+      "path": "output/eval_arm_a/AA_S3_026_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_026_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.6042955107986927,
+      "path": "output/eval_arm_a/AA_S3_026_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_027_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.6010098308324814,
+      "path": "output/eval_arm_a/AA_S3_027_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_027_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.6028282940387726,
+      "path": "output/eval_arm_a/AA_S3_027_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_028_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.601231973618269,
+      "path": "output/eval_arm_a/AA_S3_028_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_028_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.6024104319512844,
+      "path": "output/eval_arm_a/AA_S3_028_s1__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_029_s0",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.603653896600008,
+      "path": "output/eval_arm_a/AA_S3_029_s0__arm_a_full.png"
+    },
+    {
+      "task_id": "AA_S3_029_s1",
+      "variant": "arm_a_full",
+      "status": "ok",
+      "denoise_s": 3.600750908255577,
+      "path": "output/eval_arm_a/AA_S3_029_s1__arm_a_full.png"
+    }
+  ],
+  "fails": []
+}
