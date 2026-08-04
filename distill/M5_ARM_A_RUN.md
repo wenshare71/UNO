@@ -196,21 +196,57 @@ echo "pid=$!"
 4. 读到结果后**才**定臂 B 的 init 与步数,并在上机前预登记(§11.6 末尾的三个候选,
    §11.7 补了第四个:分段——先纯单 ref 做隔离结构适配,再进混合数据)。
 
-### 上机命令(**等确认点全过之后**再发)
+### 上机命令 —— 生成臂 A 评测图(确认点已全过,2026-08-04)
+
+**照抄 `M5_PROBE_RUN.md` 的写法,单卡不分 shard。** WHY 不用 8 shard:
+每个 shard 各自付 ~7 min 模型加载,8 卡并行能把 40 min 压到 ~11 min,
+但要多出 8 个进程、8 份日志和一次首次使用的 shard 合并——为省 29 min
+在**产出 P1 读数的那一批**上引入新失败面,不划算。P-probe 单卡 25.8 min / 0 失败
+这条路已经趟过。
 
 ```bash
 cd /kaimm-distill/wuwenxuan/UNO && git pull
 
-# ① 任务单已随 git 带过来,先自检一遍(纯 CPU,秒级)
+# ① 任务单自检(纯 CPU,秒级)                      [已完成 2026-08-04 ✅]
 python distill/build_arm_a_tasks.py --verify
 
-# ② 成本核对(不碰 GPU)
-python distill/eval_multiref.py --eval_json datasets/eval_multiref/arm_a_tasks.json --dry_run
-#    预期:official_full 192 张 + arm_a_full 192 张,合计 ≈ 32.6 min 单卡
+# ② 成本核对(不碰 GPU)                            [已完成 2026-08-04 ✅]
+python distill/eval_multiref.py \
+  --eval_json datasets/eval_multiref/arm_a_tasks.json \
+  --save_path output/eval_arm_a --dry_run
 
-# ③ 8 shard 并行生成(--save_path 换新目录,不覆盖 M4/P-probe 产物)
-#    注意 official_full 与 arm_a_full 必须在**同一次运行**里出,不许分两次
+# ③ 生成(后台 + 日志)。预计 ~7 min 加载 + ~33 min 出图 ≈ 40 min
+mkdir -p logs
+nohup python distill/eval_multiref.py \
+  --eval_json datasets/eval_multiref/arm_a_tasks.json \
+  --save_path output/eval_arm_a \
+  > logs/m5_arm_a_eval.log 2>&1 &
+echo "pid=$!"
+
+# ④ 合并 + 拼图(纯 CPU)
+python distill/eval_multiref.py \
+  --eval_json datasets/eval_multiref/arm_a_tasks.json \
+  --save_path output/eval_arm_a --merge
 ```
+
+**`--save_path output/eval_arm_a`,不要用 `output/eval_multiref` 或 `output/probe_iso`。**
+`write_shard_results` 会往 `save_path` 写 `results_shard0.json`,`--merge` 汇总成
+`results.json`;用旧目录会覆盖 M4 / P-probe 的 shard 记录,`--merge` 还会把两批
+产物混着拼图。
+
+**两个变体必须在同一次运行(③ 这一条命令)里出,不许分两次。**
+变体外层循环保证整批只发生 1 次 `swap_lora`;分两次跑就变成跨会话,
+而本栈不可逐位复现(§11.3 步骤 1),那正是 §11.7 要避免的事。
+
+**验收:`失败 0`。** 有任何一张失败,把 `results_shard0.json` 的 `fails` 字段原样
+带回来,**不要自己重跑掉的那几张**——先报告,等判断是否整体重跑。
+
+**要带回来的**:
+1. `logs/m5_arm_a_eval.log` 的末 20 行(总张数 / 失败数 / 总耗时);
+2. `--merge` 打印的那张表。注意 `vs teacher` 那一列**这次没有意义**——
+   两个变体都是全注意力、都不开 KV cache,耗时本来就该一样,
+   出现明显差异反而要查(§11.7:臂 A 的读数是质量,不是速度);
+3. `ls output/eval_arm_a/boards/ | wc -l`。
 
 ## 步骤 4 实际读数 [2026-08-04,`logs/m5_arm_a.log` 889 行,本地复核]
 
