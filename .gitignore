@@ -278,3 +278,5 @@ log/ref_distill/
 # 标注结果同 blind_annotations_*(那边也是进 git 的),它们是判读产物不是中间态。
 !/output/probe_iso/idcount_items.json
 !/output/probe_iso/idcount_marks.json
+
+!/logs/m5_arm_a.log
