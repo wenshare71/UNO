@@ -57,6 +57,8 @@ OUT_M4_PAIRS = os.path.join(REPO, "output/eval_multiref/pairs_m4r1.json")
 OUT_M4_MARKS = os.path.join(REPO, "output/eval_multiref/blind_annotations_m4r1.json")
 OUT_R2_PAIRS = os.path.join(REPO, "output/eval_multiref/pairs_m5r1.json")
 OUT_AA_PAIRS = os.path.join(REPO, "output/eval_arm_a/pairs_m5aa.json")
+OUT_AA_MARKS = os.path.join(REPO, "output/eval_arm_a/blind_annotations_m5aa.json")
+OUT_CTL_PAIRS = os.path.join(REPO, "output/eval_arm_a/pairs_m5aactl.json")
 
 EVAL_DIR = "output/eval_multiref"      # M4 产物目录(仓库根相对)
 NF_DIR = "output/noise_floor"          # 步骤 1 产物目录
@@ -72,11 +74,28 @@ ARM_A = "arm_a_full"
 M4_BLIND_SEED = "m4-blind-v1"
 M5_BLIND_SEED = "m5-blind-v1"
 AA_BLIND_SEED = "m5-arm-a-v1"
+CTL_BLIND_SEED = "m5-arm-a-ctl-v1"
 
-# 每个批次必须有**自己**的盲种:槽位一旦在揭盲模式下被看过就永久污染,
-# 而"看过"是不可撤销的。写成显式集合而不是靠人记,是因为复制粘贴一个
-# cmd_* 函数时最容易漏掉的就是改种子——漏了不会报错,只会静默复用旧槽位。
-USED_BLIND_SEEDS = (M4_BLIND_SEED, M5_BLIND_SEED)
+# 盲种登记表。每个批次必须有**自己**的盲种:槽位一旦在揭盲模式下被看过就永久污染,
+# 而"看过"是不可撤销的。写成登记表而不是靠人记,是因为复制粘贴一个 cmd_* 函数时
+# 最容易漏掉的就是改种子——漏了不会报错,只会静默复用旧槽位。
+BLIND_SEEDS = {
+    "m4r1":    M4_BLIND_SEED,
+    "m5r1":    M5_BLIND_SEED,
+    "m5aa":    AA_BLIND_SEED,
+    "m5aactl": CTL_BLIND_SEED,
+}
+
+
+def fresh_seed(batch_id: str, seed: str) -> str:
+    """盲种守卫:既挡"抄了别人的种子",也挡"新批次忘了登记"。"""
+    clash = sorted(b for b, s in BLIND_SEEDS.items() if s == seed and b != batch_id)
+    if clash:
+        raise SystemExit(f"❌ 盲种 {seed} 已被批次 {clash} 用过,槽位已污染,必须换一个")
+    if BLIND_SEEDS.get(batch_id) != seed:
+        raise SystemExit(f"❌ 批次 {batch_id} 没在 BLIND_SEEDS 里登记 {seed}——"
+                         f"先登记再建清单,否则下一个批次查不到它")
+    return seed
 
 M4_STRATA = ("S1", "S2", "S3", "S4")   # S0 锚点不参与人评
 
@@ -414,8 +433,7 @@ def cmd_arm_a(_args) -> None:
     results = load_json(ARM_A_RESULTS)
     have = generated_ok(results)
 
-    if AA_BLIND_SEED in USED_BLIND_SEEDS:
-        raise SystemExit(f"❌ 盲种 {AA_BLIND_SEED} 已被用过,槽位已污染,必须换一个新的")
+    fresh_seed("m5aa", AA_BLIND_SEED)
 
     # 记录里的 path 是生成时**实际写下**的路径;img_rel 是重建出来的。
     # 两者对不上说明 out_path 的命名约定漂了,此时清单会指向不存在的图,
@@ -458,9 +476,145 @@ def cmd_arm_a(_args) -> None:
           f"(§8.2 要求 ≥ 94、且 Wilson CI 下界 ≥ 0.40)")
     print(f"  ⚠️ 平局率 > {1 - 94 / len(pairs):.1%} ⇒ 结论是「判据不适用」而非「不达标」,"
           f"**不许事后追加样本**(§11.7)")
-    print(f"\n盲种 {AA_BLIND_SEED}(与 {list(USED_BLIND_SEEDS)} 都不同)")
+    print(f"\n盲种 {AA_BLIND_SEED}(登记表里与其它批次都不同)")
     print(f"⚠️ 拼图 {AA_DIR}/boards/ 是**带变体名标注**的并排图——"
           f"开评之前不要再看它,看过多少要写进 §8.5 的局限里。")
+
+
+# ------------------------------------------------------------------ 臂 A 尺子标定批(§11.8)
+
+CTL_RUNFLOOR_N = {"S1": 40, "S3": 20}     # 按臂 A 的 132:60 等比缩到 60 条
+CTL_N_REPLAY = 20
+
+
+def pick_run_floor(aa_tasks: list[dict], m4_have: set, aa_have: set,
+                   exclude: set) -> list[dict]:
+    """**同 seed、同权重、异 run** 的对照对 —— 平局率的**天花板**。
+
+    WHY 非做不可:臂 A 的平局率 59.4% 本身读不出方向。它夹在两个基线之间——
+
+        换 seed + 同权重(零假设对,已测)          33.3%
+        同 seed  + 异权重(臂 A,本次)             59.4%
+        同 seed  + 同权重(异 run,**从没测过**)   ?
+
+    §11.7 预登记时拿 33.3% 当参照,但零假设对**换了 seed**(30/30 全换,
+    `noise_floor_tasks.json` 可查),而臂 A 是共享噪声的。共享噪声本身就让两张图
+    更像 ⇒ 平局率更高,**这个混杂正好朝着"配方无代价"那个结论的方向推**。
+    所以 33.3% 不是单变量对照,不能直接支撑结论。
+
+    真正的对照是"同一份权重、同一个 seed、跑两次"。它的图**已经免费存在**:
+    M4 的 192 张 `official_full` 与臂 A 批的 192 张 `official_full` 同任务同 seed,
+    只差生成会话(M4 ≈07-30,臂 A 08-04)。GPU 成本 0。
+
+    **这个对照是双向的,不是为结论量身定做的**:天花板若 ≈90%,则 59.4% 明显低于它
+    ⇒ 臂 A 与 teacher **可分辨**,「配方无代价」不成立;天花板若 ≈60%,则 59.4%
+    已经贴到上限 ⇒ 结论成立。两种结果都可能,事先不知道是哪种。
+    """
+    out = []
+    for st, n in CTL_RUNFLOOR_N.items():
+        pool = [t for t in aa_tasks
+                if t["stratum"] == st and t["task_id"] not in exclude]
+        pool.sort(key=lambda t: h(t["task_id"], "m5aactl-runfloor"))
+        if len(pool) < n:
+            raise SystemExit(f"❌ {st} 只剩 {len(pool)} 条,抽不出 {n} 条")
+        for t in pool[:n]:
+            src = t["meta"]["arm_a_src_task_id"]
+            if (t["task_id"], TEACHER) not in aa_have:
+                raise SystemExit(f"❌ 臂 A 批缺 {t['task_id']}/{TEACHER}")
+            if (src, TEACHER) not in m4_have:
+                raise SystemExit(f"❌ M4 批缺 {src}/{TEACHER}")
+            out.append(make_pair(f"m5aactl::rf::{src}", "run_floor", t,
+                                 "teacher_run_arm_a", img_rel(AA_DIR, t["task_id"], TEACHER),
+                                 "teacher_run_m4", img_rel(EVAL_DIR, src, TEACHER),
+                                 src_task_id=src))
+    return out
+
+
+def pick_arm_a_replay(aa_pairs: list[dict], aa_marks: dict, n: int) -> list[dict]:
+    """从臂 A 已标的 192 条里按**当次判定结果**等比抽 n 条重放(同 `pick_replay` 纪律)。
+
+    WHY 要混进来、不单跑天花板批:天花板若在**另一场**判读里测,拿它和臂 A 的
+    59.4% 相比又变成跨批次比较——正是 §8.5-3 禁止的那件事(而且 §8.5-3 实测的漂移
+    **恰好全发生在平局边界上**,8/20)。混进同一场,才能当场确认臂 A 的平局率
+    在这把尺子的当前状态下还成不成立。
+
+    副作用是标注者会察觉"这批里有几对几乎一模一样"。这是天花板条件本身的性质,
+    躲不掉;混入 20 条真臂 A 对,至少不会让整批退化成"一路平局"。
+    """
+    by_winner: dict[str, list[str]] = defaultdict(list)
+    for pid, m in aa_marks.items():
+        by_winner[m["winner"]].append(pid)
+
+    total = sum(len(v) for v in by_winner.values())
+    quota, alloc = {}, 0
+    groups = sorted(by_winner)
+    for g in groups[:-1]:
+        quota[g] = round(n * len(by_winner[g]) / total)
+        alloc += quota[g]
+    quota[groups[-1]] = n - alloc
+
+    pair_by_id = {p["pair_id"]: p for p in aa_pairs}
+    out = []
+    for g in groups:
+        pool = sorted(by_winner[g], key=lambda p: h(p, "m5aactl-replay"))
+        if len(pool) < quota[g]:
+            raise SystemExit(f"❌ 胜者 {g} 只有 {len(pool)} 条,抽不出 {quota[g]} 条")
+        for pid in pool[:quota[g]]:
+            src = pair_by_id[pid]
+            out.append({**src,
+                        "pair_id": f"m5aactl::rp::{src['src_task_id']}",
+                        "kind": "replay",          # 用这个名字,report.py 才会算自洽率
+                        "replay_of": pid})
+    if len(out) != n:
+        raise SystemExit(f"❌ 重放抽到 {len(out)} 条,应为 {n}")
+    return out
+
+
+def cmd_arm_a_ctl(_args) -> None:
+    """臂 A 的**尺子标定批**:60 条 run_floor(天花板)+ 20 条臂 A 重放。
+
+    **臂 A 的 31/47/114 就此冻结,本批一条都不并进去。** 这不是"事后追加样本"
+    (§11.7 禁的是那个)——判据早已判定「不适用」,且本批测的是**尺子**不是**样本**:
+    run_floor 的两侧是同一份权重,它对"配方有没有代价"这个问题结构上无话可说。
+    """
+    fresh_seed("m5aactl", CTL_BLIND_SEED)
+
+    aa_tasks = load_json(ARM_A_TASKS)["tasks"]
+    aa_have = generated_ok(load_json(ARM_A_RESULTS))
+    m4_have = generated_ok(load_json(M4_RESULTS))
+    aa_pairs = load_json(OUT_AA_PAIRS)["pairs"]
+    aa_marks = load_json(OUT_AA_MARKS)["marks"]
+
+    if len(aa_marks) != len(aa_pairs):
+        raise SystemExit(f"❌ 臂 A 只标了 {len(aa_marks)}/{len(aa_pairs)} 条,"
+                         f"没标完就抽重放,比例分层是错的")
+
+    replay = pick_arm_a_replay(aa_pairs, aa_marks, CTL_N_REPLAY)
+    # 重放用掉的任务不再进 run_floor:同一个 prompt/refs 在一场里出现两次,
+    # 标注者一眼就认出来,重放就不盲了。
+    # 臂 A 清单的 src_task_id 就是 `AA_*` 任务号(make_pair 默认取 task_id),直接用
+    used = {p["src_task_id"] for p in replay}
+    pairs = pick_run_floor(aa_tasks, m4_have, aa_have, used) + replay
+
+    pairs.sort(key=lambda p: h(p["pair_id"], CTL_BLIND_SEED, "order"))
+
+    write_manifest(OUT_CTL_PAIRS, {
+        "batch_id": "m5aactl",
+        "blind_seed": CTL_BLIND_SEED,
+        "question": "哪一张更好?(综合参考图忠实度与画面质量)",   # 逐字沿用
+        "eval_set_version": "arm_a_tasks v1 + eval_set v1-232 的 official_full",
+        "source": "§11.8 尺子标定:run_floor 60(同 seed 同权重异 run 的平局率天花板)"
+                  " + 臂 A 重放 20;臂 A 的 31/47/114 冻结,不并入",
+    }, pairs)
+
+    n_st = Counter((p["kind"], p["stratum"]) for p in pairs)
+    print("\n构成:")
+    for (k, st), c in sorted(n_st.items()):
+        print(f"  {k:<12}{st:<5}{c:>5}")
+    print(f"\n重放的原判定分布:"
+          f"{dict(sorted(Counter(aa_marks[p['replay_of']]['winner'] for p in replay).items()))}")
+    print(f"盲种 {CTL_BLIND_SEED}(登记表里与其它批次都不同)")
+    print("GPU 成本 0——两侧的图都已存在(臂 A 批 + M4 批)。")
 
 
 # ------------------------------------------------------------------ main
@@ -473,8 +627,10 @@ def main() -> None:
     r2 = sub.add_parser("r2", help="生成步骤 2 的 198 条批次")
     r2.add_argument("--n_replay", type=int, default=20)
     sub.add_parser("arm-a", help="生成臂 A 的 192 条批次(§11.7 链条第 ① 边)")
+    sub.add_parser("arm-a-ctl", help="臂 A 尺子标定批:run_floor 60 + 重放 20(§11.8)")
     args = p.parse_args()
-    {"migrate-m4": cmd_migrate_m4, "r2": cmd_r2, "arm-a": cmd_arm_a}[args.cmd](args)
+    {"migrate-m4": cmd_migrate_m4, "r2": cmd_r2,
+     "arm-a": cmd_arm_a, "arm-a-ctl": cmd_arm_a_ctl}[args.cmd](args)
 
 
 if __name__ == "__main__":

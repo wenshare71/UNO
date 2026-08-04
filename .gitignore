@@ -293,3 +293,5 @@ log/ref_distill/
 # 图不进(384 张全分辨率 PNG 留在 H800),服务器在 H800 起、走端口转发。
 !/output/eval_arm_a/pairs_m5aa.json
 !/output/eval_arm_a/blind_annotations_m5aa.json
+!/output/eval_arm_a/pairs_m5aactl.json
+!/output/eval_arm_a/blind_annotations_m5aactl.json
