@@ -13,7 +13,8 @@ post-vs-pre、pre-vs-teacher、teacher 自比(零假设)、重放,全都只是�
     meta:  batch_id, blind_seed, question, created, eval_set_version, source
     pairs[]:
       pair_id      全局唯一,**标注就按它键控**(不再按列表下标——下标会随任务单增删偏移)
-      kind         post_vs_pre / null_floor / replay / teacher_vs_student
+      kind         post_vs_pre / null_floor / replay / teacher_vs_student /
+                   arm_a_vs_teacher
       stratum      S1/S2/S3/S4(前端可见,不泄漏身份)
       prompt       前端可见
       ref_paths[]  仓库根相对路径
@@ -30,6 +31,7 @@ post-vs-pre、pre-vs-teacher、teacher 自比(零假设)、重放,全都只是�
 用法:
     python distill/build_pairs.py migrate-m4    # M4 227 条 → pair_id 键控 + 复算校验
     python distill/build_pairs.py r2            # 步骤 2 的 198 条批次
+    python distill/build_pairs.py arm-a         # 臂 A 的 192 条批次(§11.7 第 ① 边)
 """
 from __future__ import annotations
 
@@ -48,21 +50,33 @@ M4_RESULTS = os.path.join(REPO, "output/eval_multiref/results.json")
 M4_MARKS = os.path.join(REPO, "output/eval_multiref/blind_rond1.json")
 M4_STATS = os.path.join(REPO, "output/eval_multiref/blind_stats.json")
 
+ARM_A_TASKS = os.path.join(REPO, "datasets/eval_multiref/arm_a_tasks.json")
+ARM_A_RESULTS = os.path.join(REPO, "output/eval_arm_a/results.json")
+
 OUT_M4_PAIRS = os.path.join(REPO, "output/eval_multiref/pairs_m4r1.json")
 OUT_M4_MARKS = os.path.join(REPO, "output/eval_multiref/blind_annotations_m4r1.json")
 OUT_R2_PAIRS = os.path.join(REPO, "output/eval_multiref/pairs_m5r1.json")
+OUT_AA_PAIRS = os.path.join(REPO, "output/eval_arm_a/pairs_m5aa.json")
 
 EVAL_DIR = "output/eval_multiref"      # M4 产物目录(仓库根相对)
 NF_DIR = "output/noise_floor"          # 步骤 1 产物目录
+AA_DIR = "output/eval_arm_a"           # 臂 A 读数批次产物目录
 
 TEACHER = "official_full"
 PRE = "ours_kv_pre"
 POST = "ours_kv_post4000"
+ARM_A = "arm_a_full"
 
 # M4 用过的盲种。**只用于把旧标注解码回语义胜者**,新批次一律不用它
 # (你已在揭盲模式下看过全部 227 条,这个种子对应的槽位已污染)。
 M4_BLIND_SEED = "m4-blind-v1"
 M5_BLIND_SEED = "m5-blind-v1"
+AA_BLIND_SEED = "m5-arm-a-v1"
+
+# 每个批次必须有**自己**的盲种:槽位一旦在揭盲模式下被看过就永久污染,
+# 而"看过"是不可撤销的。写成显式集合而不是靠人记,是因为复制粘贴一个
+# cmd_* 函数时最容易漏掉的就是改种子——漏了不会报错,只会静默复用旧槽位。
+USED_BLIND_SEEDS = (M4_BLIND_SEED, M5_BLIND_SEED)
 
 M4_STRATA = ("S1", "S2", "S3", "S4")   # S0 锚点不参与人评
 
@@ -381,6 +395,74 @@ def cmd_r2(args) -> None:
           f"旧槽位不可再用)")
 
 
+# ------------------------------------------------------------------ 臂 A 批次(§11.7)
+
+def cmd_arm_a(_args) -> None:
+    """臂 A 读数批次:`arm_a_full` vs `official_full`,192 对,链条第 ① 边。
+
+    WHY 只有这一个 kind、不掺 replay / null_floor:§11.7 的批次表把判读量写死成
+    「192 条,按 §8.1 / §8.2 口径,**不新增判据**」。掺重放要占判读预算,而
+    §8.5-3 的跨批次漂移在这里**不构成威胁**——判据是**批内**的非平局胜率,
+    两个变体同批同会话生成、同一轮标注,尺子漂移对批内比较不起作用。
+
+    WHY key_0 = `arm_a_full`:清单约定 key_0 = 被检验方、key_1 = 基线
+    (`report.py:13`),于是非平局胜率 `win_0/(win_0+win_1)` 直接就是
+    "臂 A 相对 teacher 的胜率",§8.2 的 CI 下界 ≥ 0.40 可以原样套用,
+    不需要在报告里做任何方向翻转——翻转正是 M4 吃过亏的地方(score 0.92→0.82)。
+    """
+    tasks = load_json(ARM_A_TASKS)["tasks"]
+    results = load_json(ARM_A_RESULTS)
+    have = generated_ok(results)
+
+    if AA_BLIND_SEED in USED_BLIND_SEEDS:
+        raise SystemExit(f"❌ 盲种 {AA_BLIND_SEED} 已被用过,槽位已污染,必须换一个新的")
+
+    # 记录里的 path 是生成时**实际写下**的路径;img_rel 是重建出来的。
+    # 两者对不上说明 out_path 的命名约定漂了,此时清单会指向不存在的图,
+    # 而服务器要到上机那一刻才报错——所以在这里当场拦下。
+    actual = {(r["task_id"], r["variant"]): r["path"] for r in results["records"]}
+
+    pairs = []
+    for t in tasks:
+        tid = t["task_id"]
+        for v in (ARM_A, TEACHER):
+            if (tid, v) not in have:
+                raise SystemExit(f"❌ {tid}/{v} 缺图,192 条不完整就不许开评")
+            rebuilt = img_rel(AA_DIR, tid, v)
+            if actual[(tid, v)] != rebuilt:
+                raise SystemExit(f"❌ {tid}/{v} 记录路径 {actual[(tid, v)]} "
+                                 f"≠ 重建路径 {rebuilt}")
+        pairs.append(make_pair(f"m5aa::aa::{tid}", "arm_a_vs_teacher", t,
+                               ARM_A, img_rel(AA_DIR, tid, ARM_A),      # key_0 = 被检验方
+                               TEACHER, img_rel(AA_DIR, tid, TEACHER)))
+
+    n_task = len(tasks)
+    if len(pairs) != n_task or n_task != 192:
+        raise SystemExit(f"❌ 配对 {len(pairs)} 对 / 任务 {n_task} 条,应为 192")
+
+    # 打散:与槽位用不同的盐,免得"排在前面"和"在左边"产生相关(同 cmd_r2)
+    pairs.sort(key=lambda p: h(p["pair_id"], AA_BLIND_SEED, "order"))
+
+    write_manifest(OUT_AA_PAIRS, {
+        "batch_id": "m5aa",
+        "blind_seed": AA_BLIND_SEED,
+        "question": "哪一张更好?(综合参考图忠实度与画面质量)",   # 逐字沿用,改问题=改尺子
+        "eval_set_version": "arm_a_tasks v1(= eval_set v1-232 的 S1+S3,seed 零偏移)",
+        "source": "§11.7 链条第 ① 边:配方施加在已对齐底座上的代价",
+    }, pairs)
+
+    by_st = Counter(p["stratum"] for p in pairs)
+    print(f"\n分层:{dict(sorted(by_st.items()))}")
+    n_nontie = round(len(pairs) * 0.667)
+    print(f"  按零假设对实测 33.3% 平局率折合 n_nontie ≈ {n_nontie}"
+          f"(§8.2 要求 ≥ 94、且 Wilson CI 下界 ≥ 0.40)")
+    print(f"  ⚠️ 平局率 > {1 - 94 / len(pairs):.1%} ⇒ 结论是「判据不适用」而非「不达标」,"
+          f"**不许事后追加样本**(§11.7)")
+    print(f"\n盲种 {AA_BLIND_SEED}(与 {list(USED_BLIND_SEEDS)} 都不同)")
+    print(f"⚠️ 拼图 {AA_DIR}/boards/ 是**带变体名标注**的并排图——"
+          f"开评之前不要再看它,看过多少要写进 §8.5 的局限里。")
+
+
 # ------------------------------------------------------------------ main
 
 def main() -> None:
@@ -390,8 +472,9 @@ def main() -> None:
     sub.add_parser("migrate-m4", help="M4 227 条迁移到 pair_id 键控 + 复算校验")
     r2 = sub.add_parser("r2", help="生成步骤 2 的 198 条批次")
     r2.add_argument("--n_replay", type=int, default=20)
+    sub.add_parser("arm-a", help="生成臂 A 的 192 条批次(§11.7 链条第 ① 边)")
     args = p.parse_args()
-    {"migrate-m4": cmd_migrate_m4, "r2": cmd_r2}[args.cmd](args)
+    {"migrate-m4": cmd_migrate_m4, "r2": cmd_r2, "arm-a": cmd_arm_a}[args.cmd](args)
 
 
 if __name__ == "__main__":

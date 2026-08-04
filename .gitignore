@@ -287,3 +287,9 @@ log/ref_distill/
 !/output/eval_arm_a/boards/
 !/output/eval_arm_a/results.json
 !/output/eval_arm_a/results_shard0.json
+
+# 盲评配对清单 + 标注,同 probe_iso 的 idcount_*:清单是**预登记的抽样与盲种本身**,
+# 不进 git 就等于判读方案只存在于某台机器的磁盘上;标注是判读产物,不是中间态。
+# 图不进(384 张全分辨率 PNG 留在 H800),服务器在 H800 起、走端口转发。
+!/output/eval_arm_a/pairs_m5aa.json
+!/output/eval_arm_a/blind_annotations_m5aa.json

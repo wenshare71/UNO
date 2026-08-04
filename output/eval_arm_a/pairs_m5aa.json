@@ -1,0 +1,2835 @@
+{
+  "meta": {
+    "batch_id": "m5aa",
+    "blind_seed": "m5-arm-a-v1",
+    "question": "哪一张更好?(综合参考图忠实度与画面质量)",
+    "eval_set_version": "arm_a_tasks v1(= eval_set v1-232 的 S1+S3,seed 零偏移)",
+    "source": "§11.7 链条第 ① 边:配方施加在已对齐底座上的代价",
+    "n_pairs": 192,
+    "by_kind": {
+      "arm_a_vs_teacher": 192
+    }
+  },
+  "pairs": [
+    {
+      "pair_id": "m5aa::aa::AA_S3_021_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a toy in the snow",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/duck_toy/00.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_021_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_021_s0__official_full.png",
+      "src_task_id": "AA_S3_021_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_013_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a candle floating on top of water",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/candle/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_013_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_013_s1__official_full.png",
+      "src_task_id": "AA_S3_013_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_020_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a sneaker in the jungle",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/colorful_sneaker/04.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_020_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_020_s0__official_full.png",
+      "src_task_id": "AA_S3_020_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_014_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a candle floating in an ocean of milk",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/candle/00.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_014_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_014_s1__official_full.png",
+      "src_task_id": "AA_S3_014_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_017_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a bowl and a candle on top of the sidewalk in a crowded street",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/00.jpg",
+        "datasets/dreambooth/dataset/candle/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_017_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_017_s0__official_full.png",
+      "src_task_id": "AA_S1_017_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_008_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a bowl with a blue house in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/05.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_008_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_008_s1__official_full.png",
+      "src_task_id": "AA_S3_008_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_013_s2",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a sneaker floating on top of water",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/02.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_013_s2__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_013_s2__official_full.png",
+      "src_task_id": "AA_S1_013_s2"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_029_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a candle and a clock on top of a purple rug in a forest",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/candle/01.jpg",
+        "datasets/dreambooth/dataset/clock/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_029_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_029_s1__official_full.png",
+      "src_task_id": "AA_S1_029_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_016_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a bowl and a can on top of a mirror",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/01.jpg",
+        "datasets/dreambooth/dataset/can/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_016_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_016_s1__official_full.png",
+      "src_task_id": "AA_S1_016_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_000_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a backpack in the jungle",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_000_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_000_s1__official_full.png",
+      "src_task_id": "AA_S3_000_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_033_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a candle and a stuffed animal floating on top of water",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/candle/01.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_033_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_033_s1__official_full.png",
+      "src_task_id": "AA_S1_033_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_004_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a backpack and a clock on top of pink fabric",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/01.jpg",
+        "datasets/dreambooth/dataset/clock/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_004_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_004_s1__official_full.png",
+      "src_task_id": "AA_S1_004_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_026_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a boot with a city in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/fancy_boot/05.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_026_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_026_s1__official_full.png",
+      "src_task_id": "AA_S3_026_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_003_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a backpack and a candle on a cobblestone street",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/00.jpg",
+        "datasets/dreambooth/dataset/candle/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_003_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_003_s0__official_full.png",
+      "src_task_id": "AA_S1_003_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_002_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a backpack and a can on the beach",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/00.jpg",
+        "datasets/dreambooth/dataset/can/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_002_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_002_s0__official_full.png",
+      "src_task_id": "AA_S1_002_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_043_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a boot and a stuffed animal on a cobblestone street",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/fancy_boot/00.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_043_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_043_s0__official_full.png",
+      "src_task_id": "AA_S1_043_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_034_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a clock and a sneaker floating in an ocean of milk",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/clock/00.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_034_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_034_s0__official_full.png",
+      "src_task_id": "AA_S1_034_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_012_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a candle with the Eiffel Tower in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/candle/00.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_012_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_012_s0__official_full.png",
+      "src_task_id": "AA_S3_012_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_001_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a backpack in the snow",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_001_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_001_s0__official_full.png",
+      "src_task_id": "AA_S3_001_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_028_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a stuffed animal with a blue house in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/grey_sloth_plushie/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_028_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_028_s1__official_full.png",
+      "src_task_id": "AA_S3_028_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_041_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a toy and a boot in the snow",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/duck_toy/00.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_041_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_041_s0__official_full.png",
+      "src_task_id": "AA_S1_041_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_014_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a candle floating in an ocean of milk",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/candle/04.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_014_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_014_s0__official_full.png",
+      "src_task_id": "AA_S3_014_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_000_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a backpack in the jungle",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/00.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_000_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_000_s0__official_full.png",
+      "src_task_id": "AA_S3_000_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_015_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a boot on top of green grass with sunflowers around it",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/00.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_015_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_015_s0__official_full.png",
+      "src_task_id": "AA_S1_015_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_007_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a backpack and a boot with a mountain in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/00.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_007_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_007_s0__official_full.png",
+      "src_task_id": "AA_S1_007_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_030_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a candle and a sneaker with a wheat field in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/candle/00.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_030_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_030_s0__official_full.png",
+      "src_task_id": "AA_S1_030_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_000_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a backpack and a stuffed animal in the jungle",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/01.jpg",
+        "datasets/dreambooth/dataset/bear_plushie/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_000_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_000_s1__official_full.png",
+      "src_task_id": "AA_S1_000_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_002_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a backpack on the beach",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/00.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_002_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_002_s1__official_full.png",
+      "src_task_id": "AA_S3_002_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_041_s2",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a toy and a boot in the snow",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/duck_toy/02.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_041_s2__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_041_s2__official_full.png",
+      "src_task_id": "AA_S1_041_s2"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_005_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a backpack and a sneaker on top of a wooden floor",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/01.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_005_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_005_s1__official_full.png",
+      "src_task_id": "AA_S1_005_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_009_s2",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a bowl on top of a purple rug in a forest",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/02.jpg",
+        "datasets/dreambooth/dataset/berry_bowl/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_009_s2__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_009_s2__official_full.png",
+      "src_task_id": "AA_S1_009_s2"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_029_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a stuffed animal on top of a purple rug in a forest",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/grey_sloth_plushie/00.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_029_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_029_s1__official_full.png",
+      "src_task_id": "AA_S3_029_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_006_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a bowl with a city in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_006_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_006_s1__official_full.png",
+      "src_task_id": "AA_S3_006_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_001_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a backpack in the snow",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_001_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_001_s1__official_full.png",
+      "src_task_id": "AA_S3_001_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_006_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a backpack and a toy with a city in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/00.jpg",
+        "datasets/dreambooth/dataset/duck_toy/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_006_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_006_s0__official_full.png",
+      "src_task_id": "AA_S1_006_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_040_s2",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a sneaker and a stuffed animal in the jungle",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/colorful_sneaker/02.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_040_s2__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_040_s2__official_full.png",
+      "src_task_id": "AA_S1_040_s2"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_038_s2",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a sneaker and a toy on top of a dirt road",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/colorful_sneaker/02.jpg",
+        "datasets/dreambooth/dataset/duck_toy/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_038_s2__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_038_s2__official_full.png",
+      "src_task_id": "AA_S1_038_s2"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_001_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a backpack and a bowl in the snow",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/00.jpg",
+        "datasets/dreambooth/dataset/berry_bowl/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_001_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_001_s0__official_full.png",
+      "src_task_id": "AA_S1_001_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_022_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a bowl and a stuffed animal on the beach",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/00.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_022_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_022_s0__official_full.png",
+      "src_task_id": "AA_S1_022_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_006_s2",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a backpack and a toy with a city in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/02.jpg",
+        "datasets/dreambooth/dataset/duck_toy/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_006_s2__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_006_s2__official_full.png",
+      "src_task_id": "AA_S1_006_s2"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_013_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a candle floating on top of water",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/candle/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_013_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_013_s0__official_full.png",
+      "src_task_id": "AA_S3_013_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_023_s2",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a can and a candle on a cobblestone street",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/02.jpg",
+        "datasets/dreambooth/dataset/candle/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_023_s2__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_023_s2__official_full.png",
+      "src_task_id": "AA_S1_023_s2"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_035_s2",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a clock and a toy on top of green grass with sunflowers around it",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/clock/02.jpg",
+        "datasets/dreambooth/dataset/duck_toy/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_035_s2__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_035_s2__official_full.png",
+      "src_task_id": "AA_S1_035_s2"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_025_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a boot on top of a wooden floor",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/fancy_boot/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_025_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_025_s1__official_full.png",
+      "src_task_id": "AA_S3_025_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_015_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a clock on top of green grass with sunflowers around it",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/clock/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_015_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_015_s1__official_full.png",
+      "src_task_id": "AA_S3_015_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_020_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a bowl and a toy in the jungle",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/01.jpg",
+        "datasets/dreambooth/dataset/duck_toy/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_020_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_020_s1__official_full.png",
+      "src_task_id": "AA_S1_020_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_010_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a can with a wheat field in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/01.jpg",
+        "datasets/dreambooth/dataset/can/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_010_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_010_s1__official_full.png",
+      "src_task_id": "AA_S1_010_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_021_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a bowl and a boot in the snow",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/00.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_021_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_021_s0__official_full.png",
+      "src_task_id": "AA_S1_021_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_021_s2",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a bowl and a boot in the snow",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/02.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_021_s2__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_021_s2__official_full.png",
+      "src_task_id": "AA_S1_021_s2"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_032_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a candle and a boot with the Eiffel Tower in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/candle/00.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_032_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_032_s0__official_full.png",
+      "src_task_id": "AA_S1_032_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_025_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a can and a sneaker on top of a wooden floor",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/01.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_025_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_025_s1__official_full.png",
+      "src_task_id": "AA_S1_025_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_016_s2",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a bowl and a can on top of a mirror",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/02.jpg",
+        "datasets/dreambooth/dataset/can/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_016_s2__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_016_s2__official_full.png",
+      "src_task_id": "AA_S1_016_s2"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_033_s2",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a candle and a stuffed animal floating on top of water",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/candle/02.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_033_s2__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_033_s2__official_full.png",
+      "src_task_id": "AA_S1_033_s2"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_034_s2",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a clock and a sneaker floating in an ocean of milk",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/clock/02.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_034_s2__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_034_s2__official_full.png",
+      "src_task_id": "AA_S1_034_s2"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_019_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a sneaker on top of a white rug",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/colorful_sneaker/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_019_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_019_s1__official_full.png",
+      "src_task_id": "AA_S3_019_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_023_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a toy on a cobblestone street",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/duck_toy/00.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_023_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_023_s0__official_full.png",
+      "src_task_id": "AA_S3_023_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_023_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a can and a candle on a cobblestone street",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/01.jpg",
+        "datasets/dreambooth/dataset/candle/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_023_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_023_s1__official_full.png",
+      "src_task_id": "AA_S1_023_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_025_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a boot on top of a wooden floor",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/fancy_boot/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_025_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_025_s0__official_full.png",
+      "src_task_id": "AA_S3_025_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_017_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a clock on top of the sidewalk in a crowded street",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/clock/04.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_017_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_017_s0__official_full.png",
+      "src_task_id": "AA_S3_017_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_033_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a candle and a stuffed animal floating on top of water",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/candle/00.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_033_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_033_s0__official_full.png",
+      "src_task_id": "AA_S1_033_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_036_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a clock and a boot on top of a mirror",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/clock/01.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_036_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_036_s1__official_full.png",
+      "src_task_id": "AA_S1_036_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_037_s2",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a clock and a stuffed animal on top of the sidewalk in a crowded street",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/clock/02.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_037_s2__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_037_s2__official_full.png",
+      "src_task_id": "AA_S1_037_s2"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_018_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a bowl and a clock on top of a dirt road",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/01.jpg",
+        "datasets/dreambooth/dataset/clock/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_018_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_018_s1__official_full.png",
+      "src_task_id": "AA_S1_018_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_011_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a candle with a tree and autumn leaves in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/01.jpg",
+        "datasets/dreambooth/dataset/candle/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_011_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_011_s1__official_full.png",
+      "src_task_id": "AA_S1_011_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_005_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a stuffed animal on top of a wooden floor",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/04.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_005_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_005_s0__official_full.png",
+      "src_task_id": "AA_S3_005_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_026_s2",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a can and a toy with a city in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/02.jpg",
+        "datasets/dreambooth/dataset/duck_toy/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_026_s2__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_026_s2__official_full.png",
+      "src_task_id": "AA_S1_026_s2"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_032_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a candle and a boot with the Eiffel Tower in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/candle/01.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_032_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_032_s1__official_full.png",
+      "src_task_id": "AA_S1_032_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_018_s2",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a bowl and a clock on top of a dirt road",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/02.jpg",
+        "datasets/dreambooth/dataset/clock/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_018_s2__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_018_s2__official_full.png",
+      "src_task_id": "AA_S1_018_s2"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_032_s2",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a candle and a boot with the Eiffel Tower in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/candle/02.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_032_s2__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_032_s2__official_full.png",
+      "src_task_id": "AA_S1_032_s2"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_027_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a stuffed animal with a mountain in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/grey_sloth_plushie/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_027_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_027_s1__official_full.png",
+      "src_task_id": "AA_S3_027_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_001_s2",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a backpack and a bowl in the snow",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/02.jpg",
+        "datasets/dreambooth/dataset/berry_bowl/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_001_s2__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_001_s2__official_full.png",
+      "src_task_id": "AA_S1_001_s2"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_013_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a sneaker floating on top of water",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/00.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_013_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_013_s0__official_full.png",
+      "src_task_id": "AA_S1_013_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_018_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a bowl and a clock on top of a dirt road",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/00.jpg",
+        "datasets/dreambooth/dataset/clock/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_018_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_018_s0__official_full.png",
+      "src_task_id": "AA_S1_018_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_009_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a can on top of a purple rug in a forest",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_009_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_009_s1__official_full.png",
+      "src_task_id": "AA_S3_009_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_010_s2",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a can with a wheat field in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/02.jpg",
+        "datasets/dreambooth/dataset/can/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_010_s2__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_010_s2__official_full.png",
+      "src_task_id": "AA_S1_010_s2"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_011_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a candle with a tree and autumn leaves in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/00.jpg",
+        "datasets/dreambooth/dataset/candle/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_011_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_011_s0__official_full.png",
+      "src_task_id": "AA_S1_011_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_019_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a sneaker on top of a white rug",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/colorful_sneaker/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_019_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_019_s0__official_full.png",
+      "src_task_id": "AA_S3_019_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_013_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a sneaker floating on top of water",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/01.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_013_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_013_s1__official_full.png",
+      "src_task_id": "AA_S1_013_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_004_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a stuffed animal on top of pink fabric",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_004_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_004_s0__official_full.png",
+      "src_task_id": "AA_S3_004_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_019_s2",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a bowl and a sneaker on top of a white rug",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/02.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_019_s2__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_019_s2__official_full.png",
+      "src_task_id": "AA_S1_019_s2"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_005_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a backpack and a sneaker on top of a wooden floor",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/00.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_005_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_005_s0__official_full.png",
+      "src_task_id": "AA_S1_005_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_040_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a sneaker and a stuffed animal in the jungle",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/colorful_sneaker/01.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_040_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_040_s1__official_full.png",
+      "src_task_id": "AA_S1_040_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_022_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a bowl and a stuffed animal on the beach",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/01.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_022_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_022_s1__official_full.png",
+      "src_task_id": "AA_S1_022_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_024_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a boot on top of pink fabric",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/fancy_boot/00.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_024_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_024_s0__official_full.png",
+      "src_task_id": "AA_S3_024_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_043_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a boot and a stuffed animal on a cobblestone street",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/fancy_boot/01.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_043_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_043_s1__official_full.png",
+      "src_task_id": "AA_S1_043_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_003_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a backpack and a candle on a cobblestone street",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/01.jpg",
+        "datasets/dreambooth/dataset/candle/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_003_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_003_s1__official_full.png",
+      "src_task_id": "AA_S1_003_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_021_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a toy in the snow",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/duck_toy/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_021_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_021_s1__official_full.png",
+      "src_task_id": "AA_S3_021_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_016_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a clock on top of a mirror",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/clock/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_016_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_016_s0__official_full.png",
+      "src_task_id": "AA_S3_016_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_037_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a clock and a stuffed animal on top of the sidewalk in a crowded street",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/clock/00.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_037_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_037_s0__official_full.png",
+      "src_task_id": "AA_S1_037_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_039_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a sneaker and a boot on top of a white rug",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/colorful_sneaker/00.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_039_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_039_s0__official_full.png",
+      "src_task_id": "AA_S1_039_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_017_s2",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a bowl and a candle on top of the sidewalk in a crowded street",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/02.jpg",
+        "datasets/dreambooth/dataset/candle/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_017_s2__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_017_s2__official_full.png",
+      "src_task_id": "AA_S1_017_s2"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_023_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a can and a candle on a cobblestone street",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/00.jpg",
+        "datasets/dreambooth/dataset/candle/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_023_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_023_s0__official_full.png",
+      "src_task_id": "AA_S1_023_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_019_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a bowl and a sneaker on top of a white rug",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/00.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_019_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_019_s0__official_full.png",
+      "src_task_id": "AA_S1_019_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_016_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a bowl and a can on top of a mirror",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/00.jpg",
+        "datasets/dreambooth/dataset/can/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_016_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_016_s0__official_full.png",
+      "src_task_id": "AA_S1_016_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_012_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a candle with the Eiffel Tower in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/candle/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_012_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_012_s1__official_full.png",
+      "src_task_id": "AA_S3_012_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_026_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a can and a toy with a city in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/01.jpg",
+        "datasets/dreambooth/dataset/duck_toy/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_026_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_026_s1__official_full.png",
+      "src_task_id": "AA_S1_026_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_034_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a clock and a sneaker floating in an ocean of milk",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/clock/01.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_034_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_034_s1__official_full.png",
+      "src_task_id": "AA_S1_034_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_018_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a sneaker on top of a dirt road",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/colorful_sneaker/00.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_018_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_018_s0__official_full.png",
+      "src_task_id": "AA_S3_018_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_035_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a clock and a toy on top of green grass with sunflowers around it",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/clock/01.jpg",
+        "datasets/dreambooth/dataset/duck_toy/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_035_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_035_s1__official_full.png",
+      "src_task_id": "AA_S1_035_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_006_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a bowl with a city in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/00.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_006_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_006_s0__official_full.png",
+      "src_task_id": "AA_S3_006_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_030_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a candle and a sneaker with a wheat field in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/candle/01.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_030_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_030_s1__official_full.png",
+      "src_task_id": "AA_S1_030_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_028_s2",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a can and a stuffed animal with a blue house in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/02.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_028_s2__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_028_s2__official_full.png",
+      "src_task_id": "AA_S1_028_s2"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_019_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a bowl and a sneaker on top of a white rug",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/01.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_019_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_019_s1__official_full.png",
+      "src_task_id": "AA_S1_019_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_003_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a stuffed animal on a cobblestone street",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/00.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_003_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_003_s0__official_full.png",
+      "src_task_id": "AA_S3_003_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_008_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a bowl with a blue house in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/04.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_008_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_008_s0__official_full.png",
+      "src_task_id": "AA_S3_008_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_042_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a toy and a stuffed animal on the beach",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/duck_toy/01.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_042_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_042_s1__official_full.png",
+      "src_task_id": "AA_S1_042_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_014_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a toy floating in an ocean of milk",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/01.jpg",
+        "datasets/dreambooth/dataset/duck_toy/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_014_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_014_s1__official_full.png",
+      "src_task_id": "AA_S1_014_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_041_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a toy and a boot in the snow",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/duck_toy/01.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_041_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_041_s1__official_full.png",
+      "src_task_id": "AA_S1_041_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_036_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a clock and a boot on top of a mirror",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/clock/00.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_036_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_036_s0__official_full.png",
+      "src_task_id": "AA_S1_036_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_020_s2",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a bowl and a toy in the jungle",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/02.jpg",
+        "datasets/dreambooth/dataset/duck_toy/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_020_s2__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_020_s2__official_full.png",
+      "src_task_id": "AA_S1_020_s2"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_009_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a bowl on top of a purple rug in a forest",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/00.jpg",
+        "datasets/dreambooth/dataset/berry_bowl/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_009_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_009_s0__official_full.png",
+      "src_task_id": "AA_S1_009_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_038_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a sneaker and a toy on top of a dirt road",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/colorful_sneaker/01.jpg",
+        "datasets/dreambooth/dataset/duck_toy/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_038_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_038_s1__official_full.png",
+      "src_task_id": "AA_S1_038_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_038_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a sneaker and a toy on top of a dirt road",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/colorful_sneaker/00.jpg",
+        "datasets/dreambooth/dataset/duck_toy/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_038_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_038_s0__official_full.png",
+      "src_task_id": "AA_S1_038_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_017_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a clock on top of the sidewalk in a crowded street",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/clock/05.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_017_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_017_s1__official_full.png",
+      "src_task_id": "AA_S3_017_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_043_s2",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a boot and a stuffed animal on a cobblestone street",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/fancy_boot/02.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_043_s2__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_043_s2__official_full.png",
+      "src_task_id": "AA_S1_043_s2"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_003_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a stuffed animal on a cobblestone street",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_003_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_003_s1__official_full.png",
+      "src_task_id": "AA_S3_003_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_029_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a stuffed animal on top of a purple rug in a forest",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/grey_sloth_plushie/04.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_029_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_029_s0__official_full.png",
+      "src_task_id": "AA_S3_029_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_024_s2",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a can and a clock on top of pink fabric",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/02.jpg",
+        "datasets/dreambooth/dataset/clock/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_024_s2__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_024_s2__official_full.png",
+      "src_task_id": "AA_S1_024_s2"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_024_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a can and a clock on top of pink fabric",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/01.jpg",
+        "datasets/dreambooth/dataset/clock/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_024_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_024_s1__official_full.png",
+      "src_task_id": "AA_S1_024_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_008_s2",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a backpack and a stuffed animal with a blue house in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/02.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_008_s2__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_008_s2__official_full.png",
+      "src_task_id": "AA_S1_008_s2"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_004_s2",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a backpack and a clock on top of pink fabric",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/02.jpg",
+        "datasets/dreambooth/dataset/clock/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_004_s2__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_004_s2__official_full.png",
+      "src_task_id": "AA_S1_004_s2"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_017_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a bowl and a candle on top of the sidewalk in a crowded street",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/01.jpg",
+        "datasets/dreambooth/dataset/candle/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_017_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_017_s1__official_full.png",
+      "src_task_id": "AA_S1_017_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_012_s2",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a clock with the Eiffel Tower in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/02.jpg",
+        "datasets/dreambooth/dataset/clock/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_012_s2__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_012_s2__official_full.png",
+      "src_task_id": "AA_S1_012_s2"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_009_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a can on top of a purple rug in a forest",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/00.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_009_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_009_s0__official_full.png",
+      "src_task_id": "AA_S3_009_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_010_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a can with a wheat field in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_010_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_010_s1__official_full.png",
+      "src_task_id": "AA_S3_010_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_031_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a candle and a toy with a tree and autumn leaves in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/candle/00.jpg",
+        "datasets/dreambooth/dataset/duck_toy/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_031_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_031_s0__official_full.png",
+      "src_task_id": "AA_S1_031_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_002_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a backpack on the beach",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/04.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_002_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_002_s0__official_full.png",
+      "src_task_id": "AA_S3_002_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_000_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a backpack and a stuffed animal in the jungle",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/00.jpg",
+        "datasets/dreambooth/dataset/bear_plushie/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_000_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_000_s0__official_full.png",
+      "src_task_id": "AA_S1_000_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_016_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a clock on top of a mirror",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/clock/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_016_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_016_s1__official_full.png",
+      "src_task_id": "AA_S3_016_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_025_s2",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a can and a sneaker on top of a wooden floor",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/02.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_025_s2__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_025_s2__official_full.png",
+      "src_task_id": "AA_S1_025_s2"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_040_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a sneaker and a stuffed animal in the jungle",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/colorful_sneaker/00.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_040_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_040_s0__official_full.png",
+      "src_task_id": "AA_S1_040_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_009_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a bowl on top of a purple rug in a forest",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/01.jpg",
+        "datasets/dreambooth/dataset/berry_bowl/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_009_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_009_s1__official_full.png",
+      "src_task_id": "AA_S1_009_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_014_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a toy floating in an ocean of milk",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/00.jpg",
+        "datasets/dreambooth/dataset/duck_toy/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_014_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_014_s0__official_full.png",
+      "src_task_id": "AA_S1_014_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_029_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a candle and a clock on top of a purple rug in a forest",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/candle/00.jpg",
+        "datasets/dreambooth/dataset/clock/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_029_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_029_s0__official_full.png",
+      "src_task_id": "AA_S1_029_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_031_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a candle and a toy with a tree and autumn leaves in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/candle/01.jpg",
+        "datasets/dreambooth/dataset/duck_toy/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_031_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_031_s1__official_full.png",
+      "src_task_id": "AA_S1_031_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_026_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a boot with a city in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/fancy_boot/04.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_026_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_026_s0__official_full.png",
+      "src_task_id": "AA_S3_026_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_024_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a can and a clock on top of pink fabric",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/00.jpg",
+        "datasets/dreambooth/dataset/clock/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_024_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_024_s0__official_full.png",
+      "src_task_id": "AA_S1_024_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_008_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a backpack and a stuffed animal with a blue house in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/01.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_008_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_008_s1__official_full.png",
+      "src_task_id": "AA_S1_008_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_036_s2",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a clock and a boot on top of a mirror",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/clock/02.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_036_s2__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_036_s2__official_full.png",
+      "src_task_id": "AA_S1_036_s2"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_035_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a clock and a toy on top of green grass with sunflowers around it",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/clock/00.jpg",
+        "datasets/dreambooth/dataset/duck_toy/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_035_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_035_s0__official_full.png",
+      "src_task_id": "AA_S1_035_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_027_s2",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a can and a boot with a mountain in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/02.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_027_s2__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_027_s2__official_full.png",
+      "src_task_id": "AA_S1_027_s2"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_011_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a can with a tree and autumn leaves in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/05.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_011_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_011_s1__official_full.png",
+      "src_task_id": "AA_S3_011_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_005_s2",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a backpack and a sneaker on top of a wooden floor",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/02.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_005_s2__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_005_s2__official_full.png",
+      "src_task_id": "AA_S1_005_s2"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_002_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a backpack and a can on the beach",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/01.jpg",
+        "datasets/dreambooth/dataset/can/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_002_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_002_s1__official_full.png",
+      "src_task_id": "AA_S1_002_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_042_s2",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a toy and a stuffed animal on the beach",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/duck_toy/02.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_042_s2__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_042_s2__official_full.png",
+      "src_task_id": "AA_S1_042_s2"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_015_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a boot on top of green grass with sunflowers around it",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/01.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_015_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_015_s1__official_full.png",
+      "src_task_id": "AA_S1_015_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_007_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a bowl with a mountain in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_007_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_007_s1__official_full.png",
+      "src_task_id": "AA_S3_007_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_022_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a toy on the beach",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/duck_toy/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_022_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_022_s1__official_full.png",
+      "src_task_id": "AA_S3_022_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_012_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a clock with the Eiffel Tower in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/01.jpg",
+        "datasets/dreambooth/dataset/clock/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_012_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_012_s1__official_full.png",
+      "src_task_id": "AA_S1_012_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_003_s2",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a backpack and a candle on a cobblestone street",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/02.jpg",
+        "datasets/dreambooth/dataset/candle/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_003_s2__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_003_s2__official_full.png",
+      "src_task_id": "AA_S1_003_s2"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_010_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a can with a wheat field in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_010_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_010_s0__official_full.png",
+      "src_task_id": "AA_S3_010_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_001_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a backpack and a bowl in the snow",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/01.jpg",
+        "datasets/dreambooth/dataset/berry_bowl/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_001_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_001_s1__official_full.png",
+      "src_task_id": "AA_S1_001_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_022_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a toy on the beach",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/duck_toy/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_022_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_022_s0__official_full.png",
+      "src_task_id": "AA_S3_022_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_004_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a backpack and a clock on top of pink fabric",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/00.jpg",
+        "datasets/dreambooth/dataset/clock/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_004_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_004_s0__official_full.png",
+      "src_task_id": "AA_S1_004_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_005_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a stuffed animal on top of a wooden floor",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/00.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_005_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_005_s1__official_full.png",
+      "src_task_id": "AA_S3_005_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_018_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a sneaker on top of a dirt road",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/colorful_sneaker/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_018_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_018_s1__official_full.png",
+      "src_task_id": "AA_S3_018_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_015_s2",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a boot on top of green grass with sunflowers around it",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/02.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_015_s2__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_015_s2__official_full.png",
+      "src_task_id": "AA_S1_015_s2"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_010_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a can with a wheat field in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/00.jpg",
+        "datasets/dreambooth/dataset/can/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_010_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_010_s0__official_full.png",
+      "src_task_id": "AA_S1_010_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_002_s2",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a backpack and a can on the beach",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/02.jpg",
+        "datasets/dreambooth/dataset/can/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_002_s2__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_002_s2__official_full.png",
+      "src_task_id": "AA_S1_002_s2"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_023_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a toy on a cobblestone street",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/duck_toy/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_023_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_023_s1__official_full.png",
+      "src_task_id": "AA_S3_023_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_037_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a clock and a stuffed animal on top of the sidewalk in a crowded street",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/clock/01.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_037_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_037_s1__official_full.png",
+      "src_task_id": "AA_S1_037_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_028_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a stuffed animal with a blue house in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/grey_sloth_plushie/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_028_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_028_s0__official_full.png",
+      "src_task_id": "AA_S3_028_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_028_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a can and a stuffed animal with a blue house in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/00.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_028_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_028_s0__official_full.png",
+      "src_task_id": "AA_S1_028_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_022_s2",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a bowl and a stuffed animal on the beach",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/02.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_022_s2__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_022_s2__official_full.png",
+      "src_task_id": "AA_S1_022_s2"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_030_s2",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a candle and a sneaker with a wheat field in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/candle/02.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_030_s2__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_030_s2__official_full.png",
+      "src_task_id": "AA_S1_030_s2"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_012_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a clock with the Eiffel Tower in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/00.jpg",
+        "datasets/dreambooth/dataset/clock/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_012_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_012_s0__official_full.png",
+      "src_task_id": "AA_S1_012_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_008_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a backpack and a stuffed animal with a blue house in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/00.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_008_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_008_s0__official_full.png",
+      "src_task_id": "AA_S1_008_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_007_s2",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a backpack and a boot with a mountain in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/02.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_007_s2__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_007_s2__official_full.png",
+      "src_task_id": "AA_S1_007_s2"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_027_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a can and a boot with a mountain in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/00.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_027_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_027_s0__official_full.png",
+      "src_task_id": "AA_S1_027_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_042_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a toy and a stuffed animal on the beach",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/duck_toy/00.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_042_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_042_s0__official_full.png",
+      "src_task_id": "AA_S1_042_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_039_s2",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a sneaker and a boot on top of a white rug",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/colorful_sneaker/02.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_039_s2__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_039_s2__official_full.png",
+      "src_task_id": "AA_S1_039_s2"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_039_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a sneaker and a boot on top of a white rug",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/colorful_sneaker/01.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_039_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_039_s1__official_full.png",
+      "src_task_id": "AA_S1_039_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_020_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a sneaker in the jungle",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/colorful_sneaker/00.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_020_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_020_s1__official_full.png",
+      "src_task_id": "AA_S3_020_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_000_s2",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a backpack and a stuffed animal in the jungle",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/02.jpg",
+        "datasets/dreambooth/dataset/bear_plushie/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_000_s2__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_000_s2__official_full.png",
+      "src_task_id": "AA_S1_000_s2"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_021_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a bowl and a boot in the snow",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/01.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_021_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_021_s1__official_full.png",
+      "src_task_id": "AA_S1_021_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_027_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a can and a boot with a mountain in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/01.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_027_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_027_s1__official_full.png",
+      "src_task_id": "AA_S1_027_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_026_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a can and a toy with a city in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/00.jpg",
+        "datasets/dreambooth/dataset/duck_toy/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_026_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_026_s0__official_full.png",
+      "src_task_id": "AA_S1_026_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_029_s2",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a candle and a clock on top of a purple rug in a forest",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/candle/02.jpg",
+        "datasets/dreambooth/dataset/clock/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_029_s2__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_029_s2__official_full.png",
+      "src_task_id": "AA_S1_029_s2"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_031_s2",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a candle and a toy with a tree and autumn leaves in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/candle/02.jpg",
+        "datasets/dreambooth/dataset/duck_toy/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_031_s2__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_031_s2__official_full.png",
+      "src_task_id": "AA_S1_031_s2"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_004_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a stuffed animal on top of pink fabric",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_004_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_004_s1__official_full.png",
+      "src_task_id": "AA_S3_004_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_027_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a stuffed animal with a mountain in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/grey_sloth_plushie/00.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_027_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_027_s0__official_full.png",
+      "src_task_id": "AA_S3_027_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_020_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a bowl and a toy in the jungle",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/00.jpg",
+        "datasets/dreambooth/dataset/duck_toy/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_020_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_020_s0__official_full.png",
+      "src_task_id": "AA_S1_020_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_011_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a can with a tree and autumn leaves in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/04.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_011_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_011_s0__official_full.png",
+      "src_task_id": "AA_S3_011_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_028_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a can and a stuffed animal with a blue house in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/01.jpg",
+        "datasets/dreambooth/dataset/grey_sloth_plushie/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_028_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_028_s1__official_full.png",
+      "src_task_id": "AA_S1_028_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_007_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a backpack and a boot with a mountain in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/01.jpg",
+        "datasets/dreambooth/dataset/fancy_boot/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_007_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_007_s1__official_full.png",
+      "src_task_id": "AA_S1_007_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_007_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a bowl with a mountain in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/berry_bowl/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_007_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_007_s0__official_full.png",
+      "src_task_id": "AA_S3_007_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_025_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a can and a sneaker on top of a wooden floor",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/can/00.jpg",
+        "datasets/dreambooth/dataset/colorful_sneaker/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_025_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_025_s0__official_full.png",
+      "src_task_id": "AA_S1_025_s0"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_024_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a boot on top of pink fabric",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/fancy_boot/01.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_024_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_024_s1__official_full.png",
+      "src_task_id": "AA_S3_024_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_011_s2",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a candle with a tree and autumn leaves in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/02.jpg",
+        "datasets/dreambooth/dataset/candle/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_011_s2__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_011_s2__official_full.png",
+      "src_task_id": "AA_S1_011_s2"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_006_s1",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a backpack and a toy with a city in the background",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/backpack_dog/01.jpg",
+        "datasets/dreambooth/dataset/duck_toy/02.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_006_s1__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_006_s1__official_full.png",
+      "src_task_id": "AA_S1_006_s1"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S1_014_s2",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S1",
+      "prompt": "a stuffed animal and a toy floating in an ocean of milk",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/bear_plushie/02.jpg",
+        "datasets/dreambooth/dataset/duck_toy/03.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S1_014_s2__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S1_014_s2__official_full.png",
+      "src_task_id": "AA_S1_014_s2"
+    },
+    {
+      "pair_id": "m5aa::aa::AA_S3_015_s0",
+      "kind": "arm_a_vs_teacher",
+      "stratum": "S3",
+      "prompt": "a clock on top of green grass with sunflowers around it",
+      "ref_paths": [
+        "datasets/dreambooth/dataset/clock/00.jpg"
+      ],
+      "key_0": "arm_a_full",
+      "img_0": "output/eval_arm_a/AA_S3_015_s0__arm_a_full.png",
+      "key_1": "official_full",
+      "img_1": "output/eval_arm_a/AA_S3_015_s0__official_full.png",
+      "src_task_id": "AA_S3_015_s0"
+    }
+  ]
+}
