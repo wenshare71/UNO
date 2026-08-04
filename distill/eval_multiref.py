@@ -70,6 +70,12 @@ VARIANTS = [
     # 排在 official_* 之后、ours_* 之前:臂 A 批次只含 official_full + arm_a_full 两个变体,
     # 相邻则整批只发生 1 次 swap_lora。
     ("arm_a_full",       False, False, False, "arm_a"),
+    # arm_b_iso [新增 2026-08-04,§11.9 / §11.11 P3 臂 B]:与 arm_a_full **只差 ref_isolation**
+    # 的那一臂,推理侧按最终要主张的部署配置跑(隔离 + KV cache)⇒ ref_iso/kv_cache 都是 True。
+    # 这一行与上一行的差就是链条的第 ②′ 边,也是 08-04 之后的主命题本身。
+    # 排在 arm_a_full 之后、ours_* 之前:臂 B 批只含 official_full(30 条锚点)+ arm_b_iso,
+    # 两者不相邻但中间的 arm_a_full 在本批无任务、循环会跳过,整批仍只发生 1 次 swap_lora。
+    ("arm_b_iso",        False, True,  True,  "arm_b"),
     ("ours_kv_pre",      True,  True,  True,  "pre"),
     ("ours_kv_post4000", True,  True,  True,  "post4000"),
     ("ours_kv_post2000", True,  True,  True,  "post2000"),
@@ -169,7 +175,8 @@ def run_generate(args, tasks, json_dir):
 
     # ---------- LoRA bank(抄 smoke_eval.py:160-195,从 3 个变 4 个) ----------
     all_ckpts = {"pre": args.pre_lora, "post4000": args.post4000_lora,
-                 "post2000": args.post2000_lora, "arm_a": args.arm_a_lora}
+                 "post2000": args.post2000_lora, "arm_a": args.arm_a_lora,
+                 "arm_b": args.arm_b_lora}
     # 只准备**本批任务真正用到**的 bank。WHY [2026-08-04,随 arm_a_full 一起加]:
     # 原先无条件检查全部 checkpoint,加了 arm_a 之后,任何一台没跑过臂 A 的机器
     # 连 P-probe / M4 都会在启动时 `SystemExit`——而 bank 缺失只在**被用到时**才是错误。
@@ -504,6 +511,8 @@ def main():
     p.add_argument("--post2000_lora", default="log/ref_distill/checkpoint-2000/dit_lora.safetensors")
     p.add_argument("--arm_a_lora", default="log/arm_a/checkpoint-4000/dit_lora.safetensors",
                    help="臂 A(官方 init + 全注意力 4000 步)的产物;只在任务单含 arm_a_full 时才检查")
+    p.add_argument("--arm_b_lora", default="log/arm_b/checkpoint-4000/dit_lora.safetensors",
+                   help="臂 B(官方 init + 隔离 4000 步)的产物;只在任务单含 arm_b_iso 时才检查")
     p.add_argument("--save_path", default="output/eval_multiref")
     p.add_argument("--shard_idx", type=int, default=0)
     p.add_argument("--num_shards", type=int, default=1)
