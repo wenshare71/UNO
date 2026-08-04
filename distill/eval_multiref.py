@@ -64,6 +64,12 @@ VARIANTS = [
     # 注意元组第 2 位 use_ours 在生成循环里**从未被读取**(只有 bank / ref_iso / kv_cache
     # 真正起作用),所以 False + ref_iso=True 这个"看着矛盾"的组合是合法且正确的。
     ("official_iso",     False, True,  True,  "official"),
+    # arm_a_full [新增 2026-08-04,§11.4 P1 臂 A]:官方 LoRA 为 init、`--ref_isolation False`
+    # 重训 4000 步的产物。**全注意力**,所以 ref_iso/kv_cache 都是 False——与 official_full
+    # 只差"有没有交那 4000 步的配方税",这正是三边链条的第 1 条边。
+    # 排在 official_* 之后、ours_* 之前:臂 A 批次只含 official_full + arm_a_full 两个变体,
+    # 相邻则整批只发生 1 次 swap_lora。
+    ("arm_a_full",       False, False, False, "arm_a"),
     ("ours_kv_pre",      True,  True,  True,  "pre"),
     ("ours_kv_post4000", True,  True,  True,  "post4000"),
     ("ours_kv_post2000", True,  True,  True,  "post2000"),
@@ -162,8 +168,17 @@ def run_generate(args, tasks, json_dir):
     from safetensors.torch import load_file
 
     # ---------- LoRA bank(抄 smoke_eval.py:160-195,从 3 个变 4 个) ----------
-    ckpts = {"pre": args.pre_lora, "post4000": args.post4000_lora,
-             "post2000": args.post2000_lora}
+    all_ckpts = {"pre": args.pre_lora, "post4000": args.post4000_lora,
+                 "post2000": args.post2000_lora, "arm_a": args.arm_a_lora}
+    # 只准备**本批任务真正用到**的 bank。WHY [2026-08-04,随 arm_a_full 一起加]:
+    # 原先无条件检查全部 checkpoint,加了 arm_a 之后,任何一台没跑过臂 A 的机器
+    # 连 P-probe / M4 都会在启动时 `SystemExit`——而 bank 缺失只在**被用到时**才是错误。
+    # 反过来仍然严格:被用到却缺失,照旧当场退出,绝不静默跳过那个变体。
+    needed = {VARIANT_BY_NAME[v][4] for t in tasks for v in t["variants"]}
+    ckpts = {tag: lp for tag, lp in all_ckpts.items() if tag in needed}
+    skipped = sorted(set(all_ckpts) - set(ckpts))
+    if skipped:
+        print(f"本批未用到的 bank(不检查、不加载):{skipped}", flush=True)
     for tag, lp in ckpts.items():
         if not os.path.exists(lp):
             raise SystemExit(f"❌ LoRA 不存在({tag}):{lp}")
@@ -487,6 +502,8 @@ def main():
     p.add_argument("--pre_lora", default="log/ref_isolation/checkpoint-20000/dit_lora.safetensors")
     p.add_argument("--post4000_lora", default="log/ref_distill/checkpoint-4000/dit_lora.safetensors")
     p.add_argument("--post2000_lora", default="log/ref_distill/checkpoint-2000/dit_lora.safetensors")
+    p.add_argument("--arm_a_lora", default="log/arm_a/checkpoint-4000/dit_lora.safetensors",
+                   help="臂 A(官方 init + 全注意力 4000 步)的产物;只在任务单含 arm_a_full 时才检查")
     p.add_argument("--save_path", default="output/eval_multiref")
     p.add_argument("--shard_idx", type=int, default=0)
     p.add_argument("--num_shards", type=int, default=1)

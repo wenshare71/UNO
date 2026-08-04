@@ -10,9 +10,16 @@
 
 ## 这一步在干什么
 
-回退归因还剩 **① 底座 gap**(我们的 `ckpt-20000` 是自训的,官方 stage-1 数据按
-`score_final` 过滤过、我们的没有)。臂 A 把底座换成**官方权重**,数据与配方
-一字不改地重跑 4000 步:
+~~回退归因还剩 **① 底座 gap**(我们的 `ckpt-20000` 是自训的,官方 stage-1 数据按
+`score_final` 过滤过、我们的没有)。~~
+
+**[2026-08-04 修正,原文保留见上]** 这句把臂 A 的作用说大了。臂 A 与 post4000 之间
+同时差**底座**和**隔离**两个变量,单独用它读不出底座 gap——那正是 §11.6 作废掉的
+可加模型。臂 A 实际测的是**「配方施加在一个已经对齐的底座上有没有代价」**,
+即三边链条 `official_full → 臂A → 臂B → post4000` 的**第 1 条边**;底座 gap 是第 3 条边,
+要等臂 B 才拿得到。完整表述见 §11.7。
+
+臂 A 把底座换成**官方权重**,数据与配方一字不改地重跑 4000 步:
 
 | | init | 数据 | 配方 | 注意力 |
 |---|---|---|---|---|
@@ -155,15 +162,37 @@ echo "pid=$!"
 
 臂 A 训完只是拿到了权重,还没有读数。后续需要:
 
-1. **本地**给 `eval_multiref.py` 的 `VARIANTS` 加一行
-   `("arm_a_full", False, False, False, "arm_a")` 并把 `log/arm_a/checkpoint-4000`
-   加进 LoRA bank ——**在本地改、push、H800 pull**(R0)。
-   注意 `--dry_run` 的成本已改为按 `kv_cache` 位推导,新增变体天然覆盖,不会再有
-   `KeyError`(commit `032957b` 的教训)。
-2. 生成臂 A 的评测图(与 `official_full` 同批 seed、同一次会话)。
-3. 新一批盲评配对清单 + 判读。**跨批次的尺子会漂**(SPEC §8.5-3,κ=0.274),
-   所以臂 A vs teacher 必须**在同一批内**完成,不许拿 M4 的 37.9% 直接并排比。
-4. 读到结果后**才**定臂 B 的 init 与步数,并在上机前预登记(§11.6 末尾的三个候选)。
+1. ~~**本地**给 `eval_multiref.py` 的 `VARIANTS` 加一行~~ **✅ 已完成 [2026-08-04,本地]**:
+   `VARIANTS` 新增 `("arm_a_full", False, False, False, "arm_a")`、新增 `--arm_a_lora`
+   (默认 `log/arm_a/checkpoint-4000/dit_lora.safetensors`),并把 bank 的存在性检查
+   改为**只查本批任务用到的**——否则没跑过臂 A 的机器连 P-probe 都启动不了。
+   三个任务单的回归已本地验过(P-probe / 臂 A / M4 各自只检查该查的 bank)。
+2. ~~生成臂 A 的评测图~~ **✅ 任务单已生成**:`distill/build_arm_a_tasks.py`
+   → `datasets/eval_multiref/arm_a_tasks.json`(192 条 = S1 132 + S3 60,
+   `official_full` + `arm_a_full` 两变体,seed 零偏移,自检 + 回读复核通过)。
+   设计理由与预登记性质的说明见 `DISTILL_PLAN.md` **§11.7**。
+   **两个变体必须在同一次会话里一起生成**,不许复用 M4 的 `official_full`。
+3. 判读 192 条,按 SPEC §8.1/§8.2 现有口径,**不新增判据**。
+   平局率 > 51.0% 时 n_nontie 跌破 94 ⇒ 结论是「判据不适用」,
+   **且平局率本身是主读数**(对照零假设对的 33.3%),见 §11.7。
+4. 读到结果后**才**定臂 B 的 init 与步数,并在上机前预登记(§11.6 末尾的三个候选,
+   §11.7 补了第四个:分段——先纯单 ref 做隔离结构适配,再进混合数据)。
+
+### 上机命令(**等确认点全过之后**再发)
+
+```bash
+cd /kaimm-distill/wuwenxuan/UNO && git pull
+
+# ① 任务单已随 git 带过来,先自检一遍(纯 CPU,秒级)
+python distill/build_arm_a_tasks.py --verify
+
+# ② 成本核对(不碰 GPU)
+python distill/eval_multiref.py --eval_json datasets/eval_multiref/arm_a_tasks.json --dry_run
+#    预期:official_full 192 张 + arm_a_full 192 张,合计 ≈ 32.6 min 单卡
+
+# ③ 8 shard 并行生成(--save_path 换新目录,不覆盖 M4/P-probe 产物)
+#    注意 official_full 与 arm_a_full 必须在**同一次运行**里出,不许分两次
+```
 
 ## ✅ 确认点(用户来判)
 
