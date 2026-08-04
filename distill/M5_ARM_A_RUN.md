@@ -121,8 +121,26 @@ bash scripts/train_distill.sh --ref_isolation False
 1. `[preflight]` 六行全过,特别是 `resume checkpoint: log/official_init/... (N 个张量)`
    —— N 要与门禁①打印的张量数一致;
 2. 日志里 `ref_isolation` 的取值(若脚本有打印)或至少确认步骤 1 已验过;
-3. s/it 与 5.6 同量级。**明显更快要警惕**——全注意力比隔离注意力**更慢**才对
-   (隔离省掉了 ref 段的交叉注意力),若反而快很多,先怀疑 ref 没被喂进去。
+3. ~~s/it 与 5.6 同量级。**明显更快要警惕**——全注意力比隔离注意力**更慢**才对
+   (隔离省掉了 ref 段的交叉注意力),若反而快很多,先怀疑 ref 没被喂进去。~~
+
+   **[2026-08-04 订正,方向写反了]** 括号里那句「隔离省掉了 ref 段的交叉注意力」
+   在**训练**里不成立,已逐行核过:
+
+   - `train.py:415-423` 的 loss 前向是 `dit(..., ref_isolation=args.ref_isolation)`,
+     **没有 `ref_kv`**,`TrainArgs` 里也根本没有 `kv_cache` 字段
+     ⇒ **训练永远不用 KV cache,ref token 每一步都在序列里**,序列长度两边完全一样;
+   - `ref_attention.py:83-90` 建的是一个**稠密 (L,L) bool 掩码**,
+     `math.py:50` 把它当 `attn_mask` 交给 `scaled_dot_product_attention`
+     ⇒ 隔离**一个 FLOP 都没省**,只是把能走 FlashAttention 融合路径的调用
+     降级成了带任意 bool 掩码的慢后端;
+   - `model.py:206-227` 还额外给 ref 段算一套 t=0 调制向量。
+
+   ⇒ **训练里隔离严格更贵。1.672× 那个加速全部来自推理侧的 KV cache,与掩码无关。**
+
+   **正确的判据方向:全注意力(臂 A)应当比隔离(M3 的 5.61 s/it 壁钟)更快。
+   若臂 A 跑出 5.6 附近或更慢,那才该怀疑 `--ref_isolation False` 没覆盖住。**
+   臂 B 是隔离,读它的 s/it 时同理反过来看。
 
 标定完把 `log/arm_a_calibration` 留着别删,它是"配置确实生效过"的证据。
 
@@ -193,6 +211,39 @@ python distill/eval_multiref.py --eval_json datasets/eval_multiref/arm_a_tasks.j
 # ③ 8 shard 并行生成(--save_path 换新目录,不覆盖 M4/P-probe 产物)
 #    注意 official_full 与 arm_a_full 必须在**同一次运行**里出,不许分两次
 ```
+
+## 步骤 4 实际读数 [2026-08-04,`logs/m5_arm_a.log` 889 行,本地复核]
+
+| 项 | 实测 | 判定 |
+|---|---|---|
+| preflight 训练 json | `train_mixed.json`(29777 条) | ✅ 与 M3 同一份 |
+| **preflight resume** | `log/official_init/dit_lora.safetensors`(**304 个张量**) | ✅ 与 `ckpt-20000` 的 304 一致 ⇒ init 是官方权重 |
+| 日志正文 | `Resuming from checkpoint log/official_init/dit_lora.safetensors` | ✅ |
+| 步数 | **4000/4000** | ✅ |
+| 壁钟 | **5:23:50**(平均 **4.86 s/it**,稳态 4.60–5.42) | ✅ 见下 |
+| checkpoint | `Saved state` × 4,`checkpoint-{1000,2000,3000,4000}` | ✅ 四个齐全 |
+| loss | 起 0.859 → 末 **0.245**,全程区间 **0.159–1.020** | ✅ 平滑下降 |
+| 异常 | NaN / OOM / Traceback / RuntimeError **各 0 次** | ✅ |
+| NCCL | 唯一一处是 `Backend: nccl` 的环境声明,非警告 | ✅ |
+
+**s/it 的读法(按上面订正后的方向)**:
+
+```
+M3 post4000(隔离)  6:14:00  =  5.61 s/it
+臂 A     (全注意力) 5:23:50  =  4.86 s/it      ← 快 13.4%
+```
+
+**方向正确。** 隔离在训练里更贵(稠密掩码挡掉 FlashAttention + 多一套 t=0 调制,
+且序列长度两边一样),所以臂 A 更快是预期内的;**跑出 5.6 附近才是警报**。
+
+**第二个独立信号(佐证,非铁证)**:`train.py:505/514` 的预览推理传的是
+`kv_cache=args.ref_isolation`。日志里预览稳定在 **1.93–1.94 it/s**;若 `ref_isolation`
+其实是 `True`,预览会连带开 KV cache 而明显更快。**但这条只能算佐证**——预览跑在
+ZeRO-3 参数切分下,耗时被 all-gather 主导,KV cache 的 1.672× 会被稀释,
+稀释到什么程度没有实测,而且本地没有 M3 的日志可作同尺对比。
+
+**仍缺一项(不阻塞,但要补进记录)**:步骤 1 那条
+`HfArgumentParser` bool 覆盖自检当时打印的是不是 `False`。日志里不含它(是另一条命令)。
 
 ## ✅ 确认点(用户来判)
 
