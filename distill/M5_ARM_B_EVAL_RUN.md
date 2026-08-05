@@ -80,17 +80,20 @@ python distill/eval_multiref.py \
 
 `official_full` 那 30 张是 `run_floor` 锚点(同会话天花板),不是多余的。
 
-### 合并结果(必跑,否则配不出对)
+### 合并结果(**必跑**,否则 `build_pairs.py arm-b` 会报 `❌ 缺少 output/eval_arm_b/results.json`)
+
+生成那一步只写 `results_shard0.json`,`results.json` 由 `--merge` 产出。
 
 ```bash
 python distill/eval_multiref.py \
   --eval_json datasets/eval_multiref/arm_b_tasks.json \
-  --save_path output/eval_arm_b --merge
+  --save_path output/eval_arm_b --merge --no_board
 ```
 
-> ⚠️ **`--merge` 会同时拼出 `output/eval_arm_b/boards/*.jpg`,那是带变体名列头的并排图
-> ——已揭盲的。不要看,不要传回来。** 看过多少要写进 §8.5 的局限。
-> 需要的只是它顺带产出的 `output/eval_arm_b/results.json`。
+> ⚠️ **`--no_board` 不能省。** 不加的话 `--merge` 会顺手拼出
+> `output/eval_arm_b/boards/*.jpg` —— 那是**带变体名列头**的并排图,即已揭盲图。
+> 本批还要走 §8 盲评,把它拼出来摆在盘上就是个随时会被打开的坑,而"看过"不可撤销。
+> (旧批次拼图是判读**之后**的事,不是同一情形。`.gitignore` 也不放行本批的 `boards/`。)
 
 ### 要看的三件事(**这是本单唯一能抓住"隔离没生效"的信号**)
 

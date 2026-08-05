@@ -385,6 +385,13 @@ def do_merge(args, tasks, json_dir):
               f"{t['peak_mem_gb']:>9.1f}{sp:>12}")
     print("(冒烟基线:KV 变体 vs teacher 1.72–1.77x,显存 37 GB;明显偏离要说明)")
 
+    # 拼图是**带变体名列头**的并排图 = 已揭盲。对还没判读的批次,把它拼出来放在盘上
+    # 就是一个随时可能被打开的坑,而"看过"不可撤销(§8.5 盲法纪律)。
+    # 默认仍然拼(旧批次的行为一个字不变),需要时用 --no_board 关掉。
+    # [2026-08-05 新增,臂 B 终批要在同一台机器上判读,而 results.json 只能由 --merge 产出]
+    if getattr(args, "no_board", False):
+        print("\n[--no_board] 跳过拼图——本批要走盲评,揭盲图不落盘")
+        return
     build_boards(args, tasks, json_dir, all_records)
 
 
@@ -529,6 +536,9 @@ def main():
     # ---- 模式 ----
     p.add_argument("--dry_run", action="store_true", help="不碰 GPU,打印计划与成本估算")
     p.add_argument("--merge", action="store_true", help="合并 results_shard*.json + 拼图(纯 CPU)")
+    p.add_argument("--no_board", action="store_true",
+                   help="--merge 时只产 results.json,不拼图。走盲评的批次必须加这个"
+                        "——拼图带变体名列头,拼出来就等于把揭盲图摆在盘上")
     p.add_argument("--check_anchor", action="store_true",
                    help="S0 锚点自检:与 output/smoke_eval/case0X__*.png 逐像素比(纯 CPU)")
     args = p.parse_args()
