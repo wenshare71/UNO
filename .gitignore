@@ -281,7 +281,7 @@ log/ref_distill/
 !/output/probe_iso/idcount_marks.json
 
 !/logs/m5_arm_a.log
-
+!/logs/m5_arm_b.log
 !/output/eval_arm_a/
 /output/eval_arm_a/*
 !/output/eval_arm_a/boards/
