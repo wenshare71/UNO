@@ -66,7 +66,23 @@ if not os.path.isdir(dreambooth) or not os.listdir(dreambooth):
 print(f"[preflight] dreambooth submodule: OK", flush=True)
 
 # 4) resume checkpoint 必须存在且能正常加载(DISTILL_PLAN §5:M3 前要先 chown,这里只检查可读)
+#
+# "latest" 是 train.py:129-143 的特殊值:从 PROJECT_DIR 里挑编号最大的 checkpoint-N,
+# 并把 global_step 直接置为 N —— 断点续训要的就是这个语义(显式文件路径会让
+# global_step 归 0,续 4000 步变成总共 6000 步)。它不是文件,得先放行再解析成真实路径,
+# 否则下面的 isfile 检查会把合法的续训调用挡掉。[2026-08-05 臂B 2593 步被杀后新增]
 resume_path = os.environ["RESUME_FROM_CHECKPOINT"]
+if resume_path == "latest":
+    project_dir_for_resume = os.environ["PROJECT_DIR"]
+    ckpts = sorted(
+        (d for d in os.listdir(project_dir_for_resume) if d.startswith("checkpoint-")),
+        key=lambda x: int(x.split("-")[1]),
+    ) if os.path.isdir(project_dir_for_resume) else []
+    if not ckpts:
+        sys.exit(f"❌ RESUME_FROM_CHECKPOINT=latest 但 {project_dir_for_resume} 下没有 checkpoint-*\n"
+                 f"   要么这是首次训练(改用显式 safetensors 路径),要么 PROJECT_DIR 写错了")
+    resume_path = os.path.join(project_dir_for_resume, ckpts[-1], "dit_lora.safetensors")
+    print(f"[preflight] latest → {ckpts[-1]}(global_step 将从 {ckpts[-1].split('-')[1]} 起算)", flush=True)
 if not os.path.isfile(resume_path):
     sys.exit(f"❌ resume checkpoint 不存在: {resume_path}\n"
              f"   检查 checkpoint-20000 是否已从旧机器同步到 H800")
