@@ -295,3 +295,4 @@ log/ref_distill/
 !/output/eval_arm_a/blind_annotations_m5aa.json
 !/output/eval_arm_a/pairs_m5aactl.json
 !/output/eval_arm_a/blind_annotations_m5aactl.json
+!/logs/m5_arm_b_resume.log
