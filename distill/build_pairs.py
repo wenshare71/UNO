@@ -64,6 +64,9 @@ OUT_AA_MARKS = os.path.join(REPO, "output/eval_arm_a/blind_annotations_m5aa.json
 OUT_CTL_PAIRS = os.path.join(REPO, "output/eval_arm_a/pairs_m5aactl.json")
 OUT_AB_PAIRS = os.path.join(REPO, "output/eval_arm_b/pairs_m5ab.json")
 OUT_E3_PAIRS = os.path.join(REPO, "output/eval_arm_b/pairs_m5e3.json")
+# 复合边批的清单放在臂 A 目录:本批一张新图都不产,两侧目录 07-30 与 08-04 都是既有的,
+# 放在**基线那一侧**(臂 A)——`report.py` 只读清单里的路径,放哪都跑得起来。
+OUT_E23_PAIRS = os.path.join(REPO, "output/eval_arm_a/pairs_m5e23.json")
 
 EVAL_DIR = "output/eval_multiref"      # M4 产物目录(仓库根相对)
 NF_DIR = "output/noise_floor"          # 步骤 1 产物目录
@@ -91,6 +94,9 @@ E3_BLIND_SEED = "m5-edge3-v1"
 # 但"挑一个好看的"是个没有规则的自由度,写成规则就没有可挑的余地。
 E3_ORDER_SALT = "m5e3-order-v2"
 
+E23_BLIND_SEED = "m5-edge23-v1"
+E23_ORDER_SALT = "m5e23-order-v1"   # 同上"依序取第一个通过守卫的"
+
 # 盲种登记表。每个批次必须有**自己**的盲种:槽位一旦在揭盲模式下被看过就永久污染,
 # 而"看过"是不可撤销的。写成登记表而不是靠人记,是因为复制粘贴一个 cmd_* 函数时
 # 最容易漏掉的就是改种子——漏了不会报错,只会静默复用旧槽位。
@@ -101,6 +107,7 @@ BLIND_SEEDS = {
     "m5aactl": CTL_BLIND_SEED,
     "m5ab":    AB_BLIND_SEED,
     "m5e3":    E3_BLIND_SEED,
+    "m5e23":   E23_BLIND_SEED,
 }
 
 
@@ -961,6 +968,119 @@ def cmd_edge3(args) -> None:
           "——这个分叉自由度如实写进 §8.5,不许说成「预登记的」。")
 
 
+def cmd_edge23(args) -> None:
+    """**复合边 ②′+③**:`ours_kv_post4000` vs `arm_a_full`,192 对 + `run_floor` 30 对。
+
+    链条 `臂A ──②′隔离──> 臂B ──③底座──> post4000` 的**两条边一起跨过去**。
+    两端差 **两个**变量:推理模式(全注意力 → 隔离 + KV)与 init(官方 LoRA → 我们的
+    `ckpt-20000`)。数据、步数、超参、seed 仍然全同。
+
+    WHY 要单测它,而不是把 ②′ 和 ③ 的读数加起来:**§8.5-3 禁止跨批相减**
+    (κ=0.274 的批间漂移),两条边分别来自 `m5ab`(08-05 判)与 `m5e3`(08-05 判)
+    两个不同批次,它们的读数**不可加**。复合边只有直接测才有数。
+
+    这一测同时是**链条自身的一致性检验**:
+      ②′ 单独 36.6% / 旧口径 0.842(臂 B 比臂 A 差)
+      ③  单独 50.6% / 旧口径 1.007(底座测不出差别)
+    若链条可加,复合边应当落在 ②′ 附近;落得明显更差或更好,说明两个变量之间
+    **有交互**——那本身是个结论,而不是误差。⚠️ 这句话是**事后**写的预期,
+    不是预登记的预测,报告里必须这么标。
+
+    WHY key_0 = `post4000`:清单约定 key_0 = 被检验方、key_1 = 基线,而链条上
+    **下游那个节点**是被检验方——M4 / 臂 A / 臂 B / 边 ③ 四批都这么排。
+    ⇒ 非平局胜率 < 0.5、旧口径 < 1 **一律读作"我们这条链的终点更差"**,不翻转。
+
+    **GPU 成本 0**:`post4000` 在 M4 批(07-30)、`arm_a_full` 在臂 A 批(08-04),
+    两侧的图全都已存在。
+
+    ⚠️ **`run_floor` 这 30 对里有 12 对与标定批 `m5aactl` 同源**(实测,不是估计):
+    两批跨的是同一个会话间隔(07-30 的 `official_full` ↔ 08-04 的 `official_full`),
+    而 `m5aactl` 那 60 条锚点的抽样与本批的 30 条重合了 12 条。这 12 对**是隐含重放**
+    ——盲种不同 ⇒ 左右槽位与出现顺序都重掷了,但图是同一对;另 18 对是新组合。
+    另外**方向与 `m5aactl` 相反**:那边 key_0 = `teacher_run_arm_a`(08-04 侧),
+    本批 key_0 = `teacher_run_m4`(07-30 侧,与主对的会话方向对齐)⇒ 旧口径要取倒数
+    才能和标定批的 1.017 比。
+    这不是缺陷,它白送一次跨会话自洽率;但**必须在报告里声明**,
+    否则"本批锚点完全独立"这句话就是假的。
+
+    ⚠️ 与边 ③ 同理,这是**预登记之外**新增的批次(第五个),
+    决定去测它发生在揭盲之后 ⇒ 分叉自由度写进 §8.5,不许说成"预登记的"。
+    """
+    fresh_seed("m5e23", E23_BLIND_SEED)
+
+    tasks = load_json(ARM_B_TASKS)["tasks"]     # 与 m5ab/m5e3 共用同一份 192 条,组成可比
+    aa_have = generated_ok(load_json(ARM_A_RESULTS))
+    m4_have = generated_ok(load_json(M4_RESULTS))
+
+    pairs, n_rf = [], 0
+    for t in tasks:
+        src = t["meta"]["arm_b_src_task_id"]
+        aa_id = "AA_" + src
+        if (src, POST) not in m4_have:
+            raise SystemExit(f"❌ M4 批缺 {src}/{POST}(本批的被检验方)")
+        if (aa_id, ARM_A) not in aa_have:
+            raise SystemExit(f"❌ 臂 A 批缺 {aa_id}/{ARM_A}(本批的基线)")
+        pairs.append(make_pair(f"m5e23::e23::{src}", "student_vs_arm_a", t,
+                               POST, img_rel(EVAL_DIR, src, POST),        # key_0 = 被检验方
+                               ARM_A, img_rel(AA_DIR, aa_id, ARM_A),      # key_1 = 基线
+                               src_task_id=src))
+        if t["meta"].get("arm_b_runfloor"):
+            if (src, TEACHER) not in m4_have or (aa_id, TEACHER) not in aa_have:
+                raise SystemExit(f"❌ {src} 的 run_floor 两侧不齐")
+            # 会话方向与主对一致:key_0 = 07-30 侧,key_1 = 08-04 侧
+            pairs.append(make_pair(f"m5e23::rf::{src}", "run_floor", t,
+                                   "teacher_run_m4", img_rel(EVAL_DIR, src, TEACHER),
+                                   "teacher_run_arm_a", img_rel(AA_DIR, aa_id, TEACHER),
+                                   src_task_id=src))
+            n_rf += 1
+
+    if len(tasks) != 192 or n_rf != 30 or len(pairs) != 222:
+        raise SystemExit(f"❌ 任务 {len(tasks)} / 锚点 {n_rf} / 配对 {len(pairs)},应为 192/30/222")
+
+    pairs.sort(key=lambda p: h(p["pair_id"], E23_ORDER_SALT, "order"))
+    before = twin_gaps(pairs)
+    g_min = spread_runfloor(pairs)          # 同 m5ab/m5e3:锚点 prompt 批内出现两次
+    gaps = twin_gaps(pairs)
+    gaps["achieved_min_gap"] = g_min
+    gaps["min_before_spread"] = before["min"]
+    if g_min < len(pairs) // 3:
+        raise SystemExit(f"❌ 槽位内重排后最小间距仅 {g_min} < {len(pairs) // 3},"
+                         f"按「依序取第一个通过的」换 E23_ORDER_SALT,不要降低要求")
+
+    if args.dry_run:
+        print(f"\n条数:{len(pairs)} 对 "
+              f"{dict(sorted(Counter(p['kind'] for p in pairs).items()))}")
+        print(f"锚点双出现间距:{gaps}")
+        return
+
+    write_manifest(OUT_E23_PAIRS, {
+        "batch_id": "m5e23",
+        "blind_seed": E23_BLIND_SEED,
+        "question": "哪一张更好?(综合参考图忠实度与画面质量)",   # 逐字沿用,改问题=改尺子
+        "eval_set_version": "arm_b_tasks v1 的 192 条 ×(M4 批 post4000 + 臂 A 批 arm_a_full)",
+        "source": "复合边 ②′+③:隔离 + 底座两个变量一起跨。"
+                  "**预登记之外新增的第五批**;run_floor 有 12/30 与 m5aactl 同源(隐含重放),"
+                  "分叉自由度与声明义务见 cmd_edge23 docstring",
+        "twin_gaps": gaps,
+    }, pairs)
+
+    n_main = sum(1 for p in pairs if p["kind"] == "student_vs_arm_a")
+    print("\n构成:")
+    for (k, st), c in sorted(Counter((p["kind"], p["stratum"]) for p in pairs).items()):
+        print(f"  {k:<18}{st:<5}{c:>5}")
+    print(f"\n方向约定:key_0 = {POST}(被检验方)/ key_1 = {ARM_A}(基线)")
+    print("  ⇒ 非平局胜率 < 0.5、旧口径 < 1 **一律读作「我们这条链的终点更差」**,不翻转。")
+    print(f"  §8.2 要求 n_nontie ≥ 94;平局率 > {1 - 94 / n_main:.1%} 即跌破 ⇒ 「判据不适用」。")
+    print(f"\n锚点双出现间距:最小 {gaps['min_before_spread']} → 重排后 {gaps['min']}"
+          f" / 中位 {gaps['median']}(批长 {gaps['batch_len']})")
+    print(f"盲种 {E23_BLIND_SEED}(登记表里与其它批次都不同)")
+    print("GPU 成本 0。判读约 16 min。")
+    print("⚠️ 报告里要声明三件事:① 这是**预登记之外**新增的第五个批次,"
+          "决定去测它发生在揭盲之后;② 本批 run_floor 有 **12/30** 与标定批 m5aactl "
+          "同源(方向相反),那 12 对是隐含重放,不算独立锚点;③ 「复合边应落在 ②′ 附近」是事后预期,"
+          "**不是预登记的预测**。")
+
+
 # ------------------------------------------------------------------ main
 
 def main() -> None:
@@ -977,10 +1097,13 @@ def main() -> None:
                     help="臂 B 的图还没生成时,只核条数与打散统计,不写清单")
     e3 = sub.add_parser("edge3", help="链条第 ③ 边:post4000 vs 臂B(底座),222 对,GPU 成本 0")
     e3.add_argument("--dry_run", action="store_true", help="只核条数与打散统计,不写清单")
+    e23 = sub.add_parser("edge23",
+                         help="复合边 ②′+③:post4000 vs 臂A,222 对,GPU 成本 0")
+    e23.add_argument("--dry_run", action="store_true", help="只核条数与打散统计,不写清单")
     args = p.parse_args()
     {"migrate-m4": cmd_migrate_m4, "r2": cmd_r2,
      "arm-a": cmd_arm_a, "arm-a-ctl": cmd_arm_a_ctl, "arm-b": cmd_arm_b,
-     "edge3": cmd_edge3}[args.cmd](args)
+     "edge3": cmd_edge3, "edge23": cmd_edge23}[args.cmd](args)
 
 
 if __name__ == "__main__":

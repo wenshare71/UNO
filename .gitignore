@@ -295,6 +295,10 @@ log/ref_distill/
 !/output/eval_arm_a/blind_annotations_m5aa.json
 !/output/eval_arm_a/pairs_m5aactl.json
 !/output/eval_arm_a/blind_annotations_m5aactl.json
+# 复合边 ②′+③ 批(post4000 vs 臂A):清单放在基线那一侧的目录,理由同上逐字相同。
+# GPU 成本 0,两侧图都是既有产物(M4 批 07-30 + 臂 A 批 08-04)。
+!/output/eval_arm_a/pairs_m5e23.json
+!/output/eval_arm_a/blind_annotations_m5e23.json
 !/logs/m5_arm_b_resume.log
 
 # 臂 B 读数批次(2026-08-05,§11.11(c) 步 3–5)。放行规则同臂 A,**只有一处故意不同**:
