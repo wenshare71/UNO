@@ -11,19 +11,24 @@
 #   1. 数据换成 distill/build_stage1_official.py 的产物(score_final ≥ 4 全库);
 #   2. gradient_accumulation_steps **1**(官方默认;4090 那次用的是 2);
 #   3. max_train_steps **100000**(官方默认;4090 那次是 20000);
-#   4. ref_isolation **False**(官方默认)—— 见下面那段,这是唯一需要你拍板的开关;
-#   5. NCCL P2P/IB 默认开(H800 有 NVLink+IB;4090 必须禁,正好相反);
-#   6. project_dir=log/stage1_official,不碰任何既有目录。
+#   4. NCCL P2P/IB 默认开(H800 有 NVLink+IB;4090 必须禁,正好相反);
+#   5. project_dir=log/stage1_official,不碰任何既有目录。
 # 其余(lora_rank 512 / lr 8e-5 / batch 1 / res 512 / bf16 / ckpt 每 1000 步)
 # 本来就与官方默认一致,**一个都不要手填** —— 手填就有填错的机会。
 #
-# ━━ REF_ISOLATION:这个开关决定新底座是什么 ━━
-#   False(默认,= 官方):新底座是**官方 stage-1 的忠实复刻**。它与官方发布的 LoRA
-#     构成"同配方、不同训练者"的对照 ⇒ 边 ③ 变成干净的「我们复刻得像不像」,
-#     而且与臂 B(官方 LoRA 作 init + 4000 步隔离)完全平行。
-#   True(= 4090 那次的做法):新底座仍是隔离训练的,与现有 ckpt-20000 同型,
-#     可以直接顶替它、保持旧链条的语义不变。
-#   ⚠️ 两者不是一回事,选错了整条链的读数含义就变了。默认走官方。
+# ━━ 三件**不改**的:它们定义了"我们的底座"是什么,不在缺陷清单里 ━━
+#   * `--ref_isolation True` —— 隔离是本项目**有意为之的那一个变量**,不是缺陷。
+#     现有 ckpt-20000 就是隔离训的,新底座必须同型才能顶替它、才能让整条链
+#     (post4000 = 我们的底座 + 4000 步隔离)保持原来的语义。
+#     ⚠️ 顺带记住方向别搞反:隔离在**训练侧更慢**(dense (L,L) bool mask 挡掉
+#     FlashAttention,5.3–5.9 s/it vs 全注意力 4.86),1.67× 全部来自推理侧 KV cache。
+#   * **随机 LoRA 起步** —— 不传 RESUME_FROM_CHECKPOINT,就是从零训 stage-1。
+#   * **100% 单 ref** —— UNO-1M 标签本身就是 `img1 → img2` 两图配对,
+#     官方过滤脚本产出的 `image_paths` 恒为 1 张,这条自动成立,不需要设开关。
+#
+# REF_ISOLATION=False 只在一种情况下有意义:你想造的不是"我们的底座",而是
+# **官方 stage-1 的忠实复刻**(与官方发布的 LoRA 同配方、只换训练者)。那样得到的
+# 东西与臂 B 平行,但**不能**当作现有 ckpt-20000 的替代品——两者语义不同。
 #
 # ━━ 用法(H800,仓库根目录,已激活 .venv-uno)━━
 #   # 0) 先补磁盘 + 出数据(见各自脚本的 --help)
@@ -53,7 +58,8 @@ export PROJECT_DIR="${PROJECT_DIR:-log/stage1_official}"
 export MAX_TRAIN_STEPS="${MAX_TRAIN_STEPS:-100000}"
 export CHECKPOINTING_STEPS="${CHECKPOINTING_STEPS:-1000}"
 export GRAD_ACCUM="${GRAD_ACCUM:-1}"
-export REF_ISOLATION="${REF_ISOLATION:-False}"
+# 与现有 ckpt-20000 同型。改成 False 得到的是"官方复刻",不是"我们的底座",见上。
+export REF_ISOLATION="${REF_ISOLATION:-True}"
 export NUM_PROCESSES="${NUM_PROCESSES:-8}"
 # 首次训练必须为空(传 "latest" 时 project_dir 下没 checkpoint 会被自检拦下)
 export RESUME_FROM_CHECKPOINT="${RESUME_FROM_CHECKPOINT:-}"
@@ -153,6 +159,10 @@ iso = os.environ["REF_ISOLATION"].lower() in ("true", "1", "yes")
 sec = steps * (5.6 if iso else 4.86) * 0.55 * (2 if int(os.environ["GRAD_ACCUM"]) > 1 else 1)
 print(f"[preflight] GPU {ndev} 卡 / ref_isolation={os.environ['REF_ISOLATION']} / "
       f"grad_accum={os.environ['GRAD_ACCUM']}", flush=True)
+if not iso:
+    print("⚠️ ref_isolation=False:训出来的是**官方 stage-1 的复刻**,"
+          "不是我们那个隔离底座的替代品——两者语义不同,别在链条里混用",
+          file=sys.stderr, flush=True)
 print(f"[preflight] {steps} 步 ≈ **{sec / 3600:.0f} 小时**({sec / 86400:.1f} 天)"
       f" —— 粗估,只看数量级", flush=True)
 print("[preflight] === 自检通过,开始训练 ===", flush=True)
