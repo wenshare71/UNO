@@ -53,21 +53,27 @@ M4_STATS = os.path.join(REPO, "output/eval_multiref/blind_stats.json")
 ARM_A_TASKS = os.path.join(REPO, "datasets/eval_multiref/arm_a_tasks.json")
 ARM_A_RESULTS = os.path.join(REPO, "output/eval_arm_a/results.json")
 
+ARM_B_TASKS = os.path.join(REPO, "datasets/eval_multiref/arm_b_tasks.json")
+ARM_B_RESULTS = os.path.join(REPO, "output/eval_arm_b/results.json")
+
 OUT_M4_PAIRS = os.path.join(REPO, "output/eval_multiref/pairs_m4r1.json")
 OUT_M4_MARKS = os.path.join(REPO, "output/eval_multiref/blind_annotations_m4r1.json")
 OUT_R2_PAIRS = os.path.join(REPO, "output/eval_multiref/pairs_m5r1.json")
 OUT_AA_PAIRS = os.path.join(REPO, "output/eval_arm_a/pairs_m5aa.json")
 OUT_AA_MARKS = os.path.join(REPO, "output/eval_arm_a/blind_annotations_m5aa.json")
 OUT_CTL_PAIRS = os.path.join(REPO, "output/eval_arm_a/pairs_m5aactl.json")
+OUT_AB_PAIRS = os.path.join(REPO, "output/eval_arm_b/pairs_m5ab.json")
 
 EVAL_DIR = "output/eval_multiref"      # M4 产物目录(仓库根相对)
 NF_DIR = "output/noise_floor"          # 步骤 1 产物目录
 AA_DIR = "output/eval_arm_a"           # 臂 A 读数批次产物目录
+AB_DIR = "output/eval_arm_b"           # 臂 B 读数批次产物目录
 
 TEACHER = "official_full"
 PRE = "ours_kv_pre"
 POST = "ours_kv_post4000"
 ARM_A = "arm_a_full"
+ARM_B = "arm_b_iso"
 
 # M4 用过的盲种。**只用于把旧标注解码回语义胜者**,新批次一律不用它
 # (你已在揭盲模式下看过全部 227 条,这个种子对应的槽位已污染)。
@@ -75,6 +81,7 @@ M4_BLIND_SEED = "m4-blind-v1"
 M5_BLIND_SEED = "m5-blind-v1"
 AA_BLIND_SEED = "m5-arm-a-v1"
 CTL_BLIND_SEED = "m5-arm-a-ctl-v1"
+AB_BLIND_SEED = "m5-arm-b-v1"
 
 # 盲种登记表。每个批次必须有**自己**的盲种:槽位一旦在揭盲模式下被看过就永久污染,
 # 而"看过"是不可撤销的。写成登记表而不是靠人记,是因为复制粘贴一个 cmd_* 函数时
@@ -84,6 +91,7 @@ BLIND_SEEDS = {
     "m5r1":    M5_BLIND_SEED,
     "m5aa":    AA_BLIND_SEED,
     "m5aactl": CTL_BLIND_SEED,
+    "m5ab":    AB_BLIND_SEED,
 }
 
 
@@ -617,6 +625,229 @@ def cmd_arm_a_ctl(_args) -> None:
     print("GPU 成本 0——两侧的图都已存在(臂 A 批 + M4 批)。")
 
 
+# ------------------------------------------------------------------ 臂 B 终批(§11.11(e))
+
+def twin_gaps(pairs: list[dict]) -> dict:
+    """量一件**躲不掉**的事:那 30 条 `run_floor` 锚点的 prompt/refs 在本批里出现两次
+    ——一次作 `arm_b` 对、一次作 `run_floor` 对。
+
+    WHY 躲不掉:天花板必须跨"与被检验那一对相同的会话间隔"(§11.11 本地加固),
+    这就要求两侧都是臂 A 批出过图的任务,而臂 A 批只覆盖 S1+S3 = 本批的全部 192 条。
+    从 S2/S4 里另抽锚点的话,对侧只能回到 M4 的旧图,跨的又变成 07-30 那段间隔。
+
+    纯 md5 打散下实测 **最小间距 3、30 条里 5 条 <10** —— 同一个 prompt 在十对之内
+    重复出现,标注者一定会察觉。处置见 `spread_runfloor`。
+    """
+    pos_by_task: dict[str, list[int]] = defaultdict(list)
+    for i, p in enumerate(pairs):
+        pos_by_task[p["src_task_id"]].append(i)
+    gaps = sorted(max(v) - min(v) for v in pos_by_task.values() if len(v) > 1)
+    if not gaps:
+        return {"n_twin": 0}
+    return {
+        "n_twin": len(gaps),
+        "min": gaps[0],
+        "p25": gaps[len(gaps) // 4],
+        "median": gaps[len(gaps) // 2],
+        "max": gaps[-1],
+        "n_under_10": sum(1 for g in gaps if g < 10),
+        "batch_len": len(pairs),
+    }
+
+
+def spread_runfloor(pairs: list[dict]) -> int:
+    """把 30 条 `run_floor` **在它们自己的槽位之间**重排,最大化"锚点与其孪生
+    `arm_b` 对"的最小间距。返回达成的最小间距。
+
+    WHY 是"槽位内重排"而不是"重新排序":md5 打散给出的 30 个 `run_floor` 位置
+    **一个都不动**,动的只是"哪一条锚点坐哪个槽"。于是锚点在批里的密度分布
+    与纯打散完全相同(实测三分位 10/13/7),**不会**出现"批尾全是几乎一样的对"
+    ——那才是真正危险的那种结构:标注者一进尾段就发现规律,判读策略当场改变,
+    连带把该段的 `arm_b` 读数一起污染。而"隔得太近的重复 prompt"只是二阶风险。
+    两个风险这样就同时压住了,代价只是引入一个确定性的指派步骤。
+
+    做法:对候选间距 G 二分,可行性用二分图匹配判(锚点 i 可放槽位 j ⟺
+    |slot_j − twin_i| ≥ G),取可行的最大 G。30×30 的规模下增广路径就够。
+    邻接表按槽位下标顺序生成、匹配按锚点下标顺序尝试 ⇒ **完全确定性**,
+    同一份任务单永远重排出同一个清单。
+
+    实测本批可达 G = 89(批长 222 的 40%),远超 `idcount/build_items.py` 用的
+    `len//3` 那条既有纪律。
+    """
+    slots = [i for i, p in enumerate(pairs) if p["kind"] == "run_floor"]
+    twin = {p["src_task_id"]: i for i, p in enumerate(pairs)
+            if p["kind"] != "run_floor"}
+    rfs = [pairs[i] for i in slots]
+    tw = [twin[p["src_task_id"]] for p in rfs]
+    if not slots:
+        return 0
+
+    def match(g: int):
+        adj = [[j for j, s in enumerate(slots) if abs(s - tw[i]) >= g]
+               for i in range(len(tw))]
+        mt = [-1] * len(slots)
+
+        def aug(i: int, vis: list[bool]) -> bool:
+            for j in adj[i]:
+                if vis[j]:
+                    continue
+                vis[j] = True
+                if mt[j] == -1 or aug(mt[j], vis):
+                    mt[j] = i
+                    return True
+            return False
+
+        for i in range(len(tw)):
+            if not aug(i, [False] * len(slots)):
+                return None
+        return mt
+
+    lo, hi, best = 0, len(pairs), (0, list(range(len(slots))))
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        m = match(mid)
+        if m is None:
+            hi = mid - 1
+        else:
+            best, lo = (mid, m), mid + 1
+    g_best, mt = best
+    for j, i in enumerate(mt):
+        pairs[slots[j]] = rfs[i]
+    return g_best
+
+
+def cmd_arm_b(args) -> None:
+    """臂 B 终批:`arm_b_iso` vs `arm_a_full` 192 对 + `run_floor` 30 对 = **222 对**。
+
+    组成由 §11.11(e) 预登记,**不带 replay**(自洽率已测两次,第三次不承重)。
+    这是新主命题(边 ②′)的直接单变量读数,**也是最后一个批次**。
+
+    WHY key_0 = `arm_b_iso`:清单约定 key_0 = 被检验方、key_1 = 基线
+    (`report.py:13`),于是非平局胜率 `win_0/(win_0+win_1)` 直接就是
+    "臂 B 相对臂 A 的胜率",§8.2 的 CI 下界 ≥ 0.40 原样套用,报告里不做方向翻转
+    ——翻转正是 M4 吃过亏的地方(score 0.92→0.82)。
+
+    WHY `run_floor` 的两侧都是 `official_full`:天花板的定义就是"同权重、同 seed、
+    异 run",与挂哪份 LoRA 无关。选官方权重是因为它由 pipeline 自带备份提供
+    (`eval_multiref.py:198-207`),不依赖任何 checkpoint 文件在不在盘上。
+
+    ⚠️ **前置条件**:§9 身份留存门必须已经判过且点估计 ≥ 60%(§11.11(d))。
+    门没过就不该建这个清单——那 16 分钟判读预算按预登记要省下来。本脚本
+    **不代替人去判这个门**,只在这里写明。
+    """
+    fresh_seed("m5ab", AB_BLIND_SEED)
+
+    tasks = load_json(ARM_B_TASKS)["tasks"]
+    aa_have = generated_ok(load_json(ARM_A_RESULTS))
+
+    if args.dry_run:
+        ab_have = {(t["task_id"], v) for t in tasks for v in t["variants"]}
+        actual = None
+        print("⚠️ --dry_run:假装臂 B 的图全都生成成功,只看条数与排序统计")
+    else:
+        ab_results = load_json(ARM_B_RESULTS)
+        ab_have = generated_ok(ab_results)
+        # 记录里的 path 是生成时**实际写下**的路径;img_rel 是重建出来的。对不上说明
+        # out_path 的命名约定漂了,此时清单会指向不存在的图,而服务器要到上机那一刻
+        # 才报错——所以在这里当场拦下(同 cmd_arm_a)。
+        actual = {(r["task_id"], r["variant"]): r["path"] for r in ab_results["records"]}
+
+    pairs = []
+    n_rf = 0
+    for t in tasks:
+        tid = t["task_id"]
+        src = t["meta"]["arm_b_src_task_id"]
+        aa_id = "AA_" + src
+
+        if (tid, ARM_B) not in ab_have:
+            raise SystemExit(f"❌ {tid}/{ARM_B} 缺图,192 条不完整就不许开评")
+        if (aa_id, ARM_A) not in aa_have:
+            raise SystemExit(f"❌ 臂 A 批缺 {aa_id}/{ARM_A}(它是本批的基线)")
+        if actual is not None:
+            rebuilt = img_rel(AB_DIR, tid, ARM_B)
+            if actual[(tid, ARM_B)] != rebuilt:
+                raise SystemExit(f"❌ {tid}/{ARM_B} 记录路径 {actual[(tid, ARM_B)]} "
+                                 f"≠ 重建路径 {rebuilt}")
+        pairs.append(make_pair(f"m5ab::ab::{tid}", "arm_b_vs_arm_a", t,
+                               ARM_B, img_rel(AB_DIR, tid, ARM_B),        # key_0 = 被检验方
+                               ARM_A, img_rel(AA_DIR, aa_id, ARM_A),      # key_1 = 基线
+                               src_task_id=tid))
+
+        if t["meta"].get("arm_b_runfloor"):
+            if (tid, TEACHER) not in ab_have:
+                raise SystemExit(f"❌ {tid}/{TEACHER} 缺图,run_floor 锚点配不出对")
+            if (aa_id, TEACHER) not in aa_have:
+                raise SystemExit(f"❌ 臂 A 批缺 {aa_id}/{TEACHER}(天花板的另一侧)")
+            if actual is not None:
+                rebuilt = img_rel(AB_DIR, tid, TEACHER)
+                if actual[(tid, TEACHER)] != rebuilt:
+                    raise SystemExit(f"❌ {tid}/{TEACHER} 记录路径 "
+                                     f"{actual[(tid, TEACHER)]} ≠ 重建路径 {rebuilt}")
+            pairs.append(make_pair(f"m5ab::rf::{src}", "run_floor", t,
+                                   "teacher_run_arm_b", img_rel(AB_DIR, tid, TEACHER),
+                                   "teacher_run_arm_a", img_rel(AA_DIR, aa_id, TEACHER),
+                                   src_task_id=tid))
+            n_rf += 1
+
+    if len(tasks) != 192 or n_rf != 30 or len(pairs) != 222:
+        raise SystemExit(f"❌ 任务 {len(tasks)} 条 / 锚点 {n_rf} 条 / 配对 {len(pairs)} 对,"
+                         f"应为 192 / 30 / 222(§11.11(e) 预登记的批次组成)")
+
+    # 打散:与槽位用不同的盐,免得"排在前面"和"在左边"产生相关(同 cmd_r2 / cmd_arm_a)
+    pairs.sort(key=lambda p: h(p["pair_id"], AB_BLIND_SEED, "order"))
+    before = twin_gaps(pairs)
+    g_min = spread_runfloor(pairs)
+    gaps = twin_gaps(pairs)
+    gaps["achieved_min_gap"] = g_min
+    gaps["min_before_spread"] = before["min"]
+    # 拿到的最小间距若还没到 idcount 那条既有纪律(len//3),说明这批任务的
+    # 打散位置天生挤,得换盐重排——而不是降低要求。
+    if g_min < len(pairs) // 3:
+        raise SystemExit(f"❌ 槽位内重排后最小间距仅 {g_min},低于既有纪律 "
+                         f"{len(pairs) // 3}(= 批长/3)。换 AB_BLIND_SEED 重来,"
+                         f"不要降低要求。")
+
+    if args.dry_run:
+        print(f"\n条数:{len(pairs)} 对 {dict(sorted(Counter(p['kind'] for p in pairs).items()))}")
+        print(f"锚点双出现间距:{gaps}")
+        tert = Counter(("头", "中", "尾")[min(2, i * 3 // len(pairs))]
+                       for i, p in enumerate(pairs) if p["kind"] == "run_floor")
+        print(f"run_floor 三分位分布:{dict(tert)}(应大致均匀,聚在尾段就是危险结构)")
+        return
+
+    write_manifest(OUT_AB_PAIRS, {
+        "batch_id": "m5ab",
+        "blind_seed": AB_BLIND_SEED,
+        "question": "哪一张更好?(综合参考图忠实度与画面质量)",   # 逐字沿用,改问题=改尺子
+        "eval_set_version": "arm_b_tasks v1(= eval_set v1-232 的 S1+S3,seed 零偏移)"
+                            " + 臂 A 批的 arm_a_full / official_full 作对侧",
+        "source": "§11.11(e) 终批:边 ②′(隔离 vs 全注意力,同数据同配方同 init)"
+                  " 192 对 + 同会话 run_floor 30 对,不带 replay",
+        "twin_gaps": gaps,
+    }, pairs)
+
+    by_st = Counter((p["kind"], p["stratum"]) for p in pairs)
+    print("\n构成:")
+    for (k, st), c in sorted(by_st.items()):
+        print(f"  {k:<16}{st:<5}{c:>5}")
+    n_main = sum(1 for p in pairs if p["kind"] == "arm_b_vs_arm_a")
+    print(f"\n按臂 A 实测 59.4% 平局率折合 n_nontie ≈ {round(n_main * (1 - 0.594))}"
+          f"(§8.2 要求 ≥ 94、且 Wilson CI 下界 ≥ 0.40)")
+    print(f"  ⚠️ 平局率 > {1 - 94 / n_main:.1%} ⇒ 结论是「判据不适用」而非「不达标」,"
+          f"**不许事后追加样本**")
+    print(f"\n锚点双出现间距(那 30 条 prompt 在批里出现两次,躲不掉,见 twin_gaps 的 WHY):")
+    print(f"  纯 md5 打散最小 {gaps['min_before_spread']} → 槽位内重排后最小 "
+          f"{gaps['min']} / 中位 {gaps['median']} / 最大 {gaps['max']}(批长 {gaps['batch_len']})")
+    tert = Counter(("头", "中", "尾")[min(2, i * 3 // len(pairs))]
+                   for i, p in enumerate(pairs) if p["kind"] == "run_floor")
+    print(f"  run_floor 三分位分布 {dict(tert)}——槽位未动,不聚堆")
+    print(f"  ⇒ 「同一 prompt 在批内出现两次」这件事本身仍要如实写进 §8.5 局限。")
+    print(f"\n盲种 {AB_BLIND_SEED}(登记表里与其它批次都不同)")
+    print(f"⚠️ 拼图 {AB_DIR}/boards/ 是**带变体名标注**的并排图——"
+          f"开评之前不要再看它,看过多少要写进 §8.5 的局限里。")
+    print("⚠️ 前置:§9 身份留存门必须已判且点估计 ≥ 60%(§11.11(d)),否则本批不该建。")
+
+
 # ------------------------------------------------------------------ main
 
 def main() -> None:
@@ -628,9 +859,12 @@ def main() -> None:
     r2.add_argument("--n_replay", type=int, default=20)
     sub.add_parser("arm-a", help="生成臂 A 的 192 条批次(§11.7 链条第 ① 边)")
     sub.add_parser("arm-a-ctl", help="臂 A 尺子标定批:run_floor 60 + 重放 20(§11.8)")
+    ab = sub.add_parser("arm-b", help="臂 B 终批 222 对(§11.11(e));先过 §9 身份留存门")
+    ab.add_argument("--dry_run", action="store_true",
+                    help="臂 B 的图还没生成时,只核条数与打散统计,不写清单")
     args = p.parse_args()
     {"migrate-m4": cmd_migrate_m4, "r2": cmd_r2,
-     "arm-a": cmd_arm_a, "arm-a-ctl": cmd_arm_a_ctl}[args.cmd](args)
+     "arm-a": cmd_arm_a, "arm-a-ctl": cmd_arm_a_ctl, "arm-b": cmd_arm_b}[args.cmd](args)
 
 
 if __name__ == "__main__":

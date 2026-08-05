@@ -296,3 +296,20 @@ log/ref_distill/
 !/output/eval_arm_a/pairs_m5aactl.json
 !/output/eval_arm_a/blind_annotations_m5aactl.json
 !/logs/m5_arm_b_resume.log
+
+# 臂 B 读数批次(2026-08-05,§11.11(c) 步 3–5)。放行规则同臂 A,**只有一处故意不同**:
+# **`boards/` 不放行。** 拼图带变体名列头 = 已揭盲,而臂 B 这批**还没判读**。
+# 放行它等于让 H800 上的 `--merge` 顺手把揭盲图 commit 进来,再 pull 到本地就撞脸了
+# ——盲法纪律(§8.5)一旦破,整批 222 对的读数作废,而"看过"是不可撤销的。
+# 臂 A 的 boards 当初放行是因为那批早已判完,不是同一情形。
+!/output/eval_arm_b/
+/output/eval_arm_b/*
+!/output/eval_arm_b/results.json
+!/output/eval_arm_b/results_shard0.json
+# §9 身份留存门:清单是预登记的抽样本身(种子 20260803、层配比、51 问),
+# 标注是判读产物。理由与 probe_iso/idcount_* 逐字相同。
+!/output/eval_arm_b/gate_items.json
+!/output/eval_arm_b/gate_marks.json
+# 终批配对清单 + 标注,理由与 eval_arm_a/pairs_* 逐字相同。
+!/output/eval_arm_b/pairs_m5ab.json
+!/output/eval_arm_b/blind_annotations_m5ab.json
