@@ -1,0 +1,1598 @@
+{
+  "shard_idx": 0,
+  "num_shards": 1,
+  "config": {
+    "eval_json": "datasets/eval_multiref/arm_b_tasks.json",
+    "pre_lora": "log/ref_isolation/checkpoint-20000/dit_lora.safetensors",
+    "post4000_lora": "log/ref_distill/checkpoint-4000/dit_lora.safetensors",
+    "post2000_lora": "log/ref_distill/checkpoint-2000/dit_lora.safetensors",
+    "arm_a_lora": "log/arm_a/checkpoint-4000/dit_lora.safetensors",
+    "arm_b_lora": "log/arm_b/checkpoint-4000/dit_lora.safetensors",
+    "save_path": "output/eval_arm_b",
+    "shard_idx": 0,
+    "num_shards": 1,
+    "strata": null,
+    "model_type": "flux-dev",
+    "offload": false,
+    "width": 512,
+    "height": 512,
+    "ref_size": 512,
+    "num_steps": 25,
+    "guidance": 4.0,
+    "lora_rank": 512,
+    "dry_run": false,
+    "merge": false,
+    "check_anchor": false
+  },
+  "records": [
+    {
+      "task_id": "AB_S1_000_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1420095302164555,
+      "path": "output/eval_arm_b/AB_S1_000_s1__official_full.png"
+    },
+    {
+      "task_id": "AB_S1_002_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1496298015117645,
+      "path": "output/eval_arm_b/AB_S1_002_s0__official_full.png"
+    },
+    {
+      "task_id": "AB_S1_003_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.149008098989725,
+      "path": "output/eval_arm_b/AB_S1_003_s0__official_full.png"
+    },
+    {
+      "task_id": "AB_S1_007_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.154152322560549,
+      "path": "output/eval_arm_b/AB_S1_007_s1__official_full.png"
+    },
+    {
+      "task_id": "AB_S1_008_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.155412949621677,
+      "path": "output/eval_arm_b/AB_S1_008_s2__official_full.png"
+    },
+    {
+      "task_id": "AB_S1_009_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.135078627616167,
+      "path": "output/eval_arm_b/AB_S1_009_s1__official_full.png"
+    },
+    {
+      "task_id": "AB_S1_010_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.135990135371685,
+      "path": "output/eval_arm_b/AB_S1_010_s1__official_full.png"
+    },
+    {
+      "task_id": "AB_S1_012_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.165674265474081,
+      "path": "output/eval_arm_b/AB_S1_012_s1__official_full.png"
+    },
+    {
+      "task_id": "AB_S1_015_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.141603492200375,
+      "path": "output/eval_arm_b/AB_S1_015_s1__official_full.png"
+    },
+    {
+      "task_id": "AB_S1_016_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.162218630313873,
+      "path": "output/eval_arm_b/AB_S1_016_s2__official_full.png"
+    },
+    {
+      "task_id": "AB_S1_018_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.14319047704339,
+      "path": "output/eval_arm_b/AB_S1_018_s2__official_full.png"
+    },
+    {
+      "task_id": "AB_S1_019_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.149458300322294,
+      "path": "output/eval_arm_b/AB_S1_019_s0__official_full.png"
+    },
+    {
+      "task_id": "AB_S1_021_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.144762936979532,
+      "path": "output/eval_arm_b/AB_S1_021_s2__official_full.png"
+    },
+    {
+      "task_id": "AB_S1_030_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.136990714818239,
+      "path": "output/eval_arm_b/AB_S1_030_s0__official_full.png"
+    },
+    {
+      "task_id": "AB_S1_033_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.142256449908018,
+      "path": "output/eval_arm_b/AB_S1_033_s1__official_full.png"
+    },
+    {
+      "task_id": "AB_S1_034_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.139521550387144,
+      "path": "output/eval_arm_b/AB_S1_034_s1__official_full.png"
+    },
+    {
+      "task_id": "AB_S1_035_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.169274531304836,
+      "path": "output/eval_arm_b/AB_S1_035_s2__official_full.png"
+    },
+    {
+      "task_id": "AB_S1_038_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.1447595208883286,
+      "path": "output/eval_arm_b/AB_S1_038_s0__official_full.png"
+    },
+    {
+      "task_id": "AB_S1_039_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.145004820078611,
+      "path": "output/eval_arm_b/AB_S1_039_s2__official_full.png"
+    },
+    {
+      "task_id": "AB_S1_043_s2",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 5.151923641562462,
+      "path": "output/eval_arm_b/AB_S1_043_s2__official_full.png"
+    },
+    {
+      "task_id": "AB_S3_002_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6209975592792034,
+      "path": "output/eval_arm_b/AB_S3_002_s1__official_full.png"
+    },
+    {
+      "task_id": "AB_S3_003_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6169153228402138,
+      "path": "output/eval_arm_b/AB_S3_003_s1__official_full.png"
+    },
+    {
+      "task_id": "AB_S3_008_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.616529520601034,
+      "path": "output/eval_arm_b/AB_S3_008_s0__official_full.png"
+    },
+    {
+      "task_id": "AB_S3_010_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6216690093278885,
+      "path": "output/eval_arm_b/AB_S3_010_s0__official_full.png"
+    },
+    {
+      "task_id": "AB_S3_014_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6176914051175117,
+      "path": "output/eval_arm_b/AB_S3_014_s0__official_full.png"
+    },
+    {
+      "task_id": "AB_S3_015_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6168098114430904,
+      "path": "output/eval_arm_b/AB_S3_015_s0__official_full.png"
+    },
+    {
+      "task_id": "AB_S3_019_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6170872561633587,
+      "path": "output/eval_arm_b/AB_S3_019_s0__official_full.png"
+    },
+    {
+      "task_id": "AB_S3_022_s1",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.614817637950182,
+      "path": "output/eval_arm_b/AB_S3_022_s1__official_full.png"
+    },
+    {
+      "task_id": "AB_S3_024_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.617204237729311,
+      "path": "output/eval_arm_b/AB_S3_024_s0__official_full.png"
+    },
+    {
+      "task_id": "AB_S3_029_s0",
+      "variant": "official_full",
+      "status": "ok",
+      "denoise_s": 3.6245601810514927,
+      "path": "output/eval_arm_b/AB_S3_029_s0__official_full.png"
+    },
+    {
+      "task_id": "AB_S1_000_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9082220792770386,
+      "path": "output/eval_arm_b/AB_S1_000_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_000_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9035115092992783,
+      "path": "output/eval_arm_b/AB_S1_000_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_000_s2",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.907120920717716,
+      "path": "output/eval_arm_b/AB_S1_000_s2__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_001_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.904417671263218,
+      "path": "output/eval_arm_b/AB_S1_001_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_001_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.903899185359478,
+      "path": "output/eval_arm_b/AB_S1_001_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_001_s2",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9039262868463993,
+      "path": "output/eval_arm_b/AB_S1_001_s2__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_002_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.904539741575718,
+      "path": "output/eval_arm_b/AB_S1_002_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_002_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.902838584035635,
+      "path": "output/eval_arm_b/AB_S1_002_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_002_s2",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.904160924255848,
+      "path": "output/eval_arm_b/AB_S1_002_s2__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_003_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.903586745262146,
+      "path": "output/eval_arm_b/AB_S1_003_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_003_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9038948975503445,
+      "path": "output/eval_arm_b/AB_S1_003_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_003_s2",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.902047824114561,
+      "path": "output/eval_arm_b/AB_S1_003_s2__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_004_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9022735357284546,
+      "path": "output/eval_arm_b/AB_S1_004_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_004_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.902089226990938,
+      "path": "output/eval_arm_b/AB_S1_004_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_004_s2",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.915978491306305,
+      "path": "output/eval_arm_b/AB_S1_004_s2__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_005_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9017655067145824,
+      "path": "output/eval_arm_b/AB_S1_005_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_005_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.902108322829008,
+      "path": "output/eval_arm_b/AB_S1_005_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_005_s2",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9026075787842274,
+      "path": "output/eval_arm_b/AB_S1_005_s2__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_006_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9036210663616657,
+      "path": "output/eval_arm_b/AB_S1_006_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_006_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.903118908405304,
+      "path": "output/eval_arm_b/AB_S1_006_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_006_s2",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9028227999806404,
+      "path": "output/eval_arm_b/AB_S1_006_s2__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_007_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9033633209764957,
+      "path": "output/eval_arm_b/AB_S1_007_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_007_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9039082005620003,
+      "path": "output/eval_arm_b/AB_S1_007_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_007_s2",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9042036682367325,
+      "path": "output/eval_arm_b/AB_S1_007_s2__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_008_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.904575541615486,
+      "path": "output/eval_arm_b/AB_S1_008_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_008_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9037533961236477,
+      "path": "output/eval_arm_b/AB_S1_008_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_008_s2",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9031770192086697,
+      "path": "output/eval_arm_b/AB_S1_008_s2__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_009_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.903248593211174,
+      "path": "output/eval_arm_b/AB_S1_009_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_009_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9030792862176895,
+      "path": "output/eval_arm_b/AB_S1_009_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_009_s2",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.904908999800682,
+      "path": "output/eval_arm_b/AB_S1_009_s2__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_010_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9042572118341923,
+      "path": "output/eval_arm_b/AB_S1_010_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_010_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.915822461247444,
+      "path": "output/eval_arm_b/AB_S1_010_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_010_s2",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.903272073715925,
+      "path": "output/eval_arm_b/AB_S1_010_s2__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_011_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.903355158865452,
+      "path": "output/eval_arm_b/AB_S1_011_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_011_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.903447948396206,
+      "path": "output/eval_arm_b/AB_S1_011_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_011_s2",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.903302676975727,
+      "path": "output/eval_arm_b/AB_S1_011_s2__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_012_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.903371013700962,
+      "path": "output/eval_arm_b/AB_S1_012_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_012_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.903893679380417,
+      "path": "output/eval_arm_b/AB_S1_012_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_012_s2",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9033309407532215,
+      "path": "output/eval_arm_b/AB_S1_012_s2__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_013_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9161853566765785,
+      "path": "output/eval_arm_b/AB_S1_013_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_013_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.904631767421961,
+      "path": "output/eval_arm_b/AB_S1_013_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_013_s2",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.904343828558922,
+      "path": "output/eval_arm_b/AB_S1_013_s2__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_014_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.905367959290743,
+      "path": "output/eval_arm_b/AB_S1_014_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_014_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9042056314647198,
+      "path": "output/eval_arm_b/AB_S1_014_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_014_s2",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9035794101655483,
+      "path": "output/eval_arm_b/AB_S1_014_s2__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_015_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9049639217555523,
+      "path": "output/eval_arm_b/AB_S1_015_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_015_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.904455665498972,
+      "path": "output/eval_arm_b/AB_S1_015_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_015_s2",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9060863070189953,
+      "path": "output/eval_arm_b/AB_S1_015_s2__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_016_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9093124754726887,
+      "path": "output/eval_arm_b/AB_S1_016_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_016_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9043552428483963,
+      "path": "output/eval_arm_b/AB_S1_016_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_016_s2",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9046319611370564,
+      "path": "output/eval_arm_b/AB_S1_016_s2__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_017_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9058056324720383,
+      "path": "output/eval_arm_b/AB_S1_017_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_017_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9048858396708965,
+      "path": "output/eval_arm_b/AB_S1_017_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_017_s2",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9029179103672504,
+      "path": "output/eval_arm_b/AB_S1_017_s2__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_018_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9059558138251305,
+      "path": "output/eval_arm_b/AB_S1_018_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_018_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9049659706652164,
+      "path": "output/eval_arm_b/AB_S1_018_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_018_s2",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.919640500098467,
+      "path": "output/eval_arm_b/AB_S1_018_s2__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_019_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9026244319975376,
+      "path": "output/eval_arm_b/AB_S1_019_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_019_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.906766440719366,
+      "path": "output/eval_arm_b/AB_S1_019_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_019_s2",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.912043482065201,
+      "path": "output/eval_arm_b/AB_S1_019_s2__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_020_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.905393060296774,
+      "path": "output/eval_arm_b/AB_S1_020_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_020_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9027153328061104,
+      "path": "output/eval_arm_b/AB_S1_020_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_020_s2",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.904062584042549,
+      "path": "output/eval_arm_b/AB_S1_020_s2__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_021_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.903693448752165,
+      "path": "output/eval_arm_b/AB_S1_021_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_021_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9035992547869682,
+      "path": "output/eval_arm_b/AB_S1_021_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_021_s2",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9050806388258934,
+      "path": "output/eval_arm_b/AB_S1_021_s2__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_022_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9029146283864975,
+      "path": "output/eval_arm_b/AB_S1_022_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_022_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.905397154390812,
+      "path": "output/eval_arm_b/AB_S1_022_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_022_s2",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.904957301914692,
+      "path": "output/eval_arm_b/AB_S1_022_s2__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_023_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.8978833071887493,
+      "path": "output/eval_arm_b/AB_S1_023_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_023_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.905939195305109,
+      "path": "output/eval_arm_b/AB_S1_023_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_023_s2",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9050888679921627,
+      "path": "output/eval_arm_b/AB_S1_023_s2__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_024_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.8978468254208565,
+      "path": "output/eval_arm_b/AB_S1_024_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_024_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9043773598968983,
+      "path": "output/eval_arm_b/AB_S1_024_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_024_s2",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.897433001548052,
+      "path": "output/eval_arm_b/AB_S1_024_s2__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_025_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.8985289447009563,
+      "path": "output/eval_arm_b/AB_S1_025_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_025_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.905330792069435,
+      "path": "output/eval_arm_b/AB_S1_025_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_025_s2",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9045816138386726,
+      "path": "output/eval_arm_b/AB_S1_025_s2__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_026_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9027408994734287,
+      "path": "output/eval_arm_b/AB_S1_026_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_026_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9033882170915604,
+      "path": "output/eval_arm_b/AB_S1_026_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_026_s2",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9031490050256252,
+      "path": "output/eval_arm_b/AB_S1_026_s2__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_027_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.916563719511032,
+      "path": "output/eval_arm_b/AB_S1_027_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_027_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9039468467235565,
+      "path": "output/eval_arm_b/AB_S1_027_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_027_s2",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9075649939477444,
+      "path": "output/eval_arm_b/AB_S1_027_s2__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_028_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.904780127108097,
+      "path": "output/eval_arm_b/AB_S1_028_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_028_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9041798897087574,
+      "path": "output/eval_arm_b/AB_S1_028_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_028_s2",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9039796590805054,
+      "path": "output/eval_arm_b/AB_S1_028_s2__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_029_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9050815105438232,
+      "path": "output/eval_arm_b/AB_S1_029_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_029_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.905497543513775,
+      "path": "output/eval_arm_b/AB_S1_029_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_029_s2",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.909921906888485,
+      "path": "output/eval_arm_b/AB_S1_029_s2__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_030_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.913401585072279,
+      "path": "output/eval_arm_b/AB_S1_030_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_030_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.902584068477154,
+      "path": "output/eval_arm_b/AB_S1_030_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_030_s2",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9055168367922306,
+      "path": "output/eval_arm_b/AB_S1_030_s2__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_031_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9052312783896923,
+      "path": "output/eval_arm_b/AB_S1_031_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_031_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.90424370393157,
+      "path": "output/eval_arm_b/AB_S1_031_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_031_s2",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9057336673140526,
+      "path": "output/eval_arm_b/AB_S1_031_s2__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_032_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.904871318489313,
+      "path": "output/eval_arm_b/AB_S1_032_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_032_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.90471513196826,
+      "path": "output/eval_arm_b/AB_S1_032_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_032_s2",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.911881249397993,
+      "path": "output/eval_arm_b/AB_S1_032_s2__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_033_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.904011584818363,
+      "path": "output/eval_arm_b/AB_S1_033_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_033_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.90486591309309,
+      "path": "output/eval_arm_b/AB_S1_033_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_033_s2",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.905994888395071,
+      "path": "output/eval_arm_b/AB_S1_033_s2__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_034_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9043436981737614,
+      "path": "output/eval_arm_b/AB_S1_034_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_034_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.904488254338503,
+      "path": "output/eval_arm_b/AB_S1_034_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_034_s2",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9034743644297123,
+      "path": "output/eval_arm_b/AB_S1_034_s2__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_035_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.902997773140669,
+      "path": "output/eval_arm_b/AB_S1_035_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_035_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.905533514916897,
+      "path": "output/eval_arm_b/AB_S1_035_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_035_s2",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9151846170425415,
+      "path": "output/eval_arm_b/AB_S1_035_s2__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_036_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9041440039873123,
+      "path": "output/eval_arm_b/AB_S1_036_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_036_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.903406038880348,
+      "path": "output/eval_arm_b/AB_S1_036_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_036_s2",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.904233481734991,
+      "path": "output/eval_arm_b/AB_S1_036_s2__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_037_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9049632027745247,
+      "path": "output/eval_arm_b/AB_S1_037_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_037_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9038270115852356,
+      "path": "output/eval_arm_b/AB_S1_037_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_037_s2",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9042798690497875,
+      "path": "output/eval_arm_b/AB_S1_037_s2__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_038_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9027725644409657,
+      "path": "output/eval_arm_b/AB_S1_038_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_038_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9033727534115314,
+      "path": "output/eval_arm_b/AB_S1_038_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_038_s2",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.909255411475897,
+      "path": "output/eval_arm_b/AB_S1_038_s2__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_039_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9036321975290775,
+      "path": "output/eval_arm_b/AB_S1_039_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_039_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9034048467874527,
+      "path": "output/eval_arm_b/AB_S1_039_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_039_s2",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.905837632715702,
+      "path": "output/eval_arm_b/AB_S1_039_s2__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_040_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9036503322422504,
+      "path": "output/eval_arm_b/AB_S1_040_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_040_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.903004217892885,
+      "path": "output/eval_arm_b/AB_S1_040_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_040_s2",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.904269229620695,
+      "path": "output/eval_arm_b/AB_S1_040_s2__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_041_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.903519820421934,
+      "path": "output/eval_arm_b/AB_S1_041_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_041_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.903262011706829,
+      "path": "output/eval_arm_b/AB_S1_041_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_041_s2",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9040293246507645,
+      "path": "output/eval_arm_b/AB_S1_041_s2__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_042_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9144576266407967,
+      "path": "output/eval_arm_b/AB_S1_042_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_042_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.9047970958054066,
+      "path": "output/eval_arm_b/AB_S1_042_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_042_s2",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.903652898967266,
+      "path": "output/eval_arm_b/AB_S1_042_s2__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_043_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.905634067952633,
+      "path": "output/eval_arm_b/AB_S1_043_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_043_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.903982851654291,
+      "path": "output/eval_arm_b/AB_S1_043_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S1_043_s2",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.903067097067833,
+      "path": "output/eval_arm_b/AB_S1_043_s2__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_000_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.668563686311245,
+      "path": "output/eval_arm_b/AB_S3_000_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_000_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.6677571795880795,
+      "path": "output/eval_arm_b/AB_S3_000_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_001_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.6683839820325375,
+      "path": "output/eval_arm_b/AB_S3_001_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_001_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.6832005754113197,
+      "path": "output/eval_arm_b/AB_S3_001_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_002_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.664801087230444,
+      "path": "output/eval_arm_b/AB_S3_002_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_002_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.6690510995686054,
+      "path": "output/eval_arm_b/AB_S3_002_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_003_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.6676020212471485,
+      "path": "output/eval_arm_b/AB_S3_003_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_003_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.666028667241335,
+      "path": "output/eval_arm_b/AB_S3_003_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_004_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.665989115834236,
+      "path": "output/eval_arm_b/AB_S3_004_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_004_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.666984111070633,
+      "path": "output/eval_arm_b/AB_S3_004_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_005_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.667745266109705,
+      "path": "output/eval_arm_b/AB_S3_005_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_005_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.665715504437685,
+      "path": "output/eval_arm_b/AB_S3_005_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_006_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.6667222380638123,
+      "path": "output/eval_arm_b/AB_S3_006_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_006_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.6679460369050503,
+      "path": "output/eval_arm_b/AB_S3_006_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_007_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.6778528057038784,
+      "path": "output/eval_arm_b/AB_S3_007_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_007_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.6644440665841103,
+      "path": "output/eval_arm_b/AB_S3_007_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_008_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.6674270890653133,
+      "path": "output/eval_arm_b/AB_S3_008_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_008_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.6669550016522408,
+      "path": "output/eval_arm_b/AB_S3_008_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_009_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.665372360497713,
+      "path": "output/eval_arm_b/AB_S3_009_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_009_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.667198821902275,
+      "path": "output/eval_arm_b/AB_S3_009_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_010_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.6660628877580166,
+      "path": "output/eval_arm_b/AB_S3_010_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_010_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.6661219224333763,
+      "path": "output/eval_arm_b/AB_S3_010_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_011_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.6651862524449825,
+      "path": "output/eval_arm_b/AB_S3_011_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_011_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.6697012297809124,
+      "path": "output/eval_arm_b/AB_S3_011_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_012_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.6694011986255646,
+      "path": "output/eval_arm_b/AB_S3_012_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_012_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.6643901094794273,
+      "path": "output/eval_arm_b/AB_S3_012_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_013_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.6656779125332832,
+      "path": "output/eval_arm_b/AB_S3_013_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_013_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.6687320806086063,
+      "path": "output/eval_arm_b/AB_S3_013_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_014_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.6679631136357784,
+      "path": "output/eval_arm_b/AB_S3_014_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_014_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.669508460909128,
+      "path": "output/eval_arm_b/AB_S3_014_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_015_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.666248496621847,
+      "path": "output/eval_arm_b/AB_S3_015_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_015_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.6697988472878933,
+      "path": "output/eval_arm_b/AB_S3_015_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_016_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.6665012799203396,
+      "path": "output/eval_arm_b/AB_S3_016_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_016_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.6693774983286858,
+      "path": "output/eval_arm_b/AB_S3_016_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_017_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.6865256130695343,
+      "path": "output/eval_arm_b/AB_S3_017_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_017_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.665729086846113,
+      "path": "output/eval_arm_b/AB_S3_017_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_018_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.6659793704748154,
+      "path": "output/eval_arm_b/AB_S3_018_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_018_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.667020220309496,
+      "path": "output/eval_arm_b/AB_S3_018_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_019_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.6655155681073666,
+      "path": "output/eval_arm_b/AB_S3_019_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_019_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.672014608979225,
+      "path": "output/eval_arm_b/AB_S3_019_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_020_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.6695875599980354,
+      "path": "output/eval_arm_b/AB_S3_020_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_020_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.670810531824827,
+      "path": "output/eval_arm_b/AB_S3_020_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_021_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.668414894491434,
+      "path": "output/eval_arm_b/AB_S3_021_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_021_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.670687109231949,
+      "path": "output/eval_arm_b/AB_S3_021_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_022_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.668839320540428,
+      "path": "output/eval_arm_b/AB_S3_022_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_022_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.667998503893614,
+      "path": "output/eval_arm_b/AB_S3_022_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_023_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.6755339056253433,
+      "path": "output/eval_arm_b/AB_S3_023_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_023_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.6656080968677998,
+      "path": "output/eval_arm_b/AB_S3_023_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_024_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.6665106378495693,
+      "path": "output/eval_arm_b/AB_S3_024_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_024_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.665788546204567,
+      "path": "output/eval_arm_b/AB_S3_024_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_025_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.6668435968458652,
+      "path": "output/eval_arm_b/AB_S3_025_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_025_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.667803332209587,
+      "path": "output/eval_arm_b/AB_S3_025_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_026_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.667711492627859,
+      "path": "output/eval_arm_b/AB_S3_026_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_026_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.6689963527023792,
+      "path": "output/eval_arm_b/AB_S3_026_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_027_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.6693368181586266,
+      "path": "output/eval_arm_b/AB_S3_027_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_027_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.6646026894450188,
+      "path": "output/eval_arm_b/AB_S3_027_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_028_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.6660587824881077,
+      "path": "output/eval_arm_b/AB_S3_028_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_028_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.6824447624385357,
+      "path": "output/eval_arm_b/AB_S3_028_s1__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_029_s0",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.6667474657297134,
+      "path": "output/eval_arm_b/AB_S3_029_s0__arm_b_iso.png"
+    },
+    {
+      "task_id": "AB_S3_029_s1",
+      "variant": "arm_b_iso",
+      "status": "ok",
+      "denoise_s": 2.6678430028259754,
+      "path": "output/eval_arm_b/AB_S3_029_s1__arm_b_iso.png"
+    }
+  ],
+  "fails": [],
+  "timing": {
+    "official_full": {
+      "mean_s": 4.638073424622417,
+      "median_s": 5.141806511208415,
+      "n": 30,
+      "peak_mem_gb": 36.24359846115112
+    },
+    "arm_b_iso": {
+      "mean_s": 2.8310471827668757,
+      "median_s": 2.9033965319395065,
+      "n": 192,
+      "peak_mem_gb": 37.04558181762695
+    }
+  }
+}
