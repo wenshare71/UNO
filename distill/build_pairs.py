@@ -63,6 +63,7 @@ OUT_AA_PAIRS = os.path.join(REPO, "output/eval_arm_a/pairs_m5aa.json")
 OUT_AA_MARKS = os.path.join(REPO, "output/eval_arm_a/blind_annotations_m5aa.json")
 OUT_CTL_PAIRS = os.path.join(REPO, "output/eval_arm_a/pairs_m5aactl.json")
 OUT_AB_PAIRS = os.path.join(REPO, "output/eval_arm_b/pairs_m5ab.json")
+OUT_E3_PAIRS = os.path.join(REPO, "output/eval_arm_b/pairs_m5e3.json")
 
 EVAL_DIR = "output/eval_multiref"      # M4 产物目录(仓库根相对)
 NF_DIR = "output/noise_floor"          # 步骤 1 产物目录
@@ -82,6 +83,13 @@ M5_BLIND_SEED = "m5-blind-v1"
 AA_BLIND_SEED = "m5-arm-a-v1"
 CTL_BLIND_SEED = "m5-arm-a-ctl-v1"
 AB_BLIND_SEED = "m5-arm-b-v1"
+E3_BLIND_SEED = "m5-edge3-v1"
+# 展示顺序的打散盐,与盲种分开(盲种还决定左右槽位,动它会连带改 L/R)。
+# `-v1` 下 `spread_runfloor` 的最大可达最小间距只有 70 < 222//3 = 74,守卫拒绝;
+# 按"**依序取第一个通过的**"这条规则换到 `-v2`(间距 90)。
+# WHY 是"第一个通过"而不是"间距最大的那个"(v5 能到 99):顺序不进入任何统计量,
+# 但"挑一个好看的"是个没有规则的自由度,写成规则就没有可挑的余地。
+E3_ORDER_SALT = "m5e3-order-v2"
 
 # 盲种登记表。每个批次必须有**自己**的盲种:槽位一旦在揭盲模式下被看过就永久污染,
 # 而"看过"是不可撤销的。写成登记表而不是靠人记,是因为复制粘贴一个 cmd_* 函数时
@@ -92,6 +100,7 @@ BLIND_SEEDS = {
     "m5aa":    AA_BLIND_SEED,
     "m5aactl": CTL_BLIND_SEED,
     "m5ab":    AB_BLIND_SEED,
+    "m5e3":    E3_BLIND_SEED,
 }
 
 
@@ -848,6 +857,110 @@ def cmd_arm_b(args) -> None:
     print("⚠️ 前置:§9 身份留存门必须已判且点估计 ≥ 60%(§11.11(d)),否则本批不该建。")
 
 
+# ------------------------------------------------------------------ 边 ③ 底座(2026-08-05 补)
+
+def cmd_edge3(args) -> None:
+    """链条第 ③ 边:`ours_kv_post4000` vs `arm_b_iso`,192 对 + `run_floor` 30 对。
+
+    **这条边此前从没被直接测过。** §11.5 的链条 08-04 就把它画出来了
+    (`臂B ──③底座──> post4000`),但 §11.11(c) 的预算表把判读停在臂 B,
+    于是 ③ 一直只有"两端各自的读数",没有**边本身**的读数——而 §8.5-3 禁止跨批相减,
+    所以它不是"算得出来只是没算",是**真的没有数**。
+
+    两端只差 **init** 一个变量:
+      `arm_b_iso`        init = 官方 LoRA          隔离 4000 步
+      `ours_kv_post4000` init = 我们的 `ckpt-20000` 隔离 4000 步
+    数据(`train_mixed.json`)、步数、全部超参、推理模式(隔离 + KV)、seed 全同。
+    ⇒ 读的就是「**我们自己复刻的 stage-1 底座,比官方权重差多少**」。
+
+    WHY key_0 = `post4000`:清单约定 key_0 = 被检验方(`report.py:13`),
+    而链条上**下游那个节点**是被检验方——M4(post4000 vs teacher)、
+    臂 A(arm_a vs teacher)、臂 B(arm_b vs arm_a)三批都是这么排的。
+    于是非平局胜率 < 0.5、旧口径 < 1 **一律读作"我们的底座更差"**,方向不翻转。
+
+    **GPU 成本 0**:两侧的图全都已存在——`post4000` 在 M4 批(07-30),
+    `arm_b_iso` 在臂 B 批(08-05)。`run_floor` 同样免费,而且它跨的正是
+    **07-30 ↔ 08-05** 这段、与主对**完全同一个会话间隔**(§11.11 本地加固的要求)。
+
+    ⚠️ **这是预登记之外新增的第四个批次。** §11.11(c) 写死了"没有第四个批次",
+    本批是在**看到臂 B 结果之后**才建的 ⇒ 报告里必须声明:
+    ① 这条边**早在 08-04 的链条里就定义好了**,不是看到结果才想出来的比较,
+       推迟纯粹是判读预算所致;② 但"何时决定去测"确实发生在揭盲之后,
+       这个**分叉自由度要如实写进 §8.5 局限**,不许说成"预登记的"。
+    """
+    fresh_seed("m5e3", E3_BLIND_SEED)
+
+    tasks = load_json(ARM_B_TASKS)["tasks"]
+    ab_have = generated_ok(load_json(ARM_B_RESULTS))
+    m4_have = generated_ok(load_json(M4_RESULTS))
+
+    pairs, n_rf = [], 0
+    for t in tasks:
+        tid = t["task_id"]
+        src = t["meta"]["arm_b_src_task_id"]
+        if (src, POST) not in m4_have:
+            raise SystemExit(f"❌ M4 批缺 {src}/{POST}(本批的被检验方)")
+        if (tid, ARM_B) not in ab_have:
+            raise SystemExit(f"❌ 臂 B 批缺 {tid}/{ARM_B}(本批的基线)")
+        pairs.append(make_pair(f"m5e3::e3::{tid}", "student_vs_arm_b", t,
+                               POST, img_rel(EVAL_DIR, src, POST),        # key_0 = 被检验方
+                               ARM_B, img_rel(AB_DIR, tid, ARM_B),        # key_1 = 基线
+                               src_task_id=tid))
+        if t["meta"].get("arm_b_runfloor"):
+            if (src, TEACHER) not in m4_have or (tid, TEACHER) not in ab_have:
+                raise SystemExit(f"❌ {src} 的 run_floor 两侧不齐")
+            # key_0/key_1 的会话方向与主对一致:key_0 = 07-30 侧,key_1 = 08-05 侧
+            pairs.append(make_pair(f"m5e3::rf::{src}", "run_floor", t,
+                                   "teacher_run_m4", img_rel(EVAL_DIR, src, TEACHER),
+                                   "teacher_run_arm_b", img_rel(AB_DIR, tid, TEACHER),
+                                   src_task_id=tid))
+            n_rf += 1
+
+    if len(tasks) != 192 or n_rf != 30 or len(pairs) != 222:
+        raise SystemExit(f"❌ 任务 {len(tasks)} / 锚点 {n_rf} / 配对 {len(pairs)},应为 192/30/222")
+
+    pairs.sort(key=lambda p: h(p["pair_id"], E3_ORDER_SALT, "order"))
+    before = twin_gaps(pairs)
+    g_min = spread_runfloor(pairs)          # 同臂 B 批:锚点 prompt 在批内出现两次,躲不掉
+    gaps = twin_gaps(pairs)
+    gaps["achieved_min_gap"] = g_min
+    gaps["min_before_spread"] = before["min"]
+    if g_min < len(pairs) // 3:
+        raise SystemExit(f"❌ 槽位内重排后最小间距仅 {g_min} < {len(pairs) // 3},换盐重来")
+
+    if args.dry_run:
+        print(f"\n条数:{len(pairs)} 对 "
+              f"{dict(sorted(Counter(p['kind'] for p in pairs).items()))}")
+        print(f"锚点双出现间距:{gaps}")
+        print("GPU 成本 0——两侧的图都已存在(M4 批 07-30 + 臂 B 批 08-05)。")
+        return
+
+    write_manifest(OUT_E3_PAIRS, {
+        "batch_id": "m5e3",
+        "blind_seed": E3_BLIND_SEED,
+        "question": "哪一张更好?(综合参考图忠实度与画面质量)",   # 逐字沿用,改问题=改尺子
+        "eval_set_version": "arm_b_tasks v1 的 192 条 ×(M4 批 post4000 + 臂 B 批 arm_b_iso)",
+        "source": "链条第 ③ 边(底座):同数据同配方同隔离,只差 init。"
+                  "**预登记之外新增的第四批**,分叉自由度见 cmd_edge3 docstring",
+        "twin_gaps": gaps,
+    }, pairs)
+
+    n_main = sum(1 for p in pairs if p["kind"] == "student_vs_arm_b")
+    print(f"\n构成:")
+    for (k, st), c in sorted(Counter((p["kind"], p["stratum"]) for p in pairs).items()):
+        print(f"  {k:<18}{st:<5}{c:>5}")
+    print(f"\n方向约定:key_0 = {POST}(被检验方)/ key_1 = {ARM_B}(基线)")
+    print(f"  ⇒ 非平局胜率 < 0.5、旧口径 < 1 **一律读作「我们复刻的底座更差」**,不翻转。")
+    print(f"  §8.2 要求 n_nontie ≥ 94;平局率 > {1 - 94 / n_main:.1%} 即跌破 ⇒ 「判据不适用」。")
+    print(f"\n锚点双出现间距:最小 {gaps['min_before_spread']} → 重排后 {gaps['min']}"
+          f" / 中位 {gaps['median']}(批长 {gaps['batch_len']})")
+    print(f"盲种 {E3_BLIND_SEED}(登记表里与其它批次都不同)")
+    print("GPU 成本 0。判读约 16 min。")
+    print("⚠️ 这是**预登记之外**新增的第四个批次(§11.11(c) 原写「没有第四个批次」)。"
+          "报告里要声明:边 ③ 早在 08-04 的链条里就定义好了,但**决定去测它发生在揭盲之后**"
+          "——这个分叉自由度如实写进 §8.5,不许说成「预登记的」。")
+
+
 # ------------------------------------------------------------------ main
 
 def main() -> None:
@@ -862,9 +975,12 @@ def main() -> None:
     ab = sub.add_parser("arm-b", help="臂 B 终批 222 对(§11.11(e));先过 §9 身份留存门")
     ab.add_argument("--dry_run", action="store_true",
                     help="臂 B 的图还没生成时,只核条数与打散统计,不写清单")
+    e3 = sub.add_parser("edge3", help="链条第 ③ 边:post4000 vs 臂B(底座),222 对,GPU 成本 0")
+    e3.add_argument("--dry_run", action="store_true", help="只核条数与打散统计,不写清单")
     args = p.parse_args()
     {"migrate-m4": cmd_migrate_m4, "r2": cmd_r2,
-     "arm-a": cmd_arm_a, "arm-a-ctl": cmd_arm_a_ctl, "arm-b": cmd_arm_b}[args.cmd](args)
+     "arm-a": cmd_arm_a, "arm-a-ctl": cmd_arm_a_ctl, "arm-b": cmd_arm_b,
+     "edge3": cmd_edge3}[args.cmd](args)
 
 
 if __name__ == "__main__":

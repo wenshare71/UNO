@@ -313,3 +313,6 @@ log/ref_distill/
 # 终批配对清单 + 标注,理由与 eval_arm_a/pairs_* 逐字相同。
 !/output/eval_arm_b/pairs_m5ab.json
 !/output/eval_arm_b/blind_annotations_m5ab.json
+# 边 ③(底座)批:post4000 vs 臂B。清单/标注同上放行;GPU 成本 0,两侧图都是既有产物。
+!/output/eval_arm_b/pairs_m5e3.json
+!/output/eval_arm_b/blind_annotations_m5e3.json
