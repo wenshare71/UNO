@@ -1,17 +1,16 @@
 #!/usr/bin/env bash
-# 同时占满 8 张卡保活:起 8 个独立 keepalive_infer.py 进程,每卡一个。
+# 同时占满 8 张卡保活:起 8 个独立 keepalive_train.py 进程,每卡一个。
 #
 # 为什么是 8 个独立进程而不是 1 个进程用 8 卡:
 #   - 保活信号 = 显存被占 + GPU 在跑,8 进程各占一卡 = 8 卡全占,信号最强;
 #   - 进程隔离:一张卡/一个进程挂了,其他 7 张卡还在保活,不会全军覆没;
-#   - 不用改 keepalive_infer.py(已支持 CUDA_VISIBLE_DEVICES + KEEPALIVE_SAVE_DIR);
+#   - 不用改 keepalive_train.py(已支持 CUDA_VISIBLE_DEVICES + KEEPALIVE_SAVE_DIR);
 #   - H800 每卡 143GB,装一份 ~30GB 的 flux-dev bf16 权重绰绰有余。
 #
 # 每张卡的产物(在 $SAVE_ROOT/gpuN/ 下):
 #   keepalive.log  脚本自己写的单行心跳(tmux 丢失后查这个)
 #   stdout.log     nohup 捕获的 stdout/stderr(含 tqdm 进度条、traceback)
 #   pid            launcher 写的 PID 文件,stop/status 用
-#   latest.png     每轮覆盖的生成图
 #
 # 用法:
 #   bash scripts/keepalive_8gpu.sh start    # 启动 8 卡(错开 30s 避免 ceph 读拥塞)
@@ -20,12 +19,15 @@
 #   bash scripts/keepalive_8gpu.sh logs     # tail -f 所有 keepalive.log
 #
 # 可调环境变量:
-#   NUM_GPUS             占几张卡(默认 8)
-#   KEEPALIVE_SAVE_ROOT  输出根目录(默认 output/keepalive;不可写时自动 fallback 到 /tmp/keepalive)
-#   STARTUP_STAGGER      启动间隔秒(默认 30,避免 8 个进程同时读 ceph 把读带宽打爆)
-#   KEEPALIVE_INTERVAL   传给子进程:每轮间隔秒(默认 60)
-#   KEEPALIVE_NUM_STEPS  传给子进程:采样步数(默认 25)
-#   KEEPALIVE_MAX_ROUNDS 传给子进程:跑 N 轮退出(默认 0=无限;设 1 可冒烟自检)
+#   NUM_GPUS                  占几张卡(默认 8)
+#   KEEPALIVE_SAVE_ROOT       输出根目录(默认 output/keepalive_train;不可写时自动 fallback 到 /tmp/keepalive_train)
+#   STARTUP_STAGGER           启动间隔秒(默认 30,避免 8 个进程同时读 ceph 把读带宽打爆)
+#   KEEPALIVE_INTERVAL        传给子进程:每轮间隔秒(默认 60)
+#   KEEPALIVE_STEPS_PER_ROUND 传给子进程:每轮训练步数(默认 10)
+#   KEEPALIVE_BATCH_SIZE      传给子进程:每步 batch size(默认 1)
+#   KEEPALIVE_LORA_RANK       传给子进程:LoRA rank(默认 512)
+#   KEEPALIVE_LR              传给子进程:AdamW 学习率(默认 1e-4)
+#   KEEPALIVE_MAX_ROUNDS      传给子进程:跑 N 轮退出(默认 0=无限;设 1 可冒烟自检)
 
 set -euo pipefail
 
@@ -37,13 +39,13 @@ NUM_GPUS="${NUM_GPUS:-8}"
 STARTUP_STAGGER="${STARTUP_STAGGER:-30}"
 PY="${PY:-$REPO/.venv-uno/bin/python}"
 
-# --- 确定输出根目录:默认 output/keepalive,不可写就 fallback 到 /tmp/keepalive ---
-SAVE_ROOT="${KEEPALIVE_SAVE_ROOT:-output/keepalive}"
+# --- 确定输出根目录:默认 output/keepalive_train,不可写就 fallback 到 /tmp/keepalive_train ---
+SAVE_ROOT="${KEEPALIVE_SAVE_ROOT:-output/keepalive_train}"
 if ! mkdir -p "$SAVE_ROOT" 2>/dev/null || ! touch "$SAVE_ROOT/.write_probe" 2>/dev/null; then
-  SAVE_ROOT="/tmp/keepalive"
+  SAVE_ROOT="/tmp/keepalive_train"
   mkdir -p "$SAVE_ROOT"
-  echo "⚠️  output/keepalive 不可写(可能是前一次 sudo 跑留下的 root:root),"
-  echo "    已 fallback 到 $SAVE_ROOT。要改回 output/keepalive 请先 chown 修复所有权。"
+  echo "⚠️  output/keepalive_train 不可写(可能是前一次 sudo 跑留下的 root:root),"
+  echo "    已 fallback 到 $SAVE_ROOT。要改回 output/keepalive_train 请先 chown 修复所有权。"
 fi
 rm -f "$SAVE_ROOT/.write_probe" 2>/dev/null || true
 
@@ -101,9 +103,12 @@ case "$ACTION" in
       # 启动(HF_HUB_OFFLINE=1 等由子脚本自己 setdefault,这里不重复设)
       env CUDA_VISIBLE_DEVICES="$i" KEEPALIVE_SAVE_DIR="$DIR" \
           KEEPALIVE_INTERVAL="${KEEPALIVE_INTERVAL:-60}" \
-          KEEPALIVE_NUM_STEPS="${KEEPALIVE_NUM_STEPS:-25}" \
+          KEEPALIVE_STEPS_PER_ROUND="${KEEPALIVE_STEPS_PER_ROUND:-10}" \
+          KEEPALIVE_BATCH_SIZE="${KEEPALIVE_BATCH_SIZE:-1}" \
+          KEEPALIVE_LORA_RANK="${KEEPALIVE_LORA_RANK:-512}" \
+          KEEPALIVE_LR="${KEEPALIVE_LR:-1e-4}" \
           KEEPALIVE_MAX_ROUNDS="${KEEPALIVE_MAX_ROUNDS:-0}" \
-          nohup "$PY" "$REPO/scripts/keepalive_infer.py" > "$LOG" 2>&1 &
+          nohup "$PY" "$REPO/scripts/keepalive_train.py" > "$LOG" 2>&1 &
       PID=$!
       echo "$PID" > "$DIR/pid"
       echo "GPU$i: 启动 PID=$PID | $DIR/keepalive.log | $DIR/stdout.log"
