@@ -1,7 +1,7 @@
 # M6 步骤 1 执行单 — 数据补齐 + ZeRO-2 标定
 
 > 对应 `distill/M6_ABLATION_SPEC.md` §8 的 P1。**档位:🟢 绿档**——不写不改任何代码,
-> 只是按环境变量调用既有脚本。总耗时 ~36 h,其中人要盯着的只有 ~30 min,
+> 只是按环境变量调用既有脚本。总耗时 ~18–32 h,其中人要盯着的只有 ~30 min,
 > GPU 占用 ~20 min(标定),其余是无人值守下载。
 
 ## 这一步在干什么(先看懂再跑)
@@ -9,7 +9,7 @@
 P1 要交付**两件**东西,缺一件都不能进 P2(那是 7 天 8 卡):
 
 1. **官方口径的 stage-1 训练集** —— 404,258 条 `score_final ≥ 4`。
-   现在磁盘上只有 6/102 个分片,可用满分样本 16,966 条 = **4.2%**。
+   现在磁盘上只有 10/102 个分片,可用满分样本 16,966 条 = **4.2%**。
    用 4.2% 的数据训 40k 步 = 走 18.9 个 epoch,比的是"谁更会背这 17k 张图",
    不是隔离的效应(算式见 SPEC §4.0)。所以数据必须补齐,这不是奢侈品。
 
@@ -39,40 +39,69 @@ P1 要交付**两件**东西,缺一件都不能进 P2(那是 7 天 8 卡):
 
 ## 步骤
 
-### 0. 拉代码,确认四个 commit 到位
+### 0. 拉代码,**按内容**确认改动到位
+
+不查 commit hash —— 同样的内容在不同 clone 上提交过,hash 对不上不代表内容缺失。
+直接查文件:
 
 ```bash
 cd ~/UNO && git pull
-git log --oneline -4
+git status --short          # 必须干净,有本地改动先说
+grep -n "zero2_config\|zero3_dit_config\|zero.Init\|^import deepspeed" train.py
+grep -n 'ref_isolation "${REF_ISOLATION}"' scripts/train_distill.sh scripts/train_stage1_official.sh
+ls distill/M6_ABLATION_SPEC.md distill/M6_STEP1_RUN.md
 ```
 
-预期(从新到旧):
+四条预期,缺一条都不要往下走:
 
-```
-3172b67 fix(train): DiT 的 DeepSpeed 切回官方 ZeRO-2,删掉 4090 遗留的 zero.Init
-ba5bf3c docs(m6): §4 定档——选 A(全量 404,258 条 + 100000 步),本节冻结
-3212558 fix(m6): UNO-1M 实测是 1.9 TB 不是 118 GB,速率 40–50 MB/s 不是 0.33
-3ff83f8 feat(m6): 隔离消融的预登记 + 两腿共用一个脚本所需的最小改动
-```
+1. `train.py` 里 plugin 行是 `zero2_config.json`;`zero3_dit_config` **一次都不出现**
+2. `zero.Init` **只出现在注释里**,没有真调用;`import deepspeed` 已删除
+3. 两个训练脚本都把 `--ref_isolation` 接到了 `${REF_ISOLATION}` 上(不是写死的 `True`)
+4. 两个 M6 文档都在
 
-**对不上就停下来报告。** 少了 `3172b67` 的话下面的标定测的还是 ZeRO-3,白跑。
+第 1、2 条缺了的话,下面的标定测的还是 ZeRO-3,白跑。
 
-顺手确认改动真的在:
-
-```bash
-grep -n "zero2_config\|zero.Init" train.py
-```
-
-预期:`zero2_config.json` 出现在 plugin 行;`zero.Init` **只出现在注释里**,没有真调用。
-
-### 1. 起下载(后台,~35 h,先起这个)
+### 1. 起下载(**两个进程**,后台,~17–31 h,先起这个)
 
 > **⚠️ 不要放在训练机上跑。** 2026-08-06 实测:训练机有 GPU 利用率考核,
 > 这个纯 CPU 的长任务跑到第 5 片就被强杀。放在挂同一块 ceph 的 4090 机器上。
 >
 > **⚠️ 时间账已修正。** 一次性测试拿到的 63.9 MB/s 是走运的突发值,连跑 4 片的
 > 实测是 **18.7–25.5 MB/s**,单片下载 958–1191 s + 解压 306–347 s ≈ **1370 s**。
-> 92 片 ⇒ **约 35 h**,不是原文写的 16 h。
+> 92 片单进程串行 ⇒ 约 35 h。**本步改为双进程**,见下,17–31 h。
+
+#### 为什么开两个进程
+
+`fetch_uno1m.py` 单进程是**严格串行**的:下载一片 → 解压一片 → 删 tar → 下一片。
+实测单片 = 下载 ~1050 s + 解压 ~320 s = 1370 s,**解压那 320 s 里网络是空的,
+下载那 1050 s 里 CPU 是空的**。两个进程各管一半分片,A 解压的时候 B 在下载,
+这段空转就被填上了。
+
+两种可能的瓶颈,双实例在**哪种下都不吃亏**:
+
+| 瓶颈在哪 | 单实例 | 双实例 | 依据 |
+|---|---|---|---|
+| 代理**按进程**限速 | 35 h | **~17.5 h** | 两个进程各拿满 22 MB/s |
+| 链路总带宽就 22 MB/s | 35 h | **~31 h** | 带宽对半分,但省下解压的空转 |
+
+所以**不做"跑 20 分钟再决定"这种事,直接开两个**。区别只是快多少。
+
+#### 怎么切
+
+已完成 `split1`–`split10`,剩 `split11`–`split102` 共 92 片。对半:
+
+- **实例 A** → `split11`–`split56`(46 片)
+- **实例 B** → `split57`–`split102`(46 片)
+
+**两个 `--only` 列表必须不相交,这是唯一的硬约束。**
+`hf_hub_download` 自带文件锁,同名文件不会下坏;但 `safe_extract` **没有锁** ——
+它进门先 `rmtree` 掉 `<name>.part`,两个进程撞上同一片就是一个把另一个解压到一半的
+目录删了。切成不相交就完全规避。
+
+范围写宽一点没关系:`--only` 是在"还没解压好的分片"之上再取交集,
+已完成的、不存在的编号都会被自动忽略。
+
+#### 命令
 
 ```bash
 cd <4090 上的仓库> && git pull
@@ -84,54 +113,77 @@ export HF_HUB_ENABLE_HF_TRANSFER=1
 unset HF_HUB_OFFLINE
 
 # 换机器时**必须**先空跑确认路径:脚本默认写 <仓库>/datasets/UNO-1M,
-# 4090 上若是另一个 checkout,不显式 --dir 就会在本地盘从零开始下。
-python scripts/fetch_uno1m.py --dir /kaimm-distill/wuwenxuan/UNO/datasets/UNO-1M --dry_run
+# 4090 上若是另一个 checkout,不显式 --dir 就会在本地盘从零开始下,
+# 而这件事要到几小时后才看得出来。
+export UNO_DATA=/kaimm-distill/wuwenxuan/UNO/datasets/UNO-1M
+python scripts/fetch_uno1m.py --dir "$UNO_DATA" --dry_run
 ```
 
 预期第一行:`分片 102 个,已解压 10 个,待处理 92 个(下载量约 1.9TB)`。
 **显示 5 或 0 就是路径指错了,停下来。**
 
-确认无误再起:
+确认无误再起两个:
 
 ```bash
-setsid python scripts/fetch_uno1m.py \
-  --dir /kaimm-distill/wuwenxuan/UNO/datasets/UNO-1M \
-  --rm_tar --min_free_gb 500 \
-  > logs/fetch_uno1m.log 2>&1 < /dev/null &
-echo "pid=$!"
+setsid python scripts/fetch_uno1m.py --dir "$UNO_DATA" --rm_tar --min_free_gb 500 \
+  --only $(for i in $(seq 11 56);  do echo split$i; done) \
+  > logs/fetch_A.log 2>&1 < /dev/null &
+echo "A pid=$!"
+
+setsid python scripts/fetch_uno1m.py --dir "$UNO_DATA" --rm_tar --min_free_gb 500 \
+  --only $(for i in $(seq 57 102); do echo split$i; done) \
+  > logs/fetch_B.log 2>&1 < /dev/null &
+echo "B pid=$!"
 ```
 
-- `--rm_tar` **必须带**,否则占 3.9 TB 而不是 1.9 TB
+- `--rm_tar` **两个都要带**,否则占 3.9 TB 而不是 1.9 TB
 - `--min_free_gb 500`:两次 `df` 之间共享 ceph 少了 7 TB(别的租户在写),
-  默认的 40 GB 门槛在这种盘上太贴地。低于 500 GB 会自己停,腾出空间重跑即可
+  默认的 40 GB 门槛在这种盘上太贴地。两个进程各自独立检查,任一方低于 500 GB
+  会自己停,腾出空间重跑即可
 - **别用 `nohup`**,`setsid` 才躲得开 SIGHUP(§11.12(a) 的教训)
-- **同一时刻只能有一个进程碰同一个 split** —— 两个进程同时写 `<name>.part` 会互相踩烂
 
-断点安全性:`already_done()` 看 `images/<name>/` 有没有 ≥100 个文件;
-`safe_extract` 先写 `<name>.part` 再原子改名,残留的 `.part` 下次会被 `rmtree` 清掉。
-不管是下载途中还是解压途中被杀,重跑同一条命令即可。
-
-#### 可选:双实例(零代码改动)
-
-从 63.9 掉到 22 MB/s,可能是代理侧的**单进程限速**而非链路跑满。是的话开两个进程
-处理不相交的分片能翻倍;不是的话两边各跑一半,总量不变也没损失。
+起来一分钟后确认两边都在动:
 
 ```bash
-setsid python scripts/fetch_uno1m.py --dir <共享路径> --rm_tar --min_free_gb 500 \
-  --only $(for i in $(seq 11 56);  do echo split$i; done) > logs/fetch_A.log 2>&1 < /dev/null &
-setsid python scripts/fetch_uno1m.py --dir <共享路径> --rm_tar --min_free_gb 500 \
-  --only $(for i in $(seq 57 102); do echo split$i; done) > logs/fetch_B.log 2>&1 < /dev/null &
+head -6 logs/fetch_A.log logs/fetch_B.log
 ```
 
-**两个列表必须不相交。** 跑 20 min 看两边各自的 MB/s,加起来明显高于 22 就留着,
-否则杀掉一个。
+两个日志的头部都应该是 `[fetch] 分片 102 个,已解压 10 个,待处理 46 个`
+—— **`待处理` 是 46 不是 92**,说明 `--only` 生效了。显示 92 就是 `--only` 没传进去,
+两个进程会去抢同一批分片,立刻 kill 掉重来。
 
-之后**不用管它**,直接做第 2 步。查进度:
+#### 断点安全性
+
+- `already_done()` 看 `images/<name>/` 有没有 ≥100 个文件
+- `safe_extract` 先写 `<name>.part` 再原子改名,残留的 `.part` 下次进门会被 `rmtree` 清掉
+
+所以不管是下载途中还是解压途中被杀(哪怕两个一起被杀),**重跑同样两条命令即可**,
+已完成的自动跳过。中途也可以随时 `kill` 掉一个再重起。
+
+#### 查进度
 
 ```bash
-grep -c '✅' logs/fetch_uno1m.log      # 已完成几片 / 96
-tail -2 logs/fetch_uno1m.log
+for f in logs/fetch_A.log logs/fetch_B.log; do
+  echo -n "$f  完成 $(grep -c '✅' "$f")/46  最近速率: "
+  grep -oE '\([0-9.]+ MB/s\)' "$f" | tail -3 | tr '\n' ' '; echo
+done
 ```
+
+两边加起来 ≈ 45 MB/s ⇒ 是按进程限速,总时长会掉到 ~17 h;
+仍然 ≈ 22 MB/s ⇒ 链路封顶,~31 h。**两种情况都不用动,继续跑。**
+
+之后**不用管它**,直接做第 2 步。
+
+#### 收尾必须确认
+
+两个进程都退出后,跑一次**不带 `--only`** 的空跑:
+
+```bash
+python scripts/fetch_uno1m.py --dir "$UNO_DATA" --dry_run
+```
+
+**必须看到 `✅ 全部分片都已就位`。** 如果还有待处理的分片,说明 11–56 / 57–102
+这两个范围没覆盖全(分片编号有洞或超出 102),把 `[--dry_run] 计划:` 那一行贴回来。
 
 ### 2. ZeRO-2 标定(GPU,两次各 ~15 min,与下载并行)
 
@@ -195,8 +247,9 @@ done
   梯度推离 0;跑了 100 步还全零说明这一半根本没在训。
 - 张量数不是 304 ⇒ `requires_grad` 过滤或聚合出了问题。
 
+- 训练途中 host OOM 被杀 ⇒ 同样是这一步要抓的,把 `dmesg | tail -30` 一起带回。
+
 任何一条不满足就**停下报告**,不要进 P2。
-- 训练过程中 host OOM 被杀 ⇒ 同上,停下报告,把 `dmesg | tail -30` 一起带回。
 
 顺便把吞吐读出来 —— 这是重估 P2 时间预算的依据:
 
@@ -219,7 +272,7 @@ rm -rf log/zero2_calib log/zero2_calib_full
 
 ### 4. 等下载跑完 → 出训练集 —— ⛔ 第二个闸门
 
-下载日志出现 `✅ 全部分片就位` 之后:
+两个下载进程都退出、且不带 `--only` 的空跑显示 `✅ 全部分片都已就位` 之后:
 
 ```bash
 python distill/build_stage1_official.py --strict
@@ -245,7 +298,8 @@ python distill/build_stage1_official.py --strict
 1. `git log --oneline -4` 的输出(确认四个 commit);
 2. 两次标定的 **preflight 全段** + 第 3 步张量检查的**两段完整输出**;
 3. 两次标定的 **s/it 后 20 行**;
-4. `logs/fetch_uno1m.log` 的**末尾 15 行**(含 `实测速率` 与是否 `全部分片就位`);
+4. `logs/fetch_A.log` 与 `logs/fetch_B.log` 的**各自末尾 10 行**,以及收尾那次
+   不带 `--only` 的 `--dry_run` 输出(必须是 `✅ 全部分片都已就位`);
 5. `build_stage1_official.py --strict` 的 **`[跳过原因]` 起到结尾**的完整输出。
 
 ## ✅ 确认点(我来判,判完才开 P2)
