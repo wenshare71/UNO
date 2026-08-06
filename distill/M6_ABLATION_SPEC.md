@@ -72,11 +72,47 @@ REF_ISOLATION=False PROJECT_DIR=log/m6_full \
 | seed / lr / lora_rank / batch_size / resolution / lr_scheduler / warmup | `train.py` 默认,两腿都不手填 |
 | stage-1 步数 / grad_accum | 见 §4(待定,但**两腿必须相同**) |
 | 蒸馏步数 / grad_accum | 4000 / 2 |
-| DeepSpeed 配置 | 现状 ZeRO-3,两腿相同。**不改回 ZeRO-2**——它对两腿一样,不是变量 |
+| DeepSpeed 配置 | ~~现状 ZeRO-3,两腿相同。**不改回 ZeRO-2**——它对两腿一样,不是变量~~ **[2026-08-06 修正]** DiT 改回官方的 `zero2_config.json`,两腿相同。见 §3.1 |
 | 推理:sampler / steps / guidance / seed / 分辨率 | 与臂 A/B 批逐字相同 |
 
 **推理侧一条硬约束:baseline 腿不许开 KV cache。** 它没有隔离,cache 是有损的。
 速度对比是另一件事,不许混进质量批。
+
+### 3.1 DeepSpeed:ZeRO-3 → ZeRO-2 **[2026-08-06 修正,发生在任何训练启动之前]**
+
+原文说"不改回 ZeRO-2,它对两腿一样,不是变量"。这句就其本身而言仍然成立
+——ZeRO 级别确实不是消融变量。但它是**与官方的差异项里唯一能廉价消除的一条**
+(stage-2 那条消不掉;卡数那条官方自己就没定义),所以改。
+
+**为什么在 H800 上 ZeRO-3 是白付的成本**:UNO 只训 LoRA,`requires_grad` 的只有
+304 个张量,optimizer state 与 gradient 本来就小,ZeRO-2/3 切它们没有实质差别。
+唯一的实质差别是**那 25.8 GB 的冻结 FLUX 权重切不切**:ZeRO-3 每卡只留 3.2 GB,
+代价是每次 forward/backward 都要 all-gather 拼回完整权重(开 gradient_checkpointing
+后重算还要再 gather 一次)。4090(23.65 GB)放不下,只能切;H800(143 GB)放得下,
+这些通信纯属白付。
+
+改动(`train.py`,3 处):
+
+1. `:231` plugin → `config/deepspeed/zero2_config.json`(上游原样,`config/` 一个字没改过)
+2. `:358` **删掉** `deepspeed.zero.Init(module=dit, dtype=torch.bfloat16, enabled=True)`
+   —— 它按 ZeRO-3 方式切参数,ZeRO-2 引擎不会在 forward 前 gather 回来,留着不是慢一点,是跑坏
+3. `import deepspeed` 随之删除(仅此一处用到),`train.py` 至此在 deepspeed 这一维
+   与上游 `ea5dee0` 完全一致,只剩注释不同
+
+`t5`/`clip` 继续用 `zero3_config.json`(带 CPU offload),上游原样,不动。
+`resume_from_checkpoint` 在 `:312` 调用,早于 `prepare`,加载 LoRA 走的是未切分的
+完整模型,两种模式行为一致,不受影响。
+
+**代价**:改的是 `train.py` 本体,现有蒸馏管线走同一份代码 ⇒ 旧 checkpoint 的
+**数值可复现性断了**(权重不变,但"重跑同样命令得到同样轨迹"不再成立)。
+接受,因为 M6 本来就是在替换旧底座,且两腿都用新配置,消融不受影响。
+
+**必须先验的一件事**:ZeRO-2 下 `accelerator.get_state_dict(dit)` 走
+`clone_tensors_for_torch_save(model.state_dict())`,先取**完整** 25.8 GB state_dict
+再按 `requires_grad` 过滤成 304 个 LoRA 张量 —— 每存一次 checkpoint 就有一次整模型
+量级的内存峰值,8 个 rank 同时来。上游就是这么跑的,理论上没问题,但**没在这台机器上
+验过**。P2 正式开跑前必须先跑 100 步标定(`CHECKPOINTING_STEPS=50`,存两次),
+确认:① 不 OOM;② 存出的 `dit_lora.safetensors` 是 304 个张量且非空。
 
 ---
 

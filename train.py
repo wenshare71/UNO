@@ -28,7 +28,6 @@ import wandb
 from copy import deepcopy
 from typing import TYPE_CHECKING, Literal
 
-import deepspeed
 import torch
 import torch.nn.functional as F
 import transformers
@@ -227,8 +226,13 @@ def main(
 ):
     ## accelerator
     deepspeed_plugins = {
-        # 4090(24GB) 放不下完整 bf16 FLUX，DiT 必须用 ZeRO-3 参数切分（不 offload，权重留在 8 卡显存里）
-        "dit": DeepSpeedPlugin(hf_ds_config='config/deepspeed/zero3_dit_config.json'),
+        # 官方原样的 ZeRO-2。2026-08-06 从 zero3_dit_config.json 改回来（M6_ABLATION_SPEC §3 修正）。
+        # 历史：4090(23.65GB) 放不下 25.8GB 的 bf16 FLUX，DiT 只能用 ZeRO-3 参数切分求生。
+        # H800(143GB) 放得下，ZeRO-3 每步 all-gather 拼回完整权重的通信就是纯白付
+        # （只训 LoRA，optimizer/gradient 本来就小，ZeRO-2 和 3 切它们没差别，
+        #   唯一的实质差别就是那 25.8GB 冻结权重切不切）。
+        # 4090 版本见 commit 5aa6c7c。改这里必须同时删掉下面的 deepspeed.zero.Init。
+        "dit": DeepSpeedPlugin(hf_ds_config='config/deepspeed/zero2_config.json'),
         "t5": DeepSpeedPlugin(hf_ds_config='config/deepspeed/zero3_config.json'),
         "clip": DeepSpeedPlugin(hf_ds_config='config/deepspeed/zero3_config.json')
     }
@@ -351,11 +355,10 @@ def main(
     dataloader = infinite_dataloader(dataloader)  # as infinite fetch data loader
     ## parallel
     accelerator.state.select_deepspeed_plugin("dit")
-    # 没经过 zero.Init 的模型, DeepSpeed 引擎初始化会先把完整模型 module.to(device) 再切分,
-    # bf16 FLUX(+LoRA) ~25.8GB > 4090 的 23.65GB, 搬运途中即 OOM。
-    # 这里对已构建的模型做 post-hoc 切分(每卡只留 1/8 分片 ~3.2GB), 引擎检测到 ds 参数后跳过整体搬运。
-    # 注意必须显式 dtype=bf16, 否则 Init 默认按 fp16 处理。
-    deepspeed.zero.Init(module=dit, dtype=torch.bfloat16, enabled=True)
+    # 2026-08-06 删掉了这里的 deepspeed.zero.Init(module=dit, dtype=bf16)。
+    # 它是给 ZeRO-3 做 post-hoc 参数切分用的（4090 上不切就 OOM，见 commit 5aa6c7c）。
+    # 切回 ZeRO-2 后必须删：Init 会把参数变成 ds 分片，而 ZeRO-2 引擎不会在
+    # forward 前 all-gather 拼回来，留着不是慢一点，是直接跑坏。
     dit, optimizer, lr_scheduler = accelerator.prepare(dit, optimizer, lr_scheduler)
     accelerator.state.select_deepspeed_plugin("t5")
     t5 = accelerator.prepare(t5)  # type: torch.nn.Module
@@ -458,8 +461,10 @@ def main(
             accelerator.wait_for_everyone()
             unwrapped_model = accelerator.unwrap_model(dit)
             requires_grad_key = [k for k, v in unwrapped_model.named_parameters() if v.requires_grad]
-            # ZeRO-3 下参数被切分，直接 state_dict() 会拿到空张量；
-            # get_state_dict 走 _zero3_consolidated_16bit_state_dict 聚合（集合通信，所有 rank 都要调用）
+            # ZeRO-2 下参数每卡全份，get_state_dict 走 clone_tensors_for_torch_save 普通路径
+            # （ZeRO-3 时代这里走的是 _zero3_consolidated_16bit_state_dict 聚合，2026-08-06 改回官方）。
+            # 注意它先取**完整** FLUX state_dict(~25.8GB)再由下面按 requires_grad 过滤成 304 个
+            # LoRA 张量，每次存 checkpoint 都有一次整模型量级的 CPU 内存峰值。
             unwrapped_model_state = accelerator.get_state_dict(dit)
 
             if accelerator.is_main_process:
