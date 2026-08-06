@@ -3,9 +3,13 @@
 
 WHY:4090 那次的底座只解压了 split1-5,`score≥4` 池因此只有 **16,966** 条,
 而官方是全库 **404,259** 条 —— 差 24×。`distill/build_stage1_official.py` 会把
-覆盖率算出来,但补齐磁盘这件事本身得有个能断点续传的东西来干:118 GB、102 个分片、
-HF 只能走海外代理(实测单连接 0.33 MB/s,必须开 `HF_HUB_ENABLE_HF_TRANSFER`),
-一次拉不完是常态。
+覆盖率算出来,但补齐磁盘这件事本身得有个能断点续传的东西来干:**约 2.0 TB**、
+102 个分片(单片 ~22 GB)、HF 只能走海外代理,一次拉不完是常态。
+
+**规模实测(2026-08-06,H800)**:102 片里已解压 5 片,剩 97 片 = **1.9 TB**;
+开 `HF_HUB_ENABLE_HF_TRANSFER=1` 走海外 squid 实测 **40–50 MB/s**。
+(此前这里写的 "118 GB / 单连接 0.33 MB/s" 是错的,前者差 17×,后者是 PyPI 的数,
+已按实测改正。)
 
 **幂等**:每次运行只处理"还没解压好"的分片,已完成的直接跳过。中途断了重跑即可。
 
@@ -110,7 +114,7 @@ def main() -> None:
                     help="只处理这些 split(如 split6 split7);默认处理全部缺的")
     ap.add_argument("--limit", type=int, default=None, help="本次最多处理几个分片")
     ap.add_argument("--rm_tar", action="store_true",
-                    help="解压成功后删掉 tar(118 GB 的盘省一半)")
+                    help="解压成功后删掉 tar(约 2 TB 的盘省一半)")
     ap.add_argument("--min_free_gb", type=float, default=40.0,
                     help="剩余空间低于此值就停下,不要把盘写满")
     ap.add_argument("--dry_run", action="store_true", help="只列计划,不下载")
@@ -195,8 +199,8 @@ def main() -> None:
             ok += 1
             dl_bytes += size
             dl_sec += t_dl
-            # 下载速率单独打:它决定「补全磁盘」到底是几小时还是几天,
-            # 而这个数只有真拉过才知道(脚本头记的 0.33 MB/s 是单连接实测)。
+            # 下载与解压分开打:1.9 TB 里下载约 11–14 h,而 tarfile 是单线程、
+            # 目标又是 ceph,**解压很可能才是瓶颈**。两个数分开才知道该优化谁。
             print(f"      ✅ {n_files} 张,下载 {t_dl:.0f}s "
                   f"({size / max(t_dl, 1e-9) / 1024 ** 2:.2f} MB/s),"
                   f"总用时 {time.time() - t0:.0f}s", flush=True)

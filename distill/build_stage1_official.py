@@ -18,7 +18,7 @@ WHY 要有这个文件 —— 现有底座 `log/ref_isolation/checkpoint-20000` 
 输出 schema 是 `{prompt, image_tgt_path, image_paths}`、路径加 `images/` 前缀、单向
 `img_path1 → img_path2`。**这四件本文件一个字不改**。加的两件都是我们这台机器的硬约束:
 
-1. **按文件存在性过滤** —— 官方假设 118 GB 全解压。我们分批解压,漏一张就是
+1. **按文件存在性过滤** —— 官方假设约 2.0 TB 全解压。我们分批解压,漏一张就是
    dataloader 训到一半 `FileNotFoundError`(4090 那次踩过)。**这不是配方改动,
    是磁盘现实**;而"到底覆盖了多少"恰恰是判断"这次算不算官方复刻"的关键读数,
    所以按 split 逐个报覆盖率,并用 `--strict` 在覆盖不足时直接拒绝出文件。
