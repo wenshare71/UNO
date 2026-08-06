@@ -113,24 +113,33 @@ export HF_HUB_ENABLE_HF_TRANSFER=1
 unset HF_HUB_OFFLINE
 
 # 换机器时**必须**先空跑确认路径:脚本默认写 <仓库>/datasets/UNO-1M,
-# 4090 上若是另一个 checkout,不显式 --dir 就会在本地盘从零开始下,
-# 而这件事要到几小时后才看得出来。
-export UNO_DATA=/kaimm-distill/wuwenxuan/UNO/datasets/UNO-1M
-python scripts/fetch_uno1m.py --dir "$UNO_DATA" --dry_run
+# 4090 上若是另一个 checkout,不显式 --dir 就会在本地盘从零开始下。
+# ⚠️ **不要用 shell 变量传路径**——2026-08-06 实测,换个 tab 后 $UNO_DATA 就丢了,
+#    --dir "" 差点把 2 TB 下到当前目录(脚本现在会拦,但路径写全更省事)。
+ls -d /kaimm-distill/wuwenxuan/UNO/datasets/UNO-1M/images/split1   # 挂载没上就先解决挂载
+python scripts/fetch_uno1m.py \
+  --dir /kaimm-distill/wuwenxuan/UNO/datasets/UNO-1M --dry_run
 ```
 
-预期第一行:`分片 102 个,已解压 10 个,待处理 92 个(下载量约 1.9TB)`。
-**显示 5 或 0 就是路径指错了,停下来。**
+预期头两行:
+
+```
+[fetch] 数据目录: /kaimm-distill/wuwenxuan/UNO/datasets/UNO-1M
+[fetch] 分片 102 个,已解压 10 个,待处理 92 个(下载量约 1.9TB)
+```
+
+**`已解压` 显示 0 就是路径指错了,停下来。** 那说明这台机器要么没挂上共享盘,
+要么 `--dir` 指到了别处 —— 继续跑就是把 102 片全部重下 2 TB 到错的地方。
 
 确认无误再起两个:
 
 ```bash
-setsid python scripts/fetch_uno1m.py --dir "$UNO_DATA" --rm_tar --min_free_gb 500 \
+setsid python scripts/fetch_uno1m.py --dir /kaimm-distill/wuwenxuan/UNO/datasets/UNO-1M --rm_tar --min_free_gb 500 \
   --only $(for i in $(seq 11 56);  do echo split$i; done) \
   > logs/fetch_A.log 2>&1 < /dev/null &
 echo "A pid=$!"
 
-setsid python scripts/fetch_uno1m.py --dir "$UNO_DATA" --rm_tar --min_free_gb 500 \
+setsid python scripts/fetch_uno1m.py --dir /kaimm-distill/wuwenxuan/UNO/datasets/UNO-1M --rm_tar --min_free_gb 500 \
   --only $(for i in $(seq 57 102); do echo split$i; done) \
   > logs/fetch_B.log 2>&1 < /dev/null &
 echo "B pid=$!"
@@ -179,7 +188,7 @@ done
 两个进程都退出后,跑一次**不带 `--only`** 的空跑:
 
 ```bash
-python scripts/fetch_uno1m.py --dir "$UNO_DATA" --dry_run
+python scripts/fetch_uno1m.py --dir /kaimm-distill/wuwenxuan/UNO/datasets/UNO-1M --dry_run
 ```
 
 **必须看到 `✅ 全部分片都已就位`。** 如果还有待处理的分片,说明 11–56 / 57–102

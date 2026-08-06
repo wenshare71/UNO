@@ -120,6 +120,14 @@ def main() -> None:
     ap.add_argument("--dry_run", action="store_true", help="只列计划,不下载")
     args = ap.parse_args()
 
+    # `--dir "$VAR"` 而 VAR 没设 ⇒ 空串 ⇒ 相对路径 images/,2 TB 全下到当前目录。
+    # 实测踩过(2026-08-06,4090 机器上换了 shell,$UNO_DATA 丢了),
+    # 当时是 shutil.disk_usage('') 抛 FileNotFoundError 才侥幸拦住——不能指望这个。
+    if not args.dir.strip():
+        sys.exit("❌ --dir 是空字符串——多半是 $VAR 没设。\n"
+                 "   不传 --dir 会用默认值;传空串会把 2 TB 下到当前目录。")
+    args.dir = os.path.abspath(args.dir)
+
     try:
         from huggingface_hub import HfApi, hf_hub_download
     except ImportError:
@@ -130,6 +138,9 @@ def main() -> None:
 
     images_dir = os.path.join(args.dir, "images")
     os.makedirs(images_dir, exist_ok=True)
+    # 路径打在第一行。路径写错的表征是"已解压 0 个",但那行在网络调用之后,
+    # 要等十几秒才出来,而且容易被当成正常的首次运行。
+    print(f"[fetch] 数据目录: {args.dir}", flush=True)
 
     print(f"[fetch] 列出 {DATASET_ID} 的文件 ...", flush=True)
     api = HfApi()
