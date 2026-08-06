@@ -173,6 +173,7 @@ def main() -> None:
         return
 
     ok = fail = 0
+    dl_bytes = dl_sec = 0.0
     for i, name in enumerate(todo, 1):
         free = shutil.disk_usage(args.dir).free
         if free < args.min_free_gb * 1024 ** 3:
@@ -185,11 +186,20 @@ def main() -> None:
         try:
             tar_path = hf_hub_download(DATASET_ID, remote, repo_type="dataset",
                                        local_dir=args.dir)
+            t_dl = time.time() - t0
             n_files = safe_extract(tar_path, images_dir, name)
+            size = os.path.getsize(tar_path) if os.path.exists(tar_path) else (
+                infos[remote].size or 0)
             if args.rm_tar:
                 os.remove(tar_path)
             ok += 1
-            print(f"      ✅ {n_files} 张,用时 {time.time() - t0:.0f}s", flush=True)
+            dl_bytes += size
+            dl_sec += t_dl
+            # 下载速率单独打:它决定「补全磁盘」到底是几小时还是几天,
+            # 而这个数只有真拉过才知道(脚本头记的 0.33 MB/s 是单连接实测)。
+            print(f"      ✅ {n_files} 张,下载 {t_dl:.0f}s "
+                  f"({size / max(t_dl, 1e-9) / 1024 ** 2:.2f} MB/s),"
+                  f"总用时 {time.time() - t0:.0f}s", flush=True)
         except KeyboardInterrupt:
             print("\n中断——已完成的分片不受影响,重跑会接着来")
             break
@@ -199,7 +209,25 @@ def main() -> None:
             print(f"      ❌ {type(e).__name__}: {e}", file=sys.stderr, flush=True)
 
     print(f"\n[fetch] 本轮成功 {ok} / 失败 {fail}")
-    print("下一步:python distill/build_stage1_official.py --dry_run   # 看覆盖率")
+
+    # 补齐剩下的要多久 —— 这是 M6 计划里唯一一个"不实测就只能猜"的量,
+    # 它直接决定要不要砍掉「官方全量数据」这一档(M6_ABLATION_SPEC §4)。
+    left = [n for n in shards if not already_done(images_dir, n)]
+    left_bytes = sum(infos[shards[n]].size or 0 for n in left)
+    if dl_sec > 0 and dl_bytes > 0:
+        rate = dl_bytes / dl_sec
+        print(f"[fetch] 实测速率 {rate / 1024 ** 2:.2f} MB/s"
+              f"(本轮下载 {human(dl_bytes)} / {dl_sec:.0f}s)")
+        if left:
+            print(f"[fetch] 还剩 {len(left)} 个分片 / {human(left_bytes)} ⇒ "
+                  f"按此速率约 **{left_bytes / rate / 3600:.1f} 小时**")
+    elif left:
+        print(f"[fetch] 还剩 {len(left)} 个分片 / {human(left_bytes)}(本轮没测到速率)")
+
+    if not left:
+        print("✅ 全部分片就位。下一步:python distill/build_stage1_official.py --strict")
+    else:
+        print("下一步:python distill/build_stage1_official.py --dry_run   # 看当前覆盖率")
 
 
 if __name__ == "__main__":

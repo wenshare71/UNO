@@ -10,6 +10,12 @@
 #   5. --train_data_json datasets/distill_multiref/train_mixed.json(M3 混合集);
 #   6. 自检 heredoc 里硬编码的 project_dir / labels 路径同步改了(评审 C2)。
 #
+# 2026-08-06:`--ref_isolation` 从写死的 True 提成环境变量 `REF_ISOLATION`。
+#   动机是 M6 隔离消融要一条全注意力的 baseline 腿(distill/M6_ABLATION_SPEC.md),
+#   两腿必须共用同一个脚本、同一份数据、同样的超参,**只差这一个 flag** ——
+#   为 baseline 另写一个脚本就等于给自己开一个"抄漏一行"的口子。
+#   默认仍是 True:既有 log/ref_distill 与所有已发布读数都是 True 训出来的。
+#
 # 标定用法(100 步,不污染正式目录):
 #   MAX_TRAIN_STEPS=100 PROJECT_DIR=log/ref_distill_calibration \
 #   CHECKPOINTING_STEPS=50 bash scripts/train_distill.sh
@@ -33,6 +39,9 @@ export MAX_TRAIN_STEPS="${MAX_TRAIN_STEPS:-4000}"
 export CHECKPOINTING_STEPS="${CHECKPOINTING_STEPS:-1000}"
 export PROJECT_DIR="${PROJECT_DIR:-log/ref_distill}"
 export TRAIN_DATA_JSON="${TRAIN_DATA_JSON:-datasets/distill_multiref/train_mixed.json}"
+# M6 消融的 baseline 腿要用 False(见 distill/M6_ABLATION_SPEC.md)。默认 True 保持
+# 既有 log/ref_distill 的语义不变——过去所有读数都是 True 训出来的。
+export REF_ISOLATION="${REF_ISOLATION:-True}"
 
 # --- 启动前自检:wandb + 混合 json + dreambooth submodule + resume ckpt + project_dir 可写 ---
 # 注意:heredoc 里的 project_dir / labels 路径要与上面 export 一致(评审 C2)
@@ -118,6 +127,11 @@ if n < 8:
 else:
     print(f"[preflight] GPU: {n} 卡可见", flush=True)
 
+# 7) 把这一腿是谁打进日志。M6 两腿共用本脚本,只差 REF_ISOLATION;
+#    事后翻 log 时唯一能确认"这个 checkpoint 是哪条腿"的地方就是这一行。
+print(f"[preflight] ref_isolation={os.environ['REF_ISOLATION']} / "
+      f"data={train_json} / out={project_dir}", flush=True)
+
 print("[preflight] === 所有自检通过,开始训练 ===", flush=True)
 EOF
 
@@ -126,12 +140,12 @@ if [[ -n "${RESUME_FROM_CHECKPOINT}" ]]; then
     resume_args=(--resume_from_checkpoint "${RESUME_FROM_CHECKPOINT}")
 fi
 
-# --- 训练:唯一变量是数据,其余超参与 train_ref_isolation.sh 完全一致 ---
+# --- 训练:相对 train_ref_isolation.sh,变的只有数据(与 M6 baseline 腿的 REF_ISOLATION)---
 # DeepSpeed ZeRO-3 切分(bf16 FLUX ~25.8GB,H800 143GB 其实放得下完整模型,
 # 但改回 non-ZeRO-3 要动 train.py 的 deepspeed.zero.Init 与 plugin 注册,不在本实验范围;
 # 保持 ZeRO-3 配置不变,只换数据——这是「唯一变量是数据」的字面要求)。
 accelerate launch --num_processes 8 --mixed_precision bf16 train.py \
-    --ref_isolation True \
+    --ref_isolation "${REF_ISOLATION}" \
     --lora_rank 512 \
     --gradient_checkpoint True \
     --batch_size 1 \

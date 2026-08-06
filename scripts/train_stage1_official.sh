@@ -26,9 +26,15 @@
 #   * **100% 单 ref** —— UNO-1M 标签本身就是 `img1 → img2` 两图配对,
 #     官方过滤脚本产出的 `image_paths` 恒为 1 张,这条自动成立,不需要设开关。
 #
-# REF_ISOLATION=False 只在一种情况下有意义:你想造的不是"我们的底座",而是
-# **官方 stage-1 的忠实复刻**(与官方发布的 LoRA 同配方、只换训练者)。那样得到的
-# 东西与臂 B 平行,但**不能**当作现有 ckpt-20000 的替代品——两者语义不同。
+# REF_ISOLATION=False 得到的不是"我们的底座",而是**官方 stage-1 的忠实复刻**
+# (官方 train.py 里 ref_isolation 默认就是 False,这个 flag 是我们加的)。
+# 它**不能**当作现有 ckpt-20000 的替代品——两者语义不同。
+#
+# 2026-08-06:这条腿现在有了正式用途。M6 隔离消融(distill/M6_ABLATION_SPEC.md)
+# 要的 baseline 恰好就是它:同数据、同步数、同超参、同卡数,**只差这一个 flag**。
+# 也就是说 baseline 腿不是纯开销,它同时补上了我们一直缺的官方 stage-1 参照物。
+#   student  腿: REF_ISOLATION=True  PROJECT_DIR=log/stage1_official
+#   baseline 腿: REF_ISOLATION=False PROJECT_DIR=log/stage1_official_full
 #
 # ━━ 用法(H800,仓库根目录,已激活 .venv-uno)━━
 #   # 0) 先补磁盘 + 出数据(见各自脚本的 --help)
@@ -58,7 +64,7 @@ export PROJECT_DIR="${PROJECT_DIR:-log/stage1_official}"
 export MAX_TRAIN_STEPS="${MAX_TRAIN_STEPS:-100000}"
 export CHECKPOINTING_STEPS="${CHECKPOINTING_STEPS:-1000}"
 export GRAD_ACCUM="${GRAD_ACCUM:-1}"
-# 与现有 ckpt-20000 同型。改成 False 得到的是"官方复刻",不是"我们的底座",见上。
+# 与现有 ckpt-20000 同型。False = 官方复刻 = M6 消融的 baseline 腿,见上。
 export REF_ISOLATION="${REF_ISOLATION:-True}"
 export NUM_PROCESSES="${NUM_PROCESSES:-8}"
 # 首次训练必须为空(传 "latest" 时 project_dir 下没 checkpoint 会被自检拦下)
@@ -160,9 +166,13 @@ sec = steps * (5.6 if iso else 4.86) * 0.55 * (2 if int(os.environ["GRAD_ACCUM"]
 print(f"[preflight] GPU {ndev} 卡 / ref_isolation={os.environ['REF_ISOLATION']} / "
       f"grad_accum={os.environ['GRAD_ACCUM']}", flush=True)
 if not iso:
-    print("⚠️ ref_isolation=False:训出来的是**官方 stage-1 的复刻**,"
-          "不是我们那个隔离底座的替代品——两者语义不同,别在链条里混用",
+    print("ℹ️ ref_isolation=False:这是**官方 stage-1 的复刻**,也就是 M6 消融的 "
+          "baseline 腿。它不是隔离底座的替代品——别拿它去顶替 ckpt-20000。",
           file=sys.stderr, flush=True)
+# 两腿写同一个 project_dir 会互相覆盖 checkpoint,而这种事要几十小时后才看得出来。
+if (not iso) and os.path.basename(os.environ["PROJECT_DIR"].rstrip("/")) == "stage1_official":
+    sys.exit("❌ REF_ISOLATION=False 却在往 log/stage1_official 写——那是 student 腿的目录。\n"
+             "   baseline 腿请用 PROJECT_DIR=log/stage1_official_full")
 print(f"[preflight] {steps} 步 ≈ **{sec / 3600:.0f} 小时**({sec / 86400:.1f} 天)"
       f" —— 粗估,只看数量级", flush=True)
 print("[preflight] === 自检通过,开始训练 ===", flush=True)
