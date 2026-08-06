@@ -1,7 +1,7 @@
 # M6 步骤 1 执行单 — 数据补齐 + ZeRO-2 标定
 
 > 对应 `distill/M6_ABLATION_SPEC.md` §8 的 P1。**档位:🟢 绿档**——不写不改任何代码,
-> 只是按环境变量调用既有脚本。总耗时 ~17 h,其中人要盯着的只有 ~30 min,
+> 只是按环境变量调用既有脚本。总耗时 ~36 h,其中人要盯着的只有 ~30 min,
 > GPU 占用 ~20 min(标定),其余是无人值守下载。
 
 ## 这一步在干什么(先看懂再跑)
@@ -65,9 +65,17 @@ grep -n "zero2_config\|zero.Init" train.py
 
 预期:`zero2_config.json` 出现在 plugin 行;`zero.Init` **只出现在注释里**,没有真调用。
 
-### 1. 起下载(后台,~16 h,先起这个)
+### 1. 起下载(后台,~35 h,先起这个)
+
+> **⚠️ 不要放在训练机上跑。** 2026-08-06 实测:训练机有 GPU 利用率考核,
+> 这个纯 CPU 的长任务跑到第 5 片就被强杀。放在挂同一块 ceph 的 4090 机器上。
+>
+> **⚠️ 时间账已修正。** 一次性测试拿到的 63.9 MB/s 是走运的突发值,连跑 4 片的
+> 实测是 **18.7–25.5 MB/s**,单片下载 958–1191 s + 解压 306–347 s ≈ **1370 s**。
+> 92 片 ⇒ **约 35 h**,不是原文写的 16 h。
 
 ```bash
+cd <4090 上的仓库> && git pull
 mkdir -p logs
 
 export http_proxy=http://oversea-squid1.jp.txyun:11080
@@ -75,7 +83,20 @@ export https_proxy=http://oversea-squid1.jp.txyun:11080
 export HF_HUB_ENABLE_HF_TRANSFER=1
 unset HF_HUB_OFFLINE
 
-setsid python scripts/fetch_uno1m.py --rm_tar --min_free_gb 500 \
+# 换机器时**必须**先空跑确认路径:脚本默认写 <仓库>/datasets/UNO-1M,
+# 4090 上若是另一个 checkout,不显式 --dir 就会在本地盘从零开始下。
+python scripts/fetch_uno1m.py --dir /kaimm-distill/wuwenxuan/UNO/datasets/UNO-1M --dry_run
+```
+
+预期第一行:`分片 102 个,已解压 10 个,待处理 92 个(下载量约 1.9TB)`。
+**显示 5 或 0 就是路径指错了,停下来。**
+
+确认无误再起:
+
+```bash
+setsid python scripts/fetch_uno1m.py \
+  --dir /kaimm-distill/wuwenxuan/UNO/datasets/UNO-1M \
+  --rm_tar --min_free_gb 500 \
   > logs/fetch_uno1m.log 2>&1 < /dev/null &
 echo "pid=$!"
 ```
@@ -84,14 +105,26 @@ echo "pid=$!"
 - `--min_free_gb 500`:两次 `df` 之间共享 ceph 少了 7 TB(别的租户在写),
   默认的 40 GB 门槛在这种盘上太贴地。低于 500 GB 会自己停,腾出空间重跑即可
 - **别用 `nohup`**,`setsid` 才躲得开 SIGHUP(§11.12(a) 的教训)
+- **同一时刻只能有一个进程碰同一个 split** —— 两个进程同时写 `<name>.part` 会互相踩烂
 
-起来后确认它在动:
+断点安全性:`already_done()` 看 `images/<name>/` 有没有 ≥100 个文件;
+`safe_extract` 先写 `<name>.part` 再原子改名,残留的 `.part` 下次会被 `rmtree` 清掉。
+不管是下载途中还是解压途中被杀,重跑同一条命令即可。
+
+#### 可选:双实例(零代码改动)
+
+从 63.9 掉到 22 MB/s,可能是代理侧的**单进程限速**而非链路跑满。是的话开两个进程
+处理不相交的分片能翻倍;不是的话两边各跑一半,总量不变也没损失。
 
 ```bash
-sleep 60; tail -5 logs/fetch_uno1m.log
+setsid python scripts/fetch_uno1m.py --dir <共享路径> --rm_tar --min_free_gb 500 \
+  --only $(for i in $(seq 11 56);  do echo split$i; done) > logs/fetch_A.log 2>&1 < /dev/null &
+setsid python scripts/fetch_uno1m.py --dir <共享路径> --rm_tar --min_free_gb 500 \
+  --only $(for i in $(seq 57 102); do echo split$i; done) > logs/fetch_B.log 2>&1 < /dev/null &
 ```
 
-预期头两行:`分片 102 个,已解压 6 个,待处理 96 个(下载量约 1.9TB)`。
+**两个列表必须不相交。** 跑 20 min 看两边各自的 MB/s,加起来明显高于 22 就留着,
+否则杀掉一个。
 
 之后**不用管它**,直接做第 2 步。查进度:
 
