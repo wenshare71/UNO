@@ -41,8 +41,11 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import queue
 import sys
+import threading
 from collections import Counter, defaultdict
+from concurrent.futures import Future, TimeoutError as FutureTimeoutError
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEFAULT_LABELS = os.path.join(REPO, "datasets/UNO-1M/uno_1m_total_labels.json")
@@ -53,6 +56,82 @@ OFFICIAL_THRESHOLD = 4.0
 IMG_PREFIX = "images/"
 # 已核实的官方满分池规模。达不到它就说明磁盘没全,拿来当覆盖率的分母。
 OFFICIAL_POOL = 404_259
+
+
+def _chunk_exists(paths: list[str], workers: int, timeout: float,
+                  retries: int) -> list[bool]:
+    """单块:daemon 线程池跑原生 os.path.exists,超时判不存在并重试。
+
+    用 daemon 线程而不是 ThreadPoolExecutor:worker 若在 ceph 上 D 状态永久挂死,
+    daemon 线程在进程退出时不被 join,挂死只损失它自己;ThreadPoolExecutor 的
+    线程非 daemon,会在进程退出时被 join 卡死(2026-08-08 实测的挂起就撞这个)。
+
+    worker 用阻塞 get() + 哨兵退出:若用 get_nowait(),主线程「先启线程再塞任务」
+    的间隙会让 worker 撞上空队列直接退出,并发度塌掉(实测 300s 跑不完,后来发现
+    是这个竞态)。
+    """
+    n = len(paths)
+    if n == 0:
+        return []
+    results = [False] * n
+    pending = list(range(n))
+    _STOP = object()
+    for _ in range(retries + 1):
+        if not pending:
+            break
+        futs = {idx: Future() for idx in pending}
+        work: queue.Queue = queue.Queue()
+
+        def worker() -> None:
+            while True:
+                idx = work.get()
+                if idx is _STOP:
+                    return
+                try:
+                    ok = os.path.exists(paths[idx])
+                except BaseException:
+                    ok = False
+                futs[idx].set_result(ok)
+
+        threads = [threading.Thread(target=worker, daemon=True)
+                   for _ in range(workers)]
+        for t in threads:
+            t.start()
+        for idx in pending:
+            work.put(idx)
+        for _ in threads:
+            work.put(_STOP)
+        still = []
+        for idx in pending:
+            try:
+                results[idx] = futs[idx].result(timeout=timeout)
+            except FutureTimeoutError:
+                still.append(idx)
+        pending = still
+    return results
+
+
+def robust_exists_many(paths: list[str], workers: int = 64,
+                       timeout: float = 30.0, retries: int = 1,
+                       chunk: int = 50_000) -> list[bool]:
+    """批量文件存在性检查:线程池 + 原生 os.path.exists + 超时保护。
+
+    os.path.exists 在 ceph 上偶发永久挂起(2026-08-08 实测,404k 次 stat 撞上就
+    D 状态卡死)。子进程 `test -f` 能防挂起,但每次 fork ~7ms,808k 次 ~100 分钟;
+    本方案实测 9.2k/s,808k 次 ~90 秒。
+
+    机制:stat() 系统调用释放 GIL → 线程真正并行;某线程挂死只损失它自己,其余
+    线程照常出结果。每个结果设超时,超时判为不存在并重试一次(挂起多为瞬时抖动,
+    重试大概率恢复)。分块处理,控制内存。
+    """
+    n = len(paths)
+    if n == 0:
+        return []
+    out: list[bool] = []
+    for start in range(0, n, chunk):
+        out.extend(_chunk_exists(paths[start:start + chunk], workers,
+                                 timeout, retries))
+    return out
 
 
 def split_of(raw_path: str) -> str:
@@ -87,6 +166,9 @@ def build(raw: list[dict], image_root: str, threshold: float,
     # 每个 split 的「过了 score 关」与「图也在磁盘上」两个计数,用来算覆盖率
     per_split = defaultdict(lambda: [0, 0])
 
+    # 先收集候选,再一次批量 stat(见 robust_exists_many:808k 次 stat 从子进程
+    # 逐条 fork(~100 分钟)压成线程池并发(~90 秒))
+    cand: list[tuple[str, str, str, str, str, str]] = []
     for d in raw:
         vlc = d.get("vlm_filter_cot") or {}
         score = vlc.get("score_final", 0)
@@ -111,17 +193,23 @@ def build(raw: list[dict], image_root: str, threshold: float,
         per_split[sp][0] += 1
 
         ref_rel, tgt_rel = IMG_PREFIX + ref_raw, IMG_PREFIX + tgt_raw
-        if not (os.path.exists(os.path.join(image_root, ref_rel))
-                and os.path.exists(os.path.join(image_root, tgt_rel))):
-            stat["图片不在磁盘"] += 1
-            continue
-        per_split[sp][1] += 1
+        cand.append((sp, ref_rel, tgt_rel, prompt,
+                     os.path.join(image_root, ref_rel),
+                     os.path.join(image_root, tgt_rel)))
 
-        out.append({
-            "prompt": prompt,
-            "image_tgt_path": tgt_rel,
-            "image_paths": [ref_rel],
-        })
+    ref_ok = robust_exists_many([c[4] for c in cand])
+    tgt_ok = robust_exists_many([c[5] for c in cand])
+
+    for (sp, ref_rel, tgt_rel, prompt, _, _), rok, tok in zip(cand, ref_ok, tgt_ok):
+        if rok and tok:
+            per_split[sp][1] += 1
+            out.append({
+                "prompt": prompt,
+                "image_tgt_path": tgt_rel,
+                "image_paths": [ref_rel],
+            })
+        else:
+            stat["图片不在磁盘"] += 1
 
     return out, {"skip": stat, "scores": scores, "per_split": dict(per_split)}
 
