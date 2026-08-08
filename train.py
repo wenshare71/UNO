@@ -465,7 +465,7 @@ def main(
             # (accelerator.py:3361)，而那个字段每次 prepare 都被覆盖(:1822)，
             # 顺序 dit→t5→clip 让它停在 t5 的 stage 3 —— 于是对 stage-2 的 dit 引擎走 ZeRO-3 分支，
             # zero_gather_16bit_weights_on_model_save() 为 False 直接抛 ValueError。
-            # 2026-08-07 实测崩在这里，见 distill/M6_STEP1_CALIB_REPORT.md。
+            # 2026-08-07 实测崩在这里，见 distill/M6_STEP1_REPORT.md §2。
             # 也**不能**靠调换 prepare 顺序绕开：accelerator.py:1869 把 deepspeed_engine_wrapped
             # 绑到第一个 prepare 的引擎，accelerator.backward() 只认它(:2233)，dit 必须排第一。
             # 下面这行就是 get_state_dict 在 stage != 3 时的原样分支(accelerator.py:3371-3373)。

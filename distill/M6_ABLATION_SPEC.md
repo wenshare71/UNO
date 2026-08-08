@@ -285,7 +285,7 @@ GPU 总账 **≈ 70 h ≈ 2.9 天**(8 卡独占,串行)。数据准备 ~35 h 不
 **P2 时间账 2026-08-07 标定重估。** 旧账 86/74 h 是 **ZeRO-3 + grad_accum=2** 的
 5.3–5.9 / 4.86 s/it(DISTILL_PLAN §11.12 时代)。2026-08-07 的 100 步标定
 (**ZeRO-2 + grad_accum=1**,fix `596931c`,闸门 A 通过,见
-`distill/M6_STEP1_CALIB_REPORT.md` §8)实测稳态 s/it(取后 20 步):
+`distill/M6_STEP1_REPORT.md` §2)实测稳态 s/it(取后 20 步):
 iso **1.09** / baseline **1.00** ⇒ 各 100000 步 ≈ **30.3 / 27.8 h**,两腿 **~58 h**。
 两点保留:
 - 标定是 100 步(含 warmup / CUDA graph 预热,checkpoint 仅存 2 次);真实长跑每 1000 步
