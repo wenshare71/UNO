@@ -176,3 +176,72 @@ git 准备整个失败——10 分钟 prep 超时,报错落在 checkout 而不�
 
 跑完回一句:阶段 0 六条全绿 / `[smoke] 3/3` 出现 / 模型加载耗时 X s。
 三样齐了我把实测数字填回本单,并据此写 P4 的投递方式。
+
+---
+
+## 实测记录(2026-08-10,首次尝试)
+
+**结论:阶段 0 全绿、阶段 1 dry-run 过,阶段 2 卡在提交端权限,已停。**
+
+### 阶段 0 · 六条全绿
+
+1. 仓库 `/kaimm-distill/wuwenxuan/UNO` ✅(在共享盘下,blocker 通过)
+2. `.venv-uno/bin/python` 存在 ✅
+3. HF 缓存四件套齐(外加 `models--Yuanshi--OminiControl`)✅
+4. 最新 ckpt = **`checkpoint-77000`**(阶段 1/2 按它填,不是 71000)
+5. commit `d46a2f197336177ca925c6beae8daf685c5e8048` 已在 `origin/main` ✅
+6. `infer_submit` / `infer_status` 均在 `$PATH` ✅
+
+### 阶段 1 · dry-run——多出一个「第四类失败点」,已按官方解法绕过
+
+首次 dry-run 被拒,但**不是执行单预判的三类**:
+
+```
+[infer_submit] 错误: 本队列已全量切换两阶段流水线:必须声明 --prep-cmd/--prep-marker(切权重命令与完成标志)。
+           没有独立切分步骤的任务,--prep-cmd 'true' --prep-marker <权重目录> 即可。
+```
+
+`config.json:42` 的 `submit_require_prep: true` 已生效——**m2v-aio 队列强制两阶段**。
+按报错信息给的官方解法补上:
+
+```
+--prep-cmd 'true' \
+--prep-marker $U/log/stage1_official/checkpoint-77000
+```
+
+marker 指向必然存在的权重目录 → 提交时即判 `prep_done=true`,任务按「已切分」入队直接排卡;
+`prep_cmd 'true'` 不真跑切分,**被验证的通路完全不变**。dry-run 的 job json 核对无误:
+repo/commit 正确、cmd 无共享盘绝对路径、`cluster=default`(`--cluster h` 规范化)、
+`format=v3` + `prep_done=true`。
+
+> 若执行单原文不含 prep 参数,P4 写投递方式时 **m2v-aio 队列默认要带 `--prep-cmd 'true'`**。
+
+### 阶段 2 · 正式投——卡在提交端写队列权限(新 blocker)
+
+去掉 `--dry-run` 后报 `PermissionError`,不是任务本身的问题:
+
+```
+PermissionError: [Errno 13] Permission denied:
+'/kaimm-distill/infer_hub/queues/m2v-aio/tmp/wuwenxuan__hubsmoke_Iter77000__d46a2f197336.json'
+```
+
+事实链(已逐项核实):
+
+| 项 | 发现 |
+|---|---|
+| 队列目录权限 | `queues/m2v-aio/*` 全部 **root:root 755** |
+| 历史 job 属主 | done/failed/logs 里**全是 root** |
+| 本会话身份 | `wuwenxuan03`(uid 1001),无 sudo / su / docker / nsenter 提权 |
+| 提交通道 | 控制台**没有 submit 路由**(仅 cancel/kill/pin/restore,走 root web 进程);提交只能 CLI `infer_submit` |
+| 系统权限假设 | DESIGN:组内成员互有 root、共享盘大家可写——**提交端本该以 root 跑** |
+| wuwenxuan 现状 | 名单里有,但历史 0 个 job、无 watchdog——还没投过任务 |
+
+**执行单原文没预判到「提交端要以 root 跑」这一前提。** 在 H800/开发机上若以
+root 登录执行本单即可继续;若会话是普通用户,需先切 root(或确认提交端机器
+以 root 起 `infer_submit`)。
+
+### 下一轮怎么续
+
+1. 拿到 root 提交通道后,阶段 2 命令 = 阶段 1 同款 + 去掉 `--dry-run`(已含 prep 两参数);
+2. 阶段 3 判据不变:`[smoke] 3/3` + `模型加载耗时 X.Xs` + `round 0 | OK |` 行;
+3. 本单成功后再回头验证「m2v-aio 强制两阶段」是否要写进 P4 投递模板。
