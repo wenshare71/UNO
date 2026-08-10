@@ -245,3 +245,83 @@ root 登录执行本单即可继续;若会话是普通用户,需先切 root(或�
 1. 拿到 root 提交通道后,阶段 2 命令 = 阶段 1 同款 + 去掉 `--dry-run`(已含 prep 两参数);
 2. 阶段 3 判据不变:`[smoke] 3/3` + `模型加载耗时 X.Xs` + `round 0 | OK |` 行;
 3. 本单成功后再回头验证「m2v-aio 强制两阶段」是否要写进 P4 投递模板。
+
+---
+
+## 实测记录(2026-08-10,第二次——**成功**)
+
+**确认点三样齐:阶段 0 六条全绿 / `[smoke] 3/3` 出现 / 模型加载耗时 96.1s。**
+任务 `wuwenxuan__hubsmoke_Iter77000__d46a2f197336`,最终 **done**,exit_code=0,
+duration 118.6s,跑在 `aiplatform-wlf3-ge90-10`(worker v2.4.2)。
+
+### 阶段 2 实际走的命令(记录备查)
+
+sudo + HOME 保持(提交端要 root 写队列 + git 走 wuwenxuan 的代理配置):
+
+```bash
+sudo env HOME=/kaimm-distill/wuwenxuan PATH=/kaimm-distill/infer_hub/lib:$PATH \
+  python3 /kaimm-distill/infer_hub/lib/infer_submit \
+  --owner wuwenxuan --project m2v-aio --cluster h \
+  --commit-url https://github.com/wenshare71/UNO/commit/<40位sha> \
+  --weights    /kaimm-distill/wuwenxuan/UNO/log/stage1_official/checkpoint-77000 \
+  --output-dir /kaimm-distill/wuwenxuan/hub_smoke/20260810 \
+  --uv-env     /kaimm-distill/wuwenxuan/UNO/.venv-uno \
+  --label hubsmoke_Iter77000 --gpus 1 --timeout 45 \
+  --prep-cmd 'true' \
+  --prep-marker /kaimm-distill/wuwenxuan/UNO/log/stage1_official/checkpoint-77000 \
+  --cmd '...'   # 同阶段 1
+```
+
+> **root 的 git 环境不带 github 凭据/代理**(`/root/.git-credentials` 只有内网 gitlab),
+> 直接 `sudo infer_submit` 会 git 超时。必须 `sudo env HOME=<wuwenxuan>` 让 git 读
+> wuwenxuan 的 gitconfig(代理 `oversea-squid1.jp.txyun:11080`)。wuwenxuan 名下此后
+> 提交都用这组命令。
+
+### 首次重投的坑(已避免的失败)
+
+第二次投错 commit 报 `prepare_commit_not_found`(job `...__5404d59cd1cb`):
+**用 `rev-parse HEAD` 取的 commit 是本地的、没 push**。推理机 mirror 只 fetch 远端,
+找不到本地 commit。修法:commit 写死为阶段 0 验证过已 push 的 `d46a2f197336…`。
+教训:watchdog/提交脚本里的 COMMIT 必须用 `git ls-remote` 确认过在 `origin/main` 的 sha,
+不能 `rev-parse HEAD` 现取。
+
+### 带回来的数字
+
+| 项 | 实测 |
+|---|---|
+| git 准备(fetch+checkout+submodule) | **9s**(首次,含全量 clone + dreambooth submodule) |
+| checkpoint 全量读(1.8G dit_lora) | 通过(`[smoke] 1/3`),ls 到 total 3.2G,dit_lora 1.8G / optimizer.bin 1.4G |
+| **FLUX 从 ceph 加载** | **96.1s**,显存 33.4GB |
+| 单轮推理(512×512×25 步,单 ref) | **4.4s**,peak 34.5GB |
+| 任务总时长 | **118.6s**(含加载+推理) |
+| 执行机 | `aiplatform-wlf3-ge90-10`(NVIDIA **H200**,worker v2.4.2) |
+| venv 激活 | `.venv-uno/bin/activate` 推理机可见,sourced 正常 |
+| `HF_HOME` / offline | `/kaimm-distill/wuwenxuan/hf_cache` + `HF_HUB_OFFLINE=1`,脚本默认,命中 |
+
+### 五条验证结论(对应开头「这一步在干什么」)
+
+1. **worker 拉 github commit 通**(走 git_proxy),首次 clone 9s;
+2. **`.venv-uno` 在推理机可激活**,torch 看到卡(H200);
+3. **hf_cache 76GB 权重读通**,`HF_HUB_OFFLINE=1` 不联网;
+4. **训练机写的 checkpoint,推理机可读通**——P4 命门通过;
+5. **FLUX 从 ceph 加载 96.1s** → P4 的 `--timeout` 给 **15 min 足够**(加载 96s + 每批
+   推理 4.4s/图,余量拉满),无需拆 shard。
+
+### 预判失败点核销
+
+- 失败点一(submodule/dreambooth 卡 git):**未发生**,9s 就绪;
+- 失败点二(`--cmd` 被静态检查拦):**未发生**(命令里无未声明共享盘路径,HF_HOME 烤在代码里);
+- 失败点三(出图失败 exit 0):**未发生**,且 `--cmd` 尾部 `test -f && grep` 兜底逻辑本身
+  也验证走通(`[smoke] 2/3 → 3/3` 只在这两检查通过后才打);
+- 额外发现:提交端 root 权限(已解决)、commit 必须已 push(已记教训)。
+
+### P4 投递方式(据此定稿)
+
+- **环境**:`--uv-env /kaimm-distill/wuwenxuan/UNO/.venv-uno`;
+- **commit**:写死已 push 的 sha,不用 `rev-parse HEAD`;推理代码有改动就 push 后更新;
+- **卡型**:`--cluster h` 硬绑定 H 卡(H200);
+- **超时**:`--timeout 15`(加载 96s + 4.4s/图,留足余量);批量任务按批图数×4.4s + 96s 估,
+  必要时逐批投;
+- **两阶段**:m2v-aio 强制,无独立切分步骤的任务带 `--prep-cmd 'true' --prep-marker <权重目录>`;
+- **label**:中性名,不带 iso/full 臂名(盲评约束);
+- **提交方式**:sudo + HOME 保持(见上)。
