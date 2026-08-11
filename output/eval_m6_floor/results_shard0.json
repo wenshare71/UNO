@@ -1,0 +1,251 @@
+{
+  "shard_idx": 0,
+  "num_shards": 1,
+  "config": {
+    "eval_json": "datasets/eval_multiref/m6_floor_tasks.json",
+    "pre_lora": "log/ref_isolation/checkpoint-20000/dit_lora.safetensors",
+    "post4000_lora": "log/ref_distill/checkpoint-4000/dit_lora.safetensors",
+    "post2000_lora": "log/ref_distill/checkpoint-2000/dit_lora.safetensors",
+    "arm_a_lora": "log/arm_a/checkpoint-4000/dit_lora.safetensors",
+    "arm_b_lora": "log/arm_b/checkpoint-4000/dit_lora.safetensors",
+    "m6_iso_lora": "log/ref_distill_iso/checkpoint-4000/dit_lora.safetensors",
+    "m6_full_lora": "/kaimm-distill/wuwenxuan/UNO/log/ref_distill_full/checkpoint-4000/dit_lora.safetensors",
+    "save_path": "/kaimm-distill/wuwenxuan/UNO/output/eval_m6_floor",
+    "shard_idx": 0,
+    "num_shards": 1,
+    "strata": null,
+    "model_type": "flux-dev",
+    "offload": false,
+    "width": 512,
+    "height": 512,
+    "ref_size": 512,
+    "num_steps": 25,
+    "guidance": 4.0,
+    "lora_rank": 512,
+    "dry_run": false,
+    "merge": false,
+    "no_board": false,
+    "check_anchor": false
+  },
+  "records": [
+    {
+      "task_id": "M6_S1_003_s2",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.342547912150621,
+      "path": "/kaimm-distill/wuwenxuan/UNO/output/eval_m6_floor/M6_S1_003_s2__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_004_s3",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.250065367668867,
+      "path": "/kaimm-distill/wuwenxuan/UNO/output/eval_m6_floor/M6_S1_004_s3__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_005_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.299334615468979,
+      "path": "/kaimm-distill/wuwenxuan/UNO/output/eval_m6_floor/M6_S1_005_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_008_s4",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.14705104008317,
+      "path": "/kaimm-distill/wuwenxuan/UNO/output/eval_m6_floor/M6_S1_008_s4__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_010_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.150017336010933,
+      "path": "/kaimm-distill/wuwenxuan/UNO/output/eval_m6_floor/M6_S1_010_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_011_s4",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.173851404339075,
+      "path": "/kaimm-distill/wuwenxuan/UNO/output/eval_m6_floor/M6_S1_011_s4__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_013_s2",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.182984612882137,
+      "path": "/kaimm-distill/wuwenxuan/UNO/output/eval_m6_floor/M6_S1_013_s2__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_015_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.212226960808039,
+      "path": "/kaimm-distill/wuwenxuan/UNO/output/eval_m6_floor/M6_S1_015_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_016_s4",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.279089994728565,
+      "path": "/kaimm-distill/wuwenxuan/UNO/output/eval_m6_floor/M6_S1_016_s4__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_017_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.171610116958618,
+      "path": "/kaimm-distill/wuwenxuan/UNO/output/eval_m6_floor/M6_S1_017_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_018_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.263826597481966,
+      "path": "/kaimm-distill/wuwenxuan/UNO/output/eval_m6_floor/M6_S1_018_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_019_s3",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.197967007756233,
+      "path": "/kaimm-distill/wuwenxuan/UNO/output/eval_m6_floor/M6_S1_019_s3__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_024_s4",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.201321192085743,
+      "path": "/kaimm-distill/wuwenxuan/UNO/output/eval_m6_floor/M6_S1_024_s4__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_026_s2",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.185628991574049,
+      "path": "/kaimm-distill/wuwenxuan/UNO/output/eval_m6_floor/M6_S1_026_s2__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_032_s3",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.15740368142724,
+      "path": "/kaimm-distill/wuwenxuan/UNO/output/eval_m6_floor/M6_S1_032_s3__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_033_s4",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.296224568039179,
+      "path": "/kaimm-distill/wuwenxuan/UNO/output/eval_m6_floor/M6_S1_033_s4__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_035_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.208179011940956,
+      "path": "/kaimm-distill/wuwenxuan/UNO/output/eval_m6_floor/M6_S1_035_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_037_s3",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.149933911859989,
+      "path": "/kaimm-distill/wuwenxuan/UNO/output/eval_m6_floor/M6_S1_037_s3__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_038_s2",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.170015931129456,
+      "path": "/kaimm-distill/wuwenxuan/UNO/output/eval_m6_floor/M6_S1_038_s2__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_040_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.1574896723032,
+      "path": "/kaimm-distill/wuwenxuan/UNO/output/eval_m6_floor/M6_S1_040_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_00c3_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.648187857121229,
+      "path": "/kaimm-distill/wuwenxuan/UNO/output/eval_m6_floor/M6_S3_00c3_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_01c4_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.673352114856243,
+      "path": "/kaimm-distill/wuwenxuan/UNO/output/eval_m6_floor/M6_S3_01c4_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_02c1_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.6263084709644318,
+      "path": "/kaimm-distill/wuwenxuan/UNO/output/eval_m6_floor/M6_S3_02c1_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_03c4_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.6416684202849865,
+      "path": "/kaimm-distill/wuwenxuan/UNO/output/eval_m6_floor/M6_S3_03c4_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_04c2_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.6301757618784904,
+      "path": "/kaimm-distill/wuwenxuan/UNO/output/eval_m6_floor/M6_S3_04c2_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_05c1_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.7539979554712772,
+      "path": "/kaimm-distill/wuwenxuan/UNO/output/eval_m6_floor/M6_S3_05c1_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_06c2_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.766485955566168,
+      "path": "/kaimm-distill/wuwenxuan/UNO/output/eval_m6_floor/M6_S3_06c2_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_07c3_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.6858227103948593,
+      "path": "/kaimm-distill/wuwenxuan/UNO/output/eval_m6_floor/M6_S3_07c3_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_08c0_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.675094198435545,
+      "path": "/kaimm-distill/wuwenxuan/UNO/output/eval_m6_floor/M6_S3_08c0_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_09c3_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.7439004108309746,
+      "path": "/kaimm-distill/wuwenxuan/UNO/output/eval_m6_floor/M6_S3_09c3_s0__m6_full.png"
+    }
+  ],
+  "fails": [],
+  "timing": {
+    "m6_full": {
+      "mean_s": 4.701392126083374,
+      "median_s": 5.163752801716328,
+      "n": 30,
+      "peak_mem_gb": 36.24359846115112
+    }
+  }
+}

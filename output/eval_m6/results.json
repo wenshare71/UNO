@@ -1,0 +1,4505 @@
+{
+  "spec": "M6-v1",
+  "n_shards": 1,
+  "n_records": 640,
+  "n_fails": 0,
+  "timing": {
+    "m6_iso": {
+      "mean_s": 2.9847912976285444,
+      "median_s": 2.8869903180748224,
+      "n": 320,
+      "peak_mem_gb": 37.04558181762695,
+      "speedup_vs_teacher": null
+    },
+    "m6_full": {
+      "mean_s": 4.744254082080443,
+      "median_s": 5.04610781557858,
+      "n": 320,
+      "peak_mem_gb": 36.24359846115112,
+      "speedup_vs_teacher": null
+    }
+  },
+  "records": [
+    {
+      "task_id": "M6_S1_000_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 3.15427715331316,
+      "path": "output/eval_m6/M6_S1_000_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_000_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.910550359636545,
+      "path": "output/eval_m6/M6_S1_000_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_000_s2",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8694367222487926,
+      "path": "output/eval_m6/M6_S1_000_s2__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_000_s3",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 3.001001589000225,
+      "path": "output/eval_m6/M6_S1_000_s3__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_000_s4",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.9119777157902718,
+      "path": "output/eval_m6/M6_S1_000_s4__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_001_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.977588150650263,
+      "path": "output/eval_m6/M6_S1_001_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_001_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.9416617415845394,
+      "path": "output/eval_m6/M6_S1_001_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_001_s2",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.9882703833281994,
+      "path": "output/eval_m6/M6_S1_001_s2__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_001_s3",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.9491850547492504,
+      "path": "output/eval_m6/M6_S1_001_s3__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_001_s4",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.894914947450161,
+      "path": "output/eval_m6/M6_S1_001_s4__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_002_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 3.6156483590602875,
+      "path": "output/eval_m6/M6_S1_002_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_002_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 9.733201134949923,
+      "path": "output/eval_m6/M6_S1_002_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_002_s2",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 3.0516792461276054,
+      "path": "output/eval_m6/M6_S1_002_s2__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_002_s3",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.887459445744753,
+      "path": "output/eval_m6/M6_S1_002_s3__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_002_s4",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.9275145828723907,
+      "path": "output/eval_m6/M6_S1_002_s4__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_003_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.955831751227379,
+      "path": "output/eval_m6/M6_S1_003_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_003_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8706871457397938,
+      "path": "output/eval_m6/M6_S1_003_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_003_s2",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.902946326881647,
+      "path": "output/eval_m6/M6_S1_003_s2__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_003_s3",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.876128327101469,
+      "path": "output/eval_m6/M6_S1_003_s3__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_003_s4",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.9163362495601177,
+      "path": "output/eval_m6/M6_S1_003_s4__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_004_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 3.150987960398197,
+      "path": "output/eval_m6/M6_S1_004_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_004_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8745245188474655,
+      "path": "output/eval_m6/M6_S1_004_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_004_s2",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.889993727207184,
+      "path": "output/eval_m6/M6_S1_004_s2__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_004_s3",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 3.102792650461197,
+      "path": "output/eval_m6/M6_S1_004_s3__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_004_s4",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 5.428862147033215,
+      "path": "output/eval_m6/M6_S1_004_s4__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_005_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 7.477193754166365,
+      "path": "output/eval_m6/M6_S1_005_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_005_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.997263167053461,
+      "path": "output/eval_m6/M6_S1_005_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_005_s2",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8671631813049316,
+      "path": "output/eval_m6/M6_S1_005_s2__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_005_s3",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8859472312033176,
+      "path": "output/eval_m6/M6_S1_005_s3__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_005_s4",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8684809505939484,
+      "path": "output/eval_m6/M6_S1_005_s4__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_006_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.9370676204562187,
+      "path": "output/eval_m6/M6_S1_006_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_006_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8906516544520855,
+      "path": "output/eval_m6/M6_S1_006_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_006_s2",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.935968466103077,
+      "path": "output/eval_m6/M6_S1_006_s2__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_006_s3",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.864125907421112,
+      "path": "output/eval_m6/M6_S1_006_s3__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_006_s4",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 3.0795652344822884,
+      "path": "output/eval_m6/M6_S1_006_s4__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_007_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.88616880774498,
+      "path": "output/eval_m6/M6_S1_007_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_007_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8858415372669697,
+      "path": "output/eval_m6/M6_S1_007_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_007_s2",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.9370401613414288,
+      "path": "output/eval_m6/M6_S1_007_s2__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_007_s3",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.9454096779227257,
+      "path": "output/eval_m6/M6_S1_007_s3__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_007_s4",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 3.1226824894547462,
+      "path": "output/eval_m6/M6_S1_007_s4__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_008_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.882398594170809,
+      "path": "output/eval_m6/M6_S1_008_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_008_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8847063370049,
+      "path": "output/eval_m6/M6_S1_008_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_008_s2",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8764490969479084,
+      "path": "output/eval_m6/M6_S1_008_s2__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_008_s3",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8714488856494427,
+      "path": "output/eval_m6/M6_S1_008_s3__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_008_s4",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8987080939114094,
+      "path": "output/eval_m6/M6_S1_008_s4__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_009_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8625665456056595,
+      "path": "output/eval_m6/M6_S1_009_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_009_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8677386827766895,
+      "path": "output/eval_m6/M6_S1_009_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_009_s2",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.870856184512377,
+      "path": "output/eval_m6/M6_S1_009_s2__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_009_s3",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8888204395771027,
+      "path": "output/eval_m6/M6_S1_009_s3__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_009_s4",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.9965329989790916,
+      "path": "output/eval_m6/M6_S1_009_s4__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_010_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8993585258722305,
+      "path": "output/eval_m6/M6_S1_010_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_010_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.9511917121708393,
+      "path": "output/eval_m6/M6_S1_010_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_010_s2",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 3.0062416046857834,
+      "path": "output/eval_m6/M6_S1_010_s2__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_010_s3",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.963848788291216,
+      "path": "output/eval_m6/M6_S1_010_s3__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_010_s4",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8834793530404568,
+      "path": "output/eval_m6/M6_S1_010_s4__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_011_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.9695726558566093,
+      "path": "output/eval_m6/M6_S1_011_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_011_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8776614665985107,
+      "path": "output/eval_m6/M6_S1_011_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_011_s2",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.9242105670273304,
+      "path": "output/eval_m6/M6_S1_011_s2__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_011_s3",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 3.103521227836609,
+      "path": "output/eval_m6/M6_S1_011_s3__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_011_s4",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.9202485010027885,
+      "path": "output/eval_m6/M6_S1_011_s4__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_012_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.872293207794428,
+      "path": "output/eval_m6/M6_S1_012_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_012_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8725640848279,
+      "path": "output/eval_m6/M6_S1_012_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_012_s2",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.862533960491419,
+      "path": "output/eval_m6/M6_S1_012_s2__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_012_s3",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.868379570543766,
+      "path": "output/eval_m6/M6_S1_012_s3__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_012_s4",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.9040389880537987,
+      "path": "output/eval_m6/M6_S1_012_s4__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_013_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 3.042944733053446,
+      "path": "output/eval_m6/M6_S1_013_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_013_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8643997199833393,
+      "path": "output/eval_m6/M6_S1_013_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_013_s2",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8687903098762035,
+      "path": "output/eval_m6/M6_S1_013_s2__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_013_s3",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.9703716412186623,
+      "path": "output/eval_m6/M6_S1_013_s3__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_013_s4",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8955158591270447,
+      "path": "output/eval_m6/M6_S1_013_s4__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_014_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.912518359720707,
+      "path": "output/eval_m6/M6_S1_014_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_014_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8902041874825954,
+      "path": "output/eval_m6/M6_S1_014_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_014_s2",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8781024776399136,
+      "path": "output/eval_m6/M6_S1_014_s2__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_014_s3",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8838046938180923,
+      "path": "output/eval_m6/M6_S1_014_s3__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_014_s4",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8708463236689568,
+      "path": "output/eval_m6/M6_S1_014_s4__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_015_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.901012685149908,
+      "path": "output/eval_m6/M6_S1_015_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_015_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.9393123984336853,
+      "path": "output/eval_m6/M6_S1_015_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_015_s2",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 3.067183770239353,
+      "path": "output/eval_m6/M6_S1_015_s2__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_015_s3",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 3.2420752495527267,
+      "path": "output/eval_m6/M6_S1_015_s3__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_015_s4",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.880613673478365,
+      "path": "output/eval_m6/M6_S1_015_s4__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_016_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8624692745506763,
+      "path": "output/eval_m6/M6_S1_016_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_016_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.911678448319435,
+      "path": "output/eval_m6/M6_S1_016_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_016_s2",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.907413076609373,
+      "path": "output/eval_m6/M6_S1_016_s2__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_016_s3",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8804403655231,
+      "path": "output/eval_m6/M6_S1_016_s3__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_016_s4",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.870012316852808,
+      "path": "output/eval_m6/M6_S1_016_s4__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_017_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8652292229235172,
+      "path": "output/eval_m6/M6_S1_017_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_017_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8986584953963757,
+      "path": "output/eval_m6/M6_S1_017_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_017_s2",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.9875349067151546,
+      "path": "output/eval_m6/M6_S1_017_s2__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_017_s3",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 3.0291453413665295,
+      "path": "output/eval_m6/M6_S1_017_s3__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_017_s4",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8955007307231426,
+      "path": "output/eval_m6/M6_S1_017_s4__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_018_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.9715832211077213,
+      "path": "output/eval_m6/M6_S1_018_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_018_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.872800651937723,
+      "path": "output/eval_m6/M6_S1_018_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_018_s2",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8916315734386444,
+      "path": "output/eval_m6/M6_S1_018_s2__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_018_s3",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8766835145652294,
+      "path": "output/eval_m6/M6_S1_018_s3__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_018_s4",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.880861595273018,
+      "path": "output/eval_m6/M6_S1_018_s4__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_019_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.894676998257637,
+      "path": "output/eval_m6/M6_S1_019_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_019_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 3.639670468866825,
+      "path": "output/eval_m6/M6_S1_019_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_019_s2",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 3.469381920993328,
+      "path": "output/eval_m6/M6_S1_019_s2__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_019_s3",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 3.0392419286072254,
+      "path": "output/eval_m6/M6_S1_019_s3__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_019_s4",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8774610720574856,
+      "path": "output/eval_m6/M6_S1_019_s4__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_020_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8892987221479416,
+      "path": "output/eval_m6/M6_S1_020_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_020_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.872133333235979,
+      "path": "output/eval_m6/M6_S1_020_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_020_s2",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.871712300926447,
+      "path": "output/eval_m6/M6_S1_020_s2__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_020_s3",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8594892099499702,
+      "path": "output/eval_m6/M6_S1_020_s3__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_020_s4",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.858052469789982,
+      "path": "output/eval_m6/M6_S1_020_s4__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_021_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.860704191029072,
+      "path": "output/eval_m6/M6_S1_021_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_021_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.9389080330729485,
+      "path": "output/eval_m6/M6_S1_021_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_021_s2",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8764543011784554,
+      "path": "output/eval_m6/M6_S1_021_s2__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_021_s3",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.892071418464184,
+      "path": "output/eval_m6/M6_S1_021_s3__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_021_s4",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.928835418075323,
+      "path": "output/eval_m6/M6_S1_021_s4__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_022_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8947867192327976,
+      "path": "output/eval_m6/M6_S1_022_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_022_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8817986249923706,
+      "path": "output/eval_m6/M6_S1_022_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_022_s2",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.87034460157156,
+      "path": "output/eval_m6/M6_S1_022_s2__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_022_s3",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.9016852974891663,
+      "path": "output/eval_m6/M6_S1_022_s3__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_022_s4",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.892022803425789,
+      "path": "output/eval_m6/M6_S1_022_s4__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_023_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 3.054775148630142,
+      "path": "output/eval_m6/M6_S1_023_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_023_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 3.035519704222679,
+      "path": "output/eval_m6/M6_S1_023_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_023_s2",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.9486512690782547,
+      "path": "output/eval_m6/M6_S1_023_s2__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_023_s3",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.9526006765663624,
+      "path": "output/eval_m6/M6_S1_023_s3__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_023_s4",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8628887981176376,
+      "path": "output/eval_m6/M6_S1_023_s4__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_024_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8633557222783566,
+      "path": "output/eval_m6/M6_S1_024_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_024_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8638601936399937,
+      "path": "output/eval_m6/M6_S1_024_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_024_s2",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8976328931748867,
+      "path": "output/eval_m6/M6_S1_024_s2__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_024_s3",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.9213626980781555,
+      "path": "output/eval_m6/M6_S1_024_s3__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_024_s4",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.886670894920826,
+      "path": "output/eval_m6/M6_S1_024_s4__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_025_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.9007653556764126,
+      "path": "output/eval_m6/M6_S1_025_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_025_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8679904751479626,
+      "path": "output/eval_m6/M6_S1_025_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_025_s2",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.909539118409157,
+      "path": "output/eval_m6/M6_S1_025_s2__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_025_s3",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.875356648117304,
+      "path": "output/eval_m6/M6_S1_025_s3__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_025_s4",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8773272298276424,
+      "path": "output/eval_m6/M6_S1_025_s4__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_026_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.9202551133930683,
+      "path": "output/eval_m6/M6_S1_026_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_026_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.961545381695032,
+      "path": "output/eval_m6/M6_S1_026_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_026_s2",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.870095696300268,
+      "path": "output/eval_m6/M6_S1_026_s2__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_026_s3",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8632788881659508,
+      "path": "output/eval_m6/M6_S1_026_s3__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_026_s4",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.901596263051033,
+      "path": "output/eval_m6/M6_S1_026_s4__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_027_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.884340152144432,
+      "path": "output/eval_m6/M6_S1_027_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_027_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.9217999801039696,
+      "path": "output/eval_m6/M6_S1_027_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_027_s2",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 3.008269753307104,
+      "path": "output/eval_m6/M6_S1_027_s2__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_027_s3",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.92210715636611,
+      "path": "output/eval_m6/M6_S1_027_s3__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_027_s4",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.911184262484312,
+      "path": "output/eval_m6/M6_S1_027_s4__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_028_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.890510905534029,
+      "path": "output/eval_m6/M6_S1_028_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_028_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.872103665024042,
+      "path": "output/eval_m6/M6_S1_028_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_028_s2",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.903029602020979,
+      "path": "output/eval_m6/M6_S1_028_s2__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_028_s3",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 3.0173901729285717,
+      "path": "output/eval_m6/M6_S1_028_s3__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_028_s4",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 3.346411883831024,
+      "path": "output/eval_m6/M6_S1_028_s4__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_029_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 3.217559214681387,
+      "path": "output/eval_m6/M6_S1_029_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_029_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 3.215609833598137,
+      "path": "output/eval_m6/M6_S1_029_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_029_s2",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.9491353817284107,
+      "path": "output/eval_m6/M6_S1_029_s2__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_029_s3",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8843399360775948,
+      "path": "output/eval_m6/M6_S1_029_s3__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_029_s4",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.9728314727544785,
+      "path": "output/eval_m6/M6_S1_029_s4__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_030_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 3.0410043485462666,
+      "path": "output/eval_m6/M6_S1_030_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_030_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.883191157132387,
+      "path": "output/eval_m6/M6_S1_030_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_030_s2",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.887309741228819,
+      "path": "output/eval_m6/M6_S1_030_s2__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_030_s3",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.972419373691082,
+      "path": "output/eval_m6/M6_S1_030_s3__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_030_s4",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8761827051639557,
+      "path": "output/eval_m6/M6_S1_030_s4__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_031_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.9414587169885635,
+      "path": "output/eval_m6/M6_S1_031_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_031_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8630040772259235,
+      "path": "output/eval_m6/M6_S1_031_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_031_s2",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.936120744794607,
+      "path": "output/eval_m6/M6_S1_031_s2__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_031_s3",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.949393432587385,
+      "path": "output/eval_m6/M6_S1_031_s3__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_031_s4",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 3.0009734705090523,
+      "path": "output/eval_m6/M6_S1_031_s4__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_032_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.9517189450562,
+      "path": "output/eval_m6/M6_S1_032_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_032_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.9602501280605793,
+      "path": "output/eval_m6/M6_S1_032_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_032_s2",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.870615065097809,
+      "path": "output/eval_m6/M6_S1_032_s2__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_032_s3",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8806836865842342,
+      "path": "output/eval_m6/M6_S1_032_s3__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_032_s4",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.9698758721351624,
+      "path": "output/eval_m6/M6_S1_032_s4__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_033_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8876339569687843,
+      "path": "output/eval_m6/M6_S1_033_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_033_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.9090613573789597,
+      "path": "output/eval_m6/M6_S1_033_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_033_s2",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.9103434905409813,
+      "path": "output/eval_m6/M6_S1_033_s2__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_033_s3",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.9344908110797405,
+      "path": "output/eval_m6/M6_S1_033_s3__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_033_s4",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.9316150583326817,
+      "path": "output/eval_m6/M6_S1_033_s4__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_034_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 3.0378310196101665,
+      "path": "output/eval_m6/M6_S1_034_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_034_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 3.2470393888652325,
+      "path": "output/eval_m6/M6_S1_034_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_034_s2",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 3.5467392280697823,
+      "path": "output/eval_m6/M6_S1_034_s2__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_034_s3",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 5.020297717303038,
+      "path": "output/eval_m6/M6_S1_034_s3__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_034_s4",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 8.878801129758358,
+      "path": "output/eval_m6/M6_S1_034_s4__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_035_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 3.0187424942851067,
+      "path": "output/eval_m6/M6_S1_035_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_035_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 3.0100295282900333,
+      "path": "output/eval_m6/M6_S1_035_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_035_s2",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 3.0932846665382385,
+      "path": "output/eval_m6/M6_S1_035_s2__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_035_s3",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 3.511097077280283,
+      "path": "output/eval_m6/M6_S1_035_s3__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_035_s4",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.941056840121746,
+      "path": "output/eval_m6/M6_S1_035_s4__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_036_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.9969735145568848,
+      "path": "output/eval_m6/M6_S1_036_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_036_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.940738685429096,
+      "path": "output/eval_m6/M6_S1_036_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_036_s2",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8716223761439323,
+      "path": "output/eval_m6/M6_S1_036_s2__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_036_s3",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.920039463788271,
+      "path": "output/eval_m6/M6_S1_036_s3__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_036_s4",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 3.1144301556050777,
+      "path": "output/eval_m6/M6_S1_036_s4__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_037_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 3.0552421510219574,
+      "path": "output/eval_m6/M6_S1_037_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_037_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.95272259041667,
+      "path": "output/eval_m6/M6_S1_037_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_037_s2",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.9092596992850304,
+      "path": "output/eval_m6/M6_S1_037_s2__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_037_s3",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 3.0652158595621586,
+      "path": "output/eval_m6/M6_S1_037_s3__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_037_s4",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 3.1964605785906315,
+      "path": "output/eval_m6/M6_S1_037_s4__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_038_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 3.192069176584482,
+      "path": "output/eval_m6/M6_S1_038_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_038_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 3.0434927120804787,
+      "path": "output/eval_m6/M6_S1_038_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_038_s2",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.9328080266714096,
+      "path": "output/eval_m6/M6_S1_038_s2__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_038_s3",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.919549096375704,
+      "path": "output/eval_m6/M6_S1_038_s3__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_038_s4",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 3.3084578923881054,
+      "path": "output/eval_m6/M6_S1_038_s4__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_039_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.9163194969296455,
+      "path": "output/eval_m6/M6_S1_039_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_039_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.950066417455673,
+      "path": "output/eval_m6/M6_S1_039_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_039_s2",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8927032500505447,
+      "path": "output/eval_m6/M6_S1_039_s2__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_039_s3",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.917686842381954,
+      "path": "output/eval_m6/M6_S1_039_s3__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_039_s4",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.9752711057662964,
+      "path": "output/eval_m6/M6_S1_039_s4__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_040_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.96061572432518,
+      "path": "output/eval_m6/M6_S1_040_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_040_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.930330064147711,
+      "path": "output/eval_m6/M6_S1_040_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_040_s2",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8680179342627525,
+      "path": "output/eval_m6/M6_S1_040_s2__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_040_s3",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.9683080427348614,
+      "path": "output/eval_m6/M6_S1_040_s3__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_040_s4",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.9526408910751343,
+      "path": "output/eval_m6/M6_S1_040_s4__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_041_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 3.077244993299246,
+      "path": "output/eval_m6/M6_S1_041_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_041_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 3.0484668873250484,
+      "path": "output/eval_m6/M6_S1_041_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_041_s2",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.879864625632763,
+      "path": "output/eval_m6/M6_S1_041_s2__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_041_s3",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 3.1959064416587353,
+      "path": "output/eval_m6/M6_S1_041_s3__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_041_s4",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 3.434020768851042,
+      "path": "output/eval_m6/M6_S1_041_s4__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_042_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 3.5097695402801037,
+      "path": "output/eval_m6/M6_S1_042_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_042_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8782734908163548,
+      "path": "output/eval_m6/M6_S1_042_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_042_s2",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.895075771957636,
+      "path": "output/eval_m6/M6_S1_042_s2__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_042_s3",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8661499843001366,
+      "path": "output/eval_m6/M6_S1_042_s3__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_042_s4",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.9750663340091705,
+      "path": "output/eval_m6/M6_S1_042_s4__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_043_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.9143916442990303,
+      "path": "output/eval_m6/M6_S1_043_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_043_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8745312467217445,
+      "path": "output/eval_m6/M6_S1_043_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_043_s2",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8889003060758114,
+      "path": "output/eval_m6/M6_S1_043_s2__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_043_s3",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8752921782433987,
+      "path": "output/eval_m6/M6_S1_043_s3__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_043_s4",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.9835265651345253,
+      "path": "output/eval_m6/M6_S1_043_s4__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_00c0_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.9669351391494274,
+      "path": "output/eval_m6/M6_S3_00c0_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_00c0_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.725433822721243,
+      "path": "output/eval_m6/M6_S3_00c0_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_00c1_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.845782957971096,
+      "path": "output/eval_m6/M6_S3_00c1_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_00c1_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.6824499368667603,
+      "path": "output/eval_m6/M6_S3_00c1_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_00c2_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.6582156345248222,
+      "path": "output/eval_m6/M6_S3_00c2_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_00c2_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.6713119745254517,
+      "path": "output/eval_m6/M6_S3_00c2_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_00c3_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.6253772601485252,
+      "path": "output/eval_m6/M6_S3_00c3_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_00c3_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.6282371692359447,
+      "path": "output/eval_m6/M6_S3_00c3_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_00c4_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.6411226242780685,
+      "path": "output/eval_m6/M6_S3_00c4_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_00c4_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.697799254208803,
+      "path": "output/eval_m6/M6_S3_00c4_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_01c0_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.63281761854887,
+      "path": "output/eval_m6/M6_S3_01c0_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_01c0_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.6381804570555687,
+      "path": "output/eval_m6/M6_S3_01c0_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_01c1_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.628062017261982,
+      "path": "output/eval_m6/M6_S3_01c1_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_01c1_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.63610028475523,
+      "path": "output/eval_m6/M6_S3_01c1_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_01c2_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 5.104641176760197,
+      "path": "output/eval_m6/M6_S3_01c2_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_01c2_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.7697840072214603,
+      "path": "output/eval_m6/M6_S3_01c2_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_01c3_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.705156236886978,
+      "path": "output/eval_m6/M6_S3_01c3_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_01c3_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.64059741795063,
+      "path": "output/eval_m6/M6_S3_01c3_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_01c4_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.6314711160957813,
+      "path": "output/eval_m6/M6_S3_01c4_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_01c4_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.7436223216354847,
+      "path": "output/eval_m6/M6_S3_01c4_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_02c0_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.635486211627722,
+      "path": "output/eval_m6/M6_S3_02c0_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_02c0_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.6412990875542164,
+      "path": "output/eval_m6/M6_S3_02c0_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_02c1_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.6745297349989414,
+      "path": "output/eval_m6/M6_S3_02c1_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_02c1_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.9646646976470947,
+      "path": "output/eval_m6/M6_S3_02c1_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_02c2_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.810700833797455,
+      "path": "output/eval_m6/M6_S3_02c2_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_02c2_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.722086686640978,
+      "path": "output/eval_m6/M6_S3_02c2_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_02c3_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.7922059297561646,
+      "path": "output/eval_m6/M6_S3_02c3_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_02c3_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 3.315285846590996,
+      "path": "output/eval_m6/M6_S3_02c3_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_02c4_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8771089427173138,
+      "path": "output/eval_m6/M6_S3_02c4_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_02c4_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.905251994729042,
+      "path": "output/eval_m6/M6_S3_02c4_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_03c0_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.692773323506117,
+      "path": "output/eval_m6/M6_S3_03c0_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_03c0_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.648878749459982,
+      "path": "output/eval_m6/M6_S3_03c0_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_03c1_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.632235050201416,
+      "path": "output/eval_m6/M6_S3_03c1_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_03c1_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.651215333491564,
+      "path": "output/eval_m6/M6_S3_03c1_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_03c2_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.6366392336785793,
+      "path": "output/eval_m6/M6_S3_03c2_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_03c2_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.6388929523527622,
+      "path": "output/eval_m6/M6_S3_03c2_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_03c3_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.6307290345430374,
+      "path": "output/eval_m6/M6_S3_03c3_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_03c3_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.725230947136879,
+      "path": "output/eval_m6/M6_S3_03c3_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_03c4_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8564058132469654,
+      "path": "output/eval_m6/M6_S3_03c4_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_03c4_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8279976435005665,
+      "path": "output/eval_m6/M6_S3_03c4_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_04c0_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.841588892042637,
+      "path": "output/eval_m6/M6_S3_04c0_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_04c0_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.6387761496007442,
+      "path": "output/eval_m6/M6_S3_04c0_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_04c1_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.699006527662277,
+      "path": "output/eval_m6/M6_S3_04c1_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_04c1_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.6270883791148663,
+      "path": "output/eval_m6/M6_S3_04c1_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_04c2_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 3.893668085336685,
+      "path": "output/eval_m6/M6_S3_04c2_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_04c2_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.6585494838654995,
+      "path": "output/eval_m6/M6_S3_04c2_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_04c3_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.6661542914807796,
+      "path": "output/eval_m6/M6_S3_04c3_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_04c3_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.6319363676011562,
+      "path": "output/eval_m6/M6_S3_04c3_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_04c4_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.765289705246687,
+      "path": "output/eval_m6/M6_S3_04c4_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_04c4_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.7038885354995728,
+      "path": "output/eval_m6/M6_S3_04c4_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_05c0_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.671237539499998,
+      "path": "output/eval_m6/M6_S3_05c0_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_05c0_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.6293559595942497,
+      "path": "output/eval_m6/M6_S3_05c0_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_05c1_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.6267737559974194,
+      "path": "output/eval_m6/M6_S3_05c1_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_05c1_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.654297899454832,
+      "path": "output/eval_m6/M6_S3_05c1_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_05c2_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.640479236841202,
+      "path": "output/eval_m6/M6_S3_05c2_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_05c2_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.653021953999996,
+      "path": "output/eval_m6/M6_S3_05c2_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_05c3_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.8884528763592243,
+      "path": "output/eval_m6/M6_S3_05c3_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_05c3_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.7271706610918045,
+      "path": "output/eval_m6/M6_S3_05c3_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_05c4_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.662868894636631,
+      "path": "output/eval_m6/M6_S3_05c4_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_05c4_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.840079292654991,
+      "path": "output/eval_m6/M6_S3_05c4_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_06c0_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.6516583636403084,
+      "path": "output/eval_m6/M6_S3_06c0_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_06c0_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.631606053560972,
+      "path": "output/eval_m6/M6_S3_06c0_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_06c1_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.654708791524172,
+      "path": "output/eval_m6/M6_S3_06c1_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_06c1_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.6273829601705074,
+      "path": "output/eval_m6/M6_S3_06c1_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_06c2_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 3.175866764038801,
+      "path": "output/eval_m6/M6_S3_06c2_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_06c2_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.725567042827606,
+      "path": "output/eval_m6/M6_S3_06c2_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_06c3_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.6532570309937,
+      "path": "output/eval_m6/M6_S3_06c3_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_06c3_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.623206626623869,
+      "path": "output/eval_m6/M6_S3_06c3_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_06c4_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.683865115046501,
+      "path": "output/eval_m6/M6_S3_06c4_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_06c4_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.6682579554617405,
+      "path": "output/eval_m6/M6_S3_06c4_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_07c0_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.706631015986204,
+      "path": "output/eval_m6/M6_S3_07c0_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_07c0_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.6894924119114876,
+      "path": "output/eval_m6/M6_S3_07c0_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_07c1_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.6429312229156494,
+      "path": "output/eval_m6/M6_S3_07c1_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_07c1_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.635738607496023,
+      "path": "output/eval_m6/M6_S3_07c1_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_07c2_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.646149318665266,
+      "path": "output/eval_m6/M6_S3_07c2_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_07c2_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.631167806684971,
+      "path": "output/eval_m6/M6_S3_07c2_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_07c3_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.6360392905771732,
+      "path": "output/eval_m6/M6_S3_07c3_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_07c3_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.6300143525004387,
+      "path": "output/eval_m6/M6_S3_07c3_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_07c4_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.628981437534094,
+      "path": "output/eval_m6/M6_S3_07c4_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_07c4_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.6558289416134357,
+      "path": "output/eval_m6/M6_S3_07c4_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_08c0_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.6847322396934032,
+      "path": "output/eval_m6/M6_S3_08c0_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_08c0_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.6327843256294727,
+      "path": "output/eval_m6/M6_S3_08c0_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_08c1_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.641134213656187,
+      "path": "output/eval_m6/M6_S3_08c1_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_08c1_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.866002969443798,
+      "path": "output/eval_m6/M6_S3_08c1_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_08c2_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.6220334358513355,
+      "path": "output/eval_m6/M6_S3_08c2_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_08c2_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.7144849859178066,
+      "path": "output/eval_m6/M6_S3_08c2_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_08c3_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.858778402209282,
+      "path": "output/eval_m6/M6_S3_08c3_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_08c3_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 10.637355126440525,
+      "path": "output/eval_m6/M6_S3_08c3_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_08c4_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.649204194545746,
+      "path": "output/eval_m6/M6_S3_08c4_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_08c4_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.674537394195795,
+      "path": "output/eval_m6/M6_S3_08c4_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_09c0_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.6387519985437393,
+      "path": "output/eval_m6/M6_S3_09c0_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_09c0_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.6318625807762146,
+      "path": "output/eval_m6/M6_S3_09c0_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_09c1_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.640860930085182,
+      "path": "output/eval_m6/M6_S3_09c1_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_09c1_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.7019443064928055,
+      "path": "output/eval_m6/M6_S3_09c1_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_09c2_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.6922273337841034,
+      "path": "output/eval_m6/M6_S3_09c2_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_09c2_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.696922853589058,
+      "path": "output/eval_m6/M6_S3_09c2_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_09c3_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.6324125416576862,
+      "path": "output/eval_m6/M6_S3_09c3_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_09c3_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.765503004193306,
+      "path": "output/eval_m6/M6_S3_09c3_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_09c4_s0",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.631756227463484,
+      "path": "output/eval_m6/M6_S3_09c4_s0__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S3_09c4_s1",
+      "variant": "m6_iso",
+      "status": "ok",
+      "denoise_s": 2.726228851824999,
+      "path": "output/eval_m6/M6_S3_09c4_s1__m6_iso.png"
+    },
+    {
+      "task_id": "M6_S1_000_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 6.958354331552982,
+      "path": "output/eval_m6/M6_S1_000_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_000_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 7.010883420705795,
+      "path": "output/eval_m6/M6_S1_000_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_000_s2",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.113318592309952,
+      "path": "output/eval_m6/M6_S1_000_s2__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_000_s3",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.0386312156915665,
+      "path": "output/eval_m6/M6_S1_000_s3__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_000_s4",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.077335450798273,
+      "path": "output/eval_m6/M6_S1_000_s4__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_001_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.055499110370874,
+      "path": "output/eval_m6/M6_S1_001_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_001_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.035852938890457,
+      "path": "output/eval_m6/M6_S1_001_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_001_s2",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.046805247664452,
+      "path": "output/eval_m6/M6_S1_001_s2__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_001_s3",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.0393106415867805,
+      "path": "output/eval_m6/M6_S1_001_s3__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_001_s4",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.031899679452181,
+      "path": "output/eval_m6/M6_S1_001_s4__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_002_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.063797816634178,
+      "path": "output/eval_m6/M6_S1_002_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_002_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.040920250117779,
+      "path": "output/eval_m6/M6_S1_002_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_002_s2",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.0743502750992775,
+      "path": "output/eval_m6/M6_S1_002_s2__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_002_s3",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.088379412889481,
+      "path": "output/eval_m6/M6_S1_002_s3__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_002_s4",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.037602107971907,
+      "path": "output/eval_m6/M6_S1_002_s4__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_003_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.063821602612734,
+      "path": "output/eval_m6/M6_S1_003_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_003_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.043768681585789,
+      "path": "output/eval_m6/M6_S1_003_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_003_s2",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.037424575537443,
+      "path": "output/eval_m6/M6_S1_003_s2__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_003_s3",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.06972561776638,
+      "path": "output/eval_m6/M6_S1_003_s3__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_003_s4",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.045247618108988,
+      "path": "output/eval_m6/M6_S1_003_s4__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_004_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.054392118006945,
+      "path": "output/eval_m6/M6_S1_004_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_004_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.058024827390909,
+      "path": "output/eval_m6/M6_S1_004_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_004_s2",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.06937026232481,
+      "path": "output/eval_m6/M6_S1_004_s2__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_004_s3",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.064066976308823,
+      "path": "output/eval_m6/M6_S1_004_s3__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_004_s4",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.04389064759016,
+      "path": "output/eval_m6/M6_S1_004_s4__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_005_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.0319836884737015,
+      "path": "output/eval_m6/M6_S1_005_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_005_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.056221455335617,
+      "path": "output/eval_m6/M6_S1_005_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_005_s2",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.057297442108393,
+      "path": "output/eval_m6/M6_S1_005_s2__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_005_s3",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.078150290995836,
+      "path": "output/eval_m6/M6_S1_005_s3__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_005_s4",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.060465157032013,
+      "path": "output/eval_m6/M6_S1_005_s4__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_006_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.042039103806019,
+      "path": "output/eval_m6/M6_S1_006_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_006_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.0407260321080685,
+      "path": "output/eval_m6/M6_S1_006_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_006_s2",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.042528323829174,
+      "path": "output/eval_m6/M6_S1_006_s2__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_006_s3",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.035141263157129,
+      "path": "output/eval_m6/M6_S1_006_s3__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_006_s4",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.081651333719492,
+      "path": "output/eval_m6/M6_S1_006_s4__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_007_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.1357765160501,
+      "path": "output/eval_m6/M6_S1_007_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_007_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.050764720886946,
+      "path": "output/eval_m6/M6_S1_007_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_007_s2",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.06322368606925,
+      "path": "output/eval_m6/M6_S1_007_s2__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_007_s3",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.0760699063539505,
+      "path": "output/eval_m6/M6_S1_007_s3__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_007_s4",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.047849096357822,
+      "path": "output/eval_m6/M6_S1_007_s4__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_008_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.050373036414385,
+      "path": "output/eval_m6/M6_S1_008_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_008_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.114667668938637,
+      "path": "output/eval_m6/M6_S1_008_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_008_s2",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.050691168755293,
+      "path": "output/eval_m6/M6_S1_008_s2__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_008_s3",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.048253696411848,
+      "path": "output/eval_m6/M6_S1_008_s3__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_008_s4",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.040747184306383,
+      "path": "output/eval_m6/M6_S1_008_s4__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_009_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.04095908626914,
+      "path": "output/eval_m6/M6_S1_009_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_009_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.046286083757877,
+      "path": "output/eval_m6/M6_S1_009_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_009_s2",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.049375418573618,
+      "path": "output/eval_m6/M6_S1_009_s2__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_009_s3",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.156212639063597,
+      "path": "output/eval_m6/M6_S1_009_s3__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_009_s4",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.045191939920187,
+      "path": "output/eval_m6/M6_S1_009_s4__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_010_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.046000685542822,
+      "path": "output/eval_m6/M6_S1_010_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_010_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.07372285425663,
+      "path": "output/eval_m6/M6_S1_010_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_010_s2",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.060406997799873,
+      "path": "output/eval_m6/M6_S1_010_s2__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_010_s3",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.188455820083618,
+      "path": "output/eval_m6/M6_S1_010_s3__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_010_s4",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.103430334478617,
+      "path": "output/eval_m6/M6_S1_010_s4__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_011_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.064909063279629,
+      "path": "output/eval_m6/M6_S1_011_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_011_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.06478401273489,
+      "path": "output/eval_m6/M6_S1_011_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_011_s2",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.077699486166239,
+      "path": "output/eval_m6/M6_S1_011_s2__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_011_s3",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.0521127581596375,
+      "path": "output/eval_m6/M6_S1_011_s3__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_011_s4",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.05799900367856,
+      "path": "output/eval_m6/M6_S1_011_s4__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_012_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.189599856734276,
+      "path": "output/eval_m6/M6_S1_012_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_012_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.117690451443195,
+      "path": "output/eval_m6/M6_S1_012_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_012_s2",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.261394362896681,
+      "path": "output/eval_m6/M6_S1_012_s2__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_012_s3",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.069862607866526,
+      "path": "output/eval_m6/M6_S1_012_s3__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_012_s4",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.043972857296467,
+      "path": "output/eval_m6/M6_S1_012_s4__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_013_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.042439617216587,
+      "path": "output/eval_m6/M6_S1_013_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_013_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.042418744415045,
+      "path": "output/eval_m6/M6_S1_013_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_013_s2",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.036295358091593,
+      "path": "output/eval_m6/M6_S1_013_s2__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_013_s3",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.21528897061944,
+      "path": "output/eval_m6/M6_S1_013_s3__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_013_s4",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.037697985768318,
+      "path": "output/eval_m6/M6_S1_013_s4__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_014_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.048378814011812,
+      "path": "output/eval_m6/M6_S1_014_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_014_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.0429425202310085,
+      "path": "output/eval_m6/M6_S1_014_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_014_s2",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.120714154094458,
+      "path": "output/eval_m6/M6_S1_014_s2__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_014_s3",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.098418306559324,
+      "path": "output/eval_m6/M6_S1_014_s3__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_014_s4",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.125808961689472,
+      "path": "output/eval_m6/M6_S1_014_s4__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_015_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.06694557890296,
+      "path": "output/eval_m6/M6_S1_015_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_015_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.043171625584364,
+      "path": "output/eval_m6/M6_S1_015_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_015_s2",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.076074916869402,
+      "path": "output/eval_m6/M6_S1_015_s2__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_015_s3",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.083640616387129,
+      "path": "output/eval_m6/M6_S1_015_s3__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_015_s4",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 13.300576478242874,
+      "path": "output/eval_m6/M6_S1_015_s4__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_016_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.486073259264231,
+      "path": "output/eval_m6/M6_S1_016_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_016_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.176871508359909,
+      "path": "output/eval_m6/M6_S1_016_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_016_s2",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.041809752583504,
+      "path": "output/eval_m6/M6_S1_016_s2__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_016_s3",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.036599434912205,
+      "path": "output/eval_m6/M6_S1_016_s3__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_016_s4",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.039409250020981,
+      "path": "output/eval_m6/M6_S1_016_s4__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_017_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.078160222619772,
+      "path": "output/eval_m6/M6_S1_017_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_017_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.052135080099106,
+      "path": "output/eval_m6/M6_S1_017_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_017_s2",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.119038704782724,
+      "path": "output/eval_m6/M6_S1_017_s2__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_017_s3",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 11.005911760032177,
+      "path": "output/eval_m6/M6_S1_017_s3__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_017_s4",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.1284053437411785,
+      "path": "output/eval_m6/M6_S1_017_s4__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_018_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.045849230140448,
+      "path": "output/eval_m6/M6_S1_018_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_018_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.053286209702492,
+      "path": "output/eval_m6/M6_S1_018_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_018_s2",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.24707068502903,
+      "path": "output/eval_m6/M6_S1_018_s2__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_018_s3",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.036807656288147,
+      "path": "output/eval_m6/M6_S1_018_s3__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_018_s4",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.050043914467096,
+      "path": "output/eval_m6/M6_S1_018_s4__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_019_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.0373033210635185,
+      "path": "output/eval_m6/M6_S1_019_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_019_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.207266617566347,
+      "path": "output/eval_m6/M6_S1_019_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_019_s2",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.0880628898739815,
+      "path": "output/eval_m6/M6_S1_019_s2__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_019_s3",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.0856862142682076,
+      "path": "output/eval_m6/M6_S1_019_s3__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_019_s4",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.084092754870653,
+      "path": "output/eval_m6/M6_S1_019_s4__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_020_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.066860731691122,
+      "path": "output/eval_m6/M6_S1_020_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_020_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.041686967015266,
+      "path": "output/eval_m6/M6_S1_020_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_020_s2",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.06953839212656,
+      "path": "output/eval_m6/M6_S1_020_s2__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_020_s3",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.046214945614338,
+      "path": "output/eval_m6/M6_S1_020_s3__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_020_s4",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.091871909797192,
+      "path": "output/eval_m6/M6_S1_020_s4__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_021_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.04282134026289,
+      "path": "output/eval_m6/M6_S1_021_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_021_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.044839531183243,
+      "path": "output/eval_m6/M6_S1_021_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_021_s2",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.050694283097982,
+      "path": "output/eval_m6/M6_S1_021_s2__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_021_s3",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.038927670568228,
+      "path": "output/eval_m6/M6_S1_021_s3__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_021_s4",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.062305714935064,
+      "path": "output/eval_m6/M6_S1_021_s4__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_022_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.088398650288582,
+      "path": "output/eval_m6/M6_S1_022_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_022_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.465740405023098,
+      "path": "output/eval_m6/M6_S1_022_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_022_s2",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.174009270966053,
+      "path": "output/eval_m6/M6_S1_022_s2__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_022_s3",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.0494817905128,
+      "path": "output/eval_m6/M6_S1_022_s3__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_022_s4",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.043606378138065,
+      "path": "output/eval_m6/M6_S1_022_s4__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_023_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.196913857012987,
+      "path": "output/eval_m6/M6_S1_023_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_023_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.202793471515179,
+      "path": "output/eval_m6/M6_S1_023_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_023_s2",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.060765128582716,
+      "path": "output/eval_m6/M6_S1_023_s2__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_023_s3",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.061646554619074,
+      "path": "output/eval_m6/M6_S1_023_s3__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_023_s4",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.158783607184887,
+      "path": "output/eval_m6/M6_S1_023_s4__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_024_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.094025038182735,
+      "path": "output/eval_m6/M6_S1_024_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_024_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.043085105717182,
+      "path": "output/eval_m6/M6_S1_024_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_024_s2",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.076787121593952,
+      "path": "output/eval_m6/M6_S1_024_s2__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_024_s3",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.062148828059435,
+      "path": "output/eval_m6/M6_S1_024_s3__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_024_s4",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.085476167500019,
+      "path": "output/eval_m6/M6_S1_024_s4__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_025_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.074710845947266,
+      "path": "output/eval_m6/M6_S1_025_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_025_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.0586275942623615,
+      "path": "output/eval_m6/M6_S1_025_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_025_s2",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.050633497536182,
+      "path": "output/eval_m6/M6_S1_025_s2__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_025_s3",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.114289306104183,
+      "path": "output/eval_m6/M6_S1_025_s3__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_025_s4",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.224144861102104,
+      "path": "output/eval_m6/M6_S1_025_s4__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_026_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.194154590368271,
+      "path": "output/eval_m6/M6_S1_026_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_026_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.13493337482214,
+      "path": "output/eval_m6/M6_S1_026_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_026_s2",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.113965079188347,
+      "path": "output/eval_m6/M6_S1_026_s2__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_026_s3",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.062058143317699,
+      "path": "output/eval_m6/M6_S1_026_s3__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_026_s4",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 6.340398125350475,
+      "path": "output/eval_m6/M6_S1_026_s4__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_027_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.0764048136770725,
+      "path": "output/eval_m6/M6_S1_027_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_027_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.038888372480869,
+      "path": "output/eval_m6/M6_S1_027_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_027_s2",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.074921824038029,
+      "path": "output/eval_m6/M6_S1_027_s2__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_027_s3",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.112618118524551,
+      "path": "output/eval_m6/M6_S1_027_s3__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_027_s4",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.0611653961241245,
+      "path": "output/eval_m6/M6_S1_027_s4__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_028_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.184787526726723,
+      "path": "output/eval_m6/M6_S1_028_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_028_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.364581502974033,
+      "path": "output/eval_m6/M6_S1_028_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_028_s2",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.067496530711651,
+      "path": "output/eval_m6/M6_S1_028_s2__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_028_s3",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.05493339151144,
+      "path": "output/eval_m6/M6_S1_028_s3__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_028_s4",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.0450247675180435,
+      "path": "output/eval_m6/M6_S1_028_s4__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_029_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.061794552952051,
+      "path": "output/eval_m6/M6_S1_029_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_029_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.047741875052452,
+      "path": "output/eval_m6/M6_S1_029_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_029_s2",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.068029556423426,
+      "path": "output/eval_m6/M6_S1_029_s2__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_029_s3",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.048472788184881,
+      "path": "output/eval_m6/M6_S1_029_s3__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_029_s4",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.131969004869461,
+      "path": "output/eval_m6/M6_S1_029_s4__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_030_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.156640488654375,
+      "path": "output/eval_m6/M6_S1_030_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_030_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.063800808042288,
+      "path": "output/eval_m6/M6_S1_030_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_030_s2",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.052548322826624,
+      "path": "output/eval_m6/M6_S1_030_s2__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_030_s3",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.041912212967873,
+      "path": "output/eval_m6/M6_S1_030_s3__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_030_s4",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.084991201758385,
+      "path": "output/eval_m6/M6_S1_030_s4__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_031_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.0395710952579975,
+      "path": "output/eval_m6/M6_S1_031_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_031_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.0439805537462234,
+      "path": "output/eval_m6/M6_S1_031_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_031_s2",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.038026750087738,
+      "path": "output/eval_m6/M6_S1_031_s2__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_031_s3",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.04113432392478,
+      "path": "output/eval_m6/M6_S1_031_s3__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_031_s4",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.047697264701128,
+      "path": "output/eval_m6/M6_S1_031_s4__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_032_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.051633283495903,
+      "path": "output/eval_m6/M6_S1_032_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_032_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.042955208569765,
+      "path": "output/eval_m6/M6_S1_032_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_032_s2",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.04698021709919,
+      "path": "output/eval_m6/M6_S1_032_s2__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_032_s3",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.039922840893269,
+      "path": "output/eval_m6/M6_S1_032_s3__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_032_s4",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.079042248427868,
+      "path": "output/eval_m6/M6_S1_032_s4__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_033_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.070164658129215,
+      "path": "output/eval_m6/M6_S1_033_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_033_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.094492629170418,
+      "path": "output/eval_m6/M6_S1_033_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_033_s2",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 9.791903048753738,
+      "path": "output/eval_m6/M6_S1_033_s2__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_033_s3",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 6.315353453159332,
+      "path": "output/eval_m6/M6_S1_033_s3__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_033_s4",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.1603552512824535,
+      "path": "output/eval_m6/M6_S1_033_s4__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_034_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.118065647780895,
+      "path": "output/eval_m6/M6_S1_034_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_034_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.168915290385485,
+      "path": "output/eval_m6/M6_S1_034_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_034_s2",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.03774106875062,
+      "path": "output/eval_m6/M6_S1_034_s2__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_034_s3",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.110463351011276,
+      "path": "output/eval_m6/M6_S1_034_s3__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_034_s4",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.210387326776981,
+      "path": "output/eval_m6/M6_S1_034_s4__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_035_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.716786991804838,
+      "path": "output/eval_m6/M6_S1_035_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_035_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 8.804237138479948,
+      "path": "output/eval_m6/M6_S1_035_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_035_s2",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.203785575926304,
+      "path": "output/eval_m6/M6_S1_035_s2__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_035_s3",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 6.467810895293951,
+      "path": "output/eval_m6/M6_S1_035_s3__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_035_s4",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.265057597309351,
+      "path": "output/eval_m6/M6_S1_035_s4__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_036_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.066849902272224,
+      "path": "output/eval_m6/M6_S1_036_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_036_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.0760905630886555,
+      "path": "output/eval_m6/M6_S1_036_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_036_s2",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.123552080243826,
+      "path": "output/eval_m6/M6_S1_036_s2__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_036_s3",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.048739466816187,
+      "path": "output/eval_m6/M6_S1_036_s3__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_036_s4",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.043049596250057,
+      "path": "output/eval_m6/M6_S1_036_s4__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_037_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.053991265594959,
+      "path": "output/eval_m6/M6_S1_037_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_037_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.076631907373667,
+      "path": "output/eval_m6/M6_S1_037_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_037_s2",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.071112938225269,
+      "path": "output/eval_m6/M6_S1_037_s2__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_037_s3",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.060677621513605,
+      "path": "output/eval_m6/M6_S1_037_s3__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_037_s4",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.059743441641331,
+      "path": "output/eval_m6/M6_S1_037_s4__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_038_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.069293137639761,
+      "path": "output/eval_m6/M6_S1_038_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_038_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.927956011146307,
+      "path": "output/eval_m6/M6_S1_038_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_038_s2",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.451216995716095,
+      "path": "output/eval_m6/M6_S1_038_s2__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_038_s3",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.086582168936729,
+      "path": "output/eval_m6/M6_S1_038_s3__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_038_s4",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.04400571808219,
+      "path": "output/eval_m6/M6_S1_038_s4__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_039_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.1335268802940845,
+      "path": "output/eval_m6/M6_S1_039_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_039_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.035659603774548,
+      "path": "output/eval_m6/M6_S1_039_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_039_s2",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.034621082246304,
+      "path": "output/eval_m6/M6_S1_039_s2__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_039_s3",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.04109064117074,
+      "path": "output/eval_m6/M6_S1_039_s3__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_039_s4",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.108612842857838,
+      "path": "output/eval_m6/M6_S1_039_s4__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_040_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.055475030094385,
+      "path": "output/eval_m6/M6_S1_040_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_040_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.040039658546448,
+      "path": "output/eval_m6/M6_S1_040_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_040_s2",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.0417396910488605,
+      "path": "output/eval_m6/M6_S1_040_s2__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_040_s3",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.0453036949038506,
+      "path": "output/eval_m6/M6_S1_040_s3__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_040_s4",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.062719013541937,
+      "path": "output/eval_m6/M6_S1_040_s4__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_041_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.04335855320096,
+      "path": "output/eval_m6/M6_S1_041_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_041_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.046830207109451,
+      "path": "output/eval_m6/M6_S1_041_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_041_s2",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.068852938711643,
+      "path": "output/eval_m6/M6_S1_041_s2__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_041_s3",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.069383125752211,
+      "path": "output/eval_m6/M6_S1_041_s3__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_041_s4",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.067850276827812,
+      "path": "output/eval_m6/M6_S1_041_s4__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_042_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.086584091186523,
+      "path": "output/eval_m6/M6_S1_042_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_042_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.065743401646614,
+      "path": "output/eval_m6/M6_S1_042_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_042_s2",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.044358588755131,
+      "path": "output/eval_m6/M6_S1_042_s2__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_042_s3",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.043831795454025,
+      "path": "output/eval_m6/M6_S1_042_s3__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_042_s4",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.085766300559044,
+      "path": "output/eval_m6/M6_S1_042_s4__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_043_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.04348061978817,
+      "path": "output/eval_m6/M6_S1_043_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_043_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.097596473991871,
+      "path": "output/eval_m6/M6_S1_043_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_043_s2",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.069661069661379,
+      "path": "output/eval_m6/M6_S1_043_s2__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_043_s3",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.053078517317772,
+      "path": "output/eval_m6/M6_S1_043_s3__m6_full.png"
+    },
+    {
+      "task_id": "M6_S1_043_s4",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 5.054952088743448,
+      "path": "output/eval_m6/M6_S1_043_s4__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_00c0_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.572273027151823,
+      "path": "output/eval_m6/M6_S3_00c0_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_00c0_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.566570296883583,
+      "path": "output/eval_m6/M6_S3_00c0_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_00c1_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.549058809876442,
+      "path": "output/eval_m6/M6_S3_00c1_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_00c1_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.648844551295042,
+      "path": "output/eval_m6/M6_S3_00c1_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_00c2_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 4.824138693511486,
+      "path": "output/eval_m6/M6_S3_00c2_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_00c2_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.617927361279726,
+      "path": "output/eval_m6/M6_S3_00c2_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_00c3_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.5725511498749256,
+      "path": "output/eval_m6/M6_S3_00c3_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_00c3_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.62585062161088,
+      "path": "output/eval_m6/M6_S3_00c3_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_00c4_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.660520676523447,
+      "path": "output/eval_m6/M6_S3_00c4_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_00c4_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 4.584032375365496,
+      "path": "output/eval_m6/M6_S3_00c4_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_01c0_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.591856002807617,
+      "path": "output/eval_m6/M6_S3_01c0_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_01c0_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.6898030191659927,
+      "path": "output/eval_m6/M6_S3_01c0_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_01c1_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.5747728012502193,
+      "path": "output/eval_m6/M6_S3_01c1_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_01c1_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.5941554345190525,
+      "path": "output/eval_m6/M6_S3_01c1_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_01c2_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.610946036875248,
+      "path": "output/eval_m6/M6_S3_01c2_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_01c2_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.823141448199749,
+      "path": "output/eval_m6/M6_S3_01c2_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_01c3_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.601181957870722,
+      "path": "output/eval_m6/M6_S3_01c3_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_01c3_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.5708942227065563,
+      "path": "output/eval_m6/M6_S3_01c3_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_01c4_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.613683070987463,
+      "path": "output/eval_m6/M6_S3_01c4_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_01c4_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.5902272015810013,
+      "path": "output/eval_m6/M6_S3_01c4_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_02c0_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.548287384212017,
+      "path": "output/eval_m6/M6_S3_02c0_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_02c0_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.623084958642721,
+      "path": "output/eval_m6/M6_S3_02c0_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_02c1_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.6008224487304688,
+      "path": "output/eval_m6/M6_S3_02c1_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_02c1_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.5842980332672596,
+      "path": "output/eval_m6/M6_S3_02c1_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_02c2_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.6295668743550777,
+      "path": "output/eval_m6/M6_S3_02c2_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_02c2_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.5743378251791,
+      "path": "output/eval_m6/M6_S3_02c2_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_02c3_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.753344625234604,
+      "path": "output/eval_m6/M6_S3_02c3_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_02c3_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.677592918276787,
+      "path": "output/eval_m6/M6_S3_02c3_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_02c4_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.546467464417219,
+      "path": "output/eval_m6/M6_S3_02c4_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_02c4_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.5448085889220238,
+      "path": "output/eval_m6/M6_S3_02c4_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_03c0_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.5498867370188236,
+      "path": "output/eval_m6/M6_S3_03c0_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_03c0_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.722717482596636,
+      "path": "output/eval_m6/M6_S3_03c0_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_03c1_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.565916806459427,
+      "path": "output/eval_m6/M6_S3_03c1_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_03c1_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.589363645762205,
+      "path": "output/eval_m6/M6_S3_03c1_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_03c2_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.5709005147218704,
+      "path": "output/eval_m6/M6_S3_03c2_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_03c2_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.6535088010132313,
+      "path": "output/eval_m6/M6_S3_03c2_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_03c3_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.701377633959055,
+      "path": "output/eval_m6/M6_S3_03c3_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_03c3_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.7240289226174355,
+      "path": "output/eval_m6/M6_S3_03c3_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_03c4_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.707183577120304,
+      "path": "output/eval_m6/M6_S3_03c4_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_03c4_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.627959929406643,
+      "path": "output/eval_m6/M6_S3_03c4_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_04c0_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 4.049532946199179,
+      "path": "output/eval_m6/M6_S3_04c0_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_04c0_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.975225880742073,
+      "path": "output/eval_m6/M6_S3_04c0_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_04c1_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 4.550090804696083,
+      "path": "output/eval_m6/M6_S3_04c1_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_04c1_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.5566261895000935,
+      "path": "output/eval_m6/M6_S3_04c1_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_04c2_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.6390087492763996,
+      "path": "output/eval_m6/M6_S3_04c2_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_04c2_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.7241220735013485,
+      "path": "output/eval_m6/M6_S3_04c2_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_04c3_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.9577394649386406,
+      "path": "output/eval_m6/M6_S3_04c3_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_04c3_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.6180782467126846,
+      "path": "output/eval_m6/M6_S3_04c3_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_04c4_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.6360163167119026,
+      "path": "output/eval_m6/M6_S3_04c4_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_04c4_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.5620680302381516,
+      "path": "output/eval_m6/M6_S3_04c4_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_05c0_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.6170157492160797,
+      "path": "output/eval_m6/M6_S3_05c0_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_05c0_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.846677679568529,
+      "path": "output/eval_m6/M6_S3_05c0_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_05c1_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.6443581096827984,
+      "path": "output/eval_m6/M6_S3_05c1_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_05c1_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 4.103560034185648,
+      "path": "output/eval_m6/M6_S3_05c1_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_05c2_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.6406273916363716,
+      "path": "output/eval_m6/M6_S3_05c2_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_05c2_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.8772255666553974,
+      "path": "output/eval_m6/M6_S3_05c2_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_05c3_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.553249329328537,
+      "path": "output/eval_m6/M6_S3_05c3_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_05c3_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.550089232623577,
+      "path": "output/eval_m6/M6_S3_05c3_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_05c4_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.5892345495522022,
+      "path": "output/eval_m6/M6_S3_05c4_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_05c4_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.64252158254385,
+      "path": "output/eval_m6/M6_S3_05c4_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_06c0_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.553603023290634,
+      "path": "output/eval_m6/M6_S3_06c0_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_06c0_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.5878405161201954,
+      "path": "output/eval_m6/M6_S3_06c0_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_06c1_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.6399609744548798,
+      "path": "output/eval_m6/M6_S3_06c1_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_06c1_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.8982581794261932,
+      "path": "output/eval_m6/M6_S3_06c1_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_06c2_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.547397304326296,
+      "path": "output/eval_m6/M6_S3_06c2_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_06c2_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.5517285503447056,
+      "path": "output/eval_m6/M6_S3_06c2_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_06c3_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.5525842048227787,
+      "path": "output/eval_m6/M6_S3_06c3_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_06c3_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.5494721308350563,
+      "path": "output/eval_m6/M6_S3_06c3_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_06c4_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.545859031379223,
+      "path": "output/eval_m6/M6_S3_06c4_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_06c4_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.543520849198103,
+      "path": "output/eval_m6/M6_S3_06c4_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_07c0_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.5417707972228527,
+      "path": "output/eval_m6/M6_S3_07c0_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_07c0_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.5690402016043663,
+      "path": "output/eval_m6/M6_S3_07c0_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_07c1_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.5420780330896378,
+      "path": "output/eval_m6/M6_S3_07c1_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_07c1_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.552398420870304,
+      "path": "output/eval_m6/M6_S3_07c1_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_07c2_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.5510058775544167,
+      "path": "output/eval_m6/M6_S3_07c2_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_07c2_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.5589201413094997,
+      "path": "output/eval_m6/M6_S3_07c2_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_07c3_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.6520663015544415,
+      "path": "output/eval_m6/M6_S3_07c3_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_07c3_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.68219480663538,
+      "path": "output/eval_m6/M6_S3_07c3_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_07c4_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.5845061130821705,
+      "path": "output/eval_m6/M6_S3_07c4_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_07c4_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.62285503000021,
+      "path": "output/eval_m6/M6_S3_07c4_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_08c0_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.600813377648592,
+      "path": "output/eval_m6/M6_S3_08c0_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_08c0_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.5688889361917973,
+      "path": "output/eval_m6/M6_S3_08c0_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_08c1_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.595367845147848,
+      "path": "output/eval_m6/M6_S3_08c1_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_08c1_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.6025061309337616,
+      "path": "output/eval_m6/M6_S3_08c1_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_08c2_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.5621432326734066,
+      "path": "output/eval_m6/M6_S3_08c2_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_08c2_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.61020964384079,
+      "path": "output/eval_m6/M6_S3_08c2_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_08c3_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.973443690687418,
+      "path": "output/eval_m6/M6_S3_08c3_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_08c3_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.7161818891763687,
+      "path": "output/eval_m6/M6_S3_08c3_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_08c4_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.6661147363483906,
+      "path": "output/eval_m6/M6_S3_08c4_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_08c4_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.8135275319218636,
+      "path": "output/eval_m6/M6_S3_08c4_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_09c0_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.790577095001936,
+      "path": "output/eval_m6/M6_S3_09c0_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_09c0_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.7397781796753407,
+      "path": "output/eval_m6/M6_S3_09c0_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_09c1_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.7893591038882732,
+      "path": "output/eval_m6/M6_S3_09c1_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_09c1_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.8219130970537663,
+      "path": "output/eval_m6/M6_S3_09c1_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_09c2_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.868307191878557,
+      "path": "output/eval_m6/M6_S3_09c2_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_09c2_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.8048239834606647,
+      "path": "output/eval_m6/M6_S3_09c2_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_09c3_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.6727124452590942,
+      "path": "output/eval_m6/M6_S3_09c3_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_09c3_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.5500398427248,
+      "path": "output/eval_m6/M6_S3_09c3_s1__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_09c4_s0",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.5460637025535107,
+      "path": "output/eval_m6/M6_S3_09c4_s0__m6_full.png"
+    },
+    {
+      "task_id": "M6_S3_09c4_s1",
+      "variant": "m6_full",
+      "status": "ok",
+      "denoise_s": 3.5403312481939793,
+      "path": "output/eval_m6/M6_S3_09c4_s1__m6_full.png"
+    }
+  ],
+  "fails": []
+}

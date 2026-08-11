@@ -1,0 +1,1760 @@
+{
+  "meta": {
+    "batch_id": "m6",
+    "blind_seed": "m6-iso-v1",
+    "pairs": "output/eval_m6/pairs_m6.json",
+    "n_marks": 350
+  },
+  "marks": {
+    "m6::main::M6_S3_02c2_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:12:04"
+    },
+    "m6::main::M6_S1_037_s1": {
+      "choice": "L",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:12:31"
+    },
+    "m6::main::M6_S1_024_s2": {
+      "choice": "R",
+      "winner": "m6_iso",
+      "ts": "2026-08-11 13:12:38"
+    },
+    "m6::main::M6_S1_028_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:12:58"
+    },
+    "m6::main::M6_S1_010_s0": {
+      "choice": "R",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:13:04"
+    },
+    "m6::main::M6_S1_022_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:13:09"
+    },
+    "m6::main::M6_S3_04c1_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:13:11"
+    },
+    "m6::main::M6_S3_00c1_s0": {
+      "choice": "L",
+      "winner": "m6_iso",
+      "ts": "2026-08-11 13:13:19"
+    },
+    "m6::main::M6_S1_004_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:13:25"
+    },
+    "m6::rf::M6_S1_005_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:14:27"
+    },
+    "m6::main::M6_S1_026_s4": {
+      "choice": "L",
+      "winner": "m6_iso",
+      "ts": "2026-08-11 13:14:43"
+    },
+    "m6::main::M6_S3_02c3_s0": {
+      "choice": "R",
+      "winner": "m6_iso",
+      "ts": "2026-08-11 13:14:54"
+    },
+    "m6::main::M6_S3_06c0_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:14:56"
+    },
+    "m6::main::M6_S3_08c1_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:14:57"
+    },
+    "m6::main::M6_S3_08c1_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:14:59"
+    },
+    "m6::main::M6_S3_00c0_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:15:00"
+    },
+    "m6::main::M6_S1_040_s1": {
+      "choice": "R",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:15:07"
+    },
+    "m6::main::M6_S1_023_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:15:10"
+    },
+    "m6::main::M6_S1_027_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:15:12"
+    },
+    "m6::main::M6_S3_05c1_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:15:22"
+    },
+    "m6::main::M6_S1_001_s1": {
+      "choice": "L",
+      "winner": "m6_iso",
+      "ts": "2026-08-11 13:15:33"
+    },
+    "m6::main::M6_S1_014_s4": {
+      "choice": "R",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:15:41"
+    },
+    "m6::main::M6_S1_037_s2": {
+      "choice": "L",
+      "winner": "m6_iso",
+      "ts": "2026-08-11 13:15:50"
+    },
+    "m6::main::M6_S1_011_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:15:54"
+    },
+    "m6::main::M6_S1_038_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:15:55"
+    },
+    "m6::main::M6_S3_03c0_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:15:57"
+    },
+    "m6::main::M6_S1_013_s0": {
+      "choice": "R",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:16:59"
+    },
+    "m6::main::M6_S1_000_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:17:04"
+    },
+    "m6::main::M6_S1_034_s0": {
+      "choice": "L",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:17:14"
+    },
+    "m6::main::M6_S1_003_s0": {
+      "choice": "L",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:17:17"
+    },
+    "m6::rf::M6_S1_016_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:17:19"
+    },
+    "m6::rf::M6_S3_07c3_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:17:20"
+    },
+    "m6::main::M6_S1_017_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:17:24"
+    },
+    "m6::main::M6_S1_007_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:17:27"
+    },
+    "m6::rf::M6_S3_09c3_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:17:29"
+    },
+    "m6::main::M6_S3_03c1_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:17:30"
+    },
+    "m6::rf::M6_S1_013_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:17:33"
+    },
+    "m6::main::M6_S1_002_s0": {
+      "choice": "L",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:17:43"
+    },
+    "m6::main::M6_S1_043_s2": {
+      "choice": "L",
+      "winner": "m6_iso",
+      "ts": "2026-08-11 13:17:50"
+    },
+    "m6::main::M6_S1_037_s4": {
+      "choice": "R",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:17:54"
+    },
+    "m6::main::M6_S1_042_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:18:03"
+    },
+    "m6::main::M6_S1_031_s3": {
+      "choice": "L",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:18:05"
+    },
+    "m6::rf::M6_S3_02c1_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:18:07"
+    },
+    "m6::main::M6_S1_042_s1": {
+      "choice": "L",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:18:22"
+    },
+    "m6::main::M6_S1_015_s0": {
+      "choice": "R",
+      "winner": "m6_iso",
+      "ts": "2026-08-11 13:18:30"
+    },
+    "m6::main::M6_S3_07c2_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:18:32"
+    },
+    "m6::main::M6_S1_015_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:18:39"
+    },
+    "m6::main::M6_S1_003_s1": {
+      "choice": "R",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:18:43"
+    },
+    "m6::main::M6_S1_018_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:18:56"
+    },
+    "m6::main::M6_S1_034_s1": {
+      "choice": "L",
+      "winner": "m6_iso",
+      "ts": "2026-08-11 13:19:01"
+    },
+    "m6::main::M6_S1_026_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:19:04"
+    },
+    "m6::main::M6_S1_019_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:19:07"
+    },
+    "m6::main::M6_S3_06c3_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:19:09"
+    },
+    "m6::main::M6_S1_005_s1": {
+      "choice": "L",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:19:14"
+    },
+    "m6::main::M6_S3_01c0_s1": {
+      "choice": "L",
+      "winner": "m6_iso",
+      "ts": "2026-08-11 13:19:21"
+    },
+    "m6::rf::M6_S1_011_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:19:23"
+    },
+    "m6::main::M6_S1_001_s4": {
+      "choice": "L",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:19:28"
+    },
+    "m6::main::M6_S1_040_s2": {
+      "choice": "R",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:19:31"
+    },
+    "m6::main::M6_S1_030_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:19:36"
+    },
+    "m6::main::M6_S1_033_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:19:41"
+    },
+    "m6::main::M6_S3_00c1_s1": {
+      "choice": "L",
+      "winner": "m6_iso",
+      "ts": "2026-08-11 13:19:52"
+    },
+    "m6::main::M6_S1_002_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:19:54"
+    },
+    "m6::main::M6_S3_07c1_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:19:57"
+    },
+    "m6::main::M6_S1_035_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:20:03"
+    },
+    "m6::main::M6_S1_025_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:20:09"
+    },
+    "m6::main::M6_S1_037_s3": {
+      "choice": "R",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:20:15"
+    },
+    "m6::main::M6_S1_005_s3": {
+      "choice": "L",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:20:17"
+    },
+    "m6::main::M6_S3_05c0_s1": {
+      "choice": "R",
+      "winner": "m6_iso",
+      "ts": "2026-08-11 13:20:20"
+    },
+    "m6::main::M6_S1_043_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:20:24"
+    },
+    "m6::main::M6_S3_09c4_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:20:27"
+    },
+    "m6::main::M6_S1_032_s4": {
+      "choice": "L",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:20:31"
+    },
+    "m6::main::M6_S1_004_s3": {
+      "choice": "R",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:20:35"
+    },
+    "m6::main::M6_S1_007_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:20:36"
+    },
+    "m6::main::M6_S1_029_s1": {
+      "choice": "R",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:20:39"
+    },
+    "m6::main::M6_S1_012_s2": {
+      "choice": "L",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:20:41"
+    },
+    "m6::main::M6_S3_02c1_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:20:42"
+    },
+    "m6::main::M6_S1_011_s2": {
+      "choice": "R",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:20:46"
+    },
+    "m6::main::M6_S1_030_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:20:49"
+    },
+    "m6::main::M6_S3_02c2_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:20:51"
+    },
+    "m6::main::M6_S1_008_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:20:54"
+    },
+    "m6::main::M6_S1_039_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:20:56"
+    },
+    "m6::rf::M6_S3_01c4_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:21:04"
+    },
+    "m6::main::M6_S1_039_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:21:07"
+    },
+    "m6::main::M6_S3_09c2_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:21:08"
+    },
+    "m6::main::M6_S1_031_s1": {
+      "choice": "L",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:21:14"
+    },
+    "m6::main::M6_S1_001_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:21:17"
+    },
+    "m6::main::M6_S1_030_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:21:19"
+    },
+    "m6::main::M6_S1_032_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:21:24"
+    },
+    "m6::main::M6_S1_007_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:21:27"
+    },
+    "m6::main::M6_S1_020_s0": {
+      "choice": "R",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:21:34"
+    },
+    "m6::main::M6_S1_036_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:21:36"
+    },
+    "m6::main::M6_S1_015_s2": {
+      "choice": "L",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:21:39"
+    },
+    "m6::rf::M6_S1_019_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:21:40"
+    },
+    "m6::main::M6_S1_029_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:21:43"
+    },
+    "m6::main::M6_S3_06c4_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:21:44"
+    },
+    "m6::main::M6_S1_006_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:21:46"
+    },
+    "m6::main::M6_S1_035_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:21:49"
+    },
+    "m6::main::M6_S1_030_s1": {
+      "choice": "L",
+      "winner": "m6_iso",
+      "ts": "2026-08-11 13:22:01"
+    },
+    "m6::main::M6_S1_041_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:22:04"
+    },
+    "m6::main::M6_S1_019_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:22:09"
+    },
+    "m6::main::M6_S1_020_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:22:11"
+    },
+    "m6::main::M6_S1_029_s4": {
+      "choice": "R",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:22:14"
+    },
+    "m6::main::M6_S1_027_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:22:17"
+    },
+    "m6::main::M6_S1_009_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:22:21"
+    },
+    "m6::rf::M6_S3_04c2_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:22:22"
+    },
+    "m6::main::M6_S1_002_s4": {
+      "choice": "R",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:22:25"
+    },
+    "m6::main::M6_S1_024_s1": {
+      "choice": "R",
+      "winner": "m6_iso",
+      "ts": "2026-08-11 13:22:30"
+    },
+    "m6::main::M6_S3_02c0_s0": {
+      "choice": "L",
+      "winner": "m6_iso",
+      "ts": "2026-08-11 13:22:33"
+    },
+    "m6::main::M6_S3_02c0_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:22:34"
+    },
+    "m6::main::M6_S1_033_s4": {
+      "choice": "L",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:22:37"
+    },
+    "m6::main::M6_S3_09c3_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:22:38"
+    },
+    "m6::main::M6_S3_05c0_s0": {
+      "choice": "L",
+      "winner": "m6_iso",
+      "ts": "2026-08-11 13:22:41"
+    },
+    "m6::main::M6_S3_09c1_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:22:45"
+    },
+    "m6::main::M6_S3_04c2_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:22:47"
+    },
+    "m6::main::M6_S1_037_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:22:49"
+    },
+    "m6::main::M6_S1_038_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:22:51"
+    },
+    "m6::main::M6_S1_036_s1": {
+      "choice": "R",
+      "winner": "m6_iso",
+      "ts": "2026-08-11 13:22:59"
+    },
+    "m6::main::M6_S1_021_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:23:03"
+    },
+    "m6::main::M6_S3_00c2_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:23:05"
+    },
+    "m6::rf::M6_S3_08c0_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:23:06"
+    },
+    "m6::main::M6_S1_011_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:23:09"
+    },
+    "m6::main::M6_S1_010_s3": {
+      "choice": "L",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:23:15"
+    },
+    "m6::main::M6_S3_05c4_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:23:17"
+    },
+    "m6::main::M6_S3_07c1_s1": {
+      "choice": "R",
+      "winner": "m6_iso",
+      "ts": "2026-08-11 13:23:21"
+    },
+    "m6::main::M6_S1_024_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:23:24"
+    },
+    "m6::main::M6_S1_014_s2": {
+      "choice": "L",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:23:28"
+    },
+    "m6::main::M6_S1_021_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:23:41"
+    },
+    "m6::main::M6_S1_027_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:23:44"
+    },
+    "m6::rf::M6_S3_03c4_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:23:45"
+    },
+    "m6::main::M6_S1_005_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:23:46"
+    },
+    "m6::main::M6_S1_041_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:23:51"
+    },
+    "m6::main::M6_S1_013_s4": {
+      "choice": "R",
+      "winner": "m6_iso",
+      "ts": "2026-08-11 13:23:54"
+    },
+    "m6::main::M6_S1_000_s2": {
+      "choice": "L",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:24:26"
+    },
+    "m6::rf::M6_S3_00c3_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:24:27"
+    },
+    "m6::main::M6_S1_019_s1": {
+      "choice": "R",
+      "winner": "m6_iso",
+      "ts": "2026-08-11 13:24:30"
+    },
+    "m6::main::M6_S1_012_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:24:34"
+    },
+    "m6::main::M6_S1_035_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:24:39"
+    },
+    "m6::main::M6_S1_010_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:24:40"
+    },
+    "m6::main::M6_S3_01c2_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:24:43"
+    },
+    "m6::main::M6_S3_06c1_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:24:44"
+    },
+    "m6::main::M6_S1_032_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:24:49"
+    },
+    "m6::main::M6_S1_031_s2": {
+      "choice": "R",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:24:59"
+    },
+    "m6::main::M6_S1_003_s3": {
+      "choice": "L",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:25:10"
+    },
+    "m6::main::M6_S1_026_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:26:01"
+    },
+    "m6::main::M6_S1_013_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:26:03"
+    },
+    "m6::main::M6_S1_022_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:26:15"
+    },
+    "m6::main::M6_S3_03c0_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:26:16"
+    },
+    "m6::rf::M6_S3_06c2_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:26:17"
+    },
+    "m6::main::M6_S1_043_s0": {
+      "choice": "R",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:26:20"
+    },
+    "m6::main::M6_S3_00c3_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:26:21"
+    },
+    "m6::main::M6_S1_003_s2": {
+      "choice": "L",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:26:22"
+    },
+    "m6::main::M6_S1_007_s0": {
+      "choice": "L",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:26:56"
+    },
+    "m6::main::M6_S3_07c2_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:26:57"
+    },
+    "m6::main::M6_S1_041_s4": {
+      "choice": "L",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:27:03"
+    },
+    "m6::main::M6_S1_034_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:27:09"
+    },
+    "m6::main::M6_S1_039_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:27:11"
+    },
+    "m6::main::M6_S3_08c2_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:27:12"
+    },
+    "m6::main::M6_S1_033_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:27:15"
+    },
+    "m6::main::M6_S1_023_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:27:19"
+    },
+    "m6::main::M6_S1_007_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:27:21"
+    },
+    "m6::main::M6_S1_002_s2": {
+      "choice": "L",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:27:51"
+    },
+    "m6::main::M6_S1_024_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:27:54"
+    },
+    "m6::main::M6_S3_01c0_s0": {
+      "choice": "R",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:27:56"
+    },
+    "m6::main::M6_S1_028_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:27:58"
+    },
+    "m6::main::M6_S3_08c0_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:28:17"
+    },
+    "m6::rf::M6_S1_040_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:28:19"
+    },
+    "m6::main::M6_S1_015_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:28:21"
+    },
+    "m6::main::M6_S1_018_s0": {
+      "choice": "R",
+      "winner": "m6_iso",
+      "ts": "2026-08-11 13:28:32"
+    },
+    "m6::rf::M6_S1_038_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:28:33"
+    },
+    "m6::main::M6_S1_022_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:28:35"
+    },
+    "m6::main::M6_S1_040_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:28:37"
+    },
+    "m6::main::M6_S1_018_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:28:41"
+    },
+    "m6::main::M6_S1_012_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:28:45"
+    },
+    "m6::main::M6_S1_013_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:28:46"
+    },
+    "m6::main::M6_S1_033_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:28:59"
+    },
+    "m6::main::M6_S1_006_s3": {
+      "choice": "L",
+      "winner": "m6_iso",
+      "ts": "2026-08-11 13:29:01"
+    },
+    "m6::main::M6_S3_08c4_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:29:04"
+    },
+    "m6::main::M6_S1_036_s3": {
+      "choice": "R",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:29:09"
+    },
+    "m6::main::M6_S3_03c2_s1": {
+      "choice": "R",
+      "winner": "m6_iso",
+      "ts": "2026-08-11 13:29:41"
+    },
+    "m6::main::M6_S1_020_s3": {
+      "choice": "R",
+      "winner": "m6_iso",
+      "ts": "2026-08-11 13:30:09"
+    },
+    "m6::main::M6_S3_08c3_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:30:11"
+    },
+    "m6::main::M6_S1_042_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:30:14"
+    },
+    "m6::main::M6_S1_017_s4": {
+      "choice": "R",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:30:20"
+    },
+    "m6::rf::M6_S1_010_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:30:22"
+    },
+    "m6::main::M6_S1_012_s3": {
+      "choice": "L",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:30:25"
+    },
+    "m6::main::M6_S3_03c4_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:30:26"
+    },
+    "m6::main::M6_S3_08c2_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:30:27"
+    },
+    "m6::main::M6_S1_009_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:30:29"
+    },
+    "m6::main::M6_S1_016_s1": {
+      "choice": "R",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:30:31"
+    },
+    "m6::main::M6_S1_014_s0": {
+      "choice": "R",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:30:34"
+    },
+    "m6::main::M6_S3_09c1_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:30:35"
+    },
+    "m6::main::M6_S1_017_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:30:37"
+    },
+    "m6::main::M6_S3_00c2_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:30:39"
+    },
+    "m6::main::M6_S3_00c4_s1": {
+      "choice": "L",
+      "winner": "m6_iso",
+      "ts": "2026-08-11 13:30:47"
+    },
+    "m6::rf::M6_S1_032_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:30:49"
+    },
+    "m6::rf::M6_S1_008_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:30:50"
+    },
+    "m6::main::M6_S3_05c2_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:30:52"
+    },
+    "m6::main::M6_S1_017_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:31:05"
+    },
+    "m6::main::M6_S1_023_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:31:07"
+    },
+    "m6::main::M6_S1_019_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:31:17"
+    },
+    "m6::main::M6_S1_041_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:31:19"
+    },
+    "m6::main::M6_S1_009_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:31:22"
+    },
+    "m6::main::M6_S1_010_s2": {
+      "choice": "R",
+      "winner": "m6_iso",
+      "ts": "2026-08-11 13:31:27"
+    },
+    "m6::main::M6_S1_021_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:31:31"
+    },
+    "m6::main::M6_S3_06c0_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:31:32"
+    },
+    "m6::main::M6_S1_042_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:31:34"
+    },
+    "m6::main::M6_S1_002_s3": {
+      "choice": "L",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:31:37"
+    },
+    "m6::main::M6_S3_05c2_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:31:47"
+    },
+    "m6::main::M6_S1_018_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:31:49"
+    },
+    "m6::rf::M6_S1_015_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:31:51"
+    },
+    "m6::main::M6_S1_035_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:31:54"
+    },
+    "m6::main::M6_S3_02c1_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:31:54"
+    },
+    "m6::main::M6_S3_06c3_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:31:55"
+    },
+    "m6::main::M6_S3_07c0_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:31:57"
+    },
+    "m6::main::M6_S1_008_s3": {
+      "choice": "L",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:31:59"
+    },
+    "m6::main::M6_S1_011_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:32:02"
+    },
+    "m6::main::M6_S3_01c1_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:32:03"
+    },
+    "m6::main::M6_S3_04c0_s1": {
+      "choice": "R",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:32:14"
+    },
+    "m6::main::M6_S1_033_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:32:22"
+    },
+    "m6::main::M6_S3_07c0_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:32:23"
+    },
+    "m6::main::M6_S3_01c2_s0": {
+      "choice": "L",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:32:31"
+    },
+    "m6::main::M6_S1_013_s2": {
+      "choice": "R",
+      "winner": "m6_iso",
+      "ts": "2026-08-11 13:32:40"
+    },
+    "m6::main::M6_S3_02c4_s0": {
+      "choice": "L",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:32:49"
+    },
+    "m6::main::M6_S3_04c0_s0": {
+      "choice": "L",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:32:51"
+    },
+    "m6::main::M6_S1_023_s2": {
+      "choice": "R",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:32:53"
+    },
+    "m6::main::M6_S1_036_s2": {
+      "choice": "L",
+      "winner": "m6_iso",
+      "ts": "2026-08-11 13:32:55"
+    },
+    "m6::main::M6_S1_000_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:32:58"
+    },
+    "m6::main::M6_S1_039_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:33:01"
+    },
+    "m6::main::M6_S1_005_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:33:10"
+    },
+    "m6::main::M6_S1_029_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:33:13"
+    },
+    "m6::rf::M6_S1_037_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:33:15"
+    },
+    "m6::main::M6_S3_04c4_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:33:16"
+    },
+    "m6::main::M6_S3_04c1_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:33:20"
+    },
+    "m6::main::M6_S1_025_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:33:30"
+    },
+    "m6::main::M6_S1_017_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:33:33"
+    },
+    "m6::main::M6_S1_019_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:33:34"
+    },
+    "m6::main::M6_S3_03c2_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:33:35"
+    },
+    "m6::main::M6_S3_00c4_s0": {
+      "choice": "R",
+      "winner": "m6_iso",
+      "ts": "2026-08-11 13:33:41"
+    },
+    "m6::main::M6_S1_004_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:33:43"
+    },
+    "m6::main::M6_S1_022_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:33:44"
+    },
+    "m6::main::M6_S3_01c3_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:33:45"
+    },
+    "m6::main::M6_S1_027_s4": {
+      "choice": "L",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:33:47"
+    },
+    "m6::main::M6_S3_03c1_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:33:48"
+    },
+    "m6::main::M6_S1_034_s4": {
+      "choice": "R",
+      "winner": "m6_iso",
+      "ts": "2026-08-11 13:33:50"
+    },
+    "m6::main::M6_S3_08c3_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:33:51"
+    },
+    "m6::main::M6_S1_008_s2": {
+      "choice": "R",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:34:01"
+    },
+    "m6::main::M6_S1_003_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:34:04"
+    },
+    "m6::main::M6_S1_025_s1": {
+      "choice": "L",
+      "winner": "m6_iso",
+      "ts": "2026-08-11 13:34:10"
+    },
+    "m6::main::M6_S1_000_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:34:24"
+    },
+    "m6::main::M6_S3_04c2_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:34:25"
+    },
+    "m6::rf::M6_S1_017_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:34:26"
+    },
+    "m6::main::M6_S1_009_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:34:38"
+    },
+    "m6::main::M6_S3_05c3_s1": {
+      "choice": "L",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:34:43"
+    },
+    "m6::main::M6_S1_040_s4": {
+      "choice": "R",
+      "winner": "m6_iso",
+      "ts": "2026-08-11 13:34:46"
+    },
+    "m6::main::M6_S3_08c4_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:34:47"
+    },
+    "m6::main::M6_S3_06c2_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:34:48"
+    },
+    "m6::main::M6_S3_08c0_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:34:50"
+    },
+    "m6::main::M6_S1_021_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:34:52"
+    },
+    "m6::main::M6_S1_042_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:35:07"
+    },
+    "m6::main::M6_S3_01c4_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:35:08"
+    },
+    "m6::main::M6_S1_004_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:35:10"
+    },
+    "m6::rf::M6_S3_05c1_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:35:12"
+    },
+    "m6::main::M6_S1_025_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:35:13"
+    },
+    "m6::main::M6_S3_09c2_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:35:14"
+    },
+    "m6::main::M6_S1_015_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:35:17"
+    },
+    "m6::rf::M6_S1_033_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:35:19"
+    },
+    "m6::main::M6_S1_006_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:35:20"
+    },
+    "m6::main::M6_S3_06c4_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:35:21"
+    },
+    "m6::main::M6_S1_026_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:35:23"
+    },
+    "m6::main::M6_S3_07c4_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:35:24"
+    },
+    "m6::rf::M6_S1_004_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:35:26"
+    },
+    "m6::main::M6_S1_024_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:35:33"
+    },
+    "m6::main::M6_S3_05c4_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:35:34"
+    },
+    "m6::main::M6_S3_02c4_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:35:35"
+    },
+    "m6::main::M6_S3_00c0_s1": {
+      "choice": "R",
+      "winner": "m6_iso",
+      "ts": "2026-08-11 13:35:38"
+    },
+    "m6::rf::M6_S1_018_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:35:40"
+    },
+    "m6::main::M6_S1_016_s0": {
+      "choice": "L",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:35:44"
+    },
+    "m6::main::M6_S1_014_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:35:45"
+    },
+    "m6::main::M6_S1_016_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:35:47"
+    },
+    "m6::main::M6_S3_00c3_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:35:48"
+    },
+    "m6::main::M6_S3_04c4_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:35:49"
+    },
+    "m6::main::M6_S3_03c4_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:35:50"
+    },
+    "m6::main::M6_S3_02c3_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:35:51"
+    },
+    "m6::main::M6_S3_07c3_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:35:51"
+    },
+    "m6::main::M6_S1_021_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:35:53"
+    },
+    "m6::main::M6_S3_09c3_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:35:54"
+    },
+    "m6::main::M6_S1_009_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:35:55"
+    },
+    "m6::main::M6_S3_05c3_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:35:57"
+    },
+    "m6::main::M6_S3_04c3_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:35:58"
+    },
+    "m6::main::M6_S1_014_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:36:01"
+    },
+    "m6::main::M6_S3_06c2_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:36:02"
+    },
+    "m6::main::M6_S1_016_s4": {
+      "choice": "R",
+      "winner": "m6_iso",
+      "ts": "2026-08-11 13:36:13"
+    },
+    "m6::main::M6_S1_028_s4": {
+      "choice": "L",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:36:17"
+    },
+    "m6::main::M6_S1_018_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:36:18"
+    },
+    "m6::main::M6_S1_001_s2": {
+      "choice": "R",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:36:22"
+    },
+    "m6::main::M6_S1_038_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:36:23"
+    },
+    "m6::main::M6_S1_028_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:36:24"
+    },
+    "m6::main::M6_S1_022_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:36:26"
+    },
+    "m6::main::M6_S1_005_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:36:28"
+    },
+    "m6::main::M6_S3_07c3_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:36:28"
+    },
+    "m6::main::M6_S1_039_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:36:29"
+    },
+    "m6::main::M6_S1_040_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:36:31"
+    },
+    "m6::main::M6_S1_006_s4": {
+      "choice": "R",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:36:34"
+    },
+    "m6::main::M6_S1_043_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:36:35"
+    },
+    "m6::main::M6_S3_01c1_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:36:36"
+    },
+    "m6::main::M6_S3_05c1_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:36:38"
+    },
+    "m6::main::M6_S1_043_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:36:41"
+    },
+    "m6::main::M6_S1_032_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:36:42"
+    },
+    "m6::main::M6_S1_031_s4": {
+      "choice": "R",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:36:53"
+    },
+    "m6::main::M6_S1_020_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:36:55"
+    },
+    "m6::main::M6_S1_028_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:36:56"
+    },
+    "m6::main::M6_S1_004_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:37:15"
+    },
+    "m6::main::M6_S1_025_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:37:27"
+    },
+    "m6::main::M6_S1_041_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:37:33"
+    },
+    "m6::main::M6_S1_036_s4": {
+      "choice": "L",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:37:37"
+    },
+    "m6::main::M6_S3_06c1_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:37:38"
+    },
+    "m6::main::M6_S3_01c3_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:37:39"
+    },
+    "m6::rf::M6_S1_035_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:37:41"
+    },
+    "m6::main::M6_S1_006_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:37:53"
+    },
+    "m6::main::M6_S1_000_s0": {
+      "choice": "R",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:37:55"
+    },
+    "m6::rf::M6_S1_024_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:40:43"
+    },
+    "m6::main::M6_S1_038_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:40:45"
+    },
+    "m6::main::M6_S1_011_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:40:49"
+    },
+    "m6::main::M6_S1_034_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:40:52"
+    },
+    "m6::main::M6_S1_016_s3": {
+      "choice": "L",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:41:00"
+    },
+    "m6::main::M6_S1_031_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:41:02"
+    },
+    "m6::main::M6_S1_027_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:41:04"
+    },
+    "m6::main::M6_S1_001_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:41:05"
+    },
+    "m6::main::M6_S3_04c3_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:41:06"
+    },
+    "m6::main::M6_S1_029_s2": {
+      "choice": "R",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:41:21"
+    },
+    "m6::main::M6_S1_026_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:41:23"
+    },
+    "m6::main::M6_S1_023_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:41:26"
+    },
+    "m6::main::M6_S3_09c0_s1": {
+      "choice": "L",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:41:32"
+    },
+    "m6::main::M6_S1_008_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:41:34"
+    },
+    "m6::rf::M6_S1_003_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:41:36"
+    },
+    "m6::main::M6_S3_03c3_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:41:37"
+    },
+    "m6::main::M6_S1_032_s3": {
+      "choice": "R",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:43:05"
+    },
+    "m6::main::M6_S1_020_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:43:07"
+    },
+    "m6::main::M6_S1_038_s4": {
+      "choice": "L",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:43:10"
+    },
+    "m6::main::M6_S1_010_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:43:11"
+    },
+    "m6::main::M6_S1_008_s1": {
+      "choice": "L",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:43:14"
+    },
+    "m6::main::M6_S3_03c3_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:43:15"
+    },
+    "m6::main::M6_S1_035_s3": {
+      "choice": "R",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:43:23"
+    },
+    "m6::main::M6_S3_01c4_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:43:26"
+    },
+    "m6::rf::M6_S1_026_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:43:27"
+    },
+    "m6::main::M6_S1_030_s3": {
+      "choice": "L",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:43:30"
+    },
+    "m6::main::M6_S1_012_s1": {
+      "choice": "L",
+      "winner": "m6_full",
+      "ts": "2026-08-11 13:43:32"
+    },
+    "m6::main::M6_S3_07c4_s1": {
+      "choice": "R",
+      "winner": "m6_iso",
+      "ts": "2026-08-11 13:43:35"
+    },
+    "m6::main::M6_S3_09c0_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:43:36"
+    },
+    "m6::main::M6_S3_09c4_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-11 13:43:43"
+    }
+  }
+}
