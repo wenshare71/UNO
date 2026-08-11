@@ -109,3 +109,86 @@ C 阶段(infer_hub, H 机)用哪个 env:
 - **不确定性**: qwen-edit 是 kling-mini 的拷贝+改包,若 H 机 worker 加载该 venv 需要
   LD_LIBRARY_PATH(nvidia libs)而未注入,C 阶段 import torch 可能失败——待 job 实测。
   4090 上需显式 LD_LIBRARY_PATH 才能 import torch 2.5.1。
+
+---
+
+## 10. 反馈与裁决(主线程, 2026-08-11)
+
+四个问题全部批准你的处置或给出替代路径,**不用再等**。执行单 §7 C2 的提交命令作废,
+以本节 §10.5 为准。
+
+### 10.1 env 选 A(kling-mini)——批准
+
+Q1 是**质量零点**,不是速度基线;torch 2.5.1 vs 2.7.0a0 对"Qwen 原生水平"这个口径
+没有影响。而且单 env 跨机反而消掉一个变量。`qwen-edit-aio` 副本留着别删,
+但预期用不上。你的不确定点 2(数值差异只影响基线数值本身)判断正确。
+
+### 10.2 跳过 4090 生成直接投 C——批准
+
+根因分析正确:`enable_model_cpu_offload` 是按组件整体搬,20B transformer 单体 40GB
+超 24GB,必 OOM。**没降分辨率/steps 这个决定是对的**(§6.6 红档),降了这批数就废了。
+
+补一条你没说到的:OOM 发生在**生成阶段**而不是调用阶段,说明 `pipe(...)` 的那组
+kwargs(`image=` / `true_cfg_scale=` / `negative_prompt=` / `height,width=`)已经被
+diffusers main 接受并跑进了 forward——签名错会在申请显存之前就 `TypeError`。
+所以冒烟该验的 API 面**已经验到了**,剩下的纯粹是显存。跳过无损失。
+
+### 10.3 队列权限——走 (b),不要去求 root 建目录
+
+USAGE.md 参数速查明写 `--project` "只用于队列归类与网页分组展示,**不决定环境**"。
+所以用现成队列 `--project default --cluster h` 就行,零成本、零等待。任务身份靠
+`--label qwen2511_baseline_40` 带,不靠 project。
+
+### 10.4 prep 政策——批准你的写法
+
+`--prep-marker` 指向已存在的权重目录 ⇒ marker 命中 ⇒ prep 阶段整个跳过,
+`--prep-cmd 'true'` 实际根本不会执行,只是满足 `submit_require_prep` 的形参检查。
+干净,没有副作用。
+
+### 10.5 提交命令(以此为准)
+
+两处你没提但会踩的坑,已经写进去了:
+
+1. **LD_LIBRARY_PATH 不要赌 worker 注入**——你自己在 §9 提的风险,直接在 `--cmd` 里
+   显式导出即可解决,这属于提交命令字符串不是仓库代码,🟢 绿档。
+2. **`--output-dir` 必须显式给**——默认值是 `<weights>/infer_results`,会往权重目录里写。
+
+```bash
+infer_submit --owner wuwenxuan --project default --cluster h --gpus 1 --timeout 90 \
+  --repo https://github.com/wenshare71/UNO.git \
+  --commit 4a9a034521e07257dae7e901acbc5aa9f083dab6 \
+  --weights /kaimm-distill/wuwenxuan/models/Qwen-Image-Edit-2511 \
+  --output-dir /kaimm-distill/wuwenxuan/output/qwen_baseline \
+  --uv-env /kaimm-distill/wuwenxuan/envs/qwen-edit \
+  --label qwen2511_baseline_40 \
+  --prep-cmd 'true' \
+  --prep-marker /kaimm-distill/wuwenxuan/models/Qwen-Image-Edit-2511 \
+  --cmd 'E=/kaimm-distill/wuwenxuan/envs/qwen-edit; SP=$E/lib/python3.11/site-packages; export LD_LIBRARY_PATH=$E/lib:$SP/torch/lib:$(echo $SP/nvidia/*/lib | tr " " :):$LD_LIBRARY_PATH; QWEN_WEIGHTS=$INFER_WEIGHTS_DIR $E/bin/python scripts/infer_qwen_edit.py --out $INFER_OUTPUT_DIR'
+```
+
+- `--commit` 用最新的 `4a9a034`(即本报告所在 commit),不是执行单里的 `74fd933`。
+  投之前确认它已 push。
+- `--cmd` 单引号包住,`$INFER_*` 留给推理机展开(USAGE §故障排查第 1 条)。
+- 用 `$E/bin/python` 绝对路径而不是裸 `python`,不依赖 worker 是否 activate 了 venv。
+
+### 10.6 第一次投**不要**加 `--offload`
+
+H800 单卡 80GB,权重全量 57.72GB + 1024² 激活,大概率直接装得下。真 OOM 也是在
+**第 1 张就炸**(加载 ~2 分钟),脚本有 resume,带 `--offload` 重投一次即可,代价两分钟。
+
+反过来一上来就 offload:model_cpu_offload 每次 `pipe()` 调用结束会把组件搬回 CPU,
+40 张图就是 40 轮 ~57GB 的来回搬运,不但多花几分钟,还会污染 `results.json` 里的
+逐图耗时。所以顺序是**先裸跑,炸了再 offload**。
+
+### 10.7 timeout 给 90 分钟的算法
+
+40 步 × true_cfg 4.0 ⇒ 每张 80 次前向;20B MMDiT 在 H800 上 1024² 单张估 60–90s,
+40 张 ≈ 40–60 分钟,加载再 2 分钟。默认 30 分钟一定会踩到"看 GPU 利用率决定延长"
+那套逻辑,不如直接声明。
+
+### 10.8 不用做的事
+
+- 不要为了在 4090 上跑通而改 `scripts/infer_qwen_edit.py`(加 sequential offload /
+  device_map)——你判断的 R0 冲突成立,而且 H 机根本不需要。
+- 不要动分辨率、steps、true_cfg、negative_prompt、prompt 文本(§6 全部红档)。
+- 12/40 是单参考图这件事已知,不改 stride,这批就按现在的子集跑。
