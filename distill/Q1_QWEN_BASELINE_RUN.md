@@ -1,13 +1,14 @@
 # Q1 执行单 — Qwen-Image-Edit-2511 裸基线上机
 
 > **执行者**:4090 机器(`aiplatform-bjy-ge47-391`)上的 Claude Code。
-> **档位**:阶段 A 是 🟢 绿档(装环境、下权重)+ 🟡 黄档(§6 点名的**一个**新建文件);
-> 阶段 C 是投 infer_hub。**既有 `.py` / `.sh` 一个字都不许改(R0)。**
+> **档位:全程 🟢 绿档——你不写任何代码。**
+> `scripts/infer_qwen_edit.py` 已随本执行单进主线,本地 dry_run 验过(见 §4)。
+> 你只做三件事:装环境、下权重、跑命令。**任何 `.py` / `.sh` 一个字都不许改(R0)。**
 >
 > 目标不是做实验,是**看一眼 Qwen-Image-Edit-2511 在我们现有多参考任务上裸跑成什么样**。
 > 所以口径全部锁死在官方默认值,不调参、不改 prompt、不挑样本。
 >
-> 总耗时估计:阶段 A 里人要盯的约 40 min,其余是无人值守下载(时长未知,见 §2);
+> 总耗时估计:阶段 A 里人要盯的约 30 min,其余是无人值守下载(时长未知,见 §2);
 > 阶段 C 的 GPU 占用约 1 卡 × 30–60 min。
 
 ---
@@ -159,25 +160,59 @@ print('OK')"
 
 ---
 
-## 4. 步骤 A3 — 写 runner 脚本
+## 4. 步骤 A3 — 验收 runner 脚本(不是写,是跑一遍对答案)
 
-见 §6 的规格。**规格里写死的常量一个都不许改**;规格没写到的语义决定一律红档(R13),
-报上来我补,不要自己填空。
-
-写完立刻跑 dry_run(不需要权重、不需要 GPU):
+脚本已经在仓库里。`git pull` 之后直接跑 dry_run(不需要权重、不需要 GPU、几秒钟):
 
 ```bash
-cd <4090 上的 UNO 仓库>
-/kaimm-distill/wuwenxuan/envs/qwen-edit/bin/python scripts/infer_qwen_edit.py --dry_run
+cd <4090 上的 UNO 仓库> && git pull
+/kaimm-distill/wuwenxuan/envs/qwen-edit/bin/python scripts/infer_qwen_edit.py \
+  --dry_run --out /tmp/q1dry
 ```
+
+### 预期输出(本地 2026-08-11 实测,你那边必须一字不差)
+
+自检行:
+
+```
+[自检] 全量 320 条 | 子集(i%8==0)40 条 | 待跑 40 | 已跳过 0 | 输出 /tmp/q1dry | 权重 (dry_run)
+```
+
+40 个 `task_id`,**顺序也要一致**:
+
+```
+M6_S1_000_s0  M6_S1_001_s3  M6_S1_003_s1  M6_S1_004_s4  M6_S1_006_s2
+M6_S1_008_s0  M6_S1_009_s3  M6_S1_011_s1  M6_S1_012_s4  M6_S1_014_s2
+M6_S1_016_s0  M6_S1_017_s3  M6_S1_019_s1  M6_S1_020_s4  M6_S1_022_s2
+M6_S1_024_s0  M6_S1_025_s3  M6_S1_027_s1  M6_S1_028_s4  M6_S1_030_s2
+M6_S1_032_s0  M6_S1_033_s3  M6_S1_035_s1  M6_S1_036_s4  M6_S1_038_s2
+M6_S1_040_s0  M6_S1_041_s3  M6_S1_043_s1  M6_S3_00c2_s0  M6_S3_01c1_s0
+M6_S3_02c0_s0  M6_S3_02c4_s0  M6_S3_03c3_s0  M6_S3_04c2_s0  M6_S3_05c1_s0
+M6_S3_06c0_s0  M6_S3_06c4_s0  M6_S3_07c3_s0  M6_S3_08c2_s0  M6_S3_09c1_s0
+```
+
+子集构成(已核对**与全量同比例**,是忠实抽样不是偏样):
+
+| | S1(2-ref) | S3(1-ref) | 合计 |
+|---|---|---|---|
+| 全量 | 220 | 100 | 320 |
+| 子集 | 28 | 12 | 40 |
+| 抽样率 | 12.7% | 12.0% | 12.5% |
+
+40 条里有 **38 组不同的 subject 组合**,基本没有重复。
+
+> ⚠️ 注意 **12/40 是 1-ref**。M6 的结论是 1-ref 上测不出隔离的差别,但这一轮量的是
+> Qwen 的**绝对水平**不是隔离代价,1-ref 同样是零点的一部分,所以照跑。
+> 看图时按 S1 / S3 分开看。
 
 ### 门禁 A3
 
-报回三样:
+报回两样:
 
-1. `results.json` 里 **40 个 `task_id` 的完整列表**(我在本地按 §6.2 的规则重算一遍逐条 diff);
-2. 启动自检那一行(总任务数 / 输出目录 / 已跳过);
-3. `git format-patch -1 --stdout HEAD` 的全文(脚本 <500 行,整段贴)。
+1. 自检行原文 + 40 个 `task_id`(和上面逐条对,**有任何一条对不上就是红灯,停**);
+2. 拼图分了几张 part、`results.json` 的绝对路径。
+
+对上了就直接进 §5,不用等我回复。
 
 ---
 
@@ -188,8 +223,11 @@ cd <4090 上的 UNO 仓库>
 ```bash
 QWEN_WEIGHTS=/kaimm-distill/wuwenxuan/models/Qwen-Image-Edit-2511 \
 /kaimm-distill/wuwenxuan/envs/qwen-edit/bin/python scripts/infer_qwen_edit.py \
-  --limit 1 --offload
+  --limit 1 --offload --out output/q1_smoke
 ```
+
+`--out` 单独开一个目录:冒烟产物别和正式跑的输出混在一起,否则断点续跑会把
+offload 下生成的那张当成已完成跳过(两者噪声一致但不是同一次运行,混着不干净)。
 
 ### 门禁 B(**这是人工确认点,等我回复再投 infer_hub**)
 
@@ -203,9 +241,12 @@ QWEN_WEIGHTS=/kaimm-distill/wuwenxuan/models/Qwen-Image-Edit-2511 \
 
 ---
 
-## 6. `scripts/infer_qwen_edit.py` 规格(🟡 黄档,唯一授权新建的文件)
+## 6. `scripts/infer_qwen_edit.py` 的口径(**已实现,这一节是给你对账用的**)
 
-### 6.1 常量(全部写死在文件顶部,**不做 CLI 可调**)
+下面是脚本里已经写死的东西。列出来不是让你实现,是让你在看结果时知道口径是什么、
+以及**哪些东西动了就等于换了一个实验**。
+
+### 6.1 常量(写死在文件顶部 CONSTANTS 段,**不做 CLI 可调**)
 
 | 项 | 值 | 来源 |
 |---|---|---|
@@ -255,46 +296,47 @@ out.save(f"{OUT}/{task['task_id']}.png")
 | `--offload` | 调 `pipe.enable_model_cpu_offload()`(4090 冒烟用) |
 | `--out DIR` | 覆盖输出目录 |
 
-### 6.5 硬性实现要求(手册 §4.1)
+### 6.5 已实现的行为(手册 §4.1,你验收时对照看)
 
-- **断点续跑**:`<task_id>.png` 已存在即跳过,启动自检行里报"已跳过 N 条";
-- **启动自检行**:总任务数 / 子集条数 / 输出目录 / 已跳过数 / 权重路径,第一秒就打印;
-- **进度行**,格式固定,每条一行:
+- **断点续跑**:`<task_id>.png` 已存在即跳过,自检行里报"已跳过 N 条"(本地已验)。
+  所以任务被 infer_hub 超时杀掉后**重投同一条命令即可**,不会重跑已完成的;
+- **启动自检行**:全量数 / 子集数 / 待跑 / 已跳过 / 输出目录 / 权重路径,第一秒打印;
+- **进度行**,每条一行:
   ```
-  [HH:MM:SS] 12/40 (30.0%) | 24.1 s/img | ETA 11m | fail 0 | M6_S1_096_s0
+  [HH:MM:SS] 12/40 (30.0%) | 24.1 s/img | ETA 11m | fail 0 | M6_S1_020_s4
   ```
-- **失败当场打印**(task_id + 异常类型 + 一行摘要)并计入 fail,**继续跑不中断**;
-- `print(..., flush=True)`;
-- **`results.json`**:每条含 `task_id` / `n_refs` / `seed` / `elapsed_s` /
-  `peak_mem_gb` / `error`(无错为 `null`),末尾一个 `meta` 段含总数、失败数、总耗时、
-  权重路径、`diffusers.__version__`;
-- **拼图**:全部跑完后出 `ALL_COMPARISON.png`,每行 `[ref_1 | ... | ref_N | 生成图]`,
-  行标注 `task_id`。>2 MB 就分批出多张(手册 §3.2)。
+- **失败当场打印**并计入 fail,**继续跑不中断**;失败条目在 `results.json` 里
+  **保留**,只填 `error` 字段——不会被悄悄从子集里删掉;
+- 全程 `flush=True`(重定向到日志时不会几分钟不更新);
+- **`results.json`**:`meta` 段含子集规则、四个采样常量、失败数、总耗时、
+  `diffusers` / `torch` 版本;`tasks` 段每条含 `task_id` / `n_refs` / `seed` /
+  `elapsed_s` / `peak_mem_gb` / `error`;
+- **拼图**:`ALL_COMPARISON.png`,每行 `[ref_1 | ... | ref_N | 红线 | qwen2511]`。
+  超 2 MB 自动分批成 `ALL_COMPARISON_partNN.png`(本地 dry_run 实测分成 5 张)。
+  拼图用**全子集**重建,断点续跑时也出完整总览。
 
-### 6.6 不许做的
+### 6.6 红线(动了就等于换了实验)
 
-- 不许 `except: pass` 后把坏图当正常样本写进 `results.json`(手册"自作聪明"专条);
-- 不许因为某条老失败就把它从子集里删掉——**失败就记 `error`,条目保留**;
-- 不许显存不够就悄悄改小分辨率——报上来(R3 同类);
-- 不许改 `infer_multibanana.py` / `inference.py` 的任何一行来复用代码,要什么自己写(R0)。
+- 改 §6.1 任何常量、改 §6.2 子集规则 → 🔴;
+- 显存不够就改小分辨率或 steps → 🔴,报上来;
+- 因为某条老失败就把它从任务表里去掉 → 🔴(手册"自作聪明"专条);
+- 改 `infer_qwen_edit.py` 本身或任何既有 `.py` / `.sh` → 🔴(R0,无例外)。
+  脚本有 bug 就按手册 §3.3 出 REPORT,我改完你 pull。
 
 ---
 
 ## 7. 步骤 C — 投 infer_hub
 
-### C1. 先把 commit 弄进主线
+### C1. 拿 commit sha
 
-`infer_submit` 只认已 push 的 40 位 commit。两条路,**先试第一条**:
+脚本和本执行单是**用户在本地 push 的**,你只需要:
 
 ```bash
-git add scripts/infer_qwen_edit.py distill/Q1_QWEN_BASELINE_RUN.md
-git commit -m "feat(q1): Qwen-Image-Edit-2511 裸基线 runner + 执行单"
-git push origin main && git rev-parse HEAD    # 通了就把这 40 位 sha 报回
+git pull && git rev-parse HEAD          # 40 位 sha,给下面的 --commit 用
+git status --short                      # 必须干净;有本地改动先报上来别投
 ```
 
-push 不通(4090 的代理很可能和 H800 一样吃 POST),走第二条:
-**打印 `git format-patch -1 --stdout HEAD` 全文**,用户在本地打上并 push,
-把 40 位 sha 回传给你。**不要去找隧道、换 remote、换协议**(R10)。
+**你不需要 commit,也不需要 push。** 工作区脏了说明有人动过代码,那是红灯。
 
 ### C2. 投
 
@@ -338,16 +380,18 @@ infer_submit --owner wuwenxuan --project qwen-edit-baseline \
 |---|---|---|
 | 装包失败、版本冲突、换公共环境起点 | 🟢 | 自己修,报一行 |
 | 代理超时、下载中断 | 🟢 | 重试(下载器自带断点续跑) |
-| 改 §6.1 任何一个常量 | 🔴 | 停,报上来 |
-| 改 §6.2 子集规则 / 跳过失败任务 | 🔴 | 停,报上来 |
+| infer_hub 任务超时被杀 | 🟢 | 重投同一条命令(脚本自带断点续跑,不会重跑已完成的) |
+| dry_run 的 40 个 task_id 和 §4 对不上 | 🔴 | 停 —— 说明代码或数据不是我这份 |
+| 改 §6.1 任何一个常量 / §6.2 子集规则 | 🔴 | 停,报上来 |
 | 显存不够想降分辨率或降 steps | 🔴 | 停,报上来 |
 | 想改 prompt 让效果变好 | 🔴 | 停 —— 这一轮要的就是裸基线 |
-| 改任何既有 `.py` / `.sh` | 🔴 | 停(R0,无例外) |
+| **写或改任何 `.py` / `.sh`** | 🔴 | 停(R0,无例外)。本执行单全程绿档,你不该动代码 |
 | 三个公共环境都装不上 diffusers main | 🔴 | 停,按手册 §3.3 出 REPORT |
 | 同一个问题修了 3 次没过 | 🔴 | R10,停 |
 | 机器上有别人的任务 | 🔴 | 如实报告占用,由用户拍板(R12) |
 
-三个门禁(A2 / A3 / B)**都要停下等回复**,不要一路跑到底。
+**两个门禁要停下等回复:A2(环境验通)和 B(冒烟)。**
+A3 对上了就自己往下走,不用等。
 
 ---
 
@@ -356,8 +400,8 @@ infer_submit --owner wuwenxuan --project qwen-edit-baseline \
 | 门禁 | 交付 |
 |---|---|
 | A1 | 权重仓库文件清单 + TOTAL GB + 下载 ETA |
-| A2 | `diffusers` / `torch` / `transformers` 版本三行 + `OK` |
-| A3 | 40 个 `task_id` 全列表 + 自检行 + patch 全文 |
+| A2 | `diffusers` / `torch` / `transformers` 版本三行 + `OK` ⟵ **停,等回复** |
+| A3 | 自检行 + 40 个 `task_id`(与 §4 逐条对)+ 拼图分了几张 |
 | B | 单张耗时 / 峰值显存 / 图的绝对路径 / **文字描述看到了什么** |
 | C | job json(dry-run)→ 投递确认 → `results.json` meta + 拼图路径 + 文字对比 |
 
