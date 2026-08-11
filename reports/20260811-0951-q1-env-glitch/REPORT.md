@@ -78,3 +78,18 @@ C 阶段(infer_hub, H 机)用哪个 env:
 - 下载中的插曲(已修): 代理 10.66.37.111 全死→换 22.211(慢)→P1 完事后 29.113 接手;
   hf-mirror 对 Qwen 仓库走 Xet bridge(302 签名单 URL,HTTP/2),大文件 OK;小配置文件
   直出 200 无 X-Linked-Size → 下载器补 Content-Length/直连逻辑后重下,全部对齐。
+
+## 8. B 冒烟更新(2026-08-11 追加)
+
+- 4090 单例冒烟(`--limit 1 --offload`,qwen-edit/kling-mini 底座)在**生成阶段 OOM**:
+  `OutOfMemoryError: CUDA out of memory. Tried to allocate 108.00 MiB.
+   GPU 0 23.65 GiB,仅 84 MiB 空闲,进程占用 23.56 GiB`。
+- **模型加载成功(123.9s)**,权重 + diffusers API + pipeline 构造全部验通;OOM 只发生在
+  生成调用(`pipe(...)` 40 步 × 1024²)。
+- **根因**: Qwen 20B MMDiT transformer bf16 ≈ 40GB,`enable_model_cpu_offload()` 是
+  **按组件整体搬 GPU** 的粗粒度 offload,单组件 40GB > 24GB,必 OOM;换
+  `enable_sequential_cpu_offload` / `device_map="auto"` 需要非仓库的一次性命令(R0 冲突)。
+- **处置**: 未降分辨率/steps(执行单 §6.6 红档,降了就不是真实水平);4090 无法完成生成。
+- **建议**: 跳过 4090 生成,直接投 C —— H 机单卡 80GB 装得下 40GB,正式跑本身就是全量
+  验证;4090 已验的加载环节消除了 C 的主要通路风险。备选:在有 80GB 显存的机器上
+  先手动冒烟一张。
