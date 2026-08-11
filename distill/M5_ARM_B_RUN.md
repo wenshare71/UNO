@@ -149,11 +149,9 @@ M3 post4000  (隔离)     5.61 s/it
 臂 B         (隔离)      预期 5.3 – 5.9 s/it   ← 应显著慢于臂 A
 ```
 
-**方向解释**(§11.4 已逐行核过,别记反):训练里**隔离更贵**——
-`ref_attention.py:83-90` 建的是稠密 `(L,L)` bool 掩码,把能走 FlashAttention 的调用
-降级成慢后端,**一个 FLOP 都没省**;`model.py:206-227` 还多算一套 t=0 调制;
-训练**从不用 KV cache**(`TrainArgs` 里根本没有这个字段),两边序列长度一样。
-**1.672× 那个加速全部来自推理侧的 KV cache,与掩码无关。**
+**方向解释同 `M5_ARM_A_RUN.md` 步骤 2**(§11.4 已逐行核过,别记反):训练里
+**隔离更贵**(稠密掩码挡掉 FlashAttention、多一套 t=0 调制、训练从不用 KV cache),
+**1.672× 加速全部来自推理侧,与掩码无关**。
 
 ⇒ **稳态 s/it ≤ 5.0(贴着臂 A 的 4.86)就停下上报**,那说明隔离没生效。
 
@@ -165,10 +163,8 @@ ps -ef | grep -o -- '--ref_isolation [A-Za-z]*' | sort | uniq -c
 
 只应打出 `--ref_isolation True`。出现任何 `False` 就 kill 掉重来。
 
-> **第二个佐证(非铁证)**:`train.py:505/514` 的预览推理传的是
-> `kv_cache=args.ref_isolation`,所以臂 B 的预览会**开着 KV cache**,
-> 应当**快于**臂 A 日志里的 1.93–1.94 it/s。但预览跑在 ZeRO-3 参数切分下、
-> 耗时被 all-gather 主导,1.672× 会被稀释到什么程度没实测过,**只能当佐证**。
+> **第二个佐证(非铁证)**:预览推理传 `kv_cache=args.ref_isolation`,臂 B 的预览
+> 应**快于**臂 A 的 1.93–1.94 it/s,但耗时被 ZeRO-3 的 all-gather 主导,只能当佐证。
 
 标定完 `log/arm_b_calibration` 留着别删,它是"配置确实生效过"的证据。
 

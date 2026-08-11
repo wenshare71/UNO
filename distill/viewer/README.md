@@ -1,17 +1,17 @@
 # UNO Distill Viewer
 
-FastAPI 前后端服务版的人工质检面板，替代原来的单一静态 `inspect.html`。
+FastAPI 版人工质检面板，替代原来的单一静态 `inspect.html`。
 
 ## 特性
 
-- **前后端分离**：后端用 FastAPI + JSON 文件持久化标注，前端原生 JS/CSS
-- **标注持久化**：pass/fail/备注 自动保存到服务器，刷新不丢失
-- **图片安全服务**：`/api/image?rel=...` 仅允许访问 `datasets/distill_multiref/` 和 `datasets/dreambooth/dataset/` 下的图片
+- **前后端分离**：FastAPI + JSON 文件持久化标注，前端原生 JS/CSS
+- **标注持久化**：pass/fail/备注自动保存到服务器，刷新不丢失
+- **图片安全服务**：`/api/image?rel=...` 仅放行 `datasets/distill_multiref/`、`datasets/dreambooth/dataset/`
 - **保留原有交互**：懒加载、图片放大/缩放/拖拽、左右切换、快捷键 `p`/`f`
-- **导入/导出 JSON**：支持与旧版 `inspect.html` 导出的 annotations.json 兼容
+- **导入/导出**：与旧版 `inspect.html` 的 annotations.json 兼容
 - **过滤**："只看未标注"一键隐藏已标记行
-- **服务端分页**：每页默认 5 条，支持切换 5/10/20/50/100 条/页，DOM 只渲染当前页，避免 8000 条卡顿
-- **自动续标**：打开页面后自动跳到第一个未标注的行，不需要手动翻页找进度；工具栏也提供“跳到未标注”按钮
+- **服务端分页**：默认 5 条,可切 5/10/20/50/100,DOM 只渲染当前页,避免 8000 条卡顿
+- **自动续标**：打开自动跳到第一个未标注行,工具栏也提供"跳到未标注"按钮
 
 ## 启动
 
@@ -49,8 +49,7 @@ python -m distill.viewer.server \
 - `GET /`：前端页面
 - `GET /static/*`：静态资源
 - `GET /api/health`：健康检查
-- `GET /api/manifest`：返回过滤后的 manifest 元数据（支持 `?page=0&per_page=20` 分页）
-- `GET /api/manifest?page=N&per_page=M`：分页获取，返回 `n_rows/page/pages/per_page/rows`
+- `GET /api/manifest?page=N&per_page=M`：分页获取 manifest 元数据，返回 `n_rows/page/pages/per_page/rows`
 - `GET /api/annotations`：读取当前标注
 - `POST /api/annotations`：保存标注（请求体 `{ "annotations": {...} }`）
 - `GET /api/image?rel=...`：安全返回图片
@@ -71,10 +70,10 @@ distill/viewer/
 
 ## 与旧版的关系
 
-`distill/inspect_html.py` 继续保留，可以生成单一静态 HTML 作为备份：
+`distill/inspect_html.py` 继续保留，用于生成单一静态 HTML 备份：
 
 ```bash
 python distill/inspect_html.py --limit 200
 ```
 
-新版服务不再生成大 HTML，所有数据通过 API 按需加载。
+新版服务不再生成大 HTML，数据全走 API 按需加载。

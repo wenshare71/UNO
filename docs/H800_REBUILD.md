@@ -56,12 +56,9 @@
 | `requirements.txt` | `--extra-index-url .../whl/cu124` | 不用，装 PyPI 默认的 `torch==2.4.0`（cu121） | cu121 官方构建的 arch 列表含 `sm_90`；且 cu124 索引在这里 0.36 MB/s |
 | `scripts/setup_env.sh` | conda 优先、阿里云拉 torch、走 `INTERNAL_PROXY` | 用 `scripts/setup_env_h800.sh` | 无 conda、无 ensurepip、代理慢 672 倍 |
 
-**尚未处理、留到 M3 训练时再决定的一项**：`train.py:229-233` 给 dit / t5 / clip 各挂了 DeepSpeed ZeRO-3。
-`config/deepspeed/zero3_dit_config.json` 里 `offload_optimizer` 与 `offload_param` 都是 `"device": "none"`，
-所以不需要 JIT 编译 `cpu_adam`（这台没 nvcc，否则会炸）。但 140 GB 显存下 ZeRO-3 的参数聚合纯属开销，
-仓库里已有现成的 `config/deepspeed/zero2_config.json` 可换。
-注意 `train.py:358` 的 `deepspeed.zero.Init(..., enabled=True)` 是 ZeRO-3 专属构造，换 stage 2 时要一并 gate 掉。
-**M1 数据生成是纯推理，完全不碰这块**（全仓库只有 `train.py:31` 一处 `import deepspeed`），可以先不动。
+**（已处理,见 `M6_ABLATION_SPEC.md` §3.1)** `train.py:229-233` 原给 dit / t5 / clip 各挂了
+DeepSpeed ZeRO-3——140 GB 显存下 ZeRO-3 的参数聚合纯属开销,后改回 `zero2_config.json`。
+`M1 数据生成是纯推理，完全不碰这块`（全仓库只有 `train.py:31` 一处 `import deepspeed`）。
 
 ---
 
@@ -89,15 +86,13 @@ COPY_TO_LOCAL=1 bash scripts/setup_env_h800.sh
    ~~先装精确版本，后续 `>=` 约束已满足，pip 不会再升级。~~ **这条原先的说法是错的**，
    2026-07-24 在 ge90-26 上实测被推翻（`scripts/h800_setup.log:211-261`）：
    `pyproject.toml:32-34` 的 `huggingface-hub` 和 `gradio>=5.22.0` **都没有上界**，
-   pip 对无上界依赖取最新版 → hf-hub 1.24.0，与 transformers 4.43.3 要求的
-   `huggingface-hub<1.0` 冲突。冲突时 pip 回溯约束最松的那个，而 transformers 写的是
-   `>=4.43.3`（可以往上走），于是被顶到 5.14.1。所以 `-e ".[train]"` **之后**必须再降一次。
-   旧机器（4090）是同一现象，见 `scripts/setup.log.txt:48-54`。
-   降版本时 gradio 会报 incompatible —— 可接受，它只服务 `app.py` 的 demo，
-   `inference.py` / `distill/gen_data.py` / `train.py` 都不 import 它。
-   为什么不能凑合用 5.x：`docs/smoke_test_report.md:28` 验证 D-1 teacher 用的就是 4.43.3；
-   5.x 里 `from_pretrained` 的 `torch_dtype=` 已改名 `dtype=`，而 `uno/flux/util.py:384-390`
-   仍在传 `torch_dtype` —— 轻则报错，重则被当未知 kwarg 吞掉、T5 静默跑成 fp32。
+   pip 取最新版 hf-hub 1.24.0 与 transformers 要求的 `huggingface-hub<1.0` 冲突,
+   回溯后 transformers 被顶到 5.14.1,所以 `-e ".[train]"` **之后**必须再降一次
+   (旧机器 4090 同一现象,见 `scripts/setup.log.txt:48-54`)。
+   降版本时 gradio 会报 incompatible —— 可接受,它只服务 `app.py` 的 demo。
+   为什么不能凑合用 5.x:`docs/smoke_test_report.md:28` 验证 D-1 teacher 用的就是 4.43.3;
+   5.x 里 `from_pretrained` 的 `torch_dtype=` 已改名 `dtype=`,而 `uno/flux/util.py:384-390`
+   仍在传 `torch_dtype` —— 轻则报错,重则被当未知 kwarg 吞掉、T5 静默跑成 fp32。
 6. **装 deepspeed 0.14.4** —— PyPI 上只有 sdist，`setup.py` 会 `import torch`，
    pip 默认的构建隔离会在干净环境里重新下载一份 torch，故用 `--no-build-isolation`。
 7. **权重搬到 `/code/uno/hf_cache`** —— 加载 FLUX 54 GB：ceph 约 6.8 分钟，本地 NVMe 约 16 秒。

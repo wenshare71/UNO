@@ -148,7 +148,7 @@ or use `accelerate launch` which will do this automatically.
 
 ### 5.2 `--only_lora` 不省 VRAM
 
-`UNOPipeline(..., only_lora=True)` 名字误导——它只是把 LoRA 设为可训练参数，**base FLUX.1-dev (24 GB bf16) 仍要完整装进 VRAM**，然后 `sd.update(lora_sd)` 在加载时把 LoRA 权重合并进去。24 GB 4090 上：
+`UNOPipeline(..., only_lora=True)` 名字误导——它只是把 LoRA 设为可训练参数，**base FLUX.1-dev (24 GB bf16) 仍要完整装进 VRAM**。24 GB 4090 上：
 
 | 方案 | 峰值 VRAM | 备注 |
 |---|---|---|
@@ -183,19 +183,7 @@ this can cause the process to hang.
 
 ---
 
-## 7. 后续建议
+## 7. 后续建议(已执行,见 `distill/OVERVIEW.md`)
 
-环境、模型、数据三件套已齐。下一步两条主线，可并行：
-
-1. **改造训练管道**：把 OminiControl 的隔离注意力 + KV-Cache LoRA 移植到 UNO
-   - 改 `uno/flux/modules/attention.py` 加 attention mask
-   - 改 `uno/flux/sampling.py` 在 denoise 循环里注入 ref KV 缓存
-   - 改 `train.py` 配 8 卡 + LoRA + gradient checkpointing
-   - **不依赖数据解压**和后续步骤，可立刻开干
-
-2. **解压 UNO-1M 数据集 + dataloader 验证**
-   - 挂在另一个 tmux 慢慢解包（~124 GB → ~125 GB）
-   - 写一个精简 dataloader，先 `for batch in dataloader: print(batch.shape, batch.dtype)` 验证 shape/dtype
-   - 端到端数据通路也确认后，再上正式训练
-
-任一主线需要我开始动手，告诉我哪条先。
+环境、模型、数据三件套已齐。当时定的两条主线——隔离注意力 + KV-Cache LoRA 移植、
+UNO-1M 解压与 dataloader 验证——后续均已推进,完整过程见 `distill/OVERVIEW.md`。

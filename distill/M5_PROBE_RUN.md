@@ -1,10 +1,8 @@
 # M5 P-probe 执行单 — 隔离代价探针图生成
 
 > 对应 `DISTILL_PLAN.md` §11.4 P-probe。**档位:🟢 绿档**——H800 侧**不改任何代码**,
-> 只是 `git pull` 后换一份任务单调用 `eval_multiref.py`。
-> (`eval_multiref.py` 确实有改动:新增 `official_iso` 变体、`--dry_run` 成本表改为按
-> `kv_cache` 位推导。但那些改动**已在本地完成并推上来**,符合手册 R0——
-> 远程不许就地改既有 `.py`。)总耗时 ~32 min(GPU denoise ~25 min,单卡)。
+> 只是 `git pull` 后换一份任务单调用 `eval_multiref.py`(该文件的改动已在本地完成并推上来,
+> 符合手册 R0)。总耗时 ~32 min(GPU denoise ~25 min,单卡)。
 
 ## 这一步在干什么(先看懂再跑)
 
@@ -37,10 +35,7 @@ M4 的回退归因里有一整项是"隔离本身有没有代价",但这个组�
 `eval_multiref.py:write_shard_results` 会往 `save_path` 写
 `results_shard{N}.json`,`--merge` 再把它们汇总成 `save_path/results.json`。
 用 `output/eval_multiref` 会**覆盖掉 M4 的 shard 记录**,`--merge` 还会把
-M4 的 `results.json` 连带重算成只剩本次这 192 条。这条教训是从步骤 1
-(`M5_STEP1_RUN.md`)照搬过来的——那一步险些因为存到同一目录把 M4 的
-产物毁掉,这次直接把独立目录写进 runbook,不留犯错空间。M4 的产物是
-冻结的,不许就地动。
+M4 的 `results.json` 连带重算成只剩本次这 192 条。M4 的产物是冻结的,不许就地动。
 
 ## ⚠️ H800 网络的坑(必须先确认,不确认就不要跑)
 
