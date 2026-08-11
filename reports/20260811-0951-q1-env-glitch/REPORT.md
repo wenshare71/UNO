@@ -93,3 +93,19 @@ C 阶段(infer_hub, H 机)用哪个 env:
 - **建议**: 跳过 4090 生成,直接投 C —— H 机单卡 80GB 装得下 40GB,正式跑本身就是全量
   验证;4090 已验的加载环节消除了 C 的主要通路风险。备选:在有 80GB 显存的机器上
   先手动冒烟一张。
+
+## 9. C 准备发现的两个阻塞(2026-08-11 追加)
+
+- **队列政策变化**: infer_hub config `submit_require_prep: True` → 执行单 §7 C2 的
+  "不用 `--prep-cmd`" 已过时。当前必须声明 `--prep-cmd`/`--prep-marker`;无独立切分
+  步骤的任务按报错提示补 `--prep-cmd 'true' --prep-marker <权重目录>` 即可。
+- **队列目录权限**: `--project qwen-edit-baseline` 需要在
+  `/kaimm-distill/infer_hub/queues/qwen-edit-baseline/` 预建目录
+  (含 `tmp/pending/claimed/done/failed/logs`);该目录 root 所有,本账号无写权限,
+  `infer_submit` 的 `ensure_queue` 直接 `PermissionError`。现有队列(default/kling-mini/
+  m2v-aio/...)均为预建;config `projects` 只登记了 v3lite/v4/kling-mini。
+- **待定**: (a) 由有权限的人建队列目录,或 (b) 改用现有队列 tag(如 `default`,配
+  `--cluster h` 仍是 H 卡,只影响分组展示名)。
+- **不确定性**: qwen-edit 是 kling-mini 的拷贝+改包,若 H 机 worker 加载该 venv 需要
+  LD_LIBRARY_PATH(nvidia libs)而未注入,C 阶段 import torch 可能失败——待 job 实测。
+  4090 上需显式 LD_LIBRARY_PATH 才能 import torch 2.5.1。
