@@ -56,6 +56,11 @@ ARM_A_RESULTS = os.path.join(REPO, "output/eval_arm_a/results.json")
 ARM_B_TASKS = os.path.join(REPO, "datasets/eval_multiref/arm_b_tasks.json")
 ARM_B_RESULTS = os.path.join(REPO, "output/eval_arm_b/results.json")
 
+# M6 隔离消融(2026-08-11)。天花板的第二侧来自**另一个 job**,所以有两份 results。
+M6_TASKS = os.path.join(REPO, "datasets/eval_multiref/m6_tasks.json")
+M6_RESULTS = os.path.join(REPO, "output/eval_m6/results.json")
+M6_FLOOR_RESULTS = os.path.join(REPO, "output/eval_m6_floor/results.json")
+
 OUT_M4_PAIRS = os.path.join(REPO, "output/eval_multiref/pairs_m4r1.json")
 OUT_M4_MARKS = os.path.join(REPO, "output/eval_multiref/blind_annotations_m4r1.json")
 OUT_R2_PAIRS = os.path.join(REPO, "output/eval_multiref/pairs_m5r1.json")
@@ -67,17 +72,22 @@ OUT_E3_PAIRS = os.path.join(REPO, "output/eval_arm_b/pairs_m5e3.json")
 # 复合边批的清单放在臂 A 目录:本批一张新图都不产,两侧目录 07-30 与 08-04 都是既有的,
 # 放在**基线那一侧**(臂 A)——`report.py` 只读清单里的路径,放哪都跑得起来。
 OUT_E23_PAIRS = os.path.join(REPO, "output/eval_arm_a/pairs_m5e23.json")
+OUT_M6_PAIRS = os.path.join(REPO, "output/eval_m6/pairs_m6.json")
 
 EVAL_DIR = "output/eval_multiref"      # M4 产物目录(仓库根相对)
 NF_DIR = "output/noise_floor"          # 步骤 1 产物目录
 AA_DIR = "output/eval_arm_a"           # 臂 A 读数批次产物目录
 AB_DIR = "output/eval_arm_b"           # 臂 B 读数批次产物目录
+M6_DIR = "output/eval_m6"              # M6 主批产物目录(两腿各 320 张)
+M6_FLOOR_DIR = "output/eval_m6_floor"  # M6 天花板第二侧(另一个 job 的 30 张)
 
 TEACHER = "official_full"
 PRE = "ours_kv_pre"
 POST = "ours_kv_post4000"
 ARM_A = "arm_a_full"
 ARM_B = "arm_b_iso"
+M6_ISO = "m6_iso"
+M6_FULL = "m6_full"
 
 # M4 用过的盲种。**只用于把旧标注解码回语义胜者**,新批次一律不用它
 # (你已在揭盲模式下看过全部 227 条,这个种子对应的槽位已污染)。
@@ -97,6 +107,9 @@ E3_ORDER_SALT = "m5e3-order-v2"
 E23_BLIND_SEED = "m5-edge23-v1"
 E23_ORDER_SALT = "m5e23-order-v1"   # 同上"依序取第一个通过守卫的"
 
+M6_BLIND_SEED = "m6-iso-v1"
+M6_ORDER_SALT = "m6-order-v1"       # 同上"依序取第一个通过守卫的"
+
 # 盲种登记表。每个批次必须有**自己**的盲种:槽位一旦在揭盲模式下被看过就永久污染,
 # 而"看过"是不可撤销的。写成登记表而不是靠人记,是因为复制粘贴一个 cmd_* 函数时
 # 最容易漏掉的就是改种子——漏了不会报错,只会静默复用旧槽位。
@@ -108,6 +121,7 @@ BLIND_SEEDS = {
     "m5ab":    AB_BLIND_SEED,
     "m5e3":    E3_BLIND_SEED,
     "m5e23":   E23_BLIND_SEED,
+    "m6":      M6_BLIND_SEED,
 }
 
 
@@ -1081,6 +1095,151 @@ def cmd_edge23(args) -> None:
           "**不是预登记的预测**。")
 
 
+# ------------------------------------------------------------------ M6 隔离消融(2026-08-11)
+
+def cmd_m6(args) -> None:
+    """M6 终批:`m6_iso` vs `m6_full` **320 对** + `run_floor` **30 对** = **350 对**。
+
+    这是隔离这个设计**唯一一次被单变量地测量**:两条腿从零各训一遍(stage-1 100000 步
+    + 蒸馏 4000 步),除 `--ref_isolation` 外处处相同。前面所有臂/边都是在补出来的
+    链条上读的,每条边两侧的 init 与训练史都不同。
+
+    组成由 `M6_ABLATION_SPEC.md` §5.2 预登记(320 + 30 = 350),任务池的**构成细则**
+    (192 → 320 怎么扩)登记在 `build_m6_tasks.py` 模块 docstring 与 `M6_STEP4_RUN.md`,
+    落盘于任何一张图生成之前。
+
+    WHY key_0 = `m6_iso`:SPEC §5.1 写死 `key_0` = M6_ISO(被检验方)、`key_1` = M6_FULL
+    (基线),于是非平局胜率 `win_0/(win_0+win_1)` 直接就是"隔离腿相对全注意力腿的胜率",
+    §8.2 的 CI 下界 ≥ 0.40 原样套用,报告里不做方向翻转。
+
+    WHY `run_floor` 的两侧都是 `m6_full`、且第二侧来自**另一个 job**:
+    M6 的主对两侧是同一进程、同一张卡、变体外层循环里先后生成的,在同一个 job 里再
+    生成一次同权重同 seed 的图大概率**逐位相同** ⇒ 天花板退化成 100% 平局。所以第二侧
+    另起一个 job(另一进程/另一张卡),读 `output/eval_m6_floor/`。代价随结论一起声明:
+    **主对两侧同进程(run 噪声 ≈ 0)、天花板两侧跨进程 ⇒ 本批天花板是噪声的上界,偏保守。**
+
+    WHY 天花板不像臂 B 那样用 `official_full`:臂 B 选官方权重是因为它由 pipeline 自带
+    备份提供、不依赖任何 checkpoint 在不在盘上;M6 两腿的 checkpoint 本来就必须在盘上
+    (它们是主对本身),那条理由在这里不成立。改用基线侧,量的正是骑在主对上的那份噪声。
+
+    ⚠️ **本批是 M6 唯一的一次评测**(SPEC §7-2:只做一次,用最后一个 checkpoint)。
+    `n_nontie` 不够就是「判据不适用」,**不许补样本**(SPEC §5.2 / §11.7)。
+    """
+    fresh_seed("m6", M6_BLIND_SEED)
+
+    tasks = load_json(M6_TASKS)["tasks"]
+
+    if args.dry_run:
+        have = {(t["task_id"], v) for t in tasks for v in t["variants"]}
+        floor_have = {(t["task_id"], M6_FULL) for t in tasks if t["meta"]["m6_runfloor"]}
+        actual = floor_actual = None
+        print("⚠️ --dry_run:假装两个 job 的图全都生成成功,只看条数与排序统计")
+    else:
+        results = load_json(M6_RESULTS)
+        floor_results = load_json(M6_FLOOR_RESULTS)
+        have = generated_ok(results)
+        floor_have = generated_ok(floor_results)
+        # 记录里的 path 是生成时**实际写下**的路径;img_rel 是重建出来的。对不上说明
+        # out_path 的命名约定漂了,此时清单会指向不存在的图,而服务器要到上机那一刻
+        # 才报错——所以在这里当场拦下(同 cmd_arm_b)。
+        actual = {(r["task_id"], r["variant"]): r["path"] for r in results["records"]}
+        floor_actual = {(r["task_id"], r["variant"]): r["path"]
+                        for r in floor_results["records"]}
+
+    def check_path(table, directory, tid, variant):
+        if table is None:
+            return
+        rebuilt = img_rel(directory, tid, variant)
+        if table[(tid, variant)] != rebuilt:
+            raise SystemExit(f"❌ {tid}/{variant} 记录路径 {table[(tid, variant)]} "
+                             f"≠ 重建路径 {rebuilt}")
+
+    pairs = []
+    n_rf = 0
+    for t in tasks:
+        tid = t["task_id"]
+        for v in (M6_ISO, M6_FULL):
+            if (tid, v) not in have:
+                raise SystemExit(f"❌ {tid}/{v} 缺图,320 对不完整就不许开评")
+            check_path(actual, M6_DIR, tid, v)
+        pairs.append(make_pair(f"m6::main::{tid}", "m6_iso_vs_m6_full", t,
+                               M6_ISO, img_rel(M6_DIR, tid, M6_ISO),        # key_0 = 被检验方
+                               M6_FULL, img_rel(M6_DIR, tid, M6_FULL),      # key_1 = 基线
+                               src_task_id=tid))
+
+        if t["meta"].get("m6_runfloor"):
+            if (tid, M6_FULL) not in floor_have:
+                raise SystemExit(f"❌ 天花板 job 缺 {tid}/{M6_FULL},run_floor 配不出对")
+            check_path(floor_actual, M6_FLOOR_DIR, tid, M6_FULL)
+            # 两侧同权重同 seed,只差 run:key_0 = 主批那一次,key_1 = 天花板 job 那一次。
+            pairs.append(make_pair(f"m6::rf::{tid}", "run_floor", t,
+                                   "m6_full_run_a", img_rel(M6_DIR, tid, M6_FULL),
+                                   "m6_full_run_b", img_rel(M6_FLOOR_DIR, tid, M6_FULL),
+                                   src_task_id=tid))
+            n_rf += 1
+
+    if len(tasks) != 320 or n_rf != 30 or len(pairs) != 350:
+        raise SystemExit(f"❌ 任务 {len(tasks)} 条 / 锚点 {n_rf} 条 / 配对 {len(pairs)} 对,"
+                         f"应为 320 / 30 / 350(SPEC §5.2 预登记的批次组成)")
+
+    # 打散:与槽位用不同的盐,免得"排在前面"和"在左边"产生相关(同 cmd_arm_b / cmd_edge3)
+    pairs.sort(key=lambda p: h(p["pair_id"], M6_ORDER_SALT, "order"))
+    before = twin_gaps(pairs)
+    g_min = spread_runfloor(pairs)          # 锚点 prompt 在批内出现两次,躲不掉
+    gaps = twin_gaps(pairs)
+    gaps["achieved_min_gap"] = g_min
+    gaps["min_before_spread"] = before["min"]
+    if g_min < len(pairs) // 3:
+        raise SystemExit(f"❌ 槽位内重排后最小间距仅 {g_min},低于既有纪律 "
+                         f"{len(pairs) // 3}(= 批长/3)。按「依序取第一个通过的」换 "
+                         f"M6_ORDER_SALT 到 -v2,不要降低要求。")
+
+    if args.dry_run:
+        print(f"\n条数:{len(pairs)} 对 {dict(sorted(Counter(p['kind'] for p in pairs).items()))}")
+        print(f"锚点双出现间距:{gaps}")
+        tert = Counter(("头", "中", "尾")[min(2, i * 3 // len(pairs))]
+                       for i, p in enumerate(pairs) if p["kind"] == "run_floor")
+        print(f"run_floor 三分位分布:{dict(tert)}(应大致均匀,聚在尾段就是危险结构)")
+        return
+
+    write_manifest(OUT_M6_PAIRS, {
+        "batch_id": "m6",
+        "blind_seed": M6_BLIND_SEED,
+        "question": "哪一张更好?(综合参考图忠实度与画面质量)",   # 逐字沿用,改问题=改尺子
+        "eval_set_version": "m6_tasks v1(320 = S1 132+88 / S3 60+40,核心 192 条与臂 A/B "
+                            "逐字同 prompt/refs/seed)+ m6_floor_tasks v1(30,另一个 job)",
+        "source": "M6_ABLATION_SPEC §5.2 预登记:隔离消融的单变量读数 320 对 + "
+                  "跨进程 run_floor 30 对,不带 replay",
+        "twin_gaps": gaps,
+    }, pairs)
+
+    by_st = Counter((p["kind"], p["stratum"]) for p in pairs)
+    print("\n构成:")
+    for (k, st), c in sorted(by_st.items()):
+        print(f"  {k:<18}{st:<5}{c:>5}")
+    n_main = sum(1 for p in pairs if p["kind"] == "m6_iso_vs_m6_full")
+    print(f"\n方向约定:key_0 = {M6_ISO}(被检验方)/ key_1 = {M6_FULL}(基线)")
+    print("  ⇒ 非平局胜率 < 0.5 **一律读作「隔离腿更差」**,不翻转。")
+    print(f"  按边 ③ 实测 53.6% 平局率折合 n_nontie ≈ {round(n_main * 0.4635)}"
+          f"(§8.2 要求 ≥ 94、且 Wilson CI 下界 ≥ 0.40)")
+    print(f"  ⚠️ 平局率 > {1 - 94 / n_main:.1%} ⇒ 结论是「判据不适用」而非「不达标」,"
+          f"**不许事后追加样本**")
+    print("\n锚点双出现间距(那 30 条 prompt 在批里出现两次,躲不掉):")
+    print(f"  纯 md5 打散最小 {gaps['min_before_spread']} → 槽位内重排后最小 "
+          f"{gaps['min']} / 中位 {gaps['median']} / 最大 {gaps['max']}(批长 {gaps['batch_len']})")
+    tert = Counter(("头", "中", "尾")[min(2, i * 3 // len(pairs))]
+                   for i, p in enumerate(pairs) if p["kind"] == "run_floor")
+    print(f"  run_floor 三分位分布 {dict(tert)}——槽位未动,不聚堆")
+    print("  ⇒ 「同一 prompt 在批内出现两次」这件事本身仍要如实写进 §8.5 局限。")
+    print(f"\n盲种 {M6_BLIND_SEED}(登记表里与其它批次都不同)")
+    print("⚠️ 随结论必须一起声明的两条:")
+    print("  ① 蒸馏 target 是官方**全注意力** teacher 生成的 ⇒ 目标分布对基线腿有利"
+          "(SPEC §6 的方向性偏置,在看结果之前就写下了);")
+    print("  ② 主对两侧同进程、天花板两侧跨进程 ⇒ 本批天花板是噪声的**上界**,偏保守。")
+    print(f"⚠️ 拼图 {M6_DIR}/boards/ 是**带变体名标注**的并排图——"
+          "开评之前不要生成、不要看(`--merge` 必须带 `--no_board`)。")
+
+
 # ------------------------------------------------------------------ main
 
 def main() -> None:
@@ -1100,10 +1259,13 @@ def main() -> None:
     e23 = sub.add_parser("edge23",
                          help="复合边 ②′+③:post4000 vs 臂A,222 对,GPU 成本 0")
     e23.add_argument("--dry_run", action="store_true", help="只核条数与打散统计,不写清单")
+    m6 = sub.add_parser("m6", help="M6 隔离消融终批 350 对(SPEC §5.2):320 主对 + 30 天花板")
+    m6.add_argument("--dry_run", action="store_true",
+                    help="两个 job 的图还没生成时,只核条数与打散统计,不写清单")
     args = p.parse_args()
     {"migrate-m4": cmd_migrate_m4, "r2": cmd_r2,
      "arm-a": cmd_arm_a, "arm-a-ctl": cmd_arm_a_ctl, "arm-b": cmd_arm_b,
-     "edge3": cmd_edge3, "edge23": cmd_edge23}[args.cmd](args)
+     "edge3": cmd_edge3, "edge23": cmd_edge23, "m6": cmd_m6}[args.cmd](args)
 
 
 if __name__ == "__main__":

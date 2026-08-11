@@ -79,6 +79,14 @@ VARIANTS = [
     ("ours_kv_pre",      True,  True,  True,  "pre"),
     ("ours_kv_post4000", True,  True,  True,  "post4000"),
     ("ours_kv_post2000", True,  True,  True,  "post2000"),
+    # m6_iso / m6_full [新增 2026-08-11,M6_ABLATION_SPEC §2]:**从零各训一遍**的两条腿
+    # (stage-1 100000 步 + 蒸馏 4000 步),除 `--ref_isolation` 外处处相同。这是隔离
+    # 这个设计唯一一次被单变量地测量,前面所有臂/边都是在补出来的链条上读的。
+    # 推理侧:iso 腿按最终要主张的部署配置跑(隔离 + KV);**基线腿不许开 KV**
+    # (SPEC §3 硬约束——它没有隔离,cache 是有损的,速度对比是另一件事)。
+    # 两者 bank 不同 ⇒ 本批发生 **2 次** swap_lora,不是臂 B 那批的 1 次,别照着旧日志对。
+    ("m6_iso",           True,  True,  True,  "m6_iso"),
+    ("m6_full",          True,  False, False, "m6_full"),
 ]
 VARIANT_BY_NAME = {v[0]: v for v in VARIANTS}
 
@@ -176,7 +184,8 @@ def run_generate(args, tasks, json_dir):
     # ---------- LoRA bank(抄 smoke_eval.py:160-195,从 3 个变 4 个) ----------
     all_ckpts = {"pre": args.pre_lora, "post4000": args.post4000_lora,
                  "post2000": args.post2000_lora, "arm_a": args.arm_a_lora,
-                 "arm_b": args.arm_b_lora}
+                 "arm_b": args.arm_b_lora,
+                 "m6_iso": args.m6_iso_lora, "m6_full": args.m6_full_lora}
     # 只准备**本批任务真正用到**的 bank。WHY [2026-08-04,随 arm_a_full 一起加]:
     # 原先无条件检查全部 checkpoint,加了 arm_a 之后,任何一台没跑过臂 A 的机器
     # 连 P-probe / M4 都会在启动时 `SystemExit`——而 bank 缺失只在**被用到时**才是错误。
@@ -520,6 +529,13 @@ def main():
                    help="臂 A(官方 init + 全注意力 4000 步)的产物;只在任务单含 arm_a_full 时才检查")
     p.add_argument("--arm_b_lora", default="log/arm_b/checkpoint-4000/dit_lora.safetensors",
                    help="臂 B(官方 init + 隔离 4000 步)的产物;只在任务单含 arm_b_iso 时才检查")
+    # M6 两腿的默认路径以 M6_STEP2_REPORT.md 的实跑为准(SPEC §2.1 写的 log/m6_* 没被用到)。
+    p.add_argument("--m6_iso_lora",
+                   default="log/ref_distill_iso/checkpoint-4000/dit_lora.safetensors",
+                   help="M6 student 腿(iso stage-1 → iso 蒸馏);只在任务单含 m6_iso 时才检查")
+    p.add_argument("--m6_full_lora",
+                   default="log/ref_distill_full/checkpoint-4000/dit_lora.safetensors",
+                   help="M6 baseline 腿(full stage-1 → full 蒸馏);只在任务单含 m6_full 时才检查")
     p.add_argument("--save_path", default="output/eval_multiref")
     p.add_argument("--shard_idx", type=int, default=0)
     p.add_argument("--num_shards", type=int, default=1)

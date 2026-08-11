@@ -1,0 +1,1021 @@
+{
+ "meta": {
+  "spec": "M6-floor-v1",
+  "n_tasks": 30,
+  "n_images": 30,
+  "runfloor_salt": "m6-runfloor-v1",
+  "source": "天花板第二侧:与主批**另起一个 job**(另一进程/另一张卡)重生成同权重同 seed 的 m6_full。理由见模块 docstring。"
+ },
+ "tasks": [
+  {
+   "task_id": "M6_S1_003_s2",
+   "stratum": "S1",
+   "prompt": "a backpack and a candle on a cobblestone street",
+   "image_paths": [
+    "../dreambooth/dataset/backpack_dog/02.jpg",
+    "../dreambooth/dataset/candle/03.jpg"
+   ],
+   "seed": 3500032,
+   "meta": {
+    "subjects": [
+     "backpack_dog",
+     "candle"
+    ],
+    "classes": [
+     "backpack",
+     "candle"
+    ],
+    "n_refs": 2,
+    "template_id": 3,
+    "template": "on a cobblestone street",
+    "views": [
+     "02.jpg",
+     "03.jpg"
+    ],
+    "seed_slot": 2,
+    "m6_ext": false,
+    "m4_src_task_id": "S1_003_s2",
+    "m6_runfloor": true,
+    "m6_floor_side": "b"
+   },
+   "variants": [
+    "m6_full"
+   ]
+  },
+  {
+   "task_id": "M6_S1_004_s3",
+   "stratum": "S1",
+   "prompt": "a backpack and a clock floating in an ocean of milk",
+   "image_paths": [
+    "../dreambooth/dataset/backpack_dog/03.jpg",
+    "../dreambooth/dataset/clock/04.jpg"
+   ],
+   "seed": 3500043,
+   "meta": {
+    "subjects": [
+     "backpack_dog",
+     "clock"
+    ],
+    "classes": [
+     "backpack",
+     "clock"
+    ],
+    "n_refs": 2,
+    "template_id": 14,
+    "template": "floating in an ocean of milk",
+    "views": [
+     "03.jpg",
+     "04.jpg"
+    ],
+    "seed_slot": 3,
+    "m6_ext": true,
+    "m4_src_task_id": null,
+    "m6_runfloor": true,
+    "m6_floor_side": "b"
+   },
+   "variants": [
+    "m6_full"
+   ]
+  },
+  {
+   "task_id": "M6_S1_005_s0",
+   "stratum": "S1",
+   "prompt": "a backpack and a sneaker on top of a wooden floor",
+   "image_paths": [
+    "../dreambooth/dataset/backpack_dog/00.jpg",
+    "../dreambooth/dataset/colorful_sneaker/01.jpg"
+   ],
+   "seed": 3500050,
+   "meta": {
+    "subjects": [
+     "backpack_dog",
+     "colorful_sneaker"
+    ],
+    "classes": [
+     "backpack",
+     "sneaker"
+    ],
+    "n_refs": 2,
+    "template_id": 5,
+    "template": "on top of a wooden floor",
+    "views": [
+     "00.jpg",
+     "01.jpg"
+    ],
+    "seed_slot": 0,
+    "m6_ext": false,
+    "m4_src_task_id": "S1_005_s0",
+    "m6_runfloor": true,
+    "m6_floor_side": "b"
+   },
+   "variants": [
+    "m6_full"
+   ]
+  },
+  {
+   "task_id": "M6_S1_008_s4",
+   "stratum": "S1",
+   "prompt": "a backpack and a stuffed animal on top of a dirt road",
+   "image_paths": [
+    "../dreambooth/dataset/backpack_dog/04.jpg",
+    "../dreambooth/dataset/grey_sloth_plushie/00.jpg"
+   ],
+   "seed": 3500084,
+   "meta": {
+    "subjects": [
+     "backpack_dog",
+     "grey_sloth_plushie"
+    ],
+    "classes": [
+     "backpack",
+     "stuffed animal"
+    ],
+    "n_refs": 2,
+    "template_id": 18,
+    "template": "on top of a dirt road",
+    "views": [
+     "04.jpg",
+     "00.jpg"
+    ],
+    "seed_slot": 4,
+    "m6_ext": true,
+    "m4_src_task_id": null,
+    "m6_runfloor": true,
+    "m6_floor_side": "b"
+   },
+   "variants": [
+    "m6_full"
+   ]
+  },
+  {
+   "task_id": "M6_S1_010_s0",
+   "stratum": "S1",
+   "prompt": "a stuffed animal and a can with a wheat field in the background",
+   "image_paths": [
+    "../dreambooth/dataset/bear_plushie/00.jpg",
+    "../dreambooth/dataset/can/01.jpg"
+   ],
+   "seed": 3500100,
+   "meta": {
+    "subjects": [
+     "bear_plushie",
+     "can"
+    ],
+    "classes": [
+     "stuffed animal",
+     "can"
+    ],
+    "n_refs": 2,
+    "template_id": 10,
+    "template": "with a wheat field in the background",
+    "views": [
+     "00.jpg",
+     "01.jpg"
+    ],
+    "seed_slot": 0,
+    "m6_ext": false,
+    "m4_src_task_id": "S1_010_s0",
+    "m6_runfloor": true,
+    "m6_floor_side": "b"
+   },
+   "variants": [
+    "m6_full"
+   ]
+  },
+  {
+   "task_id": "M6_S1_011_s4",
+   "stratum": "S1",
+   "prompt": "a stuffed animal and a candle in the snow",
+   "image_paths": [
+    "../dreambooth/dataset/bear_plushie/04.jpg",
+    "../dreambooth/dataset/candle/00.jpg"
+   ],
+   "seed": 3500114,
+   "meta": {
+    "subjects": [
+     "bear_plushie",
+     "candle"
+    ],
+    "classes": [
+     "stuffed animal",
+     "candle"
+    ],
+    "n_refs": 2,
+    "template_id": 1,
+    "template": "in the snow",
+    "views": [
+     "04.jpg",
+     "00.jpg"
+    ],
+    "seed_slot": 4,
+    "m6_ext": true,
+    "m4_src_task_id": null,
+    "m6_runfloor": true,
+    "m6_floor_side": "b"
+   },
+   "variants": [
+    "m6_full"
+   ]
+  },
+  {
+   "task_id": "M6_S1_013_s2",
+   "stratum": "S1",
+   "prompt": "a stuffed animal and a sneaker floating on top of water",
+   "image_paths": [
+    "../dreambooth/dataset/bear_plushie/02.jpg",
+    "../dreambooth/dataset/colorful_sneaker/03.jpg"
+   ],
+   "seed": 3500132,
+   "meta": {
+    "subjects": [
+     "bear_plushie",
+     "colorful_sneaker"
+    ],
+    "classes": [
+     "stuffed animal",
+     "sneaker"
+    ],
+    "n_refs": 2,
+    "template_id": 13,
+    "template": "floating on top of water",
+    "views": [
+     "02.jpg",
+     "03.jpg"
+    ],
+    "seed_slot": 2,
+    "m6_ext": false,
+    "m4_src_task_id": "S1_013_s2",
+    "m6_runfloor": true,
+    "m6_floor_side": "b"
+   },
+   "variants": [
+    "m6_full"
+   ]
+  },
+  {
+   "task_id": "M6_S1_015_s0",
+   "stratum": "S1",
+   "prompt": "a stuffed animal and a boot on top of green grass with sunflowers around it",
+   "image_paths": [
+    "../dreambooth/dataset/bear_plushie/00.jpg",
+    "../dreambooth/dataset/fancy_boot/01.jpg"
+   ],
+   "seed": 3500150,
+   "meta": {
+    "subjects": [
+     "bear_plushie",
+     "fancy_boot"
+    ],
+    "classes": [
+     "stuffed animal",
+     "boot"
+    ],
+    "n_refs": 2,
+    "template_id": 15,
+    "template": "on top of green grass with sunflowers around it",
+    "views": [
+     "00.jpg",
+     "01.jpg"
+    ],
+    "seed_slot": 0,
+    "m6_ext": false,
+    "m4_src_task_id": "S1_015_s0",
+    "m6_runfloor": true,
+    "m6_floor_side": "b"
+   },
+   "variants": [
+    "m6_full"
+   ]
+  },
+  {
+   "task_id": "M6_S1_016_s4",
+   "stratum": "S1",
+   "prompt": "a bowl and a can with a city in the background",
+   "image_paths": [
+    "../dreambooth/dataset/berry_bowl/04.jpg",
+    "../dreambooth/dataset/can/05.jpg"
+   ],
+   "seed": 3500164,
+   "meta": {
+    "subjects": [
+     "berry_bowl",
+     "can"
+    ],
+    "classes": [
+     "bowl",
+     "can"
+    ],
+    "n_refs": 2,
+    "template_id": 6,
+    "template": "with a city in the background",
+    "views": [
+     "04.jpg",
+     "05.jpg"
+    ],
+    "seed_slot": 4,
+    "m6_ext": true,
+    "m4_src_task_id": null,
+    "m6_runfloor": true,
+    "m6_floor_side": "b"
+   },
+   "variants": [
+    "m6_full"
+   ]
+  },
+  {
+   "task_id": "M6_S1_017_s0",
+   "stratum": "S1",
+   "prompt": "a bowl and a candle on top of the sidewalk in a crowded street",
+   "image_paths": [
+    "../dreambooth/dataset/berry_bowl/00.jpg",
+    "../dreambooth/dataset/candle/01.jpg"
+   ],
+   "seed": 3500170,
+   "meta": {
+    "subjects": [
+     "berry_bowl",
+     "candle"
+    ],
+    "classes": [
+     "bowl",
+     "candle"
+    ],
+    "n_refs": 2,
+    "template_id": 17,
+    "template": "on top of the sidewalk in a crowded street",
+    "views": [
+     "00.jpg",
+     "01.jpg"
+    ],
+    "seed_slot": 0,
+    "m6_ext": false,
+    "m4_src_task_id": "S1_017_s0",
+    "m6_runfloor": true,
+    "m6_floor_side": "b"
+   },
+   "variants": [
+    "m6_full"
+   ]
+  },
+  {
+   "task_id": "M6_S1_018_s1",
+   "stratum": "S1",
+   "prompt": "a bowl and a clock on top of a dirt road",
+   "image_paths": [
+    "../dreambooth/dataset/berry_bowl/01.jpg",
+    "../dreambooth/dataset/clock/02.jpg"
+   ],
+   "seed": 3500181,
+   "meta": {
+    "subjects": [
+     "berry_bowl",
+     "clock"
+    ],
+    "classes": [
+     "bowl",
+     "clock"
+    ],
+    "n_refs": 2,
+    "template_id": 18,
+    "template": "on top of a dirt road",
+    "views": [
+     "01.jpg",
+     "02.jpg"
+    ],
+    "seed_slot": 1,
+    "m6_ext": false,
+    "m4_src_task_id": "S1_018_s1",
+    "m6_runfloor": true,
+    "m6_floor_side": "b"
+   },
+   "variants": [
+    "m6_full"
+   ]
+  },
+  {
+   "task_id": "M6_S1_019_s3",
+   "stratum": "S1",
+   "prompt": "a bowl and a sneaker on top of a purple rug in a forest",
+   "image_paths": [
+    "../dreambooth/dataset/berry_bowl/03.jpg",
+    "../dreambooth/dataset/colorful_sneaker/04.jpg"
+   ],
+   "seed": 3500193,
+   "meta": {
+    "subjects": [
+     "berry_bowl",
+     "colorful_sneaker"
+    ],
+    "classes": [
+     "bowl",
+     "sneaker"
+    ],
+    "n_refs": 2,
+    "template_id": 9,
+    "template": "on top of a purple rug in a forest",
+    "views": [
+     "03.jpg",
+     "04.jpg"
+    ],
+    "seed_slot": 3,
+    "m6_ext": true,
+    "m4_src_task_id": null,
+    "m6_runfloor": true,
+    "m6_floor_side": "b"
+   },
+   "variants": [
+    "m6_full"
+   ]
+  },
+  {
+   "task_id": "M6_S1_024_s4",
+   "stratum": "S1",
+   "prompt": "a can and a clock floating in an ocean of milk",
+   "image_paths": [
+    "../dreambooth/dataset/can/04.jpg",
+    "../dreambooth/dataset/clock/05.jpg"
+   ],
+   "seed": 3500244,
+   "meta": {
+    "subjects": [
+     "can",
+     "clock"
+    ],
+    "classes": [
+     "can",
+     "clock"
+    ],
+    "n_refs": 2,
+    "template_id": 14,
+    "template": "floating in an ocean of milk",
+    "views": [
+     "04.jpg",
+     "05.jpg"
+    ],
+    "seed_slot": 4,
+    "m6_ext": true,
+    "m4_src_task_id": null,
+    "m6_runfloor": true,
+    "m6_floor_side": "b"
+   },
+   "variants": [
+    "m6_full"
+   ]
+  },
+  {
+   "task_id": "M6_S1_026_s2",
+   "stratum": "S1",
+   "prompt": "a can and a toy with a city in the background",
+   "image_paths": [
+    "../dreambooth/dataset/can/02.jpg",
+    "../dreambooth/dataset/duck_toy/03.jpg"
+   ],
+   "seed": 3500262,
+   "meta": {
+    "subjects": [
+     "can",
+     "duck_toy"
+    ],
+    "classes": [
+     "can",
+     "toy"
+    ],
+    "n_refs": 2,
+    "template_id": 6,
+    "template": "with a city in the background",
+    "views": [
+     "02.jpg",
+     "03.jpg"
+    ],
+    "seed_slot": 2,
+    "m6_ext": false,
+    "m4_src_task_id": "S1_026_s2",
+    "m6_runfloor": true,
+    "m6_floor_side": "b"
+   },
+   "variants": [
+    "m6_full"
+   ]
+  },
+  {
+   "task_id": "M6_S1_032_s3",
+   "stratum": "S1",
+   "prompt": "a candle and a boot on the beach",
+   "image_paths": [
+    "../dreambooth/dataset/candle/03.jpg",
+    "../dreambooth/dataset/fancy_boot/04.jpg"
+   ],
+   "seed": 3500323,
+   "meta": {
+    "subjects": [
+     "candle",
+     "fancy_boot"
+    ],
+    "classes": [
+     "candle",
+     "boot"
+    ],
+    "n_refs": 2,
+    "template_id": 2,
+    "template": "on the beach",
+    "views": [
+     "03.jpg",
+     "04.jpg"
+    ],
+    "seed_slot": 3,
+    "m6_ext": true,
+    "m4_src_task_id": null,
+    "m6_runfloor": true,
+    "m6_floor_side": "b"
+   },
+   "variants": [
+    "m6_full"
+   ]
+  },
+  {
+   "task_id": "M6_S1_033_s4",
+   "stratum": "S1",
+   "prompt": "a candle and a stuffed animal on a cobblestone street",
+   "image_paths": [
+    "../dreambooth/dataset/candle/04.jpg",
+    "../dreambooth/dataset/grey_sloth_plushie/00.jpg"
+   ],
+   "seed": 3500334,
+   "meta": {
+    "subjects": [
+     "candle",
+     "grey_sloth_plushie"
+    ],
+    "classes": [
+     "candle",
+     "stuffed animal"
+    ],
+    "n_refs": 2,
+    "template_id": 3,
+    "template": "on a cobblestone street",
+    "views": [
+     "04.jpg",
+     "00.jpg"
+    ],
+    "seed_slot": 4,
+    "m6_ext": true,
+    "m4_src_task_id": null,
+    "m6_runfloor": true,
+    "m6_floor_side": "b"
+   },
+   "variants": [
+    "m6_full"
+   ]
+  },
+  {
+   "task_id": "M6_S1_035_s1",
+   "stratum": "S1",
+   "prompt": "a clock and a toy on top of green grass with sunflowers around it",
+   "image_paths": [
+    "../dreambooth/dataset/clock/01.jpg",
+    "../dreambooth/dataset/duck_toy/02.jpg"
+   ],
+   "seed": 3500351,
+   "meta": {
+    "subjects": [
+     "clock",
+     "duck_toy"
+    ],
+    "classes": [
+     "clock",
+     "toy"
+    ],
+    "n_refs": 2,
+    "template_id": 15,
+    "template": "on top of green grass with sunflowers around it",
+    "views": [
+     "01.jpg",
+     "02.jpg"
+    ],
+    "seed_slot": 1,
+    "m6_ext": false,
+    "m4_src_task_id": "S1_035_s1",
+    "m6_runfloor": true,
+    "m6_floor_side": "b"
+   },
+   "variants": [
+    "m6_full"
+   ]
+  },
+  {
+   "task_id": "M6_S1_037_s3",
+   "stratum": "S1",
+   "prompt": "a clock and a stuffed animal with a mountain in the background",
+   "image_paths": [
+    "../dreambooth/dataset/clock/03.jpg",
+    "../dreambooth/dataset/grey_sloth_plushie/04.jpg"
+   ],
+   "seed": 3500373,
+   "meta": {
+    "subjects": [
+     "clock",
+     "grey_sloth_plushie"
+    ],
+    "classes": [
+     "clock",
+     "stuffed animal"
+    ],
+    "n_refs": 2,
+    "template_id": 7,
+    "template": "with a mountain in the background",
+    "views": [
+     "03.jpg",
+     "04.jpg"
+    ],
+    "seed_slot": 3,
+    "m6_ext": true,
+    "m4_src_task_id": null,
+    "m6_runfloor": true,
+    "m6_floor_side": "b"
+   },
+   "variants": [
+    "m6_full"
+   ]
+  },
+  {
+   "task_id": "M6_S1_038_s2",
+   "stratum": "S1",
+   "prompt": "a sneaker and a toy on top of a dirt road",
+   "image_paths": [
+    "../dreambooth/dataset/colorful_sneaker/02.jpg",
+    "../dreambooth/dataset/duck_toy/03.jpg"
+   ],
+   "seed": 3500382,
+   "meta": {
+    "subjects": [
+     "colorful_sneaker",
+     "duck_toy"
+    ],
+    "classes": [
+     "sneaker",
+     "toy"
+    ],
+    "n_refs": 2,
+    "template_id": 18,
+    "template": "on top of a dirt road",
+    "views": [
+     "02.jpg",
+     "03.jpg"
+    ],
+    "seed_slot": 2,
+    "m6_ext": false,
+    "m4_src_task_id": "S1_038_s2",
+    "m6_runfloor": true,
+    "m6_floor_side": "b"
+   },
+   "variants": [
+    "m6_full"
+   ]
+  },
+  {
+   "task_id": "M6_S1_040_s0",
+   "stratum": "S1",
+   "prompt": "a sneaker and a stuffed animal in the jungle",
+   "image_paths": [
+    "../dreambooth/dataset/colorful_sneaker/00.jpg",
+    "../dreambooth/dataset/grey_sloth_plushie/01.jpg"
+   ],
+   "seed": 3500400,
+   "meta": {
+    "subjects": [
+     "colorful_sneaker",
+     "grey_sloth_plushie"
+    ],
+    "classes": [
+     "sneaker",
+     "stuffed animal"
+    ],
+    "n_refs": 2,
+    "template_id": 0,
+    "template": "in the jungle",
+    "views": [
+     "00.jpg",
+     "01.jpg"
+    ],
+    "seed_slot": 0,
+    "m6_ext": false,
+    "m4_src_task_id": "S1_040_s0",
+    "m6_runfloor": true,
+    "m6_floor_side": "b"
+   },
+   "variants": [
+    "m6_full"
+   ]
+  },
+  {
+   "task_id": "M6_S3_00c3_s0",
+   "stratum": "S3",
+   "prompt": "a backpack on a cobblestone street",
+   "image_paths": [
+    "../dreambooth/dataset/backpack_dog/01.jpg"
+   ],
+   "seed": 3700030,
+   "meta": {
+    "subjects": [
+     "backpack_dog"
+    ],
+    "classes": [
+     "backpack"
+    ],
+    "n_refs": 1,
+    "template_id": 3,
+    "template": "on a cobblestone street",
+    "views": [
+     "01.jpg"
+    ],
+    "seed_slot": 0,
+    "m6_ext": true,
+    "m4_src_task_id": null,
+    "m6_runfloor": true,
+    "m6_floor_side": "b"
+   },
+   "variants": [
+    "m6_full"
+   ]
+  },
+  {
+   "task_id": "M6_S3_01c4_s1",
+   "stratum": "S3",
+   "prompt": "a stuffed animal with a mountain in the background",
+   "image_paths": [
+    "../dreambooth/dataset/bear_plushie/04.jpg"
+   ],
+   "seed": 3700141,
+   "meta": {
+    "subjects": [
+     "bear_plushie"
+    ],
+    "classes": [
+     "stuffed animal"
+    ],
+    "n_refs": 1,
+    "template_id": 7,
+    "template": "with a mountain in the background",
+    "views": [
+     "04.jpg"
+    ],
+    "seed_slot": 1,
+    "m6_ext": true,
+    "m4_src_task_id": null,
+    "m6_runfloor": true,
+    "m6_floor_side": "b"
+   },
+   "variants": [
+    "m6_full"
+   ]
+  },
+  {
+   "task_id": "M6_S3_02c1_s1",
+   "stratum": "S3",
+   "prompt": "a bowl with a mountain in the background",
+   "image_paths": [
+    "../dreambooth/dataset/berry_bowl/03.jpg"
+   ],
+   "seed": 3700211,
+   "meta": {
+    "subjects": [
+     "berry_bowl"
+    ],
+    "classes": [
+     "bowl"
+    ],
+    "n_refs": 1,
+    "template_id": 7,
+    "template": "with a mountain in the background",
+    "views": [
+     "03.jpg"
+    ],
+    "seed_slot": 1,
+    "m6_ext": false,
+    "m4_src_task_id": "S3_007_s1",
+    "m6_runfloor": true,
+    "m6_floor_side": "b"
+   },
+   "variants": [
+    "m6_full"
+   ]
+  },
+  {
+   "task_id": "M6_S3_03c4_s0",
+   "stratum": "S3",
+   "prompt": "a can floating on top of water",
+   "image_paths": [
+    "../dreambooth/dataset/can/02.jpg"
+   ],
+   "seed": 3700340,
+   "meta": {
+    "subjects": [
+     "can"
+    ],
+    "classes": [
+     "can"
+    ],
+    "n_refs": 1,
+    "template_id": 13,
+    "template": "floating on top of water",
+    "views": [
+     "02.jpg"
+    ],
+    "seed_slot": 0,
+    "m6_ext": true,
+    "m4_src_task_id": null,
+    "m6_runfloor": true,
+    "m6_floor_side": "b"
+   },
+   "variants": [
+    "m6_full"
+   ]
+  },
+  {
+   "task_id": "M6_S3_04c2_s1",
+   "stratum": "S3",
+   "prompt": "a candle floating in an ocean of milk",
+   "image_paths": [
+    "../dreambooth/dataset/candle/00.jpg"
+   ],
+   "seed": 3700421,
+   "meta": {
+    "subjects": [
+     "candle"
+    ],
+    "classes": [
+     "candle"
+    ],
+    "n_refs": 1,
+    "template_id": 14,
+    "template": "floating in an ocean of milk",
+    "views": [
+     "00.jpg"
+    ],
+    "seed_slot": 1,
+    "m6_ext": false,
+    "m4_src_task_id": "S3_014_s1",
+    "m6_runfloor": true,
+    "m6_floor_side": "b"
+   },
+   "variants": [
+    "m6_full"
+   ]
+  },
+  {
+   "task_id": "M6_S3_05c1_s1",
+   "stratum": "S3",
+   "prompt": "a clock on top of a mirror",
+   "image_paths": [
+    "../dreambooth/dataset/clock/03.jpg"
+   ],
+   "seed": 3700511,
+   "meta": {
+    "subjects": [
+     "clock"
+    ],
+    "classes": [
+     "clock"
+    ],
+    "n_refs": 1,
+    "template_id": 16,
+    "template": "on top of a mirror",
+    "views": [
+     "03.jpg"
+    ],
+    "seed_slot": 1,
+    "m6_ext": false,
+    "m4_src_task_id": "S3_016_s1",
+    "m6_runfloor": true,
+    "m6_floor_side": "b"
+   },
+   "variants": [
+    "m6_full"
+   ]
+  },
+  {
+   "task_id": "M6_S3_06c2_s0",
+   "stratum": "S3",
+   "prompt": "a sneaker in the jungle",
+   "image_paths": [
+    "../dreambooth/dataset/colorful_sneaker/04.jpg"
+   ],
+   "seed": 3700620,
+   "meta": {
+    "subjects": [
+     "colorful_sneaker"
+    ],
+    "classes": [
+     "sneaker"
+    ],
+    "n_refs": 1,
+    "template_id": 0,
+    "template": "in the jungle",
+    "views": [
+     "04.jpg"
+    ],
+    "seed_slot": 0,
+    "m6_ext": false,
+    "m4_src_task_id": "S3_020_s0",
+    "m6_runfloor": true,
+    "m6_floor_side": "b"
+   },
+   "variants": [
+    "m6_full"
+   ]
+  },
+  {
+   "task_id": "M6_S3_07c3_s0",
+   "stratum": "S3",
+   "prompt": "a toy on top of pink fabric",
+   "image_paths": [
+    "../dreambooth/dataset/duck_toy/02.jpg"
+   ],
+   "seed": 3700730,
+   "meta": {
+    "subjects": [
+     "duck_toy"
+    ],
+    "classes": [
+     "toy"
+    ],
+    "n_refs": 1,
+    "template_id": 4,
+    "template": "on top of pink fabric",
+    "views": [
+     "02.jpg"
+    ],
+    "seed_slot": 0,
+    "m6_ext": true,
+    "m4_src_task_id": null,
+    "m6_runfloor": true,
+    "m6_floor_side": "b"
+   },
+   "variants": [
+    "m6_full"
+   ]
+  },
+  {
+   "task_id": "M6_S3_08c0_s0",
+   "stratum": "S3",
+   "prompt": "a boot on top of pink fabric",
+   "image_paths": [
+    "../dreambooth/dataset/fancy_boot/00.jpg"
+   ],
+   "seed": 3700800,
+   "meta": {
+    "subjects": [
+     "fancy_boot"
+    ],
+    "classes": [
+     "boot"
+    ],
+    "n_refs": 1,
+    "template_id": 4,
+    "template": "on top of pink fabric",
+    "views": [
+     "00.jpg"
+    ],
+    "seed_slot": 0,
+    "m6_ext": false,
+    "m4_src_task_id": "S3_024_s0",
+    "m6_runfloor": true,
+    "m6_floor_side": "b"
+   },
+   "variants": [
+    "m6_full"
+   ]
+  },
+  {
+   "task_id": "M6_S3_09c3_s0",
+   "stratum": "S3",
+   "prompt": "a stuffed animal with a wheat field in the background",
+   "image_paths": [
+    "../dreambooth/dataset/grey_sloth_plushie/01.jpg"
+   ],
+   "seed": 3700930,
+   "meta": {
+    "subjects": [
+     "grey_sloth_plushie"
+    ],
+    "classes": [
+     "stuffed animal"
+    ],
+    "n_refs": 1,
+    "template_id": 10,
+    "template": "with a wheat field in the background",
+    "views": [
+     "01.jpg"
+    ],
+    "seed_slot": 0,
+    "m6_ext": true,
+    "m4_src_task_id": null,
+    "m6_runfloor": true,
+    "m6_floor_side": "b"
+   },
+   "variants": [
+    "m6_full"
+   ]
+  }
+ ]
+}

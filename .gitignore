@@ -320,3 +320,23 @@ log/ref_distill/
 # 边 ③(底座)批:post4000 vs 臂B。清单/标注同上放行;GPU 成本 0,两侧图都是既有产物。
 !/output/eval_arm_b/pairs_m5e3.json
 !/output/eval_arm_b/blind_annotations_m5e3.json
+
+# M6 隔离消融批(2026-08-11,M6_ABLATION_SPEC §5.2)。放行规则同臂 B,**boards/ 同样不放行**:
+# 拼图带变体名列头 = 已揭盲,而 M6 这批**还没判读**,且 SPEC §7-5 明写"判读完成前不得生成
+# 带变体名的拼图"。`--merge` 必须带 `--no_board`。
+# 650 张全分辨率 PNG(主批 640 + 天花板 30)留在共享盘供 viewer 判读,不进 git。
+!/output/eval_m6/
+/output/eval_m6/*
+!/output/eval_m6/results.json
+!/output/eval_m6/results_shard0.json
+# 配对清单 + 标注,理由与 eval_arm_b/pairs_* 逐字相同:清单是**预登记的抽样与盲种本身**,
+# 标注是判读产物,两者都要能被 report.py 离线复算与审计。
+!/output/eval_m6/pairs_m6.json
+!/output/eval_m6/blind_annotations_m6.json
+# 天花板第二侧(另一个 job)。只放行 results.json——它是"这 30 张确实是另一次 run"的凭据。
+!/output/eval_m6_floor/
+/output/eval_m6_floor/*
+!/output/eval_m6_floor/results.json
+!/output/eval_m6_floor/results_shard0.json
+!/logs/m6_eval.log
+!/logs/m6_eval_floor.log
