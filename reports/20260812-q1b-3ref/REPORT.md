@@ -112,6 +112,82 @@ config zero_cond_t: True
 
 ---
 
-## 3. 下一步
+---
 
-待 G2（`qwen/infer_qwen_3ref.py` 的 `--dry_run` 8 分片）通过并确认后，提交正式 job 跑 Q1-B 122 条 3-ref。
+## 3. G2：`qwen/infer_qwen_3ref.py` `--dry_run` 8 分片
+
+脚本路径：`qwen/infer_qwen_3ref.py`（新写，结构照 `scripts/infer_qwen_edit.py`，常量与 Q1 逐字相同，只加了 8 卡分片）。
+
+本地完整 `--dry_run`（不加 `--limit`）结果：
+
+| shard_idx | 条数 | 第一个 task_id | 最后一个 task_id |
+|---|---|---|---|
+| 0 | 16 | `S4_000_s0` | `Q1B_109_s0` |
+| 1 | 16 | `S4_000_s1` | `Q1B_110_s0` |
+| 2 | 15 | `S4_001_s0` | `Q1B_101_s0` |
+| 3 | 15 | `S4_001_s1` | `Q1B_103_s0` |
+| 4 | 15 | `S4_002_s0` | `Q1B_104_s0` |
+| 5 | 15 | `S4_002_s1` | `Q1B_105_s0` |
+| 6 | 15 | `S4_003_s0` | `Q1B_106_s0` |
+| 7 | 15 | `S4_003_s1` | `Q1B_107_s0` |
+
+合并后 `results.json` 总任务 **122**，拼图按 8 行分批输出 16 张 `ALL_COMPARISON_partNN.png`。
+
+G2 通过。
+
+---
+
+## 4. G3：正式 job 已提交
+
+提交命令（经 `--dry-run` 验证后正式执行）：
+
+```bash
+export PATH=/kaimm-distill/infer_hub/lib:$PATH
+sudo -E env PATH=/kaimm-distill/infer_hub/lib:$PATH \
+  http_proxy=http://oversea-squid1.jp.txyun:11080 \
+  https_proxy=http://oversea-squid1.jp.txyun:11080 \
+  /kaimm-distill/infer_hub/lib/infer_submit \
+  --owner wuwenxuan --project default --cluster h --gpus 8 --timeout 60 \
+  --repo https://github.com/wenshare71/UNO.git \
+  --commit 16c7a672b14a385dae3af1bdd912e3abcef38c92 \
+  --weights /kaimm-distill/wuwenxuan/models/Qwen-Image-Edit-2511 \
+  --output-dir /kaimm-distill/wuwenxuan/output/qwen_3ref \
+  --uv-env /kaimm-distill/wuwenxuan/envs/qwen-edit \
+  --label qwen2511_3ref_122 \
+  --prep-cmd 'true' \
+  --prep-marker /kaimm-distill/wuwenxuan/models/Qwen-Image-Edit-2511 \
+  --cmd 'E=/kaimm-distill/wuwenxuan/envs/qwen-edit; SP=$E/lib/python3.11/site-packages; export LD_LIBRARY_PATH=$E/lib:$SP/torch/lib:$(echo $SP/nvidia/*/lib | tr " " :):$LD_LIBRARY_PATH; for i in 0 1 2 3 4 5 6 7; do CUDA_VISIBLE_DEVICES=$i QWEN_WEIGHTS=$INFER_WEIGHTS_DIR $E/bin/python qwen/infer_qwen_3ref.py --shard_idx $i --num_shards 8 --out $INFER_OUTPUT_DIR > $INFER_OUTPUT_DIR/shard$i.log 2>&1 & sleep 20; done; wait; QWEN_WEIGHTS=$INFER_WEIGHTS_DIR $E/bin/python qwen/infer_qwen_3ref.py --merge --out $INFER_OUTPUT_DIR'
+```
+
+入队信息：
+
+```text
+[infer_submit] 已入队 wuwenxuan__qwen2511_3ref_122__16c7a672b14a  (project=default, cluster=default(硬绑定), 当前排队 1 个, 本人在途 1/3)
+               /kaimm-distill/infer_hub/queues/default/pending/wuwenxuan__qwen2511_3ref_122__16c7a672b14a.json
+```
+
+任务参数摘要：
+
+| 字段 | 值 |
+|---|---|
+| job_id | `wuwenxuan__qwen2511_3ref_122__16c7a672b14a` |
+| owner | `wuwenxuan` |
+| project | `default` |
+| cluster | `default`（H 卡主集群，硬绑定） |
+| gpus | 8 |
+| timeout | 60 min |
+| commit | `16c7a672b14a385dae3af1bdd912e3abcef38c92` |
+| weights | `/kaimm-distill/wuwenxuan/models/Qwen-Image-Edit-2511` |
+| output_dir | `/kaimm-distill/wuwenxuan/output/qwen_3ref` |
+| uv_env | `/kaimm-distill/wuwenxuan/envs/qwen-edit` |
+
+---
+
+## 5. 待观察项
+
+- 8 个 shard 日志：`/kaimm-distill/wuwenxuan/output/qwen_3ref/shard{0..7}.log`
+- 合并产物：`/kaimm-distill/wuwenxuan/output/qwen_3ref/results.json`
+- 拼图：`/kaimm-distill/wuwenxuan/output/qwen_3ref/ALL_COMPARISON_part*.png`
+- 任务日志：`/kaimm-distill/infer_hub/queues/default/logs/wuwenxuan__qwen2511_3ref_122__16c7a672b14a.log`
+
+用 `python3 /kaimm-distill/infer_hub/lib/infer_status --owner wuwenxuan` 可看排队 / 运行状态。
