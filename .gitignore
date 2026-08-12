@@ -340,3 +340,18 @@ log/ref_distill/
 !/output/eval_m6_floor/results_shard0.json
 !/logs/m6_eval.log
 !/logs/m6_eval_floor.log
+# ─── Qwen 系列(2026-08-12 起,qwen/PLAN.md)────────────────────────────────
+# Q1 teacher 裸基线(40 条)与 Q1-B 3-ref 探底(122 条)。
+# 只放行 results.json + 拼图:全分辨率 1024² PNG 留在共享盘(122 张约 200 MB),
+# 远程机器靠 git pull 同步代码,把图推上去会把仓库拖垮。
+# 拼图可以进 git 的理由:这两批**只有一个变体**(qwen2511),不存在 A/B,
+# 不受"判读完成前不得生成带变体名的拼图"那条盲评纪律约束。
+!/output/qwen_baseline/
+/output/qwen_baseline/*
+!/output/qwen_baseline/results.json
+!/output/qwen_baseline/ALL_COMPARISON*.png
+!/output/qwen_3ref/
+/output/qwen_3ref/*
+!/output/qwen_3ref/results.json
+!/output/qwen_3ref/results_shard*.json
+!/output/qwen_3ref/ALL_COMPARISON*.png
