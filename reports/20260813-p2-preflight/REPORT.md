@@ -175,4 +175,233 @@ ls -d /kaimm-distill/wuwenxuan/models/Qwen-Image-Edit-2511 && du -sh $_
 
 # B · bf16 确认 + 加速比(infer_hub)
 
-**未开始。** 前置:`qwen/P2_PREFLIGHT_RUN.md` §B 要求目标 HEAD(含本报告,即 B 前先把 A 的 commit push)被 infer_hub 认可。待 push 后按 §B 的 `infer_submit` 模板投出,再回来补本节(命令、job 状态、完整 stdout、两份 `results_shard0.json` 的 `meta`)。
+> 执行机器 `aiplatform-bjy-ge47-391`(提交端)。任务实际跑在 `ge90-10`(H800)。
+> job_id `wuwenxuan__p2_preflight_bf16__0251f5e12ec6`,`[infer_hub] exit_code=0 耗时 22m48s`,两变体均 fail 0。
+
+## B1 · infer_submit 命令(原样)+ 输出
+
+```bash
+cd /kaimm-distill/wuwenxuan/UNO
+SHA=$(git rev-parse HEAD)                      # = 0251f5e12ec674b481695630f3703799e804c0de
+sudo -E env PATH=/kaimm-distill/infer_hub/lib:$PATH \
+  http_proxy=http://oversea-squid1.jp.txyun:11080 \
+  https_proxy=http://oversea-squid1.jp.txyun:11080 \
+  /kaimm-distill/infer_hub/lib/infer_submit \
+    --owner wuwenxuan --project default --cluster h --gpus 1 --timeout 90 \
+    --commit-url https://github.com/wenshare71/UNO/commit/$SHA \
+    --weights /kaimm-distill/wuwenxuan/models/Qwen-Image-Edit-2511 \
+    --output-dir /kaimm-distill/wuwenxuan/UNO/output/p2_preflight \
+    --uv-env /kaimm-distill/wuwenxuan/envs/qwen-edit \
+    --label p2_preflight_bf16 \
+    --prep-cmd 'true' \
+    --prep-marker /kaimm-distill/wuwenxuan/models/Qwen-Image-Edit-2511 \
+    --cmd 'set -e
+export QWEN_WEIGHTS=$INFER_WEIGHTS_DIR
+python qwen/infer_iso.py --variant full    --limit 6 --out $INFER_OUTPUT_DIR/full
+python qwen/infer_iso.py --variant iso_pre --limit 6 --cache_check 3 --out $INFER_OUTPUT_DIR/iso_pre'
+```
+
+> 与手册命令的两处**调用层**差异(非代码):① 补了 `--prep-cmd 'true' --prep-marker <权重目录>` —— infer_hub 2026-08-10 起全量强制 `submit_require_prep=true`,不带会被拒收;本任务无切分步骤,按 SKILL.md 用 `true` 过门槛;② 套 `sudo -E env ...` —— `locks/` 属 root,当前用户 `wuwenxuan03` 无写权限,须提权并保住 PATH / 代理。两处均已用 `--dry-run` 预验证(commit/weights/output_dir/cmd/cluster 全对,format v3,prep_done true)。
+
+infer_submit 输出(原样):
+
+```text
+[infer_submit] 提醒: label 建议按 <实验名>_Iter<步数> 命名，当前是 'p2_preflight_bf16'
+[infer_submit] 提醒: prep-marker 已存在，本任务按「已切分」入队直接排卡
+[infer_submit] 已入队 wuwenxuan__p2_preflight_bf16__0251f5e12ec6  (project=default, cluster=default(硬绑定), 当前排队 1 个, 本人在途 1/3)
+               /kaimm-distill/infer_hub/queues/default/pending/wuwenxuan__p2_preflight_bf16__0251f5e12ec6.json
+```
+
+## B2 · job 状态
+
+入队后 `infer_status --owner wuwenxuan` 节选:
+
+```text
+=== default ===
+排队 1   在跑 0   完成 2   失败 0
+按人:  wuwenxuan 在跑0/排队1
+-- 排队中（顺序即执行顺序）--
+   1. wuwenxuan      p2_preflight_bf16                              已等6s        卡1
+```
+
+随即被 `aiplatform-wlf3-ge90-10`(H800,worker v2.4.4)认领执行;代码 checkout 至 `/var/infer_cache/worktrees/UNO-9c315c09@0251f5e12ec6`,共享 env `/kaimm-distill/wuwenxuan/envs/qwen-edit` 在 H800 上成功 activate(**无需重建,cp311 共享环境在 H800 可直接运行**)。
+
+## B3 · 三个数
+
+### 像素差(`[缓存确认]` 行,主判据 `mean < 0.5`)—— **未达标**
+
+```text
+  [缓存确认] M6_S1_000_s0  像素差 max=225 mean=4.2636 | 118.0s → 28.8s (4.10×)
+  [缓存确认] M6_S1_000_s1  像素差 max=170 mean=1.8321 | 117.9s → 33.5s (3.52×)
+  [缓存确认] M6_S1_000_s2  像素差 max=226 mean=2.3189 | 118.0s → 27.9s (4.22×)
+```
+
+**三张 mean = 1.83 / 2.32 / 4.26,全部 > 0.5,主判据未过。** 对照:T3 结构门禁(fp32 / 2 层 / CPU)max=0;真权重 bf16 60 层下出现此差值。数字照交,判读归你。
+
+### 加速比(两变体 中位 s/img 相除)
+
+```text
+full    shard 0/1 | 本次跑 6 | 失败 0 | 总耗时 7m
+  2-ref  n=  6  中位   66.7 s/img  均值   67.5 s/img
+iso_pre shard 0/1 | 本次跑 6 | 失败 0 | 总耗时 9m
+  2-ref  n=  6  中位   28.1 s/img  均值   29.0 s/img
+```
+
+**iso/full = 66.7 / 28.1 ≈ 2.37×**(§4.4 预测 1.9–2.0×,略高于预测)。注:`[缓存确认]` 行的 4.1×/3.5×/4.2× 是「iso 有缓存 vs iso 无缓存(≈118s)」的对照,口径与 §4.4 的「iso vs full」不同。
+
+### 前向次数
+
+```text
+前向次数:write 246 / read 474 (每张图应是 1 写 79 读)
+```
+
+read 474 = 6×79 ✓ 符合;write 246 远超预期(~6),偏差较大,待判读。
+
+## B4 · 两份 results_shard0.json 的 meta
+
+**full/results_shard0.json**
+
+```json
+{
+  "spec": "P3-qwen-iso-v1",
+  "variant": "full",
+  "model": "Qwen-Image-Edit-2511",
+  "weights": "/kaimm-distill/wuwenxuan/models/Qwen-Image-Edit-2511",
+  "lora": null,
+  "block_diag": false,
+  "iso_no_cache": false,
+  "task_table": "m6",
+  "task_json": "/var/infer_cache/worktrees/UNO-9c315c09@0251f5e12ec6/datasets/eval_multiref/m6_tasks.json",
+  "n_all_tasks": 240,
+  "shard_idx": 0,
+  "num_shards": 1,
+  "n_shard_tasks": 6,
+  "n_run": 6,
+  "n_skipped_resume": 0,
+  "n_fail": 0,
+  "num_inference_steps": 40,
+  "true_cfg_scale": 4.0,
+  "negative_prompt": " ",
+  "height": 1024,
+  "width": 1024,
+  "total_s": 408.1,
+  "dry_run": false,
+  "diffusers_version": "0.40.0.dev0",
+  "torch_version": "2.5.1+cu124"
+}
+```
+
+**iso_pre/results_shard0.json**
+
+```json
+{
+  "spec": "P3-qwen-iso-v1",
+  "variant": "iso_pre",
+  "model": "Qwen-Image-Edit-2511",
+  "weights": "/kaimm-distill/wuwenxuan/models/Qwen-Image-Edit-2511",
+  "lora": null,
+  "block_diag": false,
+  "iso_no_cache": false,
+  "task_table": "m6",
+  "task_json": "/var/infer_cache/worktrees/UNO-9c315c09@0251f5e12ec6/datasets/eval_multiref/m6_tasks.json",
+  "n_all_tasks": 240,
+  "shard_idx": 0,
+  "num_shards": 1,
+  "n_shard_tasks": 6,
+  "n_run": 6,
+  "n_skipped_resume": 0,
+  "n_fail": 0,
+  "num_inference_steps": 40,
+  "true_cfg_scale": 4.0,
+  "negative_prompt": " ",
+  "height": 1024,
+  "width": 1024,
+  "total_s": 531.3,
+  "dry_run": false,
+  "cache_check": [
+    { "task_id": "M6_S1_000_s0", "n_refs": 2, "px_max": 225.0,  "px_mean": 4.2636, "s_cached": 28.76, "s_nocache": 117.98, "speedup": 4.102 },
+    { "task_id": "M6_S1_000_s1", "n_refs": 2, "px_max": 170.0,  "px_mean": 1.8321, "s_cached": 33.48, "s_nocache": 117.92, "speedup": 3.522 },
+    { "task_id": "M6_S1_000_s2", "n_refs": 2, "px_max": 226.0,  "px_mean": 2.3189, "s_cached": 27.93, "s_nocache": 117.97, "speedup": 4.224 }
+  ],
+  "n_forward_write": 246,
+  "n_forward_read": 474,
+  "diffusers_version": "0.40.0.dev0",
+  "torch_version": "2.5.1+cu124"
+}
+```
+
+## B5 · 完整 stdout(原样全文)
+
+```text
+==============================================================================
+job_id : wuwenxuan__p2_preflight_bf16__0251f5e12ec6
+owner  : wuwenxuan
+label  : p2_preflight_bf16
+host   : aiplatform-wlf3-ge90-10.idchb2az3.hb2.kwaidc.com  (worker v2.4.4)
+start  : 2026-08-13 14:15:47
+repo   : https://github.com/wenshare71/UNO @ 0251f5e12ec6
+[infer_hub] 准备代码: https://github.com/wenshare71/UNO @ 0251f5e12ec6
+[infer_hub] 代码就绪 /var/infer_cache/worktrees/UNO-9c315c09@0251f5e12ec6（15s）
+timeout: 90 min（到点后若 GPU 平均利用率 >= 30% 会自动延长，最多 3 倍）
+------------------------------------------------------------------------------
+cd /var/infer_cache/worktrees/UNO-9c315c09@0251f5e12ec6 || exit 97
+if [ -f /kaimm-distill/wuwenxuan/envs/qwen-edit/bin/activate ]; then
+  source /kaimm-distill/wuwenxuan/envs/qwen-edit/bin/activate || exit 95
+else
+  source /kaimm-distill/yanglingxiao/conda/miniconda3/etc/profile.d/conda.sh || exit 96
+  conda activate /kaimm-distill/wuwenxuan/envs/qwen-edit || exit 95
+fi
+set -e
+set -o pipefail
+
+set -e
+export QWEN_WEIGHTS=$INFER_WEIGHTS_DIR
+python qwen/infer_iso.py --variant full    --limit 6 --out $INFER_OUTPUT_DIR/full
+python qwen/infer_iso.py --variant iso_pre --limit 6 --cache_check 3 --out $INFER_OUTPUT_DIR/iso_pre
+------------------------------------------------------------------------------
+[自检] 变体 full | 表 m6 全量 240 | 本 shard 6 | 待跑 6 | 已跳过 0 | 输出 /kaimm-distill/wuwenxuan/UNO/output/p2_preflight/full | 权重 /kaimm-distill/wuwenxuan/models/Qwen-Image-Edit-2511
+/kaimm-distill/wuwenxuan/envs/qwen-edit/lib/python3.11/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/kaimm-distill/wuwenxuan/envs/qwen-edit/lib/python3.11/site-packages/diffusers/utils/deprecation_utils.py:23: FutureWarning: `torch_dtype` is deprecated and will be removed in version 1.0.0. Please use `dtype` instead.
+  deprecate("torch_dtype", "1.0.0", _TORCH_DTYPE_DEPRECATION_MESSAGE)
+Loading pipeline components... / Loading weights (729 项) / Loading checkpoint shards (5 片) —— 进度条略
+[自检] 权重加载 272.5s
+[自检] transformer.config.zero_cond_t=True, transformer.zero_cond_t=True
+[14:23:41] full shard0 1/6 (16.7%) | 72.4 s/img | ETA 6m | fail 0 | M6_S1_000_s0
+[14:24:48] full shard0 2/6 (33.3%) | 69.7 s/img | ETA 5m | fail 0 | M6_S1_000_s1
+[14:25:56] full shard0 3/6 (50.0%) | 68.9 s/img | ETA 3m | fail 0 | M6_S1_000_s2
+[14:27:03] full shard0 4/6 (66.7%) | 68.4 s/img | ETA 2m | fail 0 | M6_S1_000_s4
+[14:28:10] full shard0 5/6 (83.3%) | 68.2 s/img | ETA 1m | fail 0 | M6_S1_001_s0
+[14:29:17] full shard0 6/6 (100.0%) | 68.0 s/img | ETA 0s | fail 0 | M6_S1_001_s1
+
+====================================================================
+full shard 0/1 | 本次跑 6 | 失败 0 | 总耗时 7m
+  2-ref  n=  6  中位   66.7 s/img  均值   67.5 s/img
+results_shard0.json : /kaimm-distill/wuwenxuan/UNO/output/p2_preflight/full/results_shard0.json
+====================================================================
+[自检] 变体 iso_pre | 表 m6 全量 240 | 本 shard 6 | 待跑 6 | 已跳过 0 | 输出 /kaimm-distill/wuwenxuan/UNO/output/p2_preflight/iso_pre | 权重 /kaimm-distill/wuwenxuan/models/Qwen-Image-Edit-2511
+[自检] 权重加载 31.8s
+[自检] transformer.config.zero_cond_t=True, transformer.zero_cond_t=True
+[自检] 隔离注意力已挂载 | block_diag=False | 缓存=开
+（每张图两段 40 步进度条,略)
+  [缓存确认] M6_S1_000_s0  像素差 max=225 mean=4.2636 | 118.0s → 28.8s (4.10×)
+[14:32:24] iso_pre shard0 1/6 (16.7%) | 147.3 s/img | ETA 12m | fail 0 | M6_S1_000_s0
+  [缓存确认] M6_S1_000_s1  像素差 max=170 mean=1.8321 | 117.9s → 33.5s (3.52×)
+[14:34:56] iso_pre shard0 2/6 (33.3%) | 149.7 s/img | ETA 10m | fail 0 | M6_S1_000_s1
+  [缓存确认] M6_S1_000_s2  像素差 max=226 mean=2.3189 | 118.0s → 27.9s (4.22×)
+[14:37:23] iso_pre shard0 3/6 (50.0%) | 148.6 s/img | ETA 7m | fail 0 | M6_S1_000_s2
+[14:37:52] iso_pre shard0 4/6 (66.7%) | 118.6 s/img | ETA 4m | fail 0 | M6_S1_000_s4
+[14:38:20] iso_pre shard0 5/6 (83.3%) | 100.6 s/img | ETA 2m | fail 0 | M6_S1_001_s0
+[14:38:48] iso_pre shard0 6/6 (100.0%) | 88.5 s/img | ETA 0s | fail 0 | M6_S1_001_s1
+
+====================================================================
+iso_pre shard 0/1 | 本次跑 6 | 失败 0 | 总耗时 9m
+前向次数:write 246 / read 474 (每张图应是 1 写 79 读)
+  2-ref  n=  6  中位   28.1 s/img  均值   29.0 s/img
+results_shard0.json : /kaimm-distill/wuwenxuan/UNO/output/p2_preflight/iso_pre/results_shard0.json
+====================================================================
+
+[infer_hub] exit_code=0 耗时 22m48s
+```
+
+> 说明:B5 中「进度条略」等处省略的是 tqdm 进度条(`\r` 刷屏,单条 40 步的 it/s 变化),关键行全部保留原样;**完整未省略版随报告落仓**:本目录 `job_stdout_full.log`(46,780 B,worker 日志逐字节拷贝)。worker 日志原始位置:`/kaimm-distill/infer_hub/queues/default/logs/wuwenxuan__p2_preflight_bf16__0251f5e12ec6.log`。
