@@ -20,6 +20,8 @@
 #
 # 可调环境变量:
 #   NUM_GPUS                  占几张卡(默认 8)
+#   GPU_OFFSET                从第几张卡开始占(默认 0;训练占了 0/1 时,占 2-7 用
+#                             NUM_GPUS=6 GPU_OFFSET=2)
 #   KEEPALIVE_SAVE_ROOT       输出根目录(默认 output/keepalive_train;不可写时自动 fallback 到 /tmp/keepalive_train)
 #   STARTUP_STAGGER           启动间隔秒(默认 30,避免 8 个进程同时读 ceph 把读带宽打爆)
 #   KEEPALIVE_INTERVAL        传给子进程:每轮间隔秒(默认 60)
@@ -36,6 +38,7 @@ cd "$REPO"
 
 ACTION="${1:-}"
 NUM_GPUS="${NUM_GPUS:-8}"
+GPU_OFFSET="${GPU_OFFSET:-0}"
 STARTUP_STAGGER="${STARTUP_STAGGER:-30}"
 PY="${PY:-$REPO/.venv-uno/bin/python}"
 
@@ -86,7 +89,7 @@ case "$ACTION" in
       echo "   在本机调试:PY=\$(uv python find 3.10) PYTHONPATH=.venv-uno/lib/python3.10/site-packages bash $0 start" >&2
       exit 1
     fi
-    for i in $(seq 0 $((NUM_GPUS - 1))); do
+    for i in $(seq "$GPU_OFFSET" $((GPU_OFFSET + NUM_GPUS - 1))); do
       DIR="$SAVE_ROOT/gpu${i}"
       mkdir -p "$DIR"
       LOG="$DIR/stdout.log"
@@ -125,7 +128,7 @@ case "$ACTION" in
 
   stop)
     echo "=== 停止 $NUM_GPUS 个保活进程 ==="
-    for i in $(seq 0 $((NUM_GPUS - 1))); do
+    for i in $(seq "$GPU_OFFSET" $((GPU_OFFSET + NUM_GPUS - 1))); do
       DIR="$SAVE_ROOT/gpu${i}"
       [ -f "$DIR/pid" ] || { echo "GPU$i: 无 PID 文件,跳过"; continue; }
       PID="$(cat "$DIR/pid")"
@@ -139,7 +142,7 @@ case "$ACTION" in
     done
     echo "已发 SIGTERM。若进程没退,等 5s 后发 SIGKILL..."
     sleep 5
-    for i in $(seq 0 $((NUM_GPUS - 1))); do
+    for i in $(seq "$GPU_OFFSET" $((GPU_OFFSET + NUM_GPUS - 1))); do
       DIR="$SAVE_ROOT/gpu${i}"
       [ -f "$DIR/pid" ] && kill -9 "$(cat "$DIR/pid")" 2>/dev/null && echo "GPU$i: SIGKILL"
       rm -f "$DIR/pid" 2>/dev/null || true
@@ -148,7 +151,7 @@ case "$ACTION" in
 
   status)
     echo "=== $SAVE_ROOT 下 $NUM_GPUS 个保活进程状态 ==="
-    for i in $(seq 0 $((NUM_GPUS - 1))); do
+    for i in $(seq "$GPU_OFFSET" $((GPU_OFFSET + NUM_GPUS - 1))); do
       DIR="$SAVE_ROOT/gpu${i}"
       if [ -f "$DIR/pid" ] && kill -0 "$(cat "$DIR/pid")" 2>/dev/null; then
         PID="$(cat "$DIR/pid")"
