@@ -278,7 +278,7 @@ def cmd_train(args):
         print(f"[自检] LoRA rank {args.rank} | 可训参数 {n_lora / 1e6:.1f} M | "
               f"target {LORA_TARGETS}", flush=True)
 
-    runner = IsoRunner(transformer, block_diag=args.block_diag)
+    runner = IsoRunner(transformer, block_diag=args.block_diag, store=False)
     opt = torch.optim.AdamW(lora_params, lr=args.lr, weight_decay=0.0)
 
     noise_len = (RESOLUTION // pipe.vae_scale_factor // 2) ** 2

@@ -131,9 +131,11 @@ class IsoRunner:
     **共享同一份缓存**。Q1 口径 40 步 × true_cfg ⇒ 80 次前向,1 次写、79 次读。
     """
 
-    def __init__(self, transformer, block_diag: bool = False):
+    def __init__(self, transformer, block_diag: bool = False, store: bool = True):
+        """`store=False`:write 模式下不往 cache 里存。训练侧用这个,理由见
+        `student_forward`。推理侧走 `IsoPipelineHook`,它必须存。"""
         self.transformer = transformer
-        self.ctx = IsoContext(mode="off", block_diag=block_diag, cache=RefKVCache())
+        self.ctx = IsoContext(mode="off", block_diag=block_diag, cache=RefKVCache(), store=store)
         install_iso_processors(transformer, self.ctx)
 
     def reset(self) -> None:
@@ -155,14 +157,14 @@ class IsoRunner:
         训练时**故意不用缓存**:一次前向只有一个 t,缓存省不下任何东西,
         而 write 模式与 read 模式的输出已由 T3 证明相同(判据 max<1e-5,实测 0)。
         走 write 还能让 ref 段拿到梯度——它们的 K/V 是 LoRA 的输出,要参与反传。
+
+        缓存靠构造时的 `store=False` 关掉,**不是"forward 之后 clear 一下"**:
+        梯度检查点反传时会重跑每个 block,重跑的还是 write 分支、还会往 cache 里写,
+        写在 clear 之后 ⇒ 一步下来 60 层 ref K/V 照样挂着(2-ref 约 6 GB,3-ref 约 9 GB)。
+        同理也不能在 forward 里临时翻转再复原——复原发生在反传之前。
         """
-        out = self(latents, image_latents, encoder_hidden_states, encoder_hidden_states_mask,
-                   timestep, img_shapes, mode="write")
-        # 写进 cache 的 K/V 带着 autograd graph。反传时它们本来就被 graph 持有,
-        # 不多占显存;但 graph 释放后 cache 还引用着 ⇒ 60 层 × ref K/V 会一直挂着
-        # (2-ref@1024² 约 6 GB)。训练侧不读缓存,直接扔。
-        self.ctx.cache.clear()
-        return out
+        return self(latents, image_latents, encoder_hidden_states, encoder_hidden_states_mask,
+                    timestep, img_shapes, mode="write")
 
     def __call__(self, latents: Tensor, image_latents: Tensor | None, encoder_hidden_states: Tensor,
                  encoder_hidden_states_mask: Tensor | None, timestep: Tensor, img_shapes: list,

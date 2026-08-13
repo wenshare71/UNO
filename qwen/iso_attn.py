@@ -105,6 +105,9 @@ class IsoContext:
     mode: str = "off"
     block_diag: bool = False
     cache: RefKVCache | None = None
+    # write 模式下要不要真往 cache 里存。训练侧置 False —— 见 IsoRunner.student_forward,
+    # 那里解释了为什么"forward 之后清一下"是错的。
+    store: bool = True
 
     # prepare() 填的
     txt_len: int = 0
@@ -226,7 +229,7 @@ class IsoAttnProcessor:
         joint_key = torch.cat([txt_key, img_key], dim=1)
         joint_value = torch.cat([txt_value, img_value], dim=1)
 
-        if ctx.mode == "write":
+        if ctx.mode == "write" and ctx.store:
             base = seq_txt + ctx.noise_len
             ctx.cache.write(self.block_idx, joint_key[:, base:], joint_value[:, base:])
         elif ctx.mode == "read":
