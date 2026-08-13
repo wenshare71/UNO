@@ -68,8 +68,7 @@ def iso_transformer_forward(
 
     砍掉的分支(2511 用不到,留着只会让人以为它们在起作用):
     `guidance`(config `guidance_embeds: false`)、`controlnet_block_samples`、
-    `additional_t_cond`(config 无 `use_additional_t_cond`)、梯度检查点
-    (训练时再加,`train_iso.py` 的事)。
+    `additional_t_cond`(config 无 `use_additional_t_cond`)。梯度检查点保留了。
     """
     if not transformer.zero_cond_t:
         raise SystemExit("❌ zero_cond_t 未生效。隔离注意力的地基是 ref 段 t=0 调制,"
@@ -102,16 +101,23 @@ def iso_transformer_forward(
     image_rotary_emb = transformer.pos_embed(img_shapes, max_txt_seq_len=text_seq_len,
                                              device=hs.device)
 
+    # 12.7k token × 60 层的激活装不下,训练必开(PLAN §3.2 起手配置)。
+    # 参数顺序照抄 stock L929-938,位置参数,错一个就静默传错。
+    use_ckpt = torch.is_grad_enabled() and transformer.gradient_checkpointing
     for block in transformer.transformer_blocks:
-        ehs, hs = block(
-            hidden_states=hs,
-            encoder_hidden_states=ehs,
-            encoder_hidden_states_mask=ehs_mask,
-            temb=temb,
-            image_rotary_emb=image_rotary_emb,
-            joint_attention_kwargs=None,
-            modulate_index=modulate_index,
-        )
+        if use_ckpt:
+            ehs, hs = transformer._gradient_checkpointing_func(
+                block, hs, ehs, ehs_mask, temb, image_rotary_emb, None, modulate_index)
+        else:
+            ehs, hs = block(
+                hidden_states=hs,
+                encoder_hidden_states=ehs,
+                encoder_hidden_states_mask=ehs_mask,
+                temb=temb,
+                image_rotary_emb=image_rotary_emb,
+                joint_attention_kwargs=None,
+                modulate_index=modulate_index,
+            )
 
     temb = temb.chunk(2, dim=0)[0]
     hs = transformer.norm_out(hs, temb)
@@ -133,6 +139,31 @@ class IsoRunner:
     def reset(self) -> None:
         self.ctx.cache.clear()
 
+    # ------------------------------------------------------------------ 训练侧
+    def teacher_forward(self, latents: Tensor, image_latents: Tensor, encoder_hidden_states: Tensor,
+                        encoder_hidden_states_mask: Tensor | None, timestep: Tensor,
+                        img_shapes: list) -> Tensor:
+        """全注意力、无缓存 —— `off` 模式。T1 已证它与 stock forward 逐位相同。"""
+        return self(latents, image_latents, encoder_hidden_states, encoder_hidden_states_mask,
+                    timestep, img_shapes, mode="off")
+
+    def student_forward(self, latents: Tensor, image_latents: Tensor, encoder_hidden_states: Tensor,
+                        encoder_hidden_states_mask: Tensor | None, timestep: Tensor,
+                        img_shapes: list) -> Tensor:
+        """隔离注意力、不走缓存 —— `write` 模式。
+
+        训练时**故意不用缓存**:一次前向只有一个 t,缓存省不下任何东西,
+        而 write 模式与 read 模式的输出已由 T3 证明相同(判据 max<1e-5,实测 0)。
+        走 write 还能让 ref 段拿到梯度——它们的 K/V 是 LoRA 的输出,要参与反传。
+        """
+        out = self(latents, image_latents, encoder_hidden_states, encoder_hidden_states_mask,
+                   timestep, img_shapes, mode="write")
+        # 写进 cache 的 K/V 带着 autograd graph。反传时它们本来就被 graph 持有,
+        # 不多占显存;但 graph 释放后 cache 还引用着 ⇒ 60 层 × ref K/V 会一直挂着
+        # (2-ref@1024² 约 6 GB)。训练侧不读缓存,直接扔。
+        self.ctx.cache.clear()
+        return out
+
     def __call__(self, latents: Tensor, image_latents: Tensor | None, encoder_hidden_states: Tensor,
                  encoder_hidden_states_mask: Tensor | None, timestep: Tensor, img_shapes: list,
                  mode: str) -> Tensor:
@@ -149,3 +180,74 @@ class IsoRunner:
         out = iso_transformer_forward(self.transformer, self.ctx, hs, encoder_hidden_states,
                                       encoder_hidden_states_mask, timestep, img_shapes)
         return out[:, :latents.shape[1]]
+
+
+class IsoPipelineHook:
+    """把 write / read 调度挂进 stock `QwenImageEditPlusPipeline`,**不重写 `__call__`**。
+
+    为什么是挂钩而不是继承重写:P3 的判据是"隔离臂 vs Q1 口径",而 Q1 口径就是
+    `pipe(...)` 那条代码路径本身。去噪循环里除了 transformer 还有三样会影响结果——
+
+      · sigma 网格(`calculate_shift` 按 `latents.shape[1]` 动态 shift,pipeline L765);
+      · true_cfg 之后的**范数重标定** `comb_pred * (cond_norm / noise_norm)`(L843-845);
+      · `scheduler.step` 的 Euler 更新。
+
+    重写 `__call__` 就等于把这三样也抄一遍,抄错一个字基线就废了(§5:改了基线就废了)。
+    换 `transformer.forward` 则让这三样逐字沿用 stock 代码,差异**只**在 transformer 内部。
+
+    调度:每张图第一次前向写缓存,其余 79 次读。cond / uncond 共享同一份——
+    T6 已证 ref K/V 与 prompt 无关。**每张图之间必须 `reset()`**,否则会读到上一张的 ref。
+    """
+
+    def __init__(self, pipe, block_diag: bool = False, always_write: bool = False):
+        """`always_write=True`:隔离但**不缓存**,每一步都重算 ref K/V。
+
+        它存在只为一个用途——真权重 bf16 下的「隔离-无缓存 vs 隔离-有缓存」对照,
+        即 `PLAN.md` §3.1 门禁引的那条先例(`../scripts/bench_kv_cache.py`,像素差判据)。
+        CPU fp32 那一遍(T3)已经把结构证死了,这一遍是确认 bf16 数值和 60 层累积。
+        """
+        self.pipe = pipe
+        self.transformer = pipe.transformer
+        self.always_write = always_write
+        self.ctx = IsoContext(mode="write", block_diag=block_diag, cache=RefKVCache())
+        install_iso_processors(self.transformer, self.ctx)
+        self._orig_forward = self.transformer.forward
+        self.transformer.forward = self._forward
+        self.n_write = 0
+        self.n_read = 0
+
+    def reset(self) -> None:
+        """每张图开跑前调。不调 = 第 2 张图读到第 1 张的 ref K/V,而且**不会报错**。"""
+        self.ctx.cache.clear()
+
+    def detach(self) -> None:
+        """还原 forward。同一进程里跑完隔离臂再跑 full 臂时用。"""
+        self.transformer.forward = self._orig_forward
+
+    def _forward(self, hidden_states, encoder_hidden_states=None, encoder_hidden_states_mask=None,
+                 timestep=None, img_shapes=None, guidance=None, attention_kwargs=None,
+                 controlnet_block_samples=None, additional_t_cond=None, return_dict=True, **kw):
+        if guidance is not None:
+            raise ValueError("2511 的 config 是 guidance_embeds: false,不该收到 guidance。"
+                             "收到了说明换了权重,停下来看。")
+        if controlnet_block_samples is not None or additional_t_cond is not None:
+            raise ValueError("iso forward 砍掉了 controlnet / additional_t_cond 分支,2511 用不到。")
+
+        first = self.always_write or len(self.ctx.cache) == 0
+        self.ctx.mode = "write" if first else "read"
+        if first:
+            self.n_write += 1
+            hs = hidden_states
+        else:
+            self.n_read += 1
+            # pipeline 每步都传 cat([latents, image_latents]);读模式只要噪声段那截
+            hs = hidden_states[:, :prod(img_shapes[0][0])]
+
+        out = iso_transformer_forward(self.transformer, self.ctx, hs, encoder_hidden_states,
+                                      encoder_hidden_states_mask, timestep, img_shapes)
+        if self.always_write:
+            self.ctx.cache.clear()
+        if not return_dict:
+            return (out,)
+        from diffusers.models.modeling_outputs import Transformer2DModelOutput
+        return Transformer2DModelOutput(sample=out)
