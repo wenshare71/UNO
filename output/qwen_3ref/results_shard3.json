@@ -1,0 +1,251 @@
+{
+  "meta": {
+    "spec": "Q1B-qwen-3ref-v1",
+    "model": "Qwen-Image-Edit-2511",
+    "weights": "/kaimm-distill/wuwenxuan/models/Qwen-Image-Edit-2511",
+    "task_json": "/var/infer_cache/worktrees/UNO-9c315c09@16c7a672b14a/datasets/eval_multiref/q1b_3ref_tasks.json",
+    "n_all_tasks": 122,
+    "shard_idx": 3,
+    "num_shards": 8,
+    "n_shard_tasks": 15,
+    "n_run": 15,
+    "n_skipped_resume": 0,
+    "n_fail": 0,
+    "num_inference_steps": 40,
+    "true_cfg_scale": 4.0,
+    "negative_prompt": " ",
+    "height": 1024,
+    "width": 1024,
+    "total_s": 1549.9,
+    "dry_run": false,
+    "diffusers_version": "0.40.0.dev0",
+    "torch_version": "2.5.1+cu124"
+  },
+  "tasks": [
+    {
+      "task_id": "S4_001_s1",
+      "n_refs": 3,
+      "seed": 3800011,
+      "prompt": "a can, a candle and a clock in the snow",
+      "image_paths": [
+        "/var/infer_cache/worktrees/UNO-9c315c09@16c7a672b14a/datasets/dreambooth/dataset/can/01.jpg",
+        "/var/infer_cache/worktrees/UNO-9c315c09@16c7a672b14a/datasets/dreambooth/dataset/candle/02.jpg",
+        "/var/infer_cache/worktrees/UNO-9c315c09@16c7a672b14a/datasets/dreambooth/dataset/clock/03.jpg"
+      ],
+      "elapsed_s": 111.47,
+      "peak_mem_gb": 57.98,
+      "error": null,
+      "shard_idx": 3
+    },
+    {
+      "task_id": "S4_005_s1",
+      "n_refs": 3,
+      "seed": 3800051,
+      "prompt": "a clock, a sneaker and a toy on top of a wooden floor",
+      "image_paths": [
+        "/var/infer_cache/worktrees/UNO-9c315c09@16c7a672b14a/datasets/dreambooth/dataset/clock/01.jpg",
+        "/var/infer_cache/worktrees/UNO-9c315c09@16c7a672b14a/datasets/dreambooth/dataset/colorful_sneaker/02.jpg",
+        "/var/infer_cache/worktrees/UNO-9c315c09@16c7a672b14a/datasets/dreambooth/dataset/duck_toy/03.jpg"
+      ],
+      "elapsed_s": 101.39,
+      "peak_mem_gb": 57.98,
+      "error": null,
+      "shard_idx": 3
+    },
+    {
+      "task_id": "S4_009_s1",
+      "n_refs": 3,
+      "seed": 3800091,
+      "prompt": "a toy, a boot and a stuffed animal on top of a purple rug in a forest",
+      "image_paths": [
+        "/var/infer_cache/worktrees/UNO-9c315c09@16c7a672b14a/datasets/dreambooth/dataset/duck_toy/01.jpg",
+        "/var/infer_cache/worktrees/UNO-9c315c09@16c7a672b14a/datasets/dreambooth/dataset/fancy_boot/02.jpg",
+        "/var/infer_cache/worktrees/UNO-9c315c09@16c7a672b14a/datasets/dreambooth/dataset/grey_sloth_plushie/03.jpg"
+      ],
+      "elapsed_s": 101.82,
+      "peak_mem_gb": 57.98,
+      "error": null,
+      "shard_idx": 3
+    },
+    {
+      "task_id": "Q1B_008_s0",
+      "n_refs": 3,
+      "seed": 3810080,
+      "prompt": "a backpack, a bowl and a candle with a blue house in the background",
+      "image_paths": [
+        "/var/infer_cache/worktrees/UNO-9c315c09@16c7a672b14a/datasets/dreambooth/dataset/backpack_dog/03.jpg",
+        "/var/infer_cache/worktrees/UNO-9c315c09@16c7a672b14a/datasets/dreambooth/dataset/berry_bowl/02.jpg",
+        "/var/infer_cache/worktrees/UNO-9c315c09@16c7a672b14a/datasets/dreambooth/dataset/candle/03.jpg"
+      ],
+      "elapsed_s": 102.39,
+      "peak_mem_gb": 57.98,
+      "error": null,
+      "shard_idx": 3
+    },
+    {
+      "task_id": "Q1B_017_s0",
+      "n_refs": 3,
+      "seed": 3810170,
+      "prompt": "a backpack, a can and a toy on top of the sidewalk in a crowded street",
+      "image_paths": [
+        "/var/infer_cache/worktrees/UNO-9c315c09@16c7a672b14a/datasets/dreambooth/dataset/backpack_dog/02.jpg",
+        "/var/infer_cache/worktrees/UNO-9c315c09@16c7a672b14a/datasets/dreambooth/dataset/can/05.jpg",
+        "/var/infer_cache/worktrees/UNO-9c315c09@16c7a672b14a/datasets/dreambooth/dataset/duck_toy/01.jpg"
+      ],
+      "elapsed_s": 101.5,
+      "peak_mem_gb": 57.98,
+      "error": null,
+      "shard_idx": 3
+    },
+    {
+      "task_id": "Q1B_025_s0",
+      "n_refs": 3,
+      "seed": 3810250,
+      "prompt": "a backpack, a clock and a sneaker on top of a wooden floor",
+      "image_paths": [
+        "/var/infer_cache/worktrees/UNO-9c315c09@16c7a672b14a/datasets/dreambooth/dataset/backpack_dog/00.jpg",
+        "/var/infer_cache/worktrees/UNO-9c315c09@16c7a672b14a/datasets/dreambooth/dataset/clock/01.jpg",
+        "/var/infer_cache/worktrees/UNO-9c315c09@16c7a672b14a/datasets/dreambooth/dataset/colorful_sneaker/00.jpg"
+      ],
+      "elapsed_s": 101.41,
+      "peak_mem_gb": 57.98,
+      "error": null,
+      "shard_idx": 3
+    },
+    {
+      "task_id": "Q1B_033_s0",
+      "n_refs": 3,
+      "seed": 3810330,
+      "prompt": "a backpack, a toy and a stuffed animal floating on top of water",
+      "image_paths": [
+        "/var/infer_cache/worktrees/UNO-9c315c09@16c7a672b14a/datasets/dreambooth/dataset/backpack_dog/03.jpg",
+        "/var/infer_cache/worktrees/UNO-9c315c09@16c7a672b14a/datasets/dreambooth/dataset/duck_toy/01.jpg",
+        "/var/infer_cache/worktrees/UNO-9c315c09@16c7a672b14a/datasets/dreambooth/dataset/grey_sloth_plushie/03.jpg"
+      ],
+      "elapsed_s": 101.52,
+      "peak_mem_gb": 57.98,
+      "error": null,
+      "shard_idx": 3
+    },
+    {
+      "task_id": "Q1B_044_s0",
+      "n_refs": 3,
+      "seed": 3810440,
+      "prompt": "a stuffed animal, a can and a toy on top of pink fabric",
+      "image_paths": [
+        "/var/infer_cache/worktrees/UNO-9c315c09@16c7a672b14a/datasets/dreambooth/dataset/bear_plushie/04.jpg",
+        "/var/infer_cache/worktrees/UNO-9c315c09@16c7a672b14a/datasets/dreambooth/dataset/can/02.jpg",
+        "/var/infer_cache/worktrees/UNO-9c315c09@16c7a672b14a/datasets/dreambooth/dataset/duck_toy/00.jpg"
+      ],
+      "elapsed_s": 106.79,
+      "peak_mem_gb": 57.98,
+      "error": null,
+      "shard_idx": 3
+    },
+    {
+      "task_id": "Q1B_052_s0",
+      "n_refs": 3,
+      "seed": 3810520,
+      "prompt": "a stuffed animal, a clock and a boot with the Eiffel Tower in the background",
+      "image_paths": [
+        "/var/infer_cache/worktrees/UNO-9c315c09@16c7a672b14a/datasets/dreambooth/dataset/bear_plushie/02.jpg",
+        "/var/infer_cache/worktrees/UNO-9c315c09@16c7a672b14a/datasets/dreambooth/dataset/clock/04.jpg",
+        "/var/infer_cache/worktrees/UNO-9c315c09@16c7a672b14a/datasets/dreambooth/dataset/fancy_boot/04.jpg"
+      ],
+      "elapsed_s": 104.89,
+      "peak_mem_gb": 57.98,
+      "error": null,
+      "shard_idx": 3
+    },
+    {
+      "task_id": "Q1B_060_s0",
+      "n_refs": 3,
+      "seed": 3810600,
+      "prompt": "a bowl, a can and a boot in the jungle",
+      "image_paths": [
+        "/var/infer_cache/worktrees/UNO-9c315c09@16c7a672b14a/datasets/dreambooth/dataset/berry_bowl/00.jpg",
+        "/var/infer_cache/worktrees/UNO-9c315c09@16c7a672b14a/datasets/dreambooth/dataset/can/00.jpg",
+        "/var/infer_cache/worktrees/UNO-9c315c09@16c7a672b14a/datasets/dreambooth/dataset/fancy_boot/00.jpg"
+      ],
+      "elapsed_s": 101.36,
+      "peak_mem_gb": 57.98,
+      "error": null,
+      "shard_idx": 3
+    },
+    {
+      "task_id": "Q1B_068_s0",
+      "n_refs": 3,
+      "seed": 3810680,
+      "prompt": "a bowl, a clock and a toy with a blue house in the background",
+      "image_paths": [
+        "/var/infer_cache/worktrees/UNO-9c315c09@16c7a672b14a/datasets/dreambooth/dataset/berry_bowl/02.jpg",
+        "/var/infer_cache/worktrees/UNO-9c315c09@16c7a672b14a/datasets/dreambooth/dataset/clock/02.jpg",
+        "/var/infer_cache/worktrees/UNO-9c315c09@16c7a672b14a/datasets/dreambooth/dataset/duck_toy/00.jpg"
+      ],
+      "elapsed_s": 101.38,
+      "peak_mem_gb": 57.98,
+      "error": null,
+      "shard_idx": 3
+    },
+    {
+      "task_id": "Q1B_076_s0",
+      "n_refs": 3,
+      "seed": 3810760,
+      "prompt": "a bowl, a boot and a stuffed animal on top of a mirror",
+      "image_paths": [
+        "/var/infer_cache/worktrees/UNO-9c315c09@16c7a672b14a/datasets/dreambooth/dataset/berry_bowl/04.jpg",
+        "/var/infer_cache/worktrees/UNO-9c315c09@16c7a672b14a/datasets/dreambooth/dataset/fancy_boot/04.jpg",
+        "/var/infer_cache/worktrees/UNO-9c315c09@16c7a672b14a/datasets/dreambooth/dataset/grey_sloth_plushie/01.jpg"
+      ],
+      "elapsed_s": 101.67,
+      "peak_mem_gb": 57.98,
+      "error": null,
+      "shard_idx": 3
+    },
+    {
+      "task_id": "Q1B_085_s0",
+      "n_refs": 3,
+      "seed": 3810850,
+      "prompt": "a can, a clock and a stuffed animal on top of a wooden floor",
+      "image_paths": [
+        "/var/infer_cache/worktrees/UNO-9c315c09@16c7a672b14a/datasets/dreambooth/dataset/can/01.jpg",
+        "/var/infer_cache/worktrees/UNO-9c315c09@16c7a672b14a/datasets/dreambooth/dataset/clock/01.jpg",
+        "/var/infer_cache/worktrees/UNO-9c315c09@16c7a672b14a/datasets/dreambooth/dataset/grey_sloth_plushie/00.jpg"
+      ],
+      "elapsed_s": 101.64,
+      "peak_mem_gb": 57.98,
+      "error": null,
+      "shard_idx": 3
+    },
+    {
+      "task_id": "Q1B_094_s0",
+      "n_refs": 3,
+      "seed": 3810940,
+      "prompt": "a candle, a clock and a boot floating in an ocean of milk",
+      "image_paths": [
+        "/var/infer_cache/worktrees/UNO-9c315c09@16c7a672b14a/datasets/dreambooth/dataset/candle/04.jpg",
+        "/var/infer_cache/worktrees/UNO-9c315c09@16c7a672b14a/datasets/dreambooth/dataset/clock/04.jpg",
+        "/var/infer_cache/worktrees/UNO-9c315c09@16c7a672b14a/datasets/dreambooth/dataset/fancy_boot/04.jpg"
+      ],
+      "elapsed_s": 102.76,
+      "peak_mem_gb": 57.98,
+      "error": null,
+      "shard_idx": 3
+    },
+    {
+      "task_id": "Q1B_103_s0",
+      "n_refs": 3,
+      "seed": 3811030,
+      "prompt": "a clock, a sneaker and a boot on a cobblestone street",
+      "image_paths": [
+        "/var/infer_cache/worktrees/UNO-9c315c09@16c7a672b14a/datasets/dreambooth/dataset/clock/01.jpg",
+        "/var/infer_cache/worktrees/UNO-9c315c09@16c7a672b14a/datasets/dreambooth/dataset/colorful_sneaker/03.jpg",
+        "/var/infer_cache/worktrees/UNO-9c315c09@16c7a672b14a/datasets/dreambooth/dataset/fancy_boot/01.jpg"
+      ],
+      "elapsed_s": 101.6,
+      "peak_mem_gb": 57.98,
+      "error": null,
+      "shard_idx": 3
+    }
+  ]
+}

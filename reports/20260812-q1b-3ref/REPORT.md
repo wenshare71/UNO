@@ -183,11 +183,76 @@ sudo -E env PATH=/kaimm-distill/infer_hub/lib:$PATH \
 
 ---
 
-## 5. 待观察项
+## 5. G3 结果
 
-- 8 个 shard 日志：`/kaimm-distill/wuwenxuan/output/qwen_3ref/shard{0..7}.log`
-- 合并产物：`/kaimm-distill/wuwenxuan/output/qwen_3ref/results.json`
-- 拼图：`/kaimm-distill/wuwenxuan/output/qwen_3ref/ALL_COMPARISON_part*.png`
-- 任务日志：`/kaimm-distill/infer_hub/queues/default/logs/wuwenxuan__qwen2511_3ref_122__16c7a672b14a.log`
+infer_hub 状态：**成功**，耗时 42m26s，机器 `@aiplatform-wlf3-ge90-70`。
 
-用 `python3 /kaimm-distill/infer_hub/lib/infer_status --owner wuwenxuan` 可看排队 / 运行状态。
+### 5.1 产物
+
+已取回仓库 `output/qwen_3ref/`：
+
+- `results.json`
+- `results_shard{0..7}.json`
+- `ALL_COMPARISON_part01.png` … `ALL_COMPARISON_part16.png`
+
+全分辨率单图 122 张仍保留在共享盘 `/kaimm-distill/wuwenxuan/output/qwen_3ref/`，未入 git。
+
+### 5.2 `results.json` 的 `meta` 原样
+
+```json
+{
+  "meta": {
+    "spec": "Q1B-qwen-3ref-v1",
+    "model": "Qwen-Image-Edit-2511",
+    "weights": "/kaimm-distill/wuwenxuan/models/Qwen-Image-Edit-2511",
+    "task_json": "/var/infer_cache/worktrees/UNO-9c315c09@16c7a672b14a/datasets/eval_multiref/q1b_3ref_tasks.json",
+    "n_all_tasks": 122,
+    "n_shards": 8,
+    "shard_totals": [
+      {"shard_idx": 0, "total_s": 1627.3, "n_run": 16, "n_fail": 0},
+      {"shard_idx": 1, "total_s": 1646.3, "n_run": 16, "n_fail": 0},
+      {"shard_idx": 2, "total_s": 1512.0, "n_run": 15, "n_fail": 0},
+      {"shard_idx": 3, "total_s": 1549.9, "n_run": 15, "n_fail": 0},
+      {"shard_idx": 4, "total_s": 1502.2, "n_run": 15, "n_fail": 0},
+      {"shard_idx": 5, "total_s": 1637.3, "n_run": 15, "n_fail": 0},
+      {"shard_idx": 6, "total_s": 1512.3, "n_run": 15, "n_fail": 0},
+      {"shard_idx": 7, "total_s": 1553.3, "n_run": 15, "n_fail": 0}
+    ],
+    "n_run": 122,
+    "n_fail": 0,
+    "num_inference_steps": 40,
+    "true_cfg_scale": 4.0,
+    "negative_prompt": " ",
+    "height": 1024,
+    "width": 1024,
+    "total_s": 12540.6,
+    "dry_run": false,
+    "diffusers_version": "0.40.0.dev0",
+    "torch_version": "2.5.1+cu124"
+  }
+}
+```
+
+### 5.3 实测汇总
+
+| 指标 | Q1 (2-ref, 40 条) | Q1-B (3-ref, 122 条) |
+|---|---|---|
+| `total_s` | 2412.0 | 12540.6 |
+| `n_run` | 40 | 122 |
+| `s/img` | 60.3 | **102.8** |
+| `peak_mem_gb` | 57.97–57.98 | 57.98 |
+| `n_fail` | 0 | 0 |
+
+3-ref 单张耗时约为 2-ref 的 **1.70×**（102.8 / 60.3），在 §3.4 估计的 1.6–1.8× 范围内。
+
+### 5.4 任务覆盖
+
+- 总任务 122 条，无失败，无 error。
+- `elapsed_s` 范围：98.47 – 114.74。
+- 段 A（`S4_*`）20 条 + 段 B（`Q1B_*`）102 条全部完成。
+
+---
+
+## 6. 后续
+
+Q1-B 产物已齐：数字、日志、拼图和 122 张全分辨率图。是否做判读由你决定；本报告只记录现象与数字，不写"3-ref 行不行"的结论。
