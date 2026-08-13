@@ -404,4 +404,4 @@ results_shard0.json : /kaimm-distill/wuwenxuan/UNO/output/p2_preflight/iso_pre/r
 [infer_hub] exit_code=0 耗时 22m48s
 ```
 
-> 说明:B5 中「进度条略」等处省略的是 tqdm 进度条(`\r` 刷屏,单条 40 步的 it/s 变化),关键行全部保留原样;**完整未省略版随报告落仓**:本目录 `job_stdout_full.log`(46,780 B,worker 日志逐字节拷贝)。worker 日志原始位置:`/kaimm-distill/infer_hub/queues/default/logs/wuwenxuan__p2_preflight_bf16__0251f5e12ec6.log`。
+> 说明:B5 中「进度条略」等处省略的是 tqdm 进度条(`\r` 刷屏,单条 40 步的 it/s 变化),关键行全部保留原样。**完整未省略版**(46,780 B)未随仓(`.gitignore` `*.log`),在 worker 日志原始位置:`/kaimm-distill/infer_hub/queues/default/logs/wuwenxuan__p2_preflight_bf16__0251f5e12ec6.log`。
