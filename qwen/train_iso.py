@@ -261,6 +261,28 @@ def cmd_train(args):
         raise SystemExit(f"❌ prompt_embeds 缓存不存在:{args.embeds}\n"
                          f"   先跑:python qwen/train_iso.py precompute")
 
+    # 只查目录在不在不够:Batcher 是全量随机抽样,缺一条就崩在 torch.load,
+    # 而且崩在第几步是随机的。启动时点清楚,顺带按桶报——manifest 按 n_refs 排序,
+    # 预算跑一半的话缺口全压在某一两个桶上。
+    have = {it["_idx"] for it in items
+            if os.path.exists(os.path.join(args.embeds, f"{it['_idx']:06d}.pt"))}
+    avail = [it for it in items if it["_idx"] in have]
+    if is_main:
+        by_n: dict[int, list] = {}
+        for it in items:
+            by_n.setdefault(it["meta"]["n_refs"], []).append(it)
+        cover = " ".join(f"{n}-ref {sum(1 for it in v if it['_idx'] in have)}/{len(v)}"
+                         for n, v in sorted(by_n.items()))
+        print(f"[自检] embeds 覆盖 {len(avail)}/{len(items)} | {cover}", flush=True)
+    if len(avail) < len(items):
+        if not args.allow_partial_embeds:
+            raise SystemExit(
+                f"❌ embeds 只算了 {len(avail)}/{len(items)} 条。\n"
+                f"   补完:python qwen/train_iso.py precompute(已存在的会跳过)\n"
+                f"   只想冒烟就加 --allow_partial_embeds —— 那样训练只看得到这 {len(avail)} 条,\n"
+                f"   而 manifest 按 n_refs 排序,缺口通常整桶整桶地缺,**不能拿来出正式结果**。")
+        items = avail
+
     pipe = QwenImageEditPlusPipeline.from_pretrained(weights, torch_dtype=torch.bfloat16)
     pipe.text_encoder = None         # 离线预算过了,7B VL 不上卡(§3.2:省约 15 GB)
     pipe.vae.to(device).eval()
@@ -396,6 +418,8 @@ def main():
     tr.add_argument("--seed", type=int, default=20260813)
     tr.add_argument("--block_diag", action="store_true", help="ref 之间也隔离,本轮不训")
     tr.add_argument("--embeds", default=EMBED_CACHE)
+    tr.add_argument("--allow_partial_embeds", action="store_true",
+                    help="embeds 没算全也开跑。只用于冒烟,出不了正式结果")
     tr.add_argument("--out", default=os.path.join(_REPO_ROOT, "output/train_iso"))
     tr.add_argument("--resume", default=None)
     tr.add_argument("--log_every", type=int, default=10)
