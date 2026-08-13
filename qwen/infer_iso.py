@@ -99,6 +99,45 @@ def fmt_eta(seconds: float) -> str:
     return f"{seconds / 3600:.1f}h"
 
 
+def apply_lora_ckpt(transformer, path: str) -> None:
+    """按 `train_iso.save()` 落的格式加载 LoRA,**不走 `pipe.load_lora_weights`**。
+
+    为什么绕开它:`load_lora_weights` 认的是 diffusers 导出格式(key 带 `transformer.`
+    前缀、无 `.default.`),而我们存的是 `transformer.state_dict()` 的原始 key
+    (`transformer_blocks.0.attn.to_q.lora_A.default.weight`)。喂进去的话
+    `load_lora_adapter` 里那句 `k.startswith("transformer.")` **一个都匹配不上**
+    (是 `transformer_` 不是 `transformer.`),过滤完是空 dict,函数直接返回、
+    **不报错** —— 然后整条 iso_post 臂拿未训练的权重跑完。整个评测链上就这一处
+    "加载失败但不出声",所以这里改成与训练侧对称的路径,并把断言写死。
+    """
+    import torch
+    from peft import LoraConfig
+
+    ck = torch.load(path, map_location="cpu")
+    for k in ("lora", "rank", "targets"):
+        if k not in ck:
+            raise SystemExit(f"❌ {path} 里没有 `{k}`,不是 train_iso.save() 落的 checkpoint。")
+
+    transformer.add_adapter(LoraConfig(
+        r=ck["rank"], lora_alpha=ck["rank"], init_lora_weights="gaussian",
+        target_modules=ck["targets"]))
+    r = transformer.load_state_dict(ck["lora"], strict=False)
+    if r.unexpected_keys:
+        raise SystemExit(f"❌ checkpoint 有 {len(r.unexpected_keys)}/{len(ck['lora'])} 个 key "
+                         f"在模型里不存在,例如 {r.unexpected_keys[:3]}。rank / targets 对不上。")
+
+    # 真的挂上了吗、是不是一份没训过的?lora_B 训练前恒为 0,全零就是没训过。
+    live = {n: p for n, p in transformer.named_parameters() if "lora_" in n}
+    nz_b = sum(1 for n, p in live.items() if "lora_B" in n and p.abs().sum().item() > 0)
+    if len(live) != len(ck["lora"]):
+        raise SystemExit(f"❌ 模型里有 {len(live)} 个 LoRA 张量,checkpoint 里 {len(ck['lora'])} 个,对不上。")
+    if nz_b == 0:
+        raise SystemExit(f"❌ {path} 里所有 lora_B 都是 0 —— 这是一份没训过的 checkpoint,"
+                         f"拿它跑 iso_post 等于在跑 iso_pre。")
+    print(f"[自检] LoRA 已加载 {path} | step {ck.get('step')} | rank {ck['rank']} | "
+          f"{len(live)} 个张量,其中 lora_B 非零 {nz_b} 个", flush=True)
+
+
 def build_pipe(weights: str, variant: str, lora: str | None, block_diag: bool,
                always_write: bool):
     """返回 (pipe, hook, torch)。`full` 臂 hook 为 None,走完全未改动的 stock 路径。"""
@@ -121,8 +160,7 @@ def build_pipe(weights: str, variant: str, lora: str | None, block_diag: bool,
     if variant == "iso_post":
         if not lora:
             raise SystemExit("❌ iso_post 必须给 --lora。不给就是在拿未训练的权重冒充训练后的臂。")
-        pipe.load_lora_weights(lora)
-        print(f"[自检] LoRA 已加载 {lora}", flush=True)
+        apply_lora_ckpt(pipe.transformer, lora)
     elif lora:
         raise SystemExit(f"❌ --variant {variant} 不该带 --lora。"
                          f"full / iso_pre 都是 stock 权重(PLAN §3.3)。")

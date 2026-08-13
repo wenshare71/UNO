@@ -192,6 +192,59 @@ def run_tiny():
             for a, b in zip(model.state_dict().values(), scrambled.state_dict().values()))
     check("S8 lora_state / set_lora_state 往返一致(断点续跑靠它)", d == 0.0, f"max={d:.3e}")
 
+    # ---------------------------------------------------------------- S10 时间约定
+    # 推理传的是 bf16(scheduler.timesteps)/1000,而 timesteps = σ×1000 ⇒ **舍入两次**。
+    # 直接 sigma.to(bf16) 只舍一次,两者不等。离线实算:40 个格点里 12 个不同,
+    # 最大相对差 0.706%。这条钉住训练侧走的是与推理逐位相同的那条路。
+    s32 = torch.tensor([0.9313406, 0.8182465, 0.5, 0.0749129], dtype=torch.float32)
+    infer_t = (s32 * 1000).to(torch.bfloat16) / 1000          # pipeline L814 + L818
+    train_t = (s32 * 1000).to(torch.bfloat16) / 1000          # train_iso.py 现在的写法
+    naive_t = s32.to(torch.bfloat16)                          # 改之前的写法
+    check("S10 训练的 t 与推理逐位相同(不是只舍入一次的那个)",
+          torch.equal(train_t, infer_t) and not torch.equal(naive_t.float(), infer_t.float()),
+          f"与推理一致={torch.equal(train_t, infer_t)} | "
+          f"朴素写法差 {(naive_t.float() - infer_t.float()).abs().max():.3e}")
+
+    # ---------------------------------------------------------------- S11 续跑不静默
+    bad = {k.replace("transformer_blocks", "nonexistent_blocks"): v for k, v in state.items()}
+    try:
+        set_lora_state(model, bad)
+        raised = False
+    except SystemExit:
+        raised = True
+    check("S11 set_lora_state 遇到对不上的 key 会 raise(不是静默丢掉)",
+          raised, "raise 了" if raised else "**静默返回** —— 续跑会从随机权重重训")
+
+    # ---------------------------------------------------------------- S12 评测侧加载
+    # 整条评测链上唯一一处"加载失败但不报错"的地方,必须往返验一遍。
+    import tempfile
+    from infer_iso import apply_lora_ckpt
+    from train_iso import LORA_TARGETS as _T
+
+    fresh = QwenImageTransformer2DModel(**TINY).to(torch.float32)
+    fresh.requires_grad_(False)
+    with tempfile.TemporaryDirectory() as td:
+        ck = os.path.join(td, "step000001.pt")
+        torch.save({"step": 1, "rank": 8, "targets": list(_T), "lora": state, "opt": {}}, ck)
+        try:
+            apply_lora_ckpt(fresh, ck)
+            loaded, err = True, ""
+        except SystemExit as e:
+            loaded, err = False, str(e)[:120]
+        check("S12a apply_lora_ckpt 能吃下 train_iso.save() 的格式", loaded, err or "OK")
+
+        zero = {k: (torch.zeros_like(v) if "lora_B" in k else v) for k, v in state.items()}
+        torch.save({"step": 1, "rank": 8, "targets": list(_T), "lora": zero, "opt": {}}, ck)
+        fresh2 = QwenImageTransformer2DModel(**TINY).to(torch.float32)
+        fresh2.requires_grad_(False)
+        try:
+            apply_lora_ckpt(fresh2, ck)
+            caught = False
+        except SystemExit:
+            caught = True
+        check("S12b 未训练的 ckpt(lora_B 全 0)会被拦下,不会冒充 iso_post",
+              caught, "拦下了" if caught else "**放行了** —— iso_post 臂会跑成 iso_pre")
+
     # ---------------------------------------------------------------- S9 sigma 网格
     import types
     from diffusers import FlowMatchEulerDiscreteScheduler

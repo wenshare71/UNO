@@ -250,9 +250,11 @@ def cmd_train(args):
     world = int(os.environ.get("WORLD_SIZE", 1))
     local_rank = int(os.environ.get("LOCAL_RANK", 0))
     is_main = rank == 0
-    if world > 1:
-        torch.distributed.init_process_group("nccl")
+    # set_device 必须在 init_process_group 之前:不然多个 rank 可能在 device 0 上
+    # 建 communicator,首次 collective 挂住(挂住看得见,但 8 卡起不来很浪费时间)
     torch.cuda.set_device(local_rank)
+    if world > 1:
+        torch.distributed.init_process_group("nccl", device_id=torch.device("cuda", local_rank))
     device = torch.device("cuda", local_rank)
 
     weights = require_weights()
@@ -290,14 +292,27 @@ def cmd_train(args):
     assert transformer.zero_cond_t is True, "zero_cond_t 没生效,隔离的地基不成立,停"
 
     transformer.requires_grad_(False)
+    # ⚠️ 所有 rank 用**同一个** seed。init_lora_weights="gaussian" 走全局默认 RNG,
+    # 不播种的话每个进程拿到不同的 lora_A;而这里没套 DDP,也就没有 DDP 构造时
+    # 那次 broadcast(param, src=0)。后果:8 张卡各训各的模型,而 lora_B 初始为 0
+    # ⇒ step 0 前向逐位相同 ⇒ **单卡标定完全正常,只有 8 卡正式跑才烧**。
+    torch.manual_seed(args.seed)
     transformer.add_adapter(LoraConfig(
         r=args.rank, lora_alpha=args.rank, init_lora_weights="gaussian",
         target_modules=LORA_TARGETS))
     transformer.enable_gradient_checkpointing()
     lora_params = [p for p in transformer.parameters() if p.requires_grad]
+
+    # LoRA 参数跟随 base 是 bf16 ⇒ AdamW 的动量也是 bf16。bf16 有效尾数 8 位,
+    # 相对半 ulp 约 0.2–0.39%;lr=1e-4 时权重量级涨到 ~0.05 之后单步位移就落到
+    # 舍入阈值上,w+Δ 被 round 回 w,该张量从此不再更新 —— loss 横住,读起来像
+    # "补到极限了",实际是优化器停了。diffusers 官方 LoRA 脚本都会做这一步 cast。
+    for p in lora_params:
+        p.data = p.data.float()
     if is_main:
         n_lora = sum(p.numel() for p in lora_params)
         print(f"[自检] LoRA rank {args.rank} | 可训参数 {n_lora / 1e6:.1f} M | "
+              f"dtype {lora_params[0].dtype} | seed {args.seed}(各 rank 一致) | "
               f"target {LORA_TARGETS}", flush=True)
 
     runner = IsoRunner(transformer, block_diag=args.block_diag, store=False)
@@ -314,8 +329,19 @@ def cmd_train(args):
         set_lora_state(transformer, ck["lora"])
         opt.load_state_dict(ck["opt"])
         start_step = ck["step"]
+        # rng 不快进的话,续跑的后半程会**逐个重放**前半程训过的 (样本, σ) —— 1000 步
+        # 实际只见过 500 个组合,而日志上完全看不出来。消耗顺序必须与主循环一致:
+        # 每个 micro-step 一次 batcher()(内含 choices + randrange)加一次 randrange。
+        for _ in range(start_step * args.accum):
+            batcher()
+            batcher.rng.randrange(len(sigmas))
         if is_main:
-            print(f"[自检] 从 {args.resume} 续跑,step {start_step}", flush=True)
+            print(f"[自检] 从 {args.resume} 续跑,step {start_step};"
+                  f"抽样流已快进 {start_step * args.accum} 个样本", flush=True)
+
+    # LoRA 初始化用完统一 seed 之后,把 torch 的 RNG 按 rank 和起始步岔开:
+    # 否则 8 张卡每步加的是同一份噪声,续跑时噪声也整段重放。
+    torch.manual_seed(args.seed + 7919 * (rank + 1) + start_step)
 
     os.makedirs(args.out, exist_ok=True)
     losses: list[float] = []
@@ -336,7 +362,10 @@ def cmd_train(args):
             sigma = sigmas[si]
             noise = torch.randn_like(x0)
             x_t = (1.0 - sigma) * x0 + sigma * noise
-            timestep = sigma[None].to(x_t.dtype)      # pipeline 传的是 t/1000 = sigma
+            # 推理侧传的是 `bf16(scheduler.timesteps) / 1000`,而 timesteps = σ×1000,
+            # 也就是**舍入两次**;直接 `sigma.to(bf16)` 只舍入一次,两者并不相等。
+            # 实算:40 个格点里 12 个不同,最大相对差 0.706%。照抄推理那条路径。
+            timestep = (sigma[None] * 1000).to(x_t.dtype) / 1000
 
             with torch.no_grad():
                 transformer.disable_adapters()
@@ -374,10 +403,10 @@ def cmd_train(args):
                   f"峰值 {torch.cuda.max_memory_allocated() / 1024**3:.1f} GB", flush=True)
 
         if is_main and (step + 1) % args.save_every == 0:
-            save(transformer, opt, step + 1, args.out)
+            save(transformer, opt, step + 1, args.out, args.rank)
 
     if is_main:
-        save(transformer, opt, args.steps, args.out)
+        save(transformer, opt, args.steps, args.out, args.rank)
         el = time.perf_counter() - t0
         print("\n" + "=" * 68)
         print(f"训练结束 | {args.steps - start_step} 步 | {el / 60:.1f} min | "
@@ -394,12 +423,25 @@ def lora_state(transformer) -> dict:
 
 
 def set_lora_state(transformer, state: dict) -> None:
-    transformer.load_state_dict(state, strict=False)
+    """`strict=False` 对 shape 不匹配仍会 raise,但对 **key 不匹配是静默的**。
+
+    丢掉返回值的话:adapter 名字或 LORA_TARGETS 动过一个字,就会一个 key 都匹配不上、
+    一声不吭返回,而 `start_step` 已经跳到 500 —— 后半程从随机初始化重训,
+    最后落盘一个"训了 1000 步"的 ckpt。所以这里必须查 `unexpected_keys`。
+    """
+    r = transformer.load_state_dict(state, strict=False)
+    if r.unexpected_keys:
+        raise SystemExit(
+            f"❌ checkpoint 里有 {len(r.unexpected_keys)}/{len(state)} 个 key 在模型里不存在,"
+            f"例如 {r.unexpected_keys[:3]}。\n"
+            f"   多半是 --rank 或 LORA_TARGETS 与训练时不一致。不修就是拿随机权重接着训。")
 
 
-def save(transformer, opt, step: int, out_dir: str) -> None:
+def save(transformer, opt, step: int, out_dir: str, rank: int) -> None:
+    """连 rank / targets 一起存 —— 评测侧要用它重建同一份 LoraConfig(见 `infer_iso.apply_lora_ckpt`)。"""
     path = os.path.join(out_dir, f"step{step:06d}.pt")
-    torch.save({"step": step, "lora": lora_state(transformer), "opt": opt.state_dict()}, path)
+    torch.save({"step": step, "rank": rank, "targets": list(LORA_TARGETS),
+                "lora": lora_state(transformer), "opt": opt.state_dict()}, path)
     print(f"  ✓ 存 {path}", flush=True)
 
 
