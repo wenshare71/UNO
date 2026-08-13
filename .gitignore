@@ -355,3 +355,8 @@ log/ref_distill/
 !/output/qwen_3ref/results.json
 !/output/qwen_3ref/results_shard*.json
 !/output/qwen_3ref/ALL_COMPARISON*.png
+
+# ─── P1 侦察(2026-08-13,qwen/P1_RECON_RUN.md §4.1)────────────────────────
+# manifest_raw.json 单独放行:P2 的采样比、held-out 断言、9000 条的分层都要按它写,
+# 而本地机器上没有共享盘。图**不**放行——放行的只有这一个 json。
+!/datasets/distill_multiref/manifest_raw.json
