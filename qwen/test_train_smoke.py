@@ -130,10 +130,30 @@ def run_tiny():
 
     loss = F.mse_loss(v_iso.float(), v_full.float())
     loss.backward()
-    n_grad = sum(1 for p in lora_params if p.grad is not None and p.grad.abs().sum() > 0)
-    check("S5c 梯度检查点下能反传,且梯度传到了每一层 LoRA",
-          n_grad >= expect // 2, f"{n_grad}/{expect} 个张量拿到非零梯度 "
-          f"(lora_A 初始高斯 / lora_B 初始 0,约一半非零属正常)")
+
+    # 哪些该有梯度,是能推出来的,不是数出来的:
+    #  · lora_A 全零 —— 增量是 B@A,init 时 lora_B=0 ⇒ dL/dA = Bᵀ(…) = 0;
+    #  · lora_B 非零 —— dL/dB = dL/dy·(Ax)ᵀ,只要上游梯度到得了就非零;
+    #  · 唯二例外:**最后一层**的 add_q_proj 和 to_add_out。forward 循环结束后
+    #    只有 hs 进 norm_out/proj_out,`ehs` 被丢掉;而这两个模块只喂文本流
+    #    (add_q_proj → txt_query → 注意力的 txt 行 → txt_attn_output → to_add_out)。
+    #    add_k/v_proj 不在此列 —— txt 的 K/V 会被图像 query 注意到,影响得到输出。
+    #  ⇒ 非零个数 = 8L − 2。L=2 时 14,真模型 L=60 时 478/480。**这是结构,不是 bug。**
+    last = TINY["num_layers"] - 1
+    DEAD = {f"transformer_blocks.{last}.attn.add_q_proj",
+            f"transformer_blocks.{last}.attn.to_add_out"}
+    mismatch = []
+    for n, p in model.named_parameters():
+        if not p.requires_grad:
+            continue
+        nonzero = p.grad is not None and p.grad.abs().sum().item() > 0
+        want = ".lora_B." in n and n.split(".lora_")[0] not in DEAD
+        if nonzero != want:
+            mismatch.append(f"{n}: 实测{'非零' if nonzero else '零'}, 应{'非零' if want else '零'}")
+    n_nz = sum(1 for p in lora_params if p.grad is not None and p.grad.abs().sum() > 0)
+    check(f"S5c 检查点下能反传,且拿到梯度的恰好是该拿的那 {expect // 2 - len(DEAD)} 个",
+          not mismatch, f"非零 {n_nz}/{expect}"
+          + (f" | 对不上:{mismatch[:3]}" if mismatch else " | 逐个点名一致"))
 
     # ---------------------------------------------------------------- S6 缓存不漏
     # 反传时检查点会重跑 write 分支。若靠"forward 之后 clear"来清,重跑会再写一遍,
