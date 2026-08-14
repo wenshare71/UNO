@@ -1,5 +1,5 @@
 {
-  "spec": "P3-diag-kv-v1",
+  "spec": "P3-diag-kv-v2",
   "task_id": "M6_S1_000_s0",
   "n_refs": 2,
   "seed": 3500000,
@@ -9,69 +9,112 @@
     40,
     79
   ],
-  "n_probe": 4,
-  "all_bitwise_equal": false,
-  "verdict": "FAIL",
-  "kv_max_rel": 0.24568965517241378,
+  "txt_test_at": 1,
+  "verdict": "PASS",
+  "why": "同长度换掉 txt 内容,ref K/V 逐位不变 ⇒ ref 对 txt 内容是盲的。uncond 那边的差异只能来自 txt 段长度不同导致的 kernel 分块差异,良性",
+  "step_invariant_cond": true,
   "peak_mem_gb": 66.85,
   "n_forward_write": 1,
   "n_forward_read": 79,
   "probes": [
     {
       "forward": 1,
-      "n_layers": 60,
-      "n_layers_bitwise_eq": 1,
-      "kv_max_abs": 1216.0,
-      "kv_max_rel": 0.24568965517241378,
-      "bad_layers": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8
-      ],
+      "txt_len": 412,
+      "B_uncond_or_current": {
+        "n_layers": 60,
+        "n_bitwise_eq": 1,
+        "bad_layers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "max_abs": 1216.0,
+        "max_rel": 0.24568965517241378,
+        "mean_rel": 0.036730516226760546,
+        "frac_ne": 0.9479460716247559
+      },
       "v_max_abs": 0.03125,
-      "v_rel_l2": 0.0035571688786149025
+      "v_rel_l2": 0.0035571688786149025,
+      "A_cond_replay": {
+        "n_layers": 60,
+        "n_bitwise_eq": 60,
+        "bad_layers": [],
+        "max_abs": 0.0,
+        "max_rel": 0.0,
+        "mean_rel": 0.0,
+        "frac_ne": 0.0
+      },
+      "C_txt_flipped": {
+        "n_layers": 60,
+        "n_bitwise_eq": 60,
+        "bad_layers": [],
+        "max_abs": 0.0,
+        "max_rel": 0.0,
+        "mean_rel": 0.0,
+        "frac_ne": 0.0
+      },
+      "cond_txt_len": 420
     },
     {
       "forward": 20,
-      "n_layers": 60,
-      "n_layers_bitwise_eq": 60,
-      "kv_max_abs": 0.0,
-      "kv_max_rel": 0.0,
-      "bad_layers": [],
+      "txt_len": 420,
+      "B_uncond_or_current": {
+        "n_layers": 60,
+        "n_bitwise_eq": 60,
+        "bad_layers": [],
+        "max_abs": 0.0,
+        "max_rel": 0.0,
+        "mean_rel": 0.0,
+        "frac_ne": 0.0
+      },
       "v_max_abs": 0.03125,
       "v_rel_l2": 0.004339706618338823
     },
     {
       "forward": 40,
-      "n_layers": 60,
-      "n_layers_bitwise_eq": 60,
-      "kv_max_abs": 0.0,
-      "kv_max_rel": 0.0,
-      "bad_layers": [],
+      "txt_len": 420,
+      "B_uncond_or_current": {
+        "n_layers": 60,
+        "n_bitwise_eq": 60,
+        "bad_layers": [],
+        "max_abs": 0.0,
+        "max_rel": 0.0,
+        "mean_rel": 0.0,
+        "frac_ne": 0.0
+      },
       "v_max_abs": 0.0645751953125,
       "v_rel_l2": 0.0040224348194897175
     },
     {
       "forward": 79,
-      "n_layers": 60,
-      "n_layers_bitwise_eq": 1,
-      "kv_max_abs": 1216.0,
-      "kv_max_rel": 0.24568965517241378,
-      "bad_layers": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8
-      ],
+      "txt_len": 412,
+      "B_uncond_or_current": {
+        "n_layers": 60,
+        "n_bitwise_eq": 1,
+        "bad_layers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "max_abs": 1216.0,
+        "max_rel": 0.24568965517241378,
+        "mean_rel": 0.036730516226760546,
+        "frac_ne": 0.9479460716247559
+      },
       "v_max_abs": 0.521484375,
       "v_rel_l2": 0.0758555456995964
     }

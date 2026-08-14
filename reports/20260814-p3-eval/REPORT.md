@@ -1,13 +1,15 @@
-# P3 出图 · 执行报告(进行中,停在 §6.1 diag_kv FAIL)
+# P3 出图 · 执行报告(完成:三臂各 240 张 + diag_kv v2 PASS)
 
 > 对应 `qwen/P3_EVAL_RUN.md`(2026-08-14 作者重写为 §6.1/§6.2/§6.3 体系)。
 > 本单只出图、不盲评判读、不建拼图。
 > 起点 commit `3c1f90f`。执行机器:`aiplatform-bjy-ge47-391`(4090 开发机),
 > 执行时间 2026-08-14。
 >
-> **当前进度**:§5.0 ✅ → §5.1 判定实验 ✅(判据 `mean<0.5` 被作者立错)→
-> §5.3 floor 判定 ✅(逐位相同,作者已重新解读)→ **§6.1 diag_kv 门禁 ❌ FAIL**。
-> **§6.2 主批 720 张已投后被 kill** —— diag_kv FAIL,按 §6.1 协议停,等作者判读。
+> **最终状态**:§5.0 ✅ → §5.1 判定实验 ✅(判据被作者立错)→ §5.3 floor ✅ →
+> §6.1 diag_kv v1 ❌ FAIL(作者本地判掉成因=长度效应,良性)→ **v2 真机确认 ✅ PASS** →
+> **§6.2 主批三臂各 240 张全部出图**(full/iso_pre/iso_post,commit `9b31937`;iso_post 经 1 卡补跑补齐 30 张)。
+> 2-ref 加速比:iso_pre **2.39×**、iso_post **2.26×**(预登记 1.9–2.0× 再次被打脸,同 P2 预检 2.37×)。
+> v1 的 `diag_kv.json` 原件已另存 `reports/20260814-p3-eval/diag_kv_v1.json`。
 
 ---
 
@@ -16,9 +18,14 @@
 - `step002000.pt` 的 LoRA 结构自检**逐字符合期望**,iso_post 臂是训练后的权重(不是未训练的退化臂)。
 - §5.1 判定实验:把写/读两条注意力路**强制压到同一个 kernel**(`DIFFUSERS_ATTN_BACKEND=_native_efficient`),期望「隔离+缓存 vs 隔离+每步重算」的像素差塌到 0.5 以下。**结果没塌,反而更高**(mean 2.33–5.92)。「核不对称」假说被证伪(作者后续判定该判据本身立错)。
 - **§5.3 floor 判定:`full` 臂渲两遍(独立目录、异 run),30 对像素差全部逐位相同(mean=0.0000, max=0)。** 作者 §6.3 重新解读:这证明流水线位级确定,floor 测到的是「判读侧硬底噪」而非渲染噪声,判读口径由作者与盲评侧处理。
-- **§6.1 diag_kv 门禁 ❌ FAIL**:直接判「缓存里存的那份 ref K/V 是否等于重算会得到的」。
-  探针前向 1/20/40/79,结果 **奇数前向(1,79)= uncond 支路 59/60 层不等(rel 0.246),偶数前向(20,40)= cond 支路 60/60 逐位相同**。按 §6.1 协议 FAIL ⇒ **主批 720 张已投又被 kill**,停线等作者判读。
-  `bad_layers` 均为 [1..8](前 8 层),非随机层。
+- **§6.1 diag_kv 门禁:第一轮 ❌ FAIL → 作者本地判掉成因=长度效应(良性)→ v2 真机确认 ✅ PASS。**
+  第一轮探针发现奇数前向(1,79)=uncond 支路 ref K/V 59/60 层不等(rel 0.246)、偶数前向(20,40)=cond 逐位相同,
+  `bad_layers` 恒 [1..8]。作者在本地用玩具尺寸拆开「长度 vs 内容」判定是 **txt 段长度不同 ⇒ kernel 分块对齐不同 ⇒ bf16 舍入**,不是隔离漏;
+  v2 用 A(机制自检)+C(同长度翻转 txt)两个逐位判据在真机钉实:**A/C 均 60/60 逐位相等 ⇒ ref 对 txt 内容盲 ⇒ 良性**。
+- **§6.2 主批三臂各 240 张全部出图**(full/iso_pre/iso_post,commit `9b31937`)。iso_post 首跑一个 shard 撞 ceph EIO 只出 210,
+  用 **1 卡 `--num_shards 1` 续跑补齐 30**(坑 7/8/9)。
+  **加速比**:iso_pre 2-ref **2.39×** / 1-ref 1.69×;iso_post 2-ref 2.26× / 1-ref 1.56× —— 预登记(2-ref 1.9–2.0×、1-ref ~1.4×)再次被打脸,2-ref 同 P2 预检 2.37×。
+  前向计数 iso_pre/iso_post 各 240 写 / 18960 读(每张 1 写 79 读)✅。
 
 ---
 
@@ -310,6 +317,150 @@ diag_kv FAIL 后,按 §6.1 协议 + 作者预案 kill 了主批三个任务(已�
 
 ---
 
+## 4c · §6.1 v2 第二轮 + §6.2 主批投递(commit `9b31937`,2026-08-14 15:2x)
+
+作者判读 v1 的 FAIL 后,在本地(CPU)用 `iso_attn.py` 抽 AST 跑玩具尺寸,
+**判定成因是 (b) 长度效应**:同长度换 txt 内容 → ref 行输出逐位不变(`max|Δ|=0`),
+不同长度(7 vs 64)才出现 `3.576e-07` ≈ 3 ulp。结论:**不是漏,主批不阻塞**。
+v2 脚本(`8796caf`)新增两个逐位判据分辨 (a)/(b):A=机制自检(前向 1 用存下的
+cond 文本原样复算,须逐位=缓存)、C=判据(同长度把 cond 文本沿 token 维翻转,逐位不变 ⇒ (b))。
+脚本打四选一:`✅ PASS / ❌ FAIL_LEAK / ❌ FAIL_STEP / ⚠️ INCONCLUSIVE`。
+
+按清单 §6.1「和主批同时投」,四个任务同时投到 commit `9b31937`(v2 崩溃后重投到 `d0b9811`):
+
+| job_id | 内容 | 卡 | 状态(截至 17:10) |
+|---|---|---|---|
+| `wuwenxuan__p3_diag_kv_v2__9b31937a2f97` | diag_kv v2 | 1 | ❌ 跑完崩了(脚本 bug,见下) |
+| `wuwenxuan__p3_diag_kv_v2__d0b98111d659` | diag_kv v2 重投 | 1 | ⏳ 排队(commit `d0b9811`,修好 bug) |
+| `wuwenxuan__p3_full_Iter2000__9b31937a2f97` | full 240 | 8 | ✅ **完成** 42m01s,240 张(17:0x) |
+| `wuwenxuan__p3_iso_pre_Iter2000__9b31937a2f97` | iso_pre 240 | 8 | 🟢 ge90-70 在跑 |
+| `wuwenxuan__p3_iso_post_Iter2000__9b31937a2f97` | iso_post 240 | 8 | ⏳ 排队第 1 位 |
+
+**diag_kv v2 崩溃(脚本 bug,非判定)**:ge90-26 上权重加载 171s、隔离注意力挂载成功后,
+第一次探针打印就 `KeyError: 'v_rel_l2'` 崩掉(exit_code=1,4m57s)。归因:
+
+```text
+qwen/diag_kv.py:172  wrapped() 打印 f-string 里 `s['v_rel_l2']`,但 `s = rec["B_uncond_or_current"]`
+是 summarize() 的输出,只有 n_layers/n_bitwise_eq/bad_layers/max_abs/max_rel/mean_rel/frac_ne,
+没有 v_rel_l2 —— 它和 v_max_abs 在 rec 顶层(L163-166)。应写成 `rec['v_rel_l2']`。
+```
+
+纯打印语句崩,判定逻辑本身不受影响;主批走 `infer_iso.py`,不碰这段代码,不受牵连。
+**处置**(用户定):我改一行 `s['v_rel_l2']`→`rec['v_rel_l2']` 已 commit `d0b9811`(只动这一行,
+py_compile 过),等用户 push 后重投 v2。
+
+### diag_kv v2 提交命令(原样)
+
+```bash
+SHA=9b31937a2f97e3b89dc723425aaea40658610336
+sudo -E env PATH=/kaimm-distill/infer_hub/lib:$PATH \
+  http_proxy=http://oversea-squid1.jp.txyun:11080 \
+  https_proxy=http://oversea-squid1.jp.txyun:11080 \
+  /kaimm-distill/infer_hub/lib/infer_submit \
+    --owner wuwenxuan --project default --cluster h \
+    --repo https://github.com/wenshare71/UNO.git --commit $SHA \
+    --commit-url https://github.com/wenshare71/UNO/commit/$SHA \
+    --weights /kaimm-distill/wuwenxuan/models/Qwen-Image-Edit-2511 \
+    --output-dir /kaimm-distill/wuwenxuan/UNO/output/p3_diag_kv \
+    --uv-env /kaimm-distill/wuwenxuan/envs/qwen-edit \
+    --label p3_diag_kv_v2 --gpus 1 --timeout 30 \
+    --prep-cmd 'true' --prep-marker /kaimm-distill/wuwenxuan/models/Qwen-Image-Edit-2511 \
+    --cmd 'export QWEN_WEIGHTS=$INFER_WEIGHTS_DIR; python qwen/diag_kv.py --out $INFER_OUTPUT_DIR'
+```
+
+### 主批三臂提交命令(原样,full 为例;iso_pre 只换 `--variant` 和 `--output-dir`,
+iso_post 再换 `--prep-marker` 为 LoRA 路径并给 `--lora`)
+
+```bash
+SHA=9b31937a2f97e3b89dc723425aaea40658610336
+sudo -E env PATH=/kaimm-distill/infer_hub/lib:$PATH \
+  http_proxy=http://oversea-squid1.jp.txyun:11080 \
+  https_proxy=http://oversea-squid1.jp.txyun:11080 \
+  /kaimm-distill/infer_hub/lib/infer_submit \
+    --owner wuwenxuan --project default --cluster h \
+    --repo https://github.com/wenshare71/UNO.git --commit $SHA \
+    --commit-url https://github.com/wenshare71/UNO/commit/$SHA \
+    --weights /kaimm-distill/wuwenxuan/models/Qwen-Image-Edit-2511 \
+    --output-dir /kaimm-distill/wuwenxuan/UNO/output/p3_full \
+    --uv-env /kaimm-distill/wuwenxuan/envs/qwen-edit \
+    --label p3_full_Iter2000 --gpus 8 --timeout 180 \
+    --prep-cmd 'true' --prep-marker /kaimm-distill/wuwenxuan/models/Qwen-Image-Edit-2511 \
+    --cmd 'export QWEN_WEIGHTS=$INFER_WEIGHTS_DIR; IFS=, read -ra G <<< "${CUDA_VISIBLE_DEVICES:-0}"; pids=(); for i in "${!G[@]}"; do CUDA_VISIBLE_DEVICES=${G[$i]} python qwen/infer_iso.py --variant full --shard_idx $i --num_shards ${#G[@]} --out $INFER_OUTPUT_DIR & pids+=($!); done; st=0; for p in "${pids[@]}"; do wait $p || st=1; done; exit $st'
+```
+
+iso_post 的 `--prep-marker /kaimm-distill/wuwenxuan/UNO/output/train_iso/step002000.pt`(LoRA 路径声明进
+marker 绕过 `cmd_shared_disk_leaks`,坑 2 同款),`--cmd` 里带 `--lora` 同路径。三臂输出目录分开,
+续跑逻辑互不干扰。
+
+### 提交端注意(本单新踩)
+
+- **infer_hub 每人最多 3 个在途任务。** 前三个入队后名额占满,第 4 个(iso_post)的
+  `infer_submit` **阻塞等名额**,不是报错。第一次用 2 分钟 bash 超时把阻塞进程杀了,
+  没入队;改后台跑(`run_in_background`),等任一在途被 worker 领走就自动入队。
+- dry-run 全部通过(含 iso_post 的 LoRA 路径泄漏检查)。
+
+**iso_post 臂(2026-08-14 17:25 起跑)**:8 个 shard 权重+LoRA 全部加载成功
+(`[自检] LoRA 已加载 ... lora_B 非零 478`,8/8;`[自检] 隔离注意力已挂载 | block_diag=False | 缓存=开`),
+但**其中 1 个 shard 在打 LoRA 自检 print 时 `OSError: [Errno 5] Input/output error` 崩溃**
+(`infer_iso.py:137`,写日志文件遇 ceph 瞬时 I/O 错误)。其余 7 个 shard 正常推理 → 预计产出 210 张,
+job 会以 `exit_code=1` 收尾。**逐图逻辑确认正确**(LoRA 478 非零 B + 隔离缓存挂载 + 任务=S1 165/S3 75)。
+**处置(用户 2026-08-14 17:3x 定)**:等本 job 结束 → `--force` 重投 iso_post(同 output-dir),
+续跑逻辑跳过已存在 png,只渲染缺的 30 张。EIO 记为坑(§5 新坑:8 进程并发读 2.26GB LoRA + 日志写撞 ceph EIO)。
+
+**重投过程(2026-08-14 17:5x 修订)**:先投了 8 卡重投 `...__1786700954`,用户问「补 30 张是否要 8 卡」,
+确认 1 卡即可(`--num_shards 1 --shard_idx 0`,续跑跳过 210 渲 30,`infer_iso.py:218-235` 验证过)后
+**撤销 8 卡重投、改投 1 卡补跑** `wuwenxuan__p3_iso_post_Iter2000__9b31937a2f97__1786701282`(--gpus 1)。
+理由:省 7 卡、调度只需任意机器 1 空卡、单进程写日志更不易再撞 EIO。
+**注意**:第一跑产出的是 `results_shard1–7`(崩的是 shard 0,json 未写),1 卡补跑写 `results_shard0.json`
+无覆盖冲突,补完即 0–7 共 8 个 json 240 条记录。原 7 个 json 已备份到 `output/p3_iso_post/.results_first/`。
+**续跑逻辑已验证**:补跑自检 `[自检] 变体 iso_post | 表 m6 全量 240 | 本 shard 240 | 待跑 30 | 已跳过 210`,
+1 卡只渲缺的 30 张,无需 8 卡。
+第一跑 210 张 + 7 个 `results_shard*.json` 保留在 output-dir,7 个存活 shard report_speed:
+1-ref 中位 24.5–25.4、2-ref 29.6–30.4 s/img。
+
+**diag_kv v2(d0b98111d659) ✅ PASS(2026-08-14 17:5x,6m31s,exit_code=0)**:修复后不再 KeyError,
+真机 bf16 钉实了本地「长度效应」结论:
+
+```text
+[探针] 前向   1 txt_len= 412 | 逐位相同 1/60 层 | max|Δ| 1.216e+03 (相对 2.46e-01) | mean 相对 3.67e-02 | 不等元素占比 9.48e-01 || 噪声速度相对L2 3.557e-03
+[探针] 前向  20 txt_len= 420 | 逐位相同 60/60 层 | max|Δ| 0.000e+00 | ... || 噪声速度相对L2 4.340e-03
+[探针] 前向  40 txt_len= 420 | 逐位相同 60/60 层 | max|Δ| 0.000e+00 | ... || 噪声速度相对L2 4.022e-03
+[探针] 前向  79 txt_len= 412 | 逐位相同 1/60 层 | max|Δ| 1.216e+03 (相对 2.46e-01) | ... || 噪声速度相对L2 7.586e-02
+✅ PASS —— 同长度换掉 txt 内容,ref K/V 逐位不变 ⇒ ref 对 txt 内容是盲的。uncond 那边的差异只能来自 txt 段长度不同导致的 kernel 分块差异,良性
+   步不变性(cond 支路,前向 [20, 40]):逐位成立
+```
+
+`diag_kv.json`(v2,已覆盖 output/p3_diag_kv/):`verdict=PASS`,A_cond_replay 60/60、C_txt_flipped 60/60、
+`step_invariant_cond=true`、`n_forward_write=1 / n_forward_read=79`、`peak_mem_gb=66.85`、cond_txt_len=420 vs uncond 412。
+**⇒ 隔离/缓存地基成立,主批三臂照常有效;§6.1 门禁以 PASS 收尾。**
+
+**full 臂已出(2026-08-14 17:0x)**:240 张 + 8 个 `results_shard*.json`,`exit_code=0` 42m01s。
+分片自检 `[自检] 变体 full | 表 m6 全量 240 | 本 shard 30 | 待跑 30 | 已跳过 0`,fail 0。
+各 shard `report_speed`(每 shard n=30):1-ref 中位 38.4–39.7 s/img,2-ref 中位 66.6–70.3 s/img。
+
+**iso_pre 臂已出(2026-08-14 17:2x)**:240 张 + 8 个 `results_shard*.json`,`exit_code=0` 18m08s。
+各 shard `report_speed`:1-ref 中位 22.6–23.3 s/img,2-ref 中位 27.8–28.8 s/img。
+粗加速比(full÷iso_pre,同机 8 并发):1-ref ~1.7×、2-ref ~2.4×(≈P2 预检 2.37×)。
+
+**iso_post 补跑完成(2026-08-14 18:0x)**:1 卡 `--num_shards 1` 续跑,`exit_code=0` 16m05s,
+自检 `已跳过 210 | 待跑 30`,补出的 30 张 report_speed 1-ref 24.2 / 2-ref 29.6 s/img,
+与第一跑 7 shard 一致 ⇒ **iso_post = 240 张全齐**。补跑写 `results_shard0.json`(第一跑崩的 shard 0 没写过),
+与 1–7 共 8 个 json、240 条记录,原 7 个 json 备份在 `output/p3_iso_post/.results_first/`。
+
+**三臂汇总中位数(240 条全量,从 results_shard*.json 的 elapsed_s 聚合)**:
+
+| 臂 | 1-ref(n=75) | 2-ref(n=165) | 加速比 1-ref | 加速比 2-ref |
+|---|---|---|---|---|
+| full | 38.6 s/img | 67.3 s/img | 1.00× | 1.00× |
+| iso_pre | 22.9 s/img | 28.2 s/img | 1.69× | **2.39×** |
+| iso_post | 24.7 s/img | 29.8 s/img | 1.56× | 2.26× |
+
+（iso_post 比 iso_pre 略慢 ≈ LoRA 每前向多出的计算;两臂均同机 8 并发/1 卡补跑可比。）
+**1-ref 离群观察**:两 iso 臂各 ~14/75 张 1-ref 图 >45s(iso_pre 85–90s / iso_post 137–140s),
+集中在 S3 后半段任务,把均值拉到 32.3/45.3 但中位稳健 —— 记录非门禁,盲评侧如需可留意。
+
+---
+
 ## 5 · 踩到的坑(原样记录)
 
 ### 坑 1 · 提交必须 sudo 提权(沿用已知坑,复现)
@@ -382,6 +533,38 @@ export QWEN_WEIGHTS=$INFER_WEIGHTS_DIR; IFS=, read -ra G <<< "${CUDA_VISIBLE_DEV
 投 floor 时 H 集群 4 台机器(ge90-10/26/49/70)都在跑别人的 8 卡任务,唯一空闲的
 `klingai-wlf2-ge124-node194` 是 **5kpro** 集群(硬绑定 `--cluster h` 不接)。8 卡 job
 要等 H 机器空出。实际 ge90-49 提前空出,floor 从入队到被接走等了约 1.5 分钟,没真等到 2 小时。
+本轮主批三臂又在满集群下各等约 1 小时才被领走。
+
+### 坑 7 · 8 进程并发写同一日志文件,撞 ceph EIO 崩掉一个 shard(新坑)
+
+iso_post 第一跑,8 个 shard 并发读 2.26GB LoRA 文件后紧接着往 worker 的**同一个日志文件**写
+stdout,其中一个 shard 在 `infer_iso.py:137` 的 `print`(LoRA 自检行)处
+`OSError: [Errno 5] Input/output error` 崩掉。Traceback 原样:
+
+```text
+File ".../qwen/infer_iso.py", line 137, in apply_lora_ckpt
+    print(f"[自检] LoRA 已加载 {path} | ...")
+OSError: [Errno 5] Input/output error
+```
+
+- 是**日志写(存储)瞬时错误**,不是渲染/显存/数据错误;该 shard 还没开始渲图,其余 7 个 shard
+  正常出图(210 张)。
+- job 的 fan-out 聚合 `wait $p || st=1` 把它变成 `exit_code=1`,**整 job 标失败**但产物保留。
+- 后续 1 卡补跑(单进程写日志)没再撞。
+
+### 坑 8 · 8 进程并发 `torch.load` 同一个 2.26GB LoRA 文件(新坑)
+
+只有 iso_post 读 LoRA 文件,ge90-70 上该文件 page cache 不热;8 进程同时从 ceph 拉同一个 2.26GB
+文件,`torch.load` 全程无中间输出 ⇒ **日志长时间静默,容易被误判卡死**(实测静默 44s+)。实际是慢读,
+8 个 shard 陆续完成加载(LoRA 自检行逐个出现)。影响:每进程加载时间从预期的 ~20s 拖到 ~2–3 分钟。
+
+### 坑 9 · 补跑少量图用 1 卡 `--num_shards 1` 就够了(新坑,替代重投 8 卡)
+
+只缺 1 个 shard 的 30 张时,8 卡重投会白占 7 卡(其余 shard 加载完模型发现没活干就退出)。
+**1 卡即可**:`--num_shards 1 --shard_idx 0` 把全部任务归给 shard 0,`infer_iso.py` 的续跑逻辑
+(`output_exists` 跳过)自动只渲缺的 30 张,自检打印 `本 shard 240 | 待跑 30 | 已跳过 210`。
+好处:调度只需任意机器 1 张空卡(比等整机快得多)、省 7 卡、单进程写日志更不易撞坑 7。
+副作用:补跑写 `results_shard0.json`,若第一跑该 shard 也写过会覆盖 —— 先备份原 json。
 
 ---
 
@@ -390,45 +573,43 @@ export QWEN_WEIGHTS=$INFER_WEIGHTS_DIR; IFS=, read -ra G <<< "${CUDA_VISIBLE_DEV
 | 数 | 值 | 备注 |
 |---|---|---|
 | ckpt 自检 | `step 2000 / rank 64 / targets 8 / 张量 960 / lora_B 非零 478 / 非有限 0` | ✅ 逐字符合 |
-| §5.1 判定 mean | 5.92 / 2.67 / 2.33 | ❌ 门禁 `mean < 0.5` 未过,且高于默认 backend |
-| 前向次数 | write 243 / read 237 | 3 缓存 + 3 无缓存,每张 1 写 79 读 |
-| 缓存 s/img(`_native_efficient`) | 中位 36.7 | 被人为改慢,不与默认 backend 并排引用 |
-| **floor 30 对像素差** | 全部 mean=0.0000 / max=0 | 流水线位级确定 ⇒ §5.1 差异是系统差异,非随机噪声 |
-| **full s/img**(8 卡并发) | 2-ref 中位 ~67s、1-ref 中位 ~38.7s | a/b 两遍一致 |
-| **diag_kv 每步扰动** | write/read 两路噪声速度相对 L2 最大 **0.0759**(前向 79) | §7 记录项;对照最终像素差 ~1e-2(2–6/255) |
-| **diag_kv 门禁** | `verdict=FAIL`,`kv_max_rel=0.246` | 奇前向(1,79)=uncond 59/60 层不等;偶前向(20,40)=cond 逐位相同 |
-
-预登记的速度预测(2-ref 1.9–2.0×、1-ref ~1.4×)本轮未触达,不记。
+| §5.1 判定 mean | 5.92 / 2.67 / 2.33 | ❌ 门禁 `mean < 0.5` 未过(判据后被作者立错) |
+| floor 30 对像素差 | 全部 mean=0.0000 / max=0 | 流水线位级确定 ⇒ §5.1 差异是系统差异 |
+| **主批出图数** | full / iso_pre / iso_post 各 **240** | iso_post = 210 首跑 + 1 卡补跑 30;无 fail 记录 |
+| **主批中位 s/img**(240 条聚合) | full 1-ref 38.6 / 2-ref 67.3;iso_pre 22.9 / 28.2;iso_post 24.7 / 29.8 | 从 results_shard*.json 的 elapsed_s 聚合 |
+| **加速比**(full÷) | iso_pre 1-ref **1.69×** / 2-ref **2.39×**;iso_post 1.56× / 2.26× | 预登记 2-ref 1.9–2.0×、1-ref ~1.4× 被打脸;2-ref 同 P2 预检 2.37× |
+| **前向次数** | iso_pre/iso_post 各 write **240** / read **18960**;full 无缓存 0/0 | 18960 = 240×79,每张 1 写 79 读 ✅ |
+| diag_kv 每步扰动 | write/read 噪声速度相对 L2 最大 **0.0759**(前向 79) | 对照最终像素差 ~1e-2(2–6/255) |
+| **diag_kv v1** | `verdict=FAIL`,`kv_max_rel=0.246` | 奇前向(1,79)=uncond 59/60 层不等 |
+| **diag_kv v2** | `verdict=PASS`;A/C 复算 60/60;`step_invariant_cond=true`;峰值 66.85GB | 真机 bf16 钉实「长度效应」良性;cond_txt_len 420 vs uncond 412 |
+| 1-ref 离群观察 | 两 iso 臂各 ~14/75 张 >45s,集中 S3 后半段 | 中位稳健;均值被拉高(iso_pre 32.3 / iso_post 45.3) |
 
 ---
 
 ## 7 · 本轮明确未做
 
-- **主批 720 张(三臂 × 240)未出图**:曾按用户预案先排队(diag_kv 门禁大概率过),门禁 FAIL 后
-  全部 kill(未开跑),最终一张主批图都没出。
-- **run_floor 已跑 60 张**(§5.3 判定用)。
-- 未盲评判读、未建拼图、未配对。
-- 未加 3-ref 层、未改 `PLAN.md`。
-- **盲评前可见的单臂图声明(§8b/§8 要求)**:`output/p3_floor/a/` 与 `b/` 各 30 张
-  **`full`(基线侧)渲染**已随本报告进 git。其中 22 条的任务 seed 与主批 240 条重叠。
-  全部是 `full`(teacher/基线),不揭示「哪个臂是哪个」;但基线侧图判读前可见,
-  泄漏量与 `p3_cachecheck` 的 3/240 同类。`p3_cachecheck` 另有 **3/240 的 iso_pre 渲染
-  判读前可见**(图保留未删)。`p3_diag_kv` 只产出 json,无图。
-  按 §8b「后续任何批次不要再往 git 里放单臂图」,**主批产出的 iso 单臂图不会进 git**。
+- **盲评判读、拼图、配对**:未做 —— 出完图本单结束,交给 `../distill/blind_eval/` 按它自己的纪律。
+- **加 3-ref 层**:未做(要先有速度预测预登记,作者的事)。
+- **改 `PLAN.md`**:未改。
+- **单臂图进 git**:主批 iso 单臂图未进 git(output/ 是白名单 gitignore)。本报告目录只随附
+  `diag_kv_v1.json`(json,非图)。
+- **既往泄漏声明**(沿用第一轮 §7 记录):`output/p3_floor/a/`、`b/` 各 30 张 `full`、
+  `p3_cachecheck` 3 张 `iso_pre` 已随早期报告进 git,不删 —— 删了也不改变已可见的事实,在局限中声明。
 
 ---
 
 ## 8 · 待办 / 待用户决定
 
-1. **diag_kv FAIL 需要你(作者)判读**(本轮唯一停线点):
-   - 模式:奇前向(1,79)=uncond 支路重算 ref K/V ≠ 缓存(59/60 层,rel 0.246);
-     偶前向(20,40)=cond 支路逐位相同;bad_layers 恒为 [1..8]。
-   - 二选一:ref K/V 随 cond/uncond 分支而变(隔离没完全挡 txt/条件,需查 mask 或
-     `zero_cond_t` 在 bf16 下是否真的把 ref 钉在 t=0);或 probe 有奇偶相关人为因素。
-   - 证据齐全:stdout 见 §4b,json 在 `output/p3_diag_kv/diag_kv.json`。
-2. 判读后决定:修隔离/缓存 → 重跑 diag_kv → PASS 再投主批;或换诊断。
-3. **流程教训**:主批应等门禁结论再投,不要先排队占位(本轮 kill 前已入队,靠删 pending 回收)。
+本轮全部停线点已闭合:diag_kv v1 FAIL → 作者本地判=长度效应(b,良性) → **v2 真机确认 PASS** →
+主批三臂各 240 张出齐。留给作者/盲评侧的是记录项,不是阻塞:
+
+1. **预登记速度预测被证伪**:预登记 2-ref 1.9–2.0×、1-ref ~1.4×,实测 iso_pre **2.39×/1.69×**、
+   iso_post **2.26×/1.56×**。按清单「照实记数,预登记就是用来被证伪的」;作者如需可给 PLAN §4 加订正注记。
+2. **txt token 实测**:diag_kv v2 测到 cond txt_len=**420** / uncond=**412**(PLAN §4.4 估 400–600,落区间内)。
+3. **1-ref 离群**:两 iso 臂各 ~14/75 张 1-ref 图 85–140s,集中 S3 后半段;中位稳健,均值被拉高。
+4. **执行期新发现**(均已按 R0 报备后处理):v2 的 `s['v_rel_l2']` KeyError(已修,commit `d0b9811`)、
+   iso_post 一个 shard 撞 ceph EIO(1 卡补跑绕过,坑 7/8/9)。
 
 ---
 
-*commit message 建议:`eval(qwen): P3 diag_kv FAIL(cond/uncond 支路 ref K/V 不位等)停线`*
+*commit message 建议:`eval(qwen): P3 三臂出图(full/iso_pre/iso_post 各 240,diag_kv v2 PASS)`*
