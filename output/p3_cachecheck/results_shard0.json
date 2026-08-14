@@ -1,0 +1,107 @@
+{
+  "meta": {
+    "spec": "P3-qwen-iso-v1",
+    "variant": "iso_pre",
+    "model": "Qwen-Image-Edit-2511",
+    "weights": "/kaimm-distill/wuwenxuan/models/Qwen-Image-Edit-2511",
+    "lora": null,
+    "block_diag": false,
+    "iso_no_cache": false,
+    "task_table": "m6",
+    "task_json": "/var/infer_cache/worktrees/UNO-9c315c09@3c1f90ffc290/datasets/eval_multiref/m6_tasks.json",
+    "n_all_tasks": 240,
+    "shard_idx": 0,
+    "num_shards": 1,
+    "n_shard_tasks": 3,
+    "n_run": 3,
+    "n_skipped_resume": 0,
+    "n_fail": 0,
+    "num_inference_steps": 40,
+    "true_cfg_scale": 4.0,
+    "negative_prompt": " ",
+    "height": 1024,
+    "width": 1024,
+    "total_s": 473.5,
+    "dry_run": false,
+    "cache_check": [
+      {
+        "task_id": "M6_S1_000_s0",
+        "n_refs": 2,
+        "px_max": 242.0,
+        "px_mean": 5.9179,
+        "s_cached": 42.58,
+        "s_nocache": 117.71,
+        "speedup": 2.764
+      },
+      {
+        "task_id": "M6_S1_000_s1",
+        "n_refs": 2,
+        "px_max": 176.0,
+        "px_mean": 2.6673,
+        "s_cached": 36.69,
+        "s_nocache": 117.66,
+        "speedup": 3.207
+      },
+      {
+        "task_id": "M6_S1_000_s2",
+        "n_refs": 2,
+        "px_max": 225.0,
+        "px_mean": 2.3288,
+        "s_cached": 36.71,
+        "s_nocache": 120.3,
+        "speedup": 3.277
+      }
+    ],
+    "n_forward_write": 243,
+    "n_forward_read": 237,
+    "diffusers_version": "0.40.0.dev0",
+    "torch_version": "2.5.1+cu124"
+  },
+  "tasks": [
+    {
+      "task_id": "M6_S1_000_s0",
+      "stratum": "S1",
+      "n_refs": 2,
+      "seed": 3500000,
+      "prompt": "a backpack and a stuffed animal in the jungle",
+      "image_paths": [
+        "/var/infer_cache/worktrees/UNO-9c315c09@3c1f90ffc290/datasets/dreambooth/dataset/backpack_dog/00.jpg",
+        "/var/infer_cache/worktrees/UNO-9c315c09@3c1f90ffc290/datasets/dreambooth/dataset/bear_plushie/01.jpg"
+      ],
+      "elapsed_s": 42.58,
+      "peak_mem_gb": 66.7,
+      "error": null,
+      "shard_idx": 0
+    },
+    {
+      "task_id": "M6_S1_000_s1",
+      "stratum": "S1",
+      "n_refs": 2,
+      "seed": 3500001,
+      "prompt": "a backpack and a stuffed animal in the jungle",
+      "image_paths": [
+        "/var/infer_cache/worktrees/UNO-9c315c09@3c1f90ffc290/datasets/dreambooth/dataset/backpack_dog/01.jpg",
+        "/var/infer_cache/worktrees/UNO-9c315c09@3c1f90ffc290/datasets/dreambooth/dataset/bear_plushie/02.jpg"
+      ],
+      "elapsed_s": 36.69,
+      "peak_mem_gb": 66.7,
+      "error": null,
+      "shard_idx": 0
+    },
+    {
+      "task_id": "M6_S1_000_s2",
+      "stratum": "S1",
+      "n_refs": 2,
+      "seed": 3500002,
+      "prompt": "a backpack and a stuffed animal in the jungle",
+      "image_paths": [
+        "/var/infer_cache/worktrees/UNO-9c315c09@3c1f90ffc290/datasets/dreambooth/dataset/backpack_dog/02.jpg",
+        "/var/infer_cache/worktrees/UNO-9c315c09@3c1f90ffc290/datasets/dreambooth/dataset/bear_plushie/03.jpg"
+      ],
+      "elapsed_s": 36.71,
+      "peak_mem_gb": 66.7,
+      "error": null,
+      "shard_idx": 0
+    }
+  ]
+}

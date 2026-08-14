@@ -360,3 +360,13 @@ log/ref_distill/
 # manifest_raw.json 单独放行:P2 的采样比、held-out 断言、9000 条的分层都要按它写,
 # 而本地机器上没有共享盘。图**不**放行——放行的只有这一个 json。
 !/datasets/distill_multiref/manifest_raw.json
+
+# ─── P3 出图判定实验(2026-08-14,qwen/P3_EVAL_RUN.md §5.1)────────────────
+# 停线前的判定实验产物:results_shard0.json(三组 cache_check 像素差)+ 3 张
+# iso_pre 判定图。图按 task_id 命名、无变体名、不是拼图,不违反"判读前不得
+# 生成带变体名拼图"的盲评纪律;体积约 4.5 MB。主批三臂 720 张图仍不进 git(§8)。
+# infer_result_*.json 是 worker 任务快照(与 done/ 归档重复),不放行。
+!/output/p3_cachecheck/
+/output/p3_cachecheck/*
+!/output/p3_cachecheck/results_shard0.json
+!/output/p3_cachecheck/*.png
