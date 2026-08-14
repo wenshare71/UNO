@@ -61,12 +61,16 @@ class CompareCache:
 
     def write(self, block_idx, k, v):
         k0, v0 = self.real.read(block_idx)
+        # 同时记张量自身的量级:不等的时候要靠 |Δ|/scale 判断是"最后一位舍入"还是"逻辑错",
+        # 只看绝对值判不了(K/V 各层量级差很多)。
         self.rows.append({
             "layer": block_idx,
             "k_eq": bool(self.torch.equal(k, k0)),
             "v_eq": bool(self.torch.equal(v, v0)),
             "k_max": float((k.float() - k0.float()).abs().max()),
             "v_max": float((v.float() - v0.float()).abs().max()),
+            "k_scale": float(k0.float().abs().max()),
+            "v_scale": float(v0.float().abs().max()),
         })
 
     def read(self, block_idx):
@@ -126,6 +130,9 @@ def install_probe(hook, torch, probe_at: set[int], log: list):
             "n_layers": len(rows),
             "n_layers_bitwise_eq": len(rows) - len(bad),
             "kv_max_abs": max([max(r["k_max"], r["v_max"]) for r in rows], default=0.0),
+            "kv_max_rel": max([max(r["k_max"] / max(r["k_scale"], 1e-30),
+                                   r["v_max"] / max(r["v_scale"], 1e-30)) for r in rows],
+                              default=0.0),
             "bad_layers": [r["layer"] for r in bad][:8],
             "v_max_abs": float(dv.abs().max()),
             "v_rel_l2": float(dv.norm() / ref_norm),
@@ -184,11 +191,16 @@ def main():
 
     n_probe = len(log)
     all_eq = n_probe > 0 and all(r["n_layers_bitwise_eq"] == r["n_layers"] for r in log)
+    # 不等的时候还要分两种。bf16 尾数 8 位 ⇒ 相对 eps ≈ 2^-8 ≈ 3.9e-3,
+    # 几个 ulp 就是 ~1e-2;逻辑错会与张量自身同阶(rel ≳ 0.1)。中间地带不该出现,
+    # 真出现了才需要人来看。
+    max_rel = max([r["kv_max_rel"] for r in log], default=0.0)
+    verdict = "PASS" if all_eq else ("PASS_ROUNDING" if max_rel < 1e-2 else "FAIL")
     doc = {
         "spec": "P3-diag-kv-v1",
         "task_id": task["task_id"], "n_refs": task["meta"]["n_refs"], "seed": task["seed"],
         "probe_at": sorted(probe_at), "n_probe": n_probe,
-        "all_bitwise_equal": all_eq,
+        "all_bitwise_equal": all_eq, "verdict": verdict, "kv_max_rel": max_rel,
         "peak_mem_gb": round(torch.cuda.max_memory_allocated() / 1024**3, 2),
         "n_forward_write": hook.n_write, "n_forward_read": hook.n_read,
         "probes": log,
@@ -197,22 +209,31 @@ def main():
     with open(path, "w", encoding="utf-8") as f:
         json.dump(doc, f, indent=2, ensure_ascii=False)
 
+    vmax = max([r["v_rel_l2"] for r in log], default=0.0)
     print("\n" + "=" * 68)
     if n_probe == 0:
         print("❌ 一次探针都没跑到 —— probe_at 给的下标超出了本次前向数,重给。")
-    elif all_eq:
-        print(f"✅ {n_probe} 次探针,每次 60 层 K/V 全部逐位相同。")
+    elif verdict == "PASS":
+        print(f"✅ PASS —— {n_probe} 次探针,每次 60 层 K/V 全部逐位相同。")
         print("   ⇒ 缓存喂给注意力的输入与每步重算逐位一致,缓存数值精确无损。")
         print("   ⇒ 像素差只能来自形状驱动的 kernel 选择(read 路 img 流 M 维 ~4.1k vs "
-              "write 路 ~12.7k),良性。放行主批。")
-        vmax = max(r["v_rel_l2"] for r in log)
-        print(f"   每步扰动(噪声速度相对 L2)最大 {vmax:.2e};最终像素差 ~1e-2(2–6/255)。")
+              "write 路 ~12.7k),良性。")
+        print("   ⇒ 【直接投主批,不用等作者】")
+    elif verdict == "PASS_ROUNDING":
+        print(f"✅ PASS(舍入级)—— 有层不逐位相同,但最大相对差 {max_rel:.2e} < 1e-2,")
+        print("   即 bf16 最后几位(尾数 8 位 ⇒ 相对 eps ≈ 3.9e-3)。不是逻辑错。")
+        print("   ⇒ 【直接投主批,不用等作者】把这个数写进报告即可。")
     else:
-        print(f"❌ {n_probe} 次探针里有不等的层 —— 缓存不是无损的,主批别投。")
+        print(f"❌ FAIL —— 最大相对差 {max_rel:.2e},与张量自身同阶,是逻辑错不是舍入。")
+        print("   ⇒ 【停,主批别投】把下面几行连同 diag_kv.json 发给作者。")
         for r in log:
             if r["n_layers_bitwise_eq"] != r["n_layers"]:
                 print(f"   前向 {r['forward']}: {r['n_layers'] - r['n_layers_bitwise_eq']} 层不等,"
-                      f"最早几层 {r['bad_layers']},max|Δ| {r['kv_max_abs']:.3e}")
+                      f"最早几层 {r['bad_layers']},max|Δ| {r['kv_max_abs']:.3e} "
+                      f"(相对 {r['kv_max_rel']:.3e})")
+    if n_probe:
+        print(f"   [记数] 每步扰动 = write/read 两路噪声速度相对 L2,最大 {vmax:.2e}"
+              f";作参照,最终像素差 ~1e-2(2–6/255)。")
     print(f"diag_kv.json : {path}")
     print("=" * 68)
 
