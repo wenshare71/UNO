@@ -169,7 +169,7 @@ def install_probe(hook, torch, probe_at: set[int], log: list, txt_test_at: int):
         print(f"  [探针] 前向 {n:3d} txt_len={rec['txt_len']:4d} | 逐位相同 "
               f"{s['n_bitwise_eq']}/{s['n_layers']} 层 | max|Δ| {s['max_abs']:.3e} "
               f"(相对 {s['max_rel']:.2e}) | mean 相对 {s['mean_rel']:.2e} | "
-              f"不等元素占比 {s['frac_ne']:.2e} || 噪声速度相对L2 {s['v_rel_l2']:.3e}",
+              f"不等元素占比 {s['frac_ne']:.2e} || 噪声速度相对L2 {rec['v_rel_l2']:.3e}",
               flush=True)
 
         # ── 只在指定的那一次前向做 A / C 两个变体 ────────────────────────────
