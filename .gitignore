@@ -387,3 +387,10 @@ log/ref_distill/
 /output/p3_floor/b/*
 !/output/p3_floor/b/results_shard*.json
 !/output/p3_floor/b/*.png
+
+# ─── P3 diag_kv 门禁(2026-08-14,qwen/P3_EVAL_RUN.md §6.1)──────────────────
+# 唯一门禁的直接证据:diag_kv.json(4 次探针的 ref K/V 逐位比对结论,FAIL)。
+# 无图。日志在 infer_hub queues/default/logs/,不进 git。
+!/output/p3_diag_kv/
+/output/p3_diag_kv/*
+!/output/p3_diag_kv/diag_kv.json

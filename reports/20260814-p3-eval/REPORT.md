@@ -1,20 +1,24 @@
-# P3 出图 · 执行报告(进行中,停在 §5.3 floor 判读)
+# P3 出图 · 执行报告(进行中,停在 §6.1 diag_kv FAIL)
 
-> 对应 `qwen/P3_EVAL_RUN.md`。本单只出图、不盲评判读、不建拼图。
+> 对应 `qwen/P3_EVAL_RUN.md`(2026-08-14 作者重写为 §6.1/§6.2/§6.3 体系)。
+> 本单只出图、不盲评判读、不建拼图。
 > 起点 commit `3c1f90f`。执行机器:`aiplatform-bjy-ge47-391`(4090 开发机),
 > 执行时间 2026-08-14。
 >
-> **当前进度**:§5.0 ✅ → §5.1 判定实验 ✅(判据 `mean<0.5` 被作者立错,见
-> `qwen/P3_EVAL_RUN.md` §5.1-判读,2026-08-14 放行)→ **§5.3 floor 判定 ✅(≈0,停线)**。
-> **§5.2 主批 720 张未投** —— §5.3 floor 判读触发停线,等作者 K/V 级诊断。
+> **当前进度**:§5.0 ✅ → §5.1 判定实验 ✅(判据 `mean<0.5` 被作者立错)→
+> §5.3 floor 判定 ✅(逐位相同,作者已重新解读)→ **§6.1 diag_kv 门禁 ❌ FAIL**。
+> **§6.2 主批 720 张已投后被 kill** —— diag_kv FAIL,按 §6.1 协议停,等作者判读。
 
 ---
 
 ## 0 · 结论速览
 
 - `step002000.pt` 的 LoRA 结构自检**逐字符合期望**,iso_post 臂是训练后的权重(不是未训练的退化臂)。
-- §5.1 判定实验:把写/读两条注意力路**强制压到同一个 kernel**(`DIFFUSERS_ATTN_BACKEND=_native_efficient`),期望「隔离+缓存 vs 隔离+每步重算」的像素差塌到 0.5 以下。**结果没塌,反而更高**(mean 2.33–5.92)。「核不对称」假说被证伪。
-- **§5.3 floor 判定(2026-08-14 追加):`full` 臂渲两遍(独立目录、异 run),30 对像素差全部逐位相同(mean=0.0000, max=0)。** 流水线位级确定,不存在可放大的 run-to-run 噪声 ⇒ §5.1 的 2–6 差异是**确定性系统差异**,不是随机 bf16 噪声 ⇒ 按 §5.3-补 判读表「≈0」分支,**停线,主批先不跑**,等作者 K/V 级诊断。
+- §5.1 判定实验:把写/读两条注意力路**强制压到同一个 kernel**(`DIFFUSERS_ATTN_BACKEND=_native_efficient`),期望「隔离+缓存 vs 隔离+每步重算」的像素差塌到 0.5 以下。**结果没塌,反而更高**(mean 2.33–5.92)。「核不对称」假说被证伪(作者后续判定该判据本身立错)。
+- **§5.3 floor 判定:`full` 臂渲两遍(独立目录、异 run),30 对像素差全部逐位相同(mean=0.0000, max=0)。** 作者 §6.3 重新解读:这证明流水线位级确定,floor 测到的是「判读侧硬底噪」而非渲染噪声,判读口径由作者与盲评侧处理。
+- **§6.1 diag_kv 门禁 ❌ FAIL**:直接判「缓存里存的那份 ref K/V 是否等于重算会得到的」。
+  探针前向 1/20/40/79,结果 **奇数前向(1,79)= uncond 支路 59/60 层不等(rel 0.246),偶数前向(20,40)= cond 支路 60/60 逐位相同**。按 §6.1 协议 FAIL ⇒ **主批 720 张已投又被 kill**,停线等作者判读。
+  `bad_layers` 均为 [1..8](前 8 层),非随机层。
 
 ---
 
@@ -229,6 +233,83 @@ a/b 是两次独立 run(不同卡、不同进程、输出独立目录)。
 
 ---
 
+## 4b · §6.1 diag_kv 门禁(❌ FAIL,主批已投后 kill)
+
+作者重写清单后的**唯一门禁**:直接判「缓存里存的那份 ref K/V,是否等于第 k 步重算会得到的」。
+`diag_kv.py` 在 read 前向 1/20/40/79 处探针,重算 ref K/V(写路)与缓存逐位比。
+
+### 提交命令(原样)
+
+```bash
+SHA=219b9eb3d53d07954d4652aed9fab9c945ff1a72
+sudo -E env PATH=/kaimm-distill/infer_hub/lib:$PATH \
+  http_proxy=http://oversea-squid1.jp.txyun:11080 \
+  https_proxy=http://oversea-squid1.jp.txyun:11080 \
+  /kaimm-distill/infer_hub/lib/infer_submit \
+    --owner wuwenxuan --project default --cluster h \
+    --repo https://github.com/wenshare71/UNO.git --commit $SHA \
+    --commit-url https://github.com/wenshare71/UNO/commit/$SHA \
+    --weights /kaimm-distill/wuwenxuan/models/Qwen-Image-Edit-2511 \
+    --output-dir /kaimm-distill/wuwenxuan/UNO/output/p3_diag_kv \
+    --uv-env /kaimm-distill/wuwenxuan/envs/qwen-edit \
+    --label p3_diag_kv --gpus 1 --timeout 30 \
+    --prep-cmd 'true' --prep-marker /kaimm-distill/wuwenxuan/models/Qwen-Image-Edit-2511 \
+    --cmd 'export QWEN_WEIGHTS=$INFER_WEIGHTS_DIR; python qwen/diag_kv.py --out $INFER_OUTPUT_DIR'
+```
+
+### 任务结果
+
+| 字段 | 值 |
+|---|---|
+| job_id | `wuwenxuan__p3_diag_kv__219b9eb3d53d` |
+| 最终状态 | 成功(exit_code=0;脚本内部判 FAIL) |
+| worker / 卡 | `aiplatform-wlf3-ge90-70` / 1 卡 |
+| 耗时 | 5m38s(权重加载 173.4s) |
+| 日志 | `/kaimm-distill/infer_hub/queues/default/logs/wuwenxuan__p3_diag_kv__219b9eb3d53d.log` |
+| 结果 | `/kaimm-distill/wuwenxuan/UNO/output/p3_diag_kv/diag_kv.json` |
+
+### stdout 原样(关键行)
+
+```text
+[自检] 任务 M6_S1_000_s0 | 2-ref | seed 3500000 | 探针在前向 [1, 20, 40, 79]
+[探针] 前向   1 | ref K/V 逐位相同 1/60 层 | max|Δkv| 1.216e+03 || 噪声速度 max|Δ| 3.125e-02 相对L2 3.557e-03
+[探针] 前向  20 | ref K/V 逐位相同 60/60 层 | max|Δkv| 0.000e+00 || 噪声速度 max|Δ| 3.125e-02 相对L2 4.340e-03
+[探针] 前向  40 | ref K/V 逐位相同 60/60 层 | max|Δkv| 0.000e+00 || 噪声速度 max|Δ| 6.458e-02 相对L2 4.022e-03
+[探针] 前向  79 | ref K/V 逐位相同 1/60 层 | max|Δkv| 1.216e+03 || 噪声速度 max|Δ| 5.215e-01 相对L2 7.586e-02
+❌ FAIL —— 最大相对差 2.46e-01,与张量自身同阶,是逻辑错不是舍入。
+```
+
+`diag_kv.json`: `verdict=FAIL`, `kv_max_rel=0.246`, `all_bitwise_equal=false`。
+4 次探针详单见文件,`bad_layers` 恒为 [1..8](前 8 层,非随机层)。
+
+### 观察到的模式(供作者判读,非结论)
+
+失败的前向是 **1 和 79(奇数)**,通过的是 **20 和 40(偶数)**。80 次前向按步内
+cond/uncond 交替排(偶=cond、奇=uncond)、forward 0 是 write 的那次 cond ⇒
+缓存存的就是 **cond 支路**的 ref K/V:
+
+- **cond 前向重算 ref K/V = 缓存(逐位 60/60)** —— 缓存对 cond 支路精确;
+- **uncond 前向重算 ref K/V ≠ 缓存(59/60 层不等,rel 0.246)** —— uncond 支路拿到的是 cond 支路的 ref K/V。
+
+这比「缓存数值 bug」更精确:要么 **ref K/V 随 cond/uncond 分支而变**(隔离没完全挡住
+txt/条件对流,T6 的「与 prompt 无关」是 fp32 证的,bf16 GPU 下不位等),要么 **probe 有
+奇偶相关的人为因素**。作者判读。
+
+### 主批处置
+
+diag_kv FAIL 后,按 §6.1 协议 + 作者预案 kill 了主批三个任务(已入队未开跑):
+
+| job | 处置 |
+|---|---|
+| `wuwenxuan__p3_full_Iter2000__219b9eb3d53d` | 入队后删 pending |
+| `wuwenxuan__p3_iso_pre_Iter2000__219b9eb3d53d` | 入队后删 pending |
+| `wuwenxuan__p3_iso_post_Iter2000__219b9eb3d53d` | 阻塞提交自动入队后删 pending |
+
+(注:主批提交前误判「门禁大概率过」先排队,FAIL 后 kill——用户预案允许,无资源浪费,
+但下轮应等门禁结论再投,见 §8。)
+
+---
+
 ## 5 · 踩到的坑(原样记录)
 
 ### 坑 1 · 提交必须 sudo 提权(沿用已知坑,复现)
@@ -314,6 +395,8 @@ export QWEN_WEIGHTS=$INFER_WEIGHTS_DIR; IFS=, read -ra G <<< "${CUDA_VISIBLE_DEV
 | 缓存 s/img(`_native_efficient`) | 中位 36.7 | 被人为改慢,不与默认 backend 并排引用 |
 | **floor 30 对像素差** | 全部 mean=0.0000 / max=0 | 流水线位级确定 ⇒ §5.1 差异是系统差异,非随机噪声 |
 | **full s/img**(8 卡并发) | 2-ref 中位 ~67s、1-ref 中位 ~38.7s | a/b 两遍一致 |
+| **diag_kv 每步扰动** | write/read 两路噪声速度相对 L2 最大 **0.0759**(前向 79) | §7 记录项;对照最终像素差 ~1e-2(2–6/255) |
+| **diag_kv 门禁** | `verdict=FAIL`,`kv_max_rel=0.246` | 奇前向(1,79)=uncond 59/60 层不等;偶前向(20,40)=cond 逐位相同 |
 
 预登记的速度预测(2-ref 1.9–2.0×、1-ref ~1.4×)本轮未触达,不记。
 
@@ -321,29 +404,31 @@ export QWEN_WEIGHTS=$INFER_WEIGHTS_DIR; IFS=, read -ra G <<< "${CUDA_VISIBLE_DEV
 
 ## 7 · 本轮明确未做
 
-- **主批 720 张(三臂 × 240)未投**,因 §5.3 floor 判读「≈0」停线协议触发。
-- **run_floor 已跑 60 张**(§5.3 判定用),但**主批 720 张未投**。
+- **主批 720 张(三臂 × 240)未出图**:曾按用户预案先排队(diag_kv 门禁大概率过),门禁 FAIL 后
+  全部 kill(未开跑),最终一张主批图都没出。
+- **run_floor 已跑 60 张**(§5.3 判定用)。
 - 未盲评判读、未建拼图、未配对。
 - 未加 3-ref 层、未改 `PLAN.md`。
-- **盲评前可见的单臂图声明(§8b 要求)**:`output/p3_floor/a/` 与 `b/` 各 30 张
+- **盲评前可见的单臂图声明(§8b/§8 要求)**:`output/p3_floor/a/` 与 `b/` 各 30 张
   **`full`(基线侧)渲染**已随本报告进 git。其中 22 条的任务 seed 与主批 240 条重叠。
-  全部是 `full`(teacher/基线),不是 iso 臂,不揭示「哪个臂是哪个」;但基线侧图在
-  判读前可见,泄漏量与 `p3_cachecheck` 的 3/240 同类。`p3_cachecheck` 另有
-  **3/240 的 iso_pre 渲染在判读前可见**(§8b 已声明,图保留未删)。
+  全部是 `full`(teacher/基线),不揭示「哪个臂是哪个」;但基线侧图判读前可见,
+  泄漏量与 `p3_cachecheck` 的 3/240 同类。`p3_cachecheck` 另有 **3/240 的 iso_pre 渲染
+  判读前可见**(图保留未删)。`p3_diag_kv` 只产出 json,无图。
   按 §8b「后续任何批次不要再往 git 里放单臂图」,**主批产出的 iso 单臂图不会进 git**。
 
 ---
 
 ## 8 · 待办 / 待用户决定
 
-1. **floor ≈0 的判读结论需要你(作者)定夺**:
-   - §5.3-补 的「≈0」分支原文是「我的解释死掉,缓存确实有问题 ⇒ 停下来告诉我,我写
-     K/V 级的诊断」。你说了算:写 K/V 级诊断,或调整解读。
-   - 我能配合的取证方向(需你点头改 `qwen/` 下 `.py`,R0):只读对比「第 k 步重算的
-     ref K/V」vs「缓存里的 step-0 ref K/V」是否位等——若位等则差异纯在 kernel 内部;
-     若不等则是缓存逻辑/数值问题。
-2. 诊断结论出来后,主批三臂 720 张 + 是否要重跑 floor(若改判据)再定。
+1. **diag_kv FAIL 需要你(作者)判读**(本轮唯一停线点):
+   - 模式:奇前向(1,79)=uncond 支路重算 ref K/V ≠ 缓存(59/60 层,rel 0.246);
+     偶前向(20,40)=cond 支路逐位相同;bad_layers 恒为 [1..8]。
+   - 二选一:ref K/V 随 cond/uncond 分支而变(隔离没完全挡 txt/条件,需查 mask 或
+     `zero_cond_t` 在 bf16 下是否真的把 ref 钉在 t=0);或 probe 有奇偶相关人为因素。
+   - 证据齐全:stdout 见 §4b,json 在 `output/p3_diag_kv/diag_kv.json`。
+2. 判读后决定:修隔离/缓存 → 重跑 diag_kv → PASS 再投主批;或换诊断。
+3. **流程教训**:主批应等门禁结论再投,不要先排队占位(本轮 kill 前已入队,靠删 pending 回收)。
 
 ---
 
-*commit message 建议:`eval(qwen): P3 floor 判读(30 对逐位相同)停线`*
+*commit message 建议:`eval(qwen): P3 diag_kv FAIL(cond/uncond 支路 ref K/V 不位等)停线`*
