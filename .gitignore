@@ -370,3 +370,20 @@ log/ref_distill/
 /output/p3_cachecheck/*
 !/output/p3_cachecheck/results_shard0.json
 !/output/p3_cachecheck/*.png
+
+# ─── P3 floor 判定(2026-08-14,qwen/P3_EVAL_RUN.md §5.3-补)──────────────────
+# 停线前的 floor 判定产物:full 臂渲两遍(a/b 独立目录、异 run)的 results_shard*.json
+# + 30×2 张 full 渲染。图按 task_id 命名、全是 full(基线侧)无变体名、不是拼图;
+# 基线侧图判读前可见的泄漏在 REPORT.md §7 已声明,随本轮提交留档。
+# 主批三臂 720 张图仍不进 git(§8b:后续批次不再往 git 放单臂图)。
+# infer_result_*.json 是 worker 任务快照(与 done/ 归档重复),不放行。
+!/output/p3_floor/
+/output/p3_floor/*
+!/output/p3_floor/a/
+/output/p3_floor/a/*
+!/output/p3_floor/a/results_shard*.json
+!/output/p3_floor/a/*.png
+!/output/p3_floor/b/
+/output/p3_floor/b/*
+!/output/p3_floor/b/results_shard*.json
+!/output/p3_floor/b/*.png

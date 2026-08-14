@@ -1,0 +1,148 @@
+{
+  "meta": {
+    "spec": "P3-qwen-iso-v1",
+    "variant": "full",
+    "model": "Qwen-Image-Edit-2511",
+    "weights": "/kaimm-distill/wuwenxuan/models/Qwen-Image-Edit-2511",
+    "lora": null,
+    "block_diag": false,
+    "iso_no_cache": false,
+    "task_table": "m6_floor",
+    "task_json": "/var/infer_cache/worktrees/UNO-9c315c09@3c1f90ffc290/datasets/eval_multiref/m6_floor_tasks.json",
+    "n_all_tasks": 30,
+    "shard_idx": 1,
+    "num_shards": 4,
+    "n_shard_tasks": 8,
+    "n_run": 8,
+    "n_skipped_resume": 0,
+    "n_fail": 0,
+    "num_inference_steps": 40,
+    "true_cfg_scale": 4.0,
+    "negative_prompt": " ",
+    "height": 1024,
+    "width": 1024,
+    "total_s": 491.7,
+    "dry_run": false,
+    "diffusers_version": "0.40.0.dev0",
+    "torch_version": "2.5.1+cu124"
+  },
+  "tasks": [
+    {
+      "task_id": "M6_S1_004_s3",
+      "stratum": "S1",
+      "n_refs": 2,
+      "seed": 3500043,
+      "prompt": "a backpack and a clock floating in an ocean of milk",
+      "image_paths": [
+        "/var/infer_cache/worktrees/UNO-9c315c09@3c1f90ffc290/datasets/dreambooth/dataset/backpack_dog/03.jpg",
+        "/var/infer_cache/worktrees/UNO-9c315c09@3c1f90ffc290/datasets/dreambooth/dataset/clock/04.jpg"
+      ],
+      "elapsed_s": 74.62,
+      "peak_mem_gb": 57.98,
+      "error": null,
+      "shard_idx": 1
+    },
+    {
+      "task_id": "M6_S1_011_s4",
+      "stratum": "S1",
+      "n_refs": 2,
+      "seed": 3500114,
+      "prompt": "a stuffed animal and a candle in the snow",
+      "image_paths": [
+        "/var/infer_cache/worktrees/UNO-9c315c09@3c1f90ffc290/datasets/dreambooth/dataset/bear_plushie/04.jpg",
+        "/var/infer_cache/worktrees/UNO-9c315c09@3c1f90ffc290/datasets/dreambooth/dataset/candle/00.jpg"
+      ],
+      "elapsed_s": 66.83,
+      "peak_mem_gb": 57.98,
+      "error": null,
+      "shard_idx": 1
+    },
+    {
+      "task_id": "M6_S1_017_s0",
+      "stratum": "S1",
+      "n_refs": 2,
+      "seed": 3500170,
+      "prompt": "a bowl and a candle on top of the sidewalk in a crowded street",
+      "image_paths": [
+        "/var/infer_cache/worktrees/UNO-9c315c09@3c1f90ffc290/datasets/dreambooth/dataset/berry_bowl/00.jpg",
+        "/var/infer_cache/worktrees/UNO-9c315c09@3c1f90ffc290/datasets/dreambooth/dataset/candle/01.jpg"
+      ],
+      "elapsed_s": 66.91,
+      "peak_mem_gb": 57.98,
+      "error": null,
+      "shard_idx": 1
+    },
+    {
+      "task_id": "M6_S1_026_s2",
+      "stratum": "S1",
+      "n_refs": 2,
+      "seed": 3500262,
+      "prompt": "a can and a toy with a city in the background",
+      "image_paths": [
+        "/var/infer_cache/worktrees/UNO-9c315c09@3c1f90ffc290/datasets/dreambooth/dataset/can/02.jpg",
+        "/var/infer_cache/worktrees/UNO-9c315c09@3c1f90ffc290/datasets/dreambooth/dataset/duck_toy/03.jpg"
+      ],
+      "elapsed_s": 66.73,
+      "peak_mem_gb": 57.98,
+      "error": null,
+      "shard_idx": 1
+    },
+    {
+      "task_id": "M6_S1_037_s3",
+      "stratum": "S1",
+      "n_refs": 2,
+      "seed": 3500373,
+      "prompt": "a clock and a stuffed animal with a mountain in the background",
+      "image_paths": [
+        "/var/infer_cache/worktrees/UNO-9c315c09@3c1f90ffc290/datasets/dreambooth/dataset/clock/03.jpg",
+        "/var/infer_cache/worktrees/UNO-9c315c09@3c1f90ffc290/datasets/dreambooth/dataset/grey_sloth_plushie/04.jpg"
+      ],
+      "elapsed_s": 68.02,
+      "peak_mem_gb": 57.98,
+      "error": null,
+      "shard_idx": 1
+    },
+    {
+      "task_id": "M6_S3_01c4_s1",
+      "stratum": "S3",
+      "n_refs": 1,
+      "seed": 3700141,
+      "prompt": "a stuffed animal with a mountain in the background",
+      "image_paths": [
+        "/var/infer_cache/worktrees/UNO-9c315c09@3c1f90ffc290/datasets/dreambooth/dataset/bear_plushie/04.jpg"
+      ],
+      "elapsed_s": 47.57,
+      "peak_mem_gb": 57.97,
+      "error": null,
+      "shard_idx": 1
+    },
+    {
+      "task_id": "M6_S3_05c1_s1",
+      "stratum": "S3",
+      "n_refs": 1,
+      "seed": 3700511,
+      "prompt": "a clock on top of a mirror",
+      "image_paths": [
+        "/var/infer_cache/worktrees/UNO-9c315c09@3c1f90ffc290/datasets/dreambooth/dataset/clock/03.jpg"
+      ],
+      "elapsed_s": 38.4,
+      "peak_mem_gb": 57.97,
+      "error": null,
+      "shard_idx": 1
+    },
+    {
+      "task_id": "M6_S3_09c3_s0",
+      "stratum": "S3",
+      "n_refs": 1,
+      "seed": 3700930,
+      "prompt": "a stuffed animal with a wheat field in the background",
+      "image_paths": [
+        "/var/infer_cache/worktrees/UNO-9c315c09@3c1f90ffc290/datasets/dreambooth/dataset/grey_sloth_plushie/01.jpg"
+      ],
+      "elapsed_s": 38.38,
+      "peak_mem_gb": 57.97,
+      "error": null,
+      "shard_idx": 1
+    }
+  ]
+}

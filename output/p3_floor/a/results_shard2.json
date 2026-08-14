@@ -1,0 +1,134 @@
+{
+  "meta": {
+    "spec": "P3-qwen-iso-v1",
+    "variant": "full",
+    "model": "Qwen-Image-Edit-2511",
+    "weights": "/kaimm-distill/wuwenxuan/models/Qwen-Image-Edit-2511",
+    "lora": null,
+    "block_diag": false,
+    "iso_no_cache": false,
+    "task_table": "m6_floor",
+    "task_json": "/var/infer_cache/worktrees/UNO-9c315c09@3c1f90ffc290/datasets/eval_multiref/m6_floor_tasks.json",
+    "n_all_tasks": 30,
+    "shard_idx": 2,
+    "num_shards": 4,
+    "n_shard_tasks": 7,
+    "n_run": 7,
+    "n_skipped_resume": 0,
+    "n_fail": 0,
+    "num_inference_steps": 40,
+    "true_cfg_scale": 4.0,
+    "negative_prompt": " ",
+    "height": 1024,
+    "width": 1024,
+    "total_s": 448.8,
+    "dry_run": false,
+    "diffusers_version": "0.40.0.dev0",
+    "torch_version": "2.5.1+cu124"
+  },
+  "tasks": [
+    {
+      "task_id": "M6_S1_005_s0",
+      "stratum": "S1",
+      "n_refs": 2,
+      "seed": 3500050,
+      "prompt": "a backpack and a sneaker on top of a wooden floor",
+      "image_paths": [
+        "/var/infer_cache/worktrees/UNO-9c315c09@3c1f90ffc290/datasets/dreambooth/dataset/backpack_dog/00.jpg",
+        "/var/infer_cache/worktrees/UNO-9c315c09@3c1f90ffc290/datasets/dreambooth/dataset/colorful_sneaker/01.jpg"
+      ],
+      "elapsed_s": 75.66,
+      "peak_mem_gb": 57.98,
+      "error": null,
+      "shard_idx": 2
+    },
+    {
+      "task_id": "M6_S1_013_s2",
+      "stratum": "S1",
+      "n_refs": 2,
+      "seed": 3500132,
+      "prompt": "a stuffed animal and a sneaker floating on top of water",
+      "image_paths": [
+        "/var/infer_cache/worktrees/UNO-9c315c09@3c1f90ffc290/datasets/dreambooth/dataset/bear_plushie/02.jpg",
+        "/var/infer_cache/worktrees/UNO-9c315c09@3c1f90ffc290/datasets/dreambooth/dataset/colorful_sneaker/03.jpg"
+      ],
+      "elapsed_s": 66.01,
+      "peak_mem_gb": 57.98,
+      "error": null,
+      "shard_idx": 2
+    },
+    {
+      "task_id": "M6_S1_018_s1",
+      "stratum": "S1",
+      "n_refs": 2,
+      "seed": 3500181,
+      "prompt": "a bowl and a clock on top of a dirt road",
+      "image_paths": [
+        "/var/infer_cache/worktrees/UNO-9c315c09@3c1f90ffc290/datasets/dreambooth/dataset/berry_bowl/01.jpg",
+        "/var/infer_cache/worktrees/UNO-9c315c09@3c1f90ffc290/datasets/dreambooth/dataset/clock/02.jpg"
+      ],
+      "elapsed_s": 65.94,
+      "peak_mem_gb": 57.98,
+      "error": null,
+      "shard_idx": 2
+    },
+    {
+      "task_id": "M6_S1_032_s3",
+      "stratum": "S1",
+      "n_refs": 2,
+      "seed": 3500323,
+      "prompt": "a candle and a boot on the beach",
+      "image_paths": [
+        "/var/infer_cache/worktrees/UNO-9c315c09@3c1f90ffc290/datasets/dreambooth/dataset/candle/03.jpg",
+        "/var/infer_cache/worktrees/UNO-9c315c09@3c1f90ffc290/datasets/dreambooth/dataset/fancy_boot/04.jpg"
+      ],
+      "elapsed_s": 66.16,
+      "peak_mem_gb": 57.98,
+      "error": null,
+      "shard_idx": 2
+    },
+    {
+      "task_id": "M6_S1_038_s2",
+      "stratum": "S1",
+      "n_refs": 2,
+      "seed": 3500382,
+      "prompt": "a sneaker and a toy on top of a dirt road",
+      "image_paths": [
+        "/var/infer_cache/worktrees/UNO-9c315c09@3c1f90ffc290/datasets/dreambooth/dataset/colorful_sneaker/02.jpg",
+        "/var/infer_cache/worktrees/UNO-9c315c09@3c1f90ffc290/datasets/dreambooth/dataset/duck_toy/03.jpg"
+      ],
+      "elapsed_s": 67.3,
+      "peak_mem_gb": 57.98,
+      "error": null,
+      "shard_idx": 2
+    },
+    {
+      "task_id": "M6_S3_02c1_s1",
+      "stratum": "S3",
+      "n_refs": 1,
+      "seed": 3700211,
+      "prompt": "a bowl with a mountain in the background",
+      "image_paths": [
+        "/var/infer_cache/worktrees/UNO-9c315c09@3c1f90ffc290/datasets/dreambooth/dataset/berry_bowl/03.jpg"
+      ],
+      "elapsed_s": 46.88,
+      "peak_mem_gb": 57.97,
+      "error": null,
+      "shard_idx": 2
+    },
+    {
+      "task_id": "M6_S3_06c2_s0",
+      "stratum": "S3",
+      "n_refs": 1,
+      "seed": 3700620,
+      "prompt": "a sneaker in the jungle",
+      "image_paths": [
+        "/var/infer_cache/worktrees/UNO-9c315c09@3c1f90ffc290/datasets/dreambooth/dataset/colorful_sneaker/04.jpg"
+      ],
+      "elapsed_s": 38.17,
+      "peak_mem_gb": 57.97,
+      "error": null,
+      "shard_idx": 2
+    }
+  ]
+}

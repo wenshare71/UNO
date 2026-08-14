@@ -1,0 +1,148 @@
+{
+  "meta": {
+    "spec": "P3-qwen-iso-v1",
+    "variant": "full",
+    "model": "Qwen-Image-Edit-2511",
+    "weights": "/kaimm-distill/wuwenxuan/models/Qwen-Image-Edit-2511",
+    "lora": null,
+    "block_diag": false,
+    "iso_no_cache": false,
+    "task_table": "m6_floor",
+    "task_json": "/var/infer_cache/worktrees/UNO-9c315c09@3c1f90ffc290/datasets/eval_multiref/m6_floor_tasks.json",
+    "n_all_tasks": 30,
+    "shard_idx": 0,
+    "num_shards": 4,
+    "n_shard_tasks": 8,
+    "n_run": 8,
+    "n_skipped_resume": 0,
+    "n_fail": 0,
+    "num_inference_steps": 40,
+    "true_cfg_scale": 4.0,
+    "negative_prompt": " ",
+    "height": 1024,
+    "width": 1024,
+    "total_s": 491.5,
+    "dry_run": false,
+    "diffusers_version": "0.40.0.dev0",
+    "torch_version": "2.5.1+cu124"
+  },
+  "tasks": [
+    {
+      "task_id": "M6_S1_003_s2",
+      "stratum": "S1",
+      "n_refs": 2,
+      "seed": 3500032,
+      "prompt": "a backpack and a candle on a cobblestone street",
+      "image_paths": [
+        "/var/infer_cache/worktrees/UNO-9c315c09@3c1f90ffc290/datasets/dreambooth/dataset/backpack_dog/02.jpg",
+        "/var/infer_cache/worktrees/UNO-9c315c09@3c1f90ffc290/datasets/dreambooth/dataset/candle/03.jpg"
+      ],
+      "elapsed_s": 74.37,
+      "peak_mem_gb": 57.98,
+      "error": null,
+      "shard_idx": 0
+    },
+    {
+      "task_id": "M6_S1_010_s0",
+      "stratum": "S1",
+      "n_refs": 2,
+      "seed": 3500100,
+      "prompt": "a stuffed animal and a can with a wheat field in the background",
+      "image_paths": [
+        "/var/infer_cache/worktrees/UNO-9c315c09@3c1f90ffc290/datasets/dreambooth/dataset/bear_plushie/00.jpg",
+        "/var/infer_cache/worktrees/UNO-9c315c09@3c1f90ffc290/datasets/dreambooth/dataset/can/01.jpg"
+      ],
+      "elapsed_s": 66.53,
+      "peak_mem_gb": 57.98,
+      "error": null,
+      "shard_idx": 0
+    },
+    {
+      "task_id": "M6_S1_016_s4",
+      "stratum": "S1",
+      "n_refs": 2,
+      "seed": 3500164,
+      "prompt": "a bowl and a can with a city in the background",
+      "image_paths": [
+        "/var/infer_cache/worktrees/UNO-9c315c09@3c1f90ffc290/datasets/dreambooth/dataset/berry_bowl/04.jpg",
+        "/var/infer_cache/worktrees/UNO-9c315c09@3c1f90ffc290/datasets/dreambooth/dataset/can/05.jpg"
+      ],
+      "elapsed_s": 66.49,
+      "peak_mem_gb": 57.98,
+      "error": null,
+      "shard_idx": 0
+    },
+    {
+      "task_id": "M6_S1_024_s4",
+      "stratum": "S1",
+      "n_refs": 2,
+      "seed": 3500244,
+      "prompt": "a can and a clock floating in an ocean of milk",
+      "image_paths": [
+        "/var/infer_cache/worktrees/UNO-9c315c09@3c1f90ffc290/datasets/dreambooth/dataset/can/04.jpg",
+        "/var/infer_cache/worktrees/UNO-9c315c09@3c1f90ffc290/datasets/dreambooth/dataset/clock/05.jpg"
+      ],
+      "elapsed_s": 66.46,
+      "peak_mem_gb": 57.98,
+      "error": null,
+      "shard_idx": 0
+    },
+    {
+      "task_id": "M6_S1_035_s1",
+      "stratum": "S1",
+      "n_refs": 2,
+      "seed": 3500351,
+      "prompt": "a clock and a toy on top of green grass with sunflowers around it",
+      "image_paths": [
+        "/var/infer_cache/worktrees/UNO-9c315c09@3c1f90ffc290/datasets/dreambooth/dataset/clock/01.jpg",
+        "/var/infer_cache/worktrees/UNO-9c315c09@3c1f90ffc290/datasets/dreambooth/dataset/duck_toy/02.jpg"
+      ],
+      "elapsed_s": 66.15,
+      "peak_mem_gb": 57.98,
+      "error": null,
+      "shard_idx": 0
+    },
+    {
+      "task_id": "M6_S3_00c3_s0",
+      "stratum": "S3",
+      "n_refs": 1,
+      "seed": 3700030,
+      "prompt": "a backpack on a cobblestone street",
+      "image_paths": [
+        "/var/infer_cache/worktrees/UNO-9c315c09@3c1f90ffc290/datasets/dreambooth/dataset/backpack_dog/01.jpg"
+      ],
+      "elapsed_s": 46.89,
+      "peak_mem_gb": 57.97,
+      "error": null,
+      "shard_idx": 0
+    },
+    {
+      "task_id": "M6_S3_04c2_s1",
+      "stratum": "S3",
+      "n_refs": 1,
+      "seed": 3700421,
+      "prompt": "a candle floating in an ocean of milk",
+      "image_paths": [
+        "/var/infer_cache/worktrees/UNO-9c315c09@3c1f90ffc290/datasets/dreambooth/dataset/candle/00.jpg"
+      ],
+      "elapsed_s": 38.41,
+      "peak_mem_gb": 57.97,
+      "error": null,
+      "shard_idx": 0
+    },
+    {
+      "task_id": "M6_S3_08c0_s0",
+      "stratum": "S3",
+      "n_refs": 1,
+      "seed": 3700800,
+      "prompt": "a boot on top of pink fabric",
+      "image_paths": [
+        "/var/infer_cache/worktrees/UNO-9c315c09@3c1f90ffc290/datasets/dreambooth/dataset/fancy_boot/00.jpg"
+      ],
+      "elapsed_s": 38.08,
+      "peak_mem_gb": 57.97,
+      "error": null,
+      "shard_idx": 0
+    }
+  ]
+}
