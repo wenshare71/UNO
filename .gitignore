@@ -234,6 +234,23 @@ datasets/UNO-1M/
 !/output/eval_multiref/pairs_*.json
 !/output/eval_multiref/blind_annotations_*.json
 
+# P3 盲评产物(2026-08-15):三臂 results.json 存档 + 配对清单 + 标注(270/270)进 git,
+# 供报告引用与复算;候选 PNG 留在盘上不进 git(与 M4 同理)。
+# blind_annotations_backups/ 是目录,不被下面命中,继续忽略。
+!/output/p3_full/
+/output/p3_full/*
+!/output/p3_full/results.json
+!/output/p3_iso_pre/
+/output/p3_iso_pre/*
+!/output/p3_iso_pre/results.json
+!/output/p3_iso_post/
+/output/p3_iso_post/*
+!/output/p3_iso_post/results.json
+!/output/p3_eval/
+/output/p3_eval/*
+!/output/p3_eval/pairs_p3.json
+!/output/p3_eval/blind_annotations_p3.json
+
 # 注意力诊断产物(2026-07-30,D03;2026-07-31 D04 更新):**全部进 git**。
 # npz 是曲线/热力图数据,本地 plot_attn.py 靠它出图,不进 git 就没法出报告;
 # D04 把曲线拆到 head 维度后单个 npz 从 342 KB 涨到 854–1068 KB(压缩前),

@@ -1,0 +1,1360 @@
+{
+  "meta": {
+    "batch_id": "p3",
+    "blind_seed": "p3-qwen-iso-20260815",
+    "pairs": "output/p3_eval/pairs_p3.json",
+    "n_marks": 270
+  },
+  "marks": {
+    "p3::main::M6_S3_03c2_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:33:48"
+    },
+    "p3::main::M6_S1_042_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:33:51"
+    },
+    "p3::main::M6_S1_039_s2": {
+      "choice": "L",
+      "winner": "p3_full",
+      "ts": "2026-08-15 12:33:53"
+    },
+    "p3::main::M6_S3_05c0_s0": {
+      "choice": "L",
+      "winner": "p3_iso_post",
+      "ts": "2026-08-15 12:33:56"
+    },
+    "p3::rf::M6_S1_040_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:33:58"
+    },
+    "p3::main::M6_S1_008_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:34:01"
+    },
+    "p3::main::M6_S1_037_s1": {
+      "choice": "L",
+      "winner": "p3_full",
+      "ts": "2026-08-15 12:34:17"
+    },
+    "p3::main::M6_S1_023_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:34:19"
+    },
+    "p3::main::M6_S1_030_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:34:21"
+    },
+    "p3::main::M6_S1_009_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:34:29"
+    },
+    "p3::main::M6_S1_012_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:34:33"
+    },
+    "p3::main::M6_S1_033_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:34:37"
+    },
+    "p3::main::M6_S1_002_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:34:39"
+    },
+    "p3::main::M6_S3_08c2_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:34:47"
+    },
+    "p3::main::M6_S1_024_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:34:59"
+    },
+    "p3::main::M6_S3_06c3_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:35:03"
+    },
+    "p3::main::M6_S3_06c1_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:35:06"
+    },
+    "p3::main::M6_S3_00c0_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:35:10"
+    },
+    "p3::main::M6_S1_032_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:35:13"
+    },
+    "p3::main::M6_S3_07c1_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:35:18"
+    },
+    "p3::main::M6_S3_06c2_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:35:21"
+    },
+    "p3::main::M6_S3_01c1_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:35:24"
+    },
+    "p3::main::M6_S1_028_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:35:28"
+    },
+    "p3::main::M6_S1_022_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:35:32"
+    },
+    "p3::main::M6_S1_011_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:35:35"
+    },
+    "p3::main::M6_S1_042_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:35:39"
+    },
+    "p3::main::M6_S3_01c3_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:35:46"
+    },
+    "p3::rf::M6_S3_07c3_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:35:49"
+    },
+    "p3::main::M6_S1_010_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:35:59"
+    },
+    "p3::main::M6_S1_033_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:36:09"
+    },
+    "p3::main::M6_S3_00c4_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:36:12"
+    },
+    "p3::main::M6_S1_020_s2": {
+      "choice": "R",
+      "winner": "p3_iso_post",
+      "ts": "2026-08-15 12:36:15"
+    },
+    "p3::main::M6_S1_042_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:36:19"
+    },
+    "p3::main::M6_S1_036_s2": {
+      "choice": "R",
+      "winner": "p3_full",
+      "ts": "2026-08-15 12:36:28"
+    },
+    "p3::main::M6_S1_034_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:36:33"
+    },
+    "p3::rf::M6_S1_033_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:36:36"
+    },
+    "p3::main::M6_S3_03c1_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:36:38"
+    },
+    "p3::main::M6_S1_023_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:36:58"
+    },
+    "p3::main::M6_S1_017_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:37:04"
+    },
+    "p3::main::M6_S1_027_s1": {
+      "choice": "L",
+      "winner": "p3_full",
+      "ts": "2026-08-15 12:37:10"
+    },
+    "p3::rf::M6_S1_015_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:37:12"
+    },
+    "p3::main::M6_S1_032_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:37:17"
+    },
+    "p3::main::M6_S1_031_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:37:25"
+    },
+    "p3::main::M6_S3_06c0_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:37:29"
+    },
+    "p3::main::M6_S3_05c2_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:37:34"
+    },
+    "p3::main::M6_S1_040_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:37:45"
+    },
+    "p3::rf::M6_S3_09c3_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:37:46"
+    },
+    "p3::main::M6_S1_017_s3": {
+      "choice": "L",
+      "winner": "p3_full",
+      "ts": "2026-08-15 12:37:50"
+    },
+    "p3::rf::M6_S1_026_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:37:53"
+    },
+    "p3::main::M6_S3_07c3_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:37:54"
+    },
+    "p3::rf::M6_S1_035_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:37:56"
+    },
+    "p3::main::M6_S3_08c0_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:37:58"
+    },
+    "p3::main::M6_S3_07c2_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:38:00"
+    },
+    "p3::main::M6_S3_07c4_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:38:02"
+    },
+    "p3::main::M6_S3_02c2_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:38:11"
+    },
+    "p3::main::M6_S1_041_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:38:14"
+    },
+    "p3::main::M6_S1_018_s2": {
+      "choice": "R",
+      "winner": "p3_full",
+      "ts": "2026-08-15 12:38:23"
+    },
+    "p3::rf::M6_S1_010_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:38:27"
+    },
+    "p3::rf::M6_S1_024_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:38:28"
+    },
+    "p3::rf::M6_S3_05c1_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:38:30"
+    },
+    "p3::main::M6_S1_001_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:38:31"
+    },
+    "p3::main::M6_S1_008_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:38:34"
+    },
+    "p3::main::M6_S1_017_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:38:59"
+    },
+    "p3::main::M6_S1_006_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:39:06"
+    },
+    "p3::main::M6_S1_032_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:39:08"
+    },
+    "p3::main::M6_S1_035_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:39:09"
+    },
+    "p3::main::M6_S1_039_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:39:11"
+    },
+    "p3::main::M6_S1_027_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:39:12"
+    },
+    "p3::main::M6_S1_005_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:39:14"
+    },
+    "p3::main::M6_S1_038_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:39:17"
+    },
+    "p3::main::M6_S3_05c1_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:39:19"
+    },
+    "p3::main::M6_S1_034_s2": {
+      "choice": "L",
+      "winner": "p3_full",
+      "ts": "2026-08-15 12:39:28"
+    },
+    "p3::main::M6_S1_031_s3": {
+      "choice": "R",
+      "winner": "p3_iso_post",
+      "ts": "2026-08-15 12:39:35"
+    },
+    "p3::main::M6_S1_041_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:39:39"
+    },
+    "p3::main::M6_S3_00c2_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:39:40"
+    },
+    "p3::main::M6_S1_025_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:39:45"
+    },
+    "p3::rf::M6_S3_03c4_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:39:46"
+    },
+    "p3::main::M6_S1_037_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:39:49"
+    },
+    "p3::main::M6_S3_01c0_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:39:52"
+    },
+    "p3::main::M6_S1_002_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:39:54"
+    },
+    "p3::main::M6_S3_04c2_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:39:55"
+    },
+    "p3::main::M6_S1_015_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:40:07"
+    },
+    "p3::main::M6_S1_025_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:40:10"
+    },
+    "p3::main::M6_S1_012_s0": {
+      "choice": "L",
+      "winner": "p3_full",
+      "ts": "2026-08-15 12:40:13"
+    },
+    "p3::main::M6_S1_010_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:40:17"
+    },
+    "p3::main::M6_S3_04c1_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:40:19"
+    },
+    "p3::main::M6_S1_036_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:40:21"
+    },
+    "p3::main::M6_S1_004_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:40:23"
+    },
+    "p3::rf::M6_S1_005_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:40:25"
+    },
+    "p3::main::M6_S1_034_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:40:40"
+    },
+    "p3::main::M6_S1_013_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:40:43"
+    },
+    "p3::main::M6_S3_02c4_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:40:44"
+    },
+    "p3::main::M6_S3_00c4_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:40:46"
+    },
+    "p3::main::M6_S3_08c2_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:40:48"
+    },
+    "p3::main::M6_S3_06c4_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:40:49"
+    },
+    "p3::main::M6_S3_05c4_s0": {
+      "choice": "L",
+      "winner": "p3_full",
+      "ts": "2026-08-15 12:40:59"
+    },
+    "p3::main::M6_S1_002_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:41:01"
+    },
+    "p3::main::M6_S1_038_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:41:08"
+    },
+    "p3::main::M6_S3_04c3_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:41:10"
+    },
+    "p3::main::M6_S3_09c1_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:41:13"
+    },
+    "p3::main::M6_S1_007_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:41:16"
+    },
+    "p3::main::M6_S1_014_s3": {
+      "choice": "R",
+      "winner": "p3_full",
+      "ts": "2026-08-15 12:41:23"
+    },
+    "p3::main::M6_S3_08c3_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:41:29"
+    },
+    "p3::main::M6_S1_010_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:41:31"
+    },
+    "p3::main::M6_S3_09c2_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:41:32"
+    },
+    "p3::main::M6_S3_06c4_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:41:34"
+    },
+    "p3::main::M6_S1_018_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:41:38"
+    },
+    "p3::main::M6_S1_008_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:41:41"
+    },
+    "p3::main::M6_S1_000_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:41:43"
+    },
+    "p3::main::M6_S1_016_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:41:45"
+    },
+    "p3::main::M6_S3_09c0_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:41:47"
+    },
+    "p3::main::M6_S1_021_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:42:01"
+    },
+    "p3::main::M6_S1_014_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:42:04"
+    },
+    "p3::main::M6_S3_03c3_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:42:06"
+    },
+    "p3::main::M6_S3_03c1_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:42:07"
+    },
+    "p3::main::M6_S3_02c2_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:42:09"
+    },
+    "p3::main::M6_S3_00c3_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:42:10"
+    },
+    "p3::main::M6_S3_04c0_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:42:13"
+    },
+    "p3::rf::M6_S3_01c4_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:42:15"
+    },
+    "p3::main::M6_S3_00c2_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:42:17"
+    },
+    "p3::main::M6_S1_007_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:42:18"
+    },
+    "p3::rf::M6_S3_02c1_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:42:20"
+    },
+    "p3::main::M6_S3_04c0_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:42:21"
+    },
+    "p3::main::M6_S1_018_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:42:23"
+    },
+    "p3::main::M6_S3_07c1_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:42:24"
+    },
+    "p3::main::M6_S1_013_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:42:27"
+    },
+    "p3::main::M6_S1_019_s3": {
+      "choice": "R",
+      "winner": "p3_full",
+      "ts": "2026-08-15 12:42:40"
+    },
+    "p3::main::M6_S3_03c3_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:42:44"
+    },
+    "p3::main::M6_S3_01c2_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:42:45"
+    },
+    "p3::main::M6_S1_005_s1": {
+      "choice": "R",
+      "winner": "p3_full",
+      "ts": "2026-08-15 12:42:52"
+    },
+    "p3::main::M6_S1_018_s4": {
+      "choice": "L",
+      "winner": "p3_full",
+      "ts": "2026-08-15 12:42:55"
+    },
+    "p3::main::M6_S1_014_s4": {
+      "choice": "L",
+      "winner": "p3_full",
+      "ts": "2026-08-15 12:42:59"
+    },
+    "p3::main::M6_S3_08c0_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:43:00"
+    },
+    "p3::rf::M6_S1_008_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:43:02"
+    },
+    "p3::main::M6_S1_000_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:43:04"
+    },
+    "p3::main::M6_S1_001_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:43:06"
+    },
+    "p3::main::M6_S1_013_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:43:08"
+    },
+    "p3::main::M6_S1_037_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:43:10"
+    },
+    "p3::rf::M6_S1_011_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:43:12"
+    },
+    "p3::main::M6_S1_021_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:43:14"
+    },
+    "p3::rf::M6_S1_003_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:43:16"
+    },
+    "p3::main::M6_S1_032_s1": {
+      "choice": "L",
+      "winner": "p3_full",
+      "ts": "2026-08-15 12:43:23"
+    },
+    "p3::main::M6_S1_011_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:43:25"
+    },
+    "p3::main::M6_S3_03c0_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:43:27"
+    },
+    "p3::main::M6_S1_021_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:43:29"
+    },
+    "p3::main::M6_S1_022_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:43:36"
+    },
+    "p3::rf::M6_S1_032_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:43:38"
+    },
+    "p3::main::M6_S1_043_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:43:40"
+    },
+    "p3::main::M6_S3_07c3_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:43:41"
+    },
+    "p3::main::M6_S1_040_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:43:43"
+    },
+    "p3::main::M6_S1_009_s1": {
+      "choice": "R",
+      "winner": "p3_full",
+      "ts": "2026-08-15 12:43:50"
+    },
+    "p3::main::M6_S1_004_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:43:52"
+    },
+    "p3::main::M6_S3_05c3_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:43:53"
+    },
+    "p3::rf::M6_S1_004_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:43:55"
+    },
+    "p3::main::M6_S1_029_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:43:56"
+    },
+    "p3::main::M6_S1_036_s1": {
+      "choice": "R",
+      "winner": "p3_full",
+      "ts": "2026-08-15 12:44:05"
+    },
+    "p3::main::M6_S1_036_s0": {
+      "choice": "R",
+      "winner": "p3_full",
+      "ts": "2026-08-15 12:44:11"
+    },
+    "p3::main::M6_S1_004_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:44:15"
+    },
+    "p3::main::M6_S3_02c0_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:44:16"
+    },
+    "p3::main::M6_S3_00c1_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:44:17"
+    },
+    "p3::main::M6_S1_025_s0": {
+      "choice": "L",
+      "winner": "p3_full",
+      "ts": "2026-08-15 12:44:21"
+    },
+    "p3::rf::M6_S1_018_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:44:27"
+    },
+    "p3::main::M6_S3_09c3_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:44:33"
+    },
+    "p3::main::M6_S1_009_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:44:36"
+    },
+    "p3::main::M6_S3_06c0_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:44:37"
+    },
+    "p3::main::M6_S3_09c1_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:44:38"
+    },
+    "p3::main::M6_S1_043_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:44:46"
+    },
+    "p3::main::M6_S1_014_s2": {
+      "choice": "L",
+      "winner": "p3_iso_post",
+      "ts": "2026-08-15 12:44:52"
+    },
+    "p3::main::M6_S1_027_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:44:54"
+    },
+    "p3::main::M6_S1_003_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:44:56"
+    },
+    "p3::main::M6_S1_035_s1": {
+      "choice": "R",
+      "winner": "p3_iso_post",
+      "ts": "2026-08-15 12:45:02"
+    },
+    "p3::main::M6_S1_019_s2": {
+      "choice": "L",
+      "winner": "p3_iso_post",
+      "ts": "2026-08-15 12:45:12"
+    },
+    "p3::main::M6_S3_02c1_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:45:14"
+    },
+    "p3::main::M6_S1_040_s2": {
+      "choice": "L",
+      "winner": "p3_iso_post",
+      "ts": "2026-08-15 12:45:21"
+    },
+    "p3::main::M6_S3_05c1_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:45:23"
+    },
+    "p3::main::M6_S1_033_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:45:25"
+    },
+    "p3::rf::M6_S1_013_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:45:26"
+    },
+    "p3::main::M6_S1_009_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:45:28"
+    },
+    "p3::main::M6_S1_001_s4": {
+      "choice": "R",
+      "winner": "p3_iso_post",
+      "ts": "2026-08-15 12:45:36"
+    },
+    "p3::main::M6_S3_04c4_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:45:38"
+    },
+    "p3::main::M6_S1_010_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:45:43"
+    },
+    "p3::main::M6_S1_001_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:45:46"
+    },
+    "p3::main::M6_S1_000_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:45:48"
+    },
+    "p3::main::M6_S3_06c2_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:45:50"
+    },
+    "p3::main::M6_S1_016_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:45:52"
+    },
+    "p3::main::M6_S1_025_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:45:54"
+    },
+    "p3::main::M6_S1_013_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:45:56"
+    },
+    "p3::main::M6_S1_015_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:46:10"
+    },
+    "p3::main::M6_S1_040_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:46:12"
+    },
+    "p3::main::M6_S1_029_s0": {
+      "choice": "R",
+      "winner": "p3_full",
+      "ts": "2026-08-15 12:46:16"
+    },
+    "p3::main::M6_S1_034_s0": {
+      "choice": "R",
+      "winner": "p3_iso_post",
+      "ts": "2026-08-15 12:46:29"
+    },
+    "p3::main::M6_S1_021_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:46:34"
+    },
+    "p3::main::M6_S1_004_s2": {
+      "choice": "R",
+      "winner": "p3_full",
+      "ts": "2026-08-15 12:46:36"
+    },
+    "p3::main::M6_S1_022_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:46:41"
+    },
+    "p3::main::M6_S3_04c2_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:46:43"
+    },
+    "p3::main::M6_S3_00c0_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:46:45"
+    },
+    "p3::rf::M6_S3_06c2_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:46:46"
+    },
+    "p3::rf::M6_S1_017_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:46:49"
+    },
+    "p3::main::M6_S1_022_s0": {
+      "choice": "L",
+      "winner": "p3_iso_post",
+      "ts": "2026-08-15 12:46:57"
+    },
+    "p3::main::M6_S3_09c3_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:46:59"
+    },
+    "p3::main::M6_S1_016_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:47:02"
+    },
+    "p3::main::M6_S1_016_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:47:05"
+    },
+    "p3::main::M6_S1_026_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:47:06"
+    },
+    "p3::main::M6_S3_07c0_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:47:08"
+    },
+    "p3::main::M6_S1_015_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:47:10"
+    },
+    "p3::main::M6_S1_030_s0": {
+      "choice": "L",
+      "winner": "p3_full",
+      "ts": "2026-08-15 12:47:17"
+    },
+    "p3::main::M6_S1_028_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:47:18"
+    },
+    "p3::main::M6_S1_005_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:47:28"
+    },
+    "p3::rf::M6_S3_04c2_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:47:30"
+    },
+    "p3::main::M6_S1_005_s3": {
+      "choice": "L",
+      "winner": "p3_iso_post",
+      "ts": "2026-08-15 12:47:38"
+    },
+    "p3::main::M6_S1_026_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:47:41"
+    },
+    "p3::main::M6_S1_011_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:47:43"
+    },
+    "p3::main::M6_S1_042_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:47:44"
+    },
+    "p3::main::M6_S3_02c4_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:47:45"
+    },
+    "p3::main::M6_S1_003_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:47:46"
+    },
+    "p3::main::M6_S1_026_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:47:48"
+    },
+    "p3::main::M6_S1_000_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:47:49"
+    },
+    "p3::main::M6_S1_039_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:47:51"
+    },
+    "p3::main::M6_S1_020_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:47:52"
+    },
+    "p3::main::M6_S1_023_s3": {
+      "choice": "R",
+      "winner": "p3_iso_post",
+      "ts": "2026-08-15 12:47:59"
+    },
+    "p3::main::M6_S1_024_s0": {
+      "choice": "L",
+      "winner": "p3_full",
+      "ts": "2026-08-15 12:48:03"
+    },
+    "p3::main::M6_S3_03c4_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:48:05"
+    },
+    "p3::main::M6_S1_029_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:48:14"
+    },
+    "p3::main::M6_S1_020_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:48:16"
+    },
+    "p3::main::M6_S1_024_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:48:18"
+    },
+    "p3::main::M6_S1_031_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:48:21"
+    },
+    "p3::main::M6_S1_024_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:48:23"
+    },
+    "p3::main::M6_S3_01c1_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:48:25"
+    },
+    "p3::main::M6_S1_041_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:48:26"
+    },
+    "p3::main::M6_S1_037_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:48:27"
+    },
+    "p3::main::M6_S3_02c3_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:48:28"
+    },
+    "p3::main::M6_S1_020_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:48:30"
+    },
+    "p3::main::M6_S1_006_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:48:40"
+    },
+    "p3::main::M6_S1_006_s0": {
+      "choice": "R",
+      "winner": "p3_iso_post",
+      "ts": "2026-08-15 12:48:48"
+    },
+    "p3::main::M6_S1_030_s2": {
+      "choice": "R",
+      "winner": "p3_full",
+      "ts": "2026-08-15 12:48:54"
+    },
+    "p3::main::M6_S1_033_s4": {
+      "choice": "R",
+      "winner": "p3_full",
+      "ts": "2026-08-15 12:48:59"
+    },
+    "p3::rf::M6_S1_016_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:49:00"
+    },
+    "p3::main::M6_S3_08c1_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:49:01"
+    },
+    "p3::main::M6_S1_038_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:49:03"
+    },
+    "p3::main::M6_S1_017_s1": {
+      "choice": "R",
+      "winner": "p3_full",
+      "ts": "2026-08-15 12:49:11"
+    },
+    "p3::main::M6_S1_006_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:49:13"
+    },
+    "p3::rf::M6_S1_019_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:49:15"
+    },
+    "p3::main::M6_S1_012_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:49:19"
+    },
+    "p3::main::M6_S1_038_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:49:21"
+    },
+    "p3::main::M6_S3_04c4_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:49:23"
+    },
+    "p3::rf::M6_S1_038_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:49:25"
+    },
+    "p3::rf::M6_S3_00c3_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:49:26"
+    },
+    "p3::rf::M6_S3_08c0_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:49:28"
+    },
+    "p3::main::M6_S3_02c0_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:49:30"
+    },
+    "p3::main::M6_S1_008_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:49:33"
+    },
+    "p3::main::M6_S1_002_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:49:35"
+    },
+    "p3::main::M6_S1_030_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:49:37"
+    },
+    "p3::main::M6_S3_05c3_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:49:39"
+    },
+    "p3::main::M6_S3_08c4_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:49:40"
+    },
+    "p3::main::M6_S1_028_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:49:41"
+    },
+    "p3::main::M6_S1_029_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:49:43"
+    },
+    "p3::main::M6_S1_041_s3": {
+      "choice": "L",
+      "winner": "p3_full",
+      "ts": "2026-08-15 12:49:50"
+    },
+    "p3::main::M6_S1_043_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:49:52"
+    },
+    "p3::main::M6_S3_09c4_s0": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:49:54"
+    },
+    "p3::main::M6_S1_012_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:49:56"
+    },
+    "p3::main::M6_S1_003_s2": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:49:58"
+    },
+    "p3::main::M6_S1_007_s2": {
+      "choice": "L",
+      "winner": "p3_iso_post",
+      "ts": "2026-08-15 12:50:06"
+    },
+    "p3::main::M6_S3_08c4_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:50:08"
+    },
+    "p3::rf::M6_S1_037_s3": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:50:10"
+    },
+    "p3::main::M6_S1_035_s3": {
+      "choice": "L",
+      "winner": "p3_full",
+      "ts": "2026-08-15 12:50:16"
+    },
+    "p3::main::M6_S1_026_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:50:17"
+    },
+    "p3::main::M6_S3_01c4_s0": {
+      "choice": "L",
+      "winner": "p3_iso_post",
+      "ts": "2026-08-15 12:50:23"
+    },
+    "p3::main::M6_S3_01c3_s1": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:50:26"
+    },
+    "p3::main::M6_S1_028_s4": {
+      "choice": "tie",
+      "winner": "tie",
+      "ts": "2026-08-15 12:50:27"
+    },
+    "p3::main::M6_S1_019_s1": {
+      "choice": "L",
+      "winner": "p3_iso_post",
+      "ts": "2026-08-15 12:50:34"
+    }
+  }
+}
