@@ -281,10 +281,16 @@ def main():
         print(f"   B 真 uncond:{txt_rec['B_uncond_or_current']['n_bitwise_eq']}/60 层逐位相同"
               f"(cond txt_len={txt_rec.get('cond_txt_len')}, "
               f"uncond txt_len={txt_rec['txt_len']})")
-    if verdict == "PASS":
-        print("   ⇒ 【直接投主批,不用等作者】")
+    # 这一支与主批**并行**跑,主批不等它(P3 §6.1)。所以收尾话术只有两种:
+    # 要么 kill 掉已经在跑的主批,要么什么都不做接着跑。没有"别投"这一档。
+    if verdict in ("FAIL_LEAK", "FAIL_STEP"):
+        print("   ⇒ 【kill 掉在跑的主批】缓存有逻辑错,已经出的图全废。"
+              "把这段输出连同 diag_kv.json 发给作者")
+    elif verdict == "INCONCLUSIVE":
+        print("   ⇒ 【主批照跑,不用停】探针自身没成立,这不是关于缓存的结论。"
+              "贴进报告即可,不用等作者")
     else:
-        print("   ⇒ 【停,主批别投】把这段输出连同 diag_kv.json 发给作者")
+        print("   ⇒ 【主批照跑】缓存判据成立,记进报告即可")
     print(f"diag_kv.json : {path}")
     print("=" * 74)
 
