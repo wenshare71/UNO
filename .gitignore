@@ -411,3 +411,16 @@ log/ref_distill/
 !/output/p3_diag_kv/
 /output/p3_diag_kv/*
 !/output/p3_diag_kv/diag_kv.json
+
+# ─── PPT 配图(docs/PPT_ASSETS_RUN.md)────────────────────────────────────
+# 62 张示例图,对应 reports/FINAL_REPORT.md §2.2/§2.3/§2.4/§3.3 的四个批次。
+# 样本按已冻结的 blind_annotations_*.json 选定,不是随手挑的,所以要能被审计。
+# 带变体名可以进 git 的理由:这四批**判读全部完成并冻结**,
+# 「判读完成前不得生成带变体名的拼图」那条纪律的前提已经不成立。
+# 格式按用户 2026-08-18 指示:**原始 PNG 原样提交,未转换未压尺寸**(约 57 MB,
+# 四组 A/B/C/D 各 8/8/10/36 张、4 个 commit 分批入库);不再按原案转 JPEG。
+# MANIFEST.txt 是 sha256 取证清单。
+!/output/ppt_assets/
+/output/ppt_assets/*
+!/output/ppt_assets/*.png
+!/output/ppt_assets/MANIFEST.txt
